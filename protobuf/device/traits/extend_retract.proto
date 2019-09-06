@@ -3,7 +3,7 @@ syntax = "proto3";
 package smartcore.api.device.traits.extendretract;
 
 option csharp_namespace = "Smartcore.Api.Device.Traits";
-option go_package = "smartcore.dev/api/device/traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
 option java_multiple_files = true;
 option java_outer_classname = "ExtendRetractProto";
 option java_package = "dev.smartcore.api.device.traits";

@@ -3,7 +3,7 @@ syntax = "proto3";
 package smartcore.api.types;
 
 option csharp_namespace = "Smartcore.Api.Types.OnOff";
-option go_package = "smartcore.dev/api/types/onoff;onoff";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types/onoff;onoff";
 option java_multiple_files = true;
 option java_outer_classname = "OnOffProto";
 option java_package = "dev.smartcore.api.types";
