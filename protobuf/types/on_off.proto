@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package smartcore.api.types;
+
+option csharp_namespace = "Smartcore.Api.Types.OnOff";
+option go_package = "smartcore.dev/api/types/onoff;onoff";
+option java_multiple_files = true;
+option java_outer_classname = "OnOffProto";
+option java_package = "dev.smartcore.api.types";
+
+// possible states for an On-Off device
+enum OnOffState {
+    UNKNOWN = 0;
+    ON = 1;
+    OFF = 2;
+}

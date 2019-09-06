@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package smartcore.api.device.traits.brightness;
+
+option csharp_namespace = "Smartcore.Api.Device.Traits";
+option go_package = "smartcore.dev/api/device/traits";
+option java_multiple_files = true;
+option java_outer_classname = "BrightnessProto";
+option java_package = "dev.smartcore.api.device.traits";
+option php_namespace = "Smartcore\\Api\\Device\\Traits";
+
+import "google/protobuf/timestamp.proto";
+import "types/number.proto";
+
+// Control the brightness of a device. Brightness values should be normalised to 0-100 as a percentage, though the
+// device may not support all steps within. See the BrightnessAttributes for step values of the device.
+service BrightnessApi {
+    // request that the range value be changes
+    rpc UpdateRangeValue (UpdateBrightnessRequest) returns (Brightness);
+
+    // get the current value of the range
+    rpc GetBrightness (GetBrightnessRequest) returns (Brightness);
+
+    // request updates to changes in the range value
+    rpc PullBrightness (PullBrightnessRequest) returns (stream PullBrightnessResponse);
+}
+
+// Trait.attribute for brightness capabilities
+message BrightnessAttributes {
+    // control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage
+    smartcore.api.types.Int32Attributes brightness_attributes = 1;
+    // A description of the supported presets, none means no presets
+    repeated BrightnessPreset presets = 2;
+}
+
+message Brightness {
+    // A level that the device is set to.
+    smartcore.api.types.Int32Var level = 1;
+    // A preset that the device is using
+    BrightnessPreset preset = 2;
+}
+
+message BrightnessPreset {
+    string name = 1;
+    string title = 2;
+}
+
+// A request to update the value of a brightness
+message UpdateBrightnessRequest {
+    // The name of the device to update
+    string name = 1;
+    // The new value for the brightness. Supply ramp to transition
+    Brightness brightness = 2;
+    // if true, then the values in the brightness represent deltas from the current value and not absolute values
+    bool delta = 3;
+}
+
+// A request to get the current value of a brightness
+message GetBrightnessRequest {
+    // The name of the device to get the value for
+    string name = 1;
+}
+
+// Request to begin a subscription for brightness values
+message PullBrightnessRequest {
+    // The name of the device we want events from
+    string name = 1;
+    // Indicate whether we want to be notified of values while ramping or not. The device may ignore this depending on
+    // capabilities
+    bool exclude_ramping = 2;
+}
+
+// A response as part of the stream of changes to the brightness value
+message PullBrightnessResponse {
+    // The list of changes
+    repeated BrightnessChange changes = 1;
+}
+
+// A change to a single devices brightness value
+message BrightnessChange {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The new value for the brightness
+    Brightness brightness = 3;
+}

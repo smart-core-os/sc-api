@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package smartcore.api.types;
+
+option csharp_namespace = "Smartcore.Api.Types.Tween";
+option go_package = "smartcore.dev/api/types/tween;tween";
+option java_multiple_files = true;
+option java_outer_classname = "TweenProto";
+option java_package = "dev.smartcore.api.types";
+
+import "google/protobuf/duration.proto";
+
+// Denote different types of tween support. Clients may use this to control performance sensitive areas by enabling or
+// disabling tweening when support is not native, for example
+enum TweenSupport {
+    // The device doesn't not support tweening
+    NO_SUPPORT = 0;
+    // The device natively supports tweening. Natively typically means with minimal performance impact (i.e. no network)
+    NATIVE = 1;
+    // The device supports tweening via emulation. Typically tweening is implemented by the Smart Core driver or a
+    // supervisor node and not the device itself.
+    EMULATED = 2;
+    // The device tweens values, but the duration or rate is fixed and cannot be adjusted. For example a motor might only
+    // have one speed when operating an adjustable desk
+    FIXED = 3;
+}
+
+// An in-progress transition between two values. The values themselves should be defined in an enclosing message.
+message Tween {
+    // 0-100, how far along the transition (in time) are we.
+    float progress = 1;
+    // how long the transition will last in total
+    google.protobuf.Duration total_duration = 2;
+}

@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package smartcore.api.device.traits.microphone;
+
+option csharp_namespace = "Smartcore.Api.Device.Traits";
+option go_package = "smartcore.dev/api/device/traits";
+option java_multiple_files = true;
+option java_outer_classname = "MicrophoneProto";
+option java_package = "dev.smartcore.api.device.traits";
+option php_namespace = "Smartcore\\Api\\Device\\Traits";
+
+import "google/protobuf/field_mask.proto";
+import "types/number.proto";
+import "types/unit.proto";
+import "types/volume.proto";
+
+// Trait for devices that support some kind of audio input. The most basic is a simple muting microphone, it's optional
+// to support gain adjustment on a scale.
+//
+// For the sakes of this trait Volume means the combination of a gain and a mute state.
+service Microphone {
+    // Get the current state of the gain for the device
+    rpc GetGain (GetMicrophoneGainRequest) returns (smartcore.api.types.Volume);
+
+    // update the gain state for the device
+    rpc UpdateGain (UpdateMicrophoneGainRequest) returns (smartcore.api.types.Volume);
+
+    rpc PullGain (PullMicrophoneGainRequest) returns (stream PullMicrophoneGainResponse);
+}
+
+// Trait.attribute describing capabilities of the microphone device
+message MicrophoneAttributes {
+    // Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
+    // implies that the microphone only supports mute
+    smartcore.api.types.FloatAttributes gain_attributes = 1;
+    // How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
+    // disallowing gain change when muted
+    smartcore.api.types.MuteSupport mute_support = 3;
+}
+
+message GetMicrophoneGainRequest {
+    // Name of the device to fetch the state for
+    string name = 1;
+    // fields to fetch relative the the Volume type
+    google.protobuf.FieldMask fields = 2;
+}
+
+message UpdateMicrophoneGainRequest {
+    // Name of the device to update the state for
+    string name = 1;
+    // The updated gain value
+    smartcore.api.types.Volume gain = 2;
+    // Only supported for Volume.level. Update the value relative to the current value.
+    bool delta = 3;
+    // The fields we intend to update relative to the Volume type
+    google.protobuf.FieldMask update_mask = 4;
+}
+
+message PullMicrophoneGainRequest {
+    // Name of the device to fetch the state for
+    string name = 1;
+    // fields to fetch relative the the Volume type
+    google.protobuf.FieldMask fields = 2;
+}
+
+message PullMicrophoneGainResponse {
+    // Changes since the last message
+    repeated smartcore.api.types.VolumeChange changes = 1;
+}
