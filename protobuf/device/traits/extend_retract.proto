@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package smartcore.api.device.traits.extendretract;
+package smartcore.api.device.traits;
 
 option csharp_namespace = "Smartcore.Api.Device.Traits";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
