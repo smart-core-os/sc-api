@@ -33,11 +33,24 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>vanti.releases</id>
+            <name>Vanti Releases</name>
+            <url>https://nexus.vanti.co.uk/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>vanti.snapshots</id>
+            <name>Vanti Snapshots</name>
+            <url>https://nexus.vanti.co.uk/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>vanti.releases</id>
             <name>Vanti Releases</name>
-            <url>https://nexus.vanti.co.uk/repository/maven-releases/</url>
+            <url>https://nexus.vanti.co.uk/repository/maven-releases</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
