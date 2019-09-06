@@ -3,17 +3,35 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>co.vanti</groupId>
-        <artifactId>parent-osgi</artifactId>
-        <version>8</version>
-    </parent>
 
     <groupId>dev.smartcore</groupId>
-    <artifactId>sc-api</artifactId>
+    <artifactId>sc-api-java</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <description>Smart core API parent pom for java modules</description>
+    <description>Smart core API java package</description>
+
+    <organization>
+        <name>Vanti</name>
+        <url>https://www.vanti.co.uk</url>
+    </organization>
+
+    <issueManagement>
+        <system>Gitlab</system>
+        <url>https://git.vanti.co.uk/smartcore/sc-api/issues</url>
+    </issueManagement>
+
+    <inceptionYear>2019</inceptionYear>
+
+    <scm>
+        <connection>scm:git:https://git.vanti.co.uk/smartcore/sc-api.git</connection>
+        <developerConnection>scm:git:ssh:git@git.vanti.co.uk:smartcore/sc-api.git</developerConnection>
+        <url>https://git.vanti.co.uk/smartcore/sc-api</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <repositories>
         <repository>
@@ -22,6 +40,18 @@
             <url>https://nexus.vanti.co.uk/repository/maven-releases/</url>
             <releases>
                 <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>vanti.snapshots</id>
+            <name>Vanti Snapshots</name>
+            <url>https://nexus.vanti.co.uk/repository/maven-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
@@ -60,6 +90,31 @@
                 <version>1.6.2</version>
             </extension>
         </extensions>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.2</version>
+                    <configuration>
+                        <tagNameFormat>v@{version}</tagNameFormat>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <pushChanges>false</pushChanges>
+                        <localCheckout>true</localCheckout>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
@@ -82,8 +137,14 @@
             </plugin>
 
             <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
