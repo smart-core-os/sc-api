@@ -98,6 +98,8 @@ enum ThermostatMode {
     PURIFIER = 9;
     // Attr, read, write. The device supports, is, or should be in an air drying mode
     DRY = 10;
+    // Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)
+    LOCKED = 11;
 }
 
 // All the properties of the thermostat
