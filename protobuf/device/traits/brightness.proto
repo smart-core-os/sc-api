@@ -15,14 +15,14 @@ import "types/number.proto";
 // Control the brightness of a device. Brightness values should be normalised to 0-100 as a percentage, though the
 // device may not support all steps within. See the BrightnessAttributes for step values of the device.
 service BrightnessApi {
-    // request that the range value be changes
-    rpc UpdateRangeValue (UpdateBrightnessRequest) returns (Brightness);
+  // request that the range value be changed
+  rpc UpdateRangeValue (UpdateBrightnessRequest) returns (Brightness);
 
-    // get the current value of the range
-    rpc GetBrightness (GetBrightnessRequest) returns (Brightness);
+  // get the current value of the range
+  rpc GetBrightness (GetBrightnessRequest) returns (Brightness);
 
-    // request updates to changes in the range value
-    rpc PullBrightness (PullBrightnessRequest) returns (stream PullBrightnessResponse);
+  // request updates to changes in the range value
+  rpc PullBrightness (PullBrightnessRequest) returns (stream PullBrightnessResponse);
 }
 
 // Trait.attribute for brightness capabilities
