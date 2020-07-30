@@ -18,7 +18,7 @@ import "git.vanti.co.uk/smartcore/sc-api/go/"
 If you have made changes to the API definition files and need to re-generate one or more packages, you'll need to run
 the following from the root of this folder (i.e. `/go`):
 ```shell script
-$ protoc -I ../protobuf --go_out=plugins=grpc,paths=source_relative:./ ../protobuf/<package>/*.proto
+$ protoc -I ../protobuf --go_out=paths=source_relative:./ ../protobuf/<package>/*.proto --go-grpc_out=paths=source_relative:./ ../protobuf/<package>/*.proto
 ```
 (**Note:** the wildcard syntax will only work on Linux - from Windows you'll need to specify each proto individually)
 
