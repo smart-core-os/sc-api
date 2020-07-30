@@ -10,7 +10,7 @@ option java_package = "dev.smartcore.api.types";
 
 // possible states for an On-Off device
 enum OnOffState {
-    UNKNOWN = 0;
-    ON = 1;
-    OFF = 2;
+  UNKNOWN = 0;
+  ON = 1;
+  OFF = 2;
 }

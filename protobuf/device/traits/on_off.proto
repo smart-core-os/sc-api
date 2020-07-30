@@ -14,59 +14,59 @@ import "types/on_off.proto";
 
 // A change to the state
 message OnOffChange {
-    // name for the device that issued the change
-    string name = 1;
-    // when the change occurred
-    google.protobuf.Timestamp create_time = 2;
-    // the new state for the device
-    smartcore.api.types.OnOffState state = 3;
+  // name for the device that issued the change
+  string name = 1;
+  // when the change occurred
+  google.protobuf.Timestamp create_time = 2;
+  // the new state for the device
+  smartcore.api.types.OnOffState state = 3;
 }
 
 // Applicable to devices that have a basic binary on and off functionality.
 service OnOff {
-    // Turn on the device associated with this service or the name specified by the request.
-    rpc On (OnRequest) returns (OnReply);
+  // Turn on the device associated with this service or the name specified by the request.
+  rpc On (OnRequest) returns (OnReply);
 
-    // Turn off the device associated with this service or the name specified by the request.
-    rpc Off (OffRequest) returns (OffReply);
+  // Turn off the device associated with this service or the name specified by the request.
+  rpc Off (OffRequest) returns (OffReply);
 
-    // get the current state of the device
-    rpc GetOnOffState (GetOnOffStateRequest) returns (GetOnOffStateResponse);
+  // get the current state of the device
+  rpc GetOnOffState (GetOnOffStateRequest) returns (GetOnOffStateResponse);
 
-    // Get notified of changes to the OnOffState of a device
-    rpc Pull (OnOffPullRequest) returns (stream OnOffPullResponse);
+  // Get notified of changes to the OnOffState of a device
+  rpc Pull (OnOffPullRequest) returns (stream OnOffPullResponse);
 }
 
 message OnRequest {
-    // Required. The name of the device that should be controlled
-    string name = 1;
+  // Required. The name of the device that should be controlled
+  string name = 1;
 }
 message OnReply {
 }
 
 message OffRequest {
-    // Required. The name of the device that should be controlled
-    string name = 1;
+  // Required. The name of the device that should be controlled
+  string name = 1;
 }
 message OffReply {
 }
 
 message GetOnOffStateRequest {
-    string name = 1;
+  string name = 1;
 }
 
 message GetOnOffStateResponse {
-    smartcore.api.types.OnOffState state = 1;
+  smartcore.api.types.OnOffState state = 1;
 }
 
 // A request to monitor the state of a device
 message OnOffPullRequest {
-    string name = 1;
-    // todo: filters like name or frequency go here
+  string name = 1;
+  // todo: filters like name or frequency go here
 }
 // Response to a Pull request for OnOffState changes
 message OnOffPullResponse {
-    // Changes that have occurred since the last event
-    repeated OnOffChange changes = 1;
+  // Changes that have occurred since the last event
+  repeated OnOffChange changes = 1;
 }
 

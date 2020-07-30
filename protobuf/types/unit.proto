@@ -12,21 +12,21 @@ import "types/number.proto";
 
 // Possible temperature units for physical bodies.
 enum TemperatureUnit {
-    CELSIUS = 0;
-    FAHRENHEIT = 1;
-    KELVIN = 2;
+  CELSIUS = 0;
+  FAHRENHEIT = 1;
+  KELVIN = 2;
 }
 
 // A temperature value
 message Temperature {
-    // The value in celsius, always! Use device attributes if the device 'thinks' in a different unit but always
-    // communicate in celsius.
-    double value_celsius = 1;
+  // The value in celsius, always! Use device attributes if the device 'thinks' in a different unit but always
+  // communicate in celsius.
+  double value_celsius = 1;
 }
 
 // Represents the audio signal level for either input or output devices. When reading mute is always accurate, when
 // writing please use a FieldMask to exclude the mute value if you do not intend on changing it.
 message Volume {
-    smartcore.api.types.FloatVar gain = 1;
-    bool mute = 2;
+  smartcore.api.types.FloatVar gain = 1;
+  bool mute = 2;
 }

@@ -14,85 +14,85 @@ import "types/number.proto";
 
 // Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.
 service OpenClose {
-    rpc GetStates (GetOpenCloseStatesRequest) returns (OpenCloseStates);
+  rpc GetStates (GetOpenCloseStatesRequest) returns (OpenCloseStates);
 
-    rpc UpdateStates (UpdateOpenCloseStatesRequest) returns (OpenCloseStates);
+  rpc UpdateStates (UpdateOpenCloseStatesRequest) returns (OpenCloseStates);
 
-    // Get notified of changes to the OpenCloseState of a device
-    rpc Pull (PullOpenCloseStatesRequest) returns (stream PullOpenCloseStatesResponse);
+  // Get notified of changes to the OpenCloseState of a device
+  rpc Pull (PullOpenCloseStatesRequest) returns (stream PullOpenCloseStatesResponse);
 }
 
 // Trait.attribute for OpenClose devices
 message OpenCloseAttributes {
-    // Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
-    // 0-100 to represent a percentage
-    smartcore.api.types.FloatAttributes position_attributes = 1;
-    // The supported directions for the device. If none then assume only a single direction is supported
-    repeated OpenCloseDirection directions = 2;
+  // Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
+  // 0-100 to represent a percentage
+  smartcore.api.types.FloatAttributes position_attributes = 1;
+  // The supported directions for the device. If none then assume only a single direction is supported
+  repeated OpenCloseDirection directions = 2;
 }
 
 // All open/closable elements for the device
 message OpenCloseStates {
-    // The state of each of the devices open-able elements. Most devices will only have a single value here as they can
-    // only be opened from a single direction.
-    repeated OpenClosePosition states = 1;
+  // The state of each of the devices open-able elements. Most devices will only have a single value here as they can
+  // only be opened from a single direction.
+  repeated OpenClosePosition states = 1;
 }
 
 // Possible directions the device can open/close
 enum OpenCloseDirection {
-    UNSPECIFIED = 0;
-    UP = 1;
-    DOWN = 2;
-    LEFT = 3;
-    RIGHT = 4;
-    IN = 5;
-    OUT = 6;
+  UNSPECIFIED = 0;
+  UP = 1;
+  DOWN = 2;
+  LEFT = 3;
+  RIGHT = 4;
+  IN = 5;
+  OUT = 6;
 }
 
 // Defines the position of one open close element for the device
 message OpenClosePosition {
-    // 0-100, the current value for the open close position of the device in this direction
-    smartcore.api.types.FloatVar position_percent = 1;
-    // Optional direction for devices that support multiple open/close directions
-    OpenCloseDirection direction = 2;
+  // 0-100, the current value for the open close position of the device in this direction
+  smartcore.api.types.FloatVar position_percent = 1;
+  // Optional direction for devices that support multiple open/close directions
+  OpenCloseDirection direction = 2;
 }
 
 message GetOpenCloseStatesRequest {
-    // Name of the device to get the state for
-    string name = 1;
+  // Name of the device to get the state for
+  string name = 1;
 }
 
 message UpdateOpenCloseStatesRequest {
-    // the name of the device to update the states for
-    string name = 1;
-    // target states for each directional element of the device. If you don't want to change an open direction don't
-    // include it in the states list.
-    OpenCloseStates states = 2;
-    // indicate whether the state change is a delta or absolute value
-    bool delta = 3;
+  // the name of the device to update the states for
+  string name = 1;
+  // target states for each directional element of the device. If you don't want to change an open direction don't
+  // include it in the states list.
+  OpenCloseStates states = 2;
+  // indicate whether the state change is a delta or absolute value
+  bool delta = 3;
 }
 
 // Request to begin a subscription for open close state changes
 message PullOpenCloseStatesRequest {
-    // The name of the device we want events from
-    string name = 1;
-    // Indicate whether we want to be notified of values while tweening or not. The device may ignore this depending on
-    // capabilities
-    bool exclude_tweening = 2;
+  // The name of the device we want events from
+  string name = 1;
+  // Indicate whether we want to be notified of values while tweening or not. The device may ignore this depending on
+  // capabilities
+  bool exclude_tweening = 2;
 }
 
 // A response as part of the stream of changes to the range value
 message PullOpenCloseStatesResponse {
-    // The list of changes
-    repeated OpenCloseStateChange changes = 1;
+  // The list of changes
+  repeated OpenCloseStateChange changes = 1;
 }
 
 // A change to a single devices open close state value
 message OpenCloseStateChange {
-    // name for the device that issued the change
-    string name = 1;
-    // when the change occurred
-    google.protobuf.Timestamp create_time = 2;
-    // The new value for the state
-    OpenCloseStates state = 3;
+  // name for the device that issued the change
+  string name = 1;
+  // when the change occurred
+  google.protobuf.Timestamp create_time = 2;
+  // The new value for the state
+  OpenCloseStates state = 3;
 }

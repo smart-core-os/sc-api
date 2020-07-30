@@ -13,18 +13,18 @@ import "types/unit.proto";
 
 // A change to the volume state
 message VolumeChange {
-    // The name of the device that is the source of the change
-    string name = 1;
-    // When the change was applied
-    google.protobuf.Timestamp change_time = 2;
-    // The new state for the change
-    smartcore.api.types.Volume volume = 3;
+  // The name of the device that is the source of the change
+  string name = 1;
+  // When the change was applied
+  google.protobuf.Timestamp change_time = 2;
+  // The new state for the change
+  smartcore.api.types.Volume volume = 3;
 }
 
 // What is the level of mute support that the speaker provides
 enum MuteSupport {
-    // The speaker natively supports mute
-    MUTE_NATIVE = 0;
-    // Muting is emulated, typically by setting the gain to 0
-    MUTE_EMULATED = 1;
+  // The speaker natively supports mute
+  MUTE_NATIVE = 0;
+  // Muting is emulated, typically by setting the gain to 0
+  MUTE_EMULATED = 1;
 }

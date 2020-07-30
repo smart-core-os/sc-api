@@ -10,12 +10,12 @@ option java_package = "dev.smartcore.api.types";
 
 // Type of change
 enum ChangeType {
-    // Nothing has changed but existing items have been requested. The new_value property should be set
-    NONE = 0;
-    // An item has been added. The new_value property of the change should be set
-    ADD = 1;
-    // An item has been updated. The new_value and old_value properties of the change should be set
-    UPDATE = 2;
-    // A item has been removed. The old_value property of the change should be set
-    REMOVE = 3;
+  // Nothing has changed but existing items have been requested. The new_value property should be set
+  NONE = 0;
+  // An item has been added. The new_value property of the change should be set
+  ADD = 1;
+  // An item has been updated. The new_value and old_value properties of the change should be set
+  UPDATE = 2;
+  // A item has been removed. The old_value property of the change should be set
+  REMOVE = 3;
 }

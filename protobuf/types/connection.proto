@@ -15,22 +15,22 @@ option java_package = "dev.smartcore.api.types";
 // The state of DISCONNECTED is not automatically an indication if issues in a system. A device may decide to disconnect
 // to save resources.
 enum Connectivity {
-    // The concept of a connection makes no sense for this device
-    NOT_APPLICABLE = 0;
-    // There is no active connection
-    DISCONNECTED = 1;
-    // There is an open connection to the device
-    CONNECTED = 2;
+  // The concept of a connection makes no sense for this device
+  NOT_APPLICABLE = 0;
+  // There is no active connection
+  DISCONNECTED = 1;
+  // There is an open connection to the device
+  CONNECTED = 2;
 }
 
 // Describes the state of communication between two entities. the CommStatus typically represents the application layer
 // rather than any transport layer. For example TCP messages may be sent and ACKs received for them but if the
 // application protocol response are never received then the CommStatus should not be COMM_SUCCESS.
 enum CommStatus {
-    // the status of the line is unknown or unknowable
-    COMM_UNKNOWN = 0;
-    // The last time we attempted communication across it was successful.
-    COMM_SUCCESS = 1;
-    // Communication with the device is failing
-    COMM_FAILURE = 2;
+  // the status of the line is unknown or unknowable
+  COMM_UNKNOWN = 0;
+  // The last time we attempted communication across it was successful.
+  COMM_SUCCESS = 1;
+  // Communication with the device is failing
+  COMM_FAILURE = 2;
 }

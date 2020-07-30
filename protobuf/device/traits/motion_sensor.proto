@@ -14,58 +14,58 @@ import "google/protobuf/timestamp.proto";
 
 // Represents a sensor that detects motion. Note that the absence of motion does not directly imply an unoccupied space.
 service MotionSensor {
-    // Get the current motion state for the device.
-    rpc GetMotionDetection (GetMotionDetectionRequest) returns (MotionDetection);
+  // Get the current motion state for the device.
+  rpc GetMotionDetection (GetMotionDetectionRequest) returns (MotionDetection);
 
-    // subscribe to changes in the motion state for the device.
-    rpc PullMotionDetections (PullMotionDetectionRequest) returns (stream PullMotionDetectionResponse) {
-    }
+  // subscribe to changes in the motion state for the device.
+  rpc PullMotionDetections (PullMotionDetectionRequest) returns (stream PullMotionDetectionResponse) {
+  }
 }
 
 // Possible states for motion detected
 enum MotionDetectionState {
-    // No motion is detected, or has been detected within the not_detected_delay period
-    NOT_DETECTED = 0;
-    // Motion has been detected by the device.
-    DETECTED = 1;
+  // No motion is detected, or has been detected within the not_detected_delay period
+  NOT_DETECTED = 0;
+  // Motion has been detected by the device.
+  DETECTED = 1;
 }
 
 // the current state of the motion sensor
 message MotionDetection {
-    // has motion been detected or not
-    MotionDetectionState state = 1;
+  // has motion been detected or not
+  MotionDetectionState state = 1;
 }
 
 // Trait.attribute for the configuration of the device
 message MotionSensorAttributes {
-    // how long the device is configured to wait before reporting a state of NOT_DETECTED. Should default to 30 seconds.
-    google.protobuf.Duration not_detected_delay = 1;
+  // how long the device is configured to wait before reporting a state of NOT_DETECTED. Should default to 30 seconds.
+  google.protobuf.Duration not_detected_delay = 1;
 }
 
 // request to fetch the current state of the device
 message GetMotionDetectionRequest {
-    // the name for the device to get the detection state for
-    string name = 1;
+  // the name for the device to get the detection state for
+  string name = 1;
 }
 
 // request to be notified of changes to the state of the device
 message PullMotionDetectionRequest {
-    // the name for the device to subscribe to
-    string name = 1;
+  // the name for the device to subscribe to
+  string name = 1;
 }
 
 // response containing motion state changes
 message PullMotionDetectionResponse {
-    // the list of changes that have occurred since the last event
-    repeated MotionDetectionChange changes = 1;
+  // the list of changes that have occurred since the last event
+  repeated MotionDetectionChange changes = 1;
 }
 
 // A change to the motion state of the device
 message MotionDetectionChange {
-    // name for the device that issued the change
-    string name = 1;
-    // when the change occurred
-    google.protobuf.Timestamp create_time = 2;
-    // the new state for the device
-    MotionDetection motion_detection = 3;
+  // name for the device that issued the change
+  string name = 1;
+  // when the change occurred
+  google.protobuf.Timestamp create_time = 2;
+  // the new state for the device
+  MotionDetection motion_detection = 3;
 }
