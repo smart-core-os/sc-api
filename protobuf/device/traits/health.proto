@@ -14,11 +14,11 @@ import "types/connection.proto";
 
 // Describe the health of a device.
 service Health {
-    rpc GetHealthState (GetHealthStateRequest) returns (HealthState) {
-    }
+  rpc GetHealthState (GetHealthStateRequest) returns (HealthState) {
+  }
 
-    rpc PullHealStates (PullHealthStatesRequest) returns (stream PullHealthStatesResponse) {
-    }
+  rpc PullHealthStates (PullHealthStatesRequest) returns (stream PullHealthStatesResponse) {
+  }
 }
 
 // Trait.attribute for describing the capabilities of the device wrt this trait
