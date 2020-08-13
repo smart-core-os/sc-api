@@ -18,4 +18,6 @@ enum ChangeType {
   UPDATE = 2;
   // A item has been removed. The old_value property of the change should be set
   REMOVE = 3;
+  // All existing items should be replaced by this set of items.
+  REPLACE = 4;
 }
