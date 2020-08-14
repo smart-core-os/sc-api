@@ -12,6 +12,10 @@ In your Go files you can then use
 import "git.vanti.co.uk/smartcore/sc-api/go/"
 ```
 
+**Note** for go get to work, you will need to run this command:
+
+`git config --global url.ssh://git@git.vanti.co.uk:.insteadOf https://git.vanti.co.uk`
+
 ## Updating
 
 ### Generating the source
