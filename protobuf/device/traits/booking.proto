@@ -58,7 +58,10 @@ message Booking {
   string owner_name = 4;
   // the time period this booking is for
   smartcore.api.types.time.Period booked = 5;
-  // the time period this booking was checked in for
+  // The time period this booking was checked in for.
+  // If this is absent, then no check in or check out has happened
+  // If check_in.start_time is absent, no check in has happened
+  // If check_in.end_time is absent, no check out has happened
   smartcore.api.types.time.Period check_in = 6;
 }
 
