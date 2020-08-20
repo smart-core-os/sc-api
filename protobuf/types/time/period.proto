@@ -11,6 +11,8 @@ option java_package = "dev.smartcore.api.types.time";
 import "google/protobuf/timestamp.proto";
 
 // Represents a time period from start_time to end_time
+// where start_time is inclusive, and end_time is exclusive
+// e.g. [start_time, end_time)
 message Period {
   google.protobuf.Timestamp start_time = 1;
   google.protobuf.Timestamp end_time = 2;
