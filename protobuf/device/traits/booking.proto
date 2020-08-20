@@ -27,7 +27,7 @@ service BookingApi {
 }
 
 message ListBookingsRequest {
-  // The name of the bookable (e.g. the room name)
+  // The name of the bookable (e.g. the resource name)
   string name = 1;
   smartcore.api.types.time.Period booking_intersects = 2;
 }
@@ -45,7 +45,7 @@ message Booking {
 }
 
 message CheckInBookingRequest {
-  // The name of the bookable (e.g. the room name)
+  // The name of the bookable (e.g. the resource name)
   string name = 1;
   // Which booking to check in
   int32 booking_id = 2;
@@ -55,7 +55,7 @@ message CheckInBookingResponse {
 }
 
 message CheckOutBookingRequest {
-  // The name of the bookable (e.g. the room name)
+  // The name of the bookable (e.g. the resource name)
   string name = 1;
   // Which booking to check out
   int32 booking_id = 2;
@@ -65,7 +65,7 @@ message CheckOutBookingResponse {
 }
 
 message CreateBookingRequest {
-  // The name of the bookable (e.g. the room name)
+  // The name of the bookable (e.g. the resource name)
   string name = 1;
   Booking booking = 2;
 }
@@ -76,7 +76,7 @@ message CreateBookingResponse {
 }
 
 message AmendBookingRequest {
-  // The name of the bookable (e.g. the room name)
+  // The name of the bookable (e.g. the resource name)
   string name = 1;
   Booking booking = 2;
   google.protobuf.FieldMask update_mask = 3;
