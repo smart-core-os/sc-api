@@ -14,25 +14,36 @@ import "google/protobuf/timestamp.proto";
 import "types/change.proto";
 import "types/time/period.proto";
 
+// The BookingApi defines an interface for interacting with bookable resources, for example rooms.
+// Bookings can be listed, edited, and created.
 service BookingApi {
+  // list bookings for a given bookable
   rpc ListBookings (ListBookingsRequest) returns (ListBookingsResponse);
 
+  // check in an existing booking
   rpc CheckInBooking (CheckInBookingRequest) returns (CheckInBookingResponse);
+  // check out an existing booking
   rpc CheckOutBooking (CheckOutBookingRequest) returns (CheckOutBookingResponse);
 
+  // create a new booking
   rpc CreateBooking (CreateBookingRequest) returns (CreateBookingResponse);
+  // amend an existing booking
   rpc AmendBooking (AmendBookingRequest) returns (AmendBookingResponse);
 
+  // request updates to booking changes for a given bookable
   rpc PullBookings (ListBookingsRequest) returns (stream PullBookingsResponse);
 }
 
 message ListBookingsRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
+  // Specify the time period to return bookings for
+  // bookings are returned if they intersect this time period
   smartcore.api.types.time.Period booking_intersects = 2;
 }
 
 message ListBookingsResponse {
+  // the list of bookings for the given request
   repeated Booking bookings = 1;
 }
 
@@ -78,6 +89,7 @@ message CheckOutBookingResponse {
 message CreateBookingRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
+  // the booking to add, the id field should not be set
   Booking booking = 2;
 }
 
@@ -89,7 +101,9 @@ message CreateBookingResponse {
 message AmendBookingRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
+  // The new value of the booking to use, make sure id is set
   Booking booking = 2;
+  // Which fields in the booking to update
   google.protobuf.FieldMask update_mask = 3;
 }
 
@@ -97,11 +111,15 @@ message AmendBookingResponse {
 }
 
 message PullBookingsResponse {
+  // the list of changes which have occurred
   repeated Change changes = 1;
 
   message Change {
+    // the type of change (e.g. ADD, UPDATE, etc...)
     smartcore.api.types.ChangeType type = 1;
+    // the new value to use for ADD|UPDATE changes
     Booking new_value = 2;
+    // the old value to use for UPDATE|REMOVE changes
     Booking old_value = 3;
   }
 }
