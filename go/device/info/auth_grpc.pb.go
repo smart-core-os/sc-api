@@ -17,6 +17,9 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthProviderClient interface {
+	AddAccount(ctx context.Context, in *AddAccountRequest, opts ...grpc.CallOption) (*AddAccountResponse, error)
+	RemoveAccount(ctx context.Context, in *RemoveAccountRequest, opts ...grpc.CallOption) (*RemoveAccountResponse, error)
+	UpdateAccountPermissions(ctx context.Context, in *UpdateAccountPermissionsRequest, opts ...grpc.CallOption) (*UpdateAccountPermissionsResponse, error)
 	GenerateToken(ctx context.Context, in *GenerateTokenRequest, opts ...grpc.CallOption) (*GenerateTokenResponse, error)
 }
 
@@ -26,6 +29,33 @@ type authProviderClient struct {
 
 func NewAuthProviderClient(cc grpc.ClientConnInterface) AuthProviderClient {
 	return &authProviderClient{cc}
+}
+
+func (c *authProviderClient) AddAccount(ctx context.Context, in *AddAccountRequest, opts ...grpc.CallOption) (*AddAccountResponse, error) {
+	out := new(AddAccountResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.api.device.info.AuthProvider/AddAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authProviderClient) RemoveAccount(ctx context.Context, in *RemoveAccountRequest, opts ...grpc.CallOption) (*RemoveAccountResponse, error) {
+	out := new(RemoveAccountResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.api.device.info.AuthProvider/RemoveAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authProviderClient) UpdateAccountPermissions(ctx context.Context, in *UpdateAccountPermissionsRequest, opts ...grpc.CallOption) (*UpdateAccountPermissionsResponse, error) {
+	out := new(UpdateAccountPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.api.device.info.AuthProvider/UpdateAccountPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *authProviderClient) GenerateToken(ctx context.Context, in *GenerateTokenRequest, opts ...grpc.CallOption) (*GenerateTokenResponse, error) {
@@ -41,6 +71,9 @@ func (c *authProviderClient) GenerateToken(ctx context.Context, in *GenerateToke
 // All implementations must embed UnimplementedAuthProviderServer
 // for forward compatibility
 type AuthProviderServer interface {
+	AddAccount(context.Context, *AddAccountRequest) (*AddAccountResponse, error)
+	RemoveAccount(context.Context, *RemoveAccountRequest) (*RemoveAccountResponse, error)
+	UpdateAccountPermissions(context.Context, *UpdateAccountPermissionsRequest) (*UpdateAccountPermissionsResponse, error)
 	GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error)
 	mustEmbedUnimplementedAuthProviderServer()
 }
@@ -49,6 +82,15 @@ type AuthProviderServer interface {
 type UnimplementedAuthProviderServer struct {
 }
 
+func (*UnimplementedAuthProviderServer) AddAccount(context.Context, *AddAccountRequest) (*AddAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddAccount not implemented")
+}
+func (*UnimplementedAuthProviderServer) RemoveAccount(context.Context, *RemoveAccountRequest) (*RemoveAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveAccount not implemented")
+}
+func (*UnimplementedAuthProviderServer) UpdateAccountPermissions(context.Context, *UpdateAccountPermissionsRequest) (*UpdateAccountPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccountPermissions not implemented")
+}
 func (*UnimplementedAuthProviderServer) GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateToken not implemented")
 }
@@ -56,6 +98,60 @@ func (*UnimplementedAuthProviderServer) mustEmbedUnimplementedAuthProviderServer
 
 func RegisterAuthProviderServer(s *grpc.Server, srv AuthProviderServer) {
 	s.RegisterService(&_AuthProvider_serviceDesc, srv)
+}
+
+func _AuthProvider_AddAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthProviderServer).AddAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.api.device.info.AuthProvider/AddAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthProviderServer).AddAccount(ctx, req.(*AddAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthProvider_RemoveAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthProviderServer).RemoveAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.api.device.info.AuthProvider/RemoveAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthProviderServer).RemoveAccount(ctx, req.(*RemoveAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthProvider_UpdateAccountPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAccountPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthProviderServer).UpdateAccountPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.api.device.info.AuthProvider/UpdateAccountPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthProviderServer).UpdateAccountPermissions(ctx, req.(*UpdateAccountPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _AuthProvider_GenerateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -80,6 +176,18 @@ var _AuthProvider_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.api.device.info.AuthProvider",
 	HandlerType: (*AuthProviderServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AddAccount",
+			Handler:    _AuthProvider_AddAccount_Handler,
+		},
+		{
+			MethodName: "RemoveAccount",
+			Handler:    _AuthProvider_RemoveAccount_Handler,
+		},
+		{
+			MethodName: "UpdateAccountPermissions",
+			Handler:    _AuthProvider_UpdateAccountPermissions_Handler,
+		},
 		{
 			MethodName: "GenerateToken",
 			Handler:    _AuthProvider_GenerateToken_Handler,
