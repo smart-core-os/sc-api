@@ -19,6 +19,12 @@ import "git.vanti.co.uk/smartcore/sc-api/go/"
 ## Updating
 
 ### Generating the source
+You will need `protoc-gen-go` to generate Go code, see [go-generated](https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation).
+To install it run:
+```
+go install google.golang.org/protobuf/cmd/protoc-gen-go
+```
+
 If you have made changes to the API definition files and need to re-generate one or more packages, you'll need to run
 the following from the root of this folder (i.e. `/go`):
 ```shell script
