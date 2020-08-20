@@ -38,7 +38,7 @@ message ListBookingsResponse {
 
 message Booking {
   int32 id = 1;
-  smartcore.api.types.time.Period time = 2;
+  smartcore.api.types.time.Period booked = 2;
   string title = 3;
   string owner_name = 4;
   smartcore.api.types.time.Period check_in = 5;
