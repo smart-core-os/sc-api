@@ -18,7 +18,7 @@ import "types/change.proto";
 // device(s) and/or trait(s)/service(s) they are allowed to access.
 service AuthProvider {
   rpc AddAccount (AddAccountRequest) returns (AddAccountResponse);
-  rpc RemoveAccount (RemoveAccountRequest) returns (RemoveAccountRequest);
+  rpc RemoveAccount (RemoveAccountRequest) returns (RemoveAccountResponse);
   rpc UpdateAccountPermissions (UpdateAccountPermissionsRequest) returns (UpdateAccountPermissionsResponse);
   rpc GenerateToken (GenerateTokenRequest) returns (GenerateTokenResponse);
 }
@@ -71,7 +71,7 @@ message RemoveAccountRequest {
   string name = 1;
 }
 
-message RemoveAccountRequest {
+message RemoveAccountResponse {
 }
 
 message UpdateAccountPermissionsRequest {
