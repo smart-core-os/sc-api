@@ -13,7 +13,7 @@ import "google/protobuf/duration.proto";
 // Denote different types of tween support. Clients may use this to control performance sensitive areas by enabling or
 // disabling tweening when support is not native, for example
 enum TweenSupport {
-  // The device doesn't not support tweening
+  // The device does not support tweening
   NO_SUPPORT = 0;
   // The device natively supports tweening. Natively typically means with minimal performance impact (i.e. no network)
   NATIVE = 1;
