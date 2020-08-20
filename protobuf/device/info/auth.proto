@@ -10,7 +10,6 @@ option java_package = "dev.smartcore.api.device.info";
 option php_namespace = "Smartcore\\Api\\Device\\Info";
 
 import "google/protobuf/timestamp.proto";
-import "device/info/info.proto";
 import "types/change.proto";
 
 // The auth provider service enables granular control of security permissions for a particular Smart Core controller or
