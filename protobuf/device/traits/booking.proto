@@ -37,11 +37,18 @@ message ListBookingsResponse {
 }
 
 message Booking {
-  int32 id = 1;
-  smartcore.api.types.time.Period booked = 2;
+  // The name of the bookable (e.g. the resource name)
+  string bookable = 1;
+  // the unique identify for this booking
+  int32 id = 2;
+  // the title of this booking
   string title = 3;
+  // the name of the owner of this booking
   string owner_name = 4;
-  smartcore.api.types.time.Period check_in = 5;
+  // the time period this booking is for
+  smartcore.api.types.time.Period booked = 5;
+  // the time period this booking was checked in for
+  smartcore.api.types.time.Period check_in = 6;
 }
 
 message CheckInBookingRequest {
