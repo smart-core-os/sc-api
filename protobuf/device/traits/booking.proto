@@ -67,7 +67,7 @@ message CheckInBookingRequest {
   string name = 1;
   // Which booking to check in
   int32 booking_id = 2;
-  // the time the booking was checked-in
+  // The time the booking was checked-in. If omitted the server time will be used.
   google.protobuf.Timestamp time = 3;
 }
 
@@ -79,7 +79,7 @@ message CheckOutBookingRequest {
   string name = 1;
   // Which booking to check out
   int32 booking_id = 2;
-  // the time the booking was checked-out
+  // The time the booking was checked-out. If omitted the server time will be used.
   google.protobuf.Timestamp time = 3;
 }
 
