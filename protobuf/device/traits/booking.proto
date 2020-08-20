@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package smartcore.api.device.traits;
+
+option csharp_namespace = "Smartcore.Api.Device.Traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
+option java_multiple_files = true;
+option java_outer_classname = "BookingProto";
+option java_package = "dev.smartcore.api.device.traits";
+option php_namespace = "Smartcore\\Api\\Device\\Traits";
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "types/change.proto";
+import "types/time/period.proto";
+
+service BookingApi {
+  rpc ListBookingsFor (ListBookingsRequest) returns (ListBookingsResponse);
+
+  rpc CheckInBooking (CheckInBookingRequest) returns (CheckInBookingResponse);
+  rpc CheckOutBooking (CheckOutBookingRequest) returns (CheckOutBookingResponse);
+
+  rpc CreateBooking (CreateBookingRequest) returns (CreateBookingResponse);
+  rpc AmendBooking (AmendBookingRequest) returns (AmendBookingResponse);
+
+  rpc PullBookingsFor (ListBookingsRequest) returns (stream PullBookingsResponse);
+}
+
+message ListBookingsRequest {
+  // The name of the bookable (e.g. the room name)
+  string name = 1;
+  smartcore.api.types.time.Period booking_intersects = 2;
+}
+
+message ListBookingsResponse {
+  repeated Booking bookings = 1;
+}
+
+message Booking {
+  int32 id = 1;
+  smartcore.api.types.time.Period time = 2;
+  string title = 3;
+  string owner_name = 4;
+  smartcore.api.types.time.Period check_in = 5;
+}
+
+message CheckInBookingRequest {
+  // The name of the bookable (e.g. the room name)
+  string name = 1;
+  // Which booking to check in
+  int32 booking_id = 2;
+}
+
+message CheckInBookingResponse {
+}
+
+message CheckOutBookingRequest {
+  // The name of the bookable (e.g. the room name)
+  string name = 1;
+  // Which booking to check out
+  int32 booking_id = 2;
+}
+
+message CheckOutBookingResponse {
+}
+
+message CreateBookingRequest {
+  // The name of the bookable (e.g. the room name)
+  string name = 1;
+  Booking booking = 2;
+}
+
+message CreateBookingResponse {
+  // The created bookings' id
+  int32 booking_id = 1;
+}
+
+message AmendBookingRequest {
+  // The name of the bookable (e.g. the room name)
+  string name = 1;
+  Booking booking = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message AmendBookingResponse {
+}
+
+message PullBookingsResponse {
+  repeated Change changes = 1;
+
+  message Change {
+    smartcore.api.types.ChangeType type = 1;
+    Booking new_value = 2;
+    Booking old_value = 3;
+  }
+}
