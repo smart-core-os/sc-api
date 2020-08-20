@@ -15,7 +15,7 @@ import "types/change.proto";
 import "types/time/period.proto";
 
 service BookingApi {
-  rpc ListBookingsFor (ListBookingsRequest) returns (ListBookingsResponse);
+  rpc ListBookings (ListBookingsRequest) returns (ListBookingsResponse);
 
   rpc CheckInBooking (CheckInBookingRequest) returns (CheckInBookingResponse);
   rpc CheckOutBooking (CheckOutBookingRequest) returns (CheckOutBookingResponse);
@@ -23,7 +23,7 @@ service BookingApi {
   rpc CreateBooking (CreateBookingRequest) returns (CreateBookingResponse);
   rpc AmendBooking (AmendBookingRequest) returns (AmendBookingResponse);
 
-  rpc PullBookingsFor (ListBookingsRequest) returns (stream PullBookingsResponse);
+  rpc PullBookings (ListBookingsRequest) returns (stream PullBookingsResponse);
 }
 
 message ListBookingsRequest {
