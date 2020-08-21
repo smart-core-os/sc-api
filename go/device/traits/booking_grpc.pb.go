@@ -25,8 +25,8 @@ type BookingApiClient interface {
 	CheckOutBooking(ctx context.Context, in *CheckOutBookingRequest, opts ...grpc.CallOption) (*CheckOutBookingResponse, error)
 	// create a new booking
 	CreateBooking(ctx context.Context, in *CreateBookingRequest, opts ...grpc.CallOption) (*CreateBookingResponse, error)
-	// amend an existing booking
-	AmendBooking(ctx context.Context, in *AmendBookingRequest, opts ...grpc.CallOption) (*AmendBookingResponse, error)
+	// update an existing booking
+	UpdateBooking(ctx context.Context, in *UpdateBookingRequest, opts ...grpc.CallOption) (*UpdateBookingResponse, error)
 	// request updates to booking changes for a given bookable
 	PullBookings(ctx context.Context, in *ListBookingsRequest, opts ...grpc.CallOption) (BookingApi_PullBookingsClient, error)
 }
@@ -75,9 +75,9 @@ func (c *bookingApiClient) CreateBooking(ctx context.Context, in *CreateBookingR
 	return out, nil
 }
 
-func (c *bookingApiClient) AmendBooking(ctx context.Context, in *AmendBookingRequest, opts ...grpc.CallOption) (*AmendBookingResponse, error) {
-	out := new(AmendBookingResponse)
-	err := c.cc.Invoke(ctx, "/smartcore.api.device.traits.BookingApi/AmendBooking", in, out, opts...)
+func (c *bookingApiClient) UpdateBooking(ctx context.Context, in *UpdateBookingRequest, opts ...grpc.CallOption) (*UpdateBookingResponse, error) {
+	out := new(UpdateBookingResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.api.device.traits.BookingApi/UpdateBooking", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -128,8 +128,8 @@ type BookingApiServer interface {
 	CheckOutBooking(context.Context, *CheckOutBookingRequest) (*CheckOutBookingResponse, error)
 	// create a new booking
 	CreateBooking(context.Context, *CreateBookingRequest) (*CreateBookingResponse, error)
-	// amend an existing booking
-	AmendBooking(context.Context, *AmendBookingRequest) (*AmendBookingResponse, error)
+	// update an existing booking
+	UpdateBooking(context.Context, *UpdateBookingRequest) (*UpdateBookingResponse, error)
 	// request updates to booking changes for a given bookable
 	PullBookings(*ListBookingsRequest, BookingApi_PullBookingsServer) error
 	mustEmbedUnimplementedBookingApiServer()
@@ -151,8 +151,8 @@ func (*UnimplementedBookingApiServer) CheckOutBooking(context.Context, *CheckOut
 func (*UnimplementedBookingApiServer) CreateBooking(context.Context, *CreateBookingRequest) (*CreateBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBooking not implemented")
 }
-func (*UnimplementedBookingApiServer) AmendBooking(context.Context, *AmendBookingRequest) (*AmendBookingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AmendBooking not implemented")
+func (*UnimplementedBookingApiServer) UpdateBooking(context.Context, *UpdateBookingRequest) (*UpdateBookingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBooking not implemented")
 }
 func (*UnimplementedBookingApiServer) PullBookings(*ListBookingsRequest, BookingApi_PullBookingsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullBookings not implemented")
@@ -235,20 +235,20 @@ func _BookingApi_CreateBooking_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BookingApi_AmendBooking_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AmendBookingRequest)
+func _BookingApi_UpdateBooking_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBookingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BookingApiServer).AmendBooking(ctx, in)
+		return srv.(BookingApiServer).UpdateBooking(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.api.device.traits.BookingApi/AmendBooking",
+		FullMethod: "/smartcore.api.device.traits.BookingApi/UpdateBooking",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingApiServer).AmendBooking(ctx, req.(*AmendBookingRequest))
+		return srv.(BookingApiServer).UpdateBooking(ctx, req.(*UpdateBookingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -295,8 +295,8 @@ var _BookingApi_serviceDesc = grpc.ServiceDesc{
 			Handler:    _BookingApi_CreateBooking_Handler,
 		},
 		{
-			MethodName: "AmendBooking",
-			Handler:    _BookingApi_AmendBooking_Handler,
+			MethodName: "UpdateBooking",
+			Handler:    _BookingApi_UpdateBooking_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

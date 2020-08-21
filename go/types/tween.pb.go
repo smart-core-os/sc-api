@@ -31,7 +31,7 @@ const _ = proto.ProtoPackageIsVersion4
 type TweenSupport int32
 
 const (
-	// The device doesn't not support tweening
+	// The device does not support tweening
 	TweenSupport_NO_SUPPORT TweenSupport = 0
 	// The device natively supports tweening. Natively typically means with minimal performance impact (i.e. no network)
 	TweenSupport_NATIVE TweenSupport = 1
