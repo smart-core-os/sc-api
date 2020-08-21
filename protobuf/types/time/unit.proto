@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package smartcore.api.types.time;
+
+option csharp_namespace = "Smartcore.Api.Types.Time";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types/time";
+option java_multiple_files = true;
+option java_outer_classname = "UnitProto";
+option java_package = "dev.smartcore.api.types.time";
+
+// Units of time
+enum Unit {
+  // seconds is the SI unit of time
+  UNIT_SECONDS = 0;
+  UNIT_MICROSECONDS = 1;
+  UNIT_MILLISECONDS = 2;
+  UNIT_NANOSECONDS = 3;
+
+  UNIT_YEARS = 4;
+  UNIT_MONTHS = 5;
+  UNIT_WEEKS = 6;
+  UNIT_DAYS = 7;
+  UNIT_HOURS = 8;
+  UNIT_MINUTES = 9;
+}
