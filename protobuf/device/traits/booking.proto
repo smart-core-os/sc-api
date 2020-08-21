@@ -9,10 +9,12 @@ option java_outer_classname = "BookingProto";
 option java_package = "dev.smartcore.api.device.traits";
 option php_namespace = "Smartcore\\Api\\Device\\Traits";
 
+import "google/protobuf/duration.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/change.proto";
 import "types/time/period.proto";
+import "types/time/unit.proto";
 
 // The BookingApi defines an interface for interacting with bookable resources, for example rooms.
 // Bookings can be listed, edited, and created.
@@ -37,13 +39,19 @@ service BookingApi {
 // Trait.attribute for booking capabilities
 message BookingAttributes {
   // which fields of a booking can be amended
+  // if this field is absent, the list of updatable fields is unknown
+  // any unsupported fields will be ignored, check the return value of UpdateBookingResponse
   google.protobuf.FieldMask updatable_booking_fields = 1;
   // is check in supported, and how
   CheckInSupport check_in_support = 2;
   // is check out supported, and how
   CheckInSupport check_out_support = 3;
-  // are subscriptions supported (i.e. PullBookings), and how
+  // if subscriptions are supported (see Trait.observable), how are they implemented
   SubscriptionSupport subscription_support = 4;
+  // if subscriptions are emulated, how often is the system polled for data
+  google.protobuf.Duration poll_period = 5;
+  // the supported time resolution for date time fields and queries
+  smartcore.api.types.time.Unit time_resolution = 6;
 }
 
 enum CheckInSupport {
@@ -56,8 +64,8 @@ enum CheckInSupport {
 }
 
 enum SubscriptionSupport {
-  // subscribing to booking changes is not supported
-  NO_SUPPORT = 0;
+  // how subscriptions are implemented is not known
+  UNKNOWN  = 0;
   // subscribing to bookings is supported natively by the underlying system
   NATIVE = 1;
   // subscribing to bookings is supported in the driver, rather than natively
@@ -81,7 +89,7 @@ message ListBookingsResponse {
 message Booking {
   // The name of the bookable (e.g. the resource name)
   string bookable = 1;
-  // the unique identify for this booking
+  // the unique identifier for this booking
   int32 id = 2;
   // the title of this booking
   string title = 3;
