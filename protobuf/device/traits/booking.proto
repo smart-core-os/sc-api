@@ -27,8 +27,8 @@ service BookingApi {
 
   // create a new booking
   rpc CreateBooking (CreateBookingRequest) returns (CreateBookingResponse);
-  // amend an existing booking
-  rpc AmendBooking (AmendBookingRequest) returns (AmendBookingResponse);
+  // update an existing booking
+  rpc UpdateBooking (UpdateBookingRequest) returns (UpdateBookingResponse);
 
   // request updates to booking changes for a given bookable
   rpc PullBookings (ListBookingsRequest) returns (stream PullBookingsResponse);
@@ -132,16 +132,18 @@ message CreateBookingResponse {
   int32 booking_id = 1;
 }
 
-message AmendBookingRequest {
+message UpdateBookingRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
   // The new value of the booking to use, make sure id is set
   Booking booking = 2;
-  // Which fields in the booking to update
+  // Which fields in the booking to update, any unsupported fields will be ignored, check the return value
   google.protobuf.FieldMask update_mask = 3;
 }
 
-message AmendBookingResponse {
+message UpdateBookingResponse {
+  // The new value of the booking
+  Booking booking = 1;
 }
 
 message PullBookingsResponse {
