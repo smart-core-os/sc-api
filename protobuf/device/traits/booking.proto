@@ -56,21 +56,21 @@ message BookingAttributes {
 
 enum CheckInSupport {
   // check in is not supported
-  NO_SUPPORT = 0;
+  CHECK_IN_SUPPORT_NO_SUPPORT = 0;
   // check in is supported as a state, without an associated time
-  STATE = 1;
+  CHECK_IN_SUPPORT_STATE = 1;
   // check in is supported with an associated time
-  TIME = 2;
+  CHECK_IN_SUPPORT_TIME = 2;
 }
 
 enum SubscriptionSupport {
   // how subscriptions are implemented is not known
-  UNKNOWN  = 0;
+  SUBSCRIPTION_SUPPORT_UNKNOWN  = 0;
   // subscribing to bookings is supported natively by the underlying system
-  NATIVE = 1;
+  SUBSCRIPTION_SUPPORT_NATIVE = 1;
   // subscribing to bookings is supported in the driver, rather than natively
   // usually the driver will poll the system for data
-  EMULATED = 2;
+  SUBSCRIPTION_SUPPORT_EMULATED = 2;
 }
 
 message ListBookingsRequest {
