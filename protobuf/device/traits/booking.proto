@@ -34,6 +34,37 @@ service BookingApi {
   rpc PullBookings (ListBookingsRequest) returns (stream PullBookingsResponse);
 }
 
+// Trait.attribute for booking capabilities
+message BookingAttributes {
+  // which fields of a booking can be amended
+  google.protobuf.FieldMask updatable_booking_fields = 1;
+  // is check in supported, and how
+  CheckInSupport check_in_support = 2;
+  // is check out supported, and how
+  CheckInSupport check_out_support = 3;
+  // are subscriptions supported (i.e. PullBookings), and how
+  SubscriptionSupport subscription_support = 4;
+}
+
+enum CheckInSupport {
+  // check in is not supported
+  NO_SUPPORT = 0;
+  // check in is supported as a state, without an associated time
+  STATE = 1;
+  // check in is supported with an associated time
+  TIME = 2;
+}
+
+enum SubscriptionSupport {
+  // subscribing to booking changes is not supported
+  NO_SUPPORT = 0;
+  // subscribing to bookings is supported natively by the underlying system
+  NATIVE = 1;
+  // subscribing to bookings is supported in the driver, rather than natively
+  // usually the driver will poll the system for data
+  EMULATED = 2;
+}
+
 message ListBookingsRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
