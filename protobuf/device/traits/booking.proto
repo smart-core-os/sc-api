@@ -55,12 +55,14 @@ message BookingAttributes {
 }
 
 enum CheckInSupport {
+  // check in support is unknown
+  CHECK_IN_SUPPORT_UNKNOWN = 0;
   // check in is not supported
-  CHECK_IN_SUPPORT_NO_SUPPORT = 0;
+  CHECK_IN_SUPPORT_NO_SUPPORT = 1;
   // check in is supported as a state, without an associated time
-  CHECK_IN_SUPPORT_STATE = 1;
+  CHECK_IN_SUPPORT_STATE = 2;
   // check in is supported with an associated time
-  CHECK_IN_SUPPORT_TIME = 2;
+  CHECK_IN_SUPPORT_TIME = 3;
 }
 
 enum SubscriptionSupport {
