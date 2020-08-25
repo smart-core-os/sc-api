@@ -2,178 +2,178 @@
 
 <html>
 <head>
-    <title>Protocol Documentation</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
-    <style>
-        body {
-            width: 60em;
-            margin: 1em auto;
-            color: #222;
-            font-family: "Ubuntu", sans-serif;
-            padding-bottom: 4em;
-        }
+  <title>Protocol Documentation</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+  <style>
+    body {
+      width: 60em;
+      margin: 1em auto;
+      color: #222;
+      font-family: "Ubuntu", sans-serif;
+      padding-bottom: 4em;
+    }
 
-        h1 {
-            font-weight: normal;
-            border-bottom: 1px solid #aaa;
-            padding-bottom: 0.5ex;
-        }
+    h1 {
+      font-weight: normal;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 0.5ex;
+    }
 
-        h2 {
-            border-bottom: 1px solid #aaa;
-            padding-bottom: 0.5ex;
-            margin: 1.5em 0;
-        }
+    h2 {
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 0.5ex;
+      margin: 1.5em 0;
+    }
 
-        h3 {
-            font-weight: normal;
-            border-bottom: 1px solid #aaa;
-            padding-bottom: 0.5ex;
-        }
+    h3 {
+      font-weight: normal;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 0.5ex;
+    }
 
-        a {
-            text-decoration: none;
-            color: #567e25;
-        }
+    a {
+      text-decoration: none;
+      color: #567e25;
+    }
 
-        table {
-            width: 100%;
-            font-size: 80%;
-            border-collapse: collapse;
-        }
+    table {
+      width: 100%;
+      font-size: 80%;
+      border-collapse: collapse;
+    }
 
-        thead {
-            font-weight: 700;
-            background-color: #dcdcdc;
-        }
+    thead {
+      font-weight: 700;
+      background-color: #dcdcdc;
+    }
 
-        tbody tr:nth-child(even) {
-            background-color: #fbfbfb;
-        }
+    tbody tr:nth-child(even) {
+      background-color: #fbfbfb;
+    }
 
-        td {
-            border: 1px solid #ccc;
-            padding: 0.5ex 2ex;
-        }
+    td {
+      border: 1px solid #ccc;
+      padding: 0.5ex 2ex;
+    }
 
-        td p {
-            text-indent: 1em;
-            margin: 0;
-        }
+    td p {
+      text-indent: 1em;
+      margin: 0;
+    }
 
-        td p:nth-child(1) {
-            text-indent: 0;
-        }
-
-
-        .field-table td:nth-child(1) {
-            width: 10em;
-        }
-
-        .field-table td:nth-child(2) {
-            width: 10em;
-        }
-
-        .field-table td:nth-child(3) {
-            width: 6em;
-        }
-
-        .field-table td:nth-child(4) {
-            width: auto;
-        }
+    td p:nth-child(1) {
+      text-indent: 0;
+    }
 
 
-        .extension-table td:nth-child(1) {
-            width: 10em;
-        }
+    .field-table td:nth-child(1) {
+      width: 10em;
+    }
 
-        .extension-table td:nth-child(2) {
-            width: 10em;
-        }
+    .field-table td:nth-child(2) {
+      width: 10em;
+    }
 
-        .extension-table td:nth-child(3) {
-            width: 10em;
-        }
+    .field-table td:nth-child(3) {
+      width: 6em;
+    }
 
-        .extension-table td:nth-child(4) {
-            width: 5em;
-        }
-
-        .extension-table td:nth-child(5) {
-            width: auto;
-        }
+    .field-table td:nth-child(4) {
+      width: auto;
+    }
 
 
-        .enum-table td:nth-child(1) {
-            width: 10em;
-        }
+    .extension-table td:nth-child(1) {
+      width: 10em;
+    }
 
-        .enum-table td:nth-child(2) {
-            width: 10em;
-        }
+    .extension-table td:nth-child(2) {
+      width: 10em;
+    }
 
-        .enum-table td:nth-child(3) {
-            width: auto;
-        }
+    .extension-table td:nth-child(3) {
+      width: 10em;
+    }
 
+    .extension-table td:nth-child(4) {
+      width: 5em;
+    }
 
-        .scalar-value-types-table tr {
-            height: 3em;
-        }
-
-
-        #toc-container ul {
-            list-style-type: none;
-            padding-left: 1em;
-            line-height: 180%;
-            margin: 0;
-        }
-
-        #toc > li > a {
-            font-weight: bold;
-        }
+    .extension-table td:nth-child(5) {
+      width: auto;
+    }
 
 
-        .file-heading {
-            width: 100%;
-            display: table;
-            border-bottom: 1px solid #aaa;
-            margin: 4em 0 1.5em 0;
-        }
+    .enum-table td:nth-child(1) {
+      width: 10em;
+    }
 
-        .file-heading h2 {
-            border: none;
-            display: table-cell;
-        }
+    .enum-table td:nth-child(2) {
+      width: 10em;
+    }
 
-        .file-heading a {
-            text-align: right;
-            display: table-cell;
-        }
+    .enum-table td:nth-child(3) {
+      width: auto;
+    }
 
 
-        .badge {
-            width: 1.6em;
-            height: 1.6em;
-            display: inline-block;
-
-            line-height: 1.6em;
-            text-align: center;
-            font-weight: bold;
-            font-size: 60%;
-
-            color: #89ba48;
-            background-color: #dff0c8;
-
-            margin: 0.5ex 1em 0.5ex -1em;
-            border: 1px solid #fbfbfb;
-            border-radius: 1ex;
-        }
-    </style>
+    .scalar-value-types-table tr {
+      height: 3em;
+    }
 
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    #toc-container ul {
+      list-style-type: none;
+      padding-left: 1em;
+      line-height: 180%;
+      margin: 0;
+    }
+
+    #toc > li > a {
+      font-weight: bold;
+    }
+
+
+    .file-heading {
+      width: 100%;
+      display: table;
+      border-bottom: 1px solid #aaa;
+      margin: 4em 0 1.5em 0;
+    }
+
+    .file-heading h2 {
+      border: none;
+      display: table-cell;
+    }
+
+    .file-heading a {
+      text-align: right;
+      display: table-cell;
+    }
+
+
+    .badge {
+      width: 1.6em;
+      height: 1.6em;
+      display: inline-block;
+
+      line-height: 1.6em;
+      text-align: center;
+      font-weight: bold;
+      font-size: 60%;
+
+      color: #89ba48;
+      background-color: #dff0c8;
+
+      margin: 0.5ex 1em 0.5ex -1em;
+      border: 1px solid #fbfbfb;
+      border-radius: 1ex;
+    }
+  </style>
+
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 </head>
 
 <body>
@@ -183,66 +183,65 @@
 <h2>Table of Contents</h2>
 
 <div id="toc-container">
-    <ul id="toc">
+  <ul id="toc">
+
+
+    <li>
+      <a href="#device%2ftraits%2fthermostat.proto">device/traits/thermostat.proto</a>
+      <ul>
+
+        <li>
+          <a href="#smartcore.api.device.traits.GetThermostatStateRequest"><span class="badge">M</span>GetThermostatStateRequest</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.PullThermostatStateRequest"><span class="badge">M</span>PullThermostatStateRequest</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.PullThermostatStateResponse"><span class="badge">M</span>PullThermostatStateResponse</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.TemperatureRange"><span class="badge">M</span>TemperatureRange</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.ThermostatAttributes"><span class="badge">M</span>ThermostatAttributes</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.ThermostatState"><span class="badge">M</span>ThermostatState</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.ThermostatStateChange"><span class="badge">M</span>ThermostatStateChange</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.traits.UpdateThermostatStateRequest"><span class="badge">M</span>UpdateThermostatStateRequest</a>
+        </li>
 
 
         <li>
-            <a href="#device%2ftraits%2fthermostat.proto">device/traits/thermostat.proto</a>
-            <ul>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.GetThermostatStateRequest"><span class="badge">M</span>GetThermostatStateRequest</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.PullThermostatStateRequest"><span class="badge">M</span>PullThermostatStateRequest</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.PullThermostatStateResponse"><span class="badge">M</span>PullThermostatStateResponse</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.TemperatureRange"><span class="badge">M</span>TemperatureRange</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.ThermostatAttributes"><span class="badge">M</span>ThermostatAttributes</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.ThermostatState"><span
-                            class="badge">M</span>ThermostatState</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.ThermostatStateChange"><span class="badge">M</span>ThermostatStateChange</a>
-                </li>
-
-                <li>
-                    <a href="#smartcore.api.device.traits.UpdateThermostatStateRequest"><span class="badge">M</span>UpdateThermostatStateRequest</a>
-                </li>
-
-
-                <li>
-                    <a href="#smartcore.api.device.traits.ThermostatMode"><span class="badge">E</span>ThermostatMode</a>
-                </li>
-
-
-                <li>
-                    <a href="#smartcore.api.device.traits.Thermostat"><span class="badge">S</span>Thermostat</a>
-                </li>
-
-            </ul>
+          <a href="#smartcore.api.device.traits.ThermostatMode"><span class="badge">E</span>ThermostatMode</a>
         </li>
 
-        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
-    </ul>
+
+        <li>
+          <a href="#smartcore.api.device.traits.Thermostat"><span class="badge">S</span>Thermostat</a>
+        </li>
+
+      </ul>
+    </li>
+
+    <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+  </ul>
 </div>
 
 
 <div class="file-heading">
-    <h2 id="device/traits/thermostat.proto">device/traits/thermostat.proto</h2><a href="#title">Top</a>
+  <h2 id="device/traits/thermostat.proto">device/traits/thermostat.proto</h2><a href="#title">Top</a>
 </div>
 <p></p>
 
@@ -252,24 +251,24 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>name</td>
-        <td><a href="#string">string</a></td>
-        <td></td>
-        <td><p></p></td>
+      <td>name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p></p></td>
     </tr>
 
-    </tbody>
+  </tbody>
 </table>
 
 
@@ -278,24 +277,24 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>name</td>
-        <td><a href="#string">string</a></td>
-        <td></td>
-        <td><p></p></td>
+      <td>name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p></p></td>
     </tr>
 
-    </tbody>
+  </tbody>
 </table>
 
 
@@ -304,24 +303,24 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>changes</td>
-        <td><a href="#smartcore.api.device.traits.ThermostatStateChange">ThermostatStateChange</a></td>
-        <td>repeated</td>
-        <td><p></p></td>
+      <td>changes</td>
+      <td><a href="#smartcore.api.device.traits.ThermostatStateChange">ThermostatStateChange</a></td>
+      <td>repeated</td>
+      <td><p></p></td>
     </tr>
 
-    </tbody>
+  </tbody>
 </table>
 
 
@@ -330,38 +329,38 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>low</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>Required. The low threshold for the range </p></td>
-    </tr>
-
-    <tr>
-        <td>high</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>Required. The high threshold for the range </p></td>
+      <td>low</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>Required. The low threshold for the range </p></td>
     </tr>
 
     <tr>
-        <td>ideal</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>Optional. An ideal value for cases where a thermostat supports three set points </p></td>
+      <td>high</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>Required. The high threshold for the range </p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>ideal</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>Optional. An ideal value for cases where a thermostat supports three set points </p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
@@ -370,40 +369,40 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>native_unit</td>
-        <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
-        <td></td>
-        <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is
-            this. </p></td>
-    </tr>
-
-    <tr>
-        <td>supported_modes</td>
-        <td><a href="#smartcore.api.device.traits.ThermostatMode">ThermostatMode</a></td>
-        <td>repeated</td>
-        <td><p></p></td>
+      <td>native_unit</td>
+      <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
+      <td></td>
+      <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is this. </p>
+      </td>
     </tr>
 
     <tr>
-        <td>min_range_celsius</td>
-        <td><a href="#double">double</a></td>
-        <td></td>
-        <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset,
-            default to 2. </p></td>
+      <td>supported_modes</td>
+      <td><a href="#smartcore.api.device.traits.ThermostatMode">ThermostatMode</a></td>
+      <td>repeated</td>
+      <td><p></p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>min_range_celsius</td>
+      <td><a href="#double">double</a></td>
+      <td></td>
+      <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default
+        to 2. </p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
@@ -412,59 +411,59 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>mode</td>
-        <td><a href="#smartcore.api.device.traits.ThermostatMode">ThermostatMode</a></td>
-        <td></td>
-        <td><p>The current mode for the thermostat </p></td>
-    </tr>
-
-    <tr>
-        <td>temperature_set_point</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>A target temperature for the thermostat </p></td>
+      <td>mode</td>
+      <td><a href="#smartcore.api.device.traits.ThermostatMode">ThermostatMode</a></td>
+      <td></td>
+      <td><p>The current mode for the thermostat </p></td>
     </tr>
 
     <tr>
-        <td>temperature_set_point_delta</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>Write-only. Set the target temperature to a value relative to the current value. </p></td>
+      <td>temperature_set_point</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>A target temperature for the thermostat </p></td>
     </tr>
 
     <tr>
-        <td>temperature_range</td>
-        <td><a href="#smartcore.api.device.traits.TemperatureRange">TemperatureRange</a></td>
-        <td></td>
-        <td><p>A target range for the thermostat. Only supported when in HEAT_COOL mode </p></td>
+      <td>temperature_set_point_delta</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>Write-only. Set the target temperature to a value relative to the current value. </p></td>
     </tr>
 
     <tr>
-        <td>ambient_temperature</td>
-        <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-        <td></td>
-        <td><p>Optional, read-only. The ambient temperature as read by the thermostat </p></td>
+      <td>temperature_range</td>
+      <td><a href="#smartcore.api.device.traits.TemperatureRange">TemperatureRange</a></td>
+      <td></td>
+      <td><p>A target range for the thermostat. Only supported when in HEAT_COOL mode </p></td>
     </tr>
 
     <tr>
-        <td>ambient_humidity</td>
-        <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-        <td></td>
-        <td><p>Optional, read-only. The ambient humidity as read by the thermostat </p></td>
+      <td>ambient_temperature</td>
+      <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+      <td></td>
+      <td><p>Optional, read-only. The ambient temperature as read by the thermostat </p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>ambient_humidity</td>
+      <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
+      <td></td>
+      <td><p>Optional, read-only. The ambient humidity as read by the thermostat </p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
@@ -473,40 +472,40 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>name</td>
-        <td><a href="#string">string</a></td>
-        <td></td>
-        <td><p>name for the device that issued the change </p></td>
-    </tr>
-
-    <tr>
-        <td>create_time</td>
-        <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-        <td></td>
-        <td><p>when the change occurred </p></td>
+      <td>name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>name for the device that issued the change </p></td>
     </tr>
 
     <tr>
-        <td>state</td>
-        <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
-        <td></td>
-        <td><p>The new value for the thermostat state. Only changed fields will be set, should be merged with GetState
-            full
-            response as required. </p></td>
+      <td>create_time</td>
+      <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+      <td></td>
+      <td><p>when the change occurred </p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>state</td>
+      <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
+      <td></td>
+      <td><p>The new value for the thermostat state. Only changed fields will be set, should be merged with GetState
+        full
+        response as required. </p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
@@ -515,388 +514,387 @@
 
 
 <table class="field-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Field</td>
-        <td>Type</td>
-        <td>Label</td>
-        <td>Description</td>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>name</td>
-        <td><a href="#string">string</a></td>
-        <td></td>
-        <td><p></p></td>
-    </tr>
-
-    <tr>
-        <td>state</td>
-        <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
-        <td></td>
-        <td><p></p></td>
+      <td>name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p></p></td>
     </tr>
 
     <tr>
-        <td>update_mask</td>
-        <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-        <td></td>
-        <td><p>The fields relative to state we intend to update </p></td>
+      <td>state</td>
+      <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
+      <td></td>
+      <td><p></p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>update_mask</td>
+      <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+      <td></td>
+      <td><p>The fields relative to state we intend to update </p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
 <h3 id="smartcore.api.device.traits.ThermostatMode">ThermostatMode</h3>
 <p>Supported modes for a thermostat. Some of these values are used as descriptive attributes, some are used for
-    control</p>
+  control</p>
 <table class="enum-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Name</td>
-        <td>Number</td>
-        <td>Description</td>
+      <td>Name</td>
+      <td>Number</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>UNKNOWN</td>
-        <td>0</td>
-        <td><p>The thermostat mode is unknown during a query. If used during a write then no change will be made, if
-            part of a
-            read then the mode is unknown. This makes no sense as part of an attribute.</p></td>
-    </tr>
-
-    <tr>
-        <td>ON</td>
-        <td>1</td>
-        <td><p>Write-only. If the thermostat is OFF restore it to it&#39;s previous state</p></td>
+      <td>UNKNOWN</td>
+      <td>0</td>
+      <td><p>The thermostat mode is unknown during a query. If used during a write then no change will be made, if part
+        of a
+        read then the mode is unknown. This makes no sense as part of an attribute.</p></td>
     </tr>
 
     <tr>
-        <td>OFF</td>
-        <td>2</td>
-        <td><p>Attr, read, write. The thermostat supports, is, or should be disabled</p></td>
+      <td>ON</td>
+      <td>1</td>
+      <td><p>Write-only. If the thermostat is OFF restore it to it&#39;s previous state</p></td>
     </tr>
 
     <tr>
-        <td>HEAT</td>
-        <td>3</td>
-        <td><p>Attr, read, write. The device supports, is, or should be heating</p></td>
+      <td>OFF</td>
+      <td>2</td>
+      <td><p>Attr, read, write. The thermostat supports, is, or should be disabled</p></td>
     </tr>
 
     <tr>
-        <td>COOL</td>
-        <td>4</td>
-        <td><p>Attr, read, write. The device supports, is, or should be cooling</p></td>
+      <td>HEAT</td>
+      <td>3</td>
+      <td><p>Attr, read, write. The device supports, is, or should be heating</p></td>
     </tr>
 
     <tr>
-        <td>HEAT_COOL</td>
-        <td>5</td>
-        <td><p>Attr, read, write. The device supports, is, or should be maintaining heating/cooling to target a specific
-            set
-            point (and/or min &#43; max)</p></td>
+      <td>COOL</td>
+      <td>4</td>
+      <td><p>Attr, read, write. The device supports, is, or should be cooling</p></td>
     </tr>
 
     <tr>
-        <td>AUTO</td>
-        <td>6</td>
-        <td><p>Attr. The device supports automatic control of set points and/or schedules based on some other means (AI
-            for
-            example)</p></td>
+      <td>HEAT_COOL</td>
+      <td>5</td>
+      <td><p>Attr, read, write. The device supports, is, or should be maintaining heating/cooling to target a specific
+        set
+        point (and/or min &#43; max)</p></td>
     </tr>
 
     <tr>
-        <td>FAN_ONLY</td>
-        <td>7</td>
-        <td><p>Attr, read, write. The device supports, is, or should be able to use only the fan without heating/cooling
-            elements.</p></td>
+      <td>AUTO</td>
+      <td>6</td>
+      <td><p>Attr. The device supports automatic control of set points and/or schedules based on some other means (AI
+        for
+        example)</p></td>
     </tr>
 
     <tr>
-        <td>ECO</td>
-        <td>8</td>
-        <td><p>Attr, read, write. The device supports, is, or should be in an energy saving &#34;eco&#34; mode</p></td>
+      <td>FAN_ONLY</td>
+      <td>7</td>
+      <td><p>Attr, read, write. The device supports, is, or should be able to use only the fan without heating/cooling
+        elements.</p></td>
     </tr>
 
     <tr>
-        <td>PURIFIER</td>
-        <td>9</td>
-        <td><p>Attr, read, write. The device supports, is, or should be in an air purifying mode</p></td>
+      <td>ECO</td>
+      <td>8</td>
+      <td><p>Attr, read, write. The device supports, is, or should be in an energy saving &#34;eco&#34; mode</p></td>
     </tr>
 
     <tr>
-        <td>DRY</td>
-        <td>10</td>
-        <td><p>Attr, read, write. The device supports, is, or should be in an air drying mode</p></td>
+      <td>PURIFIER</td>
+      <td>9</td>
+      <td><p>Attr, read, write. The device supports, is, or should be in an air purifying mode</p></td>
     </tr>
 
     <tr>
-        <td>LOCKED</td>
-        <td>11</td>
-        <td><p>Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)</p></td>
+      <td>DRY</td>
+      <td>10</td>
+      <td><p>Attr, read, write. The device supports, is, or should be in an air drying mode</p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>LOCKED</td>
+      <td>11</td>
+      <td><p>Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)</p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
 <h3 id="smartcore.api.device.traits.Thermostat">Thermostat</h3>
 <p>Device trait for the control and query of a thermostat type device.</p>
 <table class="enum-table">
-    <thead>
+  <thead>
     <tr>
-        <td>Method Name</td>
-        <td>Request Type</td>
-        <td>Response Type</td>
-        <td>Description</td>
+      <td>Method Name</td>
+      <td>Request Type</td>
+      <td>Response Type</td>
+      <td>Description</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr>
-        <td>GetState</td>
-        <td><a href="#smartcore.api.device.traits.GetThermostatStateRequest">GetThermostatStateRequest</a></td>
-        <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
-        <td><p>Get the current state of the thermostat</p></td>
-    </tr>
-
-    <tr>
-        <td>UpdateState</td>
-        <td><a href="#smartcore.api.device.traits.UpdateThermostatStateRequest">UpdateThermostatStateRequest</a></td>
-        <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
-        <td><p>Update the target state for the thermostat. the returned state may not be complete but will indicate at
-            least the
-            current values for any set fields as part of the request.</p></td>
+      <td>GetState</td>
+      <td><a href="#smartcore.api.device.traits.GetThermostatStateRequest">GetThermostatStateRequest</a></td>
+      <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
+      <td><p>Get the current state of the thermostat</p></td>
     </tr>
 
     <tr>
-        <td>PullState</td>
-        <td><a href="#smartcore.api.device.traits.PullThermostatStateRequest">PullThermostatStateRequest</a></td>
-        <td><a href="#smartcore.api.device.traits.PullThermostatStateResponse">PullThermostatStateResponse</a> stream
-        </td>
-        <td><p>Request notification of change to the thermostat state. The messages in the response stream may not be
-            complete
-            but will indicate the changes as they occur. They should be merged with the full state as fetched by the
-            GetState
-            method.</p></td>
+      <td>UpdateState</td>
+      <td><a href="#smartcore.api.device.traits.UpdateThermostatStateRequest">UpdateThermostatStateRequest</a></td>
+      <td><a href="#smartcore.api.device.traits.ThermostatState">ThermostatState</a></td>
+      <td><p>Update the target state for the thermostat. the returned state may not be complete but will indicate at
+        least the
+        current values for any set fields as part of the request.</p></td>
     </tr>
 
-    </tbody>
+    <tr>
+      <td>PullState</td>
+      <td><a href="#smartcore.api.device.traits.PullThermostatStateRequest">PullThermostatStateRequest</a></td>
+      <td><a href="#smartcore.api.device.traits.PullThermostatStateResponse">PullThermostatStateResponse</a> stream</td>
+      <td><p>Request notification of change to the thermostat state. The messages in the response stream may not be
+        complete
+        but will indicate the changes as they occur. They should be merged with the full state as fetched by the
+        GetState
+        method.</p></td>
+    </tr>
+
+  </tbody>
 </table>
 
 
 <h2 id="scalar-value-types">Scalar Value Types</h2>
 <table class="scalar-value-types-table">
-    <thead>
+  <thead>
     <tr>
-        <td>.proto Type</td>
-        <td>Notes</td>
-        <td>C++</td>
-        <td>Java</td>
-        <td>Python</td>
-        <td>Go</td>
-        <td>C#</td>
-        <td>PHP</td>
-        <td>Ruby</td>
+      <td>.proto Type</td>
+      <td>Notes</td>
+      <td>C++</td>
+      <td>Java</td>
+      <td>Python</td>
+      <td>Go</td>
+      <td>C#</td>
+      <td>PHP</td>
+      <td>Ruby</td>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
 
     <tr id="double">
-        <td>double</td>
-        <td></td>
-        <td>double</td>
-        <td>double</td>
-        <td>float</td>
-        <td>float64</td>
-        <td>double</td>
-        <td>float</td>
-        <td>Float</td>
+      <td>double</td>
+      <td></td>
+      <td>double</td>
+      <td>double</td>
+      <td>float</td>
+      <td>float64</td>
+      <td>double</td>
+      <td>float</td>
+      <td>Float</td>
     </tr>
 
     <tr id="float">
-        <td>float</td>
-        <td></td>
-        <td>float</td>
-        <td>float</td>
-        <td>float</td>
-        <td>float32</td>
-        <td>float</td>
-        <td>float</td>
-        <td>Float</td>
+      <td>float</td>
+      <td></td>
+      <td>float</td>
+      <td>float</td>
+      <td>float</td>
+      <td>float32</td>
+      <td>float</td>
+      <td>float</td>
+      <td>Float</td>
     </tr>
 
     <tr id="int32">
-        <td>int32</td>
-        <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have
-            negative values, use sint32 instead.
-        </td>
-        <td>int32</td>
-        <td>int</td>
-        <td>int</td>
-        <td>int32</td>
-        <td>int</td>
-        <td>integer</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>int32</td>
+      <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have
+        negative values, use sint32 instead.
+      </td>
+      <td>int32</td>
+      <td>int</td>
+      <td>int</td>
+      <td>int32</td>
+      <td>int</td>
+      <td>integer</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="int64">
-        <td>int64</td>
-        <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have
-            negative values, use sint64 instead.
-        </td>
-        <td>int64</td>
-        <td>long</td>
-        <td>int/long</td>
-        <td>int64</td>
-        <td>long</td>
-        <td>integer/string</td>
-        <td>Bignum</td>
+      <td>int64</td>
+      <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have
+        negative values, use sint64 instead.
+      </td>
+      <td>int64</td>
+      <td>long</td>
+      <td>int/long</td>
+      <td>int64</td>
+      <td>long</td>
+      <td>integer/string</td>
+      <td>Bignum</td>
     </tr>
 
     <tr id="uint32">
-        <td>uint32</td>
-        <td>Uses variable-length encoding.</td>
-        <td>uint32</td>
-        <td>int</td>
-        <td>int/long</td>
-        <td>uint32</td>
-        <td>uint</td>
-        <td>integer</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>uint32</td>
+      <td>Uses variable-length encoding.</td>
+      <td>uint32</td>
+      <td>int</td>
+      <td>int/long</td>
+      <td>uint32</td>
+      <td>uint</td>
+      <td>integer</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="uint64">
-        <td>uint64</td>
-        <td>Uses variable-length encoding.</td>
-        <td>uint64</td>
-        <td>long</td>
-        <td>int/long</td>
-        <td>uint64</td>
-        <td>ulong</td>
-        <td>integer/string</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>uint64</td>
+      <td>Uses variable-length encoding.</td>
+      <td>uint64</td>
+      <td>long</td>
+      <td>int/long</td>
+      <td>uint64</td>
+      <td>ulong</td>
+      <td>integer/string</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="sint32">
-        <td>sint32</td>
-        <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular
-            int32s.
-        </td>
-        <td>int32</td>
-        <td>int</td>
-        <td>int</td>
-        <td>int32</td>
-        <td>int</td>
-        <td>integer</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>sint32</td>
+      <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular
+        int32s.
+      </td>
+      <td>int32</td>
+      <td>int</td>
+      <td>int</td>
+      <td>int32</td>
+      <td>int</td>
+      <td>integer</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="sint64">
-        <td>sint64</td>
-        <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular
-            int64s.
-        </td>
-        <td>int64</td>
-        <td>long</td>
-        <td>int/long</td>
-        <td>int64</td>
-        <td>long</td>
-        <td>integer/string</td>
-        <td>Bignum</td>
+      <td>sint64</td>
+      <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular
+        int64s.
+      </td>
+      <td>int64</td>
+      <td>long</td>
+      <td>int/long</td>
+      <td>int64</td>
+      <td>long</td>
+      <td>integer/string</td>
+      <td>Bignum</td>
     </tr>
 
     <tr id="fixed32">
-        <td>fixed32</td>
-        <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
-        <td>uint32</td>
-        <td>int</td>
-        <td>int</td>
-        <td>uint32</td>
-        <td>uint</td>
-        <td>integer</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>fixed32</td>
+      <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+      <td>uint32</td>
+      <td>int</td>
+      <td>int</td>
+      <td>uint32</td>
+      <td>uint</td>
+      <td>integer</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="fixed64">
-        <td>fixed64</td>
-        <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
-        <td>uint64</td>
-        <td>long</td>
-        <td>int/long</td>
-        <td>uint64</td>
-        <td>ulong</td>
-        <td>integer/string</td>
-        <td>Bignum</td>
+      <td>fixed64</td>
+      <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+      <td>uint64</td>
+      <td>long</td>
+      <td>int/long</td>
+      <td>uint64</td>
+      <td>ulong</td>
+      <td>integer/string</td>
+      <td>Bignum</td>
     </tr>
 
     <tr id="sfixed32">
-        <td>sfixed32</td>
-        <td>Always four bytes.</td>
-        <td>int32</td>
-        <td>int</td>
-        <td>int</td>
-        <td>int32</td>
-        <td>int</td>
-        <td>integer</td>
-        <td>Bignum or Fixnum (as required)</td>
+      <td>sfixed32</td>
+      <td>Always four bytes.</td>
+      <td>int32</td>
+      <td>int</td>
+      <td>int</td>
+      <td>int32</td>
+      <td>int</td>
+      <td>integer</td>
+      <td>Bignum or Fixnum (as required)</td>
     </tr>
 
     <tr id="sfixed64">
-        <td>sfixed64</td>
-        <td>Always eight bytes.</td>
-        <td>int64</td>
-        <td>long</td>
-        <td>int/long</td>
-        <td>int64</td>
-        <td>long</td>
-        <td>integer/string</td>
-        <td>Bignum</td>
+      <td>sfixed64</td>
+      <td>Always eight bytes.</td>
+      <td>int64</td>
+      <td>long</td>
+      <td>int/long</td>
+      <td>int64</td>
+      <td>long</td>
+      <td>integer/string</td>
+      <td>Bignum</td>
     </tr>
 
     <tr id="bool">
-        <td>bool</td>
-        <td></td>
-        <td>bool</td>
-        <td>boolean</td>
-        <td>boolean</td>
-        <td>bool</td>
-        <td>bool</td>
-        <td>boolean</td>
-        <td>TrueClass/FalseClass</td>
+      <td>bool</td>
+      <td></td>
+      <td>bool</td>
+      <td>boolean</td>
+      <td>boolean</td>
+      <td>bool</td>
+      <td>bool</td>
+      <td>boolean</td>
+      <td>TrueClass/FalseClass</td>
     </tr>
 
     <tr id="string">
-        <td>string</td>
-        <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
-        <td>string</td>
-        <td>String</td>
-        <td>str/unicode</td>
-        <td>string</td>
-        <td>string</td>
-        <td>string</td>
-        <td>String (UTF-8)</td>
+      <td>string</td>
+      <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+      <td>string</td>
+      <td>String</td>
+      <td>str/unicode</td>
+      <td>string</td>
+      <td>string</td>
+      <td>string</td>
+      <td>String (UTF-8)</td>
     </tr>
 
     <tr id="bytes">
-        <td>bytes</td>
-        <td>May contain any arbitrary sequence of bytes.</td>
-        <td>string</td>
-        <td>ByteString</td>
-        <td>str</td>
-        <td>[]byte</td>
-        <td>ByteString</td>
-        <td>string</td>
-        <td>String (ASCII-8BIT)</td>
+      <td>bytes</td>
+      <td>May contain any arbitrary sequence of bytes.</td>
+      <td>string</td>
+      <td>ByteString</td>
+      <td>str</td>
+      <td>[]byte</td>
+      <td>ByteString</td>
+      <td>string</td>
+      <td>String (ASCII-8BIT)</td>
     </tr>
 
-    </tbody>
+  </tbody>
 </table>
 </body>
 </html>

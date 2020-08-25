@@ -187,49 +187,56 @@
 
 
     <li>
-      <a href="#device%2ftraits%2fopen_close.proto">device/traits/open_close.proto</a>
+      <a href="#device%2finfo%2fauth.proto">device/info/auth.proto</a>
       <ul>
 
         <li>
-          <a href="#smartcore.api.device.traits.GetOpenCloseStatesRequest"><span class="badge">M</span>GetOpenCloseStatesRequest</a>
+          <a href="#smartcore.api.device.info.Account"><span class="badge">M</span>Account</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.OpenCloseAttributes"><span class="badge">M</span>OpenCloseAttributes</a>
+          <a href="#smartcore.api.device.info.AddAccountRequest"><span class="badge">M</span>AddAccountRequest</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.OpenClosePosition"><span class="badge">M</span>OpenClosePosition</a>
+          <a href="#smartcore.api.device.info.AddAccountResponse"><span class="badge">M</span>AddAccountResponse</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.OpenCloseStateChange"><span class="badge">M</span>OpenCloseStateChange</a>
+          <a href="#smartcore.api.device.info.GenerateTokenRequest"><span class="badge">M</span>GenerateTokenRequest</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.OpenCloseStates"><span class="badge">M</span>OpenCloseStates</a>
+          <a href="#smartcore.api.device.info.GenerateTokenResponse"><span class="badge">M</span>GenerateTokenResponse</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.PullOpenCloseStatesRequest"><span class="badge">M</span>PullOpenCloseStatesRequest</a>
+          <a href="#smartcore.api.device.info.Permission"><span class="badge">M</span>Permission</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.PullOpenCloseStatesResponse"><span class="badge">M</span>PullOpenCloseStatesResponse</a>
+          <a href="#smartcore.api.device.info.RemoveAccountRequest"><span class="badge">M</span>RemoveAccountRequest</a>
         </li>
 
         <li>
-          <a href="#smartcore.api.device.traits.UpdateOpenCloseStatesRequest"><span class="badge">M</span>UpdateOpenCloseStatesRequest</a>
+          <a href="#smartcore.api.device.info.RemoveAccountResponse"><span class="badge">M</span>RemoveAccountResponse</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.info.Token"><span class="badge">M</span>Token</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.info.UpdateAccountPermissionsRequest"><span class="badge">M</span>UpdateAccountPermissionsRequest</a>
+        </li>
+
+        <li>
+          <a href="#smartcore.api.device.info.UpdateAccountPermissionsResponse"><span class="badge">M</span>UpdateAccountPermissionsResponse</a>
         </li>
 
 
         <li>
-          <a href="#smartcore.api.device.traits.OpenCloseDirection"><span class="badge">E</span>OpenCloseDirection</a>
-        </li>
-
-
-        <li>
-          <a href="#smartcore.api.device.traits.OpenClose"><span class="badge">S</span>OpenClose</a>
+          <a href="#smartcore.api.device.info.AuthProvider"><span class="badge">S</span>AuthProvider</a>
         </li>
 
       </ul>
@@ -241,12 +248,59 @@
 
 
 <div class="file-heading">
-  <h2 id="device/traits/open_close.proto">device/traits/open_close.proto</h2><a href="#title">Top</a>
+  <h2 id="device/info/auth.proto">device/info/auth.proto</h2><a href="#title">Top</a>
 </div>
 <p></p>
 
 
-<h3 id="smartcore.api.device.traits.GetOpenCloseStatesRequest">GetOpenCloseStatesRequest</h3>
+<h3 id="smartcore.api.device.info.Account">Account</h3>
+<p>Represents an account which has access to this system</p>
+
+
+<table class="field-table">
+  <thead>
+    <tr>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>The account identifier </p></td>
+    </tr>
+
+    <tr>
+      <td>title</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>A descriptive name for this account </p></td>
+    </tr>
+
+    <tr>
+      <td>token</td>
+      <td><a href="#smartcore.api.device.info.Token">Token</a></td>
+      <td></td>
+      <td><p>The current token for this account </p></td>
+    </tr>
+
+    <tr>
+      <td>permissions</td>
+      <td><a href="#smartcore.api.device.info.Permission">Permission</a></td>
+      <td>repeated</td>
+      <td><p>The set of permissions granted to the token bearer </p></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h3 id="smartcore.api.device.info.AddAccountRequest">AddAccountRequest</h3>
 <p></p>
 
 
@@ -265,50 +319,29 @@
       <td>name</td>
       <td><a href="#string">string</a></td>
       <td></td>
-      <td><p>Name of the device to get the state for </p></td>
+      <td><p></p></td>
     </tr>
 
-  </tbody>
-</table>
-
-
-<h3 id="smartcore.api.device.traits.OpenCloseAttributes">OpenCloseAttributes</h3>
-<p>Trait.attribute for OpenClose devices</p>
-
-
-<table class="field-table">
-  <thead>
     <tr>
-      <td>Field</td>
-      <td>Type</td>
-      <td>Label</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>position_attributes</td>
-      <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+      <td>title</td>
+      <td><a href="#string">string</a></td>
       <td></td>
-      <td><p>Define how the value for positions behave. The bounds for these attributes will be absent and always in the
-        range
-        0-100 to represent a percentage </p></td>
+      <td><p></p></td>
     </tr>
 
     <tr>
-      <td>directions</td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseDirection">OpenCloseDirection</a></td>
+      <td>permissions</td>
+      <td><a href="#smartcore.api.device.info.Permission">Permission</a></td>
       <td>repeated</td>
-      <td><p>The supported directions for the device. If none then assume only a single direction is supported </p></td>
+      <td><p></p></td>
     </tr>
 
   </tbody>
 </table>
 
 
-<h3 id="smartcore.api.device.traits.OpenClosePosition">OpenClosePosition</h3>
-<p>Defines the position of one open close element for the device</p>
+<h3 id="smartcore.api.device.info.AddAccountResponse">AddAccountResponse</h3>
+<p></p>
 
 
 <table class="field-table">
@@ -323,25 +356,125 @@
   <tbody>
 
     <tr>
-      <td>position_percent</td>
-      <td><a href="#smartcore.api.types.FloatVar">smartcore.api.types.FloatVar</a></td>
+      <td>account</td>
+      <td><a href="#smartcore.api.device.info.Account">Account</a></td>
       <td></td>
-      <td><p>0-100, the current value for the open close position of the device in this direction </p></td>
-    </tr>
-
-    <tr>
-      <td>direction</td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseDirection">OpenCloseDirection</a></td>
-      <td></td>
-      <td><p>Optional direction for devices that support multiple open/close directions </p></td>
+      <td><p></p></td>
     </tr>
 
   </tbody>
 </table>
 
 
-<h3 id="smartcore.api.device.traits.OpenCloseStateChange">OpenCloseStateChange</h3>
-<p>A change to a single devices open close state value</p>
+<h3 id="smartcore.api.device.info.GenerateTokenRequest">GenerateTokenRequest</h3>
+<p></p>
+
+
+<table class="field-table">
+  <thead>
+    <tr>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>account_name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p></p></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h3 id="smartcore.api.device.info.GenerateTokenResponse">GenerateTokenResponse</h3>
+<p></p>
+
+
+<table class="field-table">
+  <thead>
+    <tr>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>token</td>
+      <td><a href="#smartcore.api.device.info.Token">Token</a></td>
+      <td></td>
+      <td><p></p></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h3 id="smartcore.api.device.info.Permission">Permission</h3>
+<p>Describes a permission level for a particular device-trait</p>
+
+
+<table class="field-table">
+  <thead>
+    <tr>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>device_name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>The fully qualified name of the device this permission represents, or &#39;*&#39; for all devices </p></td>
+    </tr>
+
+    <tr>
+      <td>trait_name</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>The fully qualified name of the trait on the specified device this permission represents (in
+        package.Service format), or &#39;*&#39; for all traits </p></td>
+    </tr>
+
+    <tr>
+      <td>read</td>
+      <td><a href="#bool">bool</a></td>
+      <td></td>
+      <td><p>Whether to allow read calls for this device-trait </p></td>
+    </tr>
+
+    <tr>
+      <td>write</td>
+      <td><a href="#bool">bool</a></td>
+      <td></td>
+      <td><p>Whether to allow write calls for this device-trait </p></td>
+    </tr>
+
+    <tr>
+      <td>observe</td>
+      <td><a href="#bool">bool</a></td>
+      <td></td>
+      <td><p>Whether to allow observe calls (i.e. Pull requests) for this device-trait </p></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h3 id="smartcore.api.device.info.RemoveAccountRequest">RemoveAccountRequest</h3>
+<p></p>
 
 
 <table class="field-table">
@@ -359,117 +492,51 @@
       <td>name</td>
       <td><a href="#string">string</a></td>
       <td></td>
-      <td><p>name for the device that issued the change </p></td>
+      <td><p></p></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h3 id="smartcore.api.device.info.RemoveAccountResponse">RemoveAccountResponse</h3>
+<p></p>
+
+
+<h3 id="smartcore.api.device.info.Token">Token</h3>
+<p>Represents a token that can be granted against an Account for</p>
+
+
+<table class="field-table">
+  <thead>
+    <tr>
+      <td>Field</td>
+      <td>Type</td>
+      <td>Label</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>id</td>
+      <td><a href="#string">string</a></td>
+      <td></td>
+      <td><p>The token ID string </p></td>
     </tr>
 
     <tr>
-      <td>create_time</td>
+      <td>expires_at</td>
       <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
       <td></td>
-      <td><p>when the change occurred </p></td>
-    </tr>
-
-    <tr>
-      <td>state</td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseStates">OpenCloseStates</a></td>
-      <td></td>
-      <td><p>The new value for the state </p></td>
+      <td><p>A time the token expires </p></td>
     </tr>
 
   </tbody>
 </table>
 
 
-<h3 id="smartcore.api.device.traits.OpenCloseStates">OpenCloseStates</h3>
-<p>All open/closable elements for the device</p>
-
-
-<table class="field-table">
-  <thead>
-    <tr>
-      <td>Field</td>
-      <td>Type</td>
-      <td>Label</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>states</td>
-      <td><a href="#smartcore.api.device.traits.OpenClosePosition">OpenClosePosition</a></td>
-      <td>repeated</td>
-      <td><p>The state of each of the devices open-able elements. Most devices will only have a single value here as
-        they can
-        only be opened from a single direction. </p></td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-<h3 id="smartcore.api.device.traits.PullOpenCloseStatesRequest">PullOpenCloseStatesRequest</h3>
-<p>Request to begin a subscription for open close state changes</p>
-
-
-<table class="field-table">
-  <thead>
-    <tr>
-      <td>Field</td>
-      <td>Type</td>
-      <td>Label</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>name</td>
-      <td><a href="#string">string</a></td>
-      <td></td>
-      <td><p>The name of the device we want events from </p></td>
-    </tr>
-
-    <tr>
-      <td>exclude_tweening</td>
-      <td><a href="#bool">bool</a></td>
-      <td></td>
-      <td><p>Indicate whether we want to be notified of values while tweening or not. The device may ignore this
-        depending on
-        capabilities </p></td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-<h3 id="smartcore.api.device.traits.PullOpenCloseStatesResponse">PullOpenCloseStatesResponse</h3>
-<p>A response as part of the stream of changes to the range value</p>
-
-
-<table class="field-table">
-  <thead>
-    <tr>
-      <td>Field</td>
-      <td>Type</td>
-      <td>Label</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>changes</td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseStateChange">OpenCloseStateChange</a></td>
-      <td>repeated</td>
-      <td><p>The list of changes </p></td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-<h3 id="smartcore.api.device.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</h3>
+<h3 id="smartcore.api.device.info.UpdateAccountPermissionsRequest">UpdateAccountPermissionsRequest</h3>
 <p></p>
 
 
@@ -485,83 +552,16 @@
   <tbody>
 
     <tr>
-      <td>name</td>
-      <td><a href="#string">string</a></td>
+      <td>change_type</td>
+      <td><a href="#smartcore.api.types.ChangeType">smartcore.api.types.ChangeType</a></td>
       <td></td>
-      <td><p>the name of the device to update the states for </p></td>
-    </tr>
-
-    <tr>
-      <td>states</td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseStates">OpenCloseStates</a></td>
-      <td></td>
-      <td><p>target states for each directional element of the device. If you don&#39;t want to change an open direction
-        don&#39;t
-        include it in the states list. </p></td>
-    </tr>
-
-    <tr>
-      <td>delta</td>
-      <td><a href="#bool">bool</a></td>
-      <td></td>
-      <td><p>indicate whether the state change is a delta or absolute value </p></td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-<h3 id="smartcore.api.device.traits.OpenCloseDirection">OpenCloseDirection</h3>
-<p>Possible directions the device can open/close</p>
-<table class="enum-table">
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Number</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>UNSPECIFIED</td>
-      <td>0</td>
       <td><p></p></td>
     </tr>
 
     <tr>
-      <td>UP</td>
-      <td>1</td>
-      <td><p></p></td>
-    </tr>
-
-    <tr>
-      <td>DOWN</td>
-      <td>2</td>
-      <td><p></p></td>
-    </tr>
-
-    <tr>
-      <td>LEFT</td>
-      <td>3</td>
-      <td><p></p></td>
-    </tr>
-
-    <tr>
-      <td>RIGHT</td>
-      <td>4</td>
-      <td><p></p></td>
-    </tr>
-
-    <tr>
-      <td>IN</td>
-      <td>5</td>
-      <td><p></p></td>
-    </tr>
-
-    <tr>
-      <td>OUT</td>
-      <td>6</td>
+      <td>permissions</td>
+      <td><a href="#smartcore.api.device.info.Permission">Permission</a></td>
+      <td>repeated</td>
       <td><p></p></td>
     </tr>
 
@@ -569,8 +569,15 @@
 </table>
 
 
-<h3 id="smartcore.api.device.traits.OpenClose">OpenClose</h3>
-<p>Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.</p>
+<h3 id="smartcore.api.device.info.UpdateAccountPermissionsResponse">UpdateAccountPermissionsResponse</h3>
+<p></p>
+
+
+<h3 id="smartcore.api.device.info.AuthProvider">AuthProvider</h3>
+<p>The auth provider service enables granular control of security permissions for a particular Smart Core controller
+  or</p>
+<p>system. It does this using the concept of 'Accounts', each of which has a certain set of permissions for which</p>
+<p>device(s) and/or trait(s)/service(s) they are allowed to access.</p>
 <table class="enum-table">
   <thead>
     <tr>
@@ -583,24 +590,32 @@
   <tbody>
 
     <tr>
-      <td>GetStates</td>
-      <td><a href="#smartcore.api.device.traits.GetOpenCloseStatesRequest">GetOpenCloseStatesRequest</a></td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseStates">OpenCloseStates</a></td>
+      <td>AddAccount</td>
+      <td><a href="#smartcore.api.device.info.AddAccountRequest">AddAccountRequest</a></td>
+      <td><a href="#smartcore.api.device.info.AddAccountResponse">AddAccountResponse</a></td>
       <td><p></p></td>
     </tr>
 
     <tr>
-      <td>UpdateStates</td>
-      <td><a href="#smartcore.api.device.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</a></td>
-      <td><a href="#smartcore.api.device.traits.OpenCloseStates">OpenCloseStates</a></td>
+      <td>RemoveAccount</td>
+      <td><a href="#smartcore.api.device.info.RemoveAccountRequest">RemoveAccountRequest</a></td>
+      <td><a href="#smartcore.api.device.info.RemoveAccountResponse">RemoveAccountResponse</a></td>
       <td><p></p></td>
     </tr>
 
     <tr>
-      <td>Pull</td>
-      <td><a href="#smartcore.api.device.traits.PullOpenCloseStatesRequest">PullOpenCloseStatesRequest</a></td>
-      <td><a href="#smartcore.api.device.traits.PullOpenCloseStatesResponse">PullOpenCloseStatesResponse</a> stream</td>
-      <td><p>Get notified of changes to the OpenCloseState of a device</p></td>
+      <td>UpdateAccountPermissions</td>
+      <td><a href="#smartcore.api.device.info.UpdateAccountPermissionsRequest">UpdateAccountPermissionsRequest</a></td>
+      <td><a href="#smartcore.api.device.info.UpdateAccountPermissionsResponse">UpdateAccountPermissionsResponse</a>
+      </td>
+      <td><p></p></td>
+    </tr>
+
+    <tr>
+      <td>GenerateToken</td>
+      <td><a href="#smartcore.api.device.info.GenerateTokenRequest">GenerateTokenRequest</a></td>
+      <td><a href="#smartcore.api.device.info.GenerateTokenResponse">GenerateTokenResponse</a></td>
+      <td><p></p></td>
     </tr>
 
   </tbody>
