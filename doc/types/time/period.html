@@ -175,47 +175,15 @@
         
           
           <li>
-            <a href="#device%2ftraits%2fhealth.proto">device/traits/health.proto</a>
+            <a href="#types%2ftime%2fperiod.proto">types/time/period.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.api.device.traits.CommHealth"><span class="badge">M</span>CommHealth</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.ConnectionHealth"><span class="badge">M</span>ConnectionHealth</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.GetHealthStateRequest"><span class="badge">M</span>GetHealthStateRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.HealthAttributes"><span class="badge">M</span>HealthAttributes</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.HealthState"><span class="badge">M</span>HealthState</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.HealthStateChange"><span class="badge">M</span>HealthStateChange</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.PullHealthStatesRequest"><span class="badge">M</span>PullHealthStatesRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.PullHealthStatesResponse"><span class="badge">M</span>PullHealthStatesResponse</a>
+                  <a href="#smartcore.api.types.time.Period"><span class="badge">M</span>Period</a>
                 </li>
               
               
               
-              
-                <li>
-                  <a href="#smartcore.api.device.traits.Health"><span class="badge">S</span>Health</a>
-                </li>
               
             </ul>
           </li>
@@ -227,13 +195,13 @@
     
       
       <div class="file-heading">
-        <h2 id="device/traits/health.proto">device/traits/health.proto</h2><a href="#title">Top</a>
+        <h2 id="types/time/period.proto">types/time/period.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.api.device.traits.CommHealth">CommHealth</h3>
-        <p>Describes the health of communication.</p>
+        <h3 id="smartcore.api.types.time.Period">Period</h3>
+        <p>Represents a time period from start_time to end_time</p><p>where start_time is inclusive, and end_time is exclusive</p><p>e.g. [start_time, end_time)</p>
 
         
           <table class="field-table">
@@ -243,209 +211,16 @@
             <tbody>
               
                 <tr>
-                  <td>status</td>
-                  <td><a href="#smartcore.api.types.CommStatus">smartcore.api.types.CommStatus</a></td>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
-                  <td>failure_time</td>
+                  <td>end_time</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>The most recent time the status changed to COMM_FAILURE </p></td>
-                </tr>
-              
-                <tr>
-                  <td>success_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>The most recent time the status changed to COMM_SUCCESS </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.ConnectionHealth">ConnectionHealth</h3>
-        <p>Describes the health of a connection</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>status</td>
-                  <td><a href="#smartcore.api.types.Connectivity">smartcore.api.types.Connectivity</a></td>
-                  <td></td>
-                  <td><p>are we currently connected </p></td>
-                </tr>
-              
-                <tr>
-                  <td>connect_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>When was the last time a successful connection was established </p></td>
-                </tr>
-              
-                <tr>
-                  <td>disconnect_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>When was the last time a connection was closed/ended </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.GetHealthStateRequest">GetHealthStateRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the device to query the health state for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.HealthAttributes">HealthAttributes</h3>
-        <p>Trait.attribute for describing the capabilities of the device wrt this trait</p>
-
-        
-
-        
-      
-        <h3 id="smartcore.api.device.traits.HealthState">HealthState</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>connection</td>
-                  <td><a href="#smartcore.api.device.traits.ConnectionHealth">ConnectionHealth</a></td>
-                  <td></td>
-                  <td><p>Health of the connection to the physical device </p></td>
-                </tr>
-              
-                <tr>
-                  <td>comm</td>
-                  <td><a href="#smartcore.api.device.traits.CommHealth">CommHealth</a></td>
-                  <td></td>
-                  <td><p>Health of communication with the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.HealthStateChange">HealthStateChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device that is the source of the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>change_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>When the change was applied </p></td>
-                </tr>
-              
-                <tr>
-                  <td>health</td>
-                  <td><a href="#smartcore.api.device.traits.HealthState">HealthState</a></td>
-                  <td></td>
-                  <td><p>The new state for the change </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.PullHealthStatesRequest">PullHealthStatesRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the device to subscribe to the health state for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.api.device.traits.PullHealthStatesResponse">PullHealthStatesResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>changes</td>
-                  <td><a href="#smartcore.api.device.traits.HealthStateChange">HealthStateChange</a></td>
-                  <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
               
@@ -462,32 +237,6 @@
       
 
       
-        <h3 id="smartcore.api.device.traits.Health">Health</h3>
-        <p>Describe the health of a device.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>GetHealthState</td>
-                <td><a href="#smartcore.api.device.traits.GetHealthStateRequest">GetHealthStateRequest</a></td>
-                <td><a href="#smartcore.api.device.traits.HealthState">HealthState</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>PullHealthStates</td>
-                <td><a href="#smartcore.api.device.traits.PullHealthStatesRequest">PullHealthStatesRequest</a></td>
-                <td><a href="#smartcore.api.device.traits.PullHealthStatesResponse">PullHealthStatesResponse</a> stream</td>
-                <td><p></p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-
-        
     
 
     <h2 id="scalar-value-types">Scalar Value Types</h2>
