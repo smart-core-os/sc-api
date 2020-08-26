@@ -2,12 +2,14 @@
 
 set -e
 
-protoc -I ../protobuf --go_out=paths=source_relative:./ ../protobuf/types/*.proto --go-grpc_out=paths=source_relative:./ ../protobuf/types/*.proto
-protoc -I ../protobuf --go_out=paths=source_relative:./ ../protobuf/types/time/*.proto --go-grpc_out=paths=source_relative:./ ../protobuf/types/time/*.proto
+function gen_folder() {
+  protoc -I ../protobuf --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. ../protobuf/$1/*.proto
+}
 
-protoc -I ../protobuf --go_out=paths=source_relative:./ ../protobuf/device/traits/*.proto --go-grpc_out=paths=source_relative:./ ../protobuf/device/traits/*.proto
-
-protoc -I ../protobuf --go_out=paths=source_relative:./ ../protobuf/device/info/*.proto --go-grpc_out=paths=source_relative:./ ../protobuf/device/info/*.proto
+gen_folder "types"
+gen_folder "types/time"
+gen_folder "device/traits"
+gen_folder "device/info"
 
 go build ./...
 go test ./...
