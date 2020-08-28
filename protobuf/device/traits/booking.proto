@@ -92,7 +92,7 @@ message Booking {
   // The name of the bookable (e.g. the resource name)
   string bookable = 1;
   // the unique identifier for this booking
-  int32 id = 2;
+  string id = 2;
   // the title of this booking
   string title = 3;
   // the name of the owner of this booking
@@ -110,7 +110,7 @@ message CheckInBookingRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
   // Which booking to check in
-  int32 booking_id = 2;
+  string booking_id = 2;
   // The time the booking was checked-in. If omitted the server time will be used.
   google.protobuf.Timestamp time = 3;
 }
@@ -122,7 +122,7 @@ message CheckOutBookingRequest {
   // The name of the bookable (e.g. the resource name)
   string name = 1;
   // Which booking to check out
-  int32 booking_id = 2;
+  string booking_id = 2;
   // The time the booking was checked-out. If omitted the server time will be used.
   google.protobuf.Timestamp time = 3;
 }
@@ -139,7 +139,7 @@ message CreateBookingRequest {
 
 message CreateBookingResponse {
   // The created bookings' id
-  int32 booking_id = 1;
+  string booking_id = 1;
 }
 
 message UpdateBookingRequest {

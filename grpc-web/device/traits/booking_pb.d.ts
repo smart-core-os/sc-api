@@ -98,8 +98,8 @@ export class Booking extends jspb.Message {
   getBookable(): string;
   setBookable(value: string): Booking;
 
-  getId(): number;
-  setId(value: number): Booking;
+  getId(): string;
+  setId(value: string): Booking;
 
   getTitle(): string;
   setTitle(value: string): Booking;
@@ -128,7 +128,7 @@ export class Booking extends jspb.Message {
 export namespace Booking {
   export type AsObject = {
     bookable: string,
-    id: number,
+    id: string,
     title: string,
     ownerName: string,
     booked?: types_time_period_pb.Period.AsObject,
@@ -140,8 +140,8 @@ export class CheckInBookingRequest extends jspb.Message {
   getName(): string;
   setName(value: string): CheckInBookingRequest;
 
-  getBookingId(): number;
-  setBookingId(value: number): CheckInBookingRequest;
+  getBookingId(): string;
+  setBookingId(value: string): CheckInBookingRequest;
 
   getTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTime(value?: google_protobuf_timestamp_pb.Timestamp): CheckInBookingRequest;
@@ -159,7 +159,7 @@ export class CheckInBookingRequest extends jspb.Message {
 export namespace CheckInBookingRequest {
   export type AsObject = {
     name: string,
-    bookingId: number,
+    bookingId: string,
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
@@ -182,8 +182,8 @@ export class CheckOutBookingRequest extends jspb.Message {
   getName(): string;
   setName(value: string): CheckOutBookingRequest;
 
-  getBookingId(): number;
-  setBookingId(value: number): CheckOutBookingRequest;
+  getBookingId(): string;
+  setBookingId(value: string): CheckOutBookingRequest;
 
   getTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setTime(value?: google_protobuf_timestamp_pb.Timestamp): CheckOutBookingRequest;
@@ -201,7 +201,7 @@ export class CheckOutBookingRequest extends jspb.Message {
 export namespace CheckOutBookingRequest {
   export type AsObject = {
     name: string,
-    bookingId: number,
+    bookingId: string,
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
@@ -245,8 +245,8 @@ export namespace CreateBookingRequest {
 }
 
 export class CreateBookingResponse extends jspb.Message {
-  getBookingId(): number;
-  setBookingId(value: number): CreateBookingResponse;
+  getBookingId(): string;
+  setBookingId(value: string): CreateBookingResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateBookingResponse.AsObject;
@@ -258,7 +258,7 @@ export class CreateBookingResponse extends jspb.Message {
 
 export namespace CreateBookingResponse {
   export type AsObject = {
-    bookingId: number,
+    bookingId: string,
   }
 }
 

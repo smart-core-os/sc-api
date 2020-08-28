@@ -1030,7 +1030,7 @@ proto.smartcore.api.device.traits.Booking.prototype.toObject = function(opt_incl
 proto.smartcore.api.device.traits.Booking.toObject = function(includeInstance, msg) {
   var f, obj = {
     bookable: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
     title: jspb.Message.getFieldWithDefault(msg, 3, ""),
     ownerName: jspb.Message.getFieldWithDefault(msg, 4, ""),
     booked: (f = msg.getBooked()) && types_time_period_pb.Period.toObject(includeInstance, f),
@@ -1076,7 +1076,7 @@ proto.smartcore.api.device.traits.Booking.deserializeBinaryFromReader = function
       msg.setBookable(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setId(value);
       break;
     case 3:
@@ -1134,8 +1134,8 @@ proto.smartcore.api.device.traits.Booking.serializeBinaryToWriter = function(mes
     );
   }
   f = message.getId();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -1192,20 +1192,20 @@ proto.smartcore.api.device.traits.Booking.prototype.setBookable = function(value
 
 
 /**
- * optional int32 id = 2;
- * @return {number}
+ * optional string id = 2;
+ * @return {string}
  */
 proto.smartcore.api.device.traits.Booking.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.smartcore.api.device.traits.Booking} returns this
  */
 proto.smartcore.api.device.traits.Booking.prototype.setId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1352,7 +1352,7 @@ proto.smartcore.api.device.traits.CheckInBookingRequest.prototype.toObject = fun
 proto.smartcore.api.device.traits.CheckInBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -1395,7 +1395,7 @@ proto.smartcore.api.device.traits.CheckInBookingRequest.deserializeBinaryFromRea
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setBookingId(value);
       break;
     case 3:
@@ -1440,8 +1440,8 @@ proto.smartcore.api.device.traits.CheckInBookingRequest.serializeBinaryToWriter 
     );
   }
   f = message.getBookingId();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -1476,20 +1476,20 @@ proto.smartcore.api.device.traits.CheckInBookingRequest.prototype.setName = func
 
 
 /**
- * optional int32 booking_id = 2;
- * @return {number}
+ * optional string booking_id = 2;
+ * @return {string}
  */
 proto.smartcore.api.device.traits.CheckInBookingRequest.prototype.getBookingId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.smartcore.api.device.traits.CheckInBookingRequest} returns this
  */
 proto.smartcore.api.device.traits.CheckInBookingRequest.prototype.setBookingId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1664,7 +1664,7 @@ proto.smartcore.api.device.traits.CheckOutBookingRequest.prototype.toObject = fu
 proto.smartcore.api.device.traits.CheckOutBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -1707,7 +1707,7 @@ proto.smartcore.api.device.traits.CheckOutBookingRequest.deserializeBinaryFromRe
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setBookingId(value);
       break;
     case 3:
@@ -1752,8 +1752,8 @@ proto.smartcore.api.device.traits.CheckOutBookingRequest.serializeBinaryToWriter
     );
   }
   f = message.getBookingId();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -1788,20 +1788,20 @@ proto.smartcore.api.device.traits.CheckOutBookingRequest.prototype.setName = fun
 
 
 /**
- * optional int32 booking_id = 2;
- * @return {number}
+ * optional string booking_id = 2;
+ * @return {string}
  */
 proto.smartcore.api.device.traits.CheckOutBookingRequest.prototype.getBookingId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.smartcore.api.device.traits.CheckOutBookingRequest} returns this
  */
 proto.smartcore.api.device.traits.CheckOutBookingRequest.prototype.setBookingId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -2156,7 +2156,7 @@ proto.smartcore.api.device.traits.CreateBookingResponse.prototype.toObject = fun
  */
 proto.smartcore.api.device.traits.CreateBookingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookingId: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    bookingId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2194,7 +2194,7 @@ proto.smartcore.api.device.traits.CreateBookingResponse.deserializeBinaryFromRea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setBookingId(value);
       break;
     default:
@@ -2227,8 +2227,8 @@ proto.smartcore.api.device.traits.CreateBookingResponse.prototype.serializeBinar
 proto.smartcore.api.device.traits.CreateBookingResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getBookingId();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -2237,20 +2237,20 @@ proto.smartcore.api.device.traits.CreateBookingResponse.serializeBinaryToWriter 
 
 
 /**
- * optional int32 booking_id = 1;
- * @return {number}
+ * optional string booking_id = 1;
+ * @return {string}
  */
 proto.smartcore.api.device.traits.CreateBookingResponse.prototype.getBookingId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.smartcore.api.device.traits.CreateBookingResponse} returns this
  */
 proto.smartcore.api.device.traits.CreateBookingResponse.prototype.setBookingId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
