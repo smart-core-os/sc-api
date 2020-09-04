@@ -3,7 +3,7 @@
 set -e
 
 function gen_folder() {
-  protoc -I ../protobuf --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=commonjs+dts,mode=grpcweb:. ../protobuf/$1/*.proto
+  protoc -I ../protobuf --js_out=import_style=commonjs,binary:. --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:. ../protobuf/"$1"/*.proto
 }
 
 gen_folder "device/traits"

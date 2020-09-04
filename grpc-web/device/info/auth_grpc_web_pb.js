@@ -36,7 +36,7 @@ proto.smartcore.api.device.info = require('./auth_pb.js');
 proto.smartcore.api.device.info.AuthProviderClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.info.AuthProviderClient =
 proto.smartcore.api.device.info.AuthProviderPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

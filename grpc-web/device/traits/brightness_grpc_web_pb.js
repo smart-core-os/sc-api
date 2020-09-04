@@ -36,7 +36,7 @@ proto.smartcore.api.device.traits = require('./brightness_pb.js');
 proto.smartcore.api.device.traits.BrightnessApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.traits.BrightnessApiClient =
 proto.smartcore.api.device.traits.BrightnessApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

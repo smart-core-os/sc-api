@@ -36,7 +36,7 @@ proto.smartcore.api.device.traits = require('./open_close_pb.js');
 proto.smartcore.api.device.traits.OpenCloseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.traits.OpenCloseClient =
 proto.smartcore.api.device.traits.OpenClosePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

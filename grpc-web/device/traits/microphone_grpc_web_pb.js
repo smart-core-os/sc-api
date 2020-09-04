@@ -40,7 +40,7 @@ proto.smartcore.api.device.traits = require('./microphone_pb.js');
 proto.smartcore.api.device.traits.MicrophoneClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -66,7 +66,7 @@ proto.smartcore.api.device.traits.MicrophoneClient =
 proto.smartcore.api.device.traits.MicrophonePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

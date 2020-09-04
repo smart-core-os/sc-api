@@ -38,7 +38,7 @@ proto.smartcore.api.device.traits = require('./occupancy_pb.js');
 proto.smartcore.api.device.traits.OccupancyApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -64,7 +64,7 @@ proto.smartcore.api.device.traits.OccupancyApiClient =
 proto.smartcore.api.device.traits.OccupancyApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

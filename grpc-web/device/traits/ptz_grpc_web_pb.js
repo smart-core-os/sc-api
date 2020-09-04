@@ -40,7 +40,7 @@ proto.smartcore.api.device.traits = require('./ptz_pb.js');
 proto.smartcore.api.device.traits.PtzClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -66,7 +66,7 @@ proto.smartcore.api.device.traits.PtzClient =
 proto.smartcore.api.device.traits.PtzPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

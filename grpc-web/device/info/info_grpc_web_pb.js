@@ -36,7 +36,7 @@ proto.smartcore.api.device.info = require('./info_pb.js');
 proto.smartcore.api.device.info.InfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.info.InfoClient =
 proto.smartcore.api.device.info.InfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

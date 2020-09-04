@@ -44,7 +44,7 @@ proto.smartcore.api.device.traits = require('./booking_pb.js');
 proto.smartcore.api.device.traits.BookingApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -70,7 +70,7 @@ proto.smartcore.api.device.traits.BookingApiClient =
 proto.smartcore.api.device.traits.BookingApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

@@ -36,7 +36,7 @@ proto.smartcore.api.device.traits = require('./motion_sensor_pb.js');
 proto.smartcore.api.device.traits.MotionSensorClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.traits.MotionSensorClient =
 proto.smartcore.api.device.traits.MotionSensorPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

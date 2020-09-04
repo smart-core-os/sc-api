@@ -40,7 +40,7 @@ proto.smartcore.api.device.traits = require('./speaker_pb.js');
 proto.smartcore.api.device.traits.SpeakerClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -66,7 +66,7 @@ proto.smartcore.api.device.traits.SpeakerClient =
 proto.smartcore.api.device.traits.SpeakerPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

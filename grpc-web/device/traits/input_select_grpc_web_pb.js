@@ -36,7 +36,7 @@ proto.smartcore.api.device.traits = require('./input_select_pb.js');
 proto.smartcore.api.device.traits.InputSelectClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.api.device.traits.InputSelectClient =
 proto.smartcore.api.device.traits.InputSelectPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

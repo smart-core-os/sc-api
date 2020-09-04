@@ -34,7 +34,7 @@ proto.smartcore.api.device.traits = require('./humidity_sensor_pb.js');
 proto.smartcore.api.device.traits.HumiditySensorClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -60,7 +60,7 @@ proto.smartcore.api.device.traits.HumiditySensorClient =
 proto.smartcore.api.device.traits.HumiditySensorPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'binary';
+  options['format'] = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
