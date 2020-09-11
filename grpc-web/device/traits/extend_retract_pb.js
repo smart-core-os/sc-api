@@ -1156,7 +1156,7 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.toObject = fu
 proto.smartcore.api.device.traits.UpdateExtensionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extensiony: (f = msg.getExtensiony()) && proto.smartcore.api.device.traits.Extension.toObject(includeInstance, f),
+    extension: (f = msg.getExtension$()) && proto.smartcore.api.device.traits.Extension.toObject(includeInstance, f),
     updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
@@ -1201,7 +1201,7 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.deserializeBinaryFromRe
     case 2:
       var value = new proto.smartcore.api.device.traits.Extension;
       reader.readMessage(value,proto.smartcore.api.device.traits.Extension.deserializeBinaryFromReader);
-      msg.setExtensiony(value);
+      msg.setExtension$(value);
       break;
     case 3:
       var value = new google_protobuf_field_mask_pb.FieldMask;
@@ -1244,7 +1244,7 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.serializeBinaryToWriter
       f
     );
   }
-  f = message.getExtensiony();
+  f = message.getExtension$();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1282,10 +1282,10 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.setName = fun
 
 
 /**
- * optional Extension extensiony = 2;
+ * optional Extension extension = 2;
  * @return {?proto.smartcore.api.device.traits.Extension}
  */
-proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.getExtensiony = function() {
+proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.getExtension$ = function() {
   return /** @type{?proto.smartcore.api.device.traits.Extension} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.api.device.traits.Extension, 2));
 };
@@ -1295,7 +1295,7 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.getExtensiony
  * @param {?proto.smartcore.api.device.traits.Extension|undefined} value
  * @return {!proto.smartcore.api.device.traits.UpdateExtensionRequest} returns this
 */
-proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.setExtensiony = function(value) {
+proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.setExtension$ = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1304,8 +1304,8 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.setExtensiony
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.api.device.traits.UpdateExtensionRequest} returns this
  */
-proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.clearExtensiony = function() {
-  return this.setExtensiony(undefined);
+proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.clearExtension$ = function() {
+  return this.setExtension$(undefined);
 };
 
 
@@ -1313,7 +1313,7 @@ proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.clearExtensio
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.hasExtensiony = function() {
+proto.smartcore.api.device.traits.UpdateExtensionRequest.prototype.hasExtension$ = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

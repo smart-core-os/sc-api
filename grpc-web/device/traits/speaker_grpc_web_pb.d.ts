@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as types_unit_pb from '../../types/unit_pb';
 import * as device_traits_speaker_pb from '../../device/traits/speaker_pb';
+import * as types_unit_pb from '../../types/unit_pb';
 
 
 export class SpeakerClient {

@@ -126,10 +126,10 @@ export class UpdateExtensionRequest extends jspb.Message {
   getName(): string;
   setName(value: string): UpdateExtensionRequest;
 
-  getExtensiony(): Extension | undefined;
-  setExtensiony(value?: Extension): UpdateExtensionRequest;
-  hasExtensiony(): boolean;
-  clearExtensiony(): UpdateExtensionRequest;
+  getExtension(): Extension | undefined;
+  setExtension(value?: Extension): UpdateExtensionRequest;
+  hasExtension(): boolean;
+  clearExtension(): UpdateExtensionRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
   setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateExtensionRequest;
@@ -147,7 +147,7 @@ export class UpdateExtensionRequest extends jspb.Message {
 export namespace UpdateExtensionRequest {
   export type AsObject = {
     name: string,
-    extensiony?: Extension.AsObject,
+    extension?: Extension.AsObject,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
