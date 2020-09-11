@@ -183,6 +183,10 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.api.device.traits.EmergencyApiAttributes"><span class="badge">M</span>EmergencyApiAttributes</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.api.device.traits.EmergencyChange"><span class="badge">M</span>EmergencyChange</a>
                 </li>
               
@@ -256,7 +260,7 @@
                   <td>level_change_time</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>The time the emergency level was changed. </p></td>
+                  <td><p>The time the emergency level was changed. When writing and absent, and the level has changed, then server time will be used. </p></td>
                 </tr>
               
                 <tr>
@@ -277,6 +281,13 @@
           </table>
 
           
+
+        
+      
+        <h3 id="smartcore.api.device.traits.EmergencyApiAttributes">EmergencyApiAttributes</h3>
+        <p>Trait.attribute for emergency capabilities</p>
+
+        
 
         
       
@@ -471,7 +482,7 @@ but not enough to trigger the alarm yet.</p></td>
 
       
         <h3 id="smartcore.api.device.traits.EmergencyApi">EmergencyApi</h3>
-        <p></p>
+        <p>Report and manages emergencies. Typically not associated with a single device, more suited to buildings or spaces.</p><p>It's likely that some implementation will not allow write of emergency state.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -482,21 +493,21 @@ but not enough to trigger the alarm yet.</p></td>
                 <td>GetEmergency</td>
                 <td><a href="#smartcore.api.device.traits.GetEmergencyRequest">GetEmergencyRequest</a></td>
                 <td><a href="#smartcore.api.device.traits.Emergency">Emergency</a></td>
-                <td><p></p></td>
+                <td><p>Get the current emergency state</p></td>
               </tr>
             
               <tr>
                 <td>UpdateEmergency</td>
                 <td><a href="#smartcore.api.device.traits.UpdateEmergencyRequest">UpdateEmergencyRequest</a></td>
                 <td><a href="#smartcore.api.device.traits.Emergency">Emergency</a></td>
-                <td><p></p></td>
+                <td><p>Update the current emergency state</p></td>
               </tr>
             
               <tr>
                 <td>PullEmergency</td>
                 <td><a href="#smartcore.api.device.traits.PullEmergencyRequest">PullEmergencyRequest</a></td>
                 <td><a href="#smartcore.api.device.traits.PullEmergencyResponse">PullEmergencyResponse</a> stream</td>
-                <td><p></p></td>
+                <td><p>Be notified of changes to the emergency state</p></td>
               </tr>
             
           </tbody>

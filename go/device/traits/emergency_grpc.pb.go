@@ -17,8 +17,11 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type EmergencyApiClient interface {
+	// Get the current emergency state
 	GetEmergency(ctx context.Context, in *GetEmergencyRequest, opts ...grpc.CallOption) (*Emergency, error)
+	// Update the current emergency state
 	UpdateEmergency(ctx context.Context, in *UpdateEmergencyRequest, opts ...grpc.CallOption) (*Emergency, error)
+	// Be notified of changes to the emergency state
 	PullEmergency(ctx context.Context, in *PullEmergencyRequest, opts ...grpc.CallOption) (EmergencyApi_PullEmergencyClient, error)
 }
 
@@ -84,8 +87,11 @@ func (x *emergencyApiPullEmergencyClient) Recv() (*PullEmergencyResponse, error)
 // All implementations must embed UnimplementedEmergencyApiServer
 // for forward compatibility
 type EmergencyApiServer interface {
+	// Get the current emergency state
 	GetEmergency(context.Context, *GetEmergencyRequest) (*Emergency, error)
+	// Update the current emergency state
 	UpdateEmergency(context.Context, *UpdateEmergencyRequest) (*Emergency, error)
+	// Be notified of changes to the emergency state
 	PullEmergency(*PullEmergencyRequest, EmergencyApi_PullEmergencyServer) error
 	mustEmbedUnimplementedEmergencyApiServer()
 }

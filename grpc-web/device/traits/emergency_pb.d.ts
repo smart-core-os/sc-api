@@ -4,6 +4,20 @@ import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 
+export class EmergencyApiAttributes extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EmergencyApiAttributes.AsObject;
+  static toObject(includeInstance: boolean, msg: EmergencyApiAttributes): EmergencyApiAttributes.AsObject;
+  static serializeBinaryToWriter(message: EmergencyApiAttributes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EmergencyApiAttributes;
+  static deserializeBinaryFromReader(message: EmergencyApiAttributes, reader: jspb.BinaryReader): EmergencyApiAttributes;
+}
+
+export namespace EmergencyApiAttributes {
+  export type AsObject = {
+  }
+}
+
 export class Emergency extends jspb.Message {
   getLevel(): EmergencyLevel;
   setLevel(value: EmergencyLevel): Emergency;
