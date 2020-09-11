@@ -20,8 +20,9 @@ Smart home companies tend to have a concept similar to traits, here are a list o
 
 * [Google Smart Home device traits]
 * [Amazon Alexa capability interfaces]
-* Apple HomeKit Characteristics
+* [Apple HomeKit Characteristics]
 
 [protobuf traits folder]: protobuf/device/traits/
 [Google Smart Home device traits]: https://developers.google.com/actions/smarthome/traits/
 [Amazon Alexa capability interfaces]: https://developer.amazon.com/docs/device-apis/list-of-interfaces.html
+[Apple HomeKit Characteristics]: https://developer.apple.com/documentation/homekit/hmcharacteristic/characteristic_types
