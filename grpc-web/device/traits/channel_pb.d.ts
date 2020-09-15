@@ -148,10 +148,10 @@ export namespace PullChosenChannelRequest {
 }
 
 export class PullChosenChannelResponse extends jspb.Message {
-  getChangeList(): Array<ChosenChannelChange>;
-  setChangeList(value: Array<ChosenChannelChange>): PullChosenChannelResponse;
-  clearChangeList(): PullChosenChannelResponse;
-  addChange(value?: ChosenChannelChange, index?: number): ChosenChannelChange;
+  getChangesList(): Array<ChosenChannelChange>;
+  setChangesList(value: Array<ChosenChannelChange>): PullChosenChannelResponse;
+  clearChangesList(): PullChosenChannelResponse;
+  addChanges(value?: ChosenChannelChange, index?: number): ChosenChannelChange;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullChosenChannelResponse.AsObject;
@@ -163,7 +163,7 @@ export class PullChosenChannelResponse extends jspb.Message {
 
 export namespace PullChosenChannelResponse {
   export type AsObject = {
-    changeList: Array<ChosenChannelChange.AsObject>,
+    changesList: Array<ChosenChannelChange.AsObject>,
   }
 }
 

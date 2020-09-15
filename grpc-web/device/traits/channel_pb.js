@@ -1302,7 +1302,7 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.toObject =
  */
 proto.smartcore.api.device.traits.PullChosenChannelResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changeList: jspb.Message.toObjectList(msg.getChangeList(),
+    changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.api.device.traits.ChosenChannelChange.toObject, includeInstance)
   };
 
@@ -1343,7 +1343,7 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.deserializeBinaryFro
     case 1:
       var value = new proto.smartcore.api.device.traits.ChosenChannelChange;
       reader.readMessage(value,proto.smartcore.api.device.traits.ChosenChannelChange.deserializeBinaryFromReader);
-      msg.addChange(value);
+      msg.addChanges(value);
       break;
     default:
       reader.skipField();
@@ -1374,7 +1374,7 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.serializeB
  */
 proto.smartcore.api.device.traits.PullChosenChannelResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getChangeList();
+  f = message.getChangesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -1386,10 +1386,10 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.serializeBinaryToWri
 
 
 /**
- * repeated ChosenChannelChange change = 1;
+ * repeated ChosenChannelChange changes = 1;
  * @return {!Array<!proto.smartcore.api.device.traits.ChosenChannelChange>}
  */
-proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.getChangeList = function() {
+proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.getChangesList = function() {
   return /** @type{!Array<!proto.smartcore.api.device.traits.ChosenChannelChange>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.smartcore.api.device.traits.ChosenChannelChange, 1));
 };
@@ -1399,7 +1399,7 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.getChangeL
  * @param {!Array<!proto.smartcore.api.device.traits.ChosenChannelChange>} value
  * @return {!proto.smartcore.api.device.traits.PullChosenChannelResponse} returns this
 */
-proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.setChangeList = function(value) {
+proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.setChangesList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -1409,7 +1409,7 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.setChangeL
  * @param {number=} opt_index
  * @return {!proto.smartcore.api.device.traits.ChosenChannelChange}
  */
-proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.addChange = function(opt_value, opt_index) {
+proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.addChanges = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.api.device.traits.ChosenChannelChange, opt_index);
 };
 
@@ -1418,8 +1418,8 @@ proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.addChange 
  * Clears the list making it empty but non-null.
  * @return {!proto.smartcore.api.device.traits.PullChosenChannelResponse} returns this
  */
-proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.clearChangeList = function() {
-  return this.setChangeList([]);
+proto.smartcore.api.device.traits.PullChosenChannelResponse.prototype.clearChangesList = function() {
+  return this.setChangesList([]);
 };
 
 
