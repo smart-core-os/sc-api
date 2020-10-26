@@ -179,6 +179,11 @@ export class AirTemperatureState extends jspb.Message {
   hasAmbientHumidity(): boolean;
   clearAmbientHumidity(): AirTemperatureState;
 
+  getDewPoint(): types_unit_pb.Temperature | undefined;
+  setDewPoint(value?: types_unit_pb.Temperature): AirTemperatureState;
+  hasDewPoint(): boolean;
+  clearDewPoint(): AirTemperatureState;
+
   getTemperatureGoalCase(): AirTemperatureState.TemperatureGoalCase;
 
   serializeBinary(): Uint8Array;
@@ -197,6 +202,7 @@ export namespace AirTemperatureState {
     temperatureRange?: TemperatureRange.AsObject,
     ambientTemperature?: types_unit_pb.Temperature.AsObject,
     ambientHumidity?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    dewPoint?: types_unit_pb.Temperature.AsObject,
   }
 
   export enum TemperatureGoalCase { 

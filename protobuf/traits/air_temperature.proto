@@ -119,6 +119,8 @@ message AirTemperatureState {
   smartcore.api.types.Temperature ambient_temperature = 5;
   // Optional, read-only. The ambient humidity as read by the device
   google.protobuf.FloatValue ambient_humidity = 6;
+  // Optional, read-only. The dew-point as read by the device
+  smartcore.api.types.Temperature dew_point = 7;
 }
 
 // A setting for devices that target a temperature between a range.
