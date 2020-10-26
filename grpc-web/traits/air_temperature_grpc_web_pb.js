@@ -85,8 +85,8 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient =
  *   !proto.smartcore.traits.GetAirTemperatureRequest,
  *   !proto.smartcore.traits.AirTemperature>}
  */
-const methodDescriptor_AirTemperatureApi_GetState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.AirTemperatureApi/GetState',
+const methodDescriptor_AirTemperatureApi_GetAirTemperature = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirTemperatureApi/GetAirTemperature',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetAirTemperatureRequest,
   proto.smartcore.traits.AirTemperature,
@@ -107,7 +107,7 @@ const methodDescriptor_AirTemperatureApi_GetState = new grpc.web.MethodDescripto
  *   !proto.smartcore.traits.GetAirTemperatureRequest,
  *   !proto.smartcore.traits.AirTemperature>}
  */
-const methodInfo_AirTemperatureApi_GetState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AirTemperatureApi_GetAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.AirTemperature,
   /**
    * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request
@@ -130,13 +130,13 @@ const methodInfo_AirTemperatureApi_GetState = new grpc.web.AbstractClientBase.Me
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirTemperatureApiClient.prototype.getState =
+proto.smartcore.traits.AirTemperatureApiClient.prototype.getAirTemperature =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/GetState',
+      '/smartcore.traits.AirTemperatureApi/GetAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_GetState,
+      methodDescriptor_AirTemperatureApi_GetAirTemperature,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.getState =
  * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.getState =
+proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.getAirTemperature =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/GetState',
+      '/smartcore.traits.AirTemperatureApi/GetAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_GetState);
+      methodDescriptor_AirTemperatureApi_GetAirTemperature);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.getState =
  *   !proto.smartcore.traits.UpdateAirTemperatureRequest,
  *   !proto.smartcore.traits.AirTemperature>}
  */
-const methodDescriptor_AirTemperatureApi_UpdateState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.AirTemperatureApi/UpdateState',
+const methodDescriptor_AirTemperatureApi_UpdateAirTemperature = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirTemperatureApi/UpdateAirTemperature',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateAirTemperatureRequest,
   proto.smartcore.traits.AirTemperature,
@@ -187,7 +187,7 @@ const methodDescriptor_AirTemperatureApi_UpdateState = new grpc.web.MethodDescri
  *   !proto.smartcore.traits.UpdateAirTemperatureRequest,
  *   !proto.smartcore.traits.AirTemperature>}
  */
-const methodInfo_AirTemperatureApi_UpdateState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AirTemperatureApi_UpdateAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.AirTemperature,
   /**
    * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request
@@ -210,13 +210,13 @@ const methodInfo_AirTemperatureApi_UpdateState = new grpc.web.AbstractClientBase
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirTemperatureApiClient.prototype.updateState =
+proto.smartcore.traits.AirTemperatureApiClient.prototype.updateAirTemperature =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/UpdateState',
+      '/smartcore.traits.AirTemperatureApi/UpdateAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_UpdateState,
+      methodDescriptor_AirTemperatureApi_UpdateAirTemperature,
       callback);
 };
 
@@ -229,13 +229,13 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.updateState =
  * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.updateState =
+proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.updateAirTemperature =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/UpdateState',
+      '/smartcore.traits.AirTemperatureApi/UpdateAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_UpdateState);
+      methodDescriptor_AirTemperatureApi_UpdateAirTemperature);
 };
 
 
@@ -245,8 +245,8 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.updateState =
  *   !proto.smartcore.traits.PullAirTemperatureRequest,
  *   !proto.smartcore.traits.PullAirTemperatureResponse>}
  */
-const methodDescriptor_AirTemperatureApi_PullState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.AirTemperatureApi/PullState',
+const methodDescriptor_AirTemperatureApi_PullAirTemperature = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirTemperatureApi/PullAirTemperature',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullAirTemperatureRequest,
   proto.smartcore.traits.PullAirTemperatureResponse,
@@ -267,7 +267,7 @@ const methodDescriptor_AirTemperatureApi_PullState = new grpc.web.MethodDescript
  *   !proto.smartcore.traits.PullAirTemperatureRequest,
  *   !proto.smartcore.traits.PullAirTemperatureResponse>}
  */
-const methodInfo_AirTemperatureApi_PullState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AirTemperatureApi_PullAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullAirTemperatureResponse,
   /**
    * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request
@@ -287,13 +287,13 @@ const methodInfo_AirTemperatureApi_PullState = new grpc.web.AbstractClientBase.M
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirTemperatureApiClient.prototype.pullState =
+proto.smartcore.traits.AirTemperatureApiClient.prototype.pullAirTemperature =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/PullState',
+      '/smartcore.traits.AirTemperatureApi/PullAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_PullState);
+      methodDescriptor_AirTemperatureApi_PullAirTemperature);
 };
 
 
@@ -304,13 +304,13 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.pullState =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullState =
+proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullAirTemperature =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.AirTemperatureApi/PullState',
+      '/smartcore.traits.AirTemperatureApi/PullAirTemperature',
       request,
       metadata || {},
-      methodDescriptor_AirTemperatureApi_PullState);
+      methodDescriptor_AirTemperatureApi_PullAirTemperature);
 };
 
 

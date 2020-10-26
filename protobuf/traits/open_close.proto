@@ -22,7 +22,7 @@ service OpenCloseApi {
   rpc Stop (StopOpenCloseRequest) returns (OpenClosePositions);
 
   // Get notified of changes to the OpenCloseState of a device
-  rpc Pull (PullOpenClosePositionsRequest) returns (stream PullOpenClosePositionsResponse);
+  rpc PullPositions (PullOpenClosePositionsRequest) returns (stream PullOpenClosePositionsResponse);
 }
 
 // Trait.attribute for OpenClose devices

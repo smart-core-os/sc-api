@@ -29,7 +29,7 @@ export class OpenCloseApiClient {
                response: traits_open_close_pb.OpenClosePositions) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
-  pull(
+  pullPositions(
     request: traits_open_close_pb.PullOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenClosePositionsResponse>;
@@ -56,7 +56,7 @@ export class OpenCloseApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<traits_open_close_pb.OpenClosePositions>;
 
-  pull(
+  pullPositions(
     request: traits_open_close_pb.PullOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenClosePositionsResponse>;

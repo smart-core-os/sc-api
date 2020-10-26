@@ -17,9 +17,9 @@ import "types/number.proto";
 // Trait for devices that can report either numeric or descriptive readings about air quality and comfort.
 service AirQualitySensorApi {
   // Get the current state of all reading this device supports
-  rpc GetState (GetAirQualityRequest) returns (AirQuality);
+  rpc GetAirQuality (GetAirQualityRequest) returns (AirQuality);
   // Be notified of changes to any reading
-  rpc PullState (PullAirQualityRequest) returns (stream PullAirQualityResponse);
+  rpc PullAirQuality (PullAirQualityRequest) returns (stream PullAirQualityResponse);
 }
 
 // Trait.attribute describing capabilities of the AirQuality device

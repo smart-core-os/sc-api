@@ -321,8 +321,8 @@ proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.stop =
  *   !proto.smartcore.traits.PullOpenClosePositionsRequest,
  *   !proto.smartcore.traits.PullOpenClosePositionsResponse>}
  */
-const methodDescriptor_OpenCloseApi_Pull = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OpenCloseApi/Pull',
+const methodDescriptor_OpenCloseApi_PullPositions = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OpenCloseApi/PullPositions',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullOpenClosePositionsRequest,
   proto.smartcore.traits.PullOpenClosePositionsResponse,
@@ -343,7 +343,7 @@ const methodDescriptor_OpenCloseApi_Pull = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.PullOpenClosePositionsRequest,
  *   !proto.smartcore.traits.PullOpenClosePositionsResponse>}
  */
-const methodInfo_OpenCloseApi_Pull = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_OpenCloseApi_PullPositions = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullOpenClosePositionsResponse,
   /**
    * @param {!proto.smartcore.traits.PullOpenClosePositionsRequest} request
@@ -363,13 +363,13 @@ const methodInfo_OpenCloseApi_Pull = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenClosePositionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OpenCloseApiClient.prototype.pull =
+proto.smartcore.traits.OpenCloseApiClient.prototype.pullPositions =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/Pull',
+      '/smartcore.traits.OpenCloseApi/PullPositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_Pull);
+      methodDescriptor_OpenCloseApi_PullPositions);
 };
 
 
@@ -380,13 +380,13 @@ proto.smartcore.traits.OpenCloseApiClient.prototype.pull =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenClosePositionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.pull =
+proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.pullPositions =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/Pull',
+      '/smartcore.traits.OpenCloseApi/PullPositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_Pull);
+      methodDescriptor_OpenCloseApi_PullPositions);
 };
 
 

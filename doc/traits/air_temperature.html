@@ -628,14 +628,14 @@ example)</p></td>
           <tbody>
             
               <tr>
-                <td>GetState</td>
+                <td>GetAirTemperature</td>
                 <td><a href="#smartcore.traits.GetAirTemperatureRequest">GetAirTemperatureRequest</a></td>
                 <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                 <td><p>Get the current state of the device</p></td>
               </tr>
             
               <tr>
-                <td>UpdateState</td>
+                <td>UpdateAirTemperature</td>
                 <td><a href="#smartcore.traits.UpdateAirTemperatureRequest">UpdateAirTemperatureRequest</a></td>
                 <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                 <td><p>Update the target state for the device. the returned state may not be complete but will indicate at least the
@@ -643,12 +643,12 @@ current values for any set fields as part of the request.</p></td>
               </tr>
             
               <tr>
-                <td>PullState</td>
+                <td>PullAirTemperature</td>
                 <td><a href="#smartcore.traits.PullAirTemperatureRequest">PullAirTemperatureRequest</a></td>
                 <td><a href="#smartcore.traits.PullAirTemperatureResponse">PullAirTemperatureResponse</a> stream</td>
                 <td><p>Request notification of change to the device state. The messages in the response stream may not be complete
-but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
-method.</p></td>
+but will indicate the changes as they occur. They should be merged with the full state as fetched by the
+GetAirTemperature method.</p></td>
               </tr>
             
           </tbody>

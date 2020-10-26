@@ -85,8 +85,8 @@ proto.smartcore.traits.AirQualitySensorApiPromiseClient =
  *   !proto.smartcore.traits.GetAirQualityRequest,
  *   !proto.smartcore.traits.AirQuality>}
  */
-const methodDescriptor_AirQualitySensorApi_GetState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.AirQualitySensorApi/GetState',
+const methodDescriptor_AirQualitySensorApi_GetAirQuality = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirQualitySensorApi/GetAirQuality',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetAirQualityRequest,
   proto.smartcore.traits.AirQuality,
@@ -107,7 +107,7 @@ const methodDescriptor_AirQualitySensorApi_GetState = new grpc.web.MethodDescrip
  *   !proto.smartcore.traits.GetAirQualityRequest,
  *   !proto.smartcore.traits.AirQuality>}
  */
-const methodInfo_AirQualitySensorApi_GetState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AirQualitySensorApi_GetAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.AirQuality,
   /**
    * @param {!proto.smartcore.traits.GetAirQualityRequest} request
@@ -130,13 +130,13 @@ const methodInfo_AirQualitySensorApi_GetState = new grpc.web.AbstractClientBase.
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirQuality>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirQualitySensorApiClient.prototype.getState =
+proto.smartcore.traits.AirQualitySensorApiClient.prototype.getAirQuality =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.AirQualitySensorApi/GetState',
+      '/smartcore.traits.AirQualitySensorApi/GetAirQuality',
       request,
       metadata || {},
-      methodDescriptor_AirQualitySensorApi_GetState,
+      methodDescriptor_AirQualitySensorApi_GetAirQuality,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.AirQualitySensorApiClient.prototype.getState =
  * @return {!Promise<!proto.smartcore.traits.AirQuality>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.getState =
+proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.getAirQuality =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.AirQualitySensorApi/GetState',
+      '/smartcore.traits.AirQualitySensorApi/GetAirQuality',
       request,
       metadata || {},
-      methodDescriptor_AirQualitySensorApi_GetState);
+      methodDescriptor_AirQualitySensorApi_GetAirQuality);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.getState =
  *   !proto.smartcore.traits.PullAirQualityRequest,
  *   !proto.smartcore.traits.PullAirQualityResponse>}
  */
-const methodDescriptor_AirQualitySensorApi_PullState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.AirQualitySensorApi/PullState',
+const methodDescriptor_AirQualitySensorApi_PullAirQuality = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirQualitySensorApi/PullAirQuality',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullAirQualityRequest,
   proto.smartcore.traits.PullAirQualityResponse,
@@ -187,7 +187,7 @@ const methodDescriptor_AirQualitySensorApi_PullState = new grpc.web.MethodDescri
  *   !proto.smartcore.traits.PullAirQualityRequest,
  *   !proto.smartcore.traits.PullAirQualityResponse>}
  */
-const methodInfo_AirQualitySensorApi_PullState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AirQualitySensorApi_PullAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullAirQualityResponse,
   /**
    * @param {!proto.smartcore.traits.PullAirQualityRequest} request
@@ -207,13 +207,13 @@ const methodInfo_AirQualitySensorApi_PullState = new grpc.web.AbstractClientBase
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirQualitySensorApiClient.prototype.pullState =
+proto.smartcore.traits.AirQualitySensorApiClient.prototype.pullAirQuality =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.AirQualitySensorApi/PullState',
+      '/smartcore.traits.AirQualitySensorApi/PullAirQuality',
       request,
       metadata || {},
-      methodDescriptor_AirQualitySensorApi_PullState);
+      methodDescriptor_AirQualitySensorApi_PullAirQuality);
 };
 
 
@@ -224,13 +224,13 @@ proto.smartcore.traits.AirQualitySensorApiClient.prototype.pullState =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.pullState =
+proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.pullAirQuality =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.AirQualitySensorApi/PullState',
+      '/smartcore.traits.AirQualitySensorApi/PullAirQuality',
       request,
       metadata || {},
-      methodDescriptor_AirQualitySensorApi_PullState);
+      methodDescriptor_AirQualitySensorApi_PullAirQuality);
 };
 
 

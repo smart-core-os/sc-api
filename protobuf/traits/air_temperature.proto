@@ -18,16 +18,16 @@ import "types/unit.proto";
 // system.
 service AirTemperatureApi {
   // Get the current state of the device
-  rpc GetState (GetAirTemperatureRequest) returns (AirTemperature);
+  rpc GetAirTemperature (GetAirTemperatureRequest) returns (AirTemperature);
 
   // Update the target state for the device. the returned state may not be complete but will indicate at least the
   // current values for any set fields as part of the request.
-  rpc UpdateState (UpdateAirTemperatureRequest) returns (AirTemperature);
+  rpc UpdateAirTemperature (UpdateAirTemperatureRequest) returns (AirTemperature);
 
   // Request notification of change to the device state. The messages in the response stream may not be complete
-  // but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
-  // method.
-  rpc PullState (PullAirTemperatureRequest) returns (stream PullAirTemperatureResponse);
+  // but will indicate the changes as they occur. They should be merged with the full state as fetched by the
+  // GetAirTemperature method.
+  rpc PullAirTemperature (PullAirTemperatureRequest) returns (stream PullAirTemperatureResponse);
 }
 
 // Trait.attributes message for describing this device trait.
