@@ -4,7 +4,6 @@ package traits
 
 import (
 	context "context"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,16 +21,6 @@ type OccupancyApiClient interface {
 	GetOccupancy(ctx context.Context, in *GetOccupancyRequest, opts ...grpc.CallOption) (*Occupancy, error)
 	// subscribe to changes in the motion state for the device.
 	PullOccupancy(ctx context.Context, in *PullOccupancyRequest, opts ...grpc.CallOption) (OccupancyApi_PullOccupancyClient, error)
-	// Create a new override for the occupancy
-	CreateOccupancyOverride(ctx context.Context, in *CreateOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error)
-	// Update an existing override
-	UpdateOccupancyOverride(ctx context.Context, in *UpdateOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error)
-	// Delete an override
-	DeleteOccupancyOverride(ctx context.Context, in *DeleteOccupancyOverrideRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Get an existing override
-	GetOccupancyOverride(ctx context.Context, in *GetOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error)
-	// List all overrides. The device may discard overrides that have expired.
-	ListOccupancyOverrides(ctx context.Context, in *ListOccupancyOverridesRequest, opts ...grpc.CallOption) (*ListOccupancyOverridesResponse, error)
 }
 
 type occupancyApiClient struct {
@@ -83,51 +72,6 @@ func (x *occupancyApiPullOccupancyClient) Recv() (*PullOccupancyResponse, error)
 	return m, nil
 }
 
-func (c *occupancyApiClient) CreateOccupancyOverride(ctx context.Context, in *CreateOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error) {
-	out := new(OccupancyOverride)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancyApi/CreateOccupancyOverride", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *occupancyApiClient) UpdateOccupancyOverride(ctx context.Context, in *UpdateOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error) {
-	out := new(OccupancyOverride)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancyApi/UpdateOccupancyOverride", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *occupancyApiClient) DeleteOccupancyOverride(ctx context.Context, in *DeleteOccupancyOverrideRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancyApi/DeleteOccupancyOverride", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *occupancyApiClient) GetOccupancyOverride(ctx context.Context, in *GetOccupancyOverrideRequest, opts ...grpc.CallOption) (*OccupancyOverride, error) {
-	out := new(OccupancyOverride)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancyApi/GetOccupancyOverride", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *occupancyApiClient) ListOccupancyOverrides(ctx context.Context, in *ListOccupancyOverridesRequest, opts ...grpc.CallOption) (*ListOccupancyOverridesResponse, error) {
-	out := new(ListOccupancyOverridesResponse)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancyApi/ListOccupancyOverrides", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // OccupancyApiServer is the server API for OccupancyApi service.
 // All implementations must embed UnimplementedOccupancyApiServer
 // for forward compatibility
@@ -136,16 +80,6 @@ type OccupancyApiServer interface {
 	GetOccupancy(context.Context, *GetOccupancyRequest) (*Occupancy, error)
 	// subscribe to changes in the motion state for the device.
 	PullOccupancy(*PullOccupancyRequest, OccupancyApi_PullOccupancyServer) error
-	// Create a new override for the occupancy
-	CreateOccupancyOverride(context.Context, *CreateOccupancyOverrideRequest) (*OccupancyOverride, error)
-	// Update an existing override
-	UpdateOccupancyOverride(context.Context, *UpdateOccupancyOverrideRequest) (*OccupancyOverride, error)
-	// Delete an override
-	DeleteOccupancyOverride(context.Context, *DeleteOccupancyOverrideRequest) (*empty.Empty, error)
-	// Get an existing override
-	GetOccupancyOverride(context.Context, *GetOccupancyOverrideRequest) (*OccupancyOverride, error)
-	// List all overrides. The device may discard overrides that have expired.
-	ListOccupancyOverrides(context.Context, *ListOccupancyOverridesRequest) (*ListOccupancyOverridesResponse, error)
 	mustEmbedUnimplementedOccupancyApiServer()
 }
 
@@ -158,21 +92,6 @@ func (*UnimplementedOccupancyApiServer) GetOccupancy(context.Context, *GetOccupa
 }
 func (*UnimplementedOccupancyApiServer) PullOccupancy(*PullOccupancyRequest, OccupancyApi_PullOccupancyServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullOccupancy not implemented")
-}
-func (*UnimplementedOccupancyApiServer) CreateOccupancyOverride(context.Context, *CreateOccupancyOverrideRequest) (*OccupancyOverride, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateOccupancyOverride not implemented")
-}
-func (*UnimplementedOccupancyApiServer) UpdateOccupancyOverride(context.Context, *UpdateOccupancyOverrideRequest) (*OccupancyOverride, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateOccupancyOverride not implemented")
-}
-func (*UnimplementedOccupancyApiServer) DeleteOccupancyOverride(context.Context, *DeleteOccupancyOverrideRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteOccupancyOverride not implemented")
-}
-func (*UnimplementedOccupancyApiServer) GetOccupancyOverride(context.Context, *GetOccupancyOverrideRequest) (*OccupancyOverride, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOccupancyOverride not implemented")
-}
-func (*UnimplementedOccupancyApiServer) ListOccupancyOverrides(context.Context, *ListOccupancyOverridesRequest) (*ListOccupancyOverridesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListOccupancyOverrides not implemented")
 }
 func (*UnimplementedOccupancyApiServer) mustEmbedUnimplementedOccupancyApiServer() {}
 
@@ -219,96 +138,6 @@ func (x *occupancyApiPullOccupancyServer) Send(m *PullOccupancyResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _OccupancyApi_CreateOccupancyOverride_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateOccupancyOverrideRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OccupancyApiServer).CreateOccupancyOverride(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OccupancyApi/CreateOccupancyOverride",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OccupancyApiServer).CreateOccupancyOverride(ctx, req.(*CreateOccupancyOverrideRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OccupancyApi_UpdateOccupancyOverride_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateOccupancyOverrideRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OccupancyApiServer).UpdateOccupancyOverride(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OccupancyApi/UpdateOccupancyOverride",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OccupancyApiServer).UpdateOccupancyOverride(ctx, req.(*UpdateOccupancyOverrideRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OccupancyApi_DeleteOccupancyOverride_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteOccupancyOverrideRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OccupancyApiServer).DeleteOccupancyOverride(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OccupancyApi/DeleteOccupancyOverride",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OccupancyApiServer).DeleteOccupancyOverride(ctx, req.(*DeleteOccupancyOverrideRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OccupancyApi_GetOccupancyOverride_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetOccupancyOverrideRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OccupancyApiServer).GetOccupancyOverride(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OccupancyApi/GetOccupancyOverride",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OccupancyApiServer).GetOccupancyOverride(ctx, req.(*GetOccupancyOverrideRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OccupancyApi_ListOccupancyOverrides_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListOccupancyOverridesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OccupancyApiServer).ListOccupancyOverrides(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OccupancyApi/ListOccupancyOverrides",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OccupancyApiServer).ListOccupancyOverrides(ctx, req.(*ListOccupancyOverridesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _OccupancyApi_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OccupancyApi",
 	HandlerType: (*OccupancyApiServer)(nil),
@@ -316,26 +145,6 @@ var _OccupancyApi_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetOccupancy",
 			Handler:    _OccupancyApi_GetOccupancy_Handler,
-		},
-		{
-			MethodName: "CreateOccupancyOverride",
-			Handler:    _OccupancyApi_CreateOccupancyOverride_Handler,
-		},
-		{
-			MethodName: "UpdateOccupancyOverride",
-			Handler:    _OccupancyApi_UpdateOccupancyOverride_Handler,
-		},
-		{
-			MethodName: "DeleteOccupancyOverride",
-			Handler:    _OccupancyApi_DeleteOccupancyOverride_Handler,
-		},
-		{
-			MethodName: "GetOccupancyOverride",
-			Handler:    _OccupancyApi_GetOccupancyOverride_Handler,
-		},
-		{
-			MethodName: "ListOccupancyOverrides",
-			Handler:    _OccupancyApi_ListOccupancyOverrides_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

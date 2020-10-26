@@ -179,27 +179,7 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.CreateOccupancyOverrideRequest"><span class="badge">M</span>CreateOccupancyOverrideRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.DeleteOccupancyOverrideRequest"><span class="badge">M</span>DeleteOccupancyOverrideRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.GetOccupancyOverrideRequest"><span class="badge">M</span>GetOccupancyOverrideRequest</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetOccupancyRequest"><span class="badge">M</span>GetOccupancyRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.ListOccupancyOverridesRequest"><span class="badge">M</span>ListOccupancyOverridesRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.ListOccupancyOverridesResponse"><span class="badge">M</span>ListOccupancyOverridesResponse</a>
                 </li>
               
                 <li>
@@ -215,19 +195,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OccupancyOverride"><span class="badge">M</span>OccupancyOverride</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.PullOccupancyRequest"><span class="badge">M</span>PullOccupancyRequest</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.traits.PullOccupancyResponse"><span class="badge">M</span>PullOccupancyResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.UpdateOccupancyOverrideRequest"><span class="badge">M</span>UpdateOccupancyOverrideRequest</a>
                 </li>
               
               
@@ -256,99 +228,6 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.CreateOccupancyOverrideRequest">CreateOccupancyOverrideRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the device name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>override</td>
-                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.DeleteOccupancyOverrideRequest">DeleteOccupancyOverrideRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>device_name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the device name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>override_name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.GetOccupancyOverrideRequest">GetOccupancyOverrideRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>device_name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the device name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>override_name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.GetOccupancyRequest">GetOccupancyRequest</h3>
         <p>request to fetch the current state of the device</p>
 
@@ -364,57 +243,6 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>the name for the device to get the occupancy state for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.ListOccupancyOverridesRequest">ListOccupancyOverridesRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the device name
-
-todo: support filters on expired or pending, etc
-todo: support paging if we can be bothered </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.ListOccupancyOverridesResponse">ListOccupancyOverridesResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>overrides</td>
-                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -500,13 +328,6 @@ confidence is unknown </p></td>
 total capacity for the space, it&#39;s the capacity of the sensor </p></td>
                 </tr>
               
-                <tr>
-                  <td>supports_override</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>does the device support reporting a manual occupancy override, typically used for testing </p></td>
-                </tr>
-              
             </tbody>
           </table>
 
@@ -543,68 +364,6 @@ total capacity for the space, it&#39;s the capacity of the sensor </p></td>
                   <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
                   <td></td>
                   <td><p>the new state for the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OccupancyOverride">OccupancyOverride</h3>
-        <p>Describes a manual override signal for an occupancy device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The unique name of the override so it can be updated or removed. Present during read, required for update, one will
-be created if absent for create </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.OccupancyState">OccupancyState</a></td>
-                  <td></td>
-                  <td><p>Manually override the state of the occupancy </p></td>
-                </tr>
-              
-                <tr>
-                  <td>people_count</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p>Manually override the number of people reported </p></td>
-                </tr>
-              
-                <tr>
-                  <td>begin_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>Automatically begin the manual override at this time. If absent then the override begins immediately. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>expire_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>Automatically expire the manual override after this time. If absent then the override does not expire and should be
-removed manually. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>reason</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Optional human readable reason to help diagnose this manual override. If the manual override is active then this
-should be included in the Occupancy reasons list. </p></td>
                 </tr>
               
             </tbody>
@@ -653,44 +412,6 @@ should be included in the Occupancy reasons list. </p></td>
                   <td><a href="#smartcore.traits.OccupancyChange">OccupancyChange</a></td>
                   <td>repeated</td>
                   <td><p>the list of changes that have occurred since the last event </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.UpdateOccupancyOverrideRequest">UpdateOccupancyOverrideRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the device name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>override</td>
-                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -762,41 +483,6 @@ moving for other reasons)</p></td>
                 <td><a href="#smartcore.traits.PullOccupancyRequest">PullOccupancyRequest</a></td>
                 <td><a href="#smartcore.traits.PullOccupancyResponse">PullOccupancyResponse</a> stream</td>
                 <td><p>subscribe to changes in the motion state for the device.</p></td>
-              </tr>
-            
-              <tr>
-                <td>CreateOccupancyOverride</td>
-                <td><a href="#smartcore.traits.CreateOccupancyOverrideRequest">CreateOccupancyOverrideRequest</a></td>
-                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                <td><p>Create a new override for the occupancy</p></td>
-              </tr>
-            
-              <tr>
-                <td>UpdateOccupancyOverride</td>
-                <td><a href="#smartcore.traits.UpdateOccupancyOverrideRequest">UpdateOccupancyOverrideRequest</a></td>
-                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                <td><p>Update an existing override</p></td>
-              </tr>
-            
-              <tr>
-                <td>DeleteOccupancyOverride</td>
-                <td><a href="#smartcore.traits.DeleteOccupancyOverrideRequest">DeleteOccupancyOverrideRequest</a></td>
-                <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
-                <td><p>Delete an override</p></td>
-              </tr>
-            
-              <tr>
-                <td>GetOccupancyOverride</td>
-                <td><a href="#smartcore.traits.GetOccupancyOverrideRequest">GetOccupancyOverrideRequest</a></td>
-                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
-                <td><p>Get an existing override</p></td>
-              </tr>
-            
-              <tr>
-                <td>ListOccupancyOverrides</td>
-                <td><a href="#smartcore.traits.ListOccupancyOverridesRequest">ListOccupancyOverridesRequest</a></td>
-                <td><a href="#smartcore.traits.ListOccupancyOverridesResponse">ListOccupancyOverridesResponse</a></td>
-                <td><p>List all overrides. The device may discard overrides that have expired.</p></td>
               </tr>
             
           </tbody>

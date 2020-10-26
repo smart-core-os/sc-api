@@ -1,16 +1,11 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
-import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 
 export class OccupancyAttributes extends jspb.Message {
   getMaxPeople(): number;
   setMaxPeople(value: number): OccupancyAttributes;
-
-  getSupportsOverride(): boolean;
-  setSupportsOverride(value: boolean): OccupancyAttributes;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OccupancyAttributes.AsObject;
@@ -23,7 +18,6 @@ export class OccupancyAttributes extends jspb.Message {
 export namespace OccupancyAttributes {
   export type AsObject = {
     maxPeople: number,
-    supportsOverride: boolean,
   }
 }
 
@@ -62,48 +56,6 @@ export namespace Occupancy {
     stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     reasonsList: Array<string>,
     confidence: number,
-  }
-}
-
-export class OccupancyOverride extends jspb.Message {
-  getName(): string;
-  setName(value: string): OccupancyOverride;
-
-  getState(): OccupancyState;
-  setState(value: OccupancyState): OccupancyOverride;
-
-  getPeopleCount(): number;
-  setPeopleCount(value: number): OccupancyOverride;
-
-  getBeginTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setBeginTime(value?: google_protobuf_timestamp_pb.Timestamp): OccupancyOverride;
-  hasBeginTime(): boolean;
-  clearBeginTime(): OccupancyOverride;
-
-  getExpireTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setExpireTime(value?: google_protobuf_timestamp_pb.Timestamp): OccupancyOverride;
-  hasExpireTime(): boolean;
-  clearExpireTime(): OccupancyOverride;
-
-  getReason(): string;
-  setReason(value: string): OccupancyOverride;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OccupancyOverride.AsObject;
-  static toObject(includeInstance: boolean, msg: OccupancyOverride): OccupancyOverride.AsObject;
-  static serializeBinaryToWriter(message: OccupancyOverride, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OccupancyOverride;
-  static deserializeBinaryFromReader(message: OccupancyOverride, reader: jspb.BinaryReader): OccupancyOverride;
-}
-
-export namespace OccupancyOverride {
-  export type AsObject = {
-    name: string,
-    state: OccupancyState,
-    peopleCount: number,
-    beginTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    expireTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    reason: string,
   }
 }
 
@@ -190,142 +142,6 @@ export namespace OccupancyChange {
     name: string,
     createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     occupancy?: Occupancy.AsObject,
-  }
-}
-
-export class CreateOccupancyOverrideRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): CreateOccupancyOverrideRequest;
-
-  getOverride(): OccupancyOverride | undefined;
-  setOverride(value?: OccupancyOverride): CreateOccupancyOverrideRequest;
-  hasOverride(): boolean;
-  clearOverride(): CreateOccupancyOverrideRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CreateOccupancyOverrideRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: CreateOccupancyOverrideRequest): CreateOccupancyOverrideRequest.AsObject;
-  static serializeBinaryToWriter(message: CreateOccupancyOverrideRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CreateOccupancyOverrideRequest;
-  static deserializeBinaryFromReader(message: CreateOccupancyOverrideRequest, reader: jspb.BinaryReader): CreateOccupancyOverrideRequest;
-}
-
-export namespace CreateOccupancyOverrideRequest {
-  export type AsObject = {
-    name: string,
-    override?: OccupancyOverride.AsObject,
-  }
-}
-
-export class UpdateOccupancyOverrideRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): UpdateOccupancyOverrideRequest;
-
-  getOverride(): OccupancyOverride | undefined;
-  setOverride(value?: OccupancyOverride): UpdateOccupancyOverrideRequest;
-  hasOverride(): boolean;
-  clearOverride(): UpdateOccupancyOverrideRequest;
-
-  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateOccupancyOverrideRequest;
-  hasUpdateMask(): boolean;
-  clearUpdateMask(): UpdateOccupancyOverrideRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateOccupancyOverrideRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateOccupancyOverrideRequest): UpdateOccupancyOverrideRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdateOccupancyOverrideRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateOccupancyOverrideRequest;
-  static deserializeBinaryFromReader(message: UpdateOccupancyOverrideRequest, reader: jspb.BinaryReader): UpdateOccupancyOverrideRequest;
-}
-
-export namespace UpdateOccupancyOverrideRequest {
-  export type AsObject = {
-    name: string,
-    override?: OccupancyOverride.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
-}
-
-export class DeleteOccupancyOverrideRequest extends jspb.Message {
-  getDeviceName(): string;
-  setDeviceName(value: string): DeleteOccupancyOverrideRequest;
-
-  getOverrideName(): string;
-  setOverrideName(value: string): DeleteOccupancyOverrideRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): DeleteOccupancyOverrideRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: DeleteOccupancyOverrideRequest): DeleteOccupancyOverrideRequest.AsObject;
-  static serializeBinaryToWriter(message: DeleteOccupancyOverrideRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): DeleteOccupancyOverrideRequest;
-  static deserializeBinaryFromReader(message: DeleteOccupancyOverrideRequest, reader: jspb.BinaryReader): DeleteOccupancyOverrideRequest;
-}
-
-export namespace DeleteOccupancyOverrideRequest {
-  export type AsObject = {
-    deviceName: string,
-    overrideName: string,
-  }
-}
-
-export class GetOccupancyOverrideRequest extends jspb.Message {
-  getDeviceName(): string;
-  setDeviceName(value: string): GetOccupancyOverrideRequest;
-
-  getOverrideName(): string;
-  setOverrideName(value: string): GetOccupancyOverrideRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetOccupancyOverrideRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetOccupancyOverrideRequest): GetOccupancyOverrideRequest.AsObject;
-  static serializeBinaryToWriter(message: GetOccupancyOverrideRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetOccupancyOverrideRequest;
-  static deserializeBinaryFromReader(message: GetOccupancyOverrideRequest, reader: jspb.BinaryReader): GetOccupancyOverrideRequest;
-}
-
-export namespace GetOccupancyOverrideRequest {
-  export type AsObject = {
-    deviceName: string,
-    overrideName: string,
-  }
-}
-
-export class ListOccupancyOverridesRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): ListOccupancyOverridesRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ListOccupancyOverridesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ListOccupancyOverridesRequest): ListOccupancyOverridesRequest.AsObject;
-  static serializeBinaryToWriter(message: ListOccupancyOverridesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ListOccupancyOverridesRequest;
-  static deserializeBinaryFromReader(message: ListOccupancyOverridesRequest, reader: jspb.BinaryReader): ListOccupancyOverridesRequest;
-}
-
-export namespace ListOccupancyOverridesRequest {
-  export type AsObject = {
-    name: string,
-  }
-}
-
-export class ListOccupancyOverridesResponse extends jspb.Message {
-  getOverridesList(): Array<OccupancyOverride>;
-  setOverridesList(value: Array<OccupancyOverride>): ListOccupancyOverridesResponse;
-  clearOverridesList(): ListOccupancyOverridesResponse;
-  addOverrides(value?: OccupancyOverride, index?: number): OccupancyOverride;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ListOccupancyOverridesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ListOccupancyOverridesResponse): ListOccupancyOverridesResponse.AsObject;
-  static serializeBinaryToWriter(message: ListOccupancyOverridesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ListOccupancyOverridesResponse;
-  static deserializeBinaryFromReader(message: ListOccupancyOverridesResponse, reader: jspb.BinaryReader): ListOccupancyOverridesResponse;
-}
-
-export namespace ListOccupancyOverridesResponse {
-  export type AsObject = {
-    overridesList: Array<OccupancyOverride.AsObject>,
   }
 }
 
