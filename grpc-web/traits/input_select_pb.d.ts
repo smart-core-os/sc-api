@@ -216,8 +216,8 @@ export namespace PullInputResponse {
 }
 
 export enum InputSelectFeature { 
-  AV = 0,
-  AUDIO_ONLY = 1,
-  VIDEO_ONLY = 2,
-  INDEPENDENT = 3,
+  INPUT_SELECT_FEATURE_AV = 0,
+  INPUT_SELECT_FEATURE_AUDIO_ONLY = 1,
+  INPUT_SELECT_FEATURE_VIDEO_ONLY = 2,
+  INPUT_SELECT_FEATURE_INDEPENDENT = 3,
 }

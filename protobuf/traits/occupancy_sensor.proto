@@ -32,14 +32,14 @@ message OccupancySensorAttributes {
 // Possible states for occupancy
 enum OccupancyState {
   // There are no signals to suggest either an occupied or unoccupied space
-  NO_SIGNALS = 0;
+  OCCUPANCY_STATE_NO_SIGNALS = 0;
   // The space is occupied
-  OCCUPIED = 1;
+  OCCUPANCY_STATE_OCCUPIED = 1;
   // The space is unoccupied
-  UNOCCUPIED = 2;
+  OCCUPANCY_STATE_UNOCCUPIED = 2;
   // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
   // moving for other reasons)
-  IDLE = 3;
+  OCCUPANCY_STATE_IDLE = 3;
 }
 
 // The occupancy state the device is reporting and updating

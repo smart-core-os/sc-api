@@ -1820,13 +1820,13 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.prototype.clearChangesList
  * @enum {number}
  */
 proto.smartcore.traits.OpenCloseDirection = {
-  UNSPECIFIED: 0,
-  UP: 1,
-  DOWN: 2,
-  LEFT: 3,
-  RIGHT: 4,
-  IN: 5,
-  OUT: 6
+  OPEN_CLOSE_DIRECTION_UNSPECIFIED: 0,
+  OPEN_CLOSE_DIRECTION_UP: 1,
+  OPEN_CLOSE_DIRECTION_DOWN: 2,
+  OPEN_CLOSE_DIRECTION_LEFT: 3,
+  OPEN_CLOSE_DIRECTION_RIGHT: 4,
+  OPEN_CLOSE_DIRECTION_IN: 5,
+  OPEN_CLOSE_DIRECTION_OUT: 6
 };
 
 goog.object.extend(exports, proto.smartcore.traits);

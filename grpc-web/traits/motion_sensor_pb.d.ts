@@ -136,6 +136,6 @@ export namespace PullMotionDetectionResponse {
 }
 
 export enum MotionDetectionState { 
-  NOT_DETECTED = 0,
-  DETECTED = 1,
+  MOTION_DETECTION_STATE_NOT_DETECTED = 0,
+  MOTION_DETECTION_STATE_DETECTED = 1,
 }

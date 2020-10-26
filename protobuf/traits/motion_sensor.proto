@@ -25,9 +25,9 @@ service MotionSensorApi {
 // Possible states for motion detected
 enum MotionDetectionState {
   // No motion is detected, or has been detected within the not_detected_delay period
-  NOT_DETECTED = 0;
+  MOTION_DETECTION_STATE_NOT_DETECTED = 0;
   // Motion has been detected by the device.
-  DETECTED = 1;
+  MOTION_DETECTION_STATE_DETECTED = 1;
 }
 
 // the current state of the motion sensor

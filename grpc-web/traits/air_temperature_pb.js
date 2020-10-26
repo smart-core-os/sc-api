@@ -2018,18 +2018,18 @@ proto.smartcore.traits.TemperatureRange.prototype.hasIdeal = function() {
  * @enum {number}
  */
 proto.smartcore.traits.AirTemperatureMode = {
-  UNKNOWN: 0,
-  ON: 1,
-  OFF: 2,
-  HEAT: 3,
-  COOL: 4,
-  HEAT_COOL: 5,
-  AUTO: 6,
-  FAN_ONLY: 7,
-  ECO: 8,
-  PURIFIER: 9,
-  DRY: 10,
-  LOCKED: 11
+  AIR_TEMPERATURE_MODE_UNKNOWN: 0,
+  AIR_TEMPERATURE_MODE_ON: 1,
+  AIR_TEMPERATURE_MODE_OFF: 2,
+  AIR_TEMPERATURE_MODE_HEAT: 3,
+  AIR_TEMPERATURE_MODE_COOL: 4,
+  AIR_TEMPERATURE_MODE_HEAT_COOL: 5,
+  AIR_TEMPERATURE_MODE_AUTO: 6,
+  AIR_TEMPERATURE_MODE_FAN_ONLY: 7,
+  AIR_TEMPERATURE_MODE_ECO: 8,
+  AIR_TEMPERATURE_MODE_PURIFIER: 9,
+  AIR_TEMPERATURE_MODE_DRY: 10,
+  AIR_TEMPERATURE_MODE_LOCKED: 11
 };
 
 goog.object.extend(exports, proto.smartcore.traits);

@@ -30,14 +30,14 @@ service InputSelectApi {
 // possible modes an input select device can
 enum InputSelectFeature {
   // both audio and video are treated as one. independent_av should be considered false in this mode
-  AV = 0;
+  INPUT_SELECT_FEATURE_AV = 0;
   // Only audio inputs are supported
-  AUDIO_ONLY = 1;
+  INPUT_SELECT_FEATURE_AUDIO_ONLY = 1;
   // Only video inputs are supported
-  VIDEO_ONLY = 2;
+  INPUT_SELECT_FEATURE_VIDEO_ONLY = 2;
   // Audio and video are both supported and can be selected independently if desired. The independent_av property can
   // be true in this mode only
-  INDEPENDENT = 3;
+  INPUT_SELECT_FEATURE_INDEPENDENT = 3;
 }
 
 // Trait.attributes relating to the input select device

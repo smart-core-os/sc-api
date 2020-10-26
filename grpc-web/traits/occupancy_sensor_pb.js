@@ -1230,10 +1230,10 @@ proto.smartcore.traits.PullOccupancyResponse.prototype.clearChangesList = functi
  * @enum {number}
  */
 proto.smartcore.traits.OccupancyState = {
-  NO_SIGNALS: 0,
-  OCCUPIED: 1,
-  UNOCCUPIED: 2,
-  IDLE: 3
+  OCCUPANCY_STATE_NO_SIGNALS: 0,
+  OCCUPANCY_STATE_OCCUPIED: 1,
+  OCCUPANCY_STATE_UNOCCUPIED: 2,
+  OCCUPANCY_STATE_IDLE: 3
 };
 
 goog.object.extend(exports, proto.smartcore.traits);

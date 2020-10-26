@@ -1137,8 +1137,8 @@ proto.smartcore.traits.PullMotionDetectionResponse.prototype.clearChangesList = 
  * @enum {number}
  */
 proto.smartcore.traits.MotionDetectionState = {
-  NOT_DETECTED: 0,
-  DETECTED: 1
+  MOTION_DETECTION_STATE_NOT_DETECTED: 0,
+  MOTION_DETECTION_STATE_DETECTED: 1
 };
 
 goog.object.extend(exports, proto.smartcore.traits);
