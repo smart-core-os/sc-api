@@ -175,42 +175,38 @@
         
           
           <li>
-            <a href="#traits%2fsensor.proto">traits/sensor.proto</a>
+            <a href="#traits%2fbrightness_sensor.proto">traits/brightness_sensor.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetSensorStateRequest"><span class="badge">M</span>GetSensorStateRequest</a>
+                  <a href="#smartcore.traits.AmbientBrightness"><span class="badge">M</span>AmbientBrightness</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullSensorStateRequest"><span class="badge">M</span>PullSensorStateRequest</a>
+                  <a href="#smartcore.traits.BrightnessSensorAttributes"><span class="badge">M</span>BrightnessSensorAttributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullSensorStateResponse"><span class="badge">M</span>PullSensorStateResponse</a>
+                  <a href="#smartcore.traits.GetAmbientBrightnessRequest"><span class="badge">M</span>GetAmbientBrightnessRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorAttributes"><span class="badge">M</span>SensorAttributes</a>
+                  <a href="#smartcore.traits.PullAmbientBrightnessRequest"><span class="badge">M</span>PullAmbientBrightnessRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorState"><span class="badge">M</span>SensorState</a>
+                  <a href="#smartcore.traits.PullAmbientBrightnessResponse"><span class="badge">M</span>PullAmbientBrightnessResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorStateChange"><span class="badge">M</span>SensorStateChange</a>
-                </li>
-              
-              
-                <li>
-                  <a href="#smartcore.traits.SensorComfort"><span class="badge">E</span>SensorComfort</a>
+                  <a href="#smartcore.traits.PullAmbientBrightnessResponse.Change"><span class="badge">M</span>PullAmbientBrightnessResponse.Change</a>
                 </li>
               
               
               
+              
                 <li>
-                  <a href="#smartcore.traits.Sensor"><span class="badge">S</span>Sensor</a>
+                  <a href="#smartcore.traits.BrightnessSensorApi"><span class="badge">S</span>BrightnessSensorApi</a>
                 </li>
               
             </ul>
@@ -223,12 +219,60 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/sensor.proto">traits/sensor.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/brightness_sensor.proto">traits/brightness_sensor.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.GetSensorStateRequest">GetSensorStateRequest</h3>
+        <h3 id="smartcore.traits.AmbientBrightness">AmbientBrightness</h3>
+        <p>AmbientBrightness records the light level measured by a device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>brightness_lux</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Brightness measured in LUX </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.BrightnessSensorAttributes">BrightnessSensorAttributes</h3>
+        <p>Trait.attributes describing the capabilities of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ambient_brightness_attributes</td>
+                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetAmbientBrightnessRequest">GetAmbientBrightnessRequest</h3>
         <p></p>
 
         
@@ -242,14 +286,7 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>The name of the device to request state from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields to fetch </p></td>
+                  <td><p>The name for the device. </p></td>
                 </tr>
               
             </tbody>
@@ -259,7 +296,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullSensorStateRequest">PullSensorStateRequest</h3>
+        <h3 id="smartcore.traits.PullAmbientBrightnessRequest">PullAmbientBrightnessRequest</h3>
         <p></p>
 
         
@@ -273,14 +310,7 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>The name of the device to request state from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields to pull </p></td>
+                  <td><p>The name for the device. </p></td>
                 </tr>
               
             </tbody>
@@ -290,7 +320,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullSensorStateResponse">PullSensorStateResponse</h3>
+        <h3 id="smartcore.traits.PullAmbientBrightnessResponse">PullAmbientBrightnessResponse</h3>
         <p></p>
 
         
@@ -302,7 +332,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.SensorStateChange">SensorStateChange</a></td>
+                  <td><a href="#smartcore.traits.PullAmbientBrightnessResponse.Change">PullAmbientBrightnessResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -314,98 +344,7 @@
 
         
       
-        <h3 id="smartcore.traits.SensorAttributes">SensorAttributes</h3>
-        <p>Trait.attribute describing capabilities of the Sensor device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>carbon_dioxide_level</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting CO2 levels, in parts-per-million. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>volatile_organic_compounds</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting volatile organic compounds, in parts-per-million. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>air_pressure</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting air pressure, in hPa. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>comfort</td>
-                  <td><a href="#smartcore.traits.SensorComfort">SensorComfort</a></td>
-                  <td>repeated</td>
-                  <td><p>If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
-Unknown should be assumed to be present if supported. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.SensorState">SensorState</h3>
-        <p>SensorState holds the value of all supported sensors.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>carbon_dioxide_level</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>The CO2 level in parts per million </p></td>
-                </tr>
-              
-                <tr>
-                  <td>volatile_organic_compounds</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>The VOC level in parts per million </p></td>
-                </tr>
-              
-                <tr>
-                  <td>air_pressure</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>The air pressure in hPa </p></td>
-                </tr>
-              
-                <tr>
-                  <td>comfort</td>
-                  <td><a href="#smartcore.traits.SensorComfort">SensorComfort</a></td>
-                  <td></td>
-                  <td><p>General comfort of the area </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.SensorStateChange">SensorStateChange</h3>
+        <h3 id="smartcore.traits.PullAmbientBrightnessResponse.Change">PullAmbientBrightnessResponse.Change</h3>
         <p></p>
 
         
@@ -419,28 +358,21 @@ Unknown should be assumed to be present if supported. </p></td>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>The name of the device that has changed. </p></td>
+                  <td><p>The name for the device that changed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ambient_brightness</td>
+                  <td><a href="#smartcore.traits.AmbientBrightness">AmbientBrightness</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>change_time</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>The time the change happened. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.SensorState">SensorState</a></td>
-                  <td></td>
-                  <td><p>The new state of the sensor. Changed fields should be reported via the update_mask property. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields that have changed. </p></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -452,41 +384,12 @@ Unknown should be assumed to be present if supported. </p></td>
       
 
       
-        <h3 id="smartcore.traits.SensorComfort">SensorComfort</h3>
-        <p>SensorComfort encodes levels of comfort for an area.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>SENSOR_COMFORT_UNKNOWN</td>
-                <td>0</td>
-                <td><p>The comfort level is unknown</p></td>
-              </tr>
-            
-              <tr>
-                <td>SENSOR_COMFORT_COMFORTABLE</td>
-                <td>1</td>
-                <td><p>The area should be comfortable for occupants</p></td>
-              </tr>
-            
-              <tr>
-                <td>SENSOR_COMFORT_UNCOMFORTABLE</td>
-                <td>2</td>
-                <td><p>The area might be uncomfortable for occupants</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
 
       
 
       
-        <h3 id="smartcore.traits.Sensor">Sensor</h3>
-        <p>Trait for devices that can report either numeric or descriptive readings from their surroundings.</p>
+        <h3 id="smartcore.traits.BrightnessSensorApi">BrightnessSensorApi</h3>
+        <p>BrightnessSensorApi reports on the measured ambient brightness for a space.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -494,17 +397,17 @@ Unknown should be assumed to be present if supported. </p></td>
           <tbody>
             
               <tr>
-                <td>GetState</td>
-                <td><a href="#smartcore.traits.GetSensorStateRequest">GetSensorStateRequest</a></td>
-                <td><a href="#smartcore.traits.SensorState">SensorState</a></td>
-                <td><p>Get the current state of all reading this device supports</p></td>
+                <td>GetAmbientBrightness</td>
+                <td><a href="#smartcore.traits.GetAmbientBrightnessRequest">GetAmbientBrightnessRequest</a></td>
+                <td><a href="#smartcore.traits.AmbientBrightness">AmbientBrightness</a></td>
+                <td><p>GetAmbientBrightness returns the current brightness level as measured by the device.</p></td>
               </tr>
             
               <tr>
-                <td>PullState</td>
-                <td><a href="#smartcore.traits.PullSensorStateRequest">PullSensorStateRequest</a></td>
-                <td><a href="#smartcore.traits.PullSensorStateResponse">PullSensorStateResponse</a> stream</td>
-                <td><p>Be notified of changes to any reading</p></td>
+                <td>PullAmbientBrightness</td>
+                <td><a href="#smartcore.traits.PullAmbientBrightnessRequest">PullAmbientBrightnessRequest</a></td>
+                <td><a href="#smartcore.traits.PullAmbientBrightnessResponse">PullAmbientBrightnessResponse</a> stream</td>
+                <td><p>PullAmbientBrightness returns a stream of brightness changes as the device measures them.</p></td>
               </tr>
             
           </tbody>

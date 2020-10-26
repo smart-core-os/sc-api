@@ -7,11 +7,6 @@ import * as types_number_pb from '../types/number_pb';
 
 
 export class SensorAttributes extends jspb.Message {
-  getBrightness(): types_number_pb.FloatBounds | undefined;
-  setBrightness(value?: types_number_pb.FloatBounds): SensorAttributes;
-  hasBrightness(): boolean;
-  clearBrightness(): SensorAttributes;
-
   getCarbonDioxideLevel(): types_number_pb.FloatBounds | undefined;
   setCarbonDioxideLevel(value?: types_number_pb.FloatBounds): SensorAttributes;
   hasCarbonDioxideLevel(): boolean;
@@ -42,7 +37,6 @@ export class SensorAttributes extends jspb.Message {
 
 export namespace SensorAttributes {
   export type AsObject = {
-    brightness?: types_number_pb.FloatBounds.AsObject,
     carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject,
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,
@@ -51,11 +45,6 @@ export namespace SensorAttributes {
 }
 
 export class SensorState extends jspb.Message {
-  getBrightnessLux(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setBrightnessLux(value?: google_protobuf_wrappers_pb.FloatValue): SensorState;
-  hasBrightnessLux(): boolean;
-  clearBrightnessLux(): SensorState;
-
   getCarbonDioxideLevel(): google_protobuf_wrappers_pb.FloatValue | undefined;
   setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): SensorState;
   hasCarbonDioxideLevel(): boolean;
@@ -84,7 +73,6 @@ export class SensorState extends jspb.Message {
 
 export namespace SensorState {
   export type AsObject = {
-    brightnessLux?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     airPressure?: google_protobuf_wrappers_pb.FloatValue.AsObject,

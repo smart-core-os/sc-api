@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "BrightnessSensorProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/timestamp.proto";
+import "types/number.proto";
+
+// BrightnessSensorApi reports on the measured ambient brightness for a space.
+service BrightnessSensorApi {
+  // GetAmbientBrightness returns the current brightness level as measured by the device.
+  rpc GetAmbientBrightness (GetAmbientBrightnessRequest) returns (AmbientBrightness);
+  // PullAmbientBrightness returns a stream of brightness changes as the device measures them.
+  rpc PullAmbientBrightness (PullAmbientBrightnessRequest) returns (stream PullAmbientBrightnessResponse);
+}
+
+// Trait.attributes describing the capabilities of the device
+message BrightnessSensorAttributes {
+  smartcore.api.types.FloatAttributes ambient_brightness_attributes = 1;
+}
+
+// AmbientBrightness records the light level measured by a device.
+message AmbientBrightness {
+  // Brightness measured in LUX
+  float brightness_lux = 1;
+}
+
+message GetAmbientBrightnessRequest {
+  // The name for the device.
+  string name = 1;
+}
+
+message PullAmbientBrightnessRequest {
+  // The name for the device.
+  string name = 1;
+}
+
+message PullAmbientBrightnessResponse {
+  repeated Change changes = 1;
+
+  message Change {
+    // The name for the device that changed
+    string name = 1;
+    AmbientBrightness ambient_brightness = 2;
+    google.protobuf.Timestamp change_time = 3;
+  }
+}

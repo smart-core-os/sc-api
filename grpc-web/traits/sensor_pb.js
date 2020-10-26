@@ -192,7 +192,6 @@ proto.smartcore.traits.SensorAttributes.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.SensorAttributes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    brightness: (f = msg.getBrightness()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     airPressure: (f = msg.getAirPressure()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
@@ -233,11 +232,6 @@ proto.smartcore.traits.SensorAttributes.deserializeBinaryFromReader = function(m
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = new types_number_pb.FloatBounds;
-      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
-      msg.setBrightness(value);
-      break;
     case 2:
       var value = new types_number_pb.FloatBounds;
       reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
@@ -286,14 +280,6 @@ proto.smartcore.traits.SensorAttributes.prototype.serializeBinary = function() {
  */
 proto.smartcore.traits.SensorAttributes.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getBrightness();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      types_number_pb.FloatBounds.serializeBinaryToWriter
-    );
-  }
   f = message.getCarbonDioxideLevel();
   if (f != null) {
     writer.writeMessage(
@@ -325,43 +311,6 @@ proto.smartcore.traits.SensorAttributes.serializeBinaryToWriter = function(messa
       f
     );
   }
-};
-
-
-/**
- * optional smartcore.api.types.FloatBounds brightness = 1;
- * @return {?proto.smartcore.api.types.FloatBounds}
- */
-proto.smartcore.traits.SensorAttributes.prototype.getBrightness = function() {
-  return /** @type{?proto.smartcore.api.types.FloatBounds} */ (
-    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 1));
-};
-
-
-/**
- * @param {?proto.smartcore.api.types.FloatBounds|undefined} value
- * @return {!proto.smartcore.traits.SensorAttributes} returns this
-*/
-proto.smartcore.traits.SensorAttributes.prototype.setBrightness = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.SensorAttributes} returns this
- */
-proto.smartcore.traits.SensorAttributes.prototype.clearBrightness = function() {
-  return this.setBrightness(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.SensorAttributes.prototype.hasBrightness = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -545,7 +494,6 @@ proto.smartcore.traits.SensorState.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.SensorState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    brightnessLux: (f = msg.getBrightnessLux()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
     carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
     volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
     airPressure: (f = msg.getAirPressure()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
@@ -586,11 +534,6 @@ proto.smartcore.traits.SensorState.deserializeBinaryFromReader = function(msg, r
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
-      msg.setBrightnessLux(value);
-      break;
     case 2:
       var value = new google_protobuf_wrappers_pb.FloatValue;
       reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
@@ -639,14 +582,6 @@ proto.smartcore.traits.SensorState.prototype.serializeBinary = function() {
  */
 proto.smartcore.traits.SensorState.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getBrightnessLux();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
-    );
-  }
   f = message.getCarbonDioxideLevel();
   if (f != null) {
     writer.writeMessage(
@@ -678,43 +613,6 @@ proto.smartcore.traits.SensorState.serializeBinaryToWriter = function(message, w
       f
     );
   }
-};
-
-
-/**
- * optional google.protobuf.FloatValue brightness_lux = 1;
- * @return {?proto.google.protobuf.FloatValue}
- */
-proto.smartcore.traits.SensorState.prototype.getBrightnessLux = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 1));
-};
-
-
-/**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
- * @return {!proto.smartcore.traits.SensorState} returns this
-*/
-proto.smartcore.traits.SensorState.prototype.setBrightnessLux = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.SensorState} returns this
- */
-proto.smartcore.traits.SensorState.prototype.clearBrightnessLux = function() {
-  return this.setBrightnessLux(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.SensorState.prototype.hasBrightnessLux = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 

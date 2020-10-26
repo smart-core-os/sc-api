@@ -24,8 +24,6 @@ service Sensor {
 
 // Trait.attribute describing capabilities of the Sensor device
 message SensorAttributes {
-  // If present then the sensor supports reporting brightness in LUX
-  smartcore.api.types.FloatBounds brightness = 1;
   // If present then the sensor supports reporting CO2 levels, in parts-per-million.
   smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
   // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.
@@ -39,8 +37,6 @@ message SensorAttributes {
 
 // SensorState holds the value of all supported sensors.
 message SensorState {
-  // The brightness in LUX
-  google.protobuf.FloatValue brightness_lux = 1;
   // The CO2 level in parts per million
   google.protobuf.FloatValue carbon_dioxide_level = 2;
   // The VOC level in parts per million
