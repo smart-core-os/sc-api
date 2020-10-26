@@ -181,7 +181,8 @@ proto.smartcore.traits.MotionDetection.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.MotionDetection.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    stateChangeTime: (f = msg.getStateChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -222,6 +223,11 @@ proto.smartcore.traits.MotionDetection.deserializeBinaryFromReader = function(ms
       var value = /** @type {!proto.smartcore.traits.MotionDetectionState} */ (reader.readEnum());
       msg.setState(value);
       break;
+    case 2:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setStateChangeTime(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -258,6 +264,14 @@ proto.smartcore.traits.MotionDetection.serializeBinaryToWriter = function(messag
       f
     );
   }
+  f = message.getStateChangeTime();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -276,6 +290,43 @@ proto.smartcore.traits.MotionDetection.prototype.getState = function() {
  */
 proto.smartcore.traits.MotionDetection.prototype.setState = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp state_change_time = 2;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.smartcore.traits.MotionDetection.prototype.getStateChangeTime = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.smartcore.traits.MotionDetection} returns this
+*/
+proto.smartcore.traits.MotionDetection.prototype.setStateChangeTime = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.MotionDetection} returns this
+ */
+proto.smartcore.traits.MotionDetection.prototype.clearStateChangeTime = function() {
+  return this.setStateChangeTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.MotionDetection.prototype.hasStateChangeTime = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

@@ -34,6 +34,8 @@ enum MotionDetectionState {
 message MotionDetection {
   // has motion been detected or not
   MotionDetectionState state = 1;
+  // The time the state last changed
+  google.protobuf.Timestamp state_change_time = 2;
 }
 
 // Trait.attribute for the configuration of the device

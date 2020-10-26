@@ -8,6 +8,11 @@ export class MotionDetection extends jspb.Message {
   getState(): MotionDetectionState;
   setState(value: MotionDetectionState): MotionDetection;
 
+  getStateChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setStateChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): MotionDetection;
+  hasStateChangeTime(): boolean;
+  clearStateChangeTime(): MotionDetection;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MotionDetection.AsObject;
   static toObject(includeInstance: boolean, msg: MotionDetection): MotionDetection.AsObject;
@@ -19,6 +24,7 @@ export class MotionDetection extends jspb.Message {
 export namespace MotionDetection {
   export type AsObject = {
     state: MotionDetectionState,
+    stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
