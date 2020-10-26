@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package smartcore.api.device.info;
+package smartcore.info;
 
-option csharp_namespace = "Smartcore.Api.Device.Info.V1";
-option go_package = "smartcore.dev/api/device/info";
+option csharp_namespace = "Smartcore.Info";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/info";
 option java_multiple_files = true;
 option java_outer_classname = "AuthProto";
-option java_package = "dev.smartcore.api.device.info";
-option php_namespace = "Smartcore\\Api\\Device\\Info";
+option java_package = "dev.smartcore.info";
+option php_namespace = "Smartcore\\Info";
 
 import "google/protobuf/timestamp.proto";
 import "types/change.proto";

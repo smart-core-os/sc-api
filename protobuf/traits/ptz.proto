@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package smartcore.api.device.traits;
+package smartcore.traits;
 
-option csharp_namespace = "Smartcore.Api.Device.Traits";
-option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/traits";
 option java_multiple_files = true;
 option java_outer_classname = "PtzProto";
-option java_package = "dev.smartcore.api.device.traits";
-option php_namespace = "Smartcore\\Api\\Device\\Traits";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
