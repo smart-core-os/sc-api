@@ -165,10 +165,10 @@ export namespace PullInputRequest {
 }
 
 export class PullInputResponse extends jspb.Message {
-  getChangesList(): Array<InputChange>;
-  setChangesList(value: Array<InputChange>): PullInputResponse;
+  getChangesList(): Array<PullInputResponse.Change>;
+  setChangesList(value: Array<PullInputResponse.Change>): PullInputResponse;
   clearChangesList(): PullInputResponse;
-  addChanges(value?: InputChange, index?: number): InputChange;
+  addChanges(value?: PullInputResponse.Change, index?: number): PullInputResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullInputResponse.AsObject;
@@ -180,38 +180,39 @@ export class PullInputResponse extends jspb.Message {
 
 export namespace PullInputResponse {
   export type AsObject = {
-    changesList: Array<InputChange.AsObject>,
+    changesList: Array<PullInputResponse.Change.AsObject>,
   }
-}
 
-export class InputChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): InputChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): InputChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): InputChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getInput(): Input | undefined;
-  setInput(value?: Input): InputChange;
-  hasInput(): boolean;
-  clearInput(): InputChange;
+    getInput(): Input | undefined;
+    setInput(value?: Input): Change;
+    hasInput(): boolean;
+    clearInput(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): InputChange.AsObject;
-  static toObject(includeInstance: boolean, msg: InputChange): InputChange.AsObject;
-  static serializeBinaryToWriter(message: InputChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): InputChange;
-  static deserializeBinaryFromReader(message: InputChange, reader: jspb.BinaryReader): InputChange;
-}
-
-export namespace InputChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    input?: Input.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      input?: Input.AsObject,
+    }
+  }
+
 }
 
 export enum InputSelectFeature { 

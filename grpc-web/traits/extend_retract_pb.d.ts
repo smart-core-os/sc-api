@@ -194,36 +194,6 @@ export namespace CreateExtensionPresetRequest {
   }
 }
 
-export class ExtensionChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): ExtensionChange;
-
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): ExtensionChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): ExtensionChange;
-
-  getExtension(): Extension | undefined;
-  setExtension(value?: Extension): ExtensionChange;
-  hasExtension(): boolean;
-  clearExtension(): ExtensionChange;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtensionChange.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtensionChange): ExtensionChange.AsObject;
-  static serializeBinaryToWriter(message: ExtensionChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtensionChange;
-  static deserializeBinaryFromReader(message: ExtensionChange, reader: jspb.BinaryReader): ExtensionChange;
-}
-
-export namespace ExtensionChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    extension?: Extension.AsObject,
-  }
-}
-
 export class PullExtensionsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullExtensionsRequest;
@@ -243,10 +213,10 @@ export namespace PullExtensionsRequest {
 }
 
 export class PullExtensionsResponse extends jspb.Message {
-  getChangesList(): Array<ExtensionChange>;
-  setChangesList(value: Array<ExtensionChange>): PullExtensionsResponse;
+  getChangesList(): Array<PullExtensionsResponse.Change>;
+  setChangesList(value: Array<PullExtensionsResponse.Change>): PullExtensionsResponse;
   clearChangesList(): PullExtensionsResponse;
-  addChanges(value?: ExtensionChange, index?: number): ExtensionChange;
+  addChanges(value?: PullExtensionsResponse.Change, index?: number): PullExtensionsResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullExtensionsResponse.AsObject;
@@ -258,7 +228,38 @@ export class PullExtensionsResponse extends jspb.Message {
 
 export namespace PullExtensionsResponse {
   export type AsObject = {
-    changesList: Array<ExtensionChange.AsObject>,
+    changesList: Array<PullExtensionsResponse.Change.AsObject>,
   }
+
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
+
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
+
+    getExtension(): Extension | undefined;
+    setExtension(value?: Extension): Change;
+    hasExtension(): boolean;
+    clearExtension(): Change;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
+  }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      extension?: Extension.AsObject,
+    }
+  }
+
 }
 

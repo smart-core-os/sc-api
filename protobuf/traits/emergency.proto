@@ -69,15 +69,15 @@ message PullEmergencyRequest {
 }
 
 message PullEmergencyResponse {
-  repeated EmergencyChange changes = 1;
-}
+  repeated Change changes = 1;
 
-message EmergencyChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // The new value for the emergency.
-  Emergency emergency = 3;
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The new value for the emergency.
+    Emergency emergency = 3;
+  }
 }
 

@@ -101,10 +101,10 @@ export namespace PullAirTemperatureStateRequest {
 }
 
 export class PullAirTemperatureStateResponse extends jspb.Message {
-  getChangesList(): Array<AirTemperatureStateChange>;
-  setChangesList(value: Array<AirTemperatureStateChange>): PullAirTemperatureStateResponse;
+  getChangesList(): Array<PullAirTemperatureStateResponse.Change>;
+  setChangesList(value: Array<PullAirTemperatureStateResponse.Change>): PullAirTemperatureStateResponse;
   clearChangesList(): PullAirTemperatureStateResponse;
-  addChanges(value?: AirTemperatureStateChange, index?: number): AirTemperatureStateChange;
+  addChanges(value?: PullAirTemperatureStateResponse.Change, index?: number): PullAirTemperatureStateResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirTemperatureStateResponse.AsObject;
@@ -116,38 +116,39 @@ export class PullAirTemperatureStateResponse extends jspb.Message {
 
 export namespace PullAirTemperatureStateResponse {
   export type AsObject = {
-    changesList: Array<AirTemperatureStateChange.AsObject>,
+    changesList: Array<PullAirTemperatureStateResponse.Change.AsObject>,
   }
-}
 
-export class AirTemperatureStateChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): AirTemperatureStateChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): AirTemperatureStateChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): AirTemperatureStateChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getState(): AirTemperatureState | undefined;
-  setState(value?: AirTemperatureState): AirTemperatureStateChange;
-  hasState(): boolean;
-  clearState(): AirTemperatureStateChange;
+    getState(): AirTemperatureState | undefined;
+    setState(value?: AirTemperatureState): Change;
+    hasState(): boolean;
+    clearState(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirTemperatureStateChange.AsObject;
-  static toObject(includeInstance: boolean, msg: AirTemperatureStateChange): AirTemperatureStateChange.AsObject;
-  static serializeBinaryToWriter(message: AirTemperatureStateChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirTemperatureStateChange;
-  static deserializeBinaryFromReader(message: AirTemperatureStateChange, reader: jspb.BinaryReader): AirTemperatureStateChange;
-}
-
-export namespace AirTemperatureStateChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state?: AirTemperatureState.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      state?: AirTemperatureState.AsObject,
+    }
+  }
+
 }
 
 export class AirTemperatureState extends jspb.Message {

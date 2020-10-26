@@ -1451,7 +1451,8 @@ proto.smartcore.traits.PullCountsResponse.Change.prototype.toObject = function(o
 proto.smartcore.traits.PullCountsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f)
+    count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1497,6 +1498,11 @@ proto.smartcore.traits.PullCountsResponse.Change.deserializeBinaryFromReader = f
       reader.readMessage(value,proto.smartcore.traits.Count.deserializeBinaryFromReader);
       msg.setCount(value);
       break;
+    case 3:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setChangeTime(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1539,6 +1545,14 @@ proto.smartcore.traits.PullCountsResponse.Change.serializeBinaryToWriter = funct
       2,
       f,
       proto.smartcore.traits.Count.serializeBinaryToWriter
+    );
+  }
+  f = message.getChangeTime();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -1596,6 +1610,43 @@ proto.smartcore.traits.PullCountsResponse.Change.prototype.clearCount = function
  */
 proto.smartcore.traits.PullCountsResponse.Change.prototype.hasCount = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp change_time = 3;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.smartcore.traits.PullCountsResponse.Change.prototype.getChangeTime = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.smartcore.traits.PullCountsResponse.Change} returns this
+*/
+proto.smartcore.traits.PullCountsResponse.Change.prototype.setChangeTime = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullCountsResponse.Change} returns this
+ */
+proto.smartcore.traits.PullCountsResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullCountsResponse.Change.prototype.hasChangeTime = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

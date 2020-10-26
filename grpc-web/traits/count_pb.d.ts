@@ -180,6 +180,11 @@ export namespace PullCountsResponse {
     hasCount(): boolean;
     clearCount(): Change;
 
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
     static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
@@ -192,6 +197,7 @@ export namespace PullCountsResponse {
     export type AsObject = {
       name: string,
       count?: Count.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
   }
 

@@ -187,10 +187,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OccupancyChange"><span class="badge">M</span>OccupancyChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.OccupancySensorAttributes"><span class="badge">M</span>OccupancySensorAttributes</a>
                 </li>
               
@@ -200,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullOccupancyResponse"><span class="badge">M</span>PullOccupancyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullOccupancyResponse.Change"><span class="badge">M</span>PullOccupancyResponse.Change</a>
                 </li>
               
               
@@ -310,44 +310,6 @@ confidence is unknown </p></td>
 
         
       
-        <h3 id="smartcore.traits.OccupancyChange">OccupancyChange</h3>
-        <p>A change to the occupancy state of the device, including people count</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>occupancy</td>
-                  <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
-                  <td></td>
-                  <td><p>the new state for the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.OccupancySensorAttributes">OccupancySensorAttributes</h3>
         <p>Trait.attribute for the configuration of the device</p>
 
@@ -409,9 +371,47 @@ total capacity for the space, it&#39;s the capacity of the sensor </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.OccupancyChange">OccupancyChange</a></td>
+                  <td><a href="#smartcore.traits.PullOccupancyResponse.Change">PullOccupancyResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>the list of changes that have occurred since the last event </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullOccupancyResponse.Change">PullOccupancyResponse.Change</h3>
+        <p>A change to the occupancy state of the device, including people count</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>occupancy</td>
+                  <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
+                  <td></td>
+                  <td><p>the new state for the device </p></td>
                 </tr>
               
             </tbody>

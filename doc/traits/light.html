@@ -183,10 +183,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.BrightnessChange"><span class="badge">M</span>BrightnessChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetBrightnessRequest"><span class="badge">M</span>GetBrightnessRequest</a>
                 </li>
               
@@ -204,6 +200,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullBrightnessResponse"><span class="badge">M</span>PullBrightnessResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullBrightnessResponse.Change"><span class="badge">M</span>PullBrightnessResponse.Change</a>
                 </li>
               
                 <li>
@@ -254,44 +254,6 @@
                   <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
                   <td></td>
                   <td><p>A preset that the device is using </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.BrightnessChange">BrightnessChange</h3>
-        <p>A change to a single devices brightness value</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>brightness</td>
-                  <td><a href="#smartcore.traits.Brightness">Brightness</a></td>
-                  <td></td>
-                  <td><p>The new value for the brightness </p></td>
                 </tr>
               
             </tbody>
@@ -431,9 +393,47 @@ capabilities </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.BrightnessChange">BrightnessChange</a></td>
+                  <td><a href="#smartcore.traits.PullBrightnessResponse.Change">PullBrightnessResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>The list of changes </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullBrightnessResponse.Change">PullBrightnessResponse.Change</h3>
+        <p>A change to a single devices brightness value</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>brightness</td>
+                  <td><a href="#smartcore.traits.Brightness">Brightness</a></td>
+                  <td></td>
+                  <td><p>The new value for the brightness </p></td>
                 </tr>
               
             </tbody>

@@ -195,10 +195,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ChosenChannelChange"><span class="badge">M</span>ChosenChannelChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetChosenChannelRequest"><span class="badge">M</span>GetChosenChannelRequest</a>
                 </li>
               
@@ -208,6 +204,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullChosenChannelResponse"><span class="badge">M</span>PullChosenChannelResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullChosenChannelResponse.Change"><span class="badge">M</span>PullChosenChannelResponse.Change</a>
                 </li>
               
                 <li>
@@ -362,44 +362,6 @@ todo: support for [choose,adjust,return], not sure what the defaults should be <
 
         
       
-        <h3 id="smartcore.traits.ChosenChannelChange">ChosenChannelChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>channel</td>
-                  <td><a href="#smartcore.traits.Channel">Channel</a></td>
-                  <td></td>
-                  <td><p>The new chosen channel </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.GetChosenChannelRequest">GetChosenChannelRequest</h3>
         <p></p>
 
@@ -460,9 +422,47 @@ todo: support for [choose,adjust,return], not sure what the defaults should be <
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.ChosenChannelChange">ChosenChannelChange</a></td>
+                  <td><a href="#smartcore.traits.PullChosenChannelResponse.Change">PullChosenChannelResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullChosenChannelResponse.Change">PullChosenChannelResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>channel</td>
+                  <td><a href="#smartcore.traits.Channel">Channel</a></td>
+                  <td></td>
+                  <td><p>The new chosen channel </p></td>
                 </tr>
               
             </tbody>

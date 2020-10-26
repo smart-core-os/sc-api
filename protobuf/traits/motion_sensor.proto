@@ -59,15 +59,15 @@ message PullMotionDetectionRequest {
 // response containing motion state changes
 message PullMotionDetectionResponse {
   // the list of changes that have occurred since the last event
-  repeated MotionDetectionChange changes = 1;
-}
+  repeated Change changes = 1;
 
-// A change to the motion state of the device
-message MotionDetectionChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // the new state for the device
-  MotionDetection motion_detection = 3;
+  // A change to the motion state of the device
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // the new state for the device
+    MotionDetection motion_detection = 3;
+  }
 }

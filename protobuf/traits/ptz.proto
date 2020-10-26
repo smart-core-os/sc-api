@@ -147,14 +147,14 @@ message PullPtzStatesRequest {
 }
 
 message PullPtzStatesResponse {
-  repeated PtzStateChange changes = 1;
-}
+  repeated Change changes = 1;
 
-message PtzStateChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // The updated state, should be merged with any known state
-  PtzState state = 3;
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The updated state, should be merged with any known state
+    PtzState state = 3;
+  }
 }

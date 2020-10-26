@@ -165,10 +165,10 @@ export namespace PullOpenCloseStatesRequest {
 }
 
 export class PullOpenCloseStatesResponse extends jspb.Message {
-  getChangesList(): Array<OpenCloseStateChange>;
-  setChangesList(value: Array<OpenCloseStateChange>): PullOpenCloseStatesResponse;
+  getChangesList(): Array<PullOpenCloseStatesResponse.Change>;
+  setChangesList(value: Array<PullOpenCloseStatesResponse.Change>): PullOpenCloseStatesResponse;
   clearChangesList(): PullOpenCloseStatesResponse;
-  addChanges(value?: OpenCloseStateChange, index?: number): OpenCloseStateChange;
+  addChanges(value?: PullOpenCloseStatesResponse.Change, index?: number): PullOpenCloseStatesResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOpenCloseStatesResponse.AsObject;
@@ -180,38 +180,39 @@ export class PullOpenCloseStatesResponse extends jspb.Message {
 
 export namespace PullOpenCloseStatesResponse {
   export type AsObject = {
-    changesList: Array<OpenCloseStateChange.AsObject>,
+    changesList: Array<PullOpenCloseStatesResponse.Change.AsObject>,
   }
-}
 
-export class OpenCloseStateChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): OpenCloseStateChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): OpenCloseStateChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): OpenCloseStateChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getState(): OpenCloseStates | undefined;
-  setState(value?: OpenCloseStates): OpenCloseStateChange;
-  hasState(): boolean;
-  clearState(): OpenCloseStateChange;
+    getState(): OpenCloseStates | undefined;
+    setState(value?: OpenCloseStates): Change;
+    hasState(): boolean;
+    clearState(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OpenCloseStateChange.AsObject;
-  static toObject(includeInstance: boolean, msg: OpenCloseStateChange): OpenCloseStateChange.AsObject;
-  static serializeBinaryToWriter(message: OpenCloseStateChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OpenCloseStateChange;
-  static deserializeBinaryFromReader(message: OpenCloseStateChange, reader: jspb.BinaryReader): OpenCloseStateChange;
-}
-
-export namespace OpenCloseStateChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state?: OpenCloseStates.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      state?: OpenCloseStates.AsObject,
+    }
+  }
+
 }
 
 export enum OpenCloseDirection { 

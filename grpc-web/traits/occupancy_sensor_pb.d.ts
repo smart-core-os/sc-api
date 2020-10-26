@@ -96,10 +96,10 @@ export namespace PullOccupancyRequest {
 }
 
 export class PullOccupancyResponse extends jspb.Message {
-  getChangesList(): Array<OccupancyChange>;
-  setChangesList(value: Array<OccupancyChange>): PullOccupancyResponse;
+  getChangesList(): Array<PullOccupancyResponse.Change>;
+  setChangesList(value: Array<PullOccupancyResponse.Change>): PullOccupancyResponse;
   clearChangesList(): PullOccupancyResponse;
-  addChanges(value?: OccupancyChange, index?: number): OccupancyChange;
+  addChanges(value?: PullOccupancyResponse.Change, index?: number): PullOccupancyResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOccupancyResponse.AsObject;
@@ -111,38 +111,39 @@ export class PullOccupancyResponse extends jspb.Message {
 
 export namespace PullOccupancyResponse {
   export type AsObject = {
-    changesList: Array<OccupancyChange.AsObject>,
+    changesList: Array<PullOccupancyResponse.Change.AsObject>,
   }
-}
 
-export class OccupancyChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): OccupancyChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): OccupancyChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): OccupancyChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getOccupancy(): Occupancy | undefined;
-  setOccupancy(value?: Occupancy): OccupancyChange;
-  hasOccupancy(): boolean;
-  clearOccupancy(): OccupancyChange;
+    getOccupancy(): Occupancy | undefined;
+    setOccupancy(value?: Occupancy): Change;
+    hasOccupancy(): boolean;
+    clearOccupancy(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OccupancyChange.AsObject;
-  static toObject(includeInstance: boolean, msg: OccupancyChange): OccupancyChange.AsObject;
-  static serializeBinaryToWriter(message: OccupancyChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OccupancyChange;
-  static deserializeBinaryFromReader(message: OccupancyChange, reader: jspb.BinaryReader): OccupancyChange;
-}
-
-export namespace OccupancyChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    occupancy?: Occupancy.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      occupancy?: Occupancy.AsObject,
+    }
+  }
+
 }
 
 export enum OccupancyState { 

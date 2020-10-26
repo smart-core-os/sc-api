@@ -28,10 +28,10 @@ goog.exportSymbol('proto.smartcore.traits.PtzMovement', null, global);
 goog.exportSymbol('proto.smartcore.traits.PtzPosition', null, global);
 goog.exportSymbol('proto.smartcore.traits.PtzPreset', null, global);
 goog.exportSymbol('proto.smartcore.traits.PtzState', null, global);
-goog.exportSymbol('proto.smartcore.traits.PtzStateChange', null, global);
 goog.exportSymbol('proto.smartcore.traits.PtzVector', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullPtzStatesRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullPtzStatesResponse', null, global);
+goog.exportSymbol('proto.smartcore.traits.PullPtzStatesResponse.Change', null, global);
 goog.exportSymbol('proto.smartcore.traits.StopPtzRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.UpdatePtzStateRequest', null, global);
 /**
@@ -317,16 +317,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.smartcore.traits.PtzStateChange = function(opt_data) {
+proto.smartcore.traits.PullPtzStatesResponse.Change = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.smartcore.traits.PtzStateChange, jspb.Message);
+goog.inherits(proto.smartcore.traits.PullPtzStatesResponse.Change, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.smartcore.traits.PtzStateChange.displayName = 'proto.smartcore.traits.PtzStateChange';
+  proto.smartcore.traits.PullPtzStatesResponse.Change.displayName = 'proto.smartcore.traits.PullPtzStatesResponse.Change';
 }
 
 /**
@@ -2852,7 +2852,7 @@ proto.smartcore.traits.PullPtzStatesResponse.prototype.toObject = function(opt_i
 proto.smartcore.traits.PullPtzStatesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     changesList: jspb.Message.toObjectList(msg.getChangesList(),
-    proto.smartcore.traits.PtzStateChange.toObject, includeInstance)
+    proto.smartcore.traits.PullPtzStatesResponse.Change.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2890,8 +2890,8 @@ proto.smartcore.traits.PullPtzStatesResponse.deserializeBinaryFromReader = funct
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.smartcore.traits.PtzStateChange;
-      reader.readMessage(value,proto.smartcore.traits.PtzStateChange.deserializeBinaryFromReader);
+      var value = new proto.smartcore.traits.PullPtzStatesResponse.Change;
+      reader.readMessage(value,proto.smartcore.traits.PullPtzStatesResponse.Change.deserializeBinaryFromReader);
       msg.addChanges(value);
       break;
     default:
@@ -2928,47 +2928,9 @@ proto.smartcore.traits.PullPtzStatesResponse.serializeBinaryToWriter = function(
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.smartcore.traits.PtzStateChange.serializeBinaryToWriter
+      proto.smartcore.traits.PullPtzStatesResponse.Change.serializeBinaryToWriter
     );
   }
-};
-
-
-/**
- * repeated PtzStateChange changes = 1;
- * @return {!Array<!proto.smartcore.traits.PtzStateChange>}
- */
-proto.smartcore.traits.PullPtzStatesResponse.prototype.getChangesList = function() {
-  return /** @type{!Array<!proto.smartcore.traits.PtzStateChange>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.smartcore.traits.PtzStateChange, 1));
-};
-
-
-/**
- * @param {!Array<!proto.smartcore.traits.PtzStateChange>} value
- * @return {!proto.smartcore.traits.PullPtzStatesResponse} returns this
-*/
-proto.smartcore.traits.PullPtzStatesResponse.prototype.setChangesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.PtzStateChange=} opt_value
- * @param {number=} opt_index
- * @return {!proto.smartcore.traits.PtzStateChange}
- */
-proto.smartcore.traits.PullPtzStatesResponse.prototype.addChanges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.traits.PtzStateChange, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.smartcore.traits.PullPtzStatesResponse} returns this
- */
-proto.smartcore.traits.PullPtzStatesResponse.prototype.clearChangesList = function() {
-  return this.setChangesList([]);
 };
 
 
@@ -2988,8 +2950,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.smartcore.traits.PtzStateChange.prototype.toObject = function(opt_includeInstance) {
-  return proto.smartcore.traits.PtzStateChange.toObject(opt_includeInstance, this);
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.toObject = function(opt_includeInstance) {
+  return proto.smartcore.traits.PullPtzStatesResponse.Change.toObject(opt_includeInstance, this);
 };
 
 
@@ -2998,11 +2960,11 @@ proto.smartcore.traits.PtzStateChange.prototype.toObject = function(opt_includeI
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.smartcore.traits.PtzStateChange} msg The msg instance to transform.
+ * @param {!proto.smartcore.traits.PullPtzStatesResponse.Change} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.smartcore.traits.PtzStateChange.toObject = function(includeInstance, msg) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
@@ -3020,23 +2982,23 @@ proto.smartcore.traits.PtzStateChange.toObject = function(includeInstance, msg) 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.smartcore.traits.PtzStateChange}
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change}
  */
-proto.smartcore.traits.PtzStateChange.deserializeBinary = function(bytes) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.smartcore.traits.PtzStateChange;
-  return proto.smartcore.traits.PtzStateChange.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.smartcore.traits.PullPtzStatesResponse.Change;
+  return proto.smartcore.traits.PullPtzStatesResponse.Change.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.smartcore.traits.PtzStateChange} msg The message object to deserialize into.
+ * @param {!proto.smartcore.traits.PullPtzStatesResponse.Change} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.smartcore.traits.PtzStateChange}
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change}
  */
-proto.smartcore.traits.PtzStateChange.deserializeBinaryFromReader = function(msg, reader) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3070,9 +3032,9 @@ proto.smartcore.traits.PtzStateChange.deserializeBinaryFromReader = function(msg
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.smartcore.traits.PtzStateChange.prototype.serializeBinary = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.smartcore.traits.PtzStateChange.serializeBinaryToWriter(this, writer);
+  proto.smartcore.traits.PullPtzStatesResponse.Change.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3080,11 +3042,11 @@ proto.smartcore.traits.PtzStateChange.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.smartcore.traits.PtzStateChange} message
+ * @param {!proto.smartcore.traits.PullPtzStatesResponse.Change} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.smartcore.traits.PtzStateChange.serializeBinaryToWriter = function(message, writer) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
   if (f.length > 0) {
@@ -3116,16 +3078,16 @@ proto.smartcore.traits.PtzStateChange.serializeBinaryToWriter = function(message
  * optional string name = 1;
  * @return {string}
  */
-proto.smartcore.traits.PtzStateChange.prototype.getName = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.smartcore.traits.PtzStateChange} returns this
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change} returns this
  */
-proto.smartcore.traits.PtzStateChange.prototype.setName = function(value) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -3134,7 +3096,7 @@ proto.smartcore.traits.PtzStateChange.prototype.setName = function(value) {
  * optional google.protobuf.Timestamp create_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.PtzStateChange.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.getCreateTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -3142,18 +3104,18 @@ proto.smartcore.traits.PtzStateChange.prototype.getCreateTime = function() {
 
 /**
  * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.smartcore.traits.PtzStateChange} returns this
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change} returns this
 */
-proto.smartcore.traits.PtzStateChange.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.setCreateTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.PtzStateChange} returns this
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change} returns this
  */
-proto.smartcore.traits.PtzStateChange.prototype.clearCreateTime = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.clearCreateTime = function() {
   return this.setCreateTime(undefined);
 };
 
@@ -3162,7 +3124,7 @@ proto.smartcore.traits.PtzStateChange.prototype.clearCreateTime = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PtzStateChange.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.hasCreateTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -3171,7 +3133,7 @@ proto.smartcore.traits.PtzStateChange.prototype.hasCreateTime = function() {
  * optional PtzState state = 3;
  * @return {?proto.smartcore.traits.PtzState}
  */
-proto.smartcore.traits.PtzStateChange.prototype.getState = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.getState = function() {
   return /** @type{?proto.smartcore.traits.PtzState} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.PtzState, 3));
 };
@@ -3179,18 +3141,18 @@ proto.smartcore.traits.PtzStateChange.prototype.getState = function() {
 
 /**
  * @param {?proto.smartcore.traits.PtzState|undefined} value
- * @return {!proto.smartcore.traits.PtzStateChange} returns this
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change} returns this
 */
-proto.smartcore.traits.PtzStateChange.prototype.setState = function(value) {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.setState = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.PtzStateChange} returns this
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change} returns this
  */
-proto.smartcore.traits.PtzStateChange.prototype.clearState = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.clearState = function() {
   return this.setState(undefined);
 };
 
@@ -3199,8 +3161,46 @@ proto.smartcore.traits.PtzStateChange.prototype.clearState = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PtzStateChange.prototype.hasState = function() {
+proto.smartcore.traits.PullPtzStatesResponse.Change.prototype.hasState = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Change changes = 1;
+ * @return {!Array<!proto.smartcore.traits.PullPtzStatesResponse.Change>}
+ */
+proto.smartcore.traits.PullPtzStatesResponse.prototype.getChangesList = function() {
+  return /** @type{!Array<!proto.smartcore.traits.PullPtzStatesResponse.Change>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.smartcore.traits.PullPtzStatesResponse.Change, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.smartcore.traits.PullPtzStatesResponse.Change>} value
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse} returns this
+*/
+proto.smartcore.traits.PullPtzStatesResponse.prototype.setChangesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.PullPtzStatesResponse.Change=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse.Change}
+ */
+proto.smartcore.traits.PullPtzStatesResponse.prototype.addChanges = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.traits.PullPtzStatesResponse.Change, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.smartcore.traits.PullPtzStatesResponse} returns this
+ */
+proto.smartcore.traits.PullPtzStatesResponse.prototype.clearChangesList = function() {
+  return this.setChangesList([]);
 };
 
 

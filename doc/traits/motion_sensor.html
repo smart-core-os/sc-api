@@ -187,10 +187,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.MotionDetectionChange"><span class="badge">M</span>MotionDetectionChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.MotionSensorAttributes"><span class="badge">M</span>MotionSensorAttributes</a>
                 </li>
               
@@ -200,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullMotionDetectionResponse"><span class="badge">M</span>PullMotionDetectionResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullMotionDetectionResponse.Change"><span class="badge">M</span>PullMotionDetectionResponse.Change</a>
                 </li>
               
               
@@ -283,44 +283,6 @@
 
         
       
-        <h3 id="smartcore.traits.MotionDetectionChange">MotionDetectionChange</h3>
-        <p>A change to the motion state of the device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>motion_detection</td>
-                  <td><a href="#smartcore.traits.MotionDetection">MotionDetection</a></td>
-                  <td></td>
-                  <td><p>the new state for the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.MotionSensorAttributes">MotionSensorAttributes</h3>
         <p>Trait.attribute for the configuration of the device</p>
 
@@ -381,9 +343,47 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.MotionDetectionChange">MotionDetectionChange</a></td>
+                  <td><a href="#smartcore.traits.PullMotionDetectionResponse.Change">PullMotionDetectionResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>the list of changes that have occurred since the last event </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullMotionDetectionResponse.Change">PullMotionDetectionResponse.Change</h3>
+        <p>A change to the motion state of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>motion_detection</td>
+                  <td><a href="#smartcore.traits.MotionDetection">MotionDetection</a></td>
+                  <td></td>
+                  <td><p>the new state for the device </p></td>
                 </tr>
               
             </tbody>

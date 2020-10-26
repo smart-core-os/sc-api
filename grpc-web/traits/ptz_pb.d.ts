@@ -333,10 +333,10 @@ export namespace PullPtzStatesRequest {
 }
 
 export class PullPtzStatesResponse extends jspb.Message {
-  getChangesList(): Array<PtzStateChange>;
-  setChangesList(value: Array<PtzStateChange>): PullPtzStatesResponse;
+  getChangesList(): Array<PullPtzStatesResponse.Change>;
+  setChangesList(value: Array<PullPtzStatesResponse.Change>): PullPtzStatesResponse;
   clearChangesList(): PullPtzStatesResponse;
-  addChanges(value?: PtzStateChange, index?: number): PtzStateChange;
+  addChanges(value?: PullPtzStatesResponse.Change, index?: number): PullPtzStatesResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullPtzStatesResponse.AsObject;
@@ -348,37 +348,38 @@ export class PullPtzStatesResponse extends jspb.Message {
 
 export namespace PullPtzStatesResponse {
   export type AsObject = {
-    changesList: Array<PtzStateChange.AsObject>,
+    changesList: Array<PullPtzStatesResponse.Change.AsObject>,
   }
-}
 
-export class PtzStateChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): PtzStateChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): PtzStateChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): PtzStateChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getState(): PtzState | undefined;
-  setState(value?: PtzState): PtzStateChange;
-  hasState(): boolean;
-  clearState(): PtzStateChange;
+    getState(): PtzState | undefined;
+    setState(value?: PtzState): Change;
+    hasState(): boolean;
+    clearState(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PtzStateChange.AsObject;
-  static toObject(includeInstance: boolean, msg: PtzStateChange): PtzStateChange.AsObject;
-  static serializeBinaryToWriter(message: PtzStateChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PtzStateChange;
-  static deserializeBinaryFromReader(message: PtzStateChange, reader: jspb.BinaryReader): PtzStateChange;
-}
-
-export namespace PtzStateChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state?: PtzState.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      state?: PtzState.AsObject,
+    }
+  }
+
 }
 

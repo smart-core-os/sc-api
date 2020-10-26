@@ -129,10 +129,10 @@ export namespace PullAirQualityStateRequest {
 }
 
 export class PullAirQualityStateResponse extends jspb.Message {
-  getChangesList(): Array<AirQualityStateChange>;
-  setChangesList(value: Array<AirQualityStateChange>): PullAirQualityStateResponse;
+  getChangesList(): Array<PullAirQualityStateResponse.Change>;
+  setChangesList(value: Array<PullAirQualityStateResponse.Change>): PullAirQualityStateResponse;
   clearChangesList(): PullAirQualityStateResponse;
-  addChanges(value?: AirQualityStateChange, index?: number): AirQualityStateChange;
+  addChanges(value?: PullAirQualityStateResponse.Change, index?: number): PullAirQualityStateResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirQualityStateResponse.AsObject;
@@ -144,44 +144,45 @@ export class PullAirQualityStateResponse extends jspb.Message {
 
 export namespace PullAirQualityStateResponse {
   export type AsObject = {
-    changesList: Array<AirQualityStateChange.AsObject>,
+    changesList: Array<PullAirQualityStateResponse.Change.AsObject>,
   }
-}
 
-export class AirQualityStateChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): AirQualityStateChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): AirQualityStateChange;
-  hasChangeTime(): boolean;
-  clearChangeTime(): AirQualityStateChange;
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
 
-  getState(): AirQualityState | undefined;
-  setState(value?: AirQualityState): AirQualityStateChange;
-  hasState(): boolean;
-  clearState(): AirQualityStateChange;
+    getState(): AirQualityState | undefined;
+    setState(value?: AirQualityState): Change;
+    hasState(): boolean;
+    clearState(): Change;
 
-  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): AirQualityStateChange;
-  hasUpdateMask(): boolean;
-  clearUpdateMask(): AirQualityStateChange;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): Change;
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirQualityStateChange.AsObject;
-  static toObject(includeInstance: boolean, msg: AirQualityStateChange): AirQualityStateChange.AsObject;
-  static serializeBinaryToWriter(message: AirQualityStateChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirQualityStateChange;
-  static deserializeBinaryFromReader(message: AirQualityStateChange, reader: jspb.BinaryReader): AirQualityStateChange;
-}
-
-export namespace AirQualityStateChange {
-  export type AsObject = {
-    name: string,
-    changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state?: AirQualityState.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      state?: AirQualityState.AsObject,
+      updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    }
+  }
+
 }
 
 export enum AirQualityComfort { 

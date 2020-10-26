@@ -107,15 +107,15 @@ message PullInputRequest {
 // A response as part of the stream of changes to the selected input
 message PullInputResponse {
   // The list of changes
-  repeated InputChange changes = 1;
-}
+  repeated Change changes = 1;
 
-// A change to a single devices range value
-message InputChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // The new value for the selected input
-  Input input = 3;
+  // A change to a single devices range value
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The new value for the selected input
+    Input input = 3;
+  }
 }

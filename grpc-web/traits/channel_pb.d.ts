@@ -148,10 +148,10 @@ export namespace PullChosenChannelRequest {
 }
 
 export class PullChosenChannelResponse extends jspb.Message {
-  getChangesList(): Array<ChosenChannelChange>;
-  setChangesList(value: Array<ChosenChannelChange>): PullChosenChannelResponse;
+  getChangesList(): Array<PullChosenChannelResponse.Change>;
+  setChangesList(value: Array<PullChosenChannelResponse.Change>): PullChosenChannelResponse;
   clearChangesList(): PullChosenChannelResponse;
-  addChanges(value?: ChosenChannelChange, index?: number): ChosenChannelChange;
+  addChanges(value?: PullChosenChannelResponse.Change, index?: number): PullChosenChannelResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullChosenChannelResponse.AsObject;
@@ -163,37 +163,38 @@ export class PullChosenChannelResponse extends jspb.Message {
 
 export namespace PullChosenChannelResponse {
   export type AsObject = {
-    changesList: Array<ChosenChannelChange.AsObject>,
+    changesList: Array<PullChosenChannelResponse.Change.AsObject>,
   }
-}
 
-export class ChosenChannelChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): ChosenChannelChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): ChosenChannelChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): ChosenChannelChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getChannel(): Channel | undefined;
-  setChannel(value?: Channel): ChosenChannelChange;
-  hasChannel(): boolean;
-  clearChannel(): ChosenChannelChange;
+    getChannel(): Channel | undefined;
+    setChannel(value?: Channel): Change;
+    hasChannel(): boolean;
+    clearChannel(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChosenChannelChange.AsObject;
-  static toObject(includeInstance: boolean, msg: ChosenChannelChange): ChosenChannelChange.AsObject;
-  static serializeBinaryToWriter(message: ChosenChannelChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChosenChannelChange;
-  static deserializeBinaryFromReader(message: ChosenChannelChange, reader: jspb.BinaryReader): ChosenChannelChange;
-}
-
-export namespace ChosenChannelChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    channel?: Channel.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      channel?: Channel.AsObject,
+    }
+  }
+
 }
 

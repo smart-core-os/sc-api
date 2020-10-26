@@ -59,17 +59,17 @@ message PullAirTemperatureStateRequest {
 
 // Response message enclosing device state changes
 message PullAirTemperatureStateResponse {
-  repeated AirTemperatureStateChange changes = 1;
-}
+  repeated Change changes = 1;
 
-message AirTemperatureStateChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // The new value for the device state. Only changed fields will be set, should be merged with GetState full
-  // response as required.
-  AirTemperatureState state = 3;
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The new value for the device state. Only changed fields will be set, should be merged with GetState full
+    // response as required.
+    AirTemperatureState state = 3;
+  }
 }
 
 // Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control

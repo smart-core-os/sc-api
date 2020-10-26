@@ -72,16 +72,17 @@ message PullAirQualityStateRequest {
 }
 
 message PullAirQualityStateResponse {
-  repeated AirQualityStateChange changes = 1;
-}
+  repeated Change changes = 1;
 
-message AirQualityStateChange {
-  // The name of the device that has changed.
-  string name = 1;
-  // The time the change happened.
-  google.protobuf.Timestamp change_time = 2;
-  // The new state of the sensor. Changed fields should be reported via the update_mask property.
-  AirQualityState state = 3;
-  // The state fields that have changed.
-  google.protobuf.FieldMask update_mask = 4;
+  message Change {
+    // The name of the device that has changed.
+    string name = 1;
+    // The time the change happened.
+    google.protobuf.Timestamp change_time = 2;
+    // The new state of the sensor. Changed fields should be reported via the update_mask property.
+    AirQualityState state = 3;
+    // The state fields that have changed.
+    google.protobuf.FieldMask update_mask = 4;
+  }
+
 }

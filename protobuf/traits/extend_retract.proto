@@ -96,16 +96,6 @@ message CreateExtensionPresetRequest {
   ExtensionPreset preset = 2;
 }
 
-// A change to the state
-message ExtensionChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // the new state for the device
-  Extension extension = 3;
-}
-
 // A request to monitor the state of a device
 message PullExtensionsRequest {
   // name of the device to subscribe to
@@ -114,6 +104,16 @@ message PullExtensionsRequest {
 // Response to a Pull request for extension changes
 message PullExtensionsResponse {
   // Changes that have occurred since the last event
-  repeated ExtensionChange changes = 1;
+  repeated Change changes = 1;
+
+  // A change to the state
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // the new state for the device
+    Extension extension = 3;
+  }
 }
 

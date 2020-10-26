@@ -20,10 +20,10 @@ goog.exportSymbol('proto.smartcore.traits.GetOpenCloseStatesRequest', null, glob
 goog.exportSymbol('proto.smartcore.traits.OpenCloseAttributes', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenCloseDirection', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePosition', null, global);
-goog.exportSymbol('proto.smartcore.traits.OpenCloseStateChange', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenCloseStates', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOpenCloseStatesRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOpenCloseStatesResponse', null, global);
+goog.exportSymbol('proto.smartcore.traits.PullOpenCloseStatesResponse.Change', null, global);
 goog.exportSymbol('proto.smartcore.traits.StopOpenCloseRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.UpdateOpenCloseStatesRequest', null, global);
 /**
@@ -204,16 +204,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.smartcore.traits.OpenCloseStateChange = function(opt_data) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.smartcore.traits.OpenCloseStateChange, jspb.Message);
+goog.inherits(proto.smartcore.traits.PullOpenCloseStatesResponse.Change, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.smartcore.traits.OpenCloseStateChange.displayName = 'proto.smartcore.traits.OpenCloseStateChange';
+  proto.smartcore.traits.PullOpenCloseStatesResponse.Change.displayName = 'proto.smartcore.traits.PullOpenCloseStatesResponse.Change';
 }
 
 /**
@@ -1464,7 +1464,7 @@ proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.toObject = function
 proto.smartcore.traits.PullOpenCloseStatesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     changesList: jspb.Message.toObjectList(msg.getChangesList(),
-    proto.smartcore.traits.OpenCloseStateChange.toObject, includeInstance)
+    proto.smartcore.traits.PullOpenCloseStatesResponse.Change.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1502,8 +1502,8 @@ proto.smartcore.traits.PullOpenCloseStatesResponse.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.smartcore.traits.OpenCloseStateChange;
-      reader.readMessage(value,proto.smartcore.traits.OpenCloseStateChange.deserializeBinaryFromReader);
+      var value = new proto.smartcore.traits.PullOpenCloseStatesResponse.Change;
+      reader.readMessage(value,proto.smartcore.traits.PullOpenCloseStatesResponse.Change.deserializeBinaryFromReader);
       msg.addChanges(value);
       break;
     default:
@@ -1540,47 +1540,9 @@ proto.smartcore.traits.PullOpenCloseStatesResponse.serializeBinaryToWriter = fun
     writer.writeRepeatedMessage(
       1,
       f,
-      proto.smartcore.traits.OpenCloseStateChange.serializeBinaryToWriter
+      proto.smartcore.traits.PullOpenCloseStatesResponse.Change.serializeBinaryToWriter
     );
   }
-};
-
-
-/**
- * repeated OpenCloseStateChange changes = 1;
- * @return {!Array<!proto.smartcore.traits.OpenCloseStateChange>}
- */
-proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.getChangesList = function() {
-  return /** @type{!Array<!proto.smartcore.traits.OpenCloseStateChange>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.smartcore.traits.OpenCloseStateChange, 1));
-};
-
-
-/**
- * @param {!Array<!proto.smartcore.traits.OpenCloseStateChange>} value
- * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse} returns this
-*/
-proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.setChangesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.OpenCloseStateChange=} opt_value
- * @param {number=} opt_index
- * @return {!proto.smartcore.traits.OpenCloseStateChange}
- */
-proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.addChanges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.traits.OpenCloseStateChange, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse} returns this
- */
-proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.clearChangesList = function() {
-  return this.setChangesList([]);
 };
 
 
@@ -1600,8 +1562,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.toObject = function(opt_includeInstance) {
-  return proto.smartcore.traits.OpenCloseStateChange.toObject(opt_includeInstance, this);
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.toObject = function(opt_includeInstance) {
+  return proto.smartcore.traits.PullOpenCloseStatesResponse.Change.toObject(opt_includeInstance, this);
 };
 
 
@@ -1610,11 +1572,11 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.toObject = function(opt_in
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.smartcore.traits.OpenCloseStateChange} msg The msg instance to transform.
+ * @param {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.smartcore.traits.OpenCloseStateChange.toObject = function(includeInstance, msg) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
@@ -1632,23 +1594,23 @@ proto.smartcore.traits.OpenCloseStateChange.toObject = function(includeInstance,
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.smartcore.traits.OpenCloseStateChange}
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change}
  */
-proto.smartcore.traits.OpenCloseStateChange.deserializeBinary = function(bytes) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.smartcore.traits.OpenCloseStateChange;
-  return proto.smartcore.traits.OpenCloseStateChange.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.smartcore.traits.PullOpenCloseStatesResponse.Change;
+  return proto.smartcore.traits.PullOpenCloseStatesResponse.Change.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.smartcore.traits.OpenCloseStateChange} msg The message object to deserialize into.
+ * @param {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.smartcore.traits.OpenCloseStateChange}
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change}
  */
-proto.smartcore.traits.OpenCloseStateChange.deserializeBinaryFromReader = function(msg, reader) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1682,9 +1644,9 @@ proto.smartcore.traits.OpenCloseStateChange.deserializeBinaryFromReader = functi
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.serializeBinary = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.smartcore.traits.OpenCloseStateChange.serializeBinaryToWriter(this, writer);
+  proto.smartcore.traits.PullOpenCloseStatesResponse.Change.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1692,11 +1654,11 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.serializeBinary = function
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.smartcore.traits.OpenCloseStateChange} message
+ * @param {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.smartcore.traits.OpenCloseStateChange.serializeBinaryToWriter = function(message, writer) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
   if (f.length > 0) {
@@ -1728,16 +1690,16 @@ proto.smartcore.traits.OpenCloseStateChange.serializeBinaryToWriter = function(m
  * optional string name = 1;
  * @return {string}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.getName = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.smartcore.traits.OpenCloseStateChange} returns this
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} returns this
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.setName = function(value) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -1746,7 +1708,7 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.setName = function(value) 
  * optional google.protobuf.Timestamp create_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.getCreateTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -1754,18 +1716,18 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.getCreateTime = function()
 
 /**
  * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.smartcore.traits.OpenCloseStateChange} returns this
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} returns this
 */
-proto.smartcore.traits.OpenCloseStateChange.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.setCreateTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.OpenCloseStateChange} returns this
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} returns this
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.clearCreateTime = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.clearCreateTime = function() {
   return this.setCreateTime(undefined);
 };
 
@@ -1774,7 +1736,7 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.clearCreateTime = function
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.hasCreateTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -1783,7 +1745,7 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.hasCreateTime = function()
  * optional OpenCloseStates state = 3;
  * @return {?proto.smartcore.traits.OpenCloseStates}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.getState = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.getState = function() {
   return /** @type{?proto.smartcore.traits.OpenCloseStates} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.OpenCloseStates, 3));
 };
@@ -1791,18 +1753,18 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.getState = function() {
 
 /**
  * @param {?proto.smartcore.traits.OpenCloseStates|undefined} value
- * @return {!proto.smartcore.traits.OpenCloseStateChange} returns this
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} returns this
 */
-proto.smartcore.traits.OpenCloseStateChange.prototype.setState = function(value) {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.setState = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.OpenCloseStateChange} returns this
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change} returns this
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.clearState = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.clearState = function() {
   return this.setState(undefined);
 };
 
@@ -1811,8 +1773,46 @@ proto.smartcore.traits.OpenCloseStateChange.prototype.clearState = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.OpenCloseStateChange.prototype.hasState = function() {
+proto.smartcore.traits.PullOpenCloseStatesResponse.Change.prototype.hasState = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Change changes = 1;
+ * @return {!Array<!proto.smartcore.traits.PullOpenCloseStatesResponse.Change>}
+ */
+proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.getChangesList = function() {
+  return /** @type{!Array<!proto.smartcore.traits.PullOpenCloseStatesResponse.Change>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.smartcore.traits.PullOpenCloseStatesResponse.Change, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.smartcore.traits.PullOpenCloseStatesResponse.Change>} value
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse} returns this
+*/
+proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.setChangesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse.Change}
+ */
+proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.addChanges = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.traits.PullOpenCloseStatesResponse.Change, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.smartcore.traits.PullOpenCloseStatesResponse} returns this
+ */
+proto.smartcore.traits.PullOpenCloseStatesResponse.prototype.clearChangesList = function() {
+  return this.setChangesList([]);
 };
 
 

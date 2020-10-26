@@ -121,10 +121,10 @@ export namespace PullEmergencyRequest {
 }
 
 export class PullEmergencyResponse extends jspb.Message {
-  getChangesList(): Array<EmergencyChange>;
-  setChangesList(value: Array<EmergencyChange>): PullEmergencyResponse;
+  getChangesList(): Array<PullEmergencyResponse.Change>;
+  setChangesList(value: Array<PullEmergencyResponse.Change>): PullEmergencyResponse;
   clearChangesList(): PullEmergencyResponse;
-  addChanges(value?: EmergencyChange, index?: number): EmergencyChange;
+  addChanges(value?: PullEmergencyResponse.Change, index?: number): PullEmergencyResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEmergencyResponse.AsObject;
@@ -136,38 +136,39 @@ export class PullEmergencyResponse extends jspb.Message {
 
 export namespace PullEmergencyResponse {
   export type AsObject = {
-    changesList: Array<EmergencyChange.AsObject>,
+    changesList: Array<PullEmergencyResponse.Change.AsObject>,
   }
-}
 
-export class EmergencyChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): EmergencyChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): EmergencyChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): EmergencyChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getEmergency(): Emergency | undefined;
-  setEmergency(value?: Emergency): EmergencyChange;
-  hasEmergency(): boolean;
-  clearEmergency(): EmergencyChange;
+    getEmergency(): Emergency | undefined;
+    setEmergency(value?: Emergency): Change;
+    hasEmergency(): boolean;
+    clearEmergency(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): EmergencyChange.AsObject;
-  static toObject(includeInstance: boolean, msg: EmergencyChange): EmergencyChange.AsObject;
-  static serializeBinaryToWriter(message: EmergencyChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): EmergencyChange;
-  static deserializeBinaryFromReader(message: EmergencyChange, reader: jspb.BinaryReader): EmergencyChange;
-}
-
-export namespace EmergencyChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    emergency?: Emergency.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      emergency?: Emergency.AsObject,
+    }
+  }
+
 }
 
 export enum EmergencyLevel { 

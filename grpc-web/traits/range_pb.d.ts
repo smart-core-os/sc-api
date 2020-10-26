@@ -93,10 +93,10 @@ export namespace PullRangeValueRequest {
 }
 
 export class PullRangeValueResponse extends jspb.Message {
-  getChangesList(): Array<RangeValueChange>;
-  setChangesList(value: Array<RangeValueChange>): PullRangeValueResponse;
+  getChangesList(): Array<PullRangeValueResponse.Change>;
+  setChangesList(value: Array<PullRangeValueResponse.Change>): PullRangeValueResponse;
   clearChangesList(): PullRangeValueResponse;
-  addChanges(value?: RangeValueChange, index?: number): RangeValueChange;
+  addChanges(value?: PullRangeValueResponse.Change, index?: number): PullRangeValueResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullRangeValueResponse.AsObject;
@@ -108,37 +108,38 @@ export class PullRangeValueResponse extends jspb.Message {
 
 export namespace PullRangeValueResponse {
   export type AsObject = {
-    changesList: Array<RangeValueChange.AsObject>,
+    changesList: Array<PullRangeValueResponse.Change.AsObject>,
   }
-}
 
-export class RangeValueChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): RangeValueChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): RangeValueChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): RangeValueChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getRangeValue(): types_number_pb.Int32Var | undefined;
-  setRangeValue(value?: types_number_pb.Int32Var): RangeValueChange;
-  hasRangeValue(): boolean;
-  clearRangeValue(): RangeValueChange;
+    getRangeValue(): types_number_pb.Int32Var | undefined;
+    setRangeValue(value?: types_number_pb.Int32Var): Change;
+    hasRangeValue(): boolean;
+    clearRangeValue(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RangeValueChange.AsObject;
-  static toObject(includeInstance: boolean, msg: RangeValueChange): RangeValueChange.AsObject;
-  static serializeBinaryToWriter(message: RangeValueChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RangeValueChange;
-  static deserializeBinaryFromReader(message: RangeValueChange, reader: jspb.BinaryReader): RangeValueChange;
-}
-
-export namespace RangeValueChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    rangeValue?: types_number_pb.Int32Var.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      rangeValue?: types_number_pb.Int32Var.AsObject,
+    }
+  }
+
 }
 

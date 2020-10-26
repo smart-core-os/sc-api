@@ -80,14 +80,14 @@ message PullChosenChannelRequest {
 }
 
 message PullChosenChannelResponse {
-  repeated ChosenChannelChange changes = 1;
-}
+  repeated Change changes = 1;
 
-message ChosenChannelChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // The new chosen channel
-  Channel channel = 3;
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // The new chosen channel
+    Channel channel = 3;
+  }
 }

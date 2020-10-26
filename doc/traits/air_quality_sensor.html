@@ -187,10 +187,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.AirQualityStateChange"><span class="badge">M</span>AirQualityStateChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetAirQualityStateRequest"><span class="badge">M</span>GetAirQualityStateRequest</a>
                 </li>
               
@@ -200,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullAirQualityStateResponse"><span class="badge">M</span>PullAirQualityStateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullAirQualityStateResponse.Change"><span class="badge">M</span>PullAirQualityStateResponse.Change</a>
                 </li>
               
               
@@ -319,51 +319,6 @@ Unknown should be assumed to be present if supported. </p></td>
 
         
       
-        <h3 id="smartcore.traits.AirQualityStateChange">AirQualityStateChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device that has changed. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>change_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>The time the change happened. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.AirQualityState">AirQualityState</a></td>
-                  <td></td>
-                  <td><p>The new state of the sensor. Changed fields should be reported via the update_mask property. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields that have changed. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.GetAirQualityStateRequest">GetAirQualityStateRequest</h3>
         <p></p>
 
@@ -438,9 +393,54 @@ Unknown should be assumed to be present if supported. </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.AirQualityStateChange">AirQualityStateChange</a></td>
+                  <td><a href="#smartcore.traits.PullAirQualityStateResponse.Change">PullAirQualityStateResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullAirQualityStateResponse.Change">PullAirQualityStateResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device that has changed. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>The time the change happened. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.AirQualityState">AirQualityState</a></td>
+                  <td></td>
+                  <td><p>The new state of the sensor. Changed fields should be reported via the update_mask property. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields that have changed. </p></td>
                 </tr>
               
             </tbody>

@@ -191,10 +191,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenCloseStateChange"><span class="badge">M</span>OpenCloseStateChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.OpenCloseStates"><span class="badge">M</span>OpenCloseStates</a>
                 </li>
               
@@ -204,6 +200,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullOpenCloseStatesResponse"><span class="badge">M</span>PullOpenCloseStatesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullOpenCloseStatesResponse.Change"><span class="badge">M</span>PullOpenCloseStatesResponse.Change</a>
                 </li>
               
                 <li>
@@ -334,44 +334,6 @@
 
         
       
-        <h3 id="smartcore.traits.OpenCloseStateChange">OpenCloseStateChange</h3>
-        <p>A change to a single devices open close state value</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
-                  <td></td>
-                  <td><p>The new value for the state </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.OpenCloseStates">OpenCloseStates</h3>
         <p>All open/closable elements for the device</p>
 
@@ -441,9 +403,47 @@ capabilities </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.OpenCloseStateChange">OpenCloseStateChange</a></td>
+                  <td><a href="#smartcore.traits.PullOpenCloseStatesResponse.Change">PullOpenCloseStatesResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>The list of changes </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullOpenCloseStatesResponse.Change">PullOpenCloseStatesResponse.Change</h3>
+        <p>A change to a single devices open close state value</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                  <td></td>
+                  <td><p>The new value for the state </p></td>
                 </tr>
               
             </tbody>

@@ -195,10 +195,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ExtensionChange"><span class="badge">M</span>ExtensionChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.ExtensionPreset"><span class="badge">M</span>ExtensionPreset</a>
                 </li>
               
@@ -212,6 +208,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullExtensionsResponse"><span class="badge">M</span>PullExtensionsResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullExtensionsResponse.Change"><span class="badge">M</span>PullExtensionsResponse.Change</a>
                 </li>
               
                 <li>
@@ -394,44 +394,6 @@ action to be performed over the given time frame </p></td>
 
         
       
-        <h3 id="smartcore.traits.ExtensionChange">ExtensionChange</h3>
-        <p>A change to the state</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>extension</td>
-                  <td><a href="#smartcore.traits.Extension">Extension</a></td>
-                  <td></td>
-                  <td><p>the new state for the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.ExtensionPreset">ExtensionPreset</h3>
         <p>Describes a preset that may be configured on the device</p>
 
@@ -530,9 +492,47 @@ action to be performed over the given time frame </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.ExtensionChange">ExtensionChange</a></td>
+                  <td><a href="#smartcore.traits.PullExtensionsResponse.Change">PullExtensionsResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>Changes that have occurred since the last event </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullExtensionsResponse.Change">PullExtensionsResponse.Change</h3>
+        <p>A change to the state</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>extension</td>
+                  <td><a href="#smartcore.traits.Extension">Extension</a></td>
+                  <td></td>
+                  <td><p>the new state for the device </p></td>
                 </tr>
               
             </tbody>

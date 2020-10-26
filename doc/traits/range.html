@@ -191,11 +191,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.RangeAttributes"><span class="badge">M</span>RangeAttributes</a>
+                  <a href="#smartcore.traits.PullRangeValueResponse.Change"><span class="badge">M</span>PullRangeValueResponse.Change</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.RangeValueChange"><span class="badge">M</span>RangeValueChange</a>
+                  <a href="#smartcore.traits.RangeAttributes"><span class="badge">M</span>RangeAttributes</a>
                 </li>
               
                 <li>
@@ -292,7 +292,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.RangeValueChange">RangeValueChange</a></td>
+                  <td><a href="#smartcore.traits.PullRangeValueResponse.Change">PullRangeValueResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>The list of changes </p></td>
                 </tr>
@@ -304,31 +304,7 @@ capabilities </p></td>
 
         
       
-        <h3 id="smartcore.traits.RangeAttributes">RangeAttributes</h3>
-        <p>Trait.attributes relating to the value for the range</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>value_attributes</td>
-                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.RangeValueChange">RangeValueChange</h3>
+        <h3 id="smartcore.traits.PullRangeValueResponse.Change">PullRangeValueResponse.Change</h3>
         <p>A change to a single devices range value</p>
 
         
@@ -357,6 +333,30 @@ capabilities </p></td>
                   <td><a href="#smartcore.api.types.Int32Var">smartcore.api.types.Int32Var</a></td>
                   <td></td>
                   <td><p>The new value for the range </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.RangeAttributes">RangeAttributes</h3>
+        <p>Trait.attributes relating to the value for the range</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>value_attributes</td>
+                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>

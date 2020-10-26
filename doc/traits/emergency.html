@@ -187,10 +187,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.EmergencyChange"><span class="badge">M</span>EmergencyChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetEmergencyRequest"><span class="badge">M</span>GetEmergencyRequest</a>
                 </li>
               
@@ -200,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullEmergencyResponse"><span class="badge">M</span>PullEmergencyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullEmergencyResponse.Change"><span class="badge">M</span>PullEmergencyResponse.Change</a>
                 </li>
               
                 <li>
@@ -291,44 +291,6 @@
 
         
       
-        <h3 id="smartcore.traits.EmergencyChange">EmergencyChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>emergency</td>
-                  <td><a href="#smartcore.traits.Emergency">Emergency</a></td>
-                  <td></td>
-                  <td><p>The new value for the emergency. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.GetEmergencyRequest">GetEmergencyRequest</h3>
         <p></p>
 
@@ -389,9 +351,47 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.EmergencyChange">EmergencyChange</a></td>
+                  <td><a href="#smartcore.traits.PullEmergencyResponse.Change">PullEmergencyResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullEmergencyResponse.Change">PullEmergencyResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>emergency</td>
+                  <td><a href="#smartcore.traits.Emergency">Emergency</a></td>
+                  <td></td>
+                  <td><p>The new value for the emergency. </p></td>
                 </tr>
               
             </tbody>

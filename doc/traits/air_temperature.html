@@ -187,10 +187,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.AirTemperatureStateChange"><span class="badge">M</span>AirTemperatureStateChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetAirTemperatureStateRequest"><span class="badge">M</span>GetAirTemperatureStateRequest</a>
                 </li>
               
@@ -200,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullAirTemperatureStateResponse"><span class="badge">M</span>PullAirTemperatureStateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullAirTemperatureStateResponse.Change"><span class="badge">M</span>PullAirTemperatureStateResponse.Change</a>
                 </li>
               
                 <li>
@@ -340,45 +340,6 @@
 
         
       
-        <h3 id="smartcore.traits.AirTemperatureStateChange">AirTemperatureStateChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
-                  <td></td>
-                  <td><p>The new value for the device state. Only changed fields will be set, should be merged with GetState full
-response as required. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.GetAirTemperatureStateRequest">GetAirTemperatureStateRequest</h3>
         <p>Request message for fetching device state</p>
 
@@ -439,9 +400,48 @@ response as required. </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.AirTemperatureStateChange">AirTemperatureStateChange</a></td>
+                  <td><a href="#smartcore.traits.PullAirTemperatureStateResponse.Change">PullAirTemperatureStateResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullAirTemperatureStateResponse.Change">PullAirTemperatureStateResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                  <td></td>
+                  <td><p>The new value for the device state. Only changed fields will be set, should be merged with GetState full
+response as required. </p></td>
                 </tr>
               
             </tbody>

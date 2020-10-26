@@ -85,10 +85,10 @@ export namespace PullMotionDetectionRequest {
 }
 
 export class PullMotionDetectionResponse extends jspb.Message {
-  getChangesList(): Array<MotionDetectionChange>;
-  setChangesList(value: Array<MotionDetectionChange>): PullMotionDetectionResponse;
+  getChangesList(): Array<PullMotionDetectionResponse.Change>;
+  setChangesList(value: Array<PullMotionDetectionResponse.Change>): PullMotionDetectionResponse;
   clearChangesList(): PullMotionDetectionResponse;
-  addChanges(value?: MotionDetectionChange, index?: number): MotionDetectionChange;
+  addChanges(value?: PullMotionDetectionResponse.Change, index?: number): PullMotionDetectionResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMotionDetectionResponse.AsObject;
@@ -100,38 +100,39 @@ export class PullMotionDetectionResponse extends jspb.Message {
 
 export namespace PullMotionDetectionResponse {
   export type AsObject = {
-    changesList: Array<MotionDetectionChange.AsObject>,
+    changesList: Array<PullMotionDetectionResponse.Change.AsObject>,
   }
-}
 
-export class MotionDetectionChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): MotionDetectionChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): MotionDetectionChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): MotionDetectionChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getMotionDetection(): MotionDetection | undefined;
-  setMotionDetection(value?: MotionDetection): MotionDetectionChange;
-  hasMotionDetection(): boolean;
-  clearMotionDetection(): MotionDetectionChange;
+    getMotionDetection(): MotionDetection | undefined;
+    setMotionDetection(value?: MotionDetection): Change;
+    hasMotionDetection(): boolean;
+    clearMotionDetection(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MotionDetectionChange.AsObject;
-  static toObject(includeInstance: boolean, msg: MotionDetectionChange): MotionDetectionChange.AsObject;
-  static serializeBinaryToWriter(message: MotionDetectionChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MotionDetectionChange;
-  static deserializeBinaryFromReader(message: MotionDetectionChange, reader: jspb.BinaryReader): MotionDetectionChange;
-}
-
-export namespace MotionDetectionChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    motionDetection?: MotionDetection.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      motionDetection?: MotionDetection.AsObject,
+    }
+  }
+
 }
 
 export enum MotionDetectionState { 

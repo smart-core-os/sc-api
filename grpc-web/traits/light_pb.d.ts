@@ -147,10 +147,10 @@ export namespace PullBrightnessRequest {
 }
 
 export class PullBrightnessResponse extends jspb.Message {
-  getChangesList(): Array<BrightnessChange>;
-  setChangesList(value: Array<BrightnessChange>): PullBrightnessResponse;
+  getChangesList(): Array<PullBrightnessResponse.Change>;
+  setChangesList(value: Array<PullBrightnessResponse.Change>): PullBrightnessResponse;
   clearChangesList(): PullBrightnessResponse;
-  addChanges(value?: BrightnessChange, index?: number): BrightnessChange;
+  addChanges(value?: PullBrightnessResponse.Change, index?: number): PullBrightnessResponse.Change;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullBrightnessResponse.AsObject;
@@ -162,37 +162,38 @@ export class PullBrightnessResponse extends jspb.Message {
 
 export namespace PullBrightnessResponse {
   export type AsObject = {
-    changesList: Array<BrightnessChange.AsObject>,
+    changesList: Array<PullBrightnessResponse.Change.AsObject>,
   }
-}
 
-export class BrightnessChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): BrightnessChange;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): BrightnessChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): BrightnessChange;
+    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasCreateTime(): boolean;
+    clearCreateTime(): Change;
 
-  getBrightness(): Brightness | undefined;
-  setBrightness(value?: Brightness): BrightnessChange;
-  hasBrightness(): boolean;
-  clearBrightness(): BrightnessChange;
+    getBrightness(): Brightness | undefined;
+    setBrightness(value?: Brightness): Change;
+    hasBrightness(): boolean;
+    clearBrightness(): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BrightnessChange.AsObject;
-  static toObject(includeInstance: boolean, msg: BrightnessChange): BrightnessChange.AsObject;
-  static serializeBinaryToWriter(message: BrightnessChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BrightnessChange;
-  static deserializeBinaryFromReader(message: BrightnessChange, reader: jspb.BinaryReader): BrightnessChange;
-}
-
-export namespace BrightnessChange {
-  export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    brightness?: Brightness.AsObject,
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      brightness?: Brightness.AsObject,
+    }
+  }
+
 }
 

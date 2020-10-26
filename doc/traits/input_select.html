@@ -191,10 +191,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.InputChange"><span class="badge">M</span>InputChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.InputSelectAttributes"><span class="badge">M</span>InputSelectAttributes</a>
                 </li>
               
@@ -204,6 +200,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullInputResponse"><span class="badge">M</span>PullInputResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullInputResponse.Change"><span class="badge">M</span>PullInputResponse.Change</a>
                 </li>
               
                 <li>
@@ -360,44 +360,6 @@ change the input selection for the other to keep them consistent </p></td>
 
         
       
-        <h3 id="smartcore.traits.InputChange">InputChange</h3>
-        <p>A change to a single devices range value</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>input</td>
-                  <td><a href="#smartcore.traits.Input">Input</a></td>
-                  <td></td>
-                  <td><p>The new value for the selected input </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.InputSelectAttributes">InputSelectAttributes</h3>
         <p>Trait.attributes relating to the input select device</p>
 
@@ -473,9 +435,47 @@ the supported mode the device allows </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.InputChange">InputChange</a></td>
+                  <td><a href="#smartcore.traits.PullInputResponse.Change">PullInputResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>The list of changes </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullInputResponse.Change">PullInputResponse.Change</h3>
+        <p>A change to a single devices range value</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>input</td>
+                  <td><a href="#smartcore.traits.Input">Input</a></td>
+                  <td></td>
+                  <td><p>The new value for the selected input </p></td>
                 </tr>
               
             </tbody>

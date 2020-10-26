@@ -211,10 +211,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PtzStateChange"><span class="badge">M</span>PtzStateChange</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.PtzVector"><span class="badge">M</span>PtzVector</a>
                 </li>
               
@@ -224,6 +220,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PullPtzStatesResponse"><span class="badge">M</span>PullPtzStatesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullPtzStatesResponse.Change"><span class="badge">M</span>PullPtzStatesResponse.Change</a>
                 </li>
               
                 <li>
@@ -563,44 +563,6 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.PtzStateChange">PtzStateChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
-                  <td></td>
-                  <td><p>The updated state, should be merged with any known state </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.PtzVector">PtzVector</h3>
         <p>Defines a value for the pan, tilt, and zoom of the device. This vector can represent a movement in a particular</p><p>direction or a final position to aim for. If used for movement then the values should be positive or negative to</p><p>represent the direction of movement. For absolute values the bounds attribute of the device are used as a guide.</p><p>All values are relative to the focus of the vector in the real world. For example for a camera, to move right means</p><p>that the image captured by the camera show more on the right and less on the left of the image.</p>
 
@@ -675,9 +637,47 @@ increasing the speed as the movement continues. If not specified the device may 
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.PtzStateChange">PtzStateChange</a></td>
+                  <td><a href="#smartcore.traits.PullPtzStatesResponse.Change">PullPtzStatesResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullPtzStatesResponse.Change">PullPtzStatesResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                  <td></td>
+                  <td><p>The updated state, should be merged with any known state </p></td>
                 </tr>
               
             </tbody>

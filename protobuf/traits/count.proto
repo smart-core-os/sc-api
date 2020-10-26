@@ -75,5 +75,6 @@ message PullCountsResponse {
   message Change {
     string name = 1;
     Count count = 2;
+    google.protobuf.Timestamp change_time = 3;
   }
 }

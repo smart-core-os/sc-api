@@ -78,15 +78,15 @@ message PullOccupancyRequest {
 // response containing occupancy state changes
 message PullOccupancyResponse {
   // the list of changes that have occurred since the last event
-  repeated OccupancyChange changes = 1;
-}
+  repeated Change changes = 1;
 
-// A change to the occupancy state of the device, including people count
-message OccupancyChange {
-  // name for the device that issued the change
-  string name = 1;
-  // when the change occurred
-  google.protobuf.Timestamp create_time = 2;
-  // the new state for the device
-  Occupancy occupancy = 3;
+  // A change to the occupancy state of the device, including people count
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp create_time = 2;
+    // the new state for the device
+    Occupancy occupancy = 3;
+  }
 }
