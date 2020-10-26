@@ -1951,7 +1951,7 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.toObject = functi
 proto.smartcore.traits.PullExtensionsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     extension: (f = msg.getExtension$()) && proto.smartcore.traits.Extension.toObject(includeInstance, f)
   };
 
@@ -1996,7 +1996,7 @@ proto.smartcore.traits.PullExtensionsResponse.Change.deserializeBinaryFromReader
     case 2:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreateTime(value);
+      msg.setChangeTime(value);
       break;
     case 3:
       var value = new proto.smartcore.traits.Extension;
@@ -2039,7 +2039,7 @@ proto.smartcore.traits.PullExtensionsResponse.Change.serializeBinaryToWriter = f
       f
     );
   }
-  f = message.getCreateTime();
+  f = message.getChangeTime();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -2077,10 +2077,10 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.setName = functio
 
 
 /**
- * optional google.protobuf.Timestamp create_time = 2;
+ * optional google.protobuf.Timestamp change_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.PullExtensionsResponse.Change.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullExtensionsResponse.Change.prototype.getChangeTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -2090,7 +2090,7 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.getCreateTime = f
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.smartcore.traits.PullExtensionsResponse.Change} returns this
 */
-proto.smartcore.traits.PullExtensionsResponse.Change.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullExtensionsResponse.Change.prototype.setChangeTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -2099,8 +2099,8 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.setCreateTime = f
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullExtensionsResponse.Change} returns this
  */
-proto.smartcore.traits.PullExtensionsResponse.Change.prototype.clearCreateTime = function() {
-  return this.setCreateTime(undefined);
+proto.smartcore.traits.PullExtensionsResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
 };
 
 
@@ -2108,7 +2108,7 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.clearCreateTime =
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullExtensionsResponse.Change.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullExtensionsResponse.Change.prototype.hasChangeTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

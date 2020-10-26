@@ -54,6 +54,7 @@ message PullOnOffResponse {
   message Change {
     string name = 1;
     OnOff on_off = 2;
+    // when the change occurred
     google.protobuf.Timestamp change_time = 3;
   }
 }

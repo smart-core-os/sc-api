@@ -48,6 +48,7 @@ message PullAmbientBrightnessResponse {
     // The name for the device that changed
     string name = 1;
     AmbientBrightness ambient_brightness = 2;
+    // when the change occurred
     google.protobuf.Timestamp change_time = 3;
   }
 }

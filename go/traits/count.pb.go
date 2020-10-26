@@ -437,8 +437,9 @@ type PullCountsResponse_Change struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name       string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Count      *Count               `protobuf:"bytes,2,opt,name=count,proto3" json:"count,omitempty"`
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Count *Count `protobuf:"bytes,2,opt,name=count,proto3" json:"count,omitempty"`
+	// when the change occurred
 	ChangeTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=change_time,json=changeTime,proto3" json:"change_time,omitempty"`
 }
 

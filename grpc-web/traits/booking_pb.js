@@ -2794,7 +2794,8 @@ proto.smartcore.traits.PullBookingsResponse.Change.toObject = function(includeIn
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     type: jspb.Message.getFieldWithDefault(msg, 2, 0),
     newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
+    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2848,6 +2849,11 @@ proto.smartcore.traits.PullBookingsResponse.Change.deserializeBinaryFromReader =
       var value = new proto.smartcore.traits.Booking;
       reader.readMessage(value,proto.smartcore.traits.Booking.deserializeBinaryFromReader);
       msg.setOldValue(value);
+      break;
+    case 5:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setChangeTime(value);
       break;
     default:
       reader.skipField();
@@ -2906,6 +2912,14 @@ proto.smartcore.traits.PullBookingsResponse.Change.serializeBinaryToWriter = fun
       4,
       f,
       proto.smartcore.traits.Booking.serializeBinaryToWriter
+    );
+  }
+  f = message.getChangeTime();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -3018,6 +3032,43 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.clearOldValue = fun
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.hasOldValue = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp change_time = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.getChangeTime = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
+*/
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.setChangeTime = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
+ */
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.hasChangeTime = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

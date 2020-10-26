@@ -319,8 +319,9 @@ type PullOnOffResponse_Change struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name       string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	OnOff      *OnOff               `protobuf:"bytes,2,opt,name=on_off,json=onOff,proto3" json:"on_off,omitempty"`
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OnOff *OnOff `protobuf:"bytes,2,opt,name=on_off,json=onOff,proto3" json:"on_off,omitempty"`
+	// when the change occurred
 	ChangeTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=change_time,json=changeTime,proto3" json:"change_time,omitempty"`
 }
 

@@ -115,10 +115,10 @@ export namespace PullRangeValueResponse {
     getName(): string;
     setName(value: string): Change;
 
-    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
-    hasCreateTime(): boolean;
-    clearCreateTime(): Change;
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
 
     getRangeValue(): types_number_pb.Int32Var | undefined;
     setRangeValue(value?: types_number_pb.Int32Var): Change;
@@ -136,7 +136,7 @@ export namespace PullRangeValueResponse {
   export namespace Change {
     export type AsObject = {
       name: string,
-      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       rangeValue?: types_number_pb.Int32Var.AsObject,
     }
   }

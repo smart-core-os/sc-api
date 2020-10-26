@@ -1061,7 +1061,7 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.toObject
 proto.smartcore.traits.PullAirTemperatureStateResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     state: (f = msg.getState()) && proto.smartcore.traits.AirTemperatureState.toObject(includeInstance, f)
   };
 
@@ -1106,7 +1106,7 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.deserializeBinaryF
     case 2:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreateTime(value);
+      msg.setChangeTime(value);
       break;
     case 3:
       var value = new proto.smartcore.traits.AirTemperatureState;
@@ -1149,7 +1149,7 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.serializeBinaryToW
       f
     );
   }
-  f = message.getCreateTime();
+  f = message.getChangeTime();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1187,10 +1187,10 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.setName 
 
 
 /**
- * optional google.protobuf.Timestamp create_time = 2;
+ * optional google.protobuf.Timestamp change_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.getChangeTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -1200,7 +1200,7 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.getCreat
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.smartcore.traits.PullAirTemperatureStateResponse.Change} returns this
 */
-proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.setChangeTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1209,8 +1209,8 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.setCreat
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullAirTemperatureStateResponse.Change} returns this
  */
-proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.clearCreateTime = function() {
-  return this.setCreateTime(undefined);
+proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
 };
 
 
@@ -1218,7 +1218,7 @@ proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.clearCre
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullAirTemperatureStateResponse.Change.prototype.hasChangeTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

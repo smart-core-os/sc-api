@@ -187,10 +187,10 @@ export namespace PullOpenCloseStatesResponse {
     getName(): string;
     setName(value: string): Change;
 
-    getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
-    hasCreateTime(): boolean;
-    clearCreateTime(): Change;
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
 
     getState(): OpenCloseStates | undefined;
     setState(value?: OpenCloseStates): Change;
@@ -208,7 +208,7 @@ export namespace PullOpenCloseStatesResponse {
   export namespace Change {
     export type AsObject = {
       name: string,
-      createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       state?: OpenCloseStates.AsObject,
     }
   }

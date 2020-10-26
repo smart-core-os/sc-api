@@ -273,9 +273,10 @@ type PullAmbientBrightnessResponse_Change struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The name for the device that changed
-	Name              string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	AmbientBrightness *AmbientBrightness   `protobuf:"bytes,2,opt,name=ambient_brightness,json=ambientBrightness,proto3" json:"ambient_brightness,omitempty"`
-	ChangeTime        *timestamp.Timestamp `protobuf:"bytes,3,opt,name=change_time,json=changeTime,proto3" json:"change_time,omitempty"`
+	Name              string             `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	AmbientBrightness *AmbientBrightness `protobuf:"bytes,2,opt,name=ambient_brightness,json=ambientBrightness,proto3" json:"ambient_brightness,omitempty"`
+	// when the change occurred
+	ChangeTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=change_time,json=changeTime,proto3" json:"change_time,omitempty"`
 }
 
 func (x *PullAmbientBrightnessResponse_Change) Reset() {

@@ -348,6 +348,11 @@ export namespace PullBookingsResponse {
     hasOldValue(): boolean;
     clearOldValue(): Change;
 
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
     static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
@@ -362,6 +367,7 @@ export namespace PullBookingsResponse {
       type: types_change_pb.ChangeType,
       newValue?: Booking.AsObject,
       oldValue?: Booking.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
   }
 

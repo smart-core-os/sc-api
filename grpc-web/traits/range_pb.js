@@ -955,7 +955,7 @@ proto.smartcore.traits.PullRangeValueResponse.Change.prototype.toObject = functi
 proto.smartcore.traits.PullRangeValueResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     rangeValue: (f = msg.getRangeValue()) && types_number_pb.Int32Var.toObject(includeInstance, f)
   };
 
@@ -1000,7 +1000,7 @@ proto.smartcore.traits.PullRangeValueResponse.Change.deserializeBinaryFromReader
     case 2:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreateTime(value);
+      msg.setChangeTime(value);
       break;
     case 3:
       var value = new types_number_pb.Int32Var;
@@ -1043,7 +1043,7 @@ proto.smartcore.traits.PullRangeValueResponse.Change.serializeBinaryToWriter = f
       f
     );
   }
-  f = message.getCreateTime();
+  f = message.getChangeTime();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1081,10 +1081,10 @@ proto.smartcore.traits.PullRangeValueResponse.Change.prototype.setName = functio
 
 
 /**
- * optional google.protobuf.Timestamp create_time = 2;
+ * optional google.protobuf.Timestamp change_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.PullRangeValueResponse.Change.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullRangeValueResponse.Change.prototype.getChangeTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -1094,7 +1094,7 @@ proto.smartcore.traits.PullRangeValueResponse.Change.prototype.getCreateTime = f
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.smartcore.traits.PullRangeValueResponse.Change} returns this
 */
-proto.smartcore.traits.PullRangeValueResponse.Change.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullRangeValueResponse.Change.prototype.setChangeTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1103,8 +1103,8 @@ proto.smartcore.traits.PullRangeValueResponse.Change.prototype.setCreateTime = f
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullRangeValueResponse.Change} returns this
  */
-proto.smartcore.traits.PullRangeValueResponse.Change.prototype.clearCreateTime = function() {
-  return this.setCreateTime(undefined);
+proto.smartcore.traits.PullRangeValueResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
 };
 
 
@@ -1112,7 +1112,7 @@ proto.smartcore.traits.PullRangeValueResponse.Change.prototype.clearCreateTime =
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullRangeValueResponse.Change.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullRangeValueResponse.Change.prototype.hasChangeTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

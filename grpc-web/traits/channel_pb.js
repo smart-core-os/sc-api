@@ -1418,7 +1418,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.toObject = fun
 proto.smartcore.traits.PullChosenChannelResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     channel: (f = msg.getChannel()) && proto.smartcore.traits.Channel.toObject(includeInstance, f)
   };
 
@@ -1463,7 +1463,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.deserializeBinaryFromRea
     case 2:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreateTime(value);
+      msg.setChangeTime(value);
       break;
     case 3:
       var value = new proto.smartcore.traits.Channel;
@@ -1506,7 +1506,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.serializeBinaryToWriter 
       f
     );
   }
-  f = message.getCreateTime();
+  f = message.getChangeTime();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1544,10 +1544,10 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setName = func
 
 
 /**
- * optional google.protobuf.Timestamp create_time = 2;
+ * optional google.protobuf.Timestamp change_time = 2;
  * @return {?proto.google.protobuf.Timestamp}
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getCreateTime = function() {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getChangeTime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
 };
@@ -1557,7 +1557,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getCreateTime 
  * @param {?proto.google.protobuf.Timestamp|undefined} value
  * @return {!proto.smartcore.traits.PullChosenChannelResponse.Change} returns this
 */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setCreateTime = function(value) {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setChangeTime = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1566,8 +1566,8 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setCreateTime 
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullChosenChannelResponse.Change} returns this
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearCreateTime = function() {
-  return this.setCreateTime(undefined);
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearChangeTime = function() {
+  return this.setChangeTime(undefined);
 };
 
 
@@ -1575,7 +1575,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearCreateTim
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.hasCreateTime = function() {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.hasChangeTime = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

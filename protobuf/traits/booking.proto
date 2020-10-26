@@ -169,5 +169,7 @@ message PullBookingsResponse {
     Booking new_value = 3;
     // the old value to use for UPDATE|REMOVE changes
     Booking old_value = 4;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 5;
   }
 }

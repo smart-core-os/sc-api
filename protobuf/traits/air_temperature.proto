@@ -65,7 +65,7 @@ message PullAirTemperatureStateResponse {
     // name for the device that issued the change
     string name = 1;
     // when the change occurred
-    google.protobuf.Timestamp create_time = 2;
+    google.protobuf.Timestamp change_time = 2;
     // The new value for the device state. Only changed fields will be set, should be merged with GetState full
     // response as required.
     AirTemperatureState state = 3;

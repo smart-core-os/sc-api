@@ -75,7 +75,7 @@ message PullEmergencyResponse {
     // name for the device that issued the change
     string name = 1;
     // when the change occurred
-    google.protobuf.Timestamp create_time = 2;
+    google.protobuf.Timestamp change_time = 2;
     // The new value for the emergency.
     Emergency emergency = 3;
   }
