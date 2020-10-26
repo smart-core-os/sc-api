@@ -18,16 +18,16 @@ import "types/unit.proto";
 // system.
 service AirTemperatureApi {
   // Get the current state of the device
-  rpc GetState (GetAirTemperatureStateRequest) returns (AirTemperatureState);
+  rpc GetState (GetAirTemperatureRequest) returns (AirTemperature);
 
   // Update the target state for the device. the returned state may not be complete but will indicate at least the
   // current values for any set fields as part of the request.
-  rpc UpdateState (UpdateAirTemperatureStateRequest) returns (AirTemperatureState);
+  rpc UpdateState (UpdateAirTemperatureRequest) returns (AirTemperature);
 
   // Request notification of change to the device state. The messages in the response stream may not be complete
   // but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
   // method.
-  rpc PullState (PullAirTemperatureStateRequest) returns (stream PullAirTemperatureStateResponse);
+  rpc PullState (PullAirTemperatureRequest) returns (stream PullAirTemperatureResponse);
 }
 
 // Trait.attributes message for describing this device trait.
@@ -40,25 +40,25 @@ message AirTemperatureAttributes {
 }
 
 // Request message for fetching device state
-message GetAirTemperatureStateRequest {
+message GetAirTemperatureRequest {
   string name = 1;
 }
 
 // Request message for updating the device state
-message UpdateAirTemperatureStateRequest {
+message UpdateAirTemperatureRequest {
   string name = 1;
-  AirTemperatureState state = 2;
+  AirTemperature state = 2;
   // The fields relative to state we intend to update
   google.protobuf.FieldMask update_mask = 3;
 }
 
 // Request message for subscribing to changes in the devices state
-message PullAirTemperatureStateRequest {
+message PullAirTemperatureRequest {
   string name = 1;
 }
 
 // Response message enclosing device state changes
-message PullAirTemperatureStateResponse {
+message PullAirTemperatureResponse {
   repeated Change changes = 1;
 
   message Change {
@@ -68,7 +68,7 @@ message PullAirTemperatureStateResponse {
     google.protobuf.Timestamp change_time = 2;
     // The new value for the device state. Only changed fields will be set, should be merged with GetState full
     // response as required.
-    AirTemperatureState state = 3;
+    AirTemperature state = 3;
   }
 }
 
@@ -104,7 +104,7 @@ enum AirTemperatureMode {
 }
 
 // All the properties of the device
-message AirTemperatureState {
+message AirTemperature {
   // The current mode for the device
   AirTemperatureMode mode = 1;
   oneof temperature_goal {

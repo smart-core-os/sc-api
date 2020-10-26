@@ -82,160 +82,160 @@ proto.smartcore.traits.PtzApiPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetPtzStateRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.GetPtzRequest,
+ *   !proto.smartcore.traits.Ptz>}
  */
-const methodDescriptor_PtzApi_GetPtzState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.PtzApi/GetPtzState',
+const methodDescriptor_PtzApi_GetPtz = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/GetPtz',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetPtzStateRequest,
-  proto.smartcore.traits.PtzState,
+  proto.smartcore.traits.GetPtzRequest,
+  proto.smartcore.traits.Ptz,
   /**
-   * @param {!proto.smartcore.traits.GetPtzStateRequest} request
+   * @param {!proto.smartcore.traits.GetPtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetPtzStateRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.GetPtzRequest,
+ *   !proto.smartcore.traits.Ptz>}
  */
-const methodInfo_PtzApi_GetPtzState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PtzState,
+const methodInfo_PtzApi_GetPtz = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.Ptz,
   /**
-   * @param {!proto.smartcore.traits.GetPtzStateRequest} request
+   * @param {!proto.smartcore.traits.GetPtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetPtzStateRequest} request The
+ * @param {!proto.smartcore.traits.GetPtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PtzState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzApiClient.prototype.getPtzState =
+proto.smartcore.traits.PtzApiClient.prototype.getPtz =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.PtzApi/GetPtzState',
+      '/smartcore.traits.PtzApi/GetPtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_GetPtzState,
+      methodDescriptor_PtzApi_GetPtz,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.GetPtzStateRequest} request The
+ * @param {!proto.smartcore.traits.GetPtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.PtzState>}
+ * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzApiPromiseClient.prototype.getPtzState =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.getPtz =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.PtzApi/GetPtzState',
+      '/smartcore.traits.PtzApi/GetPtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_GetPtzState);
+      methodDescriptor_PtzApi_GetPtz);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.UpdatePtzStateRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.UpdatePtzRequest,
+ *   !proto.smartcore.traits.Ptz>}
  */
-const methodDescriptor_PtzApi_UpdatePtzState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.PtzApi/UpdatePtzState',
+const methodDescriptor_PtzApi_UpdatePtz = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/UpdatePtz',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.UpdatePtzStateRequest,
-  proto.smartcore.traits.PtzState,
+  proto.smartcore.traits.UpdatePtzRequest,
+  proto.smartcore.traits.Ptz,
   /**
-   * @param {!proto.smartcore.traits.UpdatePtzStateRequest} request
+   * @param {!proto.smartcore.traits.UpdatePtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdatePtzStateRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.UpdatePtzRequest,
+ *   !proto.smartcore.traits.Ptz>}
  */
-const methodInfo_PtzApi_UpdatePtzState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PtzState,
+const methodInfo_PtzApi_UpdatePtz = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.Ptz,
   /**
-   * @param {!proto.smartcore.traits.UpdatePtzStateRequest} request
+   * @param {!proto.smartcore.traits.UpdatePtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.UpdatePtzStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdatePtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PtzState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzApiClient.prototype.updatePtzState =
+proto.smartcore.traits.PtzApiClient.prototype.updatePtz =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.PtzApi/UpdatePtzState',
+      '/smartcore.traits.PtzApi/UpdatePtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_UpdatePtzState,
+      methodDescriptor_PtzApi_UpdatePtz,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.UpdatePtzStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdatePtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.PtzState>}
+ * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzApiPromiseClient.prototype.updatePtzState =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.updatePtz =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.PtzApi/UpdatePtzState',
+      '/smartcore.traits.PtzApi/UpdatePtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_UpdatePtzState);
+      methodDescriptor_PtzApi_UpdatePtz);
 };
 
 
@@ -243,13 +243,13 @@ proto.smartcore.traits.PtzApiPromiseClient.prototype.updatePtzState =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.smartcore.traits.StopPtzRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.Ptz>}
  */
 const methodDescriptor_PtzApi_Stop = new grpc.web.MethodDescriptor(
   '/smartcore.traits.PtzApi/Stop',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.StopPtzRequest,
-  proto.smartcore.traits.PtzState,
+  proto.smartcore.traits.Ptz,
   /**
    * @param {!proto.smartcore.traits.StopPtzRequest} request
    * @return {!Uint8Array}
@@ -257,7 +257,7 @@ const methodDescriptor_PtzApi_Stop = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
@@ -265,10 +265,10 @@ const methodDescriptor_PtzApi_Stop = new grpc.web.MethodDescriptor(
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.smartcore.traits.StopPtzRequest,
- *   !proto.smartcore.traits.PtzState>}
+ *   !proto.smartcore.traits.Ptz>}
  */
 const methodInfo_PtzApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PtzState,
+  proto.smartcore.traits.Ptz,
   /**
    * @param {!proto.smartcore.traits.StopPtzRequest} request
    * @return {!Uint8Array}
@@ -276,7 +276,7 @@ const methodInfo_PtzApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PtzState.deserializeBinary
+  proto.smartcore.traits.Ptz.deserializeBinary
 );
 
 
@@ -285,9 +285,9 @@ const methodInfo_PtzApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PtzState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.PtzApiClient.prototype.stop =
@@ -306,7 +306,7 @@ proto.smartcore.traits.PtzApiClient.prototype.stop =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.PtzState>}
+ * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.PtzApiPromiseClient.prototype.stop =
@@ -402,75 +402,75 @@ proto.smartcore.traits.PtzApiPromiseClient.prototype.createPreset =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullPtzStatesRequest,
- *   !proto.smartcore.traits.PullPtzStatesResponse>}
+ *   !proto.smartcore.traits.PullPtzRequest,
+ *   !proto.smartcore.traits.PullPtzResponse>}
  */
-const methodDescriptor_PtzApi_PullPtzStates = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.PtzApi/PullPtzStates',
+const methodDescriptor_PtzApi_PullPtz = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/PullPtz',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullPtzStatesRequest,
-  proto.smartcore.traits.PullPtzStatesResponse,
+  proto.smartcore.traits.PullPtzRequest,
+  proto.smartcore.traits.PullPtzResponse,
   /**
-   * @param {!proto.smartcore.traits.PullPtzStatesRequest} request
+   * @param {!proto.smartcore.traits.PullPtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullPtzStatesResponse.deserializeBinary
+  proto.smartcore.traits.PullPtzResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullPtzStatesRequest,
- *   !proto.smartcore.traits.PullPtzStatesResponse>}
+ *   !proto.smartcore.traits.PullPtzRequest,
+ *   !proto.smartcore.traits.PullPtzResponse>}
  */
-const methodInfo_PtzApi_PullPtzStates = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullPtzStatesResponse,
+const methodInfo_PtzApi_PullPtz = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.PullPtzResponse,
   /**
-   * @param {!proto.smartcore.traits.PullPtzStatesRequest} request
+   * @param {!proto.smartcore.traits.PullPtzRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullPtzStatesResponse.deserializeBinary
+  proto.smartcore.traits.PullPtzResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.PullPtzStatesRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullPtzRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzStatesResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzApiClient.prototype.pullPtzStates =
+proto.smartcore.traits.PtzApiClient.prototype.pullPtz =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.PtzApi/PullPtzStates',
+      '/smartcore.traits.PtzApi/PullPtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_PullPtzStates);
+      methodDescriptor_PtzApi_PullPtz);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.PullPtzStatesRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullPtzRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzStatesResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzApiPromiseClient.prototype.pullPtzStates =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.pullPtz =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.PtzApi/PullPtzStates',
+      '/smartcore.traits.PtzApi/PullPtz',
       request,
       metadata || {},
-      methodDescriptor_PtzApi_PullPtzStates);
+      methodDescriptor_PtzApi_PullPtz);
 };
 
 

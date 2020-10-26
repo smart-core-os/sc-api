@@ -14,15 +14,15 @@ import "types/number.proto";
 
 // Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.
 service OpenCloseApi {
-  rpc GetStates (GetOpenCloseStatesRequest) returns (OpenCloseStates);
+  rpc GetPositions (GetOpenClosePositionsRequest) returns (OpenClosePositions);
 
-  rpc UpdateStates (UpdateOpenCloseStatesRequest) returns (OpenCloseStates);
+  rpc UpdatePositions (UpdateOpenClosePositionsRequest) returns (OpenClosePositions);
 
   // Stop causes any changes being performed by the underlying device to stop. Will return the current state.
-  rpc Stop (StopOpenCloseRequest) returns (OpenCloseStates);
+  rpc Stop (StopOpenCloseRequest) returns (OpenClosePositions);
 
   // Get notified of changes to the OpenCloseState of a device
-  rpc Pull (PullOpenCloseStatesRequest) returns (stream PullOpenCloseStatesResponse);
+  rpc Pull (PullOpenClosePositionsRequest) returns (stream PullOpenClosePositionsResponse);
 }
 
 // Trait.attribute for OpenClose devices
@@ -37,7 +37,7 @@ message OpenCloseAttributes {
 }
 
 // All open/closable elements for the device
-message OpenCloseStates {
+message OpenClosePositions {
   // The state of each of the devices open-able elements. Most devices will only have a single value here as they can
   // only be opened from a single direction.
   repeated OpenClosePosition states = 1;
@@ -62,17 +62,17 @@ message OpenClosePosition {
   OpenCloseDirection direction = 2;
 }
 
-message GetOpenCloseStatesRequest {
+message GetOpenClosePositionsRequest {
   // Name of the device to get the state for
   string name = 1;
 }
 
-message UpdateOpenCloseStatesRequest {
+message UpdateOpenClosePositionsRequest {
   // the name of the device to update the states for
   string name = 1;
   // target states for each directional element of the device. If you don't want to change an open direction don't
   // include it in the states list.
-  OpenCloseStates states = 2;
+  OpenClosePositions states = 2;
   // indicate whether the state change is a delta or absolute value
   bool delta = 3;
 }
@@ -83,7 +83,7 @@ message StopOpenCloseRequest {
 }
 
 // Request to begin a subscription for open close state changes
-message PullOpenCloseStatesRequest {
+message PullOpenClosePositionsRequest {
   // The name of the device we want events from
   string name = 1;
   // Indicate whether we want to be notified of values while tweening or not. The device may ignore this depending on
@@ -92,7 +92,7 @@ message PullOpenCloseStatesRequest {
 }
 
 // A response as part of the stream of changes to the range value
-message PullOpenCloseStatesResponse {
+message PullOpenClosePositionsResponse {
   // The list of changes
   repeated Change changes = 1;
 
@@ -103,6 +103,6 @@ message PullOpenCloseStatesResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The new value for the state
-    OpenCloseStates state = 3;
+    OpenClosePositions state = 3;
   }
 }

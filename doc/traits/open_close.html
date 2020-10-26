@@ -179,7 +179,7 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetOpenCloseStatesRequest"><span class="badge">M</span>GetOpenCloseStatesRequest</a>
+                  <a href="#smartcore.traits.GetOpenClosePositionsRequest"><span class="badge">M</span>GetOpenClosePositionsRequest</a>
                 </li>
               
                 <li>
@@ -191,19 +191,19 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenCloseStates"><span class="badge">M</span>OpenCloseStates</a>
+                  <a href="#smartcore.traits.OpenClosePositions"><span class="badge">M</span>OpenClosePositions</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullOpenCloseStatesRequest"><span class="badge">M</span>PullOpenCloseStatesRequest</a>
+                  <a href="#smartcore.traits.PullOpenClosePositionsRequest"><span class="badge">M</span>PullOpenClosePositionsRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullOpenCloseStatesResponse"><span class="badge">M</span>PullOpenCloseStatesResponse</a>
+                  <a href="#smartcore.traits.PullOpenClosePositionsResponse"><span class="badge">M</span>PullOpenClosePositionsResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullOpenCloseStatesResponse.Change"><span class="badge">M</span>PullOpenCloseStatesResponse.Change</a>
+                  <a href="#smartcore.traits.PullOpenClosePositionsResponse.Change"><span class="badge">M</span>PullOpenClosePositionsResponse.Change</a>
                 </li>
               
                 <li>
@@ -211,7 +211,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.UpdateOpenCloseStatesRequest"><span class="badge">M</span>UpdateOpenCloseStatesRequest</a>
+                  <a href="#smartcore.traits.UpdateOpenClosePositionsRequest"><span class="badge">M</span>UpdateOpenClosePositionsRequest</a>
                 </li>
               
               
@@ -240,7 +240,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.GetOpenCloseStatesRequest">GetOpenCloseStatesRequest</h3>
+        <h3 id="smartcore.traits.GetOpenClosePositionsRequest">GetOpenClosePositionsRequest</h3>
         <p></p>
 
         
@@ -334,7 +334,7 @@
 
         
       
-        <h3 id="smartcore.traits.OpenCloseStates">OpenCloseStates</h3>
+        <h3 id="smartcore.traits.OpenClosePositions">OpenClosePositions</h3>
         <p>All open/closable elements for the device</p>
 
         
@@ -359,7 +359,7 @@ only be opened from a single direction. </p></td>
 
         
       
-        <h3 id="smartcore.traits.PullOpenCloseStatesRequest">PullOpenCloseStatesRequest</h3>
+        <h3 id="smartcore.traits.PullOpenClosePositionsRequest">PullOpenClosePositionsRequest</h3>
         <p>Request to begin a subscription for open close state changes</p>
 
         
@@ -391,7 +391,7 @@ capabilities </p></td>
 
         
       
-        <h3 id="smartcore.traits.PullOpenCloseStatesResponse">PullOpenCloseStatesResponse</h3>
+        <h3 id="smartcore.traits.PullOpenClosePositionsResponse">PullOpenClosePositionsResponse</h3>
         <p>A response as part of the stream of changes to the range value</p>
 
         
@@ -403,7 +403,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.PullOpenCloseStatesResponse.Change">PullOpenCloseStatesResponse.Change</a></td>
+                  <td><a href="#smartcore.traits.PullOpenClosePositionsResponse.Change">PullOpenClosePositionsResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>The list of changes </p></td>
                 </tr>
@@ -415,7 +415,7 @@ capabilities </p></td>
 
         
       
-        <h3 id="smartcore.traits.PullOpenCloseStatesResponse.Change">PullOpenCloseStatesResponse.Change</h3>
+        <h3 id="smartcore.traits.PullOpenClosePositionsResponse.Change">PullOpenClosePositionsResponse.Change</h3>
         <p>A change to a single devices open close state value</p>
 
         
@@ -441,7 +441,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                  <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
                   <td></td>
                   <td><p>The new value for the state </p></td>
                 </tr>
@@ -477,7 +477,7 @@ capabilities </p></td>
 
         
       
-        <h3 id="smartcore.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</h3>
+        <h3 id="smartcore.traits.UpdateOpenClosePositionsRequest">UpdateOpenClosePositionsRequest</h3>
         <p></p>
 
         
@@ -496,7 +496,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>states</td>
-                  <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                  <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
                   <td></td>
                   <td><p>target states for each directional element of the device. If you don&#39;t want to change an open direction don&#39;t
 include it in the states list. </p></td>
@@ -584,30 +584,30 @@ include it in the states list. </p></td>
           <tbody>
             
               <tr>
-                <td>GetStates</td>
-                <td><a href="#smartcore.traits.GetOpenCloseStatesRequest">GetOpenCloseStatesRequest</a></td>
-                <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                <td>GetPositions</td>
+                <td><a href="#smartcore.traits.GetOpenClosePositionsRequest">GetOpenClosePositionsRequest</a></td>
+                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>UpdateStates</td>
-                <td><a href="#smartcore.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</a></td>
-                <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                <td>UpdatePositions</td>
+                <td><a href="#smartcore.traits.UpdateOpenClosePositionsRequest">UpdateOpenClosePositionsRequest</a></td>
+                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
                 <td><p></p></td>
               </tr>
             
               <tr>
                 <td>Stop</td>
                 <td><a href="#smartcore.traits.StopOpenCloseRequest">StopOpenCloseRequest</a></td>
-                <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
                 <td><p>Stop causes any changes being performed by the underlying device to stop. Will return the current state.</p></td>
               </tr>
             
               <tr>
                 <td>Pull</td>
-                <td><a href="#smartcore.traits.PullOpenCloseStatesRequest">PullOpenCloseStatesRequest</a></td>
-                <td><a href="#smartcore.traits.PullOpenCloseStatesResponse">PullOpenCloseStatesResponse</a> stream</td>
+                <td><a href="#smartcore.traits.PullOpenClosePositionsRequest">PullOpenClosePositionsRequest</a></td>
+                <td><a href="#smartcore.traits.PullOpenClosePositionsResponse">PullOpenClosePositionsResponse</a> stream</td>
                 <td><p>Get notified of changes to the OpenCloseState of a device</p></td>
               </tr>
             

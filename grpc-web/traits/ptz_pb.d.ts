@@ -38,32 +38,32 @@ export namespace PtzAttributes {
   }
 }
 
-export class PtzState extends jspb.Message {
+export class Ptz extends jspb.Message {
   getPosition(): PtzPosition | undefined;
-  setPosition(value?: PtzPosition): PtzState;
+  setPosition(value?: PtzPosition): Ptz;
   hasPosition(): boolean;
-  clearPosition(): PtzState;
+  clearPosition(): Ptz;
 
   getMovement(): PtzMovement | undefined;
-  setMovement(value?: PtzMovement): PtzState;
+  setMovement(value?: PtzMovement): Ptz;
   hasMovement(): boolean;
-  clearMovement(): PtzState;
+  clearMovement(): Ptz;
 
   getPreset(): string;
-  setPreset(value: string): PtzState;
+  setPreset(value: string): Ptz;
 
   getPresetSpeed(): number;
-  setPresetSpeed(value: number): PtzState;
+  setPresetSpeed(value: number): Ptz;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PtzState.AsObject;
-  static toObject(includeInstance: boolean, msg: PtzState): PtzState.AsObject;
-  static serializeBinaryToWriter(message: PtzState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PtzState;
-  static deserializeBinaryFromReader(message: PtzState, reader: jspb.BinaryReader): PtzState;
+  toObject(includeInstance?: boolean): Ptz.AsObject;
+  static toObject(includeInstance: boolean, msg: Ptz): Ptz.AsObject;
+  static serializeBinaryToWriter(message: Ptz, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Ptz;
+  static deserializeBinaryFromReader(message: Ptz, reader: jspb.BinaryReader): Ptz;
 }
 
-export namespace PtzState {
+export namespace Ptz {
   export type AsObject = {
     position?: PtzPosition.AsObject,
     movement?: PtzMovement.AsObject,
@@ -218,56 +218,56 @@ export namespace PtzPreset {
   }
 }
 
-export class GetPtzStateRequest extends jspb.Message {
+export class GetPtzRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetPtzStateRequest;
+  setName(value: string): GetPtzRequest;
 
   getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetPtzStateRequest;
+  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetPtzRequest;
   hasFields(): boolean;
-  clearFields(): GetPtzStateRequest;
+  clearFields(): GetPtzRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetPtzStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetPtzStateRequest): GetPtzStateRequest.AsObject;
-  static serializeBinaryToWriter(message: GetPtzStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetPtzStateRequest;
-  static deserializeBinaryFromReader(message: GetPtzStateRequest, reader: jspb.BinaryReader): GetPtzStateRequest;
+  toObject(includeInstance?: boolean): GetPtzRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetPtzRequest): GetPtzRequest.AsObject;
+  static serializeBinaryToWriter(message: GetPtzRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetPtzRequest;
+  static deserializeBinaryFromReader(message: GetPtzRequest, reader: jspb.BinaryReader): GetPtzRequest;
 }
 
-export namespace GetPtzStateRequest {
+export namespace GetPtzRequest {
   export type AsObject = {
     name: string,
     fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
-export class UpdatePtzStateRequest extends jspb.Message {
+export class UpdatePtzRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): UpdatePtzStateRequest;
+  setName(value: string): UpdatePtzRequest;
 
-  getState(): PtzState | undefined;
-  setState(value?: PtzState): UpdatePtzStateRequest;
+  getState(): Ptz | undefined;
+  setState(value?: Ptz): UpdatePtzRequest;
   hasState(): boolean;
-  clearState(): UpdatePtzStateRequest;
+  clearState(): UpdatePtzRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdatePtzStateRequest;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdatePtzRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): UpdatePtzStateRequest;
+  clearUpdateMask(): UpdatePtzRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdatePtzStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdatePtzStateRequest): UpdatePtzStateRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdatePtzStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdatePtzStateRequest;
-  static deserializeBinaryFromReader(message: UpdatePtzStateRequest, reader: jspb.BinaryReader): UpdatePtzStateRequest;
+  toObject(includeInstance?: boolean): UpdatePtzRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdatePtzRequest): UpdatePtzRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdatePtzRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdatePtzRequest;
+  static deserializeBinaryFromReader(message: UpdatePtzRequest, reader: jspb.BinaryReader): UpdatePtzRequest;
 }
 
-export namespace UpdatePtzStateRequest {
+export namespace UpdatePtzRequest {
   export type AsObject = {
     name: string,
-    state?: PtzState.AsObject,
+    state?: Ptz.AsObject,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
@@ -314,41 +314,41 @@ export namespace CreatePtzPresetRequest {
   }
 }
 
-export class PullPtzStatesRequest extends jspb.Message {
+export class PullPtzRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): PullPtzStatesRequest;
+  setName(value: string): PullPtzRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullPtzStatesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PullPtzStatesRequest): PullPtzStatesRequest.AsObject;
-  static serializeBinaryToWriter(message: PullPtzStatesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullPtzStatesRequest;
-  static deserializeBinaryFromReader(message: PullPtzStatesRequest, reader: jspb.BinaryReader): PullPtzStatesRequest;
+  toObject(includeInstance?: boolean): PullPtzRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullPtzRequest): PullPtzRequest.AsObject;
+  static serializeBinaryToWriter(message: PullPtzRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullPtzRequest;
+  static deserializeBinaryFromReader(message: PullPtzRequest, reader: jspb.BinaryReader): PullPtzRequest;
 }
 
-export namespace PullPtzStatesRequest {
+export namespace PullPtzRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class PullPtzStatesResponse extends jspb.Message {
-  getChangesList(): Array<PullPtzStatesResponse.Change>;
-  setChangesList(value: Array<PullPtzStatesResponse.Change>): PullPtzStatesResponse;
-  clearChangesList(): PullPtzStatesResponse;
-  addChanges(value?: PullPtzStatesResponse.Change, index?: number): PullPtzStatesResponse.Change;
+export class PullPtzResponse extends jspb.Message {
+  getChangesList(): Array<PullPtzResponse.Change>;
+  setChangesList(value: Array<PullPtzResponse.Change>): PullPtzResponse;
+  clearChangesList(): PullPtzResponse;
+  addChanges(value?: PullPtzResponse.Change, index?: number): PullPtzResponse.Change;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullPtzStatesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PullPtzStatesResponse): PullPtzStatesResponse.AsObject;
-  static serializeBinaryToWriter(message: PullPtzStatesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullPtzStatesResponse;
-  static deserializeBinaryFromReader(message: PullPtzStatesResponse, reader: jspb.BinaryReader): PullPtzStatesResponse;
+  toObject(includeInstance?: boolean): PullPtzResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullPtzResponse): PullPtzResponse.AsObject;
+  static serializeBinaryToWriter(message: PullPtzResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullPtzResponse;
+  static deserializeBinaryFromReader(message: PullPtzResponse, reader: jspb.BinaryReader): PullPtzResponse;
 }
 
-export namespace PullPtzStatesResponse {
+export namespace PullPtzResponse {
   export type AsObject = {
-    changesList: Array<PullPtzStatesResponse.Change.AsObject>,
+    changesList: Array<PullPtzResponse.Change.AsObject>,
   }
 
   export class Change extends jspb.Message {
@@ -360,8 +360,8 @@ export namespace PullPtzStatesResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): PtzState | undefined;
-    setState(value?: PtzState): Change;
+    getState(): Ptz | undefined;
+    setState(value?: Ptz): Change;
     hasState(): boolean;
     clearState(): Change;
 
@@ -377,7 +377,7 @@ export namespace PullPtzStatesResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: PtzState.AsObject,
+      state?: Ptz.AsObject,
     }
   }
 

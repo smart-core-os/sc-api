@@ -183,7 +183,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetPtzStateRequest"><span class="badge">M</span>GetPtzStateRequest</a>
+                  <a href="#smartcore.traits.GetPtzRequest"><span class="badge">M</span>GetPtzRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Ptz"><span class="badge">M</span>Ptz</a>
                 </li>
               
                 <li>
@@ -207,23 +211,19 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PtzState"><span class="badge">M</span>PtzState</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.PtzVector"><span class="badge">M</span>PtzVector</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullPtzStatesRequest"><span class="badge">M</span>PullPtzStatesRequest</a>
+                  <a href="#smartcore.traits.PullPtzRequest"><span class="badge">M</span>PullPtzRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullPtzStatesResponse"><span class="badge">M</span>PullPtzStatesResponse</a>
+                  <a href="#smartcore.traits.PullPtzResponse"><span class="badge">M</span>PullPtzResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullPtzStatesResponse.Change"><span class="badge">M</span>PullPtzStatesResponse.Change</a>
+                  <a href="#smartcore.traits.PullPtzResponse.Change"><span class="badge">M</span>PullPtzResponse.Change</a>
                 </li>
               
                 <li>
@@ -231,7 +231,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.UpdatePtzStateRequest"><span class="badge">M</span>UpdatePtzStateRequest</a>
+                  <a href="#smartcore.traits.UpdatePtzRequest"><span class="badge">M</span>UpdatePtzRequest</a>
                 </li>
               
               
@@ -287,7 +287,7 @@
 
         
       
-        <h3 id="smartcore.traits.GetPtzStateRequest">GetPtzStateRequest</h3>
+        <h3 id="smartcore.traits.GetPtzRequest">GetPtzRequest</h3>
         <p></p>
 
         
@@ -309,6 +309,51 @@
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
                   <td><p>which fields do we want to fetch </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Ptz">Ptz</h3>
+        <p>The current or intended state for the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>position</td>
+                  <td><a href="#smartcore.traits.PtzPosition">PtzPosition</a></td>
+                  <td></td>
+                  <td><p>The current position of the PTZ device (if known) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>movement</td>
+                  <td><a href="#smartcore.traits.PtzMovement">PtzMovement</a></td>
+                  <td></td>
+                  <td><p>The current motion of the PTZ device (if known) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>preset</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The current preset selected for the device (if known) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>preset_speed</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The speed the preset should be applied. 0 for &#39;use device default&#39; </p></td>
                 </tr>
               
             </tbody>
@@ -518,51 +563,6 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.PtzState">PtzState</h3>
-        <p>The current or intended state for the device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>position</td>
-                  <td><a href="#smartcore.traits.PtzPosition">PtzPosition</a></td>
-                  <td></td>
-                  <td><p>The current position of the PTZ device (if known) </p></td>
-                </tr>
-              
-                <tr>
-                  <td>movement</td>
-                  <td><a href="#smartcore.traits.PtzMovement">PtzMovement</a></td>
-                  <td></td>
-                  <td><p>The current motion of the PTZ device (if known) </p></td>
-                </tr>
-              
-                <tr>
-                  <td>preset</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The current preset selected for the device (if known) </p></td>
-                </tr>
-              
-                <tr>
-                  <td>preset_speed</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p>The speed the preset should be applied. 0 for &#39;use device default&#39; </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.PtzVector">PtzVector</h3>
         <p>Defines a value for the pan, tilt, and zoom of the device. This vector can represent a movement in a particular</p><p>direction or a final position to aim for. If used for movement then the values should be positive or negative to</p><p>represent the direction of movement. For absolute values the bounds attribute of the device are used as a guide.</p><p>All values are relative to the focus of the vector in the real world. For example for a camera, to move right means</p><p>that the image captured by the camera show more on the right and less on the left of the image.</p>
 
@@ -601,7 +601,7 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.PullPtzStatesRequest">PullPtzStatesRequest</h3>
+        <h3 id="smartcore.traits.PullPtzRequest">PullPtzRequest</h3>
         <p></p>
 
         
@@ -625,7 +625,7 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.PullPtzStatesResponse">PullPtzStatesResponse</h3>
+        <h3 id="smartcore.traits.PullPtzResponse">PullPtzResponse</h3>
         <p></p>
 
         
@@ -637,7 +637,7 @@ increasing the speed as the movement continues. If not specified the device may 
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.PullPtzStatesResponse.Change">PullPtzStatesResponse.Change</a></td>
+                  <td><a href="#smartcore.traits.PullPtzResponse.Change">PullPtzResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -649,7 +649,7 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.PullPtzStatesResponse.Change">PullPtzStatesResponse.Change</h3>
+        <h3 id="smartcore.traits.PullPtzResponse.Change">PullPtzResponse.Change</h3>
         <p></p>
 
         
@@ -675,7 +675,7 @@ increasing the speed as the movement continues. If not specified the device may 
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                  <td><a href="#smartcore.traits.Ptz">Ptz</a></td>
                   <td></td>
                   <td><p>The updated state, should be merged with any known state </p></td>
                 </tr>
@@ -711,7 +711,7 @@ increasing the speed as the movement continues. If not specified the device may 
 
         
       
-        <h3 id="smartcore.traits.UpdatePtzStateRequest">UpdatePtzStateRequest</h3>
+        <h3 id="smartcore.traits.UpdatePtzRequest">UpdatePtzRequest</h3>
         <p></p>
 
         
@@ -730,7 +730,7 @@ increasing the speed as the movement continues. If not specified the device may 
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                  <td><a href="#smartcore.traits.Ptz">Ptz</a></td>
                   <td></td>
                   <td><p>The new state </p></td>
                 </tr>
@@ -739,7 +739,7 @@ increasing the speed as the movement continues. If not specified the device may 
                   <td>update_mask</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The fields we are intending to update relative to the PtzState </p></td>
+                  <td><p>The fields we are intending to update relative to the Ptz </p></td>
                 </tr>
               
             </tbody>
@@ -764,23 +764,23 @@ increasing the speed as the movement continues. If not specified the device may 
           <tbody>
             
               <tr>
-                <td>GetPtzState</td>
-                <td><a href="#smartcore.traits.GetPtzStateRequest">GetPtzStateRequest</a></td>
-                <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                <td>GetPtz</td>
+                <td><a href="#smartcore.traits.GetPtzRequest">GetPtzRequest</a></td>
+                <td><a href="#smartcore.traits.Ptz">Ptz</a></td>
                 <td><p>Set the target state for the device</p></td>
               </tr>
             
               <tr>
-                <td>UpdatePtzState</td>
-                <td><a href="#smartcore.traits.UpdatePtzStateRequest">UpdatePtzStateRequest</a></td>
-                <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                <td>UpdatePtz</td>
+                <td><a href="#smartcore.traits.UpdatePtzRequest">UpdatePtzRequest</a></td>
+                <td><a href="#smartcore.traits.Ptz">Ptz</a></td>
                 <td><p>Set the target state for the device</p></td>
               </tr>
             
               <tr>
                 <td>Stop</td>
                 <td><a href="#smartcore.traits.StopPtzRequest">StopPtzRequest</a></td>
-                <td><a href="#smartcore.traits.PtzState">PtzState</a></td>
+                <td><a href="#smartcore.traits.Ptz">Ptz</a></td>
                 <td><p>Stop the device if it is extending or retracting, returns the current known state after stopping.</p></td>
               </tr>
             
@@ -792,9 +792,9 @@ increasing the speed as the movement continues. If not specified the device may 
               </tr>
             
               <tr>
-                <td>PullPtzStates</td>
-                <td><a href="#smartcore.traits.PullPtzStatesRequest">PullPtzStatesRequest</a></td>
-                <td><a href="#smartcore.traits.PullPtzStatesResponse">PullPtzStatesResponse</a> stream</td>
+                <td>PullPtz</td>
+                <td><a href="#smartcore.traits.PullPtzRequest">PullPtzRequest</a></td>
+                <td><a href="#smartcore.traits.PullPtzResponse">PullPtzResponse</a> stream</td>
                 <td><p>Get notified of changes to the OnOffState of a device</p></td>
               </tr>
             

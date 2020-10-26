@@ -17,12 +17,12 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OpenCloseApiClient interface {
-	GetStates(ctx context.Context, in *GetOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
-	UpdateStates(ctx context.Context, in *UpdateOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
+	GetPositions(ctx context.Context, in *GetOpenClosePositionsRequest, opts ...grpc.CallOption) (*OpenClosePositions, error)
+	UpdatePositions(ctx context.Context, in *UpdateOpenClosePositionsRequest, opts ...grpc.CallOption) (*OpenClosePositions, error)
 	// Stop causes any changes being performed by the underlying device to stop. Will return the current state.
-	Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
+	Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenClosePositions, error)
 	// Get notified of changes to the OpenCloseState of a device
-	Pull(ctx context.Context, in *PullOpenCloseStatesRequest, opts ...grpc.CallOption) (OpenCloseApi_PullClient, error)
+	Pull(ctx context.Context, in *PullOpenClosePositionsRequest, opts ...grpc.CallOption) (OpenCloseApi_PullClient, error)
 }
 
 type openCloseApiClient struct {
@@ -33,26 +33,26 @@ func NewOpenCloseApiClient(cc grpc.ClientConnInterface) OpenCloseApiClient {
 	return &openCloseApiClient{cc}
 }
 
-func (c *openCloseApiClient) GetStates(ctx context.Context, in *GetOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error) {
-	out := new(OpenCloseStates)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseApi/GetStates", in, out, opts...)
+func (c *openCloseApiClient) GetPositions(ctx context.Context, in *GetOpenClosePositionsRequest, opts ...grpc.CallOption) (*OpenClosePositions, error) {
+	out := new(OpenClosePositions)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseApi/GetPositions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *openCloseApiClient) UpdateStates(ctx context.Context, in *UpdateOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error) {
-	out := new(OpenCloseStates)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseApi/UpdateStates", in, out, opts...)
+func (c *openCloseApiClient) UpdatePositions(ctx context.Context, in *UpdateOpenClosePositionsRequest, opts ...grpc.CallOption) (*OpenClosePositions, error) {
+	out := new(OpenClosePositions)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseApi/UpdatePositions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *openCloseApiClient) Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenCloseStates, error) {
-	out := new(OpenCloseStates)
+func (c *openCloseApiClient) Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenClosePositions, error) {
+	out := new(OpenClosePositions)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseApi/Stop", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -60,7 +60,7 @@ func (c *openCloseApiClient) Stop(ctx context.Context, in *StopOpenCloseRequest,
 	return out, nil
 }
 
-func (c *openCloseApiClient) Pull(ctx context.Context, in *PullOpenCloseStatesRequest, opts ...grpc.CallOption) (OpenCloseApi_PullClient, error) {
+func (c *openCloseApiClient) Pull(ctx context.Context, in *PullOpenClosePositionsRequest, opts ...grpc.CallOption) (OpenCloseApi_PullClient, error) {
 	stream, err := c.cc.NewStream(ctx, &_OpenCloseApi_serviceDesc.Streams[0], "/smartcore.traits.OpenCloseApi/Pull", opts...)
 	if err != nil {
 		return nil, err
@@ -76,7 +76,7 @@ func (c *openCloseApiClient) Pull(ctx context.Context, in *PullOpenCloseStatesRe
 }
 
 type OpenCloseApi_PullClient interface {
-	Recv() (*PullOpenCloseStatesResponse, error)
+	Recv() (*PullOpenClosePositionsResponse, error)
 	grpc.ClientStream
 }
 
@@ -84,8 +84,8 @@ type openCloseApiPullClient struct {
 	grpc.ClientStream
 }
 
-func (x *openCloseApiPullClient) Recv() (*PullOpenCloseStatesResponse, error) {
-	m := new(PullOpenCloseStatesResponse)
+func (x *openCloseApiPullClient) Recv() (*PullOpenClosePositionsResponse, error) {
+	m := new(PullOpenClosePositionsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -96,12 +96,12 @@ func (x *openCloseApiPullClient) Recv() (*PullOpenCloseStatesResponse, error) {
 // All implementations must embed UnimplementedOpenCloseApiServer
 // for forward compatibility
 type OpenCloseApiServer interface {
-	GetStates(context.Context, *GetOpenCloseStatesRequest) (*OpenCloseStates, error)
-	UpdateStates(context.Context, *UpdateOpenCloseStatesRequest) (*OpenCloseStates, error)
+	GetPositions(context.Context, *GetOpenClosePositionsRequest) (*OpenClosePositions, error)
+	UpdatePositions(context.Context, *UpdateOpenClosePositionsRequest) (*OpenClosePositions, error)
 	// Stop causes any changes being performed by the underlying device to stop. Will return the current state.
-	Stop(context.Context, *StopOpenCloseRequest) (*OpenCloseStates, error)
+	Stop(context.Context, *StopOpenCloseRequest) (*OpenClosePositions, error)
 	// Get notified of changes to the OpenCloseState of a device
-	Pull(*PullOpenCloseStatesRequest, OpenCloseApi_PullServer) error
+	Pull(*PullOpenClosePositionsRequest, OpenCloseApi_PullServer) error
 	mustEmbedUnimplementedOpenCloseApiServer()
 }
 
@@ -109,16 +109,16 @@ type OpenCloseApiServer interface {
 type UnimplementedOpenCloseApiServer struct {
 }
 
-func (*UnimplementedOpenCloseApiServer) GetStates(context.Context, *GetOpenCloseStatesRequest) (*OpenCloseStates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStates not implemented")
+func (*UnimplementedOpenCloseApiServer) GetPositions(context.Context, *GetOpenClosePositionsRequest) (*OpenClosePositions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPositions not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) UpdateStates(context.Context, *UpdateOpenCloseStatesRequest) (*OpenCloseStates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateStates not implemented")
+func (*UnimplementedOpenCloseApiServer) UpdatePositions(context.Context, *UpdateOpenClosePositionsRequest) (*OpenClosePositions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePositions not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) Stop(context.Context, *StopOpenCloseRequest) (*OpenCloseStates, error) {
+func (*UnimplementedOpenCloseApiServer) Stop(context.Context, *StopOpenCloseRequest) (*OpenClosePositions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) Pull(*PullOpenCloseStatesRequest, OpenCloseApi_PullServer) error {
+func (*UnimplementedOpenCloseApiServer) Pull(*PullOpenClosePositionsRequest, OpenCloseApi_PullServer) error {
 	return status.Errorf(codes.Unimplemented, "method Pull not implemented")
 }
 func (*UnimplementedOpenCloseApiServer) mustEmbedUnimplementedOpenCloseApiServer() {}
@@ -127,38 +127,38 @@ func RegisterOpenCloseApiServer(s *grpc.Server, srv OpenCloseApiServer) {
 	s.RegisterService(&_OpenCloseApi_serviceDesc, srv)
 }
 
-func _OpenCloseApi_GetStates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetOpenCloseStatesRequest)
+func _OpenCloseApi_GetPositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOpenClosePositionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OpenCloseApiServer).GetStates(ctx, in)
+		return srv.(OpenCloseApiServer).GetPositions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.OpenCloseApi/GetStates",
+		FullMethod: "/smartcore.traits.OpenCloseApi/GetPositions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OpenCloseApiServer).GetStates(ctx, req.(*GetOpenCloseStatesRequest))
+		return srv.(OpenCloseApiServer).GetPositions(ctx, req.(*GetOpenClosePositionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OpenCloseApi_UpdateStates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateOpenCloseStatesRequest)
+func _OpenCloseApi_UpdatePositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOpenClosePositionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OpenCloseApiServer).UpdateStates(ctx, in)
+		return srv.(OpenCloseApiServer).UpdatePositions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.OpenCloseApi/UpdateStates",
+		FullMethod: "/smartcore.traits.OpenCloseApi/UpdatePositions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OpenCloseApiServer).UpdateStates(ctx, req.(*UpdateOpenCloseStatesRequest))
+		return srv.(OpenCloseApiServer).UpdatePositions(ctx, req.(*UpdateOpenClosePositionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -182,7 +182,7 @@ func _OpenCloseApi_Stop_Handler(srv interface{}, ctx context.Context, dec func(i
 }
 
 func _OpenCloseApi_Pull_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PullOpenCloseStatesRequest)
+	m := new(PullOpenClosePositionsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
@@ -190,7 +190,7 @@ func _OpenCloseApi_Pull_Handler(srv interface{}, stream grpc.ServerStream) error
 }
 
 type OpenCloseApi_PullServer interface {
-	Send(*PullOpenCloseStatesResponse) error
+	Send(*PullOpenClosePositionsResponse) error
 	grpc.ServerStream
 }
 
@@ -198,7 +198,7 @@ type openCloseApiPullServer struct {
 	grpc.ServerStream
 }
 
-func (x *openCloseApiPullServer) Send(m *PullOpenCloseStatesResponse) error {
+func (x *openCloseApiPullServer) Send(m *PullOpenClosePositionsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -207,12 +207,12 @@ var _OpenCloseApi_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*OpenCloseApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetStates",
-			Handler:    _OpenCloseApi_GetStates_Handler,
+			MethodName: "GetPositions",
+			Handler:    _OpenCloseApi_GetPositions_Handler,
 		},
 		{
-			MethodName: "UpdateStates",
-			Handler:    _OpenCloseApi_UpdateStates_Handler,
+			MethodName: "UpdatePositions",
+			Handler:    _OpenCloseApi_UpdatePositions_Handler,
 		},
 		{
 			MethodName: "Stop",

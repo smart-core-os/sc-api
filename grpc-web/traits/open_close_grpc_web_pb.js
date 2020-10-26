@@ -78,160 +78,160 @@ proto.smartcore.traits.OpenCloseApiPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetOpenCloseStatesRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.GetOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
-const methodDescriptor_OpenCloseApi_GetStates = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OpenCloseApi/GetStates',
+const methodDescriptor_OpenCloseApi_GetPositions = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OpenCloseApi/GetPositions',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetOpenCloseStatesRequest,
-  proto.smartcore.traits.OpenCloseStates,
+  proto.smartcore.traits.GetOpenClosePositionsRequest,
+  proto.smartcore.traits.OpenClosePositions,
   /**
-   * @param {!proto.smartcore.traits.GetOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.GetOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetOpenCloseStatesRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.GetOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
-const methodInfo_OpenCloseApi_GetStates = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OpenCloseStates,
+const methodInfo_OpenCloseApi_GetPositions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.OpenClosePositions,
   /**
-   * @param {!proto.smartcore.traits.GetOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.GetOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetOpenCloseStatesRequest} request The
+ * @param {!proto.smartcore.traits.GetOpenClosePositionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenCloseStates)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenClosePositions)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenCloseStates>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenClosePositions>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OpenCloseApiClient.prototype.getStates =
+proto.smartcore.traits.OpenCloseApiClient.prototype.getPositions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/GetStates',
+      '/smartcore.traits.OpenCloseApi/GetPositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_GetStates,
+      methodDescriptor_OpenCloseApi_GetPositions,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.GetOpenCloseStatesRequest} request The
+ * @param {!proto.smartcore.traits.GetOpenClosePositionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.OpenCloseStates>}
+ * @return {!Promise<!proto.smartcore.traits.OpenClosePositions>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.getStates =
+proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.getPositions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/GetStates',
+      '/smartcore.traits.OpenCloseApi/GetPositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_GetStates);
+      methodDescriptor_OpenCloseApi_GetPositions);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.UpdateOpenCloseStatesRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.UpdateOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
-const methodDescriptor_OpenCloseApi_UpdateStates = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OpenCloseApi/UpdateStates',
+const methodDescriptor_OpenCloseApi_UpdatePositions = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OpenCloseApi/UpdatePositions',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.UpdateOpenCloseStatesRequest,
-  proto.smartcore.traits.OpenCloseStates,
+  proto.smartcore.traits.UpdateOpenClosePositionsRequest,
+  proto.smartcore.traits.OpenClosePositions,
   /**
-   * @param {!proto.smartcore.traits.UpdateOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateOpenCloseStatesRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.UpdateOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
-const methodInfo_OpenCloseApi_UpdateStates = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OpenCloseStates,
+const methodInfo_OpenCloseApi_UpdatePositions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.OpenClosePositions,
   /**
-   * @param {!proto.smartcore.traits.UpdateOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateOpenCloseStatesRequest} request The
+ * @param {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenCloseStates)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenClosePositions)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenCloseStates>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenClosePositions>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OpenCloseApiClient.prototype.updateStates =
+proto.smartcore.traits.OpenCloseApiClient.prototype.updatePositions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/UpdateStates',
+      '/smartcore.traits.OpenCloseApi/UpdatePositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_UpdateStates,
+      methodDescriptor_OpenCloseApi_UpdatePositions,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateOpenCloseStatesRequest} request The
+ * @param {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.OpenCloseStates>}
+ * @return {!Promise<!proto.smartcore.traits.OpenClosePositions>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.updateStates =
+proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.updatePositions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OpenCloseApi/UpdateStates',
+      '/smartcore.traits.OpenCloseApi/UpdatePositions',
       request,
       metadata || {},
-      methodDescriptor_OpenCloseApi_UpdateStates);
+      methodDescriptor_OpenCloseApi_UpdatePositions);
 };
 
 
@@ -239,13 +239,13 @@ proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.updateStates =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.smartcore.traits.StopOpenCloseRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
 const methodDescriptor_OpenCloseApi_Stop = new grpc.web.MethodDescriptor(
   '/smartcore.traits.OpenCloseApi/Stop',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.StopOpenCloseRequest,
-  proto.smartcore.traits.OpenCloseStates,
+  proto.smartcore.traits.OpenClosePositions,
   /**
    * @param {!proto.smartcore.traits.StopOpenCloseRequest} request
    * @return {!Uint8Array}
@@ -253,7 +253,7 @@ const methodDescriptor_OpenCloseApi_Stop = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
@@ -261,10 +261,10 @@ const methodDescriptor_OpenCloseApi_Stop = new grpc.web.MethodDescriptor(
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.smartcore.traits.StopOpenCloseRequest,
- *   !proto.smartcore.traits.OpenCloseStates>}
+ *   !proto.smartcore.traits.OpenClosePositions>}
  */
 const methodInfo_OpenCloseApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OpenCloseStates,
+  proto.smartcore.traits.OpenClosePositions,
   /**
    * @param {!proto.smartcore.traits.StopOpenCloseRequest} request
    * @return {!Uint8Array}
@@ -272,7 +272,7 @@ const methodInfo_OpenCloseApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+  proto.smartcore.traits.OpenClosePositions.deserializeBinary
 );
 
 
@@ -281,9 +281,9 @@ const methodInfo_OpenCloseApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenCloseStates)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenClosePositions)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenCloseStates>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenClosePositions>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.OpenCloseApiClient.prototype.stop =
@@ -302,7 +302,7 @@ proto.smartcore.traits.OpenCloseApiClient.prototype.stop =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.OpenCloseStates>}
+ * @return {!Promise<!proto.smartcore.traits.OpenClosePositions>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.stop =
@@ -318,49 +318,49 @@ proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.stop =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullOpenCloseStatesRequest,
- *   !proto.smartcore.traits.PullOpenCloseStatesResponse>}
+ *   !proto.smartcore.traits.PullOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.PullOpenClosePositionsResponse>}
  */
 const methodDescriptor_OpenCloseApi_Pull = new grpc.web.MethodDescriptor(
   '/smartcore.traits.OpenCloseApi/Pull',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullOpenCloseStatesRequest,
-  proto.smartcore.traits.PullOpenCloseStatesResponse,
+  proto.smartcore.traits.PullOpenClosePositionsRequest,
+  proto.smartcore.traits.PullOpenClosePositionsResponse,
   /**
-   * @param {!proto.smartcore.traits.PullOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.PullOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullOpenCloseStatesResponse.deserializeBinary
+  proto.smartcore.traits.PullOpenClosePositionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullOpenCloseStatesRequest,
- *   !proto.smartcore.traits.PullOpenCloseStatesResponse>}
+ *   !proto.smartcore.traits.PullOpenClosePositionsRequest,
+ *   !proto.smartcore.traits.PullOpenClosePositionsResponse>}
  */
 const methodInfo_OpenCloseApi_Pull = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullOpenCloseStatesResponse,
+  proto.smartcore.traits.PullOpenClosePositionsResponse,
   /**
-   * @param {!proto.smartcore.traits.PullOpenCloseStatesRequest} request
+   * @param {!proto.smartcore.traits.PullOpenClosePositionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullOpenCloseStatesResponse.deserializeBinary
+  proto.smartcore.traits.PullOpenClosePositionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.PullOpenCloseStatesRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullOpenClosePositionsRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenCloseStatesResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenClosePositionsResponse>}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.OpenCloseApiClient.prototype.pull =
@@ -374,10 +374,10 @@ proto.smartcore.traits.OpenCloseApiClient.prototype.pull =
 
 
 /**
- * @param {!proto.smartcore.traits.PullOpenCloseStatesRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullOpenClosePositionsRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenCloseStatesResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOpenClosePositionsResponse>}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.pull =

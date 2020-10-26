@@ -34,21 +34,21 @@ export namespace OpenCloseAttributes {
   }
 }
 
-export class OpenCloseStates extends jspb.Message {
+export class OpenClosePositions extends jspb.Message {
   getStatesList(): Array<OpenClosePosition>;
-  setStatesList(value: Array<OpenClosePosition>): OpenCloseStates;
-  clearStatesList(): OpenCloseStates;
+  setStatesList(value: Array<OpenClosePosition>): OpenClosePositions;
+  clearStatesList(): OpenClosePositions;
   addStates(value?: OpenClosePosition, index?: number): OpenClosePosition;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OpenCloseStates.AsObject;
-  static toObject(includeInstance: boolean, msg: OpenCloseStates): OpenCloseStates.AsObject;
-  static serializeBinaryToWriter(message: OpenCloseStates, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OpenCloseStates;
-  static deserializeBinaryFromReader(message: OpenCloseStates, reader: jspb.BinaryReader): OpenCloseStates;
+  toObject(includeInstance?: boolean): OpenClosePositions.AsObject;
+  static toObject(includeInstance: boolean, msg: OpenClosePositions): OpenClosePositions.AsObject;
+  static serializeBinaryToWriter(message: OpenClosePositions, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OpenClosePositions;
+  static deserializeBinaryFromReader(message: OpenClosePositions, reader: jspb.BinaryReader): OpenClosePositions;
 }
 
-export namespace OpenCloseStates {
+export namespace OpenClosePositions {
   export type AsObject = {
     statesList: Array<OpenClosePosition.AsObject>,
   }
@@ -78,48 +78,48 @@ export namespace OpenClosePosition {
   }
 }
 
-export class GetOpenCloseStatesRequest extends jspb.Message {
+export class GetOpenClosePositionsRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetOpenCloseStatesRequest;
+  setName(value: string): GetOpenClosePositionsRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetOpenCloseStatesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetOpenCloseStatesRequest): GetOpenCloseStatesRequest.AsObject;
-  static serializeBinaryToWriter(message: GetOpenCloseStatesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetOpenCloseStatesRequest;
-  static deserializeBinaryFromReader(message: GetOpenCloseStatesRequest, reader: jspb.BinaryReader): GetOpenCloseStatesRequest;
+  toObject(includeInstance?: boolean): GetOpenClosePositionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetOpenClosePositionsRequest): GetOpenClosePositionsRequest.AsObject;
+  static serializeBinaryToWriter(message: GetOpenClosePositionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetOpenClosePositionsRequest;
+  static deserializeBinaryFromReader(message: GetOpenClosePositionsRequest, reader: jspb.BinaryReader): GetOpenClosePositionsRequest;
 }
 
-export namespace GetOpenCloseStatesRequest {
+export namespace GetOpenClosePositionsRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class UpdateOpenCloseStatesRequest extends jspb.Message {
+export class UpdateOpenClosePositionsRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): UpdateOpenCloseStatesRequest;
+  setName(value: string): UpdateOpenClosePositionsRequest;
 
-  getStates(): OpenCloseStates | undefined;
-  setStates(value?: OpenCloseStates): UpdateOpenCloseStatesRequest;
+  getStates(): OpenClosePositions | undefined;
+  setStates(value?: OpenClosePositions): UpdateOpenClosePositionsRequest;
   hasStates(): boolean;
-  clearStates(): UpdateOpenCloseStatesRequest;
+  clearStates(): UpdateOpenClosePositionsRequest;
 
   getDelta(): boolean;
-  setDelta(value: boolean): UpdateOpenCloseStatesRequest;
+  setDelta(value: boolean): UpdateOpenClosePositionsRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateOpenCloseStatesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateOpenCloseStatesRequest): UpdateOpenCloseStatesRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdateOpenCloseStatesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateOpenCloseStatesRequest;
-  static deserializeBinaryFromReader(message: UpdateOpenCloseStatesRequest, reader: jspb.BinaryReader): UpdateOpenCloseStatesRequest;
+  toObject(includeInstance?: boolean): UpdateOpenClosePositionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateOpenClosePositionsRequest): UpdateOpenClosePositionsRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateOpenClosePositionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateOpenClosePositionsRequest;
+  static deserializeBinaryFromReader(message: UpdateOpenClosePositionsRequest, reader: jspb.BinaryReader): UpdateOpenClosePositionsRequest;
 }
 
-export namespace UpdateOpenCloseStatesRequest {
+export namespace UpdateOpenClosePositionsRequest {
   export type AsObject = {
     name: string,
-    states?: OpenCloseStates.AsObject,
+    states?: OpenClosePositions.AsObject,
     delta: boolean,
   }
 }
@@ -142,45 +142,45 @@ export namespace StopOpenCloseRequest {
   }
 }
 
-export class PullOpenCloseStatesRequest extends jspb.Message {
+export class PullOpenClosePositionsRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): PullOpenCloseStatesRequest;
+  setName(value: string): PullOpenClosePositionsRequest;
 
   getExcludeTweening(): boolean;
-  setExcludeTweening(value: boolean): PullOpenCloseStatesRequest;
+  setExcludeTweening(value: boolean): PullOpenClosePositionsRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullOpenCloseStatesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PullOpenCloseStatesRequest): PullOpenCloseStatesRequest.AsObject;
-  static serializeBinaryToWriter(message: PullOpenCloseStatesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullOpenCloseStatesRequest;
-  static deserializeBinaryFromReader(message: PullOpenCloseStatesRequest, reader: jspb.BinaryReader): PullOpenCloseStatesRequest;
+  toObject(includeInstance?: boolean): PullOpenClosePositionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullOpenClosePositionsRequest): PullOpenClosePositionsRequest.AsObject;
+  static serializeBinaryToWriter(message: PullOpenClosePositionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullOpenClosePositionsRequest;
+  static deserializeBinaryFromReader(message: PullOpenClosePositionsRequest, reader: jspb.BinaryReader): PullOpenClosePositionsRequest;
 }
 
-export namespace PullOpenCloseStatesRequest {
+export namespace PullOpenClosePositionsRequest {
   export type AsObject = {
     name: string,
     excludeTweening: boolean,
   }
 }
 
-export class PullOpenCloseStatesResponse extends jspb.Message {
-  getChangesList(): Array<PullOpenCloseStatesResponse.Change>;
-  setChangesList(value: Array<PullOpenCloseStatesResponse.Change>): PullOpenCloseStatesResponse;
-  clearChangesList(): PullOpenCloseStatesResponse;
-  addChanges(value?: PullOpenCloseStatesResponse.Change, index?: number): PullOpenCloseStatesResponse.Change;
+export class PullOpenClosePositionsResponse extends jspb.Message {
+  getChangesList(): Array<PullOpenClosePositionsResponse.Change>;
+  setChangesList(value: Array<PullOpenClosePositionsResponse.Change>): PullOpenClosePositionsResponse;
+  clearChangesList(): PullOpenClosePositionsResponse;
+  addChanges(value?: PullOpenClosePositionsResponse.Change, index?: number): PullOpenClosePositionsResponse.Change;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullOpenCloseStatesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PullOpenCloseStatesResponse): PullOpenCloseStatesResponse.AsObject;
-  static serializeBinaryToWriter(message: PullOpenCloseStatesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullOpenCloseStatesResponse;
-  static deserializeBinaryFromReader(message: PullOpenCloseStatesResponse, reader: jspb.BinaryReader): PullOpenCloseStatesResponse;
+  toObject(includeInstance?: boolean): PullOpenClosePositionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullOpenClosePositionsResponse): PullOpenClosePositionsResponse.AsObject;
+  static serializeBinaryToWriter(message: PullOpenClosePositionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullOpenClosePositionsResponse;
+  static deserializeBinaryFromReader(message: PullOpenClosePositionsResponse, reader: jspb.BinaryReader): PullOpenClosePositionsResponse;
 }
 
-export namespace PullOpenCloseStatesResponse {
+export namespace PullOpenClosePositionsResponse {
   export type AsObject = {
-    changesList: Array<PullOpenCloseStatesResponse.Change.AsObject>,
+    changesList: Array<PullOpenClosePositionsResponse.Change.AsObject>,
   }
 
   export class Change extends jspb.Message {
@@ -192,8 +192,8 @@ export namespace PullOpenCloseStatesResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): OpenCloseStates | undefined;
-    setState(value?: OpenCloseStates): Change;
+    getState(): OpenClosePositions | undefined;
+    setState(value?: OpenClosePositions): Change;
     hasState(): boolean;
     clearState(): Change;
 
@@ -209,7 +209,7 @@ export namespace PullOpenCloseStatesResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: OpenCloseStates.AsObject,
+      state?: OpenClosePositions.AsObject,
     }
   }
 

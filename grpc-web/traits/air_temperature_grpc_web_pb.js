@@ -82,52 +82,52 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetAirTemperatureStateRequest,
- *   !proto.smartcore.traits.AirTemperatureState>}
+ *   !proto.smartcore.traits.GetAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperature>}
  */
 const methodDescriptor_AirTemperatureApi_GetState = new grpc.web.MethodDescriptor(
   '/smartcore.traits.AirTemperatureApi/GetState',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetAirTemperatureStateRequest,
-  proto.smartcore.traits.AirTemperatureState,
+  proto.smartcore.traits.GetAirTemperatureRequest,
+  proto.smartcore.traits.AirTemperature,
   /**
-   * @param {!proto.smartcore.traits.GetAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.AirTemperatureState.deserializeBinary
+  proto.smartcore.traits.AirTemperature.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetAirTemperatureStateRequest,
- *   !proto.smartcore.traits.AirTemperatureState>}
+ *   !proto.smartcore.traits.GetAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperature>}
  */
 const methodInfo_AirTemperatureApi_GetState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirTemperatureState,
+  proto.smartcore.traits.AirTemperature,
   /**
-   * @param {!proto.smartcore.traits.GetAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.AirTemperatureState.deserializeBinary
+  proto.smartcore.traits.AirTemperature.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetAirTemperatureStateRequest} request The
+ * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperatureState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperature)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperatureState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.AirTemperatureApiClient.prototype.getState =
@@ -142,11 +142,11 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.getState =
 
 
 /**
- * @param {!proto.smartcore.traits.GetAirTemperatureStateRequest} request The
+ * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.AirTemperatureState>}
+ * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.getState =
@@ -162,52 +162,52 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.getState =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.UpdateAirTemperatureStateRequest,
- *   !proto.smartcore.traits.AirTemperatureState>}
+ *   !proto.smartcore.traits.UpdateAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperature>}
  */
 const methodDescriptor_AirTemperatureApi_UpdateState = new grpc.web.MethodDescriptor(
   '/smartcore.traits.AirTemperatureApi/UpdateState',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.UpdateAirTemperatureStateRequest,
-  proto.smartcore.traits.AirTemperatureState,
+  proto.smartcore.traits.UpdateAirTemperatureRequest,
+  proto.smartcore.traits.AirTemperature,
   /**
-   * @param {!proto.smartcore.traits.UpdateAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.AirTemperatureState.deserializeBinary
+  proto.smartcore.traits.AirTemperature.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateAirTemperatureStateRequest,
- *   !proto.smartcore.traits.AirTemperatureState>}
+ *   !proto.smartcore.traits.UpdateAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperature>}
  */
 const methodInfo_AirTemperatureApi_UpdateState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirTemperatureState,
+  proto.smartcore.traits.AirTemperature,
   /**
-   * @param {!proto.smartcore.traits.UpdateAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.AirTemperatureState.deserializeBinary
+  proto.smartcore.traits.AirTemperature.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateAirTemperatureStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperatureState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperature)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperatureState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.AirTemperatureApiClient.prototype.updateState =
@@ -222,11 +222,11 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.updateState =
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateAirTemperatureStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.AirTemperatureState>}
+ * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.updateState =
@@ -242,49 +242,49 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.updateState =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullAirTemperatureStateRequest,
- *   !proto.smartcore.traits.PullAirTemperatureStateResponse>}
+ *   !proto.smartcore.traits.PullAirTemperatureRequest,
+ *   !proto.smartcore.traits.PullAirTemperatureResponse>}
  */
 const methodDescriptor_AirTemperatureApi_PullState = new grpc.web.MethodDescriptor(
   '/smartcore.traits.AirTemperatureApi/PullState',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullAirTemperatureStateRequest,
-  proto.smartcore.traits.PullAirTemperatureStateResponse,
+  proto.smartcore.traits.PullAirTemperatureRequest,
+  proto.smartcore.traits.PullAirTemperatureResponse,
   /**
-   * @param {!proto.smartcore.traits.PullAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullAirTemperatureStateResponse.deserializeBinary
+  proto.smartcore.traits.PullAirTemperatureResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullAirTemperatureStateRequest,
- *   !proto.smartcore.traits.PullAirTemperatureStateResponse>}
+ *   !proto.smartcore.traits.PullAirTemperatureRequest,
+ *   !proto.smartcore.traits.PullAirTemperatureResponse>}
  */
 const methodInfo_AirTemperatureApi_PullState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullAirTemperatureStateResponse,
+  proto.smartcore.traits.PullAirTemperatureResponse,
   /**
-   * @param {!proto.smartcore.traits.PullAirTemperatureStateRequest} request
+   * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullAirTemperatureStateResponse.deserializeBinary
+  proto.smartcore.traits.PullAirTemperatureResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.PullAirTemperatureStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.AirTemperatureApiClient.prototype.pullState =
@@ -298,10 +298,10 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.pullState =
 
 
 /**
- * @param {!proto.smartcore.traits.PullAirTemperatureStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullState =

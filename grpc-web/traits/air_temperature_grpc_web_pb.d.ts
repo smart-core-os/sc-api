@@ -9,23 +9,23 @@ export class AirTemperatureApiClient {
                options?: null | { [index: string]: any; });
 
   getState(
-    request: traits_air_temperature_pb.GetAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.GetAirTemperatureRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_air_temperature_pb.AirTemperatureState) => void
-  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperatureState>;
+               response: traits_air_temperature_pb.AirTemperature) => void
+  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperature>;
 
   updateState(
-    request: traits_air_temperature_pb.UpdateAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.UpdateAirTemperatureRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_air_temperature_pb.AirTemperatureState) => void
-  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperatureState>;
+               response: traits_air_temperature_pb.AirTemperature) => void
+  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperature>;
 
   pullState(
-    request: traits_air_temperature_pb.PullAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.PullAirTemperatureRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.PullAirTemperatureStateResponse>;
+  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.PullAirTemperatureResponse>;
 
 }
 
@@ -35,19 +35,19 @@ export class AirTemperatureApiPromiseClient {
                options?: null | { [index: string]: any; });
 
   getState(
-    request: traits_air_temperature_pb.GetAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.GetAirTemperatureRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_air_temperature_pb.AirTemperatureState>;
+  ): Promise<traits_air_temperature_pb.AirTemperature>;
 
   updateState(
-    request: traits_air_temperature_pb.UpdateAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.UpdateAirTemperatureRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_air_temperature_pb.AirTemperatureState>;
+  ): Promise<traits_air_temperature_pb.AirTemperature>;
 
   pullState(
-    request: traits_air_temperature_pb.PullAirTemperatureStateRequest,
+    request: traits_air_temperature_pb.PullAirTemperatureRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.PullAirTemperatureStateResponse>;
+  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.PullAirTemperatureResponse>;
 
 }
 

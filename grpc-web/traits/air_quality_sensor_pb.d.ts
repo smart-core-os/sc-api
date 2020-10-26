@@ -44,34 +44,34 @@ export namespace AirQualitySensorAttributes {
   }
 }
 
-export class AirQualityState extends jspb.Message {
+export class AirQuality extends jspb.Message {
   getCarbonDioxideLevel(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): AirQualityState;
+  setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
   hasCarbonDioxideLevel(): boolean;
-  clearCarbonDioxideLevel(): AirQualityState;
+  clearCarbonDioxideLevel(): AirQuality;
 
   getVolatileOrganicCompounds(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setVolatileOrganicCompounds(value?: google_protobuf_wrappers_pb.FloatValue): AirQualityState;
+  setVolatileOrganicCompounds(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
   hasVolatileOrganicCompounds(): boolean;
-  clearVolatileOrganicCompounds(): AirQualityState;
+  clearVolatileOrganicCompounds(): AirQuality;
 
   getAirPressure(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAirPressure(value?: google_protobuf_wrappers_pb.FloatValue): AirQualityState;
+  setAirPressure(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
   hasAirPressure(): boolean;
-  clearAirPressure(): AirQualityState;
+  clearAirPressure(): AirQuality;
 
   getComfort(): AirQualityComfort;
-  setComfort(value: AirQualityComfort): AirQualityState;
+  setComfort(value: AirQualityComfort): AirQuality;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirQualityState.AsObject;
-  static toObject(includeInstance: boolean, msg: AirQualityState): AirQualityState.AsObject;
-  static serializeBinaryToWriter(message: AirQualityState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirQualityState;
-  static deserializeBinaryFromReader(message: AirQualityState, reader: jspb.BinaryReader): AirQualityState;
+  toObject(includeInstance?: boolean): AirQuality.AsObject;
+  static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
+  static serializeBinaryToWriter(message: AirQuality, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirQuality;
+  static deserializeBinaryFromReader(message: AirQuality, reader: jspb.BinaryReader): AirQuality;
 }
 
-export namespace AirQualityState {
+export namespace AirQuality {
   export type AsObject = {
     carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
@@ -80,71 +80,71 @@ export namespace AirQualityState {
   }
 }
 
-export class GetAirQualityStateRequest extends jspb.Message {
+export class GetAirQualityRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetAirQualityStateRequest;
+  setName(value: string): GetAirQualityRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAirQualityStateRequest;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAirQualityRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): GetAirQualityStateRequest;
+  clearUpdateMask(): GetAirQualityRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetAirQualityStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetAirQualityStateRequest): GetAirQualityStateRequest.AsObject;
-  static serializeBinaryToWriter(message: GetAirQualityStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetAirQualityStateRequest;
-  static deserializeBinaryFromReader(message: GetAirQualityStateRequest, reader: jspb.BinaryReader): GetAirQualityStateRequest;
+  toObject(includeInstance?: boolean): GetAirQualityRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAirQualityRequest): GetAirQualityRequest.AsObject;
+  static serializeBinaryToWriter(message: GetAirQualityRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAirQualityRequest;
+  static deserializeBinaryFromReader(message: GetAirQualityRequest, reader: jspb.BinaryReader): GetAirQualityRequest;
 }
 
-export namespace GetAirQualityStateRequest {
+export namespace GetAirQualityRequest {
   export type AsObject = {
     name: string,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
-export class PullAirQualityStateRequest extends jspb.Message {
+export class PullAirQualityRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): PullAirQualityStateRequest;
+  setName(value: string): PullAirQualityRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAirQualityStateRequest;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAirQualityRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): PullAirQualityStateRequest;
+  clearUpdateMask(): PullAirQualityRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullAirQualityStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PullAirQualityStateRequest): PullAirQualityStateRequest.AsObject;
-  static serializeBinaryToWriter(message: PullAirQualityStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullAirQualityStateRequest;
-  static deserializeBinaryFromReader(message: PullAirQualityStateRequest, reader: jspb.BinaryReader): PullAirQualityStateRequest;
+  toObject(includeInstance?: boolean): PullAirQualityRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullAirQualityRequest): PullAirQualityRequest.AsObject;
+  static serializeBinaryToWriter(message: PullAirQualityRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullAirQualityRequest;
+  static deserializeBinaryFromReader(message: PullAirQualityRequest, reader: jspb.BinaryReader): PullAirQualityRequest;
 }
 
-export namespace PullAirQualityStateRequest {
+export namespace PullAirQualityRequest {
   export type AsObject = {
     name: string,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
-export class PullAirQualityStateResponse extends jspb.Message {
-  getChangesList(): Array<PullAirQualityStateResponse.Change>;
-  setChangesList(value: Array<PullAirQualityStateResponse.Change>): PullAirQualityStateResponse;
-  clearChangesList(): PullAirQualityStateResponse;
-  addChanges(value?: PullAirQualityStateResponse.Change, index?: number): PullAirQualityStateResponse.Change;
+export class PullAirQualityResponse extends jspb.Message {
+  getChangesList(): Array<PullAirQualityResponse.Change>;
+  setChangesList(value: Array<PullAirQualityResponse.Change>): PullAirQualityResponse;
+  clearChangesList(): PullAirQualityResponse;
+  addChanges(value?: PullAirQualityResponse.Change, index?: number): PullAirQualityResponse.Change;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullAirQualityStateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PullAirQualityStateResponse): PullAirQualityStateResponse.AsObject;
-  static serializeBinaryToWriter(message: PullAirQualityStateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullAirQualityStateResponse;
-  static deserializeBinaryFromReader(message: PullAirQualityStateResponse, reader: jspb.BinaryReader): PullAirQualityStateResponse;
+  toObject(includeInstance?: boolean): PullAirQualityResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullAirQualityResponse): PullAirQualityResponse.AsObject;
+  static serializeBinaryToWriter(message: PullAirQualityResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullAirQualityResponse;
+  static deserializeBinaryFromReader(message: PullAirQualityResponse, reader: jspb.BinaryReader): PullAirQualityResponse;
 }
 
-export namespace PullAirQualityStateResponse {
+export namespace PullAirQualityResponse {
   export type AsObject = {
-    changesList: Array<PullAirQualityStateResponse.Change.AsObject>,
+    changesList: Array<PullAirQualityResponse.Change.AsObject>,
   }
 
   export class Change extends jspb.Message {
@@ -156,10 +156,10 @@ export namespace PullAirQualityStateResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): AirQualityState | undefined;
-    setState(value?: AirQualityState): Change;
-    hasState(): boolean;
-    clearState(): Change;
+    getAirQuality(): AirQuality | undefined;
+    setAirQuality(value?: AirQuality): Change;
+    hasAirQuality(): boolean;
+    clearAirQuality(): Change;
 
     getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): Change;
@@ -178,7 +178,7 @@ export namespace PullAirQualityStateResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: AirQualityState.AsObject,
+      airQuality?: AirQuality.AsObject,
       updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
   }

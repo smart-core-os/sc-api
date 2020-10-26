@@ -18,15 +18,15 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PtzApiClient interface {
 	// Set the target state for the device
-	GetPtzState(ctx context.Context, in *GetPtzStateRequest, opts ...grpc.CallOption) (*PtzState, error)
+	GetPtz(ctx context.Context, in *GetPtzRequest, opts ...grpc.CallOption) (*Ptz, error)
 	// Set the target state for the device
-	UpdatePtzState(ctx context.Context, in *UpdatePtzStateRequest, opts ...grpc.CallOption) (*PtzState, error)
+	UpdatePtz(ctx context.Context, in *UpdatePtzRequest, opts ...grpc.CallOption) (*Ptz, error)
 	// Stop the device if it is extending or retracting, returns the current known state after stopping.
-	Stop(ctx context.Context, in *StopPtzRequest, opts ...grpc.CallOption) (*PtzState, error)
+	Stop(ctx context.Context, in *StopPtzRequest, opts ...grpc.CallOption) (*Ptz, error)
 	// Create a preset for the ptz position. If no preset ptz position is specified then use the current position
 	CreatePreset(ctx context.Context, in *CreatePtzPresetRequest, opts ...grpc.CallOption) (*PtzPreset, error)
 	// Get notified of changes to the OnOffState of a device
-	PullPtzStates(ctx context.Context, in *PullPtzStatesRequest, opts ...grpc.CallOption) (PtzApi_PullPtzStatesClient, error)
+	PullPtz(ctx context.Context, in *PullPtzRequest, opts ...grpc.CallOption) (PtzApi_PullPtzClient, error)
 }
 
 type ptzApiClient struct {
@@ -37,26 +37,26 @@ func NewPtzApiClient(cc grpc.ClientConnInterface) PtzApiClient {
 	return &ptzApiClient{cc}
 }
 
-func (c *ptzApiClient) GetPtzState(ctx context.Context, in *GetPtzStateRequest, opts ...grpc.CallOption) (*PtzState, error) {
-	out := new(PtzState)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzApi/GetPtzState", in, out, opts...)
+func (c *ptzApiClient) GetPtz(ctx context.Context, in *GetPtzRequest, opts ...grpc.CallOption) (*Ptz, error) {
+	out := new(Ptz)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzApi/GetPtz", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *ptzApiClient) UpdatePtzState(ctx context.Context, in *UpdatePtzStateRequest, opts ...grpc.CallOption) (*PtzState, error) {
-	out := new(PtzState)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzApi/UpdatePtzState", in, out, opts...)
+func (c *ptzApiClient) UpdatePtz(ctx context.Context, in *UpdatePtzRequest, opts ...grpc.CallOption) (*Ptz, error) {
+	out := new(Ptz)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzApi/UpdatePtz", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *ptzApiClient) Stop(ctx context.Context, in *StopPtzRequest, opts ...grpc.CallOption) (*PtzState, error) {
-	out := new(PtzState)
+func (c *ptzApiClient) Stop(ctx context.Context, in *StopPtzRequest, opts ...grpc.CallOption) (*Ptz, error) {
+	out := new(Ptz)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzApi/Stop", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -73,12 +73,12 @@ func (c *ptzApiClient) CreatePreset(ctx context.Context, in *CreatePtzPresetRequ
 	return out, nil
 }
 
-func (c *ptzApiClient) PullPtzStates(ctx context.Context, in *PullPtzStatesRequest, opts ...grpc.CallOption) (PtzApi_PullPtzStatesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_PtzApi_serviceDesc.Streams[0], "/smartcore.traits.PtzApi/PullPtzStates", opts...)
+func (c *ptzApiClient) PullPtz(ctx context.Context, in *PullPtzRequest, opts ...grpc.CallOption) (PtzApi_PullPtzClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_PtzApi_serviceDesc.Streams[0], "/smartcore.traits.PtzApi/PullPtz", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &ptzApiPullPtzStatesClient{stream}
+	x := &ptzApiPullPtzClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -88,17 +88,17 @@ func (c *ptzApiClient) PullPtzStates(ctx context.Context, in *PullPtzStatesReque
 	return x, nil
 }
 
-type PtzApi_PullPtzStatesClient interface {
-	Recv() (*PullPtzStatesResponse, error)
+type PtzApi_PullPtzClient interface {
+	Recv() (*PullPtzResponse, error)
 	grpc.ClientStream
 }
 
-type ptzApiPullPtzStatesClient struct {
+type ptzApiPullPtzClient struct {
 	grpc.ClientStream
 }
 
-func (x *ptzApiPullPtzStatesClient) Recv() (*PullPtzStatesResponse, error) {
-	m := new(PullPtzStatesResponse)
+func (x *ptzApiPullPtzClient) Recv() (*PullPtzResponse, error) {
+	m := new(PullPtzResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -110,15 +110,15 @@ func (x *ptzApiPullPtzStatesClient) Recv() (*PullPtzStatesResponse, error) {
 // for forward compatibility
 type PtzApiServer interface {
 	// Set the target state for the device
-	GetPtzState(context.Context, *GetPtzStateRequest) (*PtzState, error)
+	GetPtz(context.Context, *GetPtzRequest) (*Ptz, error)
 	// Set the target state for the device
-	UpdatePtzState(context.Context, *UpdatePtzStateRequest) (*PtzState, error)
+	UpdatePtz(context.Context, *UpdatePtzRequest) (*Ptz, error)
 	// Stop the device if it is extending or retracting, returns the current known state after stopping.
-	Stop(context.Context, *StopPtzRequest) (*PtzState, error)
+	Stop(context.Context, *StopPtzRequest) (*Ptz, error)
 	// Create a preset for the ptz position. If no preset ptz position is specified then use the current position
 	CreatePreset(context.Context, *CreatePtzPresetRequest) (*PtzPreset, error)
 	// Get notified of changes to the OnOffState of a device
-	PullPtzStates(*PullPtzStatesRequest, PtzApi_PullPtzStatesServer) error
+	PullPtz(*PullPtzRequest, PtzApi_PullPtzServer) error
 	mustEmbedUnimplementedPtzApiServer()
 }
 
@@ -126,20 +126,20 @@ type PtzApiServer interface {
 type UnimplementedPtzApiServer struct {
 }
 
-func (*UnimplementedPtzApiServer) GetPtzState(context.Context, *GetPtzStateRequest) (*PtzState, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPtzState not implemented")
+func (*UnimplementedPtzApiServer) GetPtz(context.Context, *GetPtzRequest) (*Ptz, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPtz not implemented")
 }
-func (*UnimplementedPtzApiServer) UpdatePtzState(context.Context, *UpdatePtzStateRequest) (*PtzState, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePtzState not implemented")
+func (*UnimplementedPtzApiServer) UpdatePtz(context.Context, *UpdatePtzRequest) (*Ptz, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePtz not implemented")
 }
-func (*UnimplementedPtzApiServer) Stop(context.Context, *StopPtzRequest) (*PtzState, error) {
+func (*UnimplementedPtzApiServer) Stop(context.Context, *StopPtzRequest) (*Ptz, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
 func (*UnimplementedPtzApiServer) CreatePreset(context.Context, *CreatePtzPresetRequest) (*PtzPreset, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePreset not implemented")
 }
-func (*UnimplementedPtzApiServer) PullPtzStates(*PullPtzStatesRequest, PtzApi_PullPtzStatesServer) error {
-	return status.Errorf(codes.Unimplemented, "method PullPtzStates not implemented")
+func (*UnimplementedPtzApiServer) PullPtz(*PullPtzRequest, PtzApi_PullPtzServer) error {
+	return status.Errorf(codes.Unimplemented, "method PullPtz not implemented")
 }
 func (*UnimplementedPtzApiServer) mustEmbedUnimplementedPtzApiServer() {}
 
@@ -147,38 +147,38 @@ func RegisterPtzApiServer(s *grpc.Server, srv PtzApiServer) {
 	s.RegisterService(&_PtzApi_serviceDesc, srv)
 }
 
-func _PtzApi_GetPtzState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPtzStateRequest)
+func _PtzApi_GetPtz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPtzRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PtzApiServer).GetPtzState(ctx, in)
+		return srv.(PtzApiServer).GetPtz(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.PtzApi/GetPtzState",
+		FullMethod: "/smartcore.traits.PtzApi/GetPtz",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PtzApiServer).GetPtzState(ctx, req.(*GetPtzStateRequest))
+		return srv.(PtzApiServer).GetPtz(ctx, req.(*GetPtzRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PtzApi_UpdatePtzState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePtzStateRequest)
+func _PtzApi_UpdatePtz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePtzRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PtzApiServer).UpdatePtzState(ctx, in)
+		return srv.(PtzApiServer).UpdatePtz(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.PtzApi/UpdatePtzState",
+		FullMethod: "/smartcore.traits.PtzApi/UpdatePtz",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PtzApiServer).UpdatePtzState(ctx, req.(*UpdatePtzStateRequest))
+		return srv.(PtzApiServer).UpdatePtz(ctx, req.(*UpdatePtzRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -219,24 +219,24 @@ func _PtzApi_CreatePreset_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PtzApi_PullPtzStates_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PullPtzStatesRequest)
+func _PtzApi_PullPtz_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(PullPtzRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(PtzApiServer).PullPtzStates(m, &ptzApiPullPtzStatesServer{stream})
+	return srv.(PtzApiServer).PullPtz(m, &ptzApiPullPtzServer{stream})
 }
 
-type PtzApi_PullPtzStatesServer interface {
-	Send(*PullPtzStatesResponse) error
+type PtzApi_PullPtzServer interface {
+	Send(*PullPtzResponse) error
 	grpc.ServerStream
 }
 
-type ptzApiPullPtzStatesServer struct {
+type ptzApiPullPtzServer struct {
 	grpc.ServerStream
 }
 
-func (x *ptzApiPullPtzStatesServer) Send(m *PullPtzStatesResponse) error {
+func (x *ptzApiPullPtzServer) Send(m *PullPtzResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -245,12 +245,12 @@ var _PtzApi_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*PtzApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetPtzState",
-			Handler:    _PtzApi_GetPtzState_Handler,
+			MethodName: "GetPtz",
+			Handler:    _PtzApi_GetPtz_Handler,
 		},
 		{
-			MethodName: "UpdatePtzState",
-			Handler:    _PtzApi_UpdatePtzState_Handler,
+			MethodName: "UpdatePtz",
+			Handler:    _PtzApi_UpdatePtz_Handler,
 		},
 		{
 			MethodName: "Stop",
@@ -263,8 +263,8 @@ var _PtzApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "PullPtzStates",
-			Handler:       _PtzApi_PullPtzStates_Handler,
+			StreamName:    "PullPtz",
+			Handler:       _PtzApi_PullPtz_Handler,
 			ServerStreams: true,
 		},
 	},

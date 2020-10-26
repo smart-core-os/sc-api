@@ -9,16 +9,16 @@ export class AirQualitySensorApiClient {
                options?: null | { [index: string]: any; });
 
   getState(
-    request: traits_air_quality_sensor_pb.GetAirQualityStateRequest,
+    request: traits_air_quality_sensor_pb.GetAirQualityRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_air_quality_sensor_pb.AirQualityState) => void
-  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.AirQualityState>;
+               response: traits_air_quality_sensor_pb.AirQuality) => void
+  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.AirQuality>;
 
   pullState(
-    request: traits_air_quality_sensor_pb.PullAirQualityStateRequest,
+    request: traits_air_quality_sensor_pb.PullAirQualityRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.PullAirQualityStateResponse>;
+  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.PullAirQualityResponse>;
 
 }
 
@@ -28,14 +28,14 @@ export class AirQualitySensorApiPromiseClient {
                options?: null | { [index: string]: any; });
 
   getState(
-    request: traits_air_quality_sensor_pb.GetAirQualityStateRequest,
+    request: traits_air_quality_sensor_pb.GetAirQualityRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_air_quality_sensor_pb.AirQualityState>;
+  ): Promise<traits_air_quality_sensor_pb.AirQuality>;
 
   pullState(
-    request: traits_air_quality_sensor_pb.PullAirQualityStateRequest,
+    request: traits_air_quality_sensor_pb.PullAirQualityRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.PullAirQualityStateResponse>;
+  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.PullAirQualityResponse>;
 
 }
 

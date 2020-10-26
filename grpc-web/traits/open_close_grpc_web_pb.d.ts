@@ -8,31 +8,31 @@ export class OpenCloseApiClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getStates(
-    request: traits_open_close_pb.GetOpenCloseStatesRequest,
+  getPositions(
+    request: traits_open_close_pb.GetOpenClosePositionsRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_open_close_pb.OpenCloseStates) => void
-  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenCloseStates>;
+               response: traits_open_close_pb.OpenClosePositions) => void
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
-  updateStates(
-    request: traits_open_close_pb.UpdateOpenCloseStatesRequest,
+  updatePositions(
+    request: traits_open_close_pb.UpdateOpenClosePositionsRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_open_close_pb.OpenCloseStates) => void
-  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenCloseStates>;
+               response: traits_open_close_pb.OpenClosePositions) => void
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
   stop(
     request: traits_open_close_pb.StopOpenCloseRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_open_close_pb.OpenCloseStates) => void
-  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenCloseStates>;
+               response: traits_open_close_pb.OpenClosePositions) => void
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
   pull(
-    request: traits_open_close_pb.PullOpenCloseStatesRequest,
+    request: traits_open_close_pb.PullOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenCloseStatesResponse>;
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenClosePositionsResponse>;
 
 }
 
@@ -41,25 +41,25 @@ export class OpenCloseApiPromiseClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getStates(
-    request: traits_open_close_pb.GetOpenCloseStatesRequest,
+  getPositions(
+    request: traits_open_close_pb.GetOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_open_close_pb.OpenCloseStates>;
+  ): Promise<traits_open_close_pb.OpenClosePositions>;
 
-  updateStates(
-    request: traits_open_close_pb.UpdateOpenCloseStatesRequest,
+  updatePositions(
+    request: traits_open_close_pb.UpdateOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_open_close_pb.OpenCloseStates>;
+  ): Promise<traits_open_close_pb.OpenClosePositions>;
 
   stop(
     request: traits_open_close_pb.StopOpenCloseRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_open_close_pb.OpenCloseStates>;
+  ): Promise<traits_open_close_pb.OpenClosePositions>;
 
   pull(
-    request: traits_open_close_pb.PullOpenCloseStatesRequest,
+    request: traits_open_close_pb.PullOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenCloseStatesResponse>;
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenClosePositionsResponse>;
 
 }
 

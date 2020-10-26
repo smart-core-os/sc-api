@@ -179,27 +179,27 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.AirTemperature"><span class="badge">M</span>AirTemperature</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.AirTemperatureAttributes"><span class="badge">M</span>AirTemperatureAttributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.AirTemperatureState"><span class="badge">M</span>AirTemperatureState</a>
+                  <a href="#smartcore.traits.GetAirTemperatureRequest"><span class="badge">M</span>GetAirTemperatureRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetAirTemperatureStateRequest"><span class="badge">M</span>GetAirTemperatureStateRequest</a>
+                  <a href="#smartcore.traits.PullAirTemperatureRequest"><span class="badge">M</span>PullAirTemperatureRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullAirTemperatureStateRequest"><span class="badge">M</span>PullAirTemperatureStateRequest</a>
+                  <a href="#smartcore.traits.PullAirTemperatureResponse"><span class="badge">M</span>PullAirTemperatureResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullAirTemperatureStateResponse"><span class="badge">M</span>PullAirTemperatureStateResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullAirTemperatureStateResponse.Change"><span class="badge">M</span>PullAirTemperatureStateResponse.Change</a>
+                  <a href="#smartcore.traits.PullAirTemperatureResponse.Change"><span class="badge">M</span>PullAirTemperatureResponse.Change</a>
                 </li>
               
                 <li>
@@ -207,7 +207,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.UpdateAirTemperatureStateRequest"><span class="badge">M</span>UpdateAirTemperatureStateRequest</a>
+                  <a href="#smartcore.traits.UpdateAirTemperatureRequest"><span class="badge">M</span>UpdateAirTemperatureRequest</a>
                 </li>
               
               
@@ -236,45 +236,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.AirTemperatureAttributes">AirTemperatureAttributes</h3>
-        <p>Trait.attributes message for describing this device trait.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>native_unit</td>
-                  <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
-                  <td></td>
-                  <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is this. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supported_modes</td>
-                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>min_range_celsius</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.AirTemperatureState">AirTemperatureState</h3>
+        <h3 id="smartcore.traits.AirTemperature">AirTemperature</h3>
         <p>All the properties of the device</p>
 
         
@@ -340,7 +302,45 @@
 
         
       
-        <h3 id="smartcore.traits.GetAirTemperatureStateRequest">GetAirTemperatureStateRequest</h3>
+        <h3 id="smartcore.traits.AirTemperatureAttributes">AirTemperatureAttributes</h3>
+        <p>Trait.attributes message for describing this device trait.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>native_unit</td>
+                  <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
+                  <td></td>
+                  <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is this. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supported_modes</td>
+                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>min_range_celsius</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetAirTemperatureRequest">GetAirTemperatureRequest</h3>
         <p>Request message for fetching device state</p>
 
         
@@ -364,7 +364,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullAirTemperatureStateRequest">PullAirTemperatureStateRequest</h3>
+        <h3 id="smartcore.traits.PullAirTemperatureRequest">PullAirTemperatureRequest</h3>
         <p>Request message for subscribing to changes in the devices state</p>
 
         
@@ -388,7 +388,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullAirTemperatureStateResponse">PullAirTemperatureStateResponse</h3>
+        <h3 id="smartcore.traits.PullAirTemperatureResponse">PullAirTemperatureResponse</h3>
         <p>Response message enclosing device state changes</p>
 
         
@@ -400,7 +400,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.PullAirTemperatureStateResponse.Change">PullAirTemperatureStateResponse.Change</a></td>
+                  <td><a href="#smartcore.traits.PullAirTemperatureResponse.Change">PullAirTemperatureResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -412,7 +412,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullAirTemperatureStateResponse.Change">PullAirTemperatureStateResponse.Change</h3>
+        <h3 id="smartcore.traits.PullAirTemperatureResponse.Change">PullAirTemperatureResponse.Change</h3>
         <p></p>
 
         
@@ -438,7 +438,7 @@
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                  <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                   <td></td>
                   <td><p>The new value for the device state. Only changed fields will be set, should be merged with GetState full
 response as required. </p></td>
@@ -489,7 +489,7 @@ response as required. </p></td>
 
         
       
-        <h3 id="smartcore.traits.UpdateAirTemperatureStateRequest">UpdateAirTemperatureStateRequest</h3>
+        <h3 id="smartcore.traits.UpdateAirTemperatureRequest">UpdateAirTemperatureRequest</h3>
         <p>Request message for updating the device state</p>
 
         
@@ -508,7 +508,7 @@ response as required. </p></td>
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                  <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -629,23 +629,23 @@ example)</p></td>
             
               <tr>
                 <td>GetState</td>
-                <td><a href="#smartcore.traits.GetAirTemperatureStateRequest">GetAirTemperatureStateRequest</a></td>
-                <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                <td><a href="#smartcore.traits.GetAirTemperatureRequest">GetAirTemperatureRequest</a></td>
+                <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                 <td><p>Get the current state of the device</p></td>
               </tr>
             
               <tr>
                 <td>UpdateState</td>
-                <td><a href="#smartcore.traits.UpdateAirTemperatureStateRequest">UpdateAirTemperatureStateRequest</a></td>
-                <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                <td><a href="#smartcore.traits.UpdateAirTemperatureRequest">UpdateAirTemperatureRequest</a></td>
+                <td><a href="#smartcore.traits.AirTemperature">AirTemperature</a></td>
                 <td><p>Update the target state for the device. the returned state may not be complete but will indicate at least the
 current values for any set fields as part of the request.</p></td>
               </tr>
             
               <tr>
                 <td>PullState</td>
-                <td><a href="#smartcore.traits.PullAirTemperatureStateRequest">PullAirTemperatureStateRequest</a></td>
-                <td><a href="#smartcore.traits.PullAirTemperatureStateResponse">PullAirTemperatureStateResponse</a> stream</td>
+                <td><a href="#smartcore.traits.PullAirTemperatureRequest">PullAirTemperatureRequest</a></td>
+                <td><a href="#smartcore.traits.PullAirTemperatureResponse">PullAirTemperatureResponse</a> stream</td>
                 <td><p>Request notification of change to the device state. The messages in the response stream may not be complete
 but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
 method.</p></td>

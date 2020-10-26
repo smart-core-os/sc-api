@@ -34,89 +34,89 @@ export namespace AirTemperatureAttributes {
   }
 }
 
-export class GetAirTemperatureStateRequest extends jspb.Message {
+export class GetAirTemperatureRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetAirTemperatureStateRequest;
+  setName(value: string): GetAirTemperatureRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetAirTemperatureStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetAirTemperatureStateRequest): GetAirTemperatureStateRequest.AsObject;
-  static serializeBinaryToWriter(message: GetAirTemperatureStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetAirTemperatureStateRequest;
-  static deserializeBinaryFromReader(message: GetAirTemperatureStateRequest, reader: jspb.BinaryReader): GetAirTemperatureStateRequest;
+  toObject(includeInstance?: boolean): GetAirTemperatureRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAirTemperatureRequest): GetAirTemperatureRequest.AsObject;
+  static serializeBinaryToWriter(message: GetAirTemperatureRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAirTemperatureRequest;
+  static deserializeBinaryFromReader(message: GetAirTemperatureRequest, reader: jspb.BinaryReader): GetAirTemperatureRequest;
 }
 
-export namespace GetAirTemperatureStateRequest {
+export namespace GetAirTemperatureRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class UpdateAirTemperatureStateRequest extends jspb.Message {
+export class UpdateAirTemperatureRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): UpdateAirTemperatureStateRequest;
+  setName(value: string): UpdateAirTemperatureRequest;
 
-  getState(): AirTemperatureState | undefined;
-  setState(value?: AirTemperatureState): UpdateAirTemperatureStateRequest;
+  getState(): AirTemperature | undefined;
+  setState(value?: AirTemperature): UpdateAirTemperatureRequest;
   hasState(): boolean;
-  clearState(): UpdateAirTemperatureStateRequest;
+  clearState(): UpdateAirTemperatureRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateAirTemperatureStateRequest;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateAirTemperatureRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): UpdateAirTemperatureStateRequest;
+  clearUpdateMask(): UpdateAirTemperatureRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateAirTemperatureStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateAirTemperatureStateRequest): UpdateAirTemperatureStateRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdateAirTemperatureStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateAirTemperatureStateRequest;
-  static deserializeBinaryFromReader(message: UpdateAirTemperatureStateRequest, reader: jspb.BinaryReader): UpdateAirTemperatureStateRequest;
+  toObject(includeInstance?: boolean): UpdateAirTemperatureRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateAirTemperatureRequest): UpdateAirTemperatureRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateAirTemperatureRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateAirTemperatureRequest;
+  static deserializeBinaryFromReader(message: UpdateAirTemperatureRequest, reader: jspb.BinaryReader): UpdateAirTemperatureRequest;
 }
 
-export namespace UpdateAirTemperatureStateRequest {
+export namespace UpdateAirTemperatureRequest {
   export type AsObject = {
     name: string,
-    state?: AirTemperatureState.AsObject,
+    state?: AirTemperature.AsObject,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
-export class PullAirTemperatureStateRequest extends jspb.Message {
+export class PullAirTemperatureRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): PullAirTemperatureStateRequest;
+  setName(value: string): PullAirTemperatureRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullAirTemperatureStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PullAirTemperatureStateRequest): PullAirTemperatureStateRequest.AsObject;
-  static serializeBinaryToWriter(message: PullAirTemperatureStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullAirTemperatureStateRequest;
-  static deserializeBinaryFromReader(message: PullAirTemperatureStateRequest, reader: jspb.BinaryReader): PullAirTemperatureStateRequest;
+  toObject(includeInstance?: boolean): PullAirTemperatureRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullAirTemperatureRequest): PullAirTemperatureRequest.AsObject;
+  static serializeBinaryToWriter(message: PullAirTemperatureRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullAirTemperatureRequest;
+  static deserializeBinaryFromReader(message: PullAirTemperatureRequest, reader: jspb.BinaryReader): PullAirTemperatureRequest;
 }
 
-export namespace PullAirTemperatureStateRequest {
+export namespace PullAirTemperatureRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class PullAirTemperatureStateResponse extends jspb.Message {
-  getChangesList(): Array<PullAirTemperatureStateResponse.Change>;
-  setChangesList(value: Array<PullAirTemperatureStateResponse.Change>): PullAirTemperatureStateResponse;
-  clearChangesList(): PullAirTemperatureStateResponse;
-  addChanges(value?: PullAirTemperatureStateResponse.Change, index?: number): PullAirTemperatureStateResponse.Change;
+export class PullAirTemperatureResponse extends jspb.Message {
+  getChangesList(): Array<PullAirTemperatureResponse.Change>;
+  setChangesList(value: Array<PullAirTemperatureResponse.Change>): PullAirTemperatureResponse;
+  clearChangesList(): PullAirTemperatureResponse;
+  addChanges(value?: PullAirTemperatureResponse.Change, index?: number): PullAirTemperatureResponse.Change;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullAirTemperatureStateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PullAirTemperatureStateResponse): PullAirTemperatureStateResponse.AsObject;
-  static serializeBinaryToWriter(message: PullAirTemperatureStateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullAirTemperatureStateResponse;
-  static deserializeBinaryFromReader(message: PullAirTemperatureStateResponse, reader: jspb.BinaryReader): PullAirTemperatureStateResponse;
+  toObject(includeInstance?: boolean): PullAirTemperatureResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullAirTemperatureResponse): PullAirTemperatureResponse.AsObject;
+  static serializeBinaryToWriter(message: PullAirTemperatureResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullAirTemperatureResponse;
+  static deserializeBinaryFromReader(message: PullAirTemperatureResponse, reader: jspb.BinaryReader): PullAirTemperatureResponse;
 }
 
-export namespace PullAirTemperatureStateResponse {
+export namespace PullAirTemperatureResponse {
   export type AsObject = {
-    changesList: Array<PullAirTemperatureStateResponse.Change.AsObject>,
+    changesList: Array<PullAirTemperatureResponse.Change.AsObject>,
   }
 
   export class Change extends jspb.Message {
@@ -128,8 +128,8 @@ export namespace PullAirTemperatureStateResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): AirTemperatureState | undefined;
-    setState(value?: AirTemperatureState): Change;
+    getState(): AirTemperature | undefined;
+    setState(value?: AirTemperature): Change;
     hasState(): boolean;
     clearState(): Change;
 
@@ -145,57 +145,57 @@ export namespace PullAirTemperatureStateResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: AirTemperatureState.AsObject,
+      state?: AirTemperature.AsObject,
     }
   }
 
 }
 
-export class AirTemperatureState extends jspb.Message {
+export class AirTemperature extends jspb.Message {
   getMode(): AirTemperatureMode;
-  setMode(value: AirTemperatureMode): AirTemperatureState;
+  setMode(value: AirTemperatureMode): AirTemperature;
 
   getTemperatureSetPoint(): types_unit_pb.Temperature | undefined;
-  setTemperatureSetPoint(value?: types_unit_pb.Temperature): AirTemperatureState;
+  setTemperatureSetPoint(value?: types_unit_pb.Temperature): AirTemperature;
   hasTemperatureSetPoint(): boolean;
-  clearTemperatureSetPoint(): AirTemperatureState;
+  clearTemperatureSetPoint(): AirTemperature;
 
   getTemperatureSetPointDelta(): types_unit_pb.Temperature | undefined;
-  setTemperatureSetPointDelta(value?: types_unit_pb.Temperature): AirTemperatureState;
+  setTemperatureSetPointDelta(value?: types_unit_pb.Temperature): AirTemperature;
   hasTemperatureSetPointDelta(): boolean;
-  clearTemperatureSetPointDelta(): AirTemperatureState;
+  clearTemperatureSetPointDelta(): AirTemperature;
 
   getTemperatureRange(): TemperatureRange | undefined;
-  setTemperatureRange(value?: TemperatureRange): AirTemperatureState;
+  setTemperatureRange(value?: TemperatureRange): AirTemperature;
   hasTemperatureRange(): boolean;
-  clearTemperatureRange(): AirTemperatureState;
+  clearTemperatureRange(): AirTemperature;
 
   getAmbientTemperature(): types_unit_pb.Temperature | undefined;
-  setAmbientTemperature(value?: types_unit_pb.Temperature): AirTemperatureState;
+  setAmbientTemperature(value?: types_unit_pb.Temperature): AirTemperature;
   hasAmbientTemperature(): boolean;
-  clearAmbientTemperature(): AirTemperatureState;
+  clearAmbientTemperature(): AirTemperature;
 
   getAmbientHumidity(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAmbientHumidity(value?: google_protobuf_wrappers_pb.FloatValue): AirTemperatureState;
+  setAmbientHumidity(value?: google_protobuf_wrappers_pb.FloatValue): AirTemperature;
   hasAmbientHumidity(): boolean;
-  clearAmbientHumidity(): AirTemperatureState;
+  clearAmbientHumidity(): AirTemperature;
 
   getDewPoint(): types_unit_pb.Temperature | undefined;
-  setDewPoint(value?: types_unit_pb.Temperature): AirTemperatureState;
+  setDewPoint(value?: types_unit_pb.Temperature): AirTemperature;
   hasDewPoint(): boolean;
-  clearDewPoint(): AirTemperatureState;
+  clearDewPoint(): AirTemperature;
 
-  getTemperatureGoalCase(): AirTemperatureState.TemperatureGoalCase;
+  getTemperatureGoalCase(): AirTemperature.TemperatureGoalCase;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirTemperatureState.AsObject;
-  static toObject(includeInstance: boolean, msg: AirTemperatureState): AirTemperatureState.AsObject;
-  static serializeBinaryToWriter(message: AirTemperatureState, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirTemperatureState;
-  static deserializeBinaryFromReader(message: AirTemperatureState, reader: jspb.BinaryReader): AirTemperatureState;
+  toObject(includeInstance?: boolean): AirTemperature.AsObject;
+  static toObject(includeInstance: boolean, msg: AirTemperature): AirTemperature.AsObject;
+  static serializeBinaryToWriter(message: AirTemperature, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirTemperature;
+  static deserializeBinaryFromReader(message: AirTemperature, reader: jspb.BinaryReader): AirTemperature;
 }
 
-export namespace AirTemperatureState {
+export namespace AirTemperature {
   export type AsObject = {
     mode: AirTemperatureMode,
     temperatureSetPoint?: types_unit_pb.Temperature.AsObject,

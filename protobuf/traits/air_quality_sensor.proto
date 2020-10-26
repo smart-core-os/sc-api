@@ -17,9 +17,9 @@ import "types/number.proto";
 // Trait for devices that can report either numeric or descriptive readings about air quality and comfort.
 service AirQualitySensorApi {
   // Get the current state of all reading this device supports
-  rpc GetState (GetAirQualityStateRequest) returns (AirQualityState);
+  rpc GetState (GetAirQualityRequest) returns (AirQuality);
   // Be notified of changes to any reading
-  rpc PullState (PullAirQualityStateRequest) returns (stream PullAirQualityStateResponse);
+  rpc PullState (PullAirQualityRequest) returns (stream PullAirQualityResponse);
 }
 
 // Trait.attribute describing capabilities of the AirQuality device
@@ -35,8 +35,8 @@ message AirQualitySensorAttributes {
   repeated AirQualityComfort comfort = 4;
 }
 
-// AirQualityState holds the value of all supported sensors.
-message AirQualityState {
+// AirQuality holds the value of all supported sensors.
+message AirQuality {
   // The CO2 level in parts per million
   google.protobuf.FloatValue carbon_dioxide_level = 1;
   // The VOC level in parts per million
@@ -57,21 +57,21 @@ enum AirQualityComfort {
   AIR_QUALITY_COMFORT_UNCOMFORTABLE = 2;
 }
 
-message GetAirQualityStateRequest {
+message GetAirQualityRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to fetch
   google.protobuf.FieldMask update_mask = 2;
 }
 
-message PullAirQualityStateRequest {
+message PullAirQualityRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to pull
   google.protobuf.FieldMask update_mask = 2;
 }
 
-message PullAirQualityStateResponse {
+message PullAirQualityResponse {
   repeated Change changes = 1;
 
   message Change {
@@ -80,7 +80,7 @@ message PullAirQualityStateResponse {
     // The time the change happened.
     google.protobuf.Timestamp change_time = 2;
     // The new state of the sensor. Changed fields should be reported via the update_mask property.
-    AirQualityState state = 3;
+    AirQuality air_quality = 3;
     // The state fields that have changed.
     google.protobuf.FieldMask update_mask = 4;
   }

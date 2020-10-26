@@ -17,19 +17,19 @@ import "types/tween.proto";
 // Allows interaction with a pan-tilt-zoom device, typically a camera.
 service PtzApi {
   // Set the target state for the device
-  rpc GetPtzState (GetPtzStateRequest) returns (PtzState);
+  rpc GetPtz (GetPtzRequest) returns (Ptz);
 
   // Set the target state for the device
-  rpc UpdatePtzState (UpdatePtzStateRequest) returns (PtzState);
+  rpc UpdatePtz (UpdatePtzRequest) returns (Ptz);
 
   // Stop the device if it is extending or retracting, returns the current known state after stopping.
-  rpc Stop (StopPtzRequest) returns (PtzState);
+  rpc Stop (StopPtzRequest) returns (Ptz);
 
   // Create a preset for the ptz position. If no preset ptz position is specified then use the current position
   rpc CreatePreset (CreatePtzPresetRequest) returns (PtzPreset);
 
   // Get notified of changes to the OnOffState of a device
-  rpc PullPtzStates (PullPtzStatesRequest) returns (stream PullPtzStatesResponse);
+  rpc PullPtz (PullPtzRequest) returns (stream PullPtzResponse);
 }
 
 // Trait.attribute for defining the capabilities of this device
@@ -46,7 +46,7 @@ message PtzAttributes {
 }
 
 // The current or intended state for the device
-message PtzState {
+message Ptz {
   // The current position of the PTZ device (if known)
   PtzPosition position = 1;
   // The current motion of the PTZ device (if known)
@@ -113,19 +113,19 @@ message PtzPreset {
   bool writable = 5;
 }
 
-message GetPtzStateRequest {
+message GetPtzRequest {
   // The name of the device to request state from
   string name = 1;
   // which fields do we want to fetch
   google.protobuf.FieldMask fields = 2;
 }
 
-message UpdatePtzStateRequest {
+message UpdatePtzRequest {
   // the name of the device to update the state of
   string name = 1;
   // The new state
-  PtzState state = 2;
-  // The fields we are intending to update relative to the PtzState
+  Ptz state = 2;
+  // The fields we are intending to update relative to the Ptz
   google.protobuf.FieldMask update_mask = 3;
 }
 
@@ -141,12 +141,12 @@ message CreatePtzPresetRequest {
   PtzPreset preset = 2;
 }
 
-message PullPtzStatesRequest {
+message PullPtzRequest {
   // The device we want to subscribe to
   string name = 1;
 }
 
-message PullPtzStatesResponse {
+message PullPtzResponse {
   repeated Change changes = 1;
 
   message Change {
@@ -155,6 +155,6 @@ message PullPtzStatesResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The updated state, should be merged with any known state
-    PtzState state = 3;
+    Ptz state = 3;
   }
 }
