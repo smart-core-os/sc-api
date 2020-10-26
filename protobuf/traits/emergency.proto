@@ -24,7 +24,8 @@ service EmergencyApi {
 }
 
 // Trait.attribute for emergency capabilities
-message EmergencyApiAttributes{}
+message EmergencyApiAttributes {
+}
 
 // An emergency is a life threatening event.
 message Emergency {

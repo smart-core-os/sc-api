@@ -16,13 +16,13 @@ import "google/protobuf/field_mask.proto";
 // devices like that.
 service CountApi {
   // Get the current count state
-  rpc GetCount(GetCountRequest) returns (Count);
+  rpc GetCount (GetCountRequest) returns (Count);
   // Reset the counts to 0 and update the reset time.
-  rpc ResetCount(ResetCountRequest) returns (Count);
+  rpc ResetCount (ResetCountRequest) returns (Count);
   // Update one or more properties of the count.
-  rpc UpdateCount(UpdateCountRequest) returns (Count);
+  rpc UpdateCount (UpdateCountRequest) returns (Count);
   // Subscribe to changes to the count.
-  rpc PullCounts(PullCountsRequest) returns (stream PullCountsResponse);
+  rpc PullCounts (PullCountsRequest) returns (stream PullCountsResponse);
 }
 
 // Trait.attributes for this trait.

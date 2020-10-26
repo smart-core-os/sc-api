@@ -19,9 +19,9 @@ service ChannelApi {
   // ChooseChannel will set the currently chosen channel to the one specified. Returns the chosen channel
   rpc ChooseChannel (ChooseChannelRequest) returns (Channel);
   // AdjustChannel will choose a channel based on the current channel, i.e. 'next channel'. Returns the chosen channel
-  rpc AdjustChannel(AdjustChannelRequest) returns (Channel);
+  rpc AdjustChannel (AdjustChannelRequest) returns (Channel);
   // ReturnChannel will choose the previously chosen channel. Returns the chosen channel
-  rpc ReturnChannel(ReturnChannelRequest) returns (Channel);
+  rpc ReturnChannel (ReturnChannelRequest) returns (Channel);
 
   // PullChosenChannel subscribes to chosen channel changes
   rpc PullChosenChannel (PullChosenChannelRequest) returns (stream PullChosenChannelResponse);
