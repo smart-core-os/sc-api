@@ -15,6 +15,9 @@ export class OpenCloseAttributes extends jspb.Message {
   clearDirectionsList(): OpenCloseAttributes;
   addDirections(value: OpenCloseDirection, index?: number): OpenCloseAttributes;
 
+  getSupportsStop(): boolean;
+  setSupportsStop(value: boolean): OpenCloseAttributes;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenCloseAttributes.AsObject;
   static toObject(includeInstance: boolean, msg: OpenCloseAttributes): OpenCloseAttributes.AsObject;
@@ -27,6 +30,7 @@ export namespace OpenCloseAttributes {
   export type AsObject = {
     positionAttributes?: types_number_pb.FloatAttributes.AsObject,
     directionsList: Array<OpenCloseDirection>,
+    supportsStop: boolean,
   }
 }
 
@@ -117,6 +121,24 @@ export namespace UpdateOpenCloseStatesRequest {
     name: string,
     states?: OpenCloseStates.AsObject,
     delta: boolean,
+  }
+}
+
+export class StopOpenCloseRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): StopOpenCloseRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StopOpenCloseRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: StopOpenCloseRequest): StopOpenCloseRequest.AsObject;
+  static serializeBinaryToWriter(message: StopOpenCloseRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StopOpenCloseRequest;
+  static deserializeBinaryFromReader(message: StopOpenCloseRequest, reader: jspb.BinaryReader): StopOpenCloseRequest;
+}
+
+export namespace StopOpenCloseRequest {
+  export type AsObject = {
+    name: string,
   }
 }
 

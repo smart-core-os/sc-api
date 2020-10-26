@@ -19,6 +19,8 @@ const _ = grpc.SupportPackageIsVersion6
 type OpenCloseClient interface {
 	GetStates(ctx context.Context, in *GetOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
 	UpdateStates(ctx context.Context, in *UpdateOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
+	// Stop causes any changes being performed by the underlying device to stop. Will return the current state.
+	Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenCloseStates, error)
 	// Get notified of changes to the OpenCloseState of a device
 	Pull(ctx context.Context, in *PullOpenCloseStatesRequest, opts ...grpc.CallOption) (OpenClose_PullClient, error)
 }
@@ -43,6 +45,15 @@ func (c *openCloseClient) GetStates(ctx context.Context, in *GetOpenCloseStatesR
 func (c *openCloseClient) UpdateStates(ctx context.Context, in *UpdateOpenCloseStatesRequest, opts ...grpc.CallOption) (*OpenCloseStates, error) {
 	out := new(OpenCloseStates)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenClose/UpdateStates", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *openCloseClient) Stop(ctx context.Context, in *StopOpenCloseRequest, opts ...grpc.CallOption) (*OpenCloseStates, error) {
+	out := new(OpenCloseStates)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenClose/Stop", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,6 +98,8 @@ func (x *openClosePullClient) Recv() (*PullOpenCloseStatesResponse, error) {
 type OpenCloseServer interface {
 	GetStates(context.Context, *GetOpenCloseStatesRequest) (*OpenCloseStates, error)
 	UpdateStates(context.Context, *UpdateOpenCloseStatesRequest) (*OpenCloseStates, error)
+	// Stop causes any changes being performed by the underlying device to stop. Will return the current state.
+	Stop(context.Context, *StopOpenCloseRequest) (*OpenCloseStates, error)
 	// Get notified of changes to the OpenCloseState of a device
 	Pull(*PullOpenCloseStatesRequest, OpenClose_PullServer) error
 	mustEmbedUnimplementedOpenCloseServer()
@@ -101,6 +114,9 @@ func (*UnimplementedOpenCloseServer) GetStates(context.Context, *GetOpenCloseSta
 }
 func (*UnimplementedOpenCloseServer) UpdateStates(context.Context, *UpdateOpenCloseStatesRequest) (*OpenCloseStates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateStates not implemented")
+}
+func (*UnimplementedOpenCloseServer) Stop(context.Context, *StopOpenCloseRequest) (*OpenCloseStates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
 func (*UnimplementedOpenCloseServer) Pull(*PullOpenCloseStatesRequest, OpenClose_PullServer) error {
 	return status.Errorf(codes.Unimplemented, "method Pull not implemented")
@@ -147,6 +163,24 @@ func _OpenClose_UpdateStates_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OpenClose_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopOpenCloseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OpenCloseServer).Stop(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.OpenClose/Stop",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OpenCloseServer).Stop(ctx, req.(*StopOpenCloseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OpenClose_Pull_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullOpenCloseStatesRequest)
 	if err := stream.RecvMsg(m); err != nil {
@@ -179,6 +213,10 @@ var _OpenClose_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateStates",
 			Handler:    _OpenClose_UpdateStates_Handler,
+		},
+		{
+			MethodName: "Stop",
+			Handler:    _OpenClose_Stop_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

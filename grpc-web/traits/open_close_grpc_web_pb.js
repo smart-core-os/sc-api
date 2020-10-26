@@ -238,6 +238,86 @@ proto.smartcore.traits.OpenClosePromiseClient.prototype.updateStates =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.StopOpenCloseRequest,
+ *   !proto.smartcore.traits.OpenCloseStates>}
+ */
+const methodDescriptor_OpenClose_Stop = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OpenClose/Stop',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.StopOpenCloseRequest,
+  proto.smartcore.traits.OpenCloseStates,
+  /**
+   * @param {!proto.smartcore.traits.StopOpenCloseRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.StopOpenCloseRequest,
+ *   !proto.smartcore.traits.OpenCloseStates>}
+ */
+const methodInfo_OpenClose_Stop = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.OpenCloseStates,
+  /**
+   * @param {!proto.smartcore.traits.StopOpenCloseRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.OpenCloseStates.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.StopOpenCloseRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OpenCloseStates)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OpenCloseStates>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.OpenCloseClient.prototype.stop =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.OpenClose/Stop',
+      request,
+      metadata || {},
+      methodDescriptor_OpenClose_Stop,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.StopOpenCloseRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.OpenCloseStates>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.OpenClosePromiseClient.prototype.stop =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.OpenClose/Stop',
+      request,
+      metadata || {},
+      methodDescriptor_OpenClose_Stop);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.smartcore.traits.PullOpenCloseStatesRequest,
  *   !proto.smartcore.traits.PullOpenCloseStatesResponse>}
  */

@@ -22,6 +22,13 @@ export class OpenCloseClient {
                response: traits_open_close_pb.OpenCloseStates) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenCloseStates>;
 
+  stop(
+    request: traits_open_close_pb.StopOpenCloseRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_open_close_pb.OpenCloseStates) => void
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenCloseStates>;
+
   pull(
     request: traits_open_close_pb.PullOpenCloseStatesRequest,
     metadata?: grpcWeb.Metadata
@@ -41,6 +48,11 @@ export class OpenClosePromiseClient {
 
   updateStates(
     request: traits_open_close_pb.UpdateOpenCloseStatesRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_open_close_pb.OpenCloseStates>;
+
+  stop(
+    request: traits_open_close_pb.StopOpenCloseRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<traits_open_close_pb.OpenCloseStates>;
 

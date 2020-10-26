@@ -207,6 +207,10 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.StopOpenCloseRequest"><span class="badge">M</span>StopOpenCloseRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.UpdateOpenCloseStatesRequest"><span class="badge">M</span>UpdateOpenCloseStatesRequest</a>
                 </li>
               
@@ -283,6 +287,13 @@
                   <td><a href="#smartcore.traits.OpenCloseDirection">OpenCloseDirection</a></td>
                   <td>repeated</td>
                   <td><p>The supported directions for the device. If none then assume only a single direction is supported </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_stop</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Does the device support the Stop method </p></td>
                 </tr>
               
             </tbody>
@@ -442,6 +453,30 @@ capabilities </p></td>
 
         
       
+        <h3 id="smartcore.traits.StopOpenCloseRequest">StopOpenCloseRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the name of the device to stop </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="smartcore.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</h3>
         <p></p>
 
@@ -560,6 +595,13 @@ include it in the states list. </p></td>
                 <td><a href="#smartcore.traits.UpdateOpenCloseStatesRequest">UpdateOpenCloseStatesRequest</a></td>
                 <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
                 <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Stop</td>
+                <td><a href="#smartcore.traits.StopOpenCloseRequest">StopOpenCloseRequest</a></td>
+                <td><a href="#smartcore.traits.OpenCloseStates">OpenCloseStates</a></td>
+                <td><p>Stop causes any changes being performed by the underlying device to stop. Will return the current state.</p></td>
               </tr>
             
               <tr>

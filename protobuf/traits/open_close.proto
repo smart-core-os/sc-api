@@ -18,6 +18,9 @@ service OpenClose {
 
   rpc UpdateStates (UpdateOpenCloseStatesRequest) returns (OpenCloseStates);
 
+  // Stop causes any changes being performed by the underlying device to stop. Will return the current state.
+  rpc Stop (StopOpenCloseRequest) returns (OpenCloseStates);
+
   // Get notified of changes to the OpenCloseState of a device
   rpc Pull (PullOpenCloseStatesRequest) returns (stream PullOpenCloseStatesResponse);
 }
@@ -29,6 +32,8 @@ message OpenCloseAttributes {
   smartcore.api.types.FloatAttributes position_attributes = 1;
   // The supported directions for the device. If none then assume only a single direction is supported
   repeated OpenCloseDirection directions = 2;
+  // Does the device support the Stop method
+  bool supports_stop = 3;
 }
 
 // All open/closable elements for the device
@@ -70,6 +75,11 @@ message UpdateOpenCloseStatesRequest {
   OpenCloseStates states = 2;
   // indicate whether the state change is a delta or absolute value
   bool delta = 3;
+}
+
+message StopOpenCloseRequest {
+  // the name of the device to stop
+  string name = 1;
 }
 
 // Request to begin a subscription for open close state changes
