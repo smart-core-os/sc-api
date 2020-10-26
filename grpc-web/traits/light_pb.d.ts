@@ -4,29 +4,29 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_number_pb from '../types/number_pb';
 
 
-export class BrightnessAttributes extends jspb.Message {
+export class LightAttributes extends jspb.Message {
   getBrightnessAttributes(): types_number_pb.Int32Attributes | undefined;
-  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): BrightnessAttributes;
+  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): LightAttributes;
   hasBrightnessAttributes(): boolean;
-  clearBrightnessAttributes(): BrightnessAttributes;
+  clearBrightnessAttributes(): LightAttributes;
 
-  getPresetsList(): Array<BrightnessPreset>;
-  setPresetsList(value: Array<BrightnessPreset>): BrightnessAttributes;
-  clearPresetsList(): BrightnessAttributes;
-  addPresets(value?: BrightnessPreset, index?: number): BrightnessPreset;
+  getPresetsList(): Array<LightPreset>;
+  setPresetsList(value: Array<LightPreset>): LightAttributes;
+  clearPresetsList(): LightAttributes;
+  addPresets(value?: LightPreset, index?: number): LightPreset;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BrightnessAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: BrightnessAttributes): BrightnessAttributes.AsObject;
-  static serializeBinaryToWriter(message: BrightnessAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BrightnessAttributes;
-  static deserializeBinaryFromReader(message: BrightnessAttributes, reader: jspb.BinaryReader): BrightnessAttributes;
+  toObject(includeInstance?: boolean): LightAttributes.AsObject;
+  static toObject(includeInstance: boolean, msg: LightAttributes): LightAttributes.AsObject;
+  static serializeBinaryToWriter(message: LightAttributes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LightAttributes;
+  static deserializeBinaryFromReader(message: LightAttributes, reader: jspb.BinaryReader): LightAttributes;
 }
 
-export namespace BrightnessAttributes {
+export namespace LightAttributes {
   export type AsObject = {
     brightnessAttributes?: types_number_pb.Int32Attributes.AsObject,
-    presetsList: Array<BrightnessPreset.AsObject>,
+    presetsList: Array<LightPreset.AsObject>,
   }
 }
 
@@ -36,8 +36,8 @@ export class Brightness extends jspb.Message {
   hasLevel(): boolean;
   clearLevel(): Brightness;
 
-  getPreset(): BrightnessPreset | undefined;
-  setPreset(value?: BrightnessPreset): Brightness;
+  getPreset(): LightPreset | undefined;
+  setPreset(value?: LightPreset): Brightness;
   hasPreset(): boolean;
   clearPreset(): Brightness;
 
@@ -52,26 +52,26 @@ export class Brightness extends jspb.Message {
 export namespace Brightness {
   export type AsObject = {
     level?: types_number_pb.Int32Var.AsObject,
-    preset?: BrightnessPreset.AsObject,
+    preset?: LightPreset.AsObject,
   }
 }
 
-export class BrightnessPreset extends jspb.Message {
+export class LightPreset extends jspb.Message {
   getName(): string;
-  setName(value: string): BrightnessPreset;
+  setName(value: string): LightPreset;
 
   getTitle(): string;
-  setTitle(value: string): BrightnessPreset;
+  setTitle(value: string): LightPreset;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BrightnessPreset.AsObject;
-  static toObject(includeInstance: boolean, msg: BrightnessPreset): BrightnessPreset.AsObject;
-  static serializeBinaryToWriter(message: BrightnessPreset, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BrightnessPreset;
-  static deserializeBinaryFromReader(message: BrightnessPreset, reader: jspb.BinaryReader): BrightnessPreset;
+  toObject(includeInstance?: boolean): LightPreset.AsObject;
+  static toObject(includeInstance: boolean, msg: LightPreset): LightPreset.AsObject;
+  static serializeBinaryToWriter(message: LightPreset, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LightPreset;
+  static deserializeBinaryFromReader(message: LightPreset, reader: jspb.BinaryReader): LightPreset;
 }
 
-export namespace BrightnessPreset {
+export namespace LightPreset {
   export type AsObject = {
     name: string,
     title: string,

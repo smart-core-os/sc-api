@@ -21,7 +21,7 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var types_number_pb = require('../types/number_pb.js')
 const proto = {};
 proto.smartcore = {};
-proto.smartcore.traits = require('./brightness_pb.js');
+proto.smartcore.traits = require('./light_pb.js');
 
 /**
  * @param {string} hostname
@@ -31,7 +31,7 @@ proto.smartcore.traits = require('./brightness_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.BrightnessApiClient =
+proto.smartcore.traits.LightApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -57,7 +57,7 @@ proto.smartcore.traits.BrightnessApiClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.BrightnessApiPromiseClient =
+proto.smartcore.traits.LightApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -81,8 +81,8 @@ proto.smartcore.traits.BrightnessApiPromiseClient =
  *   !proto.smartcore.traits.UpdateBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodDescriptor_BrightnessApi_UpdateBrightness = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.BrightnessApi/UpdateBrightness',
+const methodDescriptor_LightApi_UpdateBrightness = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LightApi/UpdateBrightness',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateBrightnessRequest,
   proto.smartcore.traits.Brightness,
@@ -103,7 +103,7 @@ const methodDescriptor_BrightnessApi_UpdateBrightness = new grpc.web.MethodDescr
  *   !proto.smartcore.traits.UpdateBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodInfo_BrightnessApi_UpdateBrightness = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_LightApi_UpdateBrightness = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Brightness,
   /**
    * @param {!proto.smartcore.traits.UpdateBrightnessRequest} request
@@ -126,13 +126,13 @@ const methodInfo_BrightnessApi_UpdateBrightness = new grpc.web.AbstractClientBas
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Brightness>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.BrightnessApiClient.prototype.updateBrightness =
+proto.smartcore.traits.LightApiClient.prototype.updateBrightness =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/UpdateBrightness',
+      '/smartcore.traits.LightApi/UpdateBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_UpdateBrightness,
+      methodDescriptor_LightApi_UpdateBrightness,
       callback);
 };
 
@@ -145,13 +145,13 @@ proto.smartcore.traits.BrightnessApiClient.prototype.updateBrightness =
  * @return {!Promise<!proto.smartcore.traits.Brightness>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.BrightnessApiPromiseClient.prototype.updateBrightness =
+proto.smartcore.traits.LightApiPromiseClient.prototype.updateBrightness =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/UpdateBrightness',
+      '/smartcore.traits.LightApi/UpdateBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_UpdateBrightness);
+      methodDescriptor_LightApi_UpdateBrightness);
 };
 
 
@@ -161,8 +161,8 @@ proto.smartcore.traits.BrightnessApiPromiseClient.prototype.updateBrightness =
  *   !proto.smartcore.traits.GetBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodDescriptor_BrightnessApi_GetBrightness = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.BrightnessApi/GetBrightness',
+const methodDescriptor_LightApi_GetBrightness = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LightApi/GetBrightness',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetBrightnessRequest,
   proto.smartcore.traits.Brightness,
@@ -183,7 +183,7 @@ const methodDescriptor_BrightnessApi_GetBrightness = new grpc.web.MethodDescript
  *   !proto.smartcore.traits.GetBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodInfo_BrightnessApi_GetBrightness = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_LightApi_GetBrightness = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Brightness,
   /**
    * @param {!proto.smartcore.traits.GetBrightnessRequest} request
@@ -206,13 +206,13 @@ const methodInfo_BrightnessApi_GetBrightness = new grpc.web.AbstractClientBase.M
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Brightness>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.BrightnessApiClient.prototype.getBrightness =
+proto.smartcore.traits.LightApiClient.prototype.getBrightness =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/GetBrightness',
+      '/smartcore.traits.LightApi/GetBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_GetBrightness,
+      methodDescriptor_LightApi_GetBrightness,
       callback);
 };
 
@@ -225,13 +225,13 @@ proto.smartcore.traits.BrightnessApiClient.prototype.getBrightness =
  * @return {!Promise<!proto.smartcore.traits.Brightness>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.BrightnessApiPromiseClient.prototype.getBrightness =
+proto.smartcore.traits.LightApiPromiseClient.prototype.getBrightness =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/GetBrightness',
+      '/smartcore.traits.LightApi/GetBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_GetBrightness);
+      methodDescriptor_LightApi_GetBrightness);
 };
 
 
@@ -241,8 +241,8 @@ proto.smartcore.traits.BrightnessApiPromiseClient.prototype.getBrightness =
  *   !proto.smartcore.traits.PullBrightnessRequest,
  *   !proto.smartcore.traits.PullBrightnessResponse>}
  */
-const methodDescriptor_BrightnessApi_PullBrightness = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.BrightnessApi/PullBrightness',
+const methodDescriptor_LightApi_PullBrightness = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LightApi/PullBrightness',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullBrightnessRequest,
   proto.smartcore.traits.PullBrightnessResponse,
@@ -263,7 +263,7 @@ const methodDescriptor_BrightnessApi_PullBrightness = new grpc.web.MethodDescrip
  *   !proto.smartcore.traits.PullBrightnessRequest,
  *   !proto.smartcore.traits.PullBrightnessResponse>}
  */
-const methodInfo_BrightnessApi_PullBrightness = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_LightApi_PullBrightness = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullBrightnessResponse,
   /**
    * @param {!proto.smartcore.traits.PullBrightnessRequest} request
@@ -283,13 +283,13 @@ const methodInfo_BrightnessApi_PullBrightness = new grpc.web.AbstractClientBase.
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBrightnessResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.BrightnessApiClient.prototype.pullBrightness =
+proto.smartcore.traits.LightApiClient.prototype.pullBrightness =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/PullBrightness',
+      '/smartcore.traits.LightApi/PullBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_PullBrightness);
+      methodDescriptor_LightApi_PullBrightness);
 };
 
 
@@ -300,13 +300,13 @@ proto.smartcore.traits.BrightnessApiClient.prototype.pullBrightness =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBrightnessResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.BrightnessApiPromiseClient.prototype.pullBrightness =
+proto.smartcore.traits.LightApiPromiseClient.prototype.pullBrightness =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/PullBrightness',
+      '/smartcore.traits.LightApi/PullBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_PullBrightness);
+      methodDescriptor_LightApi_PullBrightness);
 };
 
 

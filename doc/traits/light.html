@@ -175,7 +175,7 @@
         
           
           <li>
-            <a href="#traits%2fbrightness.proto">traits/brightness.proto</a>
+            <a href="#traits%2flight.proto">traits/light.proto</a>
             <ul>
               
                 <li>
@@ -183,19 +183,19 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.BrightnessAttributes"><span class="badge">M</span>BrightnessAttributes</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.BrightnessChange"><span class="badge">M</span>BrightnessChange</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.BrightnessPreset"><span class="badge">M</span>BrightnessPreset</a>
+                  <a href="#smartcore.traits.GetBrightnessRequest"><span class="badge">M</span>GetBrightnessRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetBrightnessRequest"><span class="badge">M</span>GetBrightnessRequest</a>
+                  <a href="#smartcore.traits.LightAttributes"><span class="badge">M</span>LightAttributes</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.LightPreset"><span class="badge">M</span>LightPreset</a>
                 </li>
               
                 <li>
@@ -214,7 +214,7 @@
               
               
                 <li>
-                  <a href="#smartcore.traits.BrightnessApi"><span class="badge">S</span>BrightnessApi</a>
+                  <a href="#smartcore.traits.LightApi"><span class="badge">S</span>LightApi</a>
                 </li>
               
             </ul>
@@ -227,7 +227,7 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/brightness.proto">traits/brightness.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/light.proto">traits/light.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
@@ -251,40 +251,9 @@
               
                 <tr>
                   <td>preset</td>
-                  <td><a href="#smartcore.traits.BrightnessPreset">BrightnessPreset</a></td>
+                  <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
                   <td></td>
                   <td><p>A preset that the device is using </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.BrightnessAttributes">BrightnessAttributes</h3>
-        <p>Trait.attribute for brightness capabilities</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>brightness_attributes</td>
-                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
-                  <td></td>
-                  <td><p>control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage </p></td>
-                </tr>
-              
-                <tr>
-                  <td>presets</td>
-                  <td><a href="#smartcore.traits.BrightnessPreset">BrightnessPreset</a></td>
-                  <td>repeated</td>
-                  <td><p>A description of the supported presets, none means no presets </p></td>
                 </tr>
               
             </tbody>
@@ -332,7 +301,62 @@
 
         
       
-        <h3 id="smartcore.traits.BrightnessPreset">BrightnessPreset</h3>
+        <h3 id="smartcore.traits.GetBrightnessRequest">GetBrightnessRequest</h3>
+        <p>A request to get the current value of a brightness</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device to get the value for </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.LightAttributes">LightAttributes</h3>
+        <p>Trait.attribute for light capabilities</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>brightness_attributes</td>
+                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
+                  <td></td>
+                  <td><p>control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>presets</td>
+                  <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
+                  <td>repeated</td>
+                  <td><p>A description of the supported presets, none means no presets </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.LightPreset">LightPreset</h3>
         <p></p>
 
         
@@ -354,30 +378,6 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.GetBrightnessRequest">GetBrightnessRequest</h3>
-        <p>A request to get the current value of a brightness</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device to get the value for </p></td>
                 </tr>
               
             </tbody>
@@ -487,8 +487,8 @@ capabilities </p></td>
       
 
       
-        <h3 id="smartcore.traits.BrightnessApi">BrightnessApi</h3>
-        <p>Control the brightness of a device. Brightness values should be normalised to 0-100 as a percentage, though the</p><p>device may not support all steps within. See the BrightnessAttributes for step values of the device.</p>
+        <h3 id="smartcore.traits.LightApi">LightApi</h3>
+        <p>Control the light output of a device. Brightness values should be normalised to 0-100 as a percentage, though the</p><p>device may not support all steps within. See the LightAttributes for step values of the device.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>

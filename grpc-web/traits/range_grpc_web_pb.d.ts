@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_range_pb from '../traits/range_pb';
 import * as types_number_pb from '../types/number_pb';
+import * as traits_range_pb from '../traits/range_pb';
 
 
 export class RangeClient {
