@@ -3,19 +3,19 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 
-export class OccupancyAttributes extends jspb.Message {
+export class OccupancySensorAttributes extends jspb.Message {
   getMaxPeople(): number;
-  setMaxPeople(value: number): OccupancyAttributes;
+  setMaxPeople(value: number): OccupancySensorAttributes;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OccupancyAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: OccupancyAttributes): OccupancyAttributes.AsObject;
-  static serializeBinaryToWriter(message: OccupancyAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OccupancyAttributes;
-  static deserializeBinaryFromReader(message: OccupancyAttributes, reader: jspb.BinaryReader): OccupancyAttributes;
+  toObject(includeInstance?: boolean): OccupancySensorAttributes.AsObject;
+  static toObject(includeInstance: boolean, msg: OccupancySensorAttributes): OccupancySensorAttributes.AsObject;
+  static serializeBinaryToWriter(message: OccupancySensorAttributes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OccupancySensorAttributes;
+  static deserializeBinaryFromReader(message: OccupancySensorAttributes, reader: jspb.BinaryReader): OccupancySensorAttributes;
 }
 
-export namespace OccupancyAttributes {
+export namespace OccupancySensorAttributes {
   export type AsObject = {
     maxPeople: number,
   }

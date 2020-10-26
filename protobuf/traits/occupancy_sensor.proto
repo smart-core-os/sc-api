@@ -5,7 +5,7 @@ package smartcore.traits;
 option csharp_namespace = "Smartcore.Traits";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/traits";
 option java_multiple_files = true;
-option java_outer_classname = "OccupancyProto";
+option java_outer_classname = "OccupancySensorProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
@@ -14,7 +14,7 @@ import "google/protobuf/timestamp.proto";
 // The reporting of occupancy in a space. Similar to a MotionSensor, this reports whether a space is occupied or
 // unoccupied with additional optional information relating to _how_ occupied the space is (i.e. how many people are
 // present)
-service OccupancyApi {
+service OccupancySensorApi {
   // Get the current motion state for the device.
   rpc GetOccupancy (GetOccupancyRequest) returns (Occupancy);
 
@@ -23,7 +23,7 @@ service OccupancyApi {
 }
 
 // Trait.attribute for the configuration of the device
-message OccupancyAttributes {
+message OccupancySensorAttributes {
   // how many people can the occupancy service report. 0 means it won't report people counts. Note: this is _not_ the
   // total capacity for the space, it's the capacity of the sensor
   int32 max_people = 1;

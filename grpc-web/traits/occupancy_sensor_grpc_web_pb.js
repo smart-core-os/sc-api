@@ -19,7 +19,7 @@ grpc.web = require('grpc-web');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
 proto.smartcore = {};
-proto.smartcore.traits = require('./occupancy_pb.js');
+proto.smartcore.traits = require('./occupancy_sensor_pb.js');
 
 /**
  * @param {string} hostname
@@ -29,7 +29,7 @@ proto.smartcore.traits = require('./occupancy_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.OccupancyApiClient =
+proto.smartcore.traits.OccupancySensorApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -55,7 +55,7 @@ proto.smartcore.traits.OccupancyApiClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.OccupancyApiPromiseClient =
+proto.smartcore.traits.OccupancySensorApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -79,8 +79,8 @@ proto.smartcore.traits.OccupancyApiPromiseClient =
  *   !proto.smartcore.traits.GetOccupancyRequest,
  *   !proto.smartcore.traits.Occupancy>}
  */
-const methodDescriptor_OccupancyApi_GetOccupancy = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OccupancyApi/GetOccupancy',
+const methodDescriptor_OccupancySensorApi_GetOccupancy = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OccupancySensorApi/GetOccupancy',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetOccupancyRequest,
   proto.smartcore.traits.Occupancy,
@@ -101,7 +101,7 @@ const methodDescriptor_OccupancyApi_GetOccupancy = new grpc.web.MethodDescriptor
  *   !proto.smartcore.traits.GetOccupancyRequest,
  *   !proto.smartcore.traits.Occupancy>}
  */
-const methodInfo_OccupancyApi_GetOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_OccupancySensorApi_GetOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Occupancy,
   /**
    * @param {!proto.smartcore.traits.GetOccupancyRequest} request
@@ -124,13 +124,13 @@ const methodInfo_OccupancyApi_GetOccupancy = new grpc.web.AbstractClientBase.Met
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Occupancy>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OccupancyApiClient.prototype.getOccupancy =
+proto.smartcore.traits.OccupancySensorApiClient.prototype.getOccupancy =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OccupancyApi/GetOccupancy',
+      '/smartcore.traits.OccupancySensorApi/GetOccupancy',
       request,
       metadata || {},
-      methodDescriptor_OccupancyApi_GetOccupancy,
+      methodDescriptor_OccupancySensorApi_GetOccupancy,
       callback);
 };
 
@@ -143,13 +143,13 @@ proto.smartcore.traits.OccupancyApiClient.prototype.getOccupancy =
  * @return {!Promise<!proto.smartcore.traits.Occupancy>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.OccupancyApiPromiseClient.prototype.getOccupancy =
+proto.smartcore.traits.OccupancySensorApiPromiseClient.prototype.getOccupancy =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OccupancyApi/GetOccupancy',
+      '/smartcore.traits.OccupancySensorApi/GetOccupancy',
       request,
       metadata || {},
-      methodDescriptor_OccupancyApi_GetOccupancy);
+      methodDescriptor_OccupancySensorApi_GetOccupancy);
 };
 
 
@@ -159,8 +159,8 @@ proto.smartcore.traits.OccupancyApiPromiseClient.prototype.getOccupancy =
  *   !proto.smartcore.traits.PullOccupancyRequest,
  *   !proto.smartcore.traits.PullOccupancyResponse>}
  */
-const methodDescriptor_OccupancyApi_PullOccupancy = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OccupancyApi/PullOccupancy',
+const methodDescriptor_OccupancySensorApi_PullOccupancy = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OccupancySensorApi/PullOccupancy',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullOccupancyRequest,
   proto.smartcore.traits.PullOccupancyResponse,
@@ -181,7 +181,7 @@ const methodDescriptor_OccupancyApi_PullOccupancy = new grpc.web.MethodDescripto
  *   !proto.smartcore.traits.PullOccupancyRequest,
  *   !proto.smartcore.traits.PullOccupancyResponse>}
  */
-const methodInfo_OccupancyApi_PullOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_OccupancySensorApi_PullOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullOccupancyResponse,
   /**
    * @param {!proto.smartcore.traits.PullOccupancyRequest} request
@@ -201,13 +201,13 @@ const methodInfo_OccupancyApi_PullOccupancy = new grpc.web.AbstractClientBase.Me
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOccupancyResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OccupancyApiClient.prototype.pullOccupancy =
+proto.smartcore.traits.OccupancySensorApiClient.prototype.pullOccupancy =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OccupancyApi/PullOccupancy',
+      '/smartcore.traits.OccupancySensorApi/PullOccupancy',
       request,
       metadata || {},
-      methodDescriptor_OccupancyApi_PullOccupancy);
+      methodDescriptor_OccupancySensorApi_PullOccupancy);
 };
 
 
@@ -218,13 +218,13 @@ proto.smartcore.traits.OccupancyApiClient.prototype.pullOccupancy =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOccupancyResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OccupancyApiPromiseClient.prototype.pullOccupancy =
+proto.smartcore.traits.OccupancySensorApiPromiseClient.prototype.pullOccupancy =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OccupancyApi/PullOccupancy',
+      '/smartcore.traits.OccupancySensorApi/PullOccupancy',
       request,
       metadata || {},
-      methodDescriptor_OccupancyApi_PullOccupancy);
+      methodDescriptor_OccupancySensorApi_PullOccupancy);
 };
 
 

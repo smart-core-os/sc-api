@@ -175,7 +175,7 @@
         
           
           <li>
-            <a href="#traits%2foccupancy.proto">traits/occupancy.proto</a>
+            <a href="#traits%2foccupancy_sensor.proto">traits/occupancy_sensor.proto</a>
             <ul>
               
                 <li>
@@ -187,11 +187,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OccupancyAttributes"><span class="badge">M</span>OccupancyAttributes</a>
+                  <a href="#smartcore.traits.OccupancyChange"><span class="badge">M</span>OccupancyChange</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OccupancyChange"><span class="badge">M</span>OccupancyChange</a>
+                  <a href="#smartcore.traits.OccupancySensorAttributes"><span class="badge">M</span>OccupancySensorAttributes</a>
                 </li>
               
                 <li>
@@ -210,7 +210,7 @@
               
               
                 <li>
-                  <a href="#smartcore.traits.OccupancyApi"><span class="badge">S</span>OccupancyApi</a>
+                  <a href="#smartcore.traits.OccupancySensorApi"><span class="badge">S</span>OccupancySensorApi</a>
                 </li>
               
             </ul>
@@ -223,7 +223,7 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/occupancy.proto">traits/occupancy.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/occupancy_sensor.proto">traits/occupancy_sensor.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
@@ -310,31 +310,6 @@ confidence is unknown </p></td>
 
         
       
-        <h3 id="smartcore.traits.OccupancyAttributes">OccupancyAttributes</h3>
-        <p>Trait.attribute for the configuration of the device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>max_people</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p>how many people can the occupancy service report. 0 means it won&#39;t report people counts. Note: this is _not_ the
-total capacity for the space, it&#39;s the capacity of the sensor </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.OccupancyChange">OccupancyChange</h3>
         <p>A change to the occupancy state of the device, including people count</p>
 
@@ -364,6 +339,31 @@ total capacity for the space, it&#39;s the capacity of the sensor </p></td>
                   <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
                   <td></td>
                   <td><p>the new state for the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.OccupancySensorAttributes">OccupancySensorAttributes</h3>
+        <p>Trait.attribute for the configuration of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>max_people</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>how many people can the occupancy service report. 0 means it won&#39;t report people counts. Note: this is _not_ the
+total capacity for the space, it&#39;s the capacity of the sensor </p></td>
                 </tr>
               
             </tbody>
@@ -463,7 +463,7 @@ moving for other reasons)</p></td>
       
 
       
-        <h3 id="smartcore.traits.OccupancyApi">OccupancyApi</h3>
+        <h3 id="smartcore.traits.OccupancySensorApi">OccupancySensorApi</h3>
         <p>The reporting of occupancy in a space. Similar to a MotionSensor, this reports whether a space is occupied or</p><p>unoccupied with additional optional information relating to _how_ occupied the space is (i.e. how many people are</p><p>present)</p>
         <table class="enum-table">
           <thead>
