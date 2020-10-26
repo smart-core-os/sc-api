@@ -2791,7 +2791,8 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.toObject = function
  */
 proto.smartcore.traits.PullBookingsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
     newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
     oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
   };
@@ -2831,15 +2832,19 @@ proto.smartcore.traits.PullBookingsResponse.Change.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
       var value = /** @type {!proto.smartcore.api.types.ChangeType} */ (reader.readEnum());
       msg.setType(value);
       break;
-    case 2:
+    case 3:
       var value = new proto.smartcore.traits.Booking;
       reader.readMessage(value,proto.smartcore.traits.Booking.deserializeBinaryFromReader);
       msg.setNewValue(value);
       break;
-    case 3:
+    case 4:
       var value = new proto.smartcore.traits.Booking;
       reader.readMessage(value,proto.smartcore.traits.Booking.deserializeBinaryFromReader);
       msg.setOldValue(value);
@@ -2873,17 +2878,24 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.serializeBinary = f
  */
 proto.smartcore.traits.PullBookingsResponse.Change.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
   f = message.getType();
   if (f !== 0.0) {
     writer.writeEnum(
-      1,
+      2,
       f
     );
   }
   f = message.getNewValue();
   if (f != null) {
     writer.writeMessage(
-      2,
+      3,
       f,
       proto.smartcore.traits.Booking.serializeBinaryToWriter
     );
@@ -2891,7 +2903,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.serializeBinaryToWriter = fun
   f = message.getOldValue();
   if (f != null) {
     writer.writeMessage(
-      3,
+      4,
       f,
       proto.smartcore.traits.Booking.serializeBinaryToWriter
     );
@@ -2900,11 +2912,29 @@ proto.smartcore.traits.PullBookingsResponse.Change.serializeBinaryToWriter = fun
 
 
 /**
- * optional smartcore.api.types.ChangeType type = 1;
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
+ */
+proto.smartcore.traits.PullBookingsResponse.Change.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional smartcore.api.types.ChangeType type = 2;
  * @return {!proto.smartcore.api.types.ChangeType}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.getType = function() {
-  return /** @type {!proto.smartcore.api.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.api.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -2913,17 +2943,17 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.getType = function(
  * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
+  return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
 /**
- * optional Booking new_value = 2;
+ * optional Booking new_value = 3;
  * @return {?proto.smartcore.traits.Booking}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.getNewValue = function() {
   return /** @type{?proto.smartcore.traits.Booking} */ (
-    jspb.Message.getWrapperField(this, proto.smartcore.traits.Booking, 2));
+    jspb.Message.getWrapperField(this, proto.smartcore.traits.Booking, 3));
 };
 
 
@@ -2932,7 +2962,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.getNewValue = funct
  * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
 */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.setNewValue = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
@@ -2950,17 +2980,17 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.clearNewValue = fun
  * @return {boolean}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.hasNewValue = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional Booking old_value = 3;
+ * optional Booking old_value = 4;
  * @return {?proto.smartcore.traits.Booking}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.getOldValue = function() {
   return /** @type{?proto.smartcore.traits.Booking} */ (
-    jspb.Message.getWrapperField(this, proto.smartcore.traits.Booking, 3));
+    jspb.Message.getWrapperField(this, proto.smartcore.traits.Booking, 4));
 };
 
 
@@ -2969,7 +2999,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.getOldValue = funct
  * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
 */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.setOldValue = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -2987,7 +3017,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.clearOldValue = fun
  * @return {boolean}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.hasOldValue = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 

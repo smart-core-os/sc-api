@@ -67,7 +67,7 @@ enum CheckInSupport {
 
 enum SubscriptionSupport {
   // how subscriptions are implemented is not known
-  SUBSCRIPTION_SUPPORT_UNKNOWN  = 0;
+  SUBSCRIPTION_SUPPORT_UNKNOWN = 0;
   // subscribing to bookings is supported natively by the underlying system
   SUBSCRIPTION_SUPPORT_NATIVE = 1;
   // subscribing to bookings is supported in the driver, rather than natively
@@ -161,11 +161,13 @@ message PullBookingsResponse {
   repeated Change changes = 1;
 
   message Change {
+    // the name of the device that emitted this change
+    string name = 1;
     // the type of change (e.g. ADD, UPDATE, etc...)
-    smartcore.api.types.ChangeType type = 1;
+    smartcore.api.types.ChangeType type = 2;
     // the new value to use for ADD|UPDATE changes
-    Booking new_value = 2;
+    Booking new_value = 3;
     // the old value to use for UPDATE|REMOVE changes
-    Booking old_value = 3;
+    Booking old_value = 4;
   }
 }

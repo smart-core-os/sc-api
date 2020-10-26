@@ -332,6 +332,9 @@ export namespace PullBookingsResponse {
   }
 
   export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
+
     getType(): types_change_pb.ChangeType;
     setType(value: types_change_pb.ChangeType): Change;
 
@@ -355,6 +358,7 @@ export namespace PullBookingsResponse {
 
   export namespace Change {
     export type AsObject = {
+      name: string,
       type: types_change_pb.ChangeType,
       newValue?: Booking.AsObject,
       oldValue?: Booking.AsObject,
