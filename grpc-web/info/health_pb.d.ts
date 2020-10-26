@@ -4,20 +4,6 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_connection_pb from '../types/connection_pb';
 
 
-export class HealthAttributes extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HealthAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: HealthAttributes): HealthAttributes.AsObject;
-  static serializeBinaryToWriter(message: HealthAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HealthAttributes;
-  static deserializeBinaryFromReader(message: HealthAttributes, reader: jspb.BinaryReader): HealthAttributes;
-}
-
-export namespace HealthAttributes {
-  export type AsObject = {
-  }
-}
-
 export class HealthState extends jspb.Message {
   getConnection(): ConnectionHealth | undefined;
   setConnection(value?: ConnectionHealth): HealthState;

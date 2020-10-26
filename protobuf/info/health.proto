@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package smartcore.traits;
+package smartcore.info;
 
-option csharp_namespace = "Smartcore.Traits";
-option go_package = "git.vanti.co.uk/smartcore/sc-api/go/traits";
+option csharp_namespace = "Smartcore.Info";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/info";
 option java_multiple_files = true;
 option java_outer_classname = "HealthProto";
-option java_package = "dev.smartcore.traits";
-option php_namespace = "Smartcore\\Traits";
+option java_package = "dev.smartcore.info";
+option php_namespace = "Smartcore\\Info";
 
 import "google/protobuf/timestamp.proto";
 import "types/connection.proto";
@@ -19,10 +19,6 @@ service Health {
 
   rpc PullHealthStates (PullHealthStatesRequest) returns (stream PullHealthStatesResponse) {
   }
-}
-
-// Trait.attribute for describing the capabilities of the device wrt this trait
-message HealthAttributes {
 }
 
 message HealthState {

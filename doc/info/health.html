@@ -175,46 +175,42 @@
         
           
           <li>
-            <a href="#traits%2fhealth.proto">traits/health.proto</a>
+            <a href="#info%2fhealth.proto">info/health.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.CommHealth"><span class="badge">M</span>CommHealth</a>
+                  <a href="#smartcore.info.CommHealth"><span class="badge">M</span>CommHealth</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ConnectionHealth"><span class="badge">M</span>ConnectionHealth</a>
+                  <a href="#smartcore.info.ConnectionHealth"><span class="badge">M</span>ConnectionHealth</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetHealthStateRequest"><span class="badge">M</span>GetHealthStateRequest</a>
+                  <a href="#smartcore.info.GetHealthStateRequest"><span class="badge">M</span>GetHealthStateRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.HealthAttributes"><span class="badge">M</span>HealthAttributes</a>
+                  <a href="#smartcore.info.HealthState"><span class="badge">M</span>HealthState</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.HealthState"><span class="badge">M</span>HealthState</a>
+                  <a href="#smartcore.info.HealthStateChange"><span class="badge">M</span>HealthStateChange</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.HealthStateChange"><span class="badge">M</span>HealthStateChange</a>
+                  <a href="#smartcore.info.PullHealthStatesRequest"><span class="badge">M</span>PullHealthStatesRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullHealthStatesRequest"><span class="badge">M</span>PullHealthStatesRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullHealthStatesResponse"><span class="badge">M</span>PullHealthStatesResponse</a>
+                  <a href="#smartcore.info.PullHealthStatesResponse"><span class="badge">M</span>PullHealthStatesResponse</a>
                 </li>
               
               
               
               
                 <li>
-                  <a href="#smartcore.traits.Health"><span class="badge">S</span>Health</a>
+                  <a href="#smartcore.info.Health"><span class="badge">S</span>Health</a>
                 </li>
               
             </ul>
@@ -227,12 +223,12 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/health.proto">traits/health.proto</h2><a href="#title">Top</a>
+        <h2 id="info/health.proto">info/health.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.CommHealth">CommHealth</h3>
+        <h3 id="smartcore.info.CommHealth">CommHealth</h3>
         <p>Describes the health of communication.</p>
 
         
@@ -270,7 +266,7 @@
 
         
       
-        <h3 id="smartcore.traits.ConnectionHealth">ConnectionHealth</h3>
+        <h3 id="smartcore.info.ConnectionHealth">ConnectionHealth</h3>
         <p>Describes the health of a connection</p>
 
         
@@ -308,7 +304,7 @@
 
         
       
-        <h3 id="smartcore.traits.GetHealthStateRequest">GetHealthStateRequest</h3>
+        <h3 id="smartcore.info.GetHealthStateRequest">GetHealthStateRequest</h3>
         <p></p>
 
         
@@ -332,14 +328,7 @@
 
         
       
-        <h3 id="smartcore.traits.HealthAttributes">HealthAttributes</h3>
-        <p>Trait.attribute for describing the capabilities of the device wrt this trait</p>
-
-        
-
-        
-      
-        <h3 id="smartcore.traits.HealthState">HealthState</h3>
+        <h3 id="smartcore.info.HealthState">HealthState</h3>
         <p></p>
 
         
@@ -351,14 +340,14 @@
               
                 <tr>
                   <td>connection</td>
-                  <td><a href="#smartcore.traits.ConnectionHealth">ConnectionHealth</a></td>
+                  <td><a href="#smartcore.info.ConnectionHealth">ConnectionHealth</a></td>
                   <td></td>
                   <td><p>Health of the connection to the physical device </p></td>
                 </tr>
               
                 <tr>
                   <td>comm</td>
-                  <td><a href="#smartcore.traits.CommHealth">CommHealth</a></td>
+                  <td><a href="#smartcore.info.CommHealth">CommHealth</a></td>
                   <td></td>
                   <td><p>Health of communication with the device </p></td>
                 </tr>
@@ -370,7 +359,7 @@
 
         
       
-        <h3 id="smartcore.traits.HealthStateChange">HealthStateChange</h3>
+        <h3 id="smartcore.info.HealthStateChange">HealthStateChange</h3>
         <p></p>
 
         
@@ -396,7 +385,7 @@
               
                 <tr>
                   <td>health</td>
-                  <td><a href="#smartcore.traits.HealthState">HealthState</a></td>
+                  <td><a href="#smartcore.info.HealthState">HealthState</a></td>
                   <td></td>
                   <td><p>The new state for the change </p></td>
                 </tr>
@@ -408,7 +397,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullHealthStatesRequest">PullHealthStatesRequest</h3>
+        <h3 id="smartcore.info.PullHealthStatesRequest">PullHealthStatesRequest</h3>
         <p></p>
 
         
@@ -432,7 +421,7 @@
 
         
       
-        <h3 id="smartcore.traits.PullHealthStatesResponse">PullHealthStatesResponse</h3>
+        <h3 id="smartcore.info.PullHealthStatesResponse">PullHealthStatesResponse</h3>
         <p></p>
 
         
@@ -444,7 +433,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.HealthStateChange">HealthStateChange</a></td>
+                  <td><a href="#smartcore.info.HealthStateChange">HealthStateChange</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -462,7 +451,7 @@
       
 
       
-        <h3 id="smartcore.traits.Health">Health</h3>
+        <h3 id="smartcore.info.Health">Health</h3>
         <p>Describe the health of a device.</p>
         <table class="enum-table">
           <thead>
@@ -472,15 +461,15 @@
             
               <tr>
                 <td>GetHealthState</td>
-                <td><a href="#smartcore.traits.GetHealthStateRequest">GetHealthStateRequest</a></td>
-                <td><a href="#smartcore.traits.HealthState">HealthState</a></td>
+                <td><a href="#smartcore.info.GetHealthStateRequest">GetHealthStateRequest</a></td>
+                <td><a href="#smartcore.info.HealthState">HealthState</a></td>
                 <td><p></p></td>
               </tr>
             
               <tr>
                 <td>PullHealthStates</td>
-                <td><a href="#smartcore.traits.PullHealthStatesRequest">PullHealthStatesRequest</a></td>
-                <td><a href="#smartcore.traits.PullHealthStatesResponse">PullHealthStatesResponse</a> stream</td>
+                <td><a href="#smartcore.info.PullHealthStatesRequest">PullHealthStatesRequest</a></td>
+                <td><a href="#smartcore.info.PullHealthStatesResponse">PullHealthStatesResponse</a> stream</td>
                 <td><p></p></td>
               </tr>
             
