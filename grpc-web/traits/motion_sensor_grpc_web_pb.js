@@ -31,7 +31,7 @@ proto.smartcore.traits = require('./motion_sensor_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.MotionSensorClient =
+proto.smartcore.traits.MotionSensorApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -57,7 +57,7 @@ proto.smartcore.traits.MotionSensorClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.MotionSensorPromiseClient =
+proto.smartcore.traits.MotionSensorApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -81,8 +81,8 @@ proto.smartcore.traits.MotionSensorPromiseClient =
  *   !proto.smartcore.traits.GetMotionDetectionRequest,
  *   !proto.smartcore.traits.MotionDetection>}
  */
-const methodDescriptor_MotionSensor_GetMotionDetection = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.MotionSensor/GetMotionDetection',
+const methodDescriptor_MotionSensorApi_GetMotionDetection = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MotionSensorApi/GetMotionDetection',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetMotionDetectionRequest,
   proto.smartcore.traits.MotionDetection,
@@ -103,7 +103,7 @@ const methodDescriptor_MotionSensor_GetMotionDetection = new grpc.web.MethodDesc
  *   !proto.smartcore.traits.GetMotionDetectionRequest,
  *   !proto.smartcore.traits.MotionDetection>}
  */
-const methodInfo_MotionSensor_GetMotionDetection = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MotionSensorApi_GetMotionDetection = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.MotionDetection,
   /**
    * @param {!proto.smartcore.traits.GetMotionDetectionRequest} request
@@ -126,13 +126,13 @@ const methodInfo_MotionSensor_GetMotionDetection = new grpc.web.AbstractClientBa
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.MotionDetection>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MotionSensorClient.prototype.getMotionDetection =
+proto.smartcore.traits.MotionSensorApiClient.prototype.getMotionDetection =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.MotionSensor/GetMotionDetection',
+      '/smartcore.traits.MotionSensorApi/GetMotionDetection',
       request,
       metadata || {},
-      methodDescriptor_MotionSensor_GetMotionDetection,
+      methodDescriptor_MotionSensorApi_GetMotionDetection,
       callback);
 };
 
@@ -145,13 +145,13 @@ proto.smartcore.traits.MotionSensorClient.prototype.getMotionDetection =
  * @return {!Promise<!proto.smartcore.traits.MotionDetection>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.MotionSensorPromiseClient.prototype.getMotionDetection =
+proto.smartcore.traits.MotionSensorApiPromiseClient.prototype.getMotionDetection =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.MotionSensor/GetMotionDetection',
+      '/smartcore.traits.MotionSensorApi/GetMotionDetection',
       request,
       metadata || {},
-      methodDescriptor_MotionSensor_GetMotionDetection);
+      methodDescriptor_MotionSensorApi_GetMotionDetection);
 };
 
 
@@ -161,8 +161,8 @@ proto.smartcore.traits.MotionSensorPromiseClient.prototype.getMotionDetection =
  *   !proto.smartcore.traits.PullMotionDetectionRequest,
  *   !proto.smartcore.traits.PullMotionDetectionResponse>}
  */
-const methodDescriptor_MotionSensor_PullMotionDetections = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.MotionSensor/PullMotionDetections',
+const methodDescriptor_MotionSensorApi_PullMotionDetections = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MotionSensorApi/PullMotionDetections',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullMotionDetectionRequest,
   proto.smartcore.traits.PullMotionDetectionResponse,
@@ -183,7 +183,7 @@ const methodDescriptor_MotionSensor_PullMotionDetections = new grpc.web.MethodDe
  *   !proto.smartcore.traits.PullMotionDetectionRequest,
  *   !proto.smartcore.traits.PullMotionDetectionResponse>}
  */
-const methodInfo_MotionSensor_PullMotionDetections = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MotionSensorApi_PullMotionDetections = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullMotionDetectionResponse,
   /**
    * @param {!proto.smartcore.traits.PullMotionDetectionRequest} request
@@ -203,13 +203,13 @@ const methodInfo_MotionSensor_PullMotionDetections = new grpc.web.AbstractClient
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMotionDetectionResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MotionSensorClient.prototype.pullMotionDetections =
+proto.smartcore.traits.MotionSensorApiClient.prototype.pullMotionDetections =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.MotionSensor/PullMotionDetections',
+      '/smartcore.traits.MotionSensorApi/PullMotionDetections',
       request,
       metadata || {},
-      methodDescriptor_MotionSensor_PullMotionDetections);
+      methodDescriptor_MotionSensorApi_PullMotionDetections);
 };
 
 
@@ -220,13 +220,13 @@ proto.smartcore.traits.MotionSensorClient.prototype.pullMotionDetections =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMotionDetectionResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MotionSensorPromiseClient.prototype.pullMotionDetections =
+proto.smartcore.traits.MotionSensorApiPromiseClient.prototype.pullMotionDetections =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.MotionSensor/PullMotionDetections',
+      '/smartcore.traits.MotionSensorApi/PullMotionDetections',
       request,
       metadata || {},
-      methodDescriptor_MotionSensor_PullMotionDetections);
+      methodDescriptor_MotionSensorApi_PullMotionDetections);
 };
 
 

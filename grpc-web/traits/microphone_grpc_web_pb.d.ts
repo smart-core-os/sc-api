@@ -4,7 +4,7 @@ import * as types_unit_pb from '../types/unit_pb';
 import * as traits_microphone_pb from '../traits/microphone_pb';
 
 
-export class MicrophoneClient {
+export class MicrophoneApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -30,7 +30,7 @@ export class MicrophoneClient {
 
 }
 
-export class MicrophonePromiseClient {
+export class MicrophoneApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

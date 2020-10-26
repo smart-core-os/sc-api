@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_air_temperature_pb from '../traits/air_temperature_pb';
 
 
-export class AirTemperatureClient {
+export class AirTemperatureApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -29,7 +29,7 @@ export class AirTemperatureClient {
 
 }
 
-export class AirTemperaturePromiseClient {
+export class AirTemperatureApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

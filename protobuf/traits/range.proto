@@ -13,7 +13,7 @@ import "google/protobuf/timestamp.proto";
 import "types/number.proto";
 
 // A trait for values that can have a minimum or maximum
-service Range {
+service RangeApi {
   // request that the range value be changes
   rpc UpdateRangeValue (UpdateRangeValueRequest) returns (smartcore.api.types.Int32Var);
 

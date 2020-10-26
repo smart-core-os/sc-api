@@ -15,7 +15,7 @@ import "google/protobuf/wrappers.proto";
 import "types/number.proto";
 
 // Trait for devices that can report either numeric or descriptive readings about air quality and comfort.
-service AirQualitySensor {
+service AirQualitySensorApi {
   // Get the current state of all reading this device supports
   rpc GetState (GetAirQualityStateRequest) returns (AirQualityState);
   // Be notified of changes to any reading

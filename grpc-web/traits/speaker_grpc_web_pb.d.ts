@@ -4,7 +4,7 @@ import * as types_unit_pb from '../types/unit_pb';
 import * as traits_speaker_pb from '../traits/speaker_pb';
 
 
-export class SpeakerClient {
+export class SpeakerApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -30,7 +30,7 @@ export class SpeakerClient {
 
 }
 
-export class SpeakerPromiseClient {
+export class SpeakerApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

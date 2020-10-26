@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_open_close_pb from '../traits/open_close_pb';
 
 
-export class OpenCloseClient {
+export class OpenCloseApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -36,7 +36,7 @@ export class OpenCloseClient {
 
 }
 
-export class OpenClosePromiseClient {
+export class OpenCloseApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

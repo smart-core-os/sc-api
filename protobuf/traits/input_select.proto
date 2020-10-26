@@ -14,7 +14,7 @@ import "google/protobuf/timestamp.proto";
 
 // A trait to control the input for a device. Typically related to AV devices like displays or presentation switchers.
 // A more complicated device might have multiple outputs, this trait also supports this.
-service InputSelect {
+service InputSelectApi {
   // request that the input be selected
   rpc UpdateInput (UpdateInputRequest) returns (Input);
 

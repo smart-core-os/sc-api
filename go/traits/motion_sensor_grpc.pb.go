@@ -13,39 +13,39 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// MotionSensorClient is the client API for MotionSensor service.
+// MotionSensorApiClient is the client API for MotionSensorApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MotionSensorClient interface {
+type MotionSensorApiClient interface {
 	// Get the current motion state for the device.
 	GetMotionDetection(ctx context.Context, in *GetMotionDetectionRequest, opts ...grpc.CallOption) (*MotionDetection, error)
 	// subscribe to changes in the motion state for the device.
-	PullMotionDetections(ctx context.Context, in *PullMotionDetectionRequest, opts ...grpc.CallOption) (MotionSensor_PullMotionDetectionsClient, error)
+	PullMotionDetections(ctx context.Context, in *PullMotionDetectionRequest, opts ...grpc.CallOption) (MotionSensorApi_PullMotionDetectionsClient, error)
 }
 
-type motionSensorClient struct {
+type motionSensorApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMotionSensorClient(cc grpc.ClientConnInterface) MotionSensorClient {
-	return &motionSensorClient{cc}
+func NewMotionSensorApiClient(cc grpc.ClientConnInterface) MotionSensorApiClient {
+	return &motionSensorApiClient{cc}
 }
 
-func (c *motionSensorClient) GetMotionDetection(ctx context.Context, in *GetMotionDetectionRequest, opts ...grpc.CallOption) (*MotionDetection, error) {
+func (c *motionSensorApiClient) GetMotionDetection(ctx context.Context, in *GetMotionDetectionRequest, opts ...grpc.CallOption) (*MotionDetection, error) {
 	out := new(MotionDetection)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.MotionSensor/GetMotionDetection", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.MotionSensorApi/GetMotionDetection", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *motionSensorClient) PullMotionDetections(ctx context.Context, in *PullMotionDetectionRequest, opts ...grpc.CallOption) (MotionSensor_PullMotionDetectionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MotionSensor_serviceDesc.Streams[0], "/smartcore.traits.MotionSensor/PullMotionDetections", opts...)
+func (c *motionSensorApiClient) PullMotionDetections(ctx context.Context, in *PullMotionDetectionRequest, opts ...grpc.CallOption) (MotionSensorApi_PullMotionDetectionsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_MotionSensorApi_serviceDesc.Streams[0], "/smartcore.traits.MotionSensorApi/PullMotionDetections", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &motionSensorPullMotionDetectionsClient{stream}
+	x := &motionSensorApiPullMotionDetectionsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -55,16 +55,16 @@ func (c *motionSensorClient) PullMotionDetections(ctx context.Context, in *PullM
 	return x, nil
 }
 
-type MotionSensor_PullMotionDetectionsClient interface {
+type MotionSensorApi_PullMotionDetectionsClient interface {
 	Recv() (*PullMotionDetectionResponse, error)
 	grpc.ClientStream
 }
 
-type motionSensorPullMotionDetectionsClient struct {
+type motionSensorApiPullMotionDetectionsClient struct {
 	grpc.ClientStream
 }
 
-func (x *motionSensorPullMotionDetectionsClient) Recv() (*PullMotionDetectionResponse, error) {
+func (x *motionSensorApiPullMotionDetectionsClient) Recv() (*PullMotionDetectionResponse, error) {
 	m := new(PullMotionDetectionResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -72,85 +72,85 @@ func (x *motionSensorPullMotionDetectionsClient) Recv() (*PullMotionDetectionRes
 	return m, nil
 }
 
-// MotionSensorServer is the server API for MotionSensor service.
-// All implementations must embed UnimplementedMotionSensorServer
+// MotionSensorApiServer is the server API for MotionSensorApi service.
+// All implementations must embed UnimplementedMotionSensorApiServer
 // for forward compatibility
-type MotionSensorServer interface {
+type MotionSensorApiServer interface {
 	// Get the current motion state for the device.
 	GetMotionDetection(context.Context, *GetMotionDetectionRequest) (*MotionDetection, error)
 	// subscribe to changes in the motion state for the device.
-	PullMotionDetections(*PullMotionDetectionRequest, MotionSensor_PullMotionDetectionsServer) error
-	mustEmbedUnimplementedMotionSensorServer()
+	PullMotionDetections(*PullMotionDetectionRequest, MotionSensorApi_PullMotionDetectionsServer) error
+	mustEmbedUnimplementedMotionSensorApiServer()
 }
 
-// UnimplementedMotionSensorServer must be embedded to have forward compatible implementations.
-type UnimplementedMotionSensorServer struct {
+// UnimplementedMotionSensorApiServer must be embedded to have forward compatible implementations.
+type UnimplementedMotionSensorApiServer struct {
 }
 
-func (*UnimplementedMotionSensorServer) GetMotionDetection(context.Context, *GetMotionDetectionRequest) (*MotionDetection, error) {
+func (*UnimplementedMotionSensorApiServer) GetMotionDetection(context.Context, *GetMotionDetectionRequest) (*MotionDetection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMotionDetection not implemented")
 }
-func (*UnimplementedMotionSensorServer) PullMotionDetections(*PullMotionDetectionRequest, MotionSensor_PullMotionDetectionsServer) error {
+func (*UnimplementedMotionSensorApiServer) PullMotionDetections(*PullMotionDetectionRequest, MotionSensorApi_PullMotionDetectionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullMotionDetections not implemented")
 }
-func (*UnimplementedMotionSensorServer) mustEmbedUnimplementedMotionSensorServer() {}
+func (*UnimplementedMotionSensorApiServer) mustEmbedUnimplementedMotionSensorApiServer() {}
 
-func RegisterMotionSensorServer(s *grpc.Server, srv MotionSensorServer) {
-	s.RegisterService(&_MotionSensor_serviceDesc, srv)
+func RegisterMotionSensorApiServer(s *grpc.Server, srv MotionSensorApiServer) {
+	s.RegisterService(&_MotionSensorApi_serviceDesc, srv)
 }
 
-func _MotionSensor_GetMotionDetection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MotionSensorApi_GetMotionDetection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMotionDetectionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MotionSensorServer).GetMotionDetection(ctx, in)
+		return srv.(MotionSensorApiServer).GetMotionDetection(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.MotionSensor/GetMotionDetection",
+		FullMethod: "/smartcore.traits.MotionSensorApi/GetMotionDetection",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MotionSensorServer).GetMotionDetection(ctx, req.(*GetMotionDetectionRequest))
+		return srv.(MotionSensorApiServer).GetMotionDetection(ctx, req.(*GetMotionDetectionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MotionSensor_PullMotionDetections_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _MotionSensorApi_PullMotionDetections_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullMotionDetectionRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(MotionSensorServer).PullMotionDetections(m, &motionSensorPullMotionDetectionsServer{stream})
+	return srv.(MotionSensorApiServer).PullMotionDetections(m, &motionSensorApiPullMotionDetectionsServer{stream})
 }
 
-type MotionSensor_PullMotionDetectionsServer interface {
+type MotionSensorApi_PullMotionDetectionsServer interface {
 	Send(*PullMotionDetectionResponse) error
 	grpc.ServerStream
 }
 
-type motionSensorPullMotionDetectionsServer struct {
+type motionSensorApiPullMotionDetectionsServer struct {
 	grpc.ServerStream
 }
 
-func (x *motionSensorPullMotionDetectionsServer) Send(m *PullMotionDetectionResponse) error {
+func (x *motionSensorApiPullMotionDetectionsServer) Send(m *PullMotionDetectionResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _MotionSensor_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.MotionSensor",
-	HandlerType: (*MotionSensorServer)(nil),
+var _MotionSensorApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.MotionSensorApi",
+	HandlerType: (*MotionSensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetMotionDetection",
-			Handler:    _MotionSensor_GetMotionDetection_Handler,
+			Handler:    _MotionSensorApi_GetMotionDetection_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullMotionDetections",
-			Handler:       _MotionSensor_PullMotionDetections_Handler,
+			Handler:       _MotionSensorApi_PullMotionDetections_Handler,
 			ServerStreams: true,
 		},
 	},

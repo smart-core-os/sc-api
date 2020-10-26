@@ -14,49 +14,49 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// SpeakerClient is the client API for Speaker service.
+// SpeakerApiClient is the client API for SpeakerApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SpeakerClient interface {
+type SpeakerApiClient interface {
 	// Get the current state of the volume for the device
 	GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error)
 	// update the volume state for the device
 	UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error)
-	PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (Speaker_PullVolumeClient, error)
+	PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (SpeakerApi_PullVolumeClient, error)
 }
 
-type speakerClient struct {
+type speakerApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSpeakerClient(cc grpc.ClientConnInterface) SpeakerClient {
-	return &speakerClient{cc}
+func NewSpeakerApiClient(cc grpc.ClientConnInterface) SpeakerApiClient {
+	return &speakerApiClient{cc}
 }
 
-func (c *speakerClient) GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
+func (c *speakerApiClient) GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
 	out := new(types.Volume)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.Speaker/GetVolume", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.SpeakerApi/GetVolume", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *speakerClient) UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
+func (c *speakerApiClient) UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
 	out := new(types.Volume)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.Speaker/UpdateVolume", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.SpeakerApi/UpdateVolume", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *speakerClient) PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (Speaker_PullVolumeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Speaker_serviceDesc.Streams[0], "/smartcore.traits.Speaker/PullVolume", opts...)
+func (c *speakerApiClient) PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (SpeakerApi_PullVolumeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_SpeakerApi_serviceDesc.Streams[0], "/smartcore.traits.SpeakerApi/PullVolume", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &speakerPullVolumeClient{stream}
+	x := &speakerApiPullVolumeClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -66,16 +66,16 @@ func (c *speakerClient) PullVolume(ctx context.Context, in *PullSpeakerVolumeReq
 	return x, nil
 }
 
-type Speaker_PullVolumeClient interface {
+type SpeakerApi_PullVolumeClient interface {
 	Recv() (*PullSpeakerVolumeResponse, error)
 	grpc.ClientStream
 }
 
-type speakerPullVolumeClient struct {
+type speakerApiPullVolumeClient struct {
 	grpc.ClientStream
 }
 
-func (x *speakerPullVolumeClient) Recv() (*PullSpeakerVolumeResponse, error) {
+func (x *speakerApiPullVolumeClient) Recv() (*PullSpeakerVolumeResponse, error) {
 	m := new(PullSpeakerVolumeResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -83,111 +83,111 @@ func (x *speakerPullVolumeClient) Recv() (*PullSpeakerVolumeResponse, error) {
 	return m, nil
 }
 
-// SpeakerServer is the server API for Speaker service.
-// All implementations must embed UnimplementedSpeakerServer
+// SpeakerApiServer is the server API for SpeakerApi service.
+// All implementations must embed UnimplementedSpeakerApiServer
 // for forward compatibility
-type SpeakerServer interface {
+type SpeakerApiServer interface {
 	// Get the current state of the volume for the device
 	GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.Volume, error)
 	// update the volume state for the device
 	UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.Volume, error)
-	PullVolume(*PullSpeakerVolumeRequest, Speaker_PullVolumeServer) error
-	mustEmbedUnimplementedSpeakerServer()
+	PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error
+	mustEmbedUnimplementedSpeakerApiServer()
 }
 
-// UnimplementedSpeakerServer must be embedded to have forward compatible implementations.
-type UnimplementedSpeakerServer struct {
+// UnimplementedSpeakerApiServer must be embedded to have forward compatible implementations.
+type UnimplementedSpeakerApiServer struct {
 }
 
-func (*UnimplementedSpeakerServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.Volume, error) {
+func (*UnimplementedSpeakerApiServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.Volume, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVolume not implemented")
 }
-func (*UnimplementedSpeakerServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.Volume, error) {
+func (*UnimplementedSpeakerApiServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.Volume, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolume not implemented")
 }
-func (*UnimplementedSpeakerServer) PullVolume(*PullSpeakerVolumeRequest, Speaker_PullVolumeServer) error {
+func (*UnimplementedSpeakerApiServer) PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullVolume not implemented")
 }
-func (*UnimplementedSpeakerServer) mustEmbedUnimplementedSpeakerServer() {}
+func (*UnimplementedSpeakerApiServer) mustEmbedUnimplementedSpeakerApiServer() {}
 
-func RegisterSpeakerServer(s *grpc.Server, srv SpeakerServer) {
-	s.RegisterService(&_Speaker_serviceDesc, srv)
+func RegisterSpeakerApiServer(s *grpc.Server, srv SpeakerApiServer) {
+	s.RegisterService(&_SpeakerApi_serviceDesc, srv)
 }
 
-func _Speaker_GetVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SpeakerApi_GetVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSpeakerVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SpeakerServer).GetVolume(ctx, in)
+		return srv.(SpeakerApiServer).GetVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.Speaker/GetVolume",
+		FullMethod: "/smartcore.traits.SpeakerApi/GetVolume",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SpeakerServer).GetVolume(ctx, req.(*GetSpeakerVolumeRequest))
+		return srv.(SpeakerApiServer).GetVolume(ctx, req.(*GetSpeakerVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Speaker_UpdateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SpeakerApi_UpdateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateSpeakerVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SpeakerServer).UpdateVolume(ctx, in)
+		return srv.(SpeakerApiServer).UpdateVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.Speaker/UpdateVolume",
+		FullMethod: "/smartcore.traits.SpeakerApi/UpdateVolume",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SpeakerServer).UpdateVolume(ctx, req.(*UpdateSpeakerVolumeRequest))
+		return srv.(SpeakerApiServer).UpdateVolume(ctx, req.(*UpdateSpeakerVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Speaker_PullVolume_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _SpeakerApi_PullVolume_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullSpeakerVolumeRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(SpeakerServer).PullVolume(m, &speakerPullVolumeServer{stream})
+	return srv.(SpeakerApiServer).PullVolume(m, &speakerApiPullVolumeServer{stream})
 }
 
-type Speaker_PullVolumeServer interface {
+type SpeakerApi_PullVolumeServer interface {
 	Send(*PullSpeakerVolumeResponse) error
 	grpc.ServerStream
 }
 
-type speakerPullVolumeServer struct {
+type speakerApiPullVolumeServer struct {
 	grpc.ServerStream
 }
 
-func (x *speakerPullVolumeServer) Send(m *PullSpeakerVolumeResponse) error {
+func (x *speakerApiPullVolumeServer) Send(m *PullSpeakerVolumeResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Speaker_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.Speaker",
-	HandlerType: (*SpeakerServer)(nil),
+var _SpeakerApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.SpeakerApi",
+	HandlerType: (*SpeakerApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetVolume",
-			Handler:    _Speaker_GetVolume_Handler,
+			Handler:    _SpeakerApi_GetVolume_Handler,
 		},
 		{
 			MethodName: "UpdateVolume",
-			Handler:    _Speaker_UpdateVolume_Handler,
+			Handler:    _SpeakerApi_UpdateVolume_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullVolume",
-			Handler:       _Speaker_PullVolume_Handler,
+			Handler:       _SpeakerApi_PullVolume_Handler,
 			ServerStreams: true,
 		},
 	},

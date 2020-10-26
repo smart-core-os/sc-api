@@ -13,10 +13,10 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// AirTemperatureClient is the client API for AirTemperature service.
+// AirTemperatureApiClient is the client API for AirTemperatureApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AirTemperatureClient interface {
+type AirTemperatureApiClient interface {
 	// Get the current state of the device
 	GetState(ctx context.Context, in *GetAirTemperatureStateRequest, opts ...grpc.CallOption) (*AirTemperatureState, error)
 	// Update the target state for the device. the returned state may not be complete but will indicate at least the
@@ -25,41 +25,41 @@ type AirTemperatureClient interface {
 	// Request notification of change to the device state. The messages in the response stream may not be complete
 	// but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
 	// method.
-	PullState(ctx context.Context, in *PullAirTemperatureStateRequest, opts ...grpc.CallOption) (AirTemperature_PullStateClient, error)
+	PullState(ctx context.Context, in *PullAirTemperatureStateRequest, opts ...grpc.CallOption) (AirTemperatureApi_PullStateClient, error)
 }
 
-type airTemperatureClient struct {
+type airTemperatureApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAirTemperatureClient(cc grpc.ClientConnInterface) AirTemperatureClient {
-	return &airTemperatureClient{cc}
+func NewAirTemperatureApiClient(cc grpc.ClientConnInterface) AirTemperatureApiClient {
+	return &airTemperatureApiClient{cc}
 }
 
-func (c *airTemperatureClient) GetState(ctx context.Context, in *GetAirTemperatureStateRequest, opts ...grpc.CallOption) (*AirTemperatureState, error) {
+func (c *airTemperatureApiClient) GetState(ctx context.Context, in *GetAirTemperatureStateRequest, opts ...grpc.CallOption) (*AirTemperatureState, error) {
 	out := new(AirTemperatureState)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.AirTemperature/GetState", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.AirTemperatureApi/GetState", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *airTemperatureClient) UpdateState(ctx context.Context, in *UpdateAirTemperatureStateRequest, opts ...grpc.CallOption) (*AirTemperatureState, error) {
+func (c *airTemperatureApiClient) UpdateState(ctx context.Context, in *UpdateAirTemperatureStateRequest, opts ...grpc.CallOption) (*AirTemperatureState, error) {
 	out := new(AirTemperatureState)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.AirTemperature/UpdateState", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.AirTemperatureApi/UpdateState", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *airTemperatureClient) PullState(ctx context.Context, in *PullAirTemperatureStateRequest, opts ...grpc.CallOption) (AirTemperature_PullStateClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AirTemperature_serviceDesc.Streams[0], "/smartcore.traits.AirTemperature/PullState", opts...)
+func (c *airTemperatureApiClient) PullState(ctx context.Context, in *PullAirTemperatureStateRequest, opts ...grpc.CallOption) (AirTemperatureApi_PullStateClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_AirTemperatureApi_serviceDesc.Streams[0], "/smartcore.traits.AirTemperatureApi/PullState", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &airTemperaturePullStateClient{stream}
+	x := &airTemperatureApiPullStateClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -69,16 +69,16 @@ func (c *airTemperatureClient) PullState(ctx context.Context, in *PullAirTempera
 	return x, nil
 }
 
-type AirTemperature_PullStateClient interface {
+type AirTemperatureApi_PullStateClient interface {
 	Recv() (*PullAirTemperatureStateResponse, error)
 	grpc.ClientStream
 }
 
-type airTemperaturePullStateClient struct {
+type airTemperatureApiPullStateClient struct {
 	grpc.ClientStream
 }
 
-func (x *airTemperaturePullStateClient) Recv() (*PullAirTemperatureStateResponse, error) {
+func (x *airTemperatureApiPullStateClient) Recv() (*PullAirTemperatureStateResponse, error) {
 	m := new(PullAirTemperatureStateResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -86,10 +86,10 @@ func (x *airTemperaturePullStateClient) Recv() (*PullAirTemperatureStateResponse
 	return m, nil
 }
 
-// AirTemperatureServer is the server API for AirTemperature service.
-// All implementations must embed UnimplementedAirTemperatureServer
+// AirTemperatureApiServer is the server API for AirTemperatureApi service.
+// All implementations must embed UnimplementedAirTemperatureApiServer
 // for forward compatibility
-type AirTemperatureServer interface {
+type AirTemperatureApiServer interface {
 	// Get the current state of the device
 	GetState(context.Context, *GetAirTemperatureStateRequest) (*AirTemperatureState, error)
 	// Update the target state for the device. the returned state may not be complete but will indicate at least the
@@ -98,103 +98,103 @@ type AirTemperatureServer interface {
 	// Request notification of change to the device state. The messages in the response stream may not be complete
 	// but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
 	// method.
-	PullState(*PullAirTemperatureStateRequest, AirTemperature_PullStateServer) error
-	mustEmbedUnimplementedAirTemperatureServer()
+	PullState(*PullAirTemperatureStateRequest, AirTemperatureApi_PullStateServer) error
+	mustEmbedUnimplementedAirTemperatureApiServer()
 }
 
-// UnimplementedAirTemperatureServer must be embedded to have forward compatible implementations.
-type UnimplementedAirTemperatureServer struct {
+// UnimplementedAirTemperatureApiServer must be embedded to have forward compatible implementations.
+type UnimplementedAirTemperatureApiServer struct {
 }
 
-func (*UnimplementedAirTemperatureServer) GetState(context.Context, *GetAirTemperatureStateRequest) (*AirTemperatureState, error) {
+func (*UnimplementedAirTemperatureApiServer) GetState(context.Context, *GetAirTemperatureStateRequest) (*AirTemperatureState, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetState not implemented")
 }
-func (*UnimplementedAirTemperatureServer) UpdateState(context.Context, *UpdateAirTemperatureStateRequest) (*AirTemperatureState, error) {
+func (*UnimplementedAirTemperatureApiServer) UpdateState(context.Context, *UpdateAirTemperatureStateRequest) (*AirTemperatureState, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateState not implemented")
 }
-func (*UnimplementedAirTemperatureServer) PullState(*PullAirTemperatureStateRequest, AirTemperature_PullStateServer) error {
+func (*UnimplementedAirTemperatureApiServer) PullState(*PullAirTemperatureStateRequest, AirTemperatureApi_PullStateServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullState not implemented")
 }
-func (*UnimplementedAirTemperatureServer) mustEmbedUnimplementedAirTemperatureServer() {}
+func (*UnimplementedAirTemperatureApiServer) mustEmbedUnimplementedAirTemperatureApiServer() {}
 
-func RegisterAirTemperatureServer(s *grpc.Server, srv AirTemperatureServer) {
-	s.RegisterService(&_AirTemperature_serviceDesc, srv)
+func RegisterAirTemperatureApiServer(s *grpc.Server, srv AirTemperatureApiServer) {
+	s.RegisterService(&_AirTemperatureApi_serviceDesc, srv)
 }
 
-func _AirTemperature_GetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AirTemperatureApi_GetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAirTemperatureStateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AirTemperatureServer).GetState(ctx, in)
+		return srv.(AirTemperatureApiServer).GetState(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.AirTemperature/GetState",
+		FullMethod: "/smartcore.traits.AirTemperatureApi/GetState",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AirTemperatureServer).GetState(ctx, req.(*GetAirTemperatureStateRequest))
+		return srv.(AirTemperatureApiServer).GetState(ctx, req.(*GetAirTemperatureStateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AirTemperature_UpdateState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AirTemperatureApi_UpdateState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateAirTemperatureStateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AirTemperatureServer).UpdateState(ctx, in)
+		return srv.(AirTemperatureApiServer).UpdateState(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.AirTemperature/UpdateState",
+		FullMethod: "/smartcore.traits.AirTemperatureApi/UpdateState",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AirTemperatureServer).UpdateState(ctx, req.(*UpdateAirTemperatureStateRequest))
+		return srv.(AirTemperatureApiServer).UpdateState(ctx, req.(*UpdateAirTemperatureStateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AirTemperature_PullState_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _AirTemperatureApi_PullState_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullAirTemperatureStateRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(AirTemperatureServer).PullState(m, &airTemperaturePullStateServer{stream})
+	return srv.(AirTemperatureApiServer).PullState(m, &airTemperatureApiPullStateServer{stream})
 }
 
-type AirTemperature_PullStateServer interface {
+type AirTemperatureApi_PullStateServer interface {
 	Send(*PullAirTemperatureStateResponse) error
 	grpc.ServerStream
 }
 
-type airTemperaturePullStateServer struct {
+type airTemperatureApiPullStateServer struct {
 	grpc.ServerStream
 }
 
-func (x *airTemperaturePullStateServer) Send(m *PullAirTemperatureStateResponse) error {
+func (x *airTemperatureApiPullStateServer) Send(m *PullAirTemperatureStateResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _AirTemperature_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.AirTemperature",
-	HandlerType: (*AirTemperatureServer)(nil),
+var _AirTemperatureApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.AirTemperatureApi",
+	HandlerType: (*AirTemperatureApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetState",
-			Handler:    _AirTemperature_GetState_Handler,
+			Handler:    _AirTemperatureApi_GetState_Handler,
 		},
 		{
 			MethodName: "UpdateState",
-			Handler:    _AirTemperature_UpdateState_Handler,
+			Handler:    _AirTemperatureApi_UpdateState_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullState",
-			Handler:       _AirTemperature_PullState_Handler,
+			Handler:       _AirTemperatureApi_PullState_Handler,
 			ServerStreams: true,
 		},
 	},

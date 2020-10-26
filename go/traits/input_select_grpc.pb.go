@@ -13,50 +13,50 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// InputSelectClient is the client API for InputSelect service.
+// InputSelectApiClient is the client API for InputSelectApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InputSelectClient interface {
+type InputSelectApiClient interface {
 	// request that the input be selected
 	UpdateInput(ctx context.Context, in *UpdateInputRequest, opts ...grpc.CallOption) (*Input, error)
 	// get the current value of the selected input
 	GetInput(ctx context.Context, in *GetInputRequest, opts ...grpc.CallOption) (*Input, error)
 	// request updates to changes in the selected input
-	PullInput(ctx context.Context, in *PullInputRequest, opts ...grpc.CallOption) (InputSelect_PullInputClient, error)
+	PullInput(ctx context.Context, in *PullInputRequest, opts ...grpc.CallOption) (InputSelectApi_PullInputClient, error)
 }
 
-type inputSelectClient struct {
+type inputSelectApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInputSelectClient(cc grpc.ClientConnInterface) InputSelectClient {
-	return &inputSelectClient{cc}
+func NewInputSelectApiClient(cc grpc.ClientConnInterface) InputSelectApiClient {
+	return &inputSelectApiClient{cc}
 }
 
-func (c *inputSelectClient) UpdateInput(ctx context.Context, in *UpdateInputRequest, opts ...grpc.CallOption) (*Input, error) {
+func (c *inputSelectApiClient) UpdateInput(ctx context.Context, in *UpdateInputRequest, opts ...grpc.CallOption) (*Input, error) {
 	out := new(Input)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.InputSelect/UpdateInput", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.InputSelectApi/UpdateInput", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *inputSelectClient) GetInput(ctx context.Context, in *GetInputRequest, opts ...grpc.CallOption) (*Input, error) {
+func (c *inputSelectApiClient) GetInput(ctx context.Context, in *GetInputRequest, opts ...grpc.CallOption) (*Input, error) {
 	out := new(Input)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.InputSelect/GetInput", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.InputSelectApi/GetInput", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *inputSelectClient) PullInput(ctx context.Context, in *PullInputRequest, opts ...grpc.CallOption) (InputSelect_PullInputClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_InputSelect_serviceDesc.Streams[0], "/smartcore.traits.InputSelect/PullInput", opts...)
+func (c *inputSelectApiClient) PullInput(ctx context.Context, in *PullInputRequest, opts ...grpc.CallOption) (InputSelectApi_PullInputClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_InputSelectApi_serviceDesc.Streams[0], "/smartcore.traits.InputSelectApi/PullInput", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &inputSelectPullInputClient{stream}
+	x := &inputSelectApiPullInputClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -66,16 +66,16 @@ func (c *inputSelectClient) PullInput(ctx context.Context, in *PullInputRequest,
 	return x, nil
 }
 
-type InputSelect_PullInputClient interface {
+type InputSelectApi_PullInputClient interface {
 	Recv() (*PullInputResponse, error)
 	grpc.ClientStream
 }
 
-type inputSelectPullInputClient struct {
+type inputSelectApiPullInputClient struct {
 	grpc.ClientStream
 }
 
-func (x *inputSelectPullInputClient) Recv() (*PullInputResponse, error) {
+func (x *inputSelectApiPullInputClient) Recv() (*PullInputResponse, error) {
 	m := new(PullInputResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -83,112 +83,112 @@ func (x *inputSelectPullInputClient) Recv() (*PullInputResponse, error) {
 	return m, nil
 }
 
-// InputSelectServer is the server API for InputSelect service.
-// All implementations must embed UnimplementedInputSelectServer
+// InputSelectApiServer is the server API for InputSelectApi service.
+// All implementations must embed UnimplementedInputSelectApiServer
 // for forward compatibility
-type InputSelectServer interface {
+type InputSelectApiServer interface {
 	// request that the input be selected
 	UpdateInput(context.Context, *UpdateInputRequest) (*Input, error)
 	// get the current value of the selected input
 	GetInput(context.Context, *GetInputRequest) (*Input, error)
 	// request updates to changes in the selected input
-	PullInput(*PullInputRequest, InputSelect_PullInputServer) error
-	mustEmbedUnimplementedInputSelectServer()
+	PullInput(*PullInputRequest, InputSelectApi_PullInputServer) error
+	mustEmbedUnimplementedInputSelectApiServer()
 }
 
-// UnimplementedInputSelectServer must be embedded to have forward compatible implementations.
-type UnimplementedInputSelectServer struct {
+// UnimplementedInputSelectApiServer must be embedded to have forward compatible implementations.
+type UnimplementedInputSelectApiServer struct {
 }
 
-func (*UnimplementedInputSelectServer) UpdateInput(context.Context, *UpdateInputRequest) (*Input, error) {
+func (*UnimplementedInputSelectApiServer) UpdateInput(context.Context, *UpdateInputRequest) (*Input, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInput not implemented")
 }
-func (*UnimplementedInputSelectServer) GetInput(context.Context, *GetInputRequest) (*Input, error) {
+func (*UnimplementedInputSelectApiServer) GetInput(context.Context, *GetInputRequest) (*Input, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInput not implemented")
 }
-func (*UnimplementedInputSelectServer) PullInput(*PullInputRequest, InputSelect_PullInputServer) error {
+func (*UnimplementedInputSelectApiServer) PullInput(*PullInputRequest, InputSelectApi_PullInputServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullInput not implemented")
 }
-func (*UnimplementedInputSelectServer) mustEmbedUnimplementedInputSelectServer() {}
+func (*UnimplementedInputSelectApiServer) mustEmbedUnimplementedInputSelectApiServer() {}
 
-func RegisterInputSelectServer(s *grpc.Server, srv InputSelectServer) {
-	s.RegisterService(&_InputSelect_serviceDesc, srv)
+func RegisterInputSelectApiServer(s *grpc.Server, srv InputSelectApiServer) {
+	s.RegisterService(&_InputSelectApi_serviceDesc, srv)
 }
 
-func _InputSelect_UpdateInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _InputSelectApi_UpdateInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateInputRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InputSelectServer).UpdateInput(ctx, in)
+		return srv.(InputSelectApiServer).UpdateInput(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.InputSelect/UpdateInput",
+		FullMethod: "/smartcore.traits.InputSelectApi/UpdateInput",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InputSelectServer).UpdateInput(ctx, req.(*UpdateInputRequest))
+		return srv.(InputSelectApiServer).UpdateInput(ctx, req.(*UpdateInputRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InputSelect_GetInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _InputSelectApi_GetInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetInputRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InputSelectServer).GetInput(ctx, in)
+		return srv.(InputSelectApiServer).GetInput(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.InputSelect/GetInput",
+		FullMethod: "/smartcore.traits.InputSelectApi/GetInput",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InputSelectServer).GetInput(ctx, req.(*GetInputRequest))
+		return srv.(InputSelectApiServer).GetInput(ctx, req.(*GetInputRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InputSelect_PullInput_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _InputSelectApi_PullInput_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullInputRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InputSelectServer).PullInput(m, &inputSelectPullInputServer{stream})
+	return srv.(InputSelectApiServer).PullInput(m, &inputSelectApiPullInputServer{stream})
 }
 
-type InputSelect_PullInputServer interface {
+type InputSelectApi_PullInputServer interface {
 	Send(*PullInputResponse) error
 	grpc.ServerStream
 }
 
-type inputSelectPullInputServer struct {
+type inputSelectApiPullInputServer struct {
 	grpc.ServerStream
 }
 
-func (x *inputSelectPullInputServer) Send(m *PullInputResponse) error {
+func (x *inputSelectApiPullInputServer) Send(m *PullInputResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _InputSelect_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.InputSelect",
-	HandlerType: (*InputSelectServer)(nil),
+var _InputSelectApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.InputSelectApi",
+	HandlerType: (*InputSelectApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "UpdateInput",
-			Handler:    _InputSelect_UpdateInput_Handler,
+			Handler:    _InputSelectApi_UpdateInput_Handler,
 		},
 		{
 			MethodName: "GetInput",
-			Handler:    _InputSelect_GetInput_Handler,
+			Handler:    _InputSelectApi_GetInput_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullInput",
-			Handler:       _InputSelect_PullInput_Handler,
+			Handler:       _InputSelectApi_PullInput_Handler,
 			ServerStreams: true,
 		},
 	},

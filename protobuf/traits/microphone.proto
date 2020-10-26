@@ -18,7 +18,7 @@ import "types/volume.proto";
 // to support gain adjustment on a scale.
 //
 // For the sakes of this trait Volume means the combination of a gain and a mute state.
-service Microphone {
+service MicrophoneApi {
   // Get the current state of the gain for the device
   rpc GetGain (GetMicrophoneGainRequest) returns (smartcore.api.types.Volume);
 

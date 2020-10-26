@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_input_select_pb from '../traits/input_select_pb';
 
 
-export class InputSelectClient {
+export class InputSelectApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -29,7 +29,7 @@ export class InputSelectClient {
 
 }
 
-export class InputSelectPromiseClient {
+export class InputSelectApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

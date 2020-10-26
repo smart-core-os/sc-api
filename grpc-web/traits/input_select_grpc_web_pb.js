@@ -31,7 +31,7 @@ proto.smartcore.traits = require('./input_select_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.InputSelectClient =
+proto.smartcore.traits.InputSelectApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -57,7 +57,7 @@ proto.smartcore.traits.InputSelectClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.InputSelectPromiseClient =
+proto.smartcore.traits.InputSelectApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -81,8 +81,8 @@ proto.smartcore.traits.InputSelectPromiseClient =
  *   !proto.smartcore.traits.UpdateInputRequest,
  *   !proto.smartcore.traits.Input>}
  */
-const methodDescriptor_InputSelect_UpdateInput = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.InputSelect/UpdateInput',
+const methodDescriptor_InputSelectApi_UpdateInput = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.InputSelectApi/UpdateInput',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateInputRequest,
   proto.smartcore.traits.Input,
@@ -103,7 +103,7 @@ const methodDescriptor_InputSelect_UpdateInput = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.UpdateInputRequest,
  *   !proto.smartcore.traits.Input>}
  */
-const methodInfo_InputSelect_UpdateInput = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_InputSelectApi_UpdateInput = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Input,
   /**
    * @param {!proto.smartcore.traits.UpdateInputRequest} request
@@ -126,13 +126,13 @@ const methodInfo_InputSelect_UpdateInput = new grpc.web.AbstractClientBase.Metho
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Input>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.InputSelectClient.prototype.updateInput =
+proto.smartcore.traits.InputSelectApiClient.prototype.updateInput =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.InputSelect/UpdateInput',
+      '/smartcore.traits.InputSelectApi/UpdateInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_UpdateInput,
+      methodDescriptor_InputSelectApi_UpdateInput,
       callback);
 };
 
@@ -145,13 +145,13 @@ proto.smartcore.traits.InputSelectClient.prototype.updateInput =
  * @return {!Promise<!proto.smartcore.traits.Input>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.InputSelectPromiseClient.prototype.updateInput =
+proto.smartcore.traits.InputSelectApiPromiseClient.prototype.updateInput =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.InputSelect/UpdateInput',
+      '/smartcore.traits.InputSelectApi/UpdateInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_UpdateInput);
+      methodDescriptor_InputSelectApi_UpdateInput);
 };
 
 
@@ -161,8 +161,8 @@ proto.smartcore.traits.InputSelectPromiseClient.prototype.updateInput =
  *   !proto.smartcore.traits.GetInputRequest,
  *   !proto.smartcore.traits.Input>}
  */
-const methodDescriptor_InputSelect_GetInput = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.InputSelect/GetInput',
+const methodDescriptor_InputSelectApi_GetInput = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.InputSelectApi/GetInput',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetInputRequest,
   proto.smartcore.traits.Input,
@@ -183,7 +183,7 @@ const methodDescriptor_InputSelect_GetInput = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.GetInputRequest,
  *   !proto.smartcore.traits.Input>}
  */
-const methodInfo_InputSelect_GetInput = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_InputSelectApi_GetInput = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Input,
   /**
    * @param {!proto.smartcore.traits.GetInputRequest} request
@@ -206,13 +206,13 @@ const methodInfo_InputSelect_GetInput = new grpc.web.AbstractClientBase.MethodIn
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Input>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.InputSelectClient.prototype.getInput =
+proto.smartcore.traits.InputSelectApiClient.prototype.getInput =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.InputSelect/GetInput',
+      '/smartcore.traits.InputSelectApi/GetInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_GetInput,
+      methodDescriptor_InputSelectApi_GetInput,
       callback);
 };
 
@@ -225,13 +225,13 @@ proto.smartcore.traits.InputSelectClient.prototype.getInput =
  * @return {!Promise<!proto.smartcore.traits.Input>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.InputSelectPromiseClient.prototype.getInput =
+proto.smartcore.traits.InputSelectApiPromiseClient.prototype.getInput =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.InputSelect/GetInput',
+      '/smartcore.traits.InputSelectApi/GetInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_GetInput);
+      methodDescriptor_InputSelectApi_GetInput);
 };
 
 
@@ -241,8 +241,8 @@ proto.smartcore.traits.InputSelectPromiseClient.prototype.getInput =
  *   !proto.smartcore.traits.PullInputRequest,
  *   !proto.smartcore.traits.PullInputResponse>}
  */
-const methodDescriptor_InputSelect_PullInput = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.InputSelect/PullInput',
+const methodDescriptor_InputSelectApi_PullInput = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.InputSelectApi/PullInput',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullInputRequest,
   proto.smartcore.traits.PullInputResponse,
@@ -263,7 +263,7 @@ const methodDescriptor_InputSelect_PullInput = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.PullInputRequest,
  *   !proto.smartcore.traits.PullInputResponse>}
  */
-const methodInfo_InputSelect_PullInput = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_InputSelectApi_PullInput = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullInputResponse,
   /**
    * @param {!proto.smartcore.traits.PullInputRequest} request
@@ -283,13 +283,13 @@ const methodInfo_InputSelect_PullInput = new grpc.web.AbstractClientBase.MethodI
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullInputResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.InputSelectClient.prototype.pullInput =
+proto.smartcore.traits.InputSelectApiClient.prototype.pullInput =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.InputSelect/PullInput',
+      '/smartcore.traits.InputSelectApi/PullInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_PullInput);
+      methodDescriptor_InputSelectApi_PullInput);
 };
 
 
@@ -300,13 +300,13 @@ proto.smartcore.traits.InputSelectClient.prototype.pullInput =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullInputResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.InputSelectPromiseClient.prototype.pullInput =
+proto.smartcore.traits.InputSelectApiPromiseClient.prototype.pullInput =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.InputSelect/PullInput',
+      '/smartcore.traits.InputSelectApi/PullInput',
       request,
       metadata || {},
-      methodDescriptor_InputSelect_PullInput);
+      methodDescriptor_InputSelectApi_PullInput);
 };
 
 

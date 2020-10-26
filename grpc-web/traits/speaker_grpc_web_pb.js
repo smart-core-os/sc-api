@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./speaker_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.SpeakerClient =
+proto.smartcore.traits.SpeakerApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.SpeakerClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.SpeakerPromiseClient =
+proto.smartcore.traits.SpeakerApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -85,8 +85,8 @@ proto.smartcore.traits.SpeakerPromiseClient =
  *   !proto.smartcore.traits.GetSpeakerVolumeRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodDescriptor_Speaker_GetVolume = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Speaker/GetVolume',
+const methodDescriptor_SpeakerApi_GetVolume = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.SpeakerApi/GetVolume',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetSpeakerVolumeRequest,
   types_unit_pb.Volume,
@@ -107,7 +107,7 @@ const methodDescriptor_Speaker_GetVolume = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.GetSpeakerVolumeRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodInfo_Speaker_GetVolume = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_SpeakerApi_GetVolume = new grpc.web.AbstractClientBase.MethodInfo(
   types_unit_pb.Volume,
   /**
    * @param {!proto.smartcore.traits.GetSpeakerVolumeRequest} request
@@ -130,13 +130,13 @@ const methodInfo_Speaker_GetVolume = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Volume>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SpeakerClient.prototype.getVolume =
+proto.smartcore.traits.SpeakerApiClient.prototype.getVolume =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Speaker/GetVolume',
+      '/smartcore.traits.SpeakerApi/GetVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_GetVolume,
+      methodDescriptor_SpeakerApi_GetVolume,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.SpeakerClient.prototype.getVolume =
  * @return {!Promise<!proto.smartcore.api.types.Volume>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.SpeakerPromiseClient.prototype.getVolume =
+proto.smartcore.traits.SpeakerApiPromiseClient.prototype.getVolume =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Speaker/GetVolume',
+      '/smartcore.traits.SpeakerApi/GetVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_GetVolume);
+      methodDescriptor_SpeakerApi_GetVolume);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.SpeakerPromiseClient.prototype.getVolume =
  *   !proto.smartcore.traits.UpdateSpeakerVolumeRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodDescriptor_Speaker_UpdateVolume = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Speaker/UpdateVolume',
+const methodDescriptor_SpeakerApi_UpdateVolume = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.SpeakerApi/UpdateVolume',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateSpeakerVolumeRequest,
   types_unit_pb.Volume,
@@ -187,7 +187,7 @@ const methodDescriptor_Speaker_UpdateVolume = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.UpdateSpeakerVolumeRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodInfo_Speaker_UpdateVolume = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_SpeakerApi_UpdateVolume = new grpc.web.AbstractClientBase.MethodInfo(
   types_unit_pb.Volume,
   /**
    * @param {!proto.smartcore.traits.UpdateSpeakerVolumeRequest} request
@@ -210,13 +210,13 @@ const methodInfo_Speaker_UpdateVolume = new grpc.web.AbstractClientBase.MethodIn
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Volume>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SpeakerClient.prototype.updateVolume =
+proto.smartcore.traits.SpeakerApiClient.prototype.updateVolume =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Speaker/UpdateVolume',
+      '/smartcore.traits.SpeakerApi/UpdateVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_UpdateVolume,
+      methodDescriptor_SpeakerApi_UpdateVolume,
       callback);
 };
 
@@ -229,13 +229,13 @@ proto.smartcore.traits.SpeakerClient.prototype.updateVolume =
  * @return {!Promise<!proto.smartcore.api.types.Volume>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.SpeakerPromiseClient.prototype.updateVolume =
+proto.smartcore.traits.SpeakerApiPromiseClient.prototype.updateVolume =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Speaker/UpdateVolume',
+      '/smartcore.traits.SpeakerApi/UpdateVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_UpdateVolume);
+      methodDescriptor_SpeakerApi_UpdateVolume);
 };
 
 
@@ -245,8 +245,8 @@ proto.smartcore.traits.SpeakerPromiseClient.prototype.updateVolume =
  *   !proto.smartcore.traits.PullSpeakerVolumeRequest,
  *   !proto.smartcore.traits.PullSpeakerVolumeResponse>}
  */
-const methodDescriptor_Speaker_PullVolume = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Speaker/PullVolume',
+const methodDescriptor_SpeakerApi_PullVolume = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.SpeakerApi/PullVolume',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullSpeakerVolumeRequest,
   proto.smartcore.traits.PullSpeakerVolumeResponse,
@@ -267,7 +267,7 @@ const methodDescriptor_Speaker_PullVolume = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.PullSpeakerVolumeRequest,
  *   !proto.smartcore.traits.PullSpeakerVolumeResponse>}
  */
-const methodInfo_Speaker_PullVolume = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_SpeakerApi_PullVolume = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullSpeakerVolumeResponse,
   /**
    * @param {!proto.smartcore.traits.PullSpeakerVolumeRequest} request
@@ -287,13 +287,13 @@ const methodInfo_Speaker_PullVolume = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSpeakerVolumeResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SpeakerClient.prototype.pullVolume =
+proto.smartcore.traits.SpeakerApiClient.prototype.pullVolume =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Speaker/PullVolume',
+      '/smartcore.traits.SpeakerApi/PullVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_PullVolume);
+      methodDescriptor_SpeakerApi_PullVolume);
 };
 
 
@@ -304,13 +304,13 @@ proto.smartcore.traits.SpeakerClient.prototype.pullVolume =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSpeakerVolumeResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SpeakerPromiseClient.prototype.pullVolume =
+proto.smartcore.traits.SpeakerApiPromiseClient.prototype.pullVolume =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Speaker/PullVolume',
+      '/smartcore.traits.SpeakerApi/PullVolume',
       request,
       metadata || {},
-      methodDescriptor_Speaker_PullVolume);
+      methodDescriptor_SpeakerApi_PullVolume);
 };
 
 

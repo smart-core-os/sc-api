@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_air_quality_sensor_pb from '../traits/air_quality_sensor_pb';
 
 
-export class AirQualitySensorClient {
+export class AirQualitySensorApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -22,7 +22,7 @@ export class AirQualitySensorClient {
 
 }
 
-export class AirQualitySensorPromiseClient {
+export class AirQualitySensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

@@ -13,7 +13,7 @@ import "google/protobuf/timestamp.proto";
 import "types/number.proto";
 
 // Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.
-service OpenClose {
+service OpenCloseApi {
   rpc GetStates (GetOpenCloseStatesRequest) returns (OpenCloseStates);
 
   rpc UpdateStates (UpdateOpenCloseStatesRequest) returns (OpenCloseStates);

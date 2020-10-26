@@ -13,7 +13,7 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 // Represents a sensor that detects motion. Note that the absence of motion does not directly imply an unoccupied space.
-service MotionSensor {
+service MotionSensorApi {
   // Get the current motion state for the device.
   rpc GetMotionDetection (GetMotionDetectionRequest) returns (MotionDetection);
 

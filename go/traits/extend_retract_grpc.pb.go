@@ -13,10 +13,10 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// ExtendRetractClient is the client API for ExtendRetract service.
+// ExtendRetractApiClient is the client API for ExtendRetractApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ExtendRetractClient interface {
+type ExtendRetractApiClient interface {
 	// Set the target state for the device
 	GetExtension(ctx context.Context, in *GetExtensionRequest, opts ...grpc.CallOption) (*Extension, error)
 	// Set the target state for the device
@@ -26,59 +26,59 @@ type ExtendRetractClient interface {
 	// Create a preset for the extension. If no preset extension value is specified then use the current position
 	CreateExtensionPreset(ctx context.Context, in *CreateExtensionPresetRequest, opts ...grpc.CallOption) (*ExtensionPreset, error)
 	// Get notified of changes to the OnOffState of a device
-	PullExtensions(ctx context.Context, in *PullExtensionsRequest, opts ...grpc.CallOption) (ExtendRetract_PullExtensionsClient, error)
+	PullExtensions(ctx context.Context, in *PullExtensionsRequest, opts ...grpc.CallOption) (ExtendRetractApi_PullExtensionsClient, error)
 }
 
-type extendRetractClient struct {
+type extendRetractApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewExtendRetractClient(cc grpc.ClientConnInterface) ExtendRetractClient {
-	return &extendRetractClient{cc}
+func NewExtendRetractApiClient(cc grpc.ClientConnInterface) ExtendRetractApiClient {
+	return &extendRetractApiClient{cc}
 }
 
-func (c *extendRetractClient) GetExtension(ctx context.Context, in *GetExtensionRequest, opts ...grpc.CallOption) (*Extension, error) {
+func (c *extendRetractApiClient) GetExtension(ctx context.Context, in *GetExtensionRequest, opts ...grpc.CallOption) (*Extension, error) {
 	out := new(Extension)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetract/GetExtension", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetractApi/GetExtension", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *extendRetractClient) UpdateExtension(ctx context.Context, in *UpdateExtensionRequest, opts ...grpc.CallOption) (*Extension, error) {
+func (c *extendRetractApiClient) UpdateExtension(ctx context.Context, in *UpdateExtensionRequest, opts ...grpc.CallOption) (*Extension, error) {
 	out := new(Extension)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetract/UpdateExtension", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetractApi/UpdateExtension", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *extendRetractClient) Stop(ctx context.Context, in *ExtendRetractStopRequest, opts ...grpc.CallOption) (*Extension, error) {
+func (c *extendRetractApiClient) Stop(ctx context.Context, in *ExtendRetractStopRequest, opts ...grpc.CallOption) (*Extension, error) {
 	out := new(Extension)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetract/Stop", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetractApi/Stop", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *extendRetractClient) CreateExtensionPreset(ctx context.Context, in *CreateExtensionPresetRequest, opts ...grpc.CallOption) (*ExtensionPreset, error) {
+func (c *extendRetractApiClient) CreateExtensionPreset(ctx context.Context, in *CreateExtensionPresetRequest, opts ...grpc.CallOption) (*ExtensionPreset, error) {
 	out := new(ExtensionPreset)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetract/CreateExtensionPreset", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetractApi/CreateExtensionPreset", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *extendRetractClient) PullExtensions(ctx context.Context, in *PullExtensionsRequest, opts ...grpc.CallOption) (ExtendRetract_PullExtensionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_ExtendRetract_serviceDesc.Streams[0], "/smartcore.traits.ExtendRetract/PullExtensions", opts...)
+func (c *extendRetractApiClient) PullExtensions(ctx context.Context, in *PullExtensionsRequest, opts ...grpc.CallOption) (ExtendRetractApi_PullExtensionsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ExtendRetractApi_serviceDesc.Streams[0], "/smartcore.traits.ExtendRetractApi/PullExtensions", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &extendRetractPullExtensionsClient{stream}
+	x := &extendRetractApiPullExtensionsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -88,16 +88,16 @@ func (c *extendRetractClient) PullExtensions(ctx context.Context, in *PullExtens
 	return x, nil
 }
 
-type ExtendRetract_PullExtensionsClient interface {
+type ExtendRetractApi_PullExtensionsClient interface {
 	Recv() (*PullExtensionsResponse, error)
 	grpc.ClientStream
 }
 
-type extendRetractPullExtensionsClient struct {
+type extendRetractApiPullExtensionsClient struct {
 	grpc.ClientStream
 }
 
-func (x *extendRetractPullExtensionsClient) Recv() (*PullExtensionsResponse, error) {
+func (x *extendRetractApiPullExtensionsClient) Recv() (*PullExtensionsResponse, error) {
 	m := new(PullExtensionsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -105,10 +105,10 @@ func (x *extendRetractPullExtensionsClient) Recv() (*PullExtensionsResponse, err
 	return m, nil
 }
 
-// ExtendRetractServer is the server API for ExtendRetract service.
-// All implementations must embed UnimplementedExtendRetractServer
+// ExtendRetractApiServer is the server API for ExtendRetractApi service.
+// All implementations must embed UnimplementedExtendRetractApiServer
 // for forward compatibility
-type ExtendRetractServer interface {
+type ExtendRetractApiServer interface {
 	// Set the target state for the device
 	GetExtension(context.Context, *GetExtensionRequest) (*Extension, error)
 	// Set the target state for the device
@@ -118,153 +118,153 @@ type ExtendRetractServer interface {
 	// Create a preset for the extension. If no preset extension value is specified then use the current position
 	CreateExtensionPreset(context.Context, *CreateExtensionPresetRequest) (*ExtensionPreset, error)
 	// Get notified of changes to the OnOffState of a device
-	PullExtensions(*PullExtensionsRequest, ExtendRetract_PullExtensionsServer) error
-	mustEmbedUnimplementedExtendRetractServer()
+	PullExtensions(*PullExtensionsRequest, ExtendRetractApi_PullExtensionsServer) error
+	mustEmbedUnimplementedExtendRetractApiServer()
 }
 
-// UnimplementedExtendRetractServer must be embedded to have forward compatible implementations.
-type UnimplementedExtendRetractServer struct {
+// UnimplementedExtendRetractApiServer must be embedded to have forward compatible implementations.
+type UnimplementedExtendRetractApiServer struct {
 }
 
-func (*UnimplementedExtendRetractServer) GetExtension(context.Context, *GetExtensionRequest) (*Extension, error) {
+func (*UnimplementedExtendRetractApiServer) GetExtension(context.Context, *GetExtensionRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExtension not implemented")
 }
-func (*UnimplementedExtendRetractServer) UpdateExtension(context.Context, *UpdateExtensionRequest) (*Extension, error) {
+func (*UnimplementedExtendRetractApiServer) UpdateExtension(context.Context, *UpdateExtensionRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateExtension not implemented")
 }
-func (*UnimplementedExtendRetractServer) Stop(context.Context, *ExtendRetractStopRequest) (*Extension, error) {
+func (*UnimplementedExtendRetractApiServer) Stop(context.Context, *ExtendRetractStopRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (*UnimplementedExtendRetractServer) CreateExtensionPreset(context.Context, *CreateExtensionPresetRequest) (*ExtensionPreset, error) {
+func (*UnimplementedExtendRetractApiServer) CreateExtensionPreset(context.Context, *CreateExtensionPresetRequest) (*ExtensionPreset, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateExtensionPreset not implemented")
 }
-func (*UnimplementedExtendRetractServer) PullExtensions(*PullExtensionsRequest, ExtendRetract_PullExtensionsServer) error {
+func (*UnimplementedExtendRetractApiServer) PullExtensions(*PullExtensionsRequest, ExtendRetractApi_PullExtensionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullExtensions not implemented")
 }
-func (*UnimplementedExtendRetractServer) mustEmbedUnimplementedExtendRetractServer() {}
+func (*UnimplementedExtendRetractApiServer) mustEmbedUnimplementedExtendRetractApiServer() {}
 
-func RegisterExtendRetractServer(s *grpc.Server, srv ExtendRetractServer) {
-	s.RegisterService(&_ExtendRetract_serviceDesc, srv)
+func RegisterExtendRetractApiServer(s *grpc.Server, srv ExtendRetractApiServer) {
+	s.RegisterService(&_ExtendRetractApi_serviceDesc, srv)
 }
 
-func _ExtendRetract_GetExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ExtendRetractApi_GetExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetExtensionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExtendRetractServer).GetExtension(ctx, in)
+		return srv.(ExtendRetractApiServer).GetExtension(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.ExtendRetract/GetExtension",
+		FullMethod: "/smartcore.traits.ExtendRetractApi/GetExtension",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExtendRetractServer).GetExtension(ctx, req.(*GetExtensionRequest))
+		return srv.(ExtendRetractApiServer).GetExtension(ctx, req.(*GetExtensionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ExtendRetract_UpdateExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ExtendRetractApi_UpdateExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateExtensionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExtendRetractServer).UpdateExtension(ctx, in)
+		return srv.(ExtendRetractApiServer).UpdateExtension(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.ExtendRetract/UpdateExtension",
+		FullMethod: "/smartcore.traits.ExtendRetractApi/UpdateExtension",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExtendRetractServer).UpdateExtension(ctx, req.(*UpdateExtensionRequest))
+		return srv.(ExtendRetractApiServer).UpdateExtension(ctx, req.(*UpdateExtensionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ExtendRetract_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ExtendRetractApi_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExtendRetractStopRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExtendRetractServer).Stop(ctx, in)
+		return srv.(ExtendRetractApiServer).Stop(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.ExtendRetract/Stop",
+		FullMethod: "/smartcore.traits.ExtendRetractApi/Stop",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExtendRetractServer).Stop(ctx, req.(*ExtendRetractStopRequest))
+		return srv.(ExtendRetractApiServer).Stop(ctx, req.(*ExtendRetractStopRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ExtendRetract_CreateExtensionPreset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ExtendRetractApi_CreateExtensionPreset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateExtensionPresetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExtendRetractServer).CreateExtensionPreset(ctx, in)
+		return srv.(ExtendRetractApiServer).CreateExtensionPreset(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.ExtendRetract/CreateExtensionPreset",
+		FullMethod: "/smartcore.traits.ExtendRetractApi/CreateExtensionPreset",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExtendRetractServer).CreateExtensionPreset(ctx, req.(*CreateExtensionPresetRequest))
+		return srv.(ExtendRetractApiServer).CreateExtensionPreset(ctx, req.(*CreateExtensionPresetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ExtendRetract_PullExtensions_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ExtendRetractApi_PullExtensions_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullExtensionsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(ExtendRetractServer).PullExtensions(m, &extendRetractPullExtensionsServer{stream})
+	return srv.(ExtendRetractApiServer).PullExtensions(m, &extendRetractApiPullExtensionsServer{stream})
 }
 
-type ExtendRetract_PullExtensionsServer interface {
+type ExtendRetractApi_PullExtensionsServer interface {
 	Send(*PullExtensionsResponse) error
 	grpc.ServerStream
 }
 
-type extendRetractPullExtensionsServer struct {
+type extendRetractApiPullExtensionsServer struct {
 	grpc.ServerStream
 }
 
-func (x *extendRetractPullExtensionsServer) Send(m *PullExtensionsResponse) error {
+func (x *extendRetractApiPullExtensionsServer) Send(m *PullExtensionsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _ExtendRetract_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.ExtendRetract",
-	HandlerType: (*ExtendRetractServer)(nil),
+var _ExtendRetractApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.ExtendRetractApi",
+	HandlerType: (*ExtendRetractApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetExtension",
-			Handler:    _ExtendRetract_GetExtension_Handler,
+			Handler:    _ExtendRetractApi_GetExtension_Handler,
 		},
 		{
 			MethodName: "UpdateExtension",
-			Handler:    _ExtendRetract_UpdateExtension_Handler,
+			Handler:    _ExtendRetractApi_UpdateExtension_Handler,
 		},
 		{
 			MethodName: "Stop",
-			Handler:    _ExtendRetract_Stop_Handler,
+			Handler:    _ExtendRetractApi_Stop_Handler,
 		},
 		{
 			MethodName: "CreateExtensionPreset",
-			Handler:    _ExtendRetract_CreateExtensionPreset_Handler,
+			Handler:    _ExtendRetractApi_CreateExtensionPreset_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullExtensions",
-			Handler:       _ExtendRetract_PullExtensions_Handler,
+			Handler:       _ExtendRetractApi_PullExtensions_Handler,
 			ServerStreams: true,
 		},
 	},

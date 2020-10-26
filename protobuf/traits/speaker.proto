@@ -18,7 +18,7 @@ import "types/volume.proto";
 // support volume adjustment on a scale.
 //
 // For the sakes of this trait Volume means the combination of a gain and a mute state.
-service Speaker {
+service SpeakerApi {
   // Get the current state of the volume for the device
   rpc GetVolume (GetSpeakerVolumeRequest) returns (smartcore.api.types.Volume);
 

@@ -15,7 +15,7 @@ import "google/protobuf/wrappers.proto";
 import "types/tween.proto";
 
 // Applicable to devices that can be extended or retracted. Like a tv mount or adjustable desk
-service ExtendRetract {
+service ExtendRetractApi {
   // Set the target state for the device
   rpc GetExtension (GetExtensionRequest) returns (Extension);
 

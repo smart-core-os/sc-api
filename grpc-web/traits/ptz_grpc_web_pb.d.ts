@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_ptz_pb from '../traits/ptz_pb';
 
 
-export class PtzClient {
+export class PtzApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -43,7 +43,7 @@ export class PtzClient {
 
 }
 
-export class PtzPromiseClient {
+export class PtzApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

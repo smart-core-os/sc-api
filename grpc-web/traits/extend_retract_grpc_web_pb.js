@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./extend_retract_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.ExtendRetractClient =
+proto.smartcore.traits.ExtendRetractApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.ExtendRetractClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.ExtendRetractPromiseClient =
+proto.smartcore.traits.ExtendRetractApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -85,8 +85,8 @@ proto.smartcore.traits.ExtendRetractPromiseClient =
  *   !proto.smartcore.traits.GetExtensionRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodDescriptor_ExtendRetract_GetExtension = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ExtendRetract/GetExtension',
+const methodDescriptor_ExtendRetractApi_GetExtension = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractApi/GetExtension',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetExtensionRequest,
   proto.smartcore.traits.Extension,
@@ -107,7 +107,7 @@ const methodDescriptor_ExtendRetract_GetExtension = new grpc.web.MethodDescripto
  *   !proto.smartcore.traits.GetExtensionRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodInfo_ExtendRetract_GetExtension = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ExtendRetractApi_GetExtension = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Extension,
   /**
    * @param {!proto.smartcore.traits.GetExtensionRequest} request
@@ -130,13 +130,13 @@ const methodInfo_ExtendRetract_GetExtension = new grpc.web.AbstractClientBase.Me
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractClient.prototype.getExtension =
+proto.smartcore.traits.ExtendRetractApiClient.prototype.getExtension =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/GetExtension',
+      '/smartcore.traits.ExtendRetractApi/GetExtension',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_GetExtension,
+      methodDescriptor_ExtendRetractApi_GetExtension,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.ExtendRetractClient.prototype.getExtension =
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ExtendRetractPromiseClient.prototype.getExtension =
+proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.getExtension =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/GetExtension',
+      '/smartcore.traits.ExtendRetractApi/GetExtension',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_GetExtension);
+      methodDescriptor_ExtendRetractApi_GetExtension);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.ExtendRetractPromiseClient.prototype.getExtension =
  *   !proto.smartcore.traits.UpdateExtensionRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodDescriptor_ExtendRetract_UpdateExtension = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ExtendRetract/UpdateExtension',
+const methodDescriptor_ExtendRetractApi_UpdateExtension = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractApi/UpdateExtension',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateExtensionRequest,
   proto.smartcore.traits.Extension,
@@ -187,7 +187,7 @@ const methodDescriptor_ExtendRetract_UpdateExtension = new grpc.web.MethodDescri
  *   !proto.smartcore.traits.UpdateExtensionRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodInfo_ExtendRetract_UpdateExtension = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ExtendRetractApi_UpdateExtension = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Extension,
   /**
    * @param {!proto.smartcore.traits.UpdateExtensionRequest} request
@@ -210,13 +210,13 @@ const methodInfo_ExtendRetract_UpdateExtension = new grpc.web.AbstractClientBase
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractClient.prototype.updateExtension =
+proto.smartcore.traits.ExtendRetractApiClient.prototype.updateExtension =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/UpdateExtension',
+      '/smartcore.traits.ExtendRetractApi/UpdateExtension',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_UpdateExtension,
+      methodDescriptor_ExtendRetractApi_UpdateExtension,
       callback);
 };
 
@@ -229,13 +229,13 @@ proto.smartcore.traits.ExtendRetractClient.prototype.updateExtension =
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ExtendRetractPromiseClient.prototype.updateExtension =
+proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.updateExtension =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/UpdateExtension',
+      '/smartcore.traits.ExtendRetractApi/UpdateExtension',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_UpdateExtension);
+      methodDescriptor_ExtendRetractApi_UpdateExtension);
 };
 
 
@@ -245,8 +245,8 @@ proto.smartcore.traits.ExtendRetractPromiseClient.prototype.updateExtension =
  *   !proto.smartcore.traits.ExtendRetractStopRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodDescriptor_ExtendRetract_Stop = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ExtendRetract/Stop',
+const methodDescriptor_ExtendRetractApi_Stop = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractApi/Stop',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.ExtendRetractStopRequest,
   proto.smartcore.traits.Extension,
@@ -267,7 +267,7 @@ const methodDescriptor_ExtendRetract_Stop = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.ExtendRetractStopRequest,
  *   !proto.smartcore.traits.Extension>}
  */
-const methodInfo_ExtendRetract_Stop = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ExtendRetractApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Extension,
   /**
    * @param {!proto.smartcore.traits.ExtendRetractStopRequest} request
@@ -290,13 +290,13 @@ const methodInfo_ExtendRetract_Stop = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractClient.prototype.stop =
+proto.smartcore.traits.ExtendRetractApiClient.prototype.stop =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/Stop',
+      '/smartcore.traits.ExtendRetractApi/Stop',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_Stop,
+      methodDescriptor_ExtendRetractApi_Stop,
       callback);
 };
 
@@ -309,13 +309,13 @@ proto.smartcore.traits.ExtendRetractClient.prototype.stop =
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ExtendRetractPromiseClient.prototype.stop =
+proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.stop =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/Stop',
+      '/smartcore.traits.ExtendRetractApi/Stop',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_Stop);
+      methodDescriptor_ExtendRetractApi_Stop);
 };
 
 
@@ -325,8 +325,8 @@ proto.smartcore.traits.ExtendRetractPromiseClient.prototype.stop =
  *   !proto.smartcore.traits.CreateExtensionPresetRequest,
  *   !proto.smartcore.traits.ExtensionPreset>}
  */
-const methodDescriptor_ExtendRetract_CreateExtensionPreset = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ExtendRetract/CreateExtensionPreset',
+const methodDescriptor_ExtendRetractApi_CreateExtensionPreset = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractApi/CreateExtensionPreset',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.CreateExtensionPresetRequest,
   proto.smartcore.traits.ExtensionPreset,
@@ -347,7 +347,7 @@ const methodDescriptor_ExtendRetract_CreateExtensionPreset = new grpc.web.Method
  *   !proto.smartcore.traits.CreateExtensionPresetRequest,
  *   !proto.smartcore.traits.ExtensionPreset>}
  */
-const methodInfo_ExtendRetract_CreateExtensionPreset = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ExtendRetractApi_CreateExtensionPreset = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.ExtensionPreset,
   /**
    * @param {!proto.smartcore.traits.CreateExtensionPresetRequest} request
@@ -370,13 +370,13 @@ const methodInfo_ExtendRetract_CreateExtensionPreset = new grpc.web.AbstractClie
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ExtensionPreset>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractClient.prototype.createExtensionPreset =
+proto.smartcore.traits.ExtendRetractApiClient.prototype.createExtensionPreset =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/CreateExtensionPreset',
+      '/smartcore.traits.ExtendRetractApi/CreateExtensionPreset',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_CreateExtensionPreset,
+      methodDescriptor_ExtendRetractApi_CreateExtensionPreset,
       callback);
 };
 
@@ -389,13 +389,13 @@ proto.smartcore.traits.ExtendRetractClient.prototype.createExtensionPreset =
  * @return {!Promise<!proto.smartcore.traits.ExtensionPreset>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ExtendRetractPromiseClient.prototype.createExtensionPreset =
+proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.createExtensionPreset =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/CreateExtensionPreset',
+      '/smartcore.traits.ExtendRetractApi/CreateExtensionPreset',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_CreateExtensionPreset);
+      methodDescriptor_ExtendRetractApi_CreateExtensionPreset);
 };
 
 
@@ -405,8 +405,8 @@ proto.smartcore.traits.ExtendRetractPromiseClient.prototype.createExtensionPrese
  *   !proto.smartcore.traits.PullExtensionsRequest,
  *   !proto.smartcore.traits.PullExtensionsResponse>}
  */
-const methodDescriptor_ExtendRetract_PullExtensions = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ExtendRetract/PullExtensions',
+const methodDescriptor_ExtendRetractApi_PullExtensions = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractApi/PullExtensions',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullExtensionsRequest,
   proto.smartcore.traits.PullExtensionsResponse,
@@ -427,7 +427,7 @@ const methodDescriptor_ExtendRetract_PullExtensions = new grpc.web.MethodDescrip
  *   !proto.smartcore.traits.PullExtensionsRequest,
  *   !proto.smartcore.traits.PullExtensionsResponse>}
  */
-const methodInfo_ExtendRetract_PullExtensions = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_ExtendRetractApi_PullExtensions = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullExtensionsResponse,
   /**
    * @param {!proto.smartcore.traits.PullExtensionsRequest} request
@@ -447,13 +447,13 @@ const methodInfo_ExtendRetract_PullExtensions = new grpc.web.AbstractClientBase.
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullExtensionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractClient.prototype.pullExtensions =
+proto.smartcore.traits.ExtendRetractApiClient.prototype.pullExtensions =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/PullExtensions',
+      '/smartcore.traits.ExtendRetractApi/PullExtensions',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_PullExtensions);
+      methodDescriptor_ExtendRetractApi_PullExtensions);
 };
 
 
@@ -464,13 +464,13 @@ proto.smartcore.traits.ExtendRetractClient.prototype.pullExtensions =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullExtensionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ExtendRetractPromiseClient.prototype.pullExtensions =
+proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.pullExtensions =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.ExtendRetract/PullExtensions',
+      '/smartcore.traits.ExtendRetractApi/PullExtensions',
       request,
       metadata || {},
-      methodDescriptor_ExtendRetract_PullExtensions);
+      methodDescriptor_ExtendRetractApi_PullExtensions);
 };
 
 

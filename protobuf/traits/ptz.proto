@@ -15,7 +15,7 @@ import "types/number.proto";
 import "types/tween.proto";
 
 // Allows interaction with a pan-tilt-zoom device, typically a camera.
-service Ptz {
+service PtzApi {
   // Set the target state for the device
   rpc GetPtzState (GetPtzStateRequest) returns (PtzState);
 

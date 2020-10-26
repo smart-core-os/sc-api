@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./microphone_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.MicrophoneClient =
+proto.smartcore.traits.MicrophoneApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.MicrophoneClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.MicrophonePromiseClient =
+proto.smartcore.traits.MicrophoneApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -85,8 +85,8 @@ proto.smartcore.traits.MicrophonePromiseClient =
  *   !proto.smartcore.traits.GetMicrophoneGainRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodDescriptor_Microphone_GetGain = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Microphone/GetGain',
+const methodDescriptor_MicrophoneApi_GetGain = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MicrophoneApi/GetGain',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetMicrophoneGainRequest,
   types_unit_pb.Volume,
@@ -107,7 +107,7 @@ const methodDescriptor_Microphone_GetGain = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.GetMicrophoneGainRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodInfo_Microphone_GetGain = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MicrophoneApi_GetGain = new grpc.web.AbstractClientBase.MethodInfo(
   types_unit_pb.Volume,
   /**
    * @param {!proto.smartcore.traits.GetMicrophoneGainRequest} request
@@ -130,13 +130,13 @@ const methodInfo_Microphone_GetGain = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Volume>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MicrophoneClient.prototype.getGain =
+proto.smartcore.traits.MicrophoneApiClient.prototype.getGain =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Microphone/GetGain',
+      '/smartcore.traits.MicrophoneApi/GetGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_GetGain,
+      methodDescriptor_MicrophoneApi_GetGain,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.MicrophoneClient.prototype.getGain =
  * @return {!Promise<!proto.smartcore.api.types.Volume>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.MicrophonePromiseClient.prototype.getGain =
+proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.getGain =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Microphone/GetGain',
+      '/smartcore.traits.MicrophoneApi/GetGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_GetGain);
+      methodDescriptor_MicrophoneApi_GetGain);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.MicrophonePromiseClient.prototype.getGain =
  *   !proto.smartcore.traits.UpdateMicrophoneGainRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodDescriptor_Microphone_UpdateGain = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Microphone/UpdateGain',
+const methodDescriptor_MicrophoneApi_UpdateGain = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MicrophoneApi/UpdateGain',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateMicrophoneGainRequest,
   types_unit_pb.Volume,
@@ -187,7 +187,7 @@ const methodDescriptor_Microphone_UpdateGain = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.UpdateMicrophoneGainRequest,
  *   !proto.smartcore.api.types.Volume>}
  */
-const methodInfo_Microphone_UpdateGain = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MicrophoneApi_UpdateGain = new grpc.web.AbstractClientBase.MethodInfo(
   types_unit_pb.Volume,
   /**
    * @param {!proto.smartcore.traits.UpdateMicrophoneGainRequest} request
@@ -210,13 +210,13 @@ const methodInfo_Microphone_UpdateGain = new grpc.web.AbstractClientBase.MethodI
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Volume>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MicrophoneClient.prototype.updateGain =
+proto.smartcore.traits.MicrophoneApiClient.prototype.updateGain =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Microphone/UpdateGain',
+      '/smartcore.traits.MicrophoneApi/UpdateGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_UpdateGain,
+      methodDescriptor_MicrophoneApi_UpdateGain,
       callback);
 };
 
@@ -229,13 +229,13 @@ proto.smartcore.traits.MicrophoneClient.prototype.updateGain =
  * @return {!Promise<!proto.smartcore.api.types.Volume>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.MicrophonePromiseClient.prototype.updateGain =
+proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.updateGain =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Microphone/UpdateGain',
+      '/smartcore.traits.MicrophoneApi/UpdateGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_UpdateGain);
+      methodDescriptor_MicrophoneApi_UpdateGain);
 };
 
 
@@ -245,8 +245,8 @@ proto.smartcore.traits.MicrophonePromiseClient.prototype.updateGain =
  *   !proto.smartcore.traits.PullMicrophoneGainRequest,
  *   !proto.smartcore.traits.PullMicrophoneGainResponse>}
  */
-const methodDescriptor_Microphone_PullGain = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Microphone/PullGain',
+const methodDescriptor_MicrophoneApi_PullGain = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MicrophoneApi/PullGain',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullMicrophoneGainRequest,
   proto.smartcore.traits.PullMicrophoneGainResponse,
@@ -267,7 +267,7 @@ const methodDescriptor_Microphone_PullGain = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.PullMicrophoneGainRequest,
  *   !proto.smartcore.traits.PullMicrophoneGainResponse>}
  */
-const methodInfo_Microphone_PullGain = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_MicrophoneApi_PullGain = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullMicrophoneGainResponse,
   /**
    * @param {!proto.smartcore.traits.PullMicrophoneGainRequest} request
@@ -287,13 +287,13 @@ const methodInfo_Microphone_PullGain = new grpc.web.AbstractClientBase.MethodInf
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMicrophoneGainResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MicrophoneClient.prototype.pullGain =
+proto.smartcore.traits.MicrophoneApiClient.prototype.pullGain =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Microphone/PullGain',
+      '/smartcore.traits.MicrophoneApi/PullGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_PullGain);
+      methodDescriptor_MicrophoneApi_PullGain);
 };
 
 
@@ -304,13 +304,13 @@ proto.smartcore.traits.MicrophoneClient.prototype.pullGain =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMicrophoneGainResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.MicrophonePromiseClient.prototype.pullGain =
+proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.pullGain =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Microphone/PullGain',
+      '/smartcore.traits.MicrophoneApi/PullGain',
       request,
       metadata || {},
-      methodDescriptor_Microphone_PullGain);
+      methodDescriptor_MicrophoneApi_PullGain);
 };
 
 

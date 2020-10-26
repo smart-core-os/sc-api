@@ -16,7 +16,7 @@ import "types/unit.proto";
 
 // Device trait allowing query and control of the air temperature for a space. Like a thermostat and associated HVAC
 // system.
-service AirTemperature {
+service AirTemperatureApi {
   // Get the current state of the device
   rpc GetState (GetAirTemperatureStateRequest) returns (AirTemperatureState);
 

@@ -14,50 +14,50 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// RangeClient is the client API for Range service.
+// RangeApiClient is the client API for RangeApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type RangeClient interface {
+type RangeApiClient interface {
 	// request that the range value be changes
 	UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error)
 	// get the current value of the range
 	GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error)
 	// request updates to changes in the range value
-	PullRangeValue(ctx context.Context, in *PullRangeValueRequest, opts ...grpc.CallOption) (Range_PullRangeValueClient, error)
+	PullRangeValue(ctx context.Context, in *PullRangeValueRequest, opts ...grpc.CallOption) (RangeApi_PullRangeValueClient, error)
 }
 
-type rangeClient struct {
+type rangeApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewRangeClient(cc grpc.ClientConnInterface) RangeClient {
-	return &rangeClient{cc}
+func NewRangeApiClient(cc grpc.ClientConnInterface) RangeApiClient {
+	return &rangeApiClient{cc}
 }
 
-func (c *rangeClient) UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
+func (c *rangeApiClient) UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
 	out := new(types.Int32Var)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.Range/UpdateRangeValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.RangeApi/UpdateRangeValue", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rangeClient) GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
+func (c *rangeApiClient) GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
 	out := new(types.Int32Var)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.Range/GetRangeValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.RangeApi/GetRangeValue", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rangeClient) PullRangeValue(ctx context.Context, in *PullRangeValueRequest, opts ...grpc.CallOption) (Range_PullRangeValueClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Range_serviceDesc.Streams[0], "/smartcore.traits.Range/PullRangeValue", opts...)
+func (c *rangeApiClient) PullRangeValue(ctx context.Context, in *PullRangeValueRequest, opts ...grpc.CallOption) (RangeApi_PullRangeValueClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_RangeApi_serviceDesc.Streams[0], "/smartcore.traits.RangeApi/PullRangeValue", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &rangePullRangeValueClient{stream}
+	x := &rangeApiPullRangeValueClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -67,16 +67,16 @@ func (c *rangeClient) PullRangeValue(ctx context.Context, in *PullRangeValueRequ
 	return x, nil
 }
 
-type Range_PullRangeValueClient interface {
+type RangeApi_PullRangeValueClient interface {
 	Recv() (*PullRangeValueResponse, error)
 	grpc.ClientStream
 }
 
-type rangePullRangeValueClient struct {
+type rangeApiPullRangeValueClient struct {
 	grpc.ClientStream
 }
 
-func (x *rangePullRangeValueClient) Recv() (*PullRangeValueResponse, error) {
+func (x *rangeApiPullRangeValueClient) Recv() (*PullRangeValueResponse, error) {
 	m := new(PullRangeValueResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -84,112 +84,112 @@ func (x *rangePullRangeValueClient) Recv() (*PullRangeValueResponse, error) {
 	return m, nil
 }
 
-// RangeServer is the server API for Range service.
-// All implementations must embed UnimplementedRangeServer
+// RangeApiServer is the server API for RangeApi service.
+// All implementations must embed UnimplementedRangeApiServer
 // for forward compatibility
-type RangeServer interface {
+type RangeApiServer interface {
 	// request that the range value be changes
 	UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*types.Int32Var, error)
 	// get the current value of the range
 	GetRangeValue(context.Context, *GetRangeValueRequest) (*types.Int32Var, error)
 	// request updates to changes in the range value
-	PullRangeValue(*PullRangeValueRequest, Range_PullRangeValueServer) error
-	mustEmbedUnimplementedRangeServer()
+	PullRangeValue(*PullRangeValueRequest, RangeApi_PullRangeValueServer) error
+	mustEmbedUnimplementedRangeApiServer()
 }
 
-// UnimplementedRangeServer must be embedded to have forward compatible implementations.
-type UnimplementedRangeServer struct {
+// UnimplementedRangeApiServer must be embedded to have forward compatible implementations.
+type UnimplementedRangeApiServer struct {
 }
 
-func (*UnimplementedRangeServer) UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*types.Int32Var, error) {
+func (*UnimplementedRangeApiServer) UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*types.Int32Var, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRangeValue not implemented")
 }
-func (*UnimplementedRangeServer) GetRangeValue(context.Context, *GetRangeValueRequest) (*types.Int32Var, error) {
+func (*UnimplementedRangeApiServer) GetRangeValue(context.Context, *GetRangeValueRequest) (*types.Int32Var, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRangeValue not implemented")
 }
-func (*UnimplementedRangeServer) PullRangeValue(*PullRangeValueRequest, Range_PullRangeValueServer) error {
+func (*UnimplementedRangeApiServer) PullRangeValue(*PullRangeValueRequest, RangeApi_PullRangeValueServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullRangeValue not implemented")
 }
-func (*UnimplementedRangeServer) mustEmbedUnimplementedRangeServer() {}
+func (*UnimplementedRangeApiServer) mustEmbedUnimplementedRangeApiServer() {}
 
-func RegisterRangeServer(s *grpc.Server, srv RangeServer) {
-	s.RegisterService(&_Range_serviceDesc, srv)
+func RegisterRangeApiServer(s *grpc.Server, srv RangeApiServer) {
+	s.RegisterService(&_RangeApi_serviceDesc, srv)
 }
 
-func _Range_UpdateRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RangeApi_UpdateRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateRangeValueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RangeServer).UpdateRangeValue(ctx, in)
+		return srv.(RangeApiServer).UpdateRangeValue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.Range/UpdateRangeValue",
+		FullMethod: "/smartcore.traits.RangeApi/UpdateRangeValue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RangeServer).UpdateRangeValue(ctx, req.(*UpdateRangeValueRequest))
+		return srv.(RangeApiServer).UpdateRangeValue(ctx, req.(*UpdateRangeValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Range_GetRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RangeApi_GetRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRangeValueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RangeServer).GetRangeValue(ctx, in)
+		return srv.(RangeApiServer).GetRangeValue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.Range/GetRangeValue",
+		FullMethod: "/smartcore.traits.RangeApi/GetRangeValue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RangeServer).GetRangeValue(ctx, req.(*GetRangeValueRequest))
+		return srv.(RangeApiServer).GetRangeValue(ctx, req.(*GetRangeValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Range_PullRangeValue_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _RangeApi_PullRangeValue_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullRangeValueRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(RangeServer).PullRangeValue(m, &rangePullRangeValueServer{stream})
+	return srv.(RangeApiServer).PullRangeValue(m, &rangeApiPullRangeValueServer{stream})
 }
 
-type Range_PullRangeValueServer interface {
+type RangeApi_PullRangeValueServer interface {
 	Send(*PullRangeValueResponse) error
 	grpc.ServerStream
 }
 
-type rangePullRangeValueServer struct {
+type rangeApiPullRangeValueServer struct {
 	grpc.ServerStream
 }
 
-func (x *rangePullRangeValueServer) Send(m *PullRangeValueResponse) error {
+func (x *rangeApiPullRangeValueServer) Send(m *PullRangeValueResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Range_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.Range",
-	HandlerType: (*RangeServer)(nil),
+var _RangeApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.RangeApi",
+	HandlerType: (*RangeApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "UpdateRangeValue",
-			Handler:    _Range_UpdateRangeValue_Handler,
+			Handler:    _RangeApi_UpdateRangeValue_Handler,
 		},
 		{
 			MethodName: "GetRangeValue",
-			Handler:    _Range_GetRangeValue_Handler,
+			Handler:    _RangeApi_GetRangeValue_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullRangeValue",
-			Handler:       _Range_PullRangeValue_Handler,
+			Handler:       _RangeApi_PullRangeValue_Handler,
 			ServerStreams: true,
 		},
 	},

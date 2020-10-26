@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_motion_sensor_pb from '../traits/motion_sensor_pb';
 
 
-export class MotionSensorClient {
+export class MotionSensorApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -22,7 +22,7 @@ export class MotionSensorClient {
 
 }
 
-export class MotionSensorPromiseClient {
+export class MotionSensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });

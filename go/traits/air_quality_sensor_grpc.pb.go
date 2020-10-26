@@ -13,39 +13,39 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// AirQualitySensorClient is the client API for AirQualitySensor service.
+// AirQualitySensorApiClient is the client API for AirQualitySensorApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AirQualitySensorClient interface {
+type AirQualitySensorApiClient interface {
 	// Get the current state of all reading this device supports
 	GetState(ctx context.Context, in *GetAirQualityStateRequest, opts ...grpc.CallOption) (*AirQualityState, error)
 	// Be notified of changes to any reading
-	PullState(ctx context.Context, in *PullAirQualityStateRequest, opts ...grpc.CallOption) (AirQualitySensor_PullStateClient, error)
+	PullState(ctx context.Context, in *PullAirQualityStateRequest, opts ...grpc.CallOption) (AirQualitySensorApi_PullStateClient, error)
 }
 
-type airQualitySensorClient struct {
+type airQualitySensorApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAirQualitySensorClient(cc grpc.ClientConnInterface) AirQualitySensorClient {
-	return &airQualitySensorClient{cc}
+func NewAirQualitySensorApiClient(cc grpc.ClientConnInterface) AirQualitySensorApiClient {
+	return &airQualitySensorApiClient{cc}
 }
 
-func (c *airQualitySensorClient) GetState(ctx context.Context, in *GetAirQualityStateRequest, opts ...grpc.CallOption) (*AirQualityState, error) {
+func (c *airQualitySensorApiClient) GetState(ctx context.Context, in *GetAirQualityStateRequest, opts ...grpc.CallOption) (*AirQualityState, error) {
 	out := new(AirQualityState)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.AirQualitySensor/GetState", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.AirQualitySensorApi/GetState", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *airQualitySensorClient) PullState(ctx context.Context, in *PullAirQualityStateRequest, opts ...grpc.CallOption) (AirQualitySensor_PullStateClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AirQualitySensor_serviceDesc.Streams[0], "/smartcore.traits.AirQualitySensor/PullState", opts...)
+func (c *airQualitySensorApiClient) PullState(ctx context.Context, in *PullAirQualityStateRequest, opts ...grpc.CallOption) (AirQualitySensorApi_PullStateClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_AirQualitySensorApi_serviceDesc.Streams[0], "/smartcore.traits.AirQualitySensorApi/PullState", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &airQualitySensorPullStateClient{stream}
+	x := &airQualitySensorApiPullStateClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -55,16 +55,16 @@ func (c *airQualitySensorClient) PullState(ctx context.Context, in *PullAirQuali
 	return x, nil
 }
 
-type AirQualitySensor_PullStateClient interface {
+type AirQualitySensorApi_PullStateClient interface {
 	Recv() (*PullAirQualityStateResponse, error)
 	grpc.ClientStream
 }
 
-type airQualitySensorPullStateClient struct {
+type airQualitySensorApiPullStateClient struct {
 	grpc.ClientStream
 }
 
-func (x *airQualitySensorPullStateClient) Recv() (*PullAirQualityStateResponse, error) {
+func (x *airQualitySensorApiPullStateClient) Recv() (*PullAirQualityStateResponse, error) {
 	m := new(PullAirQualityStateResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -72,85 +72,85 @@ func (x *airQualitySensorPullStateClient) Recv() (*PullAirQualityStateResponse, 
 	return m, nil
 }
 
-// AirQualitySensorServer is the server API for AirQualitySensor service.
-// All implementations must embed UnimplementedAirQualitySensorServer
+// AirQualitySensorApiServer is the server API for AirQualitySensorApi service.
+// All implementations must embed UnimplementedAirQualitySensorApiServer
 // for forward compatibility
-type AirQualitySensorServer interface {
+type AirQualitySensorApiServer interface {
 	// Get the current state of all reading this device supports
 	GetState(context.Context, *GetAirQualityStateRequest) (*AirQualityState, error)
 	// Be notified of changes to any reading
-	PullState(*PullAirQualityStateRequest, AirQualitySensor_PullStateServer) error
-	mustEmbedUnimplementedAirQualitySensorServer()
+	PullState(*PullAirQualityStateRequest, AirQualitySensorApi_PullStateServer) error
+	mustEmbedUnimplementedAirQualitySensorApiServer()
 }
 
-// UnimplementedAirQualitySensorServer must be embedded to have forward compatible implementations.
-type UnimplementedAirQualitySensorServer struct {
+// UnimplementedAirQualitySensorApiServer must be embedded to have forward compatible implementations.
+type UnimplementedAirQualitySensorApiServer struct {
 }
 
-func (*UnimplementedAirQualitySensorServer) GetState(context.Context, *GetAirQualityStateRequest) (*AirQualityState, error) {
+func (*UnimplementedAirQualitySensorApiServer) GetState(context.Context, *GetAirQualityStateRequest) (*AirQualityState, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetState not implemented")
 }
-func (*UnimplementedAirQualitySensorServer) PullState(*PullAirQualityStateRequest, AirQualitySensor_PullStateServer) error {
+func (*UnimplementedAirQualitySensorApiServer) PullState(*PullAirQualityStateRequest, AirQualitySensorApi_PullStateServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullState not implemented")
 }
-func (*UnimplementedAirQualitySensorServer) mustEmbedUnimplementedAirQualitySensorServer() {}
+func (*UnimplementedAirQualitySensorApiServer) mustEmbedUnimplementedAirQualitySensorApiServer() {}
 
-func RegisterAirQualitySensorServer(s *grpc.Server, srv AirQualitySensorServer) {
-	s.RegisterService(&_AirQualitySensor_serviceDesc, srv)
+func RegisterAirQualitySensorApiServer(s *grpc.Server, srv AirQualitySensorApiServer) {
+	s.RegisterService(&_AirQualitySensorApi_serviceDesc, srv)
 }
 
-func _AirQualitySensor_GetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AirQualitySensorApi_GetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAirQualityStateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AirQualitySensorServer).GetState(ctx, in)
+		return srv.(AirQualitySensorApiServer).GetState(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.AirQualitySensor/GetState",
+		FullMethod: "/smartcore.traits.AirQualitySensorApi/GetState",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AirQualitySensorServer).GetState(ctx, req.(*GetAirQualityStateRequest))
+		return srv.(AirQualitySensorApiServer).GetState(ctx, req.(*GetAirQualityStateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AirQualitySensor_PullState_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _AirQualitySensorApi_PullState_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PullAirQualityStateRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(AirQualitySensorServer).PullState(m, &airQualitySensorPullStateServer{stream})
+	return srv.(AirQualitySensorApiServer).PullState(m, &airQualitySensorApiPullStateServer{stream})
 }
 
-type AirQualitySensor_PullStateServer interface {
+type AirQualitySensorApi_PullStateServer interface {
 	Send(*PullAirQualityStateResponse) error
 	grpc.ServerStream
 }
 
-type airQualitySensorPullStateServer struct {
+type airQualitySensorApiPullStateServer struct {
 	grpc.ServerStream
 }
 
-func (x *airQualitySensorPullStateServer) Send(m *PullAirQualityStateResponse) error {
+func (x *airQualitySensorApiPullStateServer) Send(m *PullAirQualityStateResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _AirQualitySensor_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.AirQualitySensor",
-	HandlerType: (*AirQualitySensorServer)(nil),
+var _AirQualitySensorApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.AirQualitySensorApi",
+	HandlerType: (*AirQualitySensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetState",
-			Handler:    _AirQualitySensor_GetState_Handler,
+			Handler:    _AirQualitySensorApi_GetState_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullState",
-			Handler:       _AirQualitySensor_PullState_Handler,
+			Handler:       _AirQualitySensorApi_PullState_Handler,
 			ServerStreams: true,
 		},
 	},

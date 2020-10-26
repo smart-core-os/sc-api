@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./ptz_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.PtzClient =
+proto.smartcore.traits.PtzApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.PtzClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.PtzPromiseClient =
+proto.smartcore.traits.PtzApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -85,8 +85,8 @@ proto.smartcore.traits.PtzPromiseClient =
  *   !proto.smartcore.traits.GetPtzStateRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodDescriptor_Ptz_GetPtzState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Ptz/GetPtzState',
+const methodDescriptor_PtzApi_GetPtzState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/GetPtzState',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetPtzStateRequest,
   proto.smartcore.traits.PtzState,
@@ -107,7 +107,7 @@ const methodDescriptor_Ptz_GetPtzState = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.GetPtzStateRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodInfo_Ptz_GetPtzState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PtzApi_GetPtzState = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PtzState,
   /**
    * @param {!proto.smartcore.traits.GetPtzStateRequest} request
@@ -130,13 +130,13 @@ const methodInfo_Ptz_GetPtzState = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzClient.prototype.getPtzState =
+proto.smartcore.traits.PtzApiClient.prototype.getPtzState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Ptz/GetPtzState',
+      '/smartcore.traits.PtzApi/GetPtzState',
       request,
       metadata || {},
-      methodDescriptor_Ptz_GetPtzState,
+      methodDescriptor_PtzApi_GetPtzState,
       callback);
 };
 
@@ -149,13 +149,13 @@ proto.smartcore.traits.PtzClient.prototype.getPtzState =
  * @return {!Promise<!proto.smartcore.traits.PtzState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzPromiseClient.prototype.getPtzState =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.getPtzState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Ptz/GetPtzState',
+      '/smartcore.traits.PtzApi/GetPtzState',
       request,
       metadata || {},
-      methodDescriptor_Ptz_GetPtzState);
+      methodDescriptor_PtzApi_GetPtzState);
 };
 
 
@@ -165,8 +165,8 @@ proto.smartcore.traits.PtzPromiseClient.prototype.getPtzState =
  *   !proto.smartcore.traits.UpdatePtzStateRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodDescriptor_Ptz_UpdatePtzState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Ptz/UpdatePtzState',
+const methodDescriptor_PtzApi_UpdatePtzState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/UpdatePtzState',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdatePtzStateRequest,
   proto.smartcore.traits.PtzState,
@@ -187,7 +187,7 @@ const methodDescriptor_Ptz_UpdatePtzState = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.UpdatePtzStateRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodInfo_Ptz_UpdatePtzState = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PtzApi_UpdatePtzState = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PtzState,
   /**
    * @param {!proto.smartcore.traits.UpdatePtzStateRequest} request
@@ -210,13 +210,13 @@ const methodInfo_Ptz_UpdatePtzState = new grpc.web.AbstractClientBase.MethodInfo
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzClient.prototype.updatePtzState =
+proto.smartcore.traits.PtzApiClient.prototype.updatePtzState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Ptz/UpdatePtzState',
+      '/smartcore.traits.PtzApi/UpdatePtzState',
       request,
       metadata || {},
-      methodDescriptor_Ptz_UpdatePtzState,
+      methodDescriptor_PtzApi_UpdatePtzState,
       callback);
 };
 
@@ -229,13 +229,13 @@ proto.smartcore.traits.PtzClient.prototype.updatePtzState =
  * @return {!Promise<!proto.smartcore.traits.PtzState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzPromiseClient.prototype.updatePtzState =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.updatePtzState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Ptz/UpdatePtzState',
+      '/smartcore.traits.PtzApi/UpdatePtzState',
       request,
       metadata || {},
-      methodDescriptor_Ptz_UpdatePtzState);
+      methodDescriptor_PtzApi_UpdatePtzState);
 };
 
 
@@ -245,8 +245,8 @@ proto.smartcore.traits.PtzPromiseClient.prototype.updatePtzState =
  *   !proto.smartcore.traits.StopPtzRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodDescriptor_Ptz_Stop = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Ptz/Stop',
+const methodDescriptor_PtzApi_Stop = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/Stop',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.StopPtzRequest,
   proto.smartcore.traits.PtzState,
@@ -267,7 +267,7 @@ const methodDescriptor_Ptz_Stop = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.StopPtzRequest,
  *   !proto.smartcore.traits.PtzState>}
  */
-const methodInfo_Ptz_Stop = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PtzApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PtzState,
   /**
    * @param {!proto.smartcore.traits.StopPtzRequest} request
@@ -290,13 +290,13 @@ const methodInfo_Ptz_Stop = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzClient.prototype.stop =
+proto.smartcore.traits.PtzApiClient.prototype.stop =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Ptz/Stop',
+      '/smartcore.traits.PtzApi/Stop',
       request,
       metadata || {},
-      methodDescriptor_Ptz_Stop,
+      methodDescriptor_PtzApi_Stop,
       callback);
 };
 
@@ -309,13 +309,13 @@ proto.smartcore.traits.PtzClient.prototype.stop =
  * @return {!Promise<!proto.smartcore.traits.PtzState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzPromiseClient.prototype.stop =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.stop =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Ptz/Stop',
+      '/smartcore.traits.PtzApi/Stop',
       request,
       metadata || {},
-      methodDescriptor_Ptz_Stop);
+      methodDescriptor_PtzApi_Stop);
 };
 
 
@@ -325,8 +325,8 @@ proto.smartcore.traits.PtzPromiseClient.prototype.stop =
  *   !proto.smartcore.traits.CreatePtzPresetRequest,
  *   !proto.smartcore.traits.PtzPreset>}
  */
-const methodDescriptor_Ptz_CreatePreset = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Ptz/CreatePreset',
+const methodDescriptor_PtzApi_CreatePreset = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/CreatePreset',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.CreatePtzPresetRequest,
   proto.smartcore.traits.PtzPreset,
@@ -347,7 +347,7 @@ const methodDescriptor_Ptz_CreatePreset = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.CreatePtzPresetRequest,
  *   !proto.smartcore.traits.PtzPreset>}
  */
-const methodInfo_Ptz_CreatePreset = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PtzApi_CreatePreset = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PtzPreset,
   /**
    * @param {!proto.smartcore.traits.CreatePtzPresetRequest} request
@@ -370,13 +370,13 @@ const methodInfo_Ptz_CreatePreset = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzPreset>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzClient.prototype.createPreset =
+proto.smartcore.traits.PtzApiClient.prototype.createPreset =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Ptz/CreatePreset',
+      '/smartcore.traits.PtzApi/CreatePreset',
       request,
       metadata || {},
-      methodDescriptor_Ptz_CreatePreset,
+      methodDescriptor_PtzApi_CreatePreset,
       callback);
 };
 
@@ -389,13 +389,13 @@ proto.smartcore.traits.PtzClient.prototype.createPreset =
  * @return {!Promise<!proto.smartcore.traits.PtzPreset>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PtzPromiseClient.prototype.createPreset =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.createPreset =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Ptz/CreatePreset',
+      '/smartcore.traits.PtzApi/CreatePreset',
       request,
       metadata || {},
-      methodDescriptor_Ptz_CreatePreset);
+      methodDescriptor_PtzApi_CreatePreset);
 };
 
 
@@ -405,8 +405,8 @@ proto.smartcore.traits.PtzPromiseClient.prototype.createPreset =
  *   !proto.smartcore.traits.PullPtzStatesRequest,
  *   !proto.smartcore.traits.PullPtzStatesResponse>}
  */
-const methodDescriptor_Ptz_PullPtzStates = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Ptz/PullPtzStates',
+const methodDescriptor_PtzApi_PullPtzStates = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PtzApi/PullPtzStates',
   grpc.web.MethodType.SERVER_STREAMING,
   proto.smartcore.traits.PullPtzStatesRequest,
   proto.smartcore.traits.PullPtzStatesResponse,
@@ -427,7 +427,7 @@ const methodDescriptor_Ptz_PullPtzStates = new grpc.web.MethodDescriptor(
  *   !proto.smartcore.traits.PullPtzStatesRequest,
  *   !proto.smartcore.traits.PullPtzStatesResponse>}
  */
-const methodInfo_Ptz_PullPtzStates = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PtzApi_PullPtzStates = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.PullPtzStatesResponse,
   /**
    * @param {!proto.smartcore.traits.PullPtzStatesRequest} request
@@ -447,13 +447,13 @@ const methodInfo_Ptz_PullPtzStates = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzStatesResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzClient.prototype.pullPtzStates =
+proto.smartcore.traits.PtzApiClient.prototype.pullPtzStates =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Ptz/PullPtzStates',
+      '/smartcore.traits.PtzApi/PullPtzStates',
       request,
       metadata || {},
-      methodDescriptor_Ptz_PullPtzStates);
+      methodDescriptor_PtzApi_PullPtzStates);
 };
 
 
@@ -464,13 +464,13 @@ proto.smartcore.traits.PtzClient.prototype.pullPtzStates =
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzStatesResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PtzPromiseClient.prototype.pullPtzStates =
+proto.smartcore.traits.PtzApiPromiseClient.prototype.pullPtzStates =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Ptz/PullPtzStates',
+      '/smartcore.traits.PtzApi/PullPtzStates',
       request,
       metadata || {},
-      methodDescriptor_Ptz_PullPtzStates);
+      methodDescriptor_PtzApi_PullPtzStates);
 };
 
 

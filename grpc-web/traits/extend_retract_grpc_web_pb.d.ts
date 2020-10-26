@@ -3,7 +3,7 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_extend_retract_pb from '../traits/extend_retract_pb';
 
 
-export class ExtendRetractClient {
+export class ExtendRetractApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
@@ -43,7 +43,7 @@ export class ExtendRetractClient {
 
 }
 
-export class ExtendRetractPromiseClient {
+export class ExtendRetractApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
