@@ -175,19 +175,31 @@
         
           
           <li>
-            <a href="#traits%2fthermostat.proto">traits/thermostat.proto</a>
+            <a href="#traits%2fair_temperature.proto">traits/air_temperature.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetThermostatStateRequest"><span class="badge">M</span>GetThermostatStateRequest</a>
+                  <a href="#smartcore.traits.AirTemperatureAttributes"><span class="badge">M</span>AirTemperatureAttributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullThermostatStateRequest"><span class="badge">M</span>PullThermostatStateRequest</a>
+                  <a href="#smartcore.traits.AirTemperatureState"><span class="badge">M</span>AirTemperatureState</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullThermostatStateResponse"><span class="badge">M</span>PullThermostatStateResponse</a>
+                  <a href="#smartcore.traits.AirTemperatureStateChange"><span class="badge">M</span>AirTemperatureStateChange</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetAirTemperatureStateRequest"><span class="badge">M</span>GetAirTemperatureStateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullAirTemperatureStateRequest"><span class="badge">M</span>PullAirTemperatureStateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullAirTemperatureStateResponse"><span class="badge">M</span>PullAirTemperatureStateResponse</a>
                 </li>
               
                 <li>
@@ -195,30 +207,18 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ThermostatAttributes"><span class="badge">M</span>ThermostatAttributes</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.ThermostatState"><span class="badge">M</span>ThermostatState</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.ThermostatStateChange"><span class="badge">M</span>ThermostatStateChange</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.UpdateThermostatStateRequest"><span class="badge">M</span>UpdateThermostatStateRequest</a>
+                  <a href="#smartcore.traits.UpdateAirTemperatureStateRequest"><span class="badge">M</span>UpdateAirTemperatureStateRequest</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.traits.ThermostatMode"><span class="badge">E</span>ThermostatMode</a>
+                  <a href="#smartcore.traits.AirTemperatureMode"><span class="badge">E</span>AirTemperatureMode</a>
                 </li>
               
               
               
                 <li>
-                  <a href="#smartcore.traits.Thermostat"><span class="badge">S</span>Thermostat</a>
+                  <a href="#smartcore.traits.AirTemperature"><span class="badge">S</span>AirTemperature</a>
                 </li>
               
             </ul>
@@ -231,13 +231,149 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/thermostat.proto">traits/thermostat.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/air_temperature.proto">traits/air_temperature.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.GetThermostatStateRequest">GetThermostatStateRequest</h3>
-        <p>Request message for fetching thermostat state</p>
+        <h3 id="smartcore.traits.AirTemperatureAttributes">AirTemperatureAttributes</h3>
+        <p>Trait.attributes message for describing this device trait.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>native_unit</td>
+                  <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
+                  <td></td>
+                  <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is this. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supported_modes</td>
+                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>min_range_celsius</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.AirTemperatureState">AirTemperatureState</h3>
+        <p>All the properties of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>mode</td>
+                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
+                  <td></td>
+                  <td><p>The current mode for the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>temperature_set_point</td>
+                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+                  <td></td>
+                  <td><p>A target temperature for the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>temperature_set_point_delta</td>
+                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+                  <td></td>
+                  <td><p>Write-only. Set the target temperature to a value relative to the current value. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>temperature_range</td>
+                  <td><a href="#smartcore.traits.TemperatureRange">TemperatureRange</a></td>
+                  <td></td>
+                  <td><p>A target range for the device. Only supported when in HEAT_COOL mode </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ambient_temperature</td>
+                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
+                  <td></td>
+                  <td><p>Optional, read-only. The ambient temperature as read by the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ambient_humidity</td>
+                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
+                  <td></td>
+                  <td><p>Optional, read-only. The ambient humidity as read by the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.AirTemperatureStateChange">AirTemperatureStateChange</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                  <td></td>
+                  <td><p>The new value for the device state. Only changed fields will be set, should be merged with GetState full
+response as required. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetAirTemperatureStateRequest">GetAirTemperatureStateRequest</h3>
+        <p>Request message for fetching device state</p>
 
         
           <table class="field-table">
@@ -260,8 +396,8 @@
 
         
       
-        <h3 id="smartcore.traits.PullThermostatStateRequest">PullThermostatStateRequest</h3>
-        <p>Request message for subscribing to changes in the thermostats state</p>
+        <h3 id="smartcore.traits.PullAirTemperatureStateRequest">PullAirTemperatureStateRequest</h3>
+        <p>Request message for subscribing to changes in the devices state</p>
 
         
           <table class="field-table">
@@ -284,8 +420,8 @@
 
         
       
-        <h3 id="smartcore.traits.PullThermostatStateResponse">PullThermostatStateResponse</h3>
-        <p>Response message enclosing thermostat state changes</p>
+        <h3 id="smartcore.traits.PullAirTemperatureStateResponse">PullAirTemperatureStateResponse</h3>
+        <p>Response message enclosing device state changes</p>
 
         
           <table class="field-table">
@@ -296,7 +432,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.ThermostatStateChange">ThermostatStateChange</a></td>
+                  <td><a href="#smartcore.traits.AirTemperatureStateChange">AirTemperatureStateChange</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -309,7 +445,7 @@
         
       
         <h3 id="smartcore.traits.TemperatureRange">TemperatureRange</h3>
-        <p>A setting for thermostats that target a temperature between a range.</p>
+        <p>A setting for devices that target a temperature between a range.</p>
 
         
           <table class="field-table">
@@ -336,7 +472,7 @@
                   <td>ideal</td>
                   <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
                   <td></td>
-                  <td><p>Optional. An ideal value for cases where a thermostat supports three set points </p></td>
+                  <td><p>Optional. An ideal value for cases where a device supports three set points </p></td>
                 </tr>
               
             </tbody>
@@ -346,144 +482,8 @@
 
         
       
-        <h3 id="smartcore.traits.ThermostatAttributes">ThermostatAttributes</h3>
-        <p>Trait.attributes message for describing this device trait.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>native_unit</td>
-                  <td><a href="#smartcore.api.types.TemperatureUnit">smartcore.api.types.TemperatureUnit</a></td>
-                  <td></td>
-                  <td><p>How the device thinks, all communications will be in celsius but the device&#39;s native unit is this. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supported_modes</td>
-                  <td><a href="#smartcore.traits.ThermostatMode">ThermostatMode</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>min_range_celsius</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.ThermostatState">ThermostatState</h3>
-        <p>All the properties of the thermostat</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>mode</td>
-                  <td><a href="#smartcore.traits.ThermostatMode">ThermostatMode</a></td>
-                  <td></td>
-                  <td><p>The current mode for the thermostat </p></td>
-                </tr>
-              
-                <tr>
-                  <td>temperature_set_point</td>
-                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-                  <td></td>
-                  <td><p>A target temperature for the thermostat </p></td>
-                </tr>
-              
-                <tr>
-                  <td>temperature_set_point_delta</td>
-                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-                  <td></td>
-                  <td><p>Write-only. Set the target temperature to a value relative to the current value. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>temperature_range</td>
-                  <td><a href="#smartcore.traits.TemperatureRange">TemperatureRange</a></td>
-                  <td></td>
-                  <td><p>A target range for the thermostat. Only supported when in HEAT_COOL mode </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ambient_temperature</td>
-                  <td><a href="#smartcore.api.types.Temperature">smartcore.api.types.Temperature</a></td>
-                  <td></td>
-                  <td><p>Optional, read-only. The ambient temperature as read by the thermostat </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ambient_humidity</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>Optional, read-only. The ambient humidity as read by the thermostat </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.ThermostatStateChange">ThermostatStateChange</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.traits.ThermostatState">ThermostatState</a></td>
-                  <td></td>
-                  <td><p>The new value for the thermostat state. Only changed fields will be set, should be merged with GetState full
-response as required. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.UpdateThermostatStateRequest">UpdateThermostatStateRequest</h3>
-        <p>Request message for updating the thermostat state</p>
+        <h3 id="smartcore.traits.UpdateAirTemperatureStateRequest">UpdateAirTemperatureStateRequest</h3>
+        <p>Request message for updating the device state</p>
 
         
           <table class="field-table">
@@ -501,7 +501,7 @@ response as required. </p></td>
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.ThermostatState">ThermostatState</a></td>
+                  <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -522,8 +522,8 @@ response as required. </p></td>
       
 
       
-        <h3 id="smartcore.traits.ThermostatMode">ThermostatMode</h3>
-        <p>Supported modes for a thermostat. Some of these values are used as descriptive attributes, some are used for control</p>
+        <h3 id="smartcore.traits.AirTemperatureMode">AirTemperatureMode</h3>
+        <p>Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -533,20 +533,20 @@ response as required. </p></td>
               <tr>
                 <td>UNKNOWN</td>
                 <td>0</td>
-                <td><p>The thermostat mode is unknown during a query. If used during a write then no change will be made, if part of a
+                <td><p>The mode is unknown during a query. If used during a write then no change will be made, if part of a
 read then the mode is unknown. This makes no sense as part of an attribute.</p></td>
               </tr>
             
               <tr>
                 <td>ON</td>
                 <td>1</td>
-                <td><p>Write-only. If the thermostat is OFF restore it to it&#39;s previous state</p></td>
+                <td><p>Write-only. If the device is OFF restore it to it&#39;s previous state</p></td>
               </tr>
             
               <tr>
                 <td>OFF</td>
                 <td>2</td>
-                <td><p>Attr, read, write. The thermostat supports, is, or should be disabled</p></td>
+                <td><p>Attr, read, write. The device supports, is, or should be disabled</p></td>
               </tr>
             
               <tr>
@@ -612,8 +612,8 @@ example)</p></td>
       
 
       
-        <h3 id="smartcore.traits.Thermostat">Thermostat</h3>
-        <p>Device trait for the control and query of a thermostat type device.</p>
+        <h3 id="smartcore.traits.AirTemperature">AirTemperature</h3>
+        <p>Device trait allowing query and control of the air temperature for a space. Like a thermostat and associated HVAC</p><p>system.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -622,24 +622,24 @@ example)</p></td>
             
               <tr>
                 <td>GetState</td>
-                <td><a href="#smartcore.traits.GetThermostatStateRequest">GetThermostatStateRequest</a></td>
-                <td><a href="#smartcore.traits.ThermostatState">ThermostatState</a></td>
-                <td><p>Get the current state of the thermostat</p></td>
+                <td><a href="#smartcore.traits.GetAirTemperatureStateRequest">GetAirTemperatureStateRequest</a></td>
+                <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                <td><p>Get the current state of the device</p></td>
               </tr>
             
               <tr>
                 <td>UpdateState</td>
-                <td><a href="#smartcore.traits.UpdateThermostatStateRequest">UpdateThermostatStateRequest</a></td>
-                <td><a href="#smartcore.traits.ThermostatState">ThermostatState</a></td>
-                <td><p>Update the target state for the thermostat. the returned state may not be complete but will indicate at least the
+                <td><a href="#smartcore.traits.UpdateAirTemperatureStateRequest">UpdateAirTemperatureStateRequest</a></td>
+                <td><a href="#smartcore.traits.AirTemperatureState">AirTemperatureState</a></td>
+                <td><p>Update the target state for the device. the returned state may not be complete but will indicate at least the
 current values for any set fields as part of the request.</p></td>
               </tr>
             
               <tr>
                 <td>PullState</td>
-                <td><a href="#smartcore.traits.PullThermostatStateRequest">PullThermostatStateRequest</a></td>
-                <td><a href="#smartcore.traits.PullThermostatStateResponse">PullThermostatStateResponse</a> stream</td>
-                <td><p>Request notification of change to the thermostat state. The messages in the response stream may not be complete
+                <td><a href="#smartcore.traits.PullAirTemperatureStateRequest">PullAirTemperatureStateRequest</a></td>
+                <td><a href="#smartcore.traits.PullAirTemperatureStateResponse">PullAirTemperatureStateResponse</a> stream</td>
+                <td><p>Request notification of change to the device state. The messages in the response stream may not be complete
 but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
 method.</p></td>
               </tr>

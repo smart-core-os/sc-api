@@ -14,71 +14,72 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 import "types/unit.proto";
 
-// Device trait for the control and query of a thermostat type device.
-service Thermostat {
-  // Get the current state of the thermostat
-  rpc GetState (GetThermostatStateRequest) returns (ThermostatState);
+// Device trait allowing query and control of the air temperature for a space. Like a thermostat and associated HVAC
+// system.
+service AirTemperature {
+  // Get the current state of the device
+  rpc GetState (GetAirTemperatureStateRequest) returns (AirTemperatureState);
 
-  // Update the target state for the thermostat. the returned state may not be complete but will indicate at least the
+  // Update the target state for the device. the returned state may not be complete but will indicate at least the
   // current values for any set fields as part of the request.
-  rpc UpdateState (UpdateThermostatStateRequest) returns (ThermostatState);
+  rpc UpdateState (UpdateAirTemperatureStateRequest) returns (AirTemperatureState);
 
-  // Request notification of change to the thermostat state. The messages in the response stream may not be complete
+  // Request notification of change to the device state. The messages in the response stream may not be complete
   // but will indicate the changes as they occur. They should be merged with the full state as fetched by the GetState
   // method.
-  rpc PullState (PullThermostatStateRequest) returns (stream PullThermostatStateResponse);
+  rpc PullState (PullAirTemperatureStateRequest) returns (stream PullAirTemperatureStateResponse);
 }
 
 // Trait.attributes message for describing this device trait.
-message ThermostatAttributes {
+message AirTemperatureAttributes {
   // How the device thinks, all communications will be in celsius but the device's native unit is this.
   smartcore.api.types.TemperatureUnit native_unit = 1;
-  repeated ThermostatMode supported_modes = 2;
+  repeated AirTemperatureMode supported_modes = 2;
   // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
   double min_range_celsius = 3;
 }
 
-// Request message for fetching thermostat state
-message GetThermostatStateRequest {
+// Request message for fetching device state
+message GetAirTemperatureStateRequest {
   string name = 1;
 }
 
-// Request message for updating the thermostat state
-message UpdateThermostatStateRequest {
+// Request message for updating the device state
+message UpdateAirTemperatureStateRequest {
   string name = 1;
-  ThermostatState state = 2;
+  AirTemperatureState state = 2;
   // The fields relative to state we intend to update
   google.protobuf.FieldMask update_mask = 3;
 }
 
-// Request message for subscribing to changes in the thermostats state
-message PullThermostatStateRequest {
+// Request message for subscribing to changes in the devices state
+message PullAirTemperatureStateRequest {
   string name = 1;
 }
 
-// Response message enclosing thermostat state changes
-message PullThermostatStateResponse {
-  repeated ThermostatStateChange changes = 1;
+// Response message enclosing device state changes
+message PullAirTemperatureStateResponse {
+  repeated AirTemperatureStateChange changes = 1;
 }
 
-message ThermostatStateChange {
+message AirTemperatureStateChange {
   // name for the device that issued the change
   string name = 1;
   // when the change occurred
   google.protobuf.Timestamp create_time = 2;
-  // The new value for the thermostat state. Only changed fields will be set, should be merged with GetState full
+  // The new value for the device state. Only changed fields will be set, should be merged with GetState full
   // response as required.
-  ThermostatState state = 3;
+  AirTemperatureState state = 3;
 }
 
-// Supported modes for a thermostat. Some of these values are used as descriptive attributes, some are used for control
-enum ThermostatMode {
-  // The thermostat mode is unknown during a query. If used during a write then no change will be made, if part of a
+// Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control
+enum AirTemperatureMode {
+  // The mode is unknown during a query. If used during a write then no change will be made, if part of a
   // read then the mode is unknown. This makes no sense as part of an attribute.
   UNKNOWN = 0;
-  // Write-only. If the thermostat is OFF restore it to it's previous state
+  // Write-only. If the device is OFF restore it to it's previous state
   ON = 1;
-  // Attr, read, write. The thermostat supports, is, or should be disabled
+  // Attr, read, write. The device supports, is, or should be disabled
   OFF = 2;
   // Attr, read, write. The device supports, is, or should be heating
   HEAT = 3;
@@ -102,30 +103,30 @@ enum ThermostatMode {
   LOCKED = 11;
 }
 
-// All the properties of the thermostat
-message ThermostatState {
-  // The current mode for the thermostat
-  ThermostatMode mode = 1;
+// All the properties of the device
+message AirTemperatureState {
+  // The current mode for the device
+  AirTemperatureMode mode = 1;
   oneof temperature_goal {
-    // A target temperature for the thermostat
+    // A target temperature for the device
     smartcore.api.types.Temperature temperature_set_point = 2;
     // Write-only. Set the target temperature to a value relative to the current value.
     smartcore.api.types.Temperature temperature_set_point_delta = 3;
-    // A target range for the thermostat. Only supported when in HEAT_COOL mode
+    // A target range for the device. Only supported when in HEAT_COOL mode
     TemperatureRange temperature_range = 4;
   }
-  // Optional, read-only. The ambient temperature as read by the thermostat
+  // Optional, read-only. The ambient temperature as read by the device
   smartcore.api.types.Temperature ambient_temperature = 5;
-  // Optional, read-only. The ambient humidity as read by the thermostat
+  // Optional, read-only. The ambient humidity as read by the device
   google.protobuf.FloatValue ambient_humidity = 6;
 }
 
-// A setting for thermostats that target a temperature between a range.
+// A setting for devices that target a temperature between a range.
 message TemperatureRange {
   // Required. The low threshold for the range
   smartcore.api.types.Temperature low = 1;
   // Required. The high threshold for the range
   smartcore.api.types.Temperature high = 2;
-  // Optional. An ideal value for cases where a thermostat supports three set points
+  // Optional. An ideal value for cases where a device supports three set points
   smartcore.api.types.Temperature ideal = 3;
 }
