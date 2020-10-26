@@ -16,8 +16,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var types_number_pb = require('../types/number_pb.js');
-goog.object.extend(proto, types_number_pb);
 var types_tween_pb = require('../types/tween_pb.js');
 goog.object.extend(proto, types_tween_pb);
 goog.exportSymbol('proto.smartcore.traits.CreatePtzPresetRequest', null, global);
@@ -1265,7 +1263,9 @@ proto.smartcore.traits.PtzMovement.prototype.toObject = function(opt_includeInst
 proto.smartcore.traits.PtzMovement.toObject = function(includeInstance, msg) {
   var f, obj = {
     direction: (f = msg.getDirection()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
-    speed: (f = msg.getSpeed()) && types_number_pb.Int32Var.toObject(includeInstance, f)
+    speed: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    speedTween: (f = msg.getSpeedTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+    targetSpeed: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1308,9 +1308,17 @@ proto.smartcore.traits.PtzMovement.deserializeBinaryFromReader = function(msg, r
       msg.setDirection(value);
       break;
     case 2:
-      var value = new types_number_pb.Int32Var;
-      reader.readMessage(value,types_number_pb.Int32Var.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setSpeed(value);
+      break;
+    case 3:
+      var value = new types_tween_pb.Tween;
+      reader.readMessage(value,types_tween_pb.Tween.deserializeBinaryFromReader);
+      msg.setSpeedTween(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTargetSpeed(value);
       break;
     default:
       reader.skipField();
@@ -1350,11 +1358,25 @@ proto.smartcore.traits.PtzMovement.serializeBinaryToWriter = function(message, w
     );
   }
   f = message.getSpeed();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getSpeedTween();
   if (f != null) {
     writer.writeMessage(
-      2,
+      3,
       f,
-      types_number_pb.Int32Var.serializeBinaryToWriter
+      types_tween_pb.Tween.serializeBinaryToWriter
+    );
+  }
+  f = message.getTargetSpeed();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
     );
   }
 };
@@ -1398,21 +1420,39 @@ proto.smartcore.traits.PtzMovement.prototype.hasDirection = function() {
 
 
 /**
- * optional smartcore.api.types.Int32Var speed = 2;
- * @return {?proto.smartcore.api.types.Int32Var}
+ * optional int32 speed = 2;
+ * @return {number}
  */
 proto.smartcore.traits.PtzMovement.prototype.getSpeed = function() {
-  return /** @type{?proto.smartcore.api.types.Int32Var} */ (
-    jspb.Message.getWrapperField(this, types_number_pb.Int32Var, 2));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Int32Var|undefined} value
+ * @param {number} value
+ * @return {!proto.smartcore.traits.PtzMovement} returns this
+ */
+proto.smartcore.traits.PtzMovement.prototype.setSpeed = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional smartcore.api.types.Tween speed_tween = 3;
+ * @return {?proto.smartcore.api.types.Tween}
+ */
+proto.smartcore.traits.PtzMovement.prototype.getSpeedTween = function() {
+  return /** @type{?proto.smartcore.api.types.Tween} */ (
+    jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
+};
+
+
+/**
+ * @param {?proto.smartcore.api.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.PtzMovement} returns this
 */
-proto.smartcore.traits.PtzMovement.prototype.setSpeed = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+proto.smartcore.traits.PtzMovement.prototype.setSpeedTween = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
@@ -1420,8 +1460,8 @@ proto.smartcore.traits.PtzMovement.prototype.setSpeed = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PtzMovement} returns this
  */
-proto.smartcore.traits.PtzMovement.prototype.clearSpeed = function() {
-  return this.setSpeed(undefined);
+proto.smartcore.traits.PtzMovement.prototype.clearSpeedTween = function() {
+  return this.setSpeedTween(undefined);
 };
 
 
@@ -1429,8 +1469,26 @@ proto.smartcore.traits.PtzMovement.prototype.clearSpeed = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PtzMovement.prototype.hasSpeed = function() {
-  return jspb.Message.getField(this, 2) != null;
+proto.smartcore.traits.PtzMovement.prototype.hasSpeedTween = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional int32 target_speed = 4;
+ * @return {number}
+ */
+proto.smartcore.traits.PtzMovement.prototype.getTargetSpeed = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.PtzMovement} returns this
+ */
+proto.smartcore.traits.PtzMovement.prototype.setTargetSpeed = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

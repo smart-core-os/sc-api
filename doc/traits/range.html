@@ -199,6 +199,10 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.RangeValue"><span class="badge">M</span>RangeValue</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.UpdateRangeValueRequest"><span class="badge">M</span>UpdateRangeValueRequest</a>
                 </li>
               
@@ -330,7 +334,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>range_value</td>
-                  <td><a href="#smartcore.api.types.Int32Var">smartcore.api.types.Int32Var</a></td>
+                  <td><a href="#smartcore.traits.RangeValue">RangeValue</a></td>
                   <td></td>
                   <td><p>The new value for the range </p></td>
                 </tr>
@@ -366,6 +370,44 @@ capabilities </p></td>
 
         
       
+        <h3 id="smartcore.traits.RangeValue">RangeValue</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The current value. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value_tween</td>
+                  <td><a href="#smartcore.api.types.Tween">smartcore.api.types.Tween</a></td>
+                  <td></td>
+                  <td><p>How the value changes or should change over time </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_value</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Read-only, the target value after a transition </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="smartcore.traits.UpdateRangeValueRequest">UpdateRangeValueRequest</h3>
         <p>A request to update the value of a range</p>
 
@@ -385,7 +427,7 @@ capabilities </p></td>
               
                 <tr>
                   <td>range_value</td>
-                  <td><a href="#smartcore.api.types.Int32Var">smartcore.api.types.Int32Var</a></td>
+                  <td><a href="#smartcore.traits.RangeValue">RangeValue</a></td>
                   <td></td>
                   <td><p>The new value for the range. Supply ramp to transition </p></td>
                 </tr>
@@ -421,14 +463,14 @@ capabilities </p></td>
               <tr>
                 <td>UpdateRangeValue</td>
                 <td><a href="#smartcore.traits.UpdateRangeValueRequest">UpdateRangeValueRequest</a></td>
-                <td><a href="#smartcore.api.types.Int32Var">.smartcore.api.types.Int32Var</a></td>
+                <td><a href="#smartcore.traits.RangeValue">RangeValue</a></td>
                 <td><p>request that the range value be changes</p></td>
               </tr>
             
               <tr>
                 <td>GetRangeValue</td>
                 <td><a href="#smartcore.traits.GetRangeValueRequest">GetRangeValueRequest</a></td>
-                <td><a href="#smartcore.api.types.Int32Var">.smartcore.api.types.Int32Var</a></td>
+                <td><a href="#smartcore.traits.RangeValue">RangeValue</a></td>
                 <td><p>get the current value of the range</p></td>
               </tr>
             

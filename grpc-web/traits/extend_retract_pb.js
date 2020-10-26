@@ -524,8 +524,8 @@ proto.smartcore.traits.Extension.toObject = function(includeInstance, msg) {
   var f, obj = {
     extendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
     extendPreset: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    tween: (f = msg.getTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetExtendPercent: (f = msg.getTargetExtendPercent()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    extendTween: (f = msg.getExtendTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+    targetExtendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
     targetExtendPreset: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
@@ -574,11 +574,10 @@ proto.smartcore.traits.Extension.deserializeBinaryFromReader = function(msg, rea
     case 3:
       var value = new types_tween_pb.Tween;
       reader.readMessage(value,types_tween_pb.Tween.deserializeBinaryFromReader);
-      msg.setTween(value);
+      msg.setExtendTween(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setTargetExtendPercent(value);
       break;
     case 5:
@@ -628,7 +627,7 @@ proto.smartcore.traits.Extension.serializeBinaryToWriter = function(message, wri
       f
     );
   }
-  f = message.getTween();
+  f = message.getExtendTween();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -637,11 +636,10 @@ proto.smartcore.traits.Extension.serializeBinaryToWriter = function(message, wri
     );
   }
   f = message.getTargetExtendPercent();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0.0) {
+    writer.writeFloat(
       4,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getTargetExtendPreset();
@@ -691,10 +689,10 @@ proto.smartcore.traits.Extension.prototype.setExtendPreset = function(value) {
 
 
 /**
- * optional smartcore.api.types.Tween tween = 3;
+ * optional smartcore.api.types.Tween extend_tween = 3;
  * @return {?proto.smartcore.api.types.Tween}
  */
-proto.smartcore.traits.Extension.prototype.getTween = function() {
+proto.smartcore.traits.Extension.prototype.getExtendTween = function() {
   return /** @type{?proto.smartcore.api.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
 };
@@ -704,7 +702,7 @@ proto.smartcore.traits.Extension.prototype.getTween = function() {
  * @param {?proto.smartcore.api.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.Extension} returns this
 */
-proto.smartcore.traits.Extension.prototype.setTween = function(value) {
+proto.smartcore.traits.Extension.prototype.setExtendTween = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -713,8 +711,8 @@ proto.smartcore.traits.Extension.prototype.setTween = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.Extension} returns this
  */
-proto.smartcore.traits.Extension.prototype.clearTween = function() {
-  return this.setTween(undefined);
+proto.smartcore.traits.Extension.prototype.clearExtendTween = function() {
+  return this.setExtendTween(undefined);
 };
 
 
@@ -722,45 +720,26 @@ proto.smartcore.traits.Extension.prototype.clearTween = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.Extension.prototype.hasTween = function() {
+proto.smartcore.traits.Extension.prototype.hasExtendTween = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional google.protobuf.FloatValue target_extend_percent = 4;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float target_extend_percent = 4;
+ * @return {number}
  */
 proto.smartcore.traits.Extension.prototype.getTargetExtendPercent = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 4));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.Extension} returns this
-*/
+ */
 proto.smartcore.traits.Extension.prototype.setTargetExtendPercent = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.Extension} returns this
- */
-proto.smartcore.traits.Extension.prototype.clearTargetExtendPercent = function() {
-  return this.setTargetExtendPercent(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.Extension.prototype.hasTargetExtendPercent = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.setProto3FloatField(this, 4, value);
 };
 
 

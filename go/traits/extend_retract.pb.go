@@ -117,9 +117,9 @@ type Extension struct {
 	ExtendPreset string `protobuf:"bytes,2,opt,name=extend_preset,json=extendPreset,proto3" json:"extend_preset,omitempty"`
 	// if extending/retracting over time then this contains the current progress, if setting then this asks for the
 	// action to be performed over the given time frame
-	Tween *types.Tween `protobuf:"bytes,3,opt,name=tween,proto3" json:"tween,omitempty"`
+	ExtendTween *types.Tween `protobuf:"bytes,3,opt,name=extend_tween,json=extendTween,proto3" json:"extend_tween,omitempty"`
 	// if tweening between values, this is our end goal
-	TargetExtendPercent *wrappers.FloatValue `protobuf:"bytes,4,opt,name=target_extend_percent,json=targetExtendPercent,proto3" json:"target_extend_percent,omitempty"`
+	TargetExtendPercent float32 `protobuf:"fixed32,4,opt,name=target_extend_percent,json=targetExtendPercent,proto3" json:"target_extend_percent,omitempty"`
 	// if tweening between values, this is our end goal
 	TargetExtendPreset string `protobuf:"bytes,5,opt,name=target_extend_preset,json=targetExtendPreset,proto3" json:"target_extend_preset,omitempty"`
 }
@@ -170,18 +170,18 @@ func (x *Extension) GetExtendPreset() string {
 	return ""
 }
 
-func (x *Extension) GetTween() *types.Tween {
+func (x *Extension) GetExtendTween() *types.Tween {
 	if x != nil {
-		return x.Tween
+		return x.ExtendTween
 	}
 	return nil
 }
 
-func (x *Extension) GetTargetExtendPercent() *wrappers.FloatValue {
+func (x *Extension) GetTargetExtendPercent() float32 {
 	if x != nil {
 		return x.TargetExtendPercent
 	}
-	return nil
+	return 0
 }
 
 func (x *Extension) GetTargetExtendPreset() string {
@@ -670,19 +670,18 @@ var file_traits_extend_retract_proto_rawDesc = []byte{
 	0x70, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x5f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x5f, 0x70, 0x72,
 	0x65, 0x73, 0x65, 0x74, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x15, 0x73, 0x75, 0x70,
 	0x70, 0x6f, 0x72, 0x74, 0x73, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x50, 0x72, 0x65, 0x73, 0x65,
-	0x74, 0x73, 0x22, 0x8c, 0x02, 0x0a, 0x09, 0x45, 0x78, 0x74, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e,
+	0x74, 0x73, 0x22, 0xfc, 0x01, 0x0a, 0x09, 0x45, 0x78, 0x74, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e,
 	0x12, 0x25, 0x0a, 0x0e, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65,
 	0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0d, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x64,
 	0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x78, 0x74, 0x65, 0x6e,
 	0x64, 0x5f, 0x70, 0x72, 0x65, 0x73, 0x65, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c,
-	0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x65, 0x73, 0x65, 0x74, 0x12, 0x30, 0x0a, 0x05,
-	0x74, 0x77, 0x65, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x6d,
-	0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65,
-	0x73, 0x2e, 0x54, 0x77, 0x65, 0x65, 0x6e, 0x52, 0x05, 0x74, 0x77, 0x65, 0x65, 0x6e, 0x12, 0x4f,
-	0x0a, 0x15, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x5f, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x5f,
-	0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
-	0x46, 0x6c, 0x6f, 0x61, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x13, 0x74, 0x61, 0x72, 0x67,
+	0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x50, 0x72, 0x65, 0x73, 0x65, 0x74, 0x12, 0x3d, 0x0a, 0x0c,
+	0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x77, 0x65, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x77, 0x65, 0x65, 0x6e, 0x52, 0x0b,
+	0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x54, 0x77, 0x65, 0x65, 0x6e, 0x12, 0x32, 0x0a, 0x15, 0x74,
+	0x61, 0x72, 0x67, 0x65, 0x74, 0x5f, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x5f, 0x70, 0x65, 0x72,
+	0x63, 0x65, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52, 0x13, 0x74, 0x61, 0x72, 0x67,
 	0x65, 0x74, 0x45, 0x78, 0x74, 0x65, 0x6e, 0x64, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x12,
 	0x30, 0x0a, 0x14, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x5f, 0x65, 0x78, 0x74, 0x65, 0x6e, 0x64,
 	0x5f, 0x70, 0x72, 0x65, 0x73, 0x65, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x74,
@@ -812,30 +811,29 @@ var file_traits_extend_retract_proto_goTypes = []interface{}{
 var file_traits_extend_retract_proto_depIdxs = []int32{
 	2,  // 0: smartcore.traits.ExtendRetractAttributes.presets:type_name -> smartcore.traits.ExtensionPreset
 	10, // 1: smartcore.traits.ExtendRetractAttributes.tween_support:type_name -> smartcore.api.types.TweenSupport
-	11, // 2: smartcore.traits.Extension.tween:type_name -> smartcore.api.types.Tween
-	12, // 3: smartcore.traits.Extension.target_extend_percent:type_name -> google.protobuf.FloatValue
-	12, // 4: smartcore.traits.ExtensionPreset.extend_percent:type_name -> google.protobuf.FloatValue
-	1,  // 5: smartcore.traits.UpdateExtensionRequest.extension:type_name -> smartcore.traits.Extension
-	13, // 6: smartcore.traits.UpdateExtensionRequest.update_mask:type_name -> google.protobuf.FieldMask
-	2,  // 7: smartcore.traits.CreateExtensionPresetRequest.preset:type_name -> smartcore.traits.ExtensionPreset
-	9,  // 8: smartcore.traits.PullExtensionsResponse.changes:type_name -> smartcore.traits.PullExtensionsResponse.Change
-	14, // 9: smartcore.traits.PullExtensionsResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	1,  // 10: smartcore.traits.PullExtensionsResponse.Change.extension:type_name -> smartcore.traits.Extension
-	3,  // 11: smartcore.traits.ExtendRetractApi.GetExtension:input_type -> smartcore.traits.GetExtensionRequest
-	4,  // 12: smartcore.traits.ExtendRetractApi.UpdateExtension:input_type -> smartcore.traits.UpdateExtensionRequest
-	5,  // 13: smartcore.traits.ExtendRetractApi.Stop:input_type -> smartcore.traits.ExtendRetractStopRequest
-	6,  // 14: smartcore.traits.ExtendRetractApi.CreateExtensionPreset:input_type -> smartcore.traits.CreateExtensionPresetRequest
-	7,  // 15: smartcore.traits.ExtendRetractApi.PullExtensions:input_type -> smartcore.traits.PullExtensionsRequest
-	1,  // 16: smartcore.traits.ExtendRetractApi.GetExtension:output_type -> smartcore.traits.Extension
-	1,  // 17: smartcore.traits.ExtendRetractApi.UpdateExtension:output_type -> smartcore.traits.Extension
-	1,  // 18: smartcore.traits.ExtendRetractApi.Stop:output_type -> smartcore.traits.Extension
-	2,  // 19: smartcore.traits.ExtendRetractApi.CreateExtensionPreset:output_type -> smartcore.traits.ExtensionPreset
-	8,  // 20: smartcore.traits.ExtendRetractApi.PullExtensions:output_type -> smartcore.traits.PullExtensionsResponse
-	16, // [16:21] is the sub-list for method output_type
-	11, // [11:16] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	11, // 2: smartcore.traits.Extension.extend_tween:type_name -> smartcore.api.types.Tween
+	12, // 3: smartcore.traits.ExtensionPreset.extend_percent:type_name -> google.protobuf.FloatValue
+	1,  // 4: smartcore.traits.UpdateExtensionRequest.extension:type_name -> smartcore.traits.Extension
+	13, // 5: smartcore.traits.UpdateExtensionRequest.update_mask:type_name -> google.protobuf.FieldMask
+	2,  // 6: smartcore.traits.CreateExtensionPresetRequest.preset:type_name -> smartcore.traits.ExtensionPreset
+	9,  // 7: smartcore.traits.PullExtensionsResponse.changes:type_name -> smartcore.traits.PullExtensionsResponse.Change
+	14, // 8: smartcore.traits.PullExtensionsResponse.Change.change_time:type_name -> google.protobuf.Timestamp
+	1,  // 9: smartcore.traits.PullExtensionsResponse.Change.extension:type_name -> smartcore.traits.Extension
+	3,  // 10: smartcore.traits.ExtendRetractApi.GetExtension:input_type -> smartcore.traits.GetExtensionRequest
+	4,  // 11: smartcore.traits.ExtendRetractApi.UpdateExtension:input_type -> smartcore.traits.UpdateExtensionRequest
+	5,  // 12: smartcore.traits.ExtendRetractApi.Stop:input_type -> smartcore.traits.ExtendRetractStopRequest
+	6,  // 13: smartcore.traits.ExtendRetractApi.CreateExtensionPreset:input_type -> smartcore.traits.CreateExtensionPresetRequest
+	7,  // 14: smartcore.traits.ExtendRetractApi.PullExtensions:input_type -> smartcore.traits.PullExtensionsRequest
+	1,  // 15: smartcore.traits.ExtendRetractApi.GetExtension:output_type -> smartcore.traits.Extension
+	1,  // 16: smartcore.traits.ExtendRetractApi.UpdateExtension:output_type -> smartcore.traits.Extension
+	1,  // 17: smartcore.traits.ExtendRetractApi.Stop:output_type -> smartcore.traits.Extension
+	2,  // 18: smartcore.traits.ExtendRetractApi.CreateExtensionPreset:output_type -> smartcore.traits.ExtensionPreset
+	8,  // 19: smartcore.traits.ExtendRetractApi.PullExtensions:output_type -> smartcore.traits.PullExtensionsResponse
+	15, // [15:20] is the sub-list for method output_type
+	10, // [10:15] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_traits_extend_retract_proto_init() }

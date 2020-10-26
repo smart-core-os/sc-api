@@ -53,9 +53,9 @@ message Extension {
 
   // if extending/retracting over time then this contains the current progress, if setting then this asks for the
   // action to be performed over the given time frame
-  smartcore.api.types.Tween tween = 3;
+  smartcore.api.types.Tween extend_tween = 3;
   // if tweening between values, this is our end goal
-  google.protobuf.FloatValue target_extend_percent = 4;
+  float target_extend_percent = 4;
   // if tweening between values, this is our end goal
   string target_extend_preset = 5;
 }

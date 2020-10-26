@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
 import "types/number.proto";
+import "types/tween.proto";
 
 // Control the light output of a device. Brightness values should be normalised to 0-100 as a percentage, though the
 // device may not support all steps within. See the LightAttributes for step values of the device.
@@ -34,10 +35,17 @@ message LightAttributes {
 }
 
 message Brightness {
-  // A level that the device is set to. [0-100] as a percentage
-  smartcore.api.types.Int32Var level_percent = 1;
+  // A level that the device is set to. [0-100] as a percentage. A zero value will be ignored iff preset is present.
+  int32 level_percent = 1;
   // A preset that the device is using
   LightPreset preset = 2;
+
+  // The progress of the change. On write only duration should be set.
+  smartcore.api.types.Tween brightness_tween = 3;
+  // The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present.
+  int32 target_level_percent = 4;
+  // The target preset. Ignored on write. If present ignore target_level_percent
+  LightPreset target_preset = 5;
 }
 
 message LightPreset {

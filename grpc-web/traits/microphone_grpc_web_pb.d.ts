@@ -13,15 +13,15 @@ export class MicrophoneApiClient {
     request: traits_microphone_pb.GetMicrophoneGainRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_unit_pb.Volume) => void
-  ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
+               response: types_unit_pb.AudioLevel) => void
+  ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   updateGain(
     request: traits_microphone_pb.UpdateMicrophoneGainRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_unit_pb.Volume) => void
-  ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
+               response: types_unit_pb.AudioLevel) => void
+  ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   pullGain(
     request: traits_microphone_pb.PullMicrophoneGainRequest,
@@ -38,12 +38,12 @@ export class MicrophoneApiPromiseClient {
   getGain(
     request: traits_microphone_pb.GetMicrophoneGainRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_unit_pb.Volume>;
+  ): Promise<types_unit_pb.AudioLevel>;
 
   updateGain(
     request: traits_microphone_pb.UpdateMicrophoneGainRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_unit_pb.Volume>;
+  ): Promise<types_unit_pb.AudioLevel>;
 
   pullGain(
     request: traits_microphone_pb.PullMicrophoneGainRequest,

@@ -11,7 +11,6 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
-import "types/number.proto";
 import "types/tween.proto";
 
 // Allows interaction with a pan-tilt-zoom device, typically a camera.
@@ -85,9 +84,12 @@ message PtzMovement {
   // Which direction are we moving. Only the sign of the dimensions of the vector are used to denote direction of
   // movement
   PtzVector direction = 1;
-  // The speed at which the PTZ device should move. Defined as a Var so that the speed can change over time. For example
-  // increasing the speed as the movement continues. If not specified the device may ramp speed on its own
-  smartcore.api.types.Int32Var speed = 2;
+  // The speed at which the PTZ device should move. If not specified the device may ramp speed on its own
+  int32 speed = 2;
+  // How the speed changes or should change over time.
+  smartcore.api.types.Tween speed_tween = 3;
+  // Read-only, the target speed value after a transition
+  int32 target_speed = 4;
 }
 
 // A description of the current position of the PTZ device.

@@ -2,7 +2,6 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
@@ -130,10 +129,16 @@ export class PtzMovement extends jspb.Message {
   hasDirection(): boolean;
   clearDirection(): PtzMovement;
 
-  getSpeed(): types_number_pb.Int32Var | undefined;
-  setSpeed(value?: types_number_pb.Int32Var): PtzMovement;
-  hasSpeed(): boolean;
-  clearSpeed(): PtzMovement;
+  getSpeed(): number;
+  setSpeed(value: number): PtzMovement;
+
+  getSpeedTween(): types_tween_pb.Tween | undefined;
+  setSpeedTween(value?: types_tween_pb.Tween): PtzMovement;
+  hasSpeedTween(): boolean;
+  clearSpeedTween(): PtzMovement;
+
+  getTargetSpeed(): number;
+  setTargetSpeed(value: number): PtzMovement;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PtzMovement.AsObject;
@@ -146,7 +151,9 @@ export class PtzMovement extends jspb.Message {
 export namespace PtzMovement {
   export type AsObject = {
     direction?: PtzVector.AsObject,
-    speed?: types_number_pb.Int32Var.AsObject,
+    speed: number,
+    speedTween?: types_tween_pb.Tween.AsObject,
+    targetSpeed: number,
   }
 }
 

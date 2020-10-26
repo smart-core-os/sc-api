@@ -87,12 +87,25 @@ func (TweenSupport) EnumDescriptor() ([]byte, []int) {
 }
 
 // An in-progress transition between two values. The values themselves should be defined in an enclosing message.
+//
+// Typically an enclosing message will define three properties, the value, the tween, and the target value.
+//
+// Example definition
+//
+//   message WaterHeight {
+//     // The current or expected height of water, in meters
+//     float height = 1;
+//     // Describe how the height changes or should change over time
+//     Tween height_tween = 2;
+//     // Read-only, the target height at the end of a transition
+//     float target_height = 3;
+//   }
 type Tween struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 0-100, how far along the transition (in time) are we.
+	// Read-only [0-100], how far along the transition (in time) are we.
 	Progress float32 `protobuf:"fixed32,1,opt,name=progress,proto3" json:"progress,omitempty"`
 	// how long the transition will last in total
 	TotalDuration *duration.Duration `protobuf:"bytes,2,opt,name=total_duration,json=totalDuration,proto3" json:"total_duration,omitempty"`

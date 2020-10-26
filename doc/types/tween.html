@@ -205,7 +205,7 @@
 
       
         <h3 id="smartcore.api.types.Tween">Tween</h3>
-        <p>An in-progress transition between two values. The values themselves should be defined in an enclosing message.</p>
+        <p>An in-progress transition between two values. The values themselves should be defined in an enclosing message.</p><p>Typically an enclosing message will define three properties, the value, the tween, and the target value.</p><p>Example definition</p><p>message WaterHeight {</p><p>// The current or expected height of water, in meters</p><p>float height = 1;</p><p>// Describe how the height changes or should change over time</p><p>Tween height_tween = 2;</p><p>// Read-only, the target height at the end of a transition</p><p>float target_height = 3;</p><p>}</p>
 
         
           <table class="field-table">
@@ -218,7 +218,7 @@
                   <td>progress</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>0-100, how far along the transition (in time) are we. </p></td>
+                  <td><p>Read-only [0-100], how far along the transition (in time) are we. </p></td>
                 </tr>
               
                 <tr>

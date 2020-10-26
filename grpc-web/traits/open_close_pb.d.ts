@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_number_pb from '../types/number_pb';
+import * as types_tween_pb from '../types/tween_pb';
 
 
 export class OpenCloseAttributes extends jspb.Message {
@@ -55,10 +56,16 @@ export namespace OpenClosePositions {
 }
 
 export class OpenClosePosition extends jspb.Message {
-  getPositionPercent(): types_number_pb.FloatVar | undefined;
-  setPositionPercent(value?: types_number_pb.FloatVar): OpenClosePosition;
-  hasPositionPercent(): boolean;
-  clearPositionPercent(): OpenClosePosition;
+  getPositionPercent(): number;
+  setPositionPercent(value: number): OpenClosePosition;
+
+  getPositionPercentTween(): types_tween_pb.Tween | undefined;
+  setPositionPercentTween(value?: types_tween_pb.Tween): OpenClosePosition;
+  hasPositionPercentTween(): boolean;
+  clearPositionPercentTween(): OpenClosePosition;
+
+  getTargetPositionPercent(): number;
+  setTargetPositionPercent(value: number): OpenClosePosition;
 
   getDirection(): OpenCloseDirection;
   setDirection(value: OpenCloseDirection): OpenClosePosition;
@@ -73,7 +80,9 @@ export class OpenClosePosition extends jspb.Message {
 
 export namespace OpenClosePosition {
   export type AsObject = {
-    positionPercent?: types_number_pb.FloatVar.AsObject,
+    positionPercent: number,
+    positionPercentTween?: types_tween_pb.Tween.AsObject,
+    targetPositionPercent: number,
     direction: OpenCloseDirection,
   }
 }

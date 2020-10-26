@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_number_pb from '../types/number_pb';
+import * as types_tween_pb from '../types/tween_pb';
 
 
 export class RangeAttributes extends jspb.Message {
@@ -24,12 +25,40 @@ export namespace RangeAttributes {
   }
 }
 
+export class RangeValue extends jspb.Message {
+  getValue(): number;
+  setValue(value: number): RangeValue;
+
+  getValueTween(): types_tween_pb.Tween | undefined;
+  setValueTween(value?: types_tween_pb.Tween): RangeValue;
+  hasValueTween(): boolean;
+  clearValueTween(): RangeValue;
+
+  getTargetValue(): number;
+  setTargetValue(value: number): RangeValue;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RangeValue.AsObject;
+  static toObject(includeInstance: boolean, msg: RangeValue): RangeValue.AsObject;
+  static serializeBinaryToWriter(message: RangeValue, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RangeValue;
+  static deserializeBinaryFromReader(message: RangeValue, reader: jspb.BinaryReader): RangeValue;
+}
+
+export namespace RangeValue {
+  export type AsObject = {
+    value: number,
+    valueTween?: types_tween_pb.Tween.AsObject,
+    targetValue: number,
+  }
+}
+
 export class UpdateRangeValueRequest extends jspb.Message {
   getName(): string;
   setName(value: string): UpdateRangeValueRequest;
 
-  getRangeValue(): types_number_pb.Int32Var | undefined;
-  setRangeValue(value?: types_number_pb.Int32Var): UpdateRangeValueRequest;
+  getRangeValue(): RangeValue | undefined;
+  setRangeValue(value?: RangeValue): UpdateRangeValueRequest;
   hasRangeValue(): boolean;
   clearRangeValue(): UpdateRangeValueRequest;
 
@@ -47,7 +76,7 @@ export class UpdateRangeValueRequest extends jspb.Message {
 export namespace UpdateRangeValueRequest {
   export type AsObject = {
     name: string,
-    rangeValue?: types_number_pb.Int32Var.AsObject,
+    rangeValue?: RangeValue.AsObject,
     delta: boolean,
   }
 }
@@ -120,8 +149,8 @@ export namespace PullRangeValueResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getRangeValue(): types_number_pb.Int32Var | undefined;
-    setRangeValue(value?: types_number_pb.Int32Var): Change;
+    getRangeValue(): RangeValue | undefined;
+    setRangeValue(value?: RangeValue): Change;
     hasRangeValue(): boolean;
     clearRangeValue(): Change;
 
@@ -137,7 +166,7 @@ export namespace PullRangeValueResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      rangeValue?: types_number_pb.Int32Var.AsObject,
+      rangeValue?: RangeValue.AsObject,
     }
   }
 

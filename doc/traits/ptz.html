@@ -460,10 +460,23 @@ movement </p></td>
               
                 <tr>
                   <td>speed</td>
-                  <td><a href="#smartcore.api.types.Int32Var">smartcore.api.types.Int32Var</a></td>
+                  <td><a href="#int32">int32</a></td>
                   <td></td>
-                  <td><p>The speed at which the PTZ device should move. Defined as a Var so that the speed can change over time. For example
-increasing the speed as the movement continues. If not specified the device may ramp speed on its own </p></td>
+                  <td><p>The speed at which the PTZ device should move. If not specified the device may ramp speed on its own </p></td>
+                </tr>
+              
+                <tr>
+                  <td>speed_tween</td>
+                  <td><a href="#smartcore.api.types.Tween">smartcore.api.types.Tween</a></td>
+                  <td></td>
+                  <td><p>How the speed changes or should change over time. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_speed</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Read-only, the target speed value after a transition </p></td>
                 </tr>
               
             </tbody>

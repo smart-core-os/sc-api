@@ -13,15 +13,15 @@ export class SpeakerApiClient {
     request: traits_speaker_pb.GetSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_unit_pb.Volume) => void
-  ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
+               response: types_unit_pb.AudioLevel) => void
+  ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   updateVolume(
     request: traits_speaker_pb.UpdateSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_unit_pb.Volume) => void
-  ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
+               response: types_unit_pb.AudioLevel) => void
+  ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   pullVolume(
     request: traits_speaker_pb.PullSpeakerVolumeRequest,
@@ -38,12 +38,12 @@ export class SpeakerApiPromiseClient {
   getVolume(
     request: traits_speaker_pb.GetSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_unit_pb.Volume>;
+  ): Promise<types_unit_pb.AudioLevel>;
 
   updateVolume(
     request: traits_speaker_pb.UpdateSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_unit_pb.Volume>;
+  ): Promise<types_unit_pb.AudioLevel>;
 
   pullVolume(
     request: traits_speaker_pb.PullSpeakerVolumeRequest,

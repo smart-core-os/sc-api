@@ -20,8 +20,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
-var types_number_pb = require('../types/number_pb.js')
-
 var types_tween_pb = require('../types/tween_pb.js')
 const proto = {};
 proto.smartcore = {};

@@ -58,8 +58,8 @@ export class UpdateMicrophoneGainRequest extends jspb.Message {
   getName(): string;
   setName(value: string): UpdateMicrophoneGainRequest;
 
-  getGain(): types_unit_pb.Volume | undefined;
-  setGain(value?: types_unit_pb.Volume): UpdateMicrophoneGainRequest;
+  getGain(): types_unit_pb.AudioLevel | undefined;
+  setGain(value?: types_unit_pb.AudioLevel): UpdateMicrophoneGainRequest;
   hasGain(): boolean;
   clearGain(): UpdateMicrophoneGainRequest;
 
@@ -82,7 +82,7 @@ export class UpdateMicrophoneGainRequest extends jspb.Message {
 export namespace UpdateMicrophoneGainRequest {
   export type AsObject = {
     name: string,
-    gain?: types_unit_pb.Volume.AsObject,
+    gain?: types_unit_pb.AudioLevel.AsObject,
     delta: boolean,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
@@ -113,10 +113,10 @@ export namespace PullMicrophoneGainRequest {
 }
 
 export class PullMicrophoneGainResponse extends jspb.Message {
-  getChangesList(): Array<types_volume_pb.VolumeChange>;
-  setChangesList(value: Array<types_volume_pb.VolumeChange>): PullMicrophoneGainResponse;
+  getChangesList(): Array<types_unit_pb.AudioLevelChange>;
+  setChangesList(value: Array<types_unit_pb.AudioLevelChange>): PullMicrophoneGainResponse;
   clearChangesList(): PullMicrophoneGainResponse;
-  addChanges(value?: types_volume_pb.VolumeChange, index?: number): types_volume_pb.VolumeChange;
+  addChanges(value?: types_unit_pb.AudioLevelChange, index?: number): types_unit_pb.AudioLevelChange;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMicrophoneGainResponse.AsObject;
@@ -128,7 +128,7 @@ export class PullMicrophoneGainResponse extends jspb.Message {
 
 export namespace PullMicrophoneGainResponse {
   export type AsObject = {
-    changesList: Array<types_volume_pb.VolumeChange.AsObject>,
+    changesList: Array<types_unit_pb.AudioLevelChange.AsObject>,
   }
 }
 

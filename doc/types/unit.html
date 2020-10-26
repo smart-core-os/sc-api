@@ -179,6 +179,14 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.api.types.AudioLevel"><span class="badge">M</span>AudioLevel</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.api.types.AudioLevelChange"><span class="badge">M</span>AudioLevelChange</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.api.types.Temperature"><span class="badge">M</span>Temperature</a>
                 </li>
               
@@ -207,6 +215,89 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.api.types.AudioLevel">AudioLevel</h3>
+        <p>Represents an audio signal level for either input or output devices. Typically if fine grained control of either</p><p>gain or muted is required then a FieldMask should describe this.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>gain</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The current gain, typically as a percentage unless documented in the AudioLevel usage. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gain_tween</td>
+                  <td><a href="#smartcore.api.types.Tween">Tween</a></td>
+                  <td></td>
+                  <td><p>How the gain is changing or should change over time. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_gain</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Read-only, the target value for the gain during a transition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>muted</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If the audio level muted. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.api.types.AudioLevelChange">AudioLevelChange</h3>
+        <p>A change to the audio level</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device that is the source of the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change was applied </p></td>
+                </tr>
+              
+                <tr>
+                  <td>level</td>
+                  <td><a href="#smartcore.api.types.AudioLevel">AudioLevel</a></td>
+                  <td></td>
+                  <td><p>The new state for the change </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.api.types.Temperature">Temperature</h3>
         <p>A temperature value</p>

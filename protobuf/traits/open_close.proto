@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
 import "types/number.proto";
+import "types/tween.proto";
 
 // Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.
 service OpenCloseApi {
@@ -57,9 +58,13 @@ enum OpenCloseDirection {
 // Defines the position of one open close element for the device
 message OpenClosePosition {
   // 0-100, the current value for the open close position of the device in this direction
-  smartcore.api.types.FloatVar position_percent = 1;
+  float position_percent = 1;
+  // How the position_percent changes or should change over time.
+  smartcore.api.types.Tween position_percent_tween = 2;
+  // Read-only, the target position_percent after a transition
+  float target_position_percent = 3;
   // Optional direction for devices that support multiple open/close directions
-  OpenCloseDirection direction = 2;
+  OpenCloseDirection direction = 4;
 }
 
 message GetOpenClosePositionsRequest {

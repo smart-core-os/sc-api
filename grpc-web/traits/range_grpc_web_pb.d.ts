@@ -1,6 +1,5 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as types_number_pb from '../types/number_pb';
 import * as traits_range_pb from '../traits/range_pb';
 
 
@@ -13,15 +12,15 @@ export class RangeApiClient {
     request: traits_range_pb.UpdateRangeValueRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_number_pb.Int32Var) => void
-  ): grpcWeb.ClientReadableStream<types_number_pb.Int32Var>;
+               response: traits_range_pb.RangeValue) => void
+  ): grpcWeb.ClientReadableStream<traits_range_pb.RangeValue>;
 
   getRangeValue(
     request: traits_range_pb.GetRangeValueRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: types_number_pb.Int32Var) => void
-  ): grpcWeb.ClientReadableStream<types_number_pb.Int32Var>;
+               response: traits_range_pb.RangeValue) => void
+  ): grpcWeb.ClientReadableStream<traits_range_pb.RangeValue>;
 
   pullRangeValue(
     request: traits_range_pb.PullRangeValueRequest,
@@ -38,12 +37,12 @@ export class RangeApiPromiseClient {
   updateRangeValue(
     request: traits_range_pb.UpdateRangeValueRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_number_pb.Int32Var>;
+  ): Promise<traits_range_pb.RangeValue>;
 
   getRangeValue(
     request: traits_range_pb.GetRangeValueRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<types_number_pb.Int32Var>;
+  ): Promise<traits_range_pb.RangeValue>;
 
   pullRangeValue(
     request: traits_range_pb.PullRangeValueRequest,

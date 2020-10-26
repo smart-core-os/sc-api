@@ -19,6 +19,8 @@ grpc.web = require('grpc-web');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
 var types_number_pb = require('../types/number_pb.js')
+
+var types_tween_pb = require('../types/tween_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./open_close_pb.js');

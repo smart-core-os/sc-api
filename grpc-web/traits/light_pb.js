@@ -16,6 +16,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_number_pb = require('../types/number_pb.js');
 goog.object.extend(proto, types_number_pb);
+var types_tween_pb = require('../types/tween_pb.js');
+goog.object.extend(proto, types_tween_pb);
 goog.exportSymbol('proto.smartcore.traits.Brightness', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetBrightnessRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.LightAttributes', null, global);
@@ -435,8 +437,11 @@ proto.smartcore.traits.Brightness.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Brightness.toObject = function(includeInstance, msg) {
   var f, obj = {
-    levelPercent: (f = msg.getLevelPercent()) && types_number_pb.Int32Var.toObject(includeInstance, f),
-    preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
+    levelPercent: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f),
+    brightnessTween: (f = msg.getBrightnessTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+    targetLevelPercent: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    targetPreset: (f = msg.getTargetPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -474,14 +479,27 @@ proto.smartcore.traits.Brightness.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new types_number_pb.Int32Var;
-      reader.readMessage(value,types_number_pb.Int32Var.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setLevelPercent(value);
       break;
     case 2:
       var value = new proto.smartcore.traits.LightPreset;
       reader.readMessage(value,proto.smartcore.traits.LightPreset.deserializeBinaryFromReader);
       msg.setPreset(value);
+      break;
+    case 3:
+      var value = new types_tween_pb.Tween;
+      reader.readMessage(value,types_tween_pb.Tween.deserializeBinaryFromReader);
+      msg.setBrightnessTween(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTargetLevelPercent(value);
+      break;
+    case 5:
+      var value = new proto.smartcore.traits.LightPreset;
+      reader.readMessage(value,proto.smartcore.traits.LightPreset.deserializeBinaryFromReader);
+      msg.setTargetPreset(value);
       break;
     default:
       reader.skipField();
@@ -513,11 +531,10 @@ proto.smartcore.traits.Brightness.prototype.serializeBinary = function() {
 proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLevelPercent();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0) {
+    writer.writeInt32(
       1,
-      f,
-      types_number_pb.Int32Var.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPreset();
@@ -528,43 +545,47 @@ proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, wr
       proto.smartcore.traits.LightPreset.serializeBinaryToWriter
     );
   }
+  f = message.getBrightnessTween();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      types_tween_pb.Tween.serializeBinaryToWriter
+    );
+  }
+  f = message.getTargetLevelPercent();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getTargetPreset();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.smartcore.traits.LightPreset.serializeBinaryToWriter
+    );
+  }
 };
 
 
 /**
- * optional smartcore.api.types.Int32Var level_percent = 1;
- * @return {?proto.smartcore.api.types.Int32Var}
+ * optional int32 level_percent = 1;
+ * @return {number}
  */
 proto.smartcore.traits.Brightness.prototype.getLevelPercent = function() {
-  return /** @type{?proto.smartcore.api.types.Int32Var} */ (
-    jspb.Message.getWrapperField(this, types_number_pb.Int32Var, 1));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Int32Var|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.Brightness} returns this
-*/
+ */
 proto.smartcore.traits.Brightness.prototype.setLevelPercent = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.smartcore.traits.Brightness} returns this
- */
-proto.smartcore.traits.Brightness.prototype.clearLevelPercent = function() {
-  return this.setLevelPercent(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.Brightness.prototype.hasLevelPercent = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -602,6 +623,98 @@ proto.smartcore.traits.Brightness.prototype.clearPreset = function() {
  */
 proto.smartcore.traits.Brightness.prototype.hasPreset = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional smartcore.api.types.Tween brightness_tween = 3;
+ * @return {?proto.smartcore.api.types.Tween}
+ */
+proto.smartcore.traits.Brightness.prototype.getBrightnessTween = function() {
+  return /** @type{?proto.smartcore.api.types.Tween} */ (
+    jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
+};
+
+
+/**
+ * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @return {!proto.smartcore.traits.Brightness} returns this
+*/
+proto.smartcore.traits.Brightness.prototype.setBrightnessTween = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.Brightness} returns this
+ */
+proto.smartcore.traits.Brightness.prototype.clearBrightnessTween = function() {
+  return this.setBrightnessTween(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.Brightness.prototype.hasBrightnessTween = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional int32 target_level_percent = 4;
+ * @return {number}
+ */
+proto.smartcore.traits.Brightness.prototype.getTargetLevelPercent = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.Brightness} returns this
+ */
+proto.smartcore.traits.Brightness.prototype.setTargetLevelPercent = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional LightPreset target_preset = 5;
+ * @return {?proto.smartcore.traits.LightPreset}
+ */
+proto.smartcore.traits.Brightness.prototype.getTargetPreset = function() {
+  return /** @type{?proto.smartcore.traits.LightPreset} */ (
+    jspb.Message.getWrapperField(this, proto.smartcore.traits.LightPreset, 5));
+};
+
+
+/**
+ * @param {?proto.smartcore.traits.LightPreset|undefined} value
+ * @return {!proto.smartcore.traits.Brightness} returns this
+*/
+proto.smartcore.traits.Brightness.prototype.setTargetPreset = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.Brightness} returns this
+ */
+proto.smartcore.traits.Brightness.prototype.clearTargetPreset = function() {
+  return this.setTargetPreset(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.Brightness.prototype.hasTargetPreset = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

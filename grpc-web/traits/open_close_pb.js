@@ -16,6 +16,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_number_pb = require('../types/number_pb.js');
 goog.object.extend(proto, types_number_pb);
+var types_tween_pb = require('../types/tween_pb.js');
+goog.object.extend(proto, types_tween_pb);
 goog.exportSymbol('proto.smartcore.traits.GetOpenClosePositionsRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenCloseAttributes', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenCloseDirection', null, global);
@@ -644,8 +646,10 @@ proto.smartcore.traits.OpenClosePosition.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.OpenClosePosition.toObject = function(includeInstance, msg) {
   var f, obj = {
-    positionPercent: (f = msg.getPositionPercent()) && types_number_pb.FloatVar.toObject(includeInstance, f),
-    direction: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    positionPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+    positionPercentTween: (f = msg.getPositionPercentTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+    targetPositionPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+    direction: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -683,11 +687,19 @@ proto.smartcore.traits.OpenClosePosition.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new types_number_pb.FloatVar;
-      reader.readMessage(value,types_number_pb.FloatVar.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setPositionPercent(value);
       break;
     case 2:
+      var value = new types_tween_pb.Tween;
+      reader.readMessage(value,types_tween_pb.Tween.deserializeBinaryFromReader);
+      msg.setPositionPercentTween(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setTargetPositionPercent(value);
+      break;
+    case 4:
       var value = /** @type {!proto.smartcore.traits.OpenCloseDirection} */ (reader.readEnum());
       msg.setDirection(value);
       break;
@@ -721,17 +733,31 @@ proto.smartcore.traits.OpenClosePosition.prototype.serializeBinary = function() 
 proto.smartcore.traits.OpenClosePosition.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPositionPercent();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      1,
+      f
+    );
+  }
+  f = message.getPositionPercentTween();
   if (f != null) {
     writer.writeMessage(
-      1,
+      2,
       f,
-      types_number_pb.FloatVar.serializeBinaryToWriter
+      types_tween_pb.Tween.serializeBinaryToWriter
+    );
+  }
+  f = message.getTargetPositionPercent();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      3,
+      f
     );
   }
   f = message.getDirection();
   if (f !== 0.0) {
     writer.writeEnum(
-      2,
+      4,
       f
     );
   }
@@ -739,21 +765,39 @@ proto.smartcore.traits.OpenClosePosition.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional smartcore.api.types.FloatVar position_percent = 1;
- * @return {?proto.smartcore.api.types.FloatVar}
+ * optional float position_percent = 1;
+ * @return {number}
  */
 proto.smartcore.traits.OpenClosePosition.prototype.getPositionPercent = function() {
-  return /** @type{?proto.smartcore.api.types.FloatVar} */ (
-    jspb.Message.getWrapperField(this, types_number_pb.FloatVar, 1));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatVar|undefined} value
+ * @param {number} value
+ * @return {!proto.smartcore.traits.OpenClosePosition} returns this
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercent = function(value) {
+  return jspb.Message.setProto3FloatField(this, 1, value);
+};
+
+
+/**
+ * optional smartcore.api.types.Tween position_percent_tween = 2;
+ * @return {?proto.smartcore.api.types.Tween}
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.getPositionPercentTween = function() {
+  return /** @type{?proto.smartcore.api.types.Tween} */ (
+    jspb.Message.getWrapperField(this, types_tween_pb.Tween, 2));
+};
+
+
+/**
+ * @param {?proto.smartcore.api.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.OpenClosePosition} returns this
 */
-proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercent = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercentTween = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -761,8 +805,8 @@ proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercent = function
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.OpenClosePosition} returns this
  */
-proto.smartcore.traits.OpenClosePosition.prototype.clearPositionPercent = function() {
-  return this.setPositionPercent(undefined);
+proto.smartcore.traits.OpenClosePosition.prototype.clearPositionPercentTween = function() {
+  return this.setPositionPercentTween(undefined);
 };
 
 
@@ -770,17 +814,35 @@ proto.smartcore.traits.OpenClosePosition.prototype.clearPositionPercent = functi
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.OpenClosePosition.prototype.hasPositionPercent = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.smartcore.traits.OpenClosePosition.prototype.hasPositionPercentTween = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional OpenCloseDirection direction = 2;
+ * optional float target_position_percent = 3;
+ * @return {number}
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.getTargetPositionPercent = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.OpenClosePosition} returns this
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.setTargetPositionPercent = function(value) {
+  return jspb.Message.setProto3FloatField(this, 3, value);
+};
+
+
+/**
+ * optional OpenCloseDirection direction = 4;
  * @return {!proto.smartcore.traits.OpenCloseDirection}
  */
 proto.smartcore.traits.OpenClosePosition.prototype.getDirection = function() {
-  return /** @type {!proto.smartcore.traits.OpenCloseDirection} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.smartcore.traits.OpenCloseDirection} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
@@ -789,7 +851,7 @@ proto.smartcore.traits.OpenClosePosition.prototype.getDirection = function() {
  * @return {!proto.smartcore.traits.OpenClosePosition} returns this
  */
 proto.smartcore.traits.OpenClosePosition.prototype.setDirection = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 

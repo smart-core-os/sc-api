@@ -19,9 +19,9 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SpeakerApiClient interface {
 	// Get the current state of the volume for the device
-	GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error)
+	GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
 	// update the volume state for the device
-	UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error)
+	UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
 	PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (SpeakerApi_PullVolumeClient, error)
 }
 
@@ -33,8 +33,8 @@ func NewSpeakerApiClient(cc grpc.ClientConnInterface) SpeakerApiClient {
 	return &speakerApiClient{cc}
 }
 
-func (c *speakerApiClient) GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
-	out := new(types.Volume)
+func (c *speakerApiClient) GetVolume(ctx context.Context, in *GetSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
+	out := new(types.AudioLevel)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.SpeakerApi/GetVolume", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -42,8 +42,8 @@ func (c *speakerApiClient) GetVolume(ctx context.Context, in *GetSpeakerVolumeRe
 	return out, nil
 }
 
-func (c *speakerApiClient) UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.Volume, error) {
-	out := new(types.Volume)
+func (c *speakerApiClient) UpdateVolume(ctx context.Context, in *UpdateSpeakerVolumeRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
+	out := new(types.AudioLevel)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.SpeakerApi/UpdateVolume", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,9 +88,9 @@ func (x *speakerApiPullVolumeClient) Recv() (*PullSpeakerVolumeResponse, error) 
 // for forward compatibility
 type SpeakerApiServer interface {
 	// Get the current state of the volume for the device
-	GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.Volume, error)
+	GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.AudioLevel, error)
 	// update the volume state for the device
-	UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.Volume, error)
+	UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.AudioLevel, error)
 	PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error
 	mustEmbedUnimplementedSpeakerApiServer()
 }
@@ -99,10 +99,10 @@ type SpeakerApiServer interface {
 type UnimplementedSpeakerApiServer struct {
 }
 
-func (*UnimplementedSpeakerApiServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.Volume, error) {
+func (*UnimplementedSpeakerApiServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVolume not implemented")
 }
-func (*UnimplementedSpeakerApiServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.Volume, error) {
+func (*UnimplementedSpeakerApiServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolume not implemented")
 }
 func (*UnimplementedSpeakerApiServer) PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error {

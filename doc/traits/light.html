@@ -244,9 +244,9 @@
               
                 <tr>
                   <td>level_percent</td>
-                  <td><a href="#smartcore.api.types.Int32Var">smartcore.api.types.Int32Var</a></td>
+                  <td><a href="#int32">int32</a></td>
                   <td></td>
-                  <td><p>A level that the device is set to. [0-100] as a percentage </p></td>
+                  <td><p>A level that the device is set to. [0-100] as a percentage. A zero value will be ignored iff preset is present. </p></td>
                 </tr>
               
                 <tr>
@@ -254,6 +254,27 @@
                   <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
                   <td></td>
                   <td><p>A preset that the device is using </p></td>
+                </tr>
+              
+                <tr>
+                  <td>brightness_tween</td>
+                  <td><a href="#smartcore.api.types.Tween">smartcore.api.types.Tween</a></td>
+                  <td></td>
+                  <td><p>The progress of the change. On write only duration should be set. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_level_percent</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_preset</td>
+                  <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
+                  <td></td>
+                  <td><p>The target preset. Ignored on write. If present ignore target_level_percent </p></td>
                 </tr>
               
             </tbody>

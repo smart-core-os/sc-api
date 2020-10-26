@@ -11,14 +11,15 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
 import "types/number.proto";
+import "types/tween.proto";
 
 // A trait for values that can have a minimum or maximum
 service RangeApi {
   // request that the range value be changes
-  rpc UpdateRangeValue (UpdateRangeValueRequest) returns (smartcore.api.types.Int32Var);
+  rpc UpdateRangeValue (UpdateRangeValueRequest) returns (RangeValue);
 
   // get the current value of the range
-  rpc GetRangeValue (GetRangeValueRequest) returns (smartcore.api.types.Int32Var);
+  rpc GetRangeValue (GetRangeValueRequest) returns (RangeValue);
 
   // request updates to changes in the range value
   rpc PullRangeValue (PullRangeValueRequest) returns (stream PullRangeValueResponse);
@@ -29,12 +30,21 @@ message RangeAttributes {
   smartcore.api.types.Int32Attributes value_attributes = 1;
 }
 
+message RangeValue {
+  // The current value.
+  int32 value = 1;
+  // How the value changes or should change over time
+  smartcore.api.types.Tween value_tween = 2;
+  // Read-only, the target value after a transition
+  int32 target_value = 3;
+}
+
 // A request to update the value of a range
 message UpdateRangeValueRequest {
   // The name of the device to update
   string name = 1;
   // The new value for the range. Supply ramp to transition
-  smartcore.api.types.Int32Var range_value = 2;
+  RangeValue range_value = 2;
   // if true, then the values in the range_value represent deltas from the current value and not absolute values
   bool delta = 3;
 }
@@ -66,6 +76,6 @@ message PullRangeValueResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The new value for the range
-    smartcore.api.types.Int32Var range_value = 3;
+    RangeValue range_value = 3;
   }
 }

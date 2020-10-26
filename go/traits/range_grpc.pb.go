@@ -4,7 +4,6 @@ package traits
 
 import (
 	context "context"
-	types "git.vanti.co.uk/smartcore/sc-api/go/types"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,9 +18,9 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RangeApiClient interface {
 	// request that the range value be changes
-	UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error)
+	UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*RangeValue, error)
 	// get the current value of the range
-	GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error)
+	GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*RangeValue, error)
 	// request updates to changes in the range value
 	PullRangeValue(ctx context.Context, in *PullRangeValueRequest, opts ...grpc.CallOption) (RangeApi_PullRangeValueClient, error)
 }
@@ -34,8 +33,8 @@ func NewRangeApiClient(cc grpc.ClientConnInterface) RangeApiClient {
 	return &rangeApiClient{cc}
 }
 
-func (c *rangeApiClient) UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
-	out := new(types.Int32Var)
+func (c *rangeApiClient) UpdateRangeValue(ctx context.Context, in *UpdateRangeValueRequest, opts ...grpc.CallOption) (*RangeValue, error) {
+	out := new(RangeValue)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.RangeApi/UpdateRangeValue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -43,8 +42,8 @@ func (c *rangeApiClient) UpdateRangeValue(ctx context.Context, in *UpdateRangeVa
 	return out, nil
 }
 
-func (c *rangeApiClient) GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*types.Int32Var, error) {
-	out := new(types.Int32Var)
+func (c *rangeApiClient) GetRangeValue(ctx context.Context, in *GetRangeValueRequest, opts ...grpc.CallOption) (*RangeValue, error) {
+	out := new(RangeValue)
 	err := c.cc.Invoke(ctx, "/smartcore.traits.RangeApi/GetRangeValue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -89,9 +88,9 @@ func (x *rangeApiPullRangeValueClient) Recv() (*PullRangeValueResponse, error) {
 // for forward compatibility
 type RangeApiServer interface {
 	// request that the range value be changes
-	UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*types.Int32Var, error)
+	UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*RangeValue, error)
 	// get the current value of the range
-	GetRangeValue(context.Context, *GetRangeValueRequest) (*types.Int32Var, error)
+	GetRangeValue(context.Context, *GetRangeValueRequest) (*RangeValue, error)
 	// request updates to changes in the range value
 	PullRangeValue(*PullRangeValueRequest, RangeApi_PullRangeValueServer) error
 	mustEmbedUnimplementedRangeApiServer()
@@ -101,10 +100,10 @@ type RangeApiServer interface {
 type UnimplementedRangeApiServer struct {
 }
 
-func (*UnimplementedRangeApiServer) UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*types.Int32Var, error) {
+func (*UnimplementedRangeApiServer) UpdateRangeValue(context.Context, *UpdateRangeValueRequest) (*RangeValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRangeValue not implemented")
 }
-func (*UnimplementedRangeApiServer) GetRangeValue(context.Context, *GetRangeValueRequest) (*types.Int32Var, error) {
+func (*UnimplementedRangeApiServer) GetRangeValue(context.Context, *GetRangeValueRequest) (*RangeValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRangeValue not implemented")
 }
 func (*UnimplementedRangeApiServer) PullRangeValue(*PullRangeValueRequest, RangeApi_PullRangeValueServer) error {

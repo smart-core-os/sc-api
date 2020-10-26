@@ -45,15 +45,13 @@ export class Extension extends jspb.Message {
   getExtendPreset(): string;
   setExtendPreset(value: string): Extension;
 
-  getTween(): types_tween_pb.Tween | undefined;
-  setTween(value?: types_tween_pb.Tween): Extension;
-  hasTween(): boolean;
-  clearTween(): Extension;
+  getExtendTween(): types_tween_pb.Tween | undefined;
+  setExtendTween(value?: types_tween_pb.Tween): Extension;
+  hasExtendTween(): boolean;
+  clearExtendTween(): Extension;
 
-  getTargetExtendPercent(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setTargetExtendPercent(value?: google_protobuf_wrappers_pb.FloatValue): Extension;
-  hasTargetExtendPercent(): boolean;
-  clearTargetExtendPercent(): Extension;
+  getTargetExtendPercent(): number;
+  setTargetExtendPercent(value: number): Extension;
 
   getTargetExtendPreset(): string;
   setTargetExtendPreset(value: string): Extension;
@@ -70,8 +68,8 @@ export namespace Extension {
   export type AsObject = {
     extendPercent: number,
     extendPreset: string,
-    tween?: types_tween_pb.Tween.AsObject,
-    targetExtendPercent?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    extendTween?: types_tween_pb.Tween.AsObject,
+    targetExtendPercent: number,
     targetExtendPreset: string,
   }
 }

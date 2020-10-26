@@ -19,6 +19,8 @@ grpc.web = require('grpc-web');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
 var types_number_pb = require('../types/number_pb.js')
+
+var types_tween_pb = require('../types/tween_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./range_pb.js');
@@ -79,13 +81,13 @@ proto.smartcore.traits.RangeApiPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.smartcore.traits.UpdateRangeValueRequest,
- *   !proto.smartcore.api.types.Int32Var>}
+ *   !proto.smartcore.traits.RangeValue>}
  */
 const methodDescriptor_RangeApi_UpdateRangeValue = new grpc.web.MethodDescriptor(
   '/smartcore.traits.RangeApi/UpdateRangeValue',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateRangeValueRequest,
-  types_number_pb.Int32Var,
+  proto.smartcore.traits.RangeValue,
   /**
    * @param {!proto.smartcore.traits.UpdateRangeValueRequest} request
    * @return {!Uint8Array}
@@ -93,7 +95,7 @@ const methodDescriptor_RangeApi_UpdateRangeValue = new grpc.web.MethodDescriptor
   function(request) {
     return request.serializeBinary();
   },
-  types_number_pb.Int32Var.deserializeBinary
+  proto.smartcore.traits.RangeValue.deserializeBinary
 );
 
 
@@ -101,10 +103,10 @@ const methodDescriptor_RangeApi_UpdateRangeValue = new grpc.web.MethodDescriptor
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.smartcore.traits.UpdateRangeValueRequest,
- *   !proto.smartcore.api.types.Int32Var>}
+ *   !proto.smartcore.traits.RangeValue>}
  */
 const methodInfo_RangeApi_UpdateRangeValue = new grpc.web.AbstractClientBase.MethodInfo(
-  types_number_pb.Int32Var,
+  proto.smartcore.traits.RangeValue,
   /**
    * @param {!proto.smartcore.traits.UpdateRangeValueRequest} request
    * @return {!Uint8Array}
@@ -112,7 +114,7 @@ const methodInfo_RangeApi_UpdateRangeValue = new grpc.web.AbstractClientBase.Met
   function(request) {
     return request.serializeBinary();
   },
-  types_number_pb.Int32Var.deserializeBinary
+  proto.smartcore.traits.RangeValue.deserializeBinary
 );
 
 
@@ -121,9 +123,9 @@ const methodInfo_RangeApi_UpdateRangeValue = new grpc.web.AbstractClientBase.Met
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.api.types.Int32Var)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.RangeValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Int32Var>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.RangeValue>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.RangeApiClient.prototype.updateRangeValue =
@@ -142,7 +144,7 @@ proto.smartcore.traits.RangeApiClient.prototype.updateRangeValue =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.api.types.Int32Var>}
+ * @return {!Promise<!proto.smartcore.traits.RangeValue>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.RangeApiPromiseClient.prototype.updateRangeValue =
@@ -159,13 +161,13 @@ proto.smartcore.traits.RangeApiPromiseClient.prototype.updateRangeValue =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.smartcore.traits.GetRangeValueRequest,
- *   !proto.smartcore.api.types.Int32Var>}
+ *   !proto.smartcore.traits.RangeValue>}
  */
 const methodDescriptor_RangeApi_GetRangeValue = new grpc.web.MethodDescriptor(
   '/smartcore.traits.RangeApi/GetRangeValue',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.GetRangeValueRequest,
-  types_number_pb.Int32Var,
+  proto.smartcore.traits.RangeValue,
   /**
    * @param {!proto.smartcore.traits.GetRangeValueRequest} request
    * @return {!Uint8Array}
@@ -173,7 +175,7 @@ const methodDescriptor_RangeApi_GetRangeValue = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  types_number_pb.Int32Var.deserializeBinary
+  proto.smartcore.traits.RangeValue.deserializeBinary
 );
 
 
@@ -181,10 +183,10 @@ const methodDescriptor_RangeApi_GetRangeValue = new grpc.web.MethodDescriptor(
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.smartcore.traits.GetRangeValueRequest,
- *   !proto.smartcore.api.types.Int32Var>}
+ *   !proto.smartcore.traits.RangeValue>}
  */
 const methodInfo_RangeApi_GetRangeValue = new grpc.web.AbstractClientBase.MethodInfo(
-  types_number_pb.Int32Var,
+  proto.smartcore.traits.RangeValue,
   /**
    * @param {!proto.smartcore.traits.GetRangeValueRequest} request
    * @return {!Uint8Array}
@@ -192,7 +194,7 @@ const methodInfo_RangeApi_GetRangeValue = new grpc.web.AbstractClientBase.Method
   function(request) {
     return request.serializeBinary();
   },
-  types_number_pb.Int32Var.deserializeBinary
+  proto.smartcore.traits.RangeValue.deserializeBinary
 );
 
 
@@ -201,9 +203,9 @@ const methodInfo_RangeApi_GetRangeValue = new grpc.web.AbstractClientBase.Method
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.api.types.Int32Var)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.RangeValue)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.api.types.Int32Var>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.RangeValue>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.smartcore.traits.RangeApiClient.prototype.getRangeValue =
@@ -222,7 +224,7 @@ proto.smartcore.traits.RangeApiClient.prototype.getRangeValue =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.api.types.Int32Var>}
+ * @return {!Promise<!proto.smartcore.traits.RangeValue>}
  *     Promise that resolves to the response
  */
 proto.smartcore.traits.RangeApiPromiseClient.prototype.getRangeValue =

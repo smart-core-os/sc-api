@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_number_pb from '../types/number_pb';
+import * as types_tween_pb from '../types/tween_pb';
 
 
 export class LightAttributes extends jspb.Message {
@@ -31,15 +32,26 @@ export namespace LightAttributes {
 }
 
 export class Brightness extends jspb.Message {
-  getLevelPercent(): types_number_pb.Int32Var | undefined;
-  setLevelPercent(value?: types_number_pb.Int32Var): Brightness;
-  hasLevelPercent(): boolean;
-  clearLevelPercent(): Brightness;
+  getLevelPercent(): number;
+  setLevelPercent(value: number): Brightness;
 
   getPreset(): LightPreset | undefined;
   setPreset(value?: LightPreset): Brightness;
   hasPreset(): boolean;
   clearPreset(): Brightness;
+
+  getBrightnessTween(): types_tween_pb.Tween | undefined;
+  setBrightnessTween(value?: types_tween_pb.Tween): Brightness;
+  hasBrightnessTween(): boolean;
+  clearBrightnessTween(): Brightness;
+
+  getTargetLevelPercent(): number;
+  setTargetLevelPercent(value: number): Brightness;
+
+  getTargetPreset(): LightPreset | undefined;
+  setTargetPreset(value?: LightPreset): Brightness;
+  hasTargetPreset(): boolean;
+  clearTargetPreset(): Brightness;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Brightness.AsObject;
@@ -51,8 +63,11 @@ export class Brightness extends jspb.Message {
 
 export namespace Brightness {
   export type AsObject = {
-    levelPercent?: types_number_pb.Int32Var.AsObject,
+    levelPercent: number,
     preset?: LightPreset.AsObject,
+    brightnessTween?: types_tween_pb.Tween.AsObject,
+    targetLevelPercent: number,
+    targetPreset?: LightPreset.AsObject,
   }
 }
 

@@ -20,10 +20,10 @@ import "types/volume.proto";
 // For the sakes of this trait Volume means the combination of a gain and a mute state.
 service SpeakerApi {
   // Get the current state of the volume for the device
-  rpc GetVolume (GetSpeakerVolumeRequest) returns (smartcore.api.types.Volume);
+  rpc GetVolume (GetSpeakerVolumeRequest) returns (smartcore.api.types.AudioLevel);
 
   // update the volume state for the device
-  rpc UpdateVolume (UpdateSpeakerVolumeRequest) returns (smartcore.api.types.Volume);
+  rpc UpdateVolume (UpdateSpeakerVolumeRequest) returns (smartcore.api.types.AudioLevel);
 
   rpc PullVolume (PullSpeakerVolumeRequest) returns (stream PullSpeakerVolumeResponse);
 }
@@ -49,7 +49,7 @@ message UpdateSpeakerVolumeRequest {
   // Name of the device to update the state for
   string name = 1;
   // The updated volume value
-  smartcore.api.types.Volume volume = 2;
+  smartcore.api.types.AudioLevel volume = 2;
   // Only supported for Volume.level. Update the value relative to the current value.
   bool delta = 3;
   // The fields we intend to update relative to the Volume type
@@ -65,5 +65,5 @@ message PullSpeakerVolumeRequest {
 
 message PullSpeakerVolumeResponse {
   // Changes since the last message
-  repeated smartcore.api.types.VolumeChange changes = 1;
+  repeated smartcore.api.types.AudioLevelChange changes = 1;
 }
