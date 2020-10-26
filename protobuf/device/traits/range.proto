@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package smartcore.api.device.traits;
+
+option csharp_namespace = "Smartcore.Api.Device.Traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
+option java_multiple_files = true;
+option java_outer_classname = "RangeProto";
+option java_package = "dev.smartcore.api.device.traits";
+option php_namespace = "Smartcore\\Api\\Device\\Traits";
+
+import "google/protobuf/timestamp.proto";
+import "types/number.proto";
+
+// A trait for values that can have a minimum or maximum
+service Range {
+  // request that the range value be changes
+  rpc UpdateRangeValue (UpdateRangeValueRequest) returns (smartcore.api.types.Int32Var);
+
+  // get the current value of the range
+  rpc GetRangeValue (GetRangeValueRequest) returns (smartcore.api.types.Int32Var);
+
+  // request updates to changes in the range value
+  rpc PullRangeValue (PullRangeValueRequest) returns (stream PullRangeValueResponse);
+}
+
+// Trait.attributes relating to the value for the range
+message RangeAttributes {
+  smartcore.api.types.Int32Attributes value_attributes = 1;
+}
+
+// A request to update the value of a range
+message UpdateRangeValueRequest {
+  // The name of the device to update
+  string name = 1;
+  // The new value for the range. Supply ramp to transition
+  smartcore.api.types.Int32Var range_value = 2;
+  // if true, then the values in the range_value represent deltas from the current value and not absolute values
+  bool delta = 3;
+}
+
+// A request to get the current value of a range
+message GetRangeValueRequest {
+  // The name of the device to get the value for
+  string name = 1;
+}
+
+// Request to begin a subscription for range values
+message PullRangeValueRequest {
+  // The name of the device we want events from
+  string name = 1;
+  // Indicate whether we want to be notified of values while ramping or not. The device may ignore this depending on
+  // capabilities
+  bool exclude_ramping = 2;
+}
+
+// A response as part of the stream of changes to the range value
+message PullRangeValueResponse {
+  // The list of changes
+  repeated RangeValueChange changes = 1;
+}
+
+// A change to a single devices range value
+message RangeValueChange {
+  // name for the device that issued the change
+  string name = 1;
+  // when the change occurred
+  google.protobuf.Timestamp create_time = 2;
+  // The new value for the range
+  smartcore.api.types.Int32Var range_value = 3;
+}

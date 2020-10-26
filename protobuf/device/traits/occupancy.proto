@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package smartcore.api.device.traits;
+
+option csharp_namespace = "Smartcore.Api.Device.Traits";
+option go_package = "git.vanti.co.uk/smartcore/sc-api/go/device/traits";
+option java_multiple_files = true;
+option java_outer_classname = "OccupancyProto";
+option java_package = "dev.smartcore.api.device.traits";
+option php_namespace = "Smartcore\\Api\\Device\\Traits";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// The reporting of occupancy in a space. Similar to a MotionSensor, this reports whether a space is occupied or
+// unoccupied with additional optional information relating to _how_ occupied the space is (i.e. how many people are
+// present)
+service OccupancyApi {
+  // Get the current motion state for the device.
+  rpc GetOccupancy (GetOccupancyRequest) returns (Occupancy);
+
+  // subscribe to changes in the motion state for the device.
+  rpc PullOccupancy (PullOccupancyRequest) returns (stream PullOccupancyResponse);
+
+  // Create a new override for the occupancy
+  rpc CreateOccupancyOverride (CreateOccupancyOverrideRequest) returns (OccupancyOverride);
+
+  // Update an existing override
+  rpc UpdateOccupancyOverride (UpdateOccupancyOverrideRequest) returns (OccupancyOverride);
+
+  // Delete an override
+  rpc DeleteOccupancyOverride (DeleteOccupancyOverrideRequest) returns (google.protobuf.Empty);
+
+  // Get an existing override
+  rpc GetOccupancyOverride (GetOccupancyOverrideRequest) returns (OccupancyOverride);
+
+  // List all overrides. The device may discard overrides that have expired.
+  rpc ListOccupancyOverrides (ListOccupancyOverridesRequest) returns (ListOccupancyOverridesResponse);
+}
+
+// Trait.attribute for the configuration of the device
+message OccupancyAttributes {
+  // how many people can the occupancy service report. 0 means it won't report people counts. Note: this is _not_ the
+  // total capacity for the space, it's the capacity of the sensor
+  int32 max_people = 1;
+  // does the device support reporting a manual occupancy override, typically used for testing
+  bool supports_override = 2;
+}
+
+// Possible states for occupancy
+enum OccupancyState {
+  // There are no signals to suggest either an occupied or unoccupied space
+  NO_SIGNALS = 0;
+  // The space is occupied
+  OCCUPIED = 1;
+  // The space is unoccupied
+  UNOCCUPIED = 2;
+  // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
+  // moving for other reasons)
+  IDLE = 3;
+}
+
+// The occupancy state the device is reporting and updating
+message Occupancy {
+  // The current occupancy state
+  OccupancyState state = 1;
+  // The total number of people the occupancy sensor has detected. Do NOT use this value as an indication of occupancy
+  // state, a value of 0 could be reported for a space that is occupied if the device either doesn't support people
+  // counts or there is some other undefined issue with the counting part of the sensor suite.
+  int32 people_count = 2;
+  // When the occupancy state last changed. Does not update when people_count changes unlike the timestamp in
+  // OccupancyChange events
+  google.protobuf.Timestamp state_change_time = 3;
+
+  // Optional. List of human readable strings explaining why the device thinks the space is in the current state. For
+  // example could say OCCUPIED:["Detected people in space"] or IDLE:["No motion detected for 10 minutes"]. Typically
+  // used for debugging or troubleshooting purposes.
+  repeated string reasons = 4;
+  // Optional. How confident is the sensor that the current occupancy state is accurate. A value of 0 means that the
+  // confidence is unknown
+  double confidence = 5;
+}
+
+// Describes a manual override signal for an occupancy device
+message OccupancyOverride {
+  // The unique name of the override so it can be updated or removed. Present during read, required for update, one will
+  // be created if absent for create
+  string name = 1;
+  // Manually override the state of the occupancy
+  OccupancyState state = 2;
+  // Manually override the number of people reported
+  int32 people_count = 3;
+  // Automatically begin the manual override at this time. If absent then the override begins immediately.
+  google.protobuf.Timestamp begin_time = 4;
+  // Automatically expire the manual override after this time. If absent then the override does not expire and should be
+  // removed manually.
+  google.protobuf.Timestamp expire_time = 5;
+  // Optional human readable reason to help diagnose this manual override. If the manual override is active then this
+  // should be included in the Occupancy reasons list.
+  string reason = 6;
+}
+
+// request to fetch the current state of the device
+message GetOccupancyRequest {
+  // the name for the device to get the occupancy state for
+  string name = 1;
+}
+
+// request to be notified of changes to the state of the device
+message PullOccupancyRequest {
+  // the name for the device to subscribe to
+  string name = 1;
+}
+
+// response containing occupancy state changes
+message PullOccupancyResponse {
+  // the list of changes that have occurred since the last event
+  repeated OccupancyChange changes = 1;
+}
+
+// A change to the occupancy state of the device, including people count
+message OccupancyChange {
+  // name for the device that issued the change
+  string name = 1;
+  // when the change occurred
+  google.protobuf.Timestamp create_time = 2;
+  // the new state for the device
+  Occupancy occupancy = 3;
+}
+
+message CreateOccupancyOverrideRequest {
+  // the device name
+  string name = 1;
+  OccupancyOverride override = 2;
+}
+
+message UpdateOccupancyOverrideRequest {
+  // the device name
+  string name = 1;
+  OccupancyOverride override = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message DeleteOccupancyOverrideRequest {
+  // the device name
+  string device_name = 1;
+  string override_name = 2;
+}
+
+message GetOccupancyOverrideRequest {
+  // the device name
+  string device_name = 1;
+  string override_name = 2;
+}
+
+message ListOccupancyOverridesRequest {
+  // the device name
+  string name = 1;
+  // todo: support filters on expired or pending, etc
+  // todo: support paging if we can be bothered
+}
+
+message ListOccupancyOverridesResponse {
+  repeated OccupancyOverride overrides = 1;
+}
