@@ -31,10 +31,10 @@ export namespace LightAttributes {
 }
 
 export class Brightness extends jspb.Message {
-  getLevel(): types_number_pb.Int32Var | undefined;
-  setLevel(value?: types_number_pb.Int32Var): Brightness;
-  hasLevel(): boolean;
-  clearLevel(): Brightness;
+  getLevelPercent(): types_number_pb.Int32Var | undefined;
+  setLevelPercent(value?: types_number_pb.Int32Var): Brightness;
+  hasLevelPercent(): boolean;
+  clearLevelPercent(): Brightness;
 
   getPreset(): LightPreset | undefined;
   setPreset(value?: LightPreset): Brightness;
@@ -51,7 +51,7 @@ export class Brightness extends jspb.Message {
 
 export namespace Brightness {
   export type AsObject = {
-    level?: types_number_pb.Int32Var.AsObject,
+    levelPercent?: types_number_pb.Int32Var.AsObject,
     preset?: LightPreset.AsObject,
   }
 }

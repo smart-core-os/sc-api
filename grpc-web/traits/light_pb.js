@@ -435,7 +435,7 @@ proto.smartcore.traits.Brightness.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Brightness.toObject = function(includeInstance, msg) {
   var f, obj = {
-    level: (f = msg.getLevel()) && types_number_pb.Int32Var.toObject(includeInstance, f),
+    levelPercent: (f = msg.getLevelPercent()) && types_number_pb.Int32Var.toObject(includeInstance, f),
     preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
   };
 
@@ -476,7 +476,7 @@ proto.smartcore.traits.Brightness.deserializeBinaryFromReader = function(msg, re
     case 1:
       var value = new types_number_pb.Int32Var;
       reader.readMessage(value,types_number_pb.Int32Var.deserializeBinaryFromReader);
-      msg.setLevel(value);
+      msg.setLevelPercent(value);
       break;
     case 2:
       var value = new proto.smartcore.traits.LightPreset;
@@ -512,7 +512,7 @@ proto.smartcore.traits.Brightness.prototype.serializeBinary = function() {
  */
 proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getLevel();
+  f = message.getLevelPercent();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -532,10 +532,10 @@ proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, wr
 
 
 /**
- * optional smartcore.api.types.Int32Var level = 1;
+ * optional smartcore.api.types.Int32Var level_percent = 1;
  * @return {?proto.smartcore.api.types.Int32Var}
  */
-proto.smartcore.traits.Brightness.prototype.getLevel = function() {
+proto.smartcore.traits.Brightness.prototype.getLevelPercent = function() {
   return /** @type{?proto.smartcore.api.types.Int32Var} */ (
     jspb.Message.getWrapperField(this, types_number_pb.Int32Var, 1));
 };
@@ -545,7 +545,7 @@ proto.smartcore.traits.Brightness.prototype.getLevel = function() {
  * @param {?proto.smartcore.api.types.Int32Var|undefined} value
  * @return {!proto.smartcore.traits.Brightness} returns this
 */
-proto.smartcore.traits.Brightness.prototype.setLevel = function(value) {
+proto.smartcore.traits.Brightness.prototype.setLevelPercent = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -554,8 +554,8 @@ proto.smartcore.traits.Brightness.prototype.setLevel = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.Brightness} returns this
  */
-proto.smartcore.traits.Brightness.prototype.clearLevel = function() {
-  return this.setLevel(undefined);
+proto.smartcore.traits.Brightness.prototype.clearLevelPercent = function() {
+  return this.setLevelPercent(undefined);
 };
 
 
@@ -563,7 +563,7 @@ proto.smartcore.traits.Brightness.prototype.clearLevel = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.Brightness.prototype.hasLevel = function() {
+proto.smartcore.traits.Brightness.prototype.hasLevelPercent = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
