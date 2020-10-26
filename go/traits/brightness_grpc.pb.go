@@ -17,8 +17,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BrightnessApiClient interface {
-	// request that the range value be changed
-	UpdateRangeValue(ctx context.Context, in *UpdateBrightnessRequest, opts ...grpc.CallOption) (*Brightness, error)
+	// request that the brightness be changed
+	UpdateBrightness(ctx context.Context, in *UpdateBrightnessRequest, opts ...grpc.CallOption) (*Brightness, error)
 	// get the current value of the range
 	GetBrightness(ctx context.Context, in *GetBrightnessRequest, opts ...grpc.CallOption) (*Brightness, error)
 	// request updates to changes in the range value
@@ -33,9 +33,9 @@ func NewBrightnessApiClient(cc grpc.ClientConnInterface) BrightnessApiClient {
 	return &brightnessApiClient{cc}
 }
 
-func (c *brightnessApiClient) UpdateRangeValue(ctx context.Context, in *UpdateBrightnessRequest, opts ...grpc.CallOption) (*Brightness, error) {
+func (c *brightnessApiClient) UpdateBrightness(ctx context.Context, in *UpdateBrightnessRequest, opts ...grpc.CallOption) (*Brightness, error) {
 	out := new(Brightness)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.BrightnessApi/UpdateRangeValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.BrightnessApi/UpdateBrightness", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,8 +87,8 @@ func (x *brightnessApiPullBrightnessClient) Recv() (*PullBrightnessResponse, err
 // All implementations must embed UnimplementedBrightnessApiServer
 // for forward compatibility
 type BrightnessApiServer interface {
-	// request that the range value be changed
-	UpdateRangeValue(context.Context, *UpdateBrightnessRequest) (*Brightness, error)
+	// request that the brightness be changed
+	UpdateBrightness(context.Context, *UpdateBrightnessRequest) (*Brightness, error)
 	// get the current value of the range
 	GetBrightness(context.Context, *GetBrightnessRequest) (*Brightness, error)
 	// request updates to changes in the range value
@@ -100,8 +100,8 @@ type BrightnessApiServer interface {
 type UnimplementedBrightnessApiServer struct {
 }
 
-func (*UnimplementedBrightnessApiServer) UpdateRangeValue(context.Context, *UpdateBrightnessRequest) (*Brightness, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRangeValue not implemented")
+func (*UnimplementedBrightnessApiServer) UpdateBrightness(context.Context, *UpdateBrightnessRequest) (*Brightness, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBrightness not implemented")
 }
 func (*UnimplementedBrightnessApiServer) GetBrightness(context.Context, *GetBrightnessRequest) (*Brightness, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBrightness not implemented")
@@ -115,20 +115,20 @@ func RegisterBrightnessApiServer(s *grpc.Server, srv BrightnessApiServer) {
 	s.RegisterService(&_BrightnessApi_serviceDesc, srv)
 }
 
-func _BrightnessApi_UpdateRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BrightnessApi_UpdateBrightness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateBrightnessRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BrightnessApiServer).UpdateRangeValue(ctx, in)
+		return srv.(BrightnessApiServer).UpdateBrightness(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.BrightnessApi/UpdateRangeValue",
+		FullMethod: "/smartcore.traits.BrightnessApi/UpdateBrightness",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BrightnessApiServer).UpdateRangeValue(ctx, req.(*UpdateBrightnessRequest))
+		return srv.(BrightnessApiServer).UpdateBrightness(ctx, req.(*UpdateBrightnessRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -177,8 +177,8 @@ var _BrightnessApi_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*BrightnessApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateRangeValue",
-			Handler:    _BrightnessApi_UpdateRangeValue_Handler,
+			MethodName: "UpdateBrightness",
+			Handler:    _BrightnessApi_UpdateBrightness_Handler,
 		},
 		{
 			MethodName: "GetBrightness",

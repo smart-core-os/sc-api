@@ -81,8 +81,8 @@ proto.smartcore.traits.BrightnessApiPromiseClient =
  *   !proto.smartcore.traits.UpdateBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodDescriptor_BrightnessApi_UpdateRangeValue = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.BrightnessApi/UpdateRangeValue',
+const methodDescriptor_BrightnessApi_UpdateBrightness = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.BrightnessApi/UpdateBrightness',
   grpc.web.MethodType.UNARY,
   proto.smartcore.traits.UpdateBrightnessRequest,
   proto.smartcore.traits.Brightness,
@@ -103,7 +103,7 @@ const methodDescriptor_BrightnessApi_UpdateRangeValue = new grpc.web.MethodDescr
  *   !proto.smartcore.traits.UpdateBrightnessRequest,
  *   !proto.smartcore.traits.Brightness>}
  */
-const methodInfo_BrightnessApi_UpdateRangeValue = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_BrightnessApi_UpdateBrightness = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.Brightness,
   /**
    * @param {!proto.smartcore.traits.UpdateBrightnessRequest} request
@@ -126,13 +126,13 @@ const methodInfo_BrightnessApi_UpdateRangeValue = new grpc.web.AbstractClientBas
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Brightness>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.BrightnessApiClient.prototype.updateRangeValue =
+proto.smartcore.traits.BrightnessApiClient.prototype.updateBrightness =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/UpdateRangeValue',
+      '/smartcore.traits.BrightnessApi/UpdateBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_UpdateRangeValue,
+      methodDescriptor_BrightnessApi_UpdateBrightness,
       callback);
 };
 
@@ -145,13 +145,13 @@ proto.smartcore.traits.BrightnessApiClient.prototype.updateRangeValue =
  * @return {!Promise<!proto.smartcore.traits.Brightness>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.BrightnessApiPromiseClient.prototype.updateRangeValue =
+proto.smartcore.traits.BrightnessApiPromiseClient.prototype.updateBrightness =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.BrightnessApi/UpdateRangeValue',
+      '/smartcore.traits.BrightnessApi/UpdateBrightness',
       request,
       metadata || {},
-      methodDescriptor_BrightnessApi_UpdateRangeValue);
+      methodDescriptor_BrightnessApi_UpdateBrightness);
 };
 
 

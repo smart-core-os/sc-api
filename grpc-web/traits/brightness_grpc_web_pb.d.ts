@@ -8,7 +8,7 @@ export class BrightnessApiClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  updateRangeValue(
+  updateBrightness(
     request: traits_brightness_pb.UpdateBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
@@ -34,7 +34,7 @@ export class BrightnessApiPromiseClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  updateRangeValue(
+  updateBrightness(
     request: traits_brightness_pb.UpdateBrightnessRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<traits_brightness_pb.Brightness>;
