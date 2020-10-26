@@ -175,42 +175,42 @@
         
           
           <li>
-            <a href="#traits%2fsensor.proto">traits/sensor.proto</a>
+            <a href="#traits%2fair_quality_sensor.proto">traits/air_quality_sensor.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetSensorStateRequest"><span class="badge">M</span>GetSensorStateRequest</a>
+                  <a href="#smartcore.traits.AirQualitySensorAttributes"><span class="badge">M</span>AirQualitySensorAttributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullSensorStateRequest"><span class="badge">M</span>PullSensorStateRequest</a>
+                  <a href="#smartcore.traits.AirQualityState"><span class="badge">M</span>AirQualityState</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullSensorStateResponse"><span class="badge">M</span>PullSensorStateResponse</a>
+                  <a href="#smartcore.traits.AirQualityStateChange"><span class="badge">M</span>AirQualityStateChange</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorAttributes"><span class="badge">M</span>SensorAttributes</a>
+                  <a href="#smartcore.traits.GetAirQualityStateRequest"><span class="badge">M</span>GetAirQualityStateRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorState"><span class="badge">M</span>SensorState</a>
+                  <a href="#smartcore.traits.PullAirQualityStateRequest"><span class="badge">M</span>PullAirQualityStateRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SensorStateChange"><span class="badge">M</span>SensorStateChange</a>
+                  <a href="#smartcore.traits.PullAirQualityStateResponse"><span class="badge">M</span>PullAirQualityStateResponse</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.traits.SensorComfort"><span class="badge">E</span>SensorComfort</a>
+                  <a href="#smartcore.traits.AirQualityComfort"><span class="badge">E</span>AirQualityComfort</a>
                 </li>
               
               
               
                 <li>
-                  <a href="#smartcore.traits.Sensor"><span class="badge">S</span>Sensor</a>
+                  <a href="#smartcore.traits.AirQualitySensor"><span class="badge">S</span>AirQualitySensor</a>
                 </li>
               
             </ul>
@@ -223,99 +223,13 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/sensor.proto">traits/sensor.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/air_quality_sensor.proto">traits/air_quality_sensor.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.GetSensorStateRequest">GetSensorStateRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device to request state from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields to fetch </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullSensorStateRequest">PullSensorStateRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device to request state from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields to pull </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullSensorStateResponse">PullSensorStateResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>changes</td>
-                  <td><a href="#smartcore.traits.SensorStateChange">SensorStateChange</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.SensorAttributes">SensorAttributes</h3>
-        <p>Trait.attribute describing capabilities of the Sensor device</p>
+        <h3 id="smartcore.traits.AirQualitySensorAttributes">AirQualitySensorAttributes</h3>
+        <p>Trait.attribute describing capabilities of the AirQuality device</p>
 
         
           <table class="field-table">
@@ -347,7 +261,7 @@
               
                 <tr>
                   <td>comfort</td>
-                  <td><a href="#smartcore.traits.SensorComfort">SensorComfort</a></td>
+                  <td><a href="#smartcore.traits.AirQualityComfort">AirQualityComfort</a></td>
                   <td>repeated</td>
                   <td><p>If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
 Unknown should be assumed to be present if supported. </p></td>
@@ -360,8 +274,8 @@ Unknown should be assumed to be present if supported. </p></td>
 
         
       
-        <h3 id="smartcore.traits.SensorState">SensorState</h3>
-        <p>SensorState holds the value of all supported sensors.</p>
+        <h3 id="smartcore.traits.AirQualityState">AirQualityState</h3>
+        <p>AirQualityState holds the value of all supported sensors.</p>
 
         
           <table class="field-table">
@@ -393,7 +307,7 @@ Unknown should be assumed to be present if supported. </p></td>
               
                 <tr>
                   <td>comfort</td>
-                  <td><a href="#smartcore.traits.SensorComfort">SensorComfort</a></td>
+                  <td><a href="#smartcore.traits.AirQualityComfort">AirQualityComfort</a></td>
                   <td></td>
                   <td><p>General comfort of the area </p></td>
                 </tr>
@@ -405,7 +319,7 @@ Unknown should be assumed to be present if supported. </p></td>
 
         
       
-        <h3 id="smartcore.traits.SensorStateChange">SensorStateChange</h3>
+        <h3 id="smartcore.traits.AirQualityStateChange">AirQualityStateChange</h3>
         <p></p>
 
         
@@ -431,7 +345,7 @@ Unknown should be assumed to be present if supported. </p></td>
               
                 <tr>
                   <td>state</td>
-                  <td><a href="#smartcore.traits.SensorState">SensorState</a></td>
+                  <td><a href="#smartcore.traits.AirQualityState">AirQualityState</a></td>
                   <td></td>
                   <td><p>The new state of the sensor. Changed fields should be reported via the update_mask property. </p></td>
                 </tr>
@@ -450,10 +364,96 @@ Unknown should be assumed to be present if supported. </p></td>
 
         
       
+        <h3 id="smartcore.traits.GetAirQualityStateRequest">GetAirQualityStateRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device to request state from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields to fetch </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullAirQualityStateRequest">PullAirQualityStateRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device to request state from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields to pull </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullAirQualityStateResponse">PullAirQualityStateResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.AirQualityStateChange">AirQualityStateChange</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
-        <h3 id="smartcore.traits.SensorComfort">SensorComfort</h3>
-        <p>SensorComfort encodes levels of comfort for an area.</p>
+        <h3 id="smartcore.traits.AirQualityComfort">AirQualityComfort</h3>
+        <p>AirQualityComfort encodes levels of comfort for an area.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -461,19 +461,19 @@ Unknown should be assumed to be present if supported. </p></td>
           <tbody>
             
               <tr>
-                <td>SENSOR_COMFORT_UNKNOWN</td>
+                <td>AIR_QUALITY_COMFORT_UNKNOWN</td>
                 <td>0</td>
                 <td><p>The comfort level is unknown</p></td>
               </tr>
             
               <tr>
-                <td>SENSOR_COMFORT_COMFORTABLE</td>
+                <td>AIR_QUALITY_COMFORT_COMFORTABLE</td>
                 <td>1</td>
                 <td><p>The area should be comfortable for occupants</p></td>
               </tr>
             
               <tr>
-                <td>SENSOR_COMFORT_UNCOMFORTABLE</td>
+                <td>AIR_QUALITY_COMFORT_UNCOMFORTABLE</td>
                 <td>2</td>
                 <td><p>The area might be uncomfortable for occupants</p></td>
               </tr>
@@ -485,8 +485,8 @@ Unknown should be assumed to be present if supported. </p></td>
       
 
       
-        <h3 id="smartcore.traits.Sensor">Sensor</h3>
-        <p>Trait for devices that can report either numeric or descriptive readings from their surroundings.</p>
+        <h3 id="smartcore.traits.AirQualitySensor">AirQualitySensor</h3>
+        <p>Trait for devices that can report either numeric or descriptive readings about air quality and comfort.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -495,15 +495,15 @@ Unknown should be assumed to be present if supported. </p></td>
             
               <tr>
                 <td>GetState</td>
-                <td><a href="#smartcore.traits.GetSensorStateRequest">GetSensorStateRequest</a></td>
-                <td><a href="#smartcore.traits.SensorState">SensorState</a></td>
+                <td><a href="#smartcore.traits.GetAirQualityStateRequest">GetAirQualityStateRequest</a></td>
+                <td><a href="#smartcore.traits.AirQualityState">AirQualityState</a></td>
                 <td><p>Get the current state of all reading this device supports</p></td>
               </tr>
             
               <tr>
                 <td>PullState</td>
-                <td><a href="#smartcore.traits.PullSensorStateRequest">PullSensorStateRequest</a></td>
-                <td><a href="#smartcore.traits.PullSensorStateResponse">PullSensorStateResponse</a> stream</td>
+                <td><a href="#smartcore.traits.PullAirQualityStateRequest">PullAirQualityStateRequest</a></td>
+                <td><a href="#smartcore.traits.PullAirQualityStateResponse">PullAirQualityStateResponse</a> stream</td>
                 <td><p>Be notified of changes to any reading</p></td>
               </tr>
             

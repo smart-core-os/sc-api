@@ -25,7 +25,7 @@ var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrapp
 var types_number_pb = require('../types/number_pb.js')
 const proto = {};
 proto.smartcore = {};
-proto.smartcore.traits = require('./sensor_pb.js');
+proto.smartcore.traits = require('./air_quality_sensor_pb.js');
 
 /**
  * @param {string} hostname
@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./sensor_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.SensorClient =
+proto.smartcore.traits.AirQualitySensorClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.SensorClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.SensorPromiseClient =
+proto.smartcore.traits.AirQualitySensorPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -82,155 +82,155 @@ proto.smartcore.traits.SensorPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetSensorStateRequest,
- *   !proto.smartcore.traits.SensorState>}
+ *   !proto.smartcore.traits.GetAirQualityStateRequest,
+ *   !proto.smartcore.traits.AirQualityState>}
  */
-const methodDescriptor_Sensor_GetState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Sensor/GetState',
+const methodDescriptor_AirQualitySensor_GetState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirQualitySensor/GetState',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetSensorStateRequest,
-  proto.smartcore.traits.SensorState,
+  proto.smartcore.traits.GetAirQualityStateRequest,
+  proto.smartcore.traits.AirQualityState,
   /**
-   * @param {!proto.smartcore.traits.GetSensorStateRequest} request
+   * @param {!proto.smartcore.traits.GetAirQualityStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.SensorState.deserializeBinary
+  proto.smartcore.traits.AirQualityState.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetSensorStateRequest,
- *   !proto.smartcore.traits.SensorState>}
+ *   !proto.smartcore.traits.GetAirQualityStateRequest,
+ *   !proto.smartcore.traits.AirQualityState>}
  */
-const methodInfo_Sensor_GetState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.SensorState,
+const methodInfo_AirQualitySensor_GetState = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.AirQualityState,
   /**
-   * @param {!proto.smartcore.traits.GetSensorStateRequest} request
+   * @param {!proto.smartcore.traits.GetAirQualityStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.SensorState.deserializeBinary
+  proto.smartcore.traits.AirQualityState.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetSensorStateRequest} request The
+ * @param {!proto.smartcore.traits.GetAirQualityStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.SensorState)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirQualityState)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.SensorState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirQualityState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SensorClient.prototype.getState =
+proto.smartcore.traits.AirQualitySensorClient.prototype.getState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.Sensor/GetState',
+      '/smartcore.traits.AirQualitySensor/GetState',
       request,
       metadata || {},
-      methodDescriptor_Sensor_GetState,
+      methodDescriptor_AirQualitySensor_GetState,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.GetSensorStateRequest} request The
+ * @param {!proto.smartcore.traits.GetAirQualityStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.SensorState>}
+ * @return {!Promise<!proto.smartcore.traits.AirQualityState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.SensorPromiseClient.prototype.getState =
+proto.smartcore.traits.AirQualitySensorPromiseClient.prototype.getState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.Sensor/GetState',
+      '/smartcore.traits.AirQualitySensor/GetState',
       request,
       metadata || {},
-      methodDescriptor_Sensor_GetState);
+      methodDescriptor_AirQualitySensor_GetState);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullSensorStateRequest,
- *   !proto.smartcore.traits.PullSensorStateResponse>}
+ *   !proto.smartcore.traits.PullAirQualityStateRequest,
+ *   !proto.smartcore.traits.PullAirQualityStateResponse>}
  */
-const methodDescriptor_Sensor_PullState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.Sensor/PullState',
+const methodDescriptor_AirQualitySensor_PullState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirQualitySensor/PullState',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullSensorStateRequest,
-  proto.smartcore.traits.PullSensorStateResponse,
+  proto.smartcore.traits.PullAirQualityStateRequest,
+  proto.smartcore.traits.PullAirQualityStateResponse,
   /**
-   * @param {!proto.smartcore.traits.PullSensorStateRequest} request
+   * @param {!proto.smartcore.traits.PullAirQualityStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullSensorStateResponse.deserializeBinary
+  proto.smartcore.traits.PullAirQualityStateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullSensorStateRequest,
- *   !proto.smartcore.traits.PullSensorStateResponse>}
+ *   !proto.smartcore.traits.PullAirQualityStateRequest,
+ *   !proto.smartcore.traits.PullAirQualityStateResponse>}
  */
-const methodInfo_Sensor_PullState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullSensorStateResponse,
+const methodInfo_AirQualitySensor_PullState = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.PullAirQualityStateResponse,
   /**
-   * @param {!proto.smartcore.traits.PullSensorStateRequest} request
+   * @param {!proto.smartcore.traits.PullAirQualityStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullSensorStateResponse.deserializeBinary
+  proto.smartcore.traits.PullAirQualityStateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.PullSensorStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullAirQualityStateRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSensorStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityStateResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SensorClient.prototype.pullState =
+proto.smartcore.traits.AirQualitySensorClient.prototype.pullState =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Sensor/PullState',
+      '/smartcore.traits.AirQualitySensor/PullState',
       request,
       metadata || {},
-      methodDescriptor_Sensor_PullState);
+      methodDescriptor_AirQualitySensor_PullState);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.PullSensorStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullAirQualityStateRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSensorStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityStateResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.SensorPromiseClient.prototype.pullState =
+proto.smartcore.traits.AirQualitySensorPromiseClient.prototype.pullState =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.Sensor/PullState',
+      '/smartcore.traits.AirQualitySensor/PullState',
       request,
       metadata || {},
-      methodDescriptor_Sensor_PullState);
+      methodDescriptor_AirQualitySensor_PullState);
 };
 
 

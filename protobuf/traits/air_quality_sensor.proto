@@ -5,7 +5,7 @@ package smartcore.traits;
 option csharp_namespace = "Smartcore.Traits";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/traits";
 option java_multiple_files = true;
-option java_outer_classname = "SensorProto";
+option java_outer_classname = "AirQualityProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
@@ -14,74 +14,74 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 import "types/number.proto";
 
-// Trait for devices that can report either numeric or descriptive readings from their surroundings.
-service Sensor {
+// Trait for devices that can report either numeric or descriptive readings about air quality and comfort.
+service AirQualitySensor {
   // Get the current state of all reading this device supports
-  rpc GetState (GetSensorStateRequest) returns (SensorState);
+  rpc GetState (GetAirQualityStateRequest) returns (AirQualityState);
   // Be notified of changes to any reading
-  rpc PullState (PullSensorStateRequest) returns (stream PullSensorStateResponse);
+  rpc PullState (PullAirQualityStateRequest) returns (stream PullAirQualityStateResponse);
 }
 
-// Trait.attribute describing capabilities of the Sensor device
-message SensorAttributes {
+// Trait.attribute describing capabilities of the AirQuality device
+message AirQualitySensorAttributes {
   // If present then the sensor supports reporting CO2 levels, in parts-per-million.
-  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
+  smartcore.api.types.FloatBounds carbon_dioxide_level = 1;
   // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.
-  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
+  smartcore.api.types.FloatBounds volatile_organic_compounds = 2;
   // If present then the sensor supports reporting air pressure, in hPa.
-  smartcore.api.types.FloatBounds air_pressure = 4;
+  smartcore.api.types.FloatBounds air_pressure = 3;
   // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
   // Unknown should be assumed to be present if supported.
-  repeated SensorComfort comfort = 5;
+  repeated AirQualityComfort comfort = 4;
 }
 
-// SensorState holds the value of all supported sensors.
-message SensorState {
+// AirQualityState holds the value of all supported sensors.
+message AirQualityState {
   // The CO2 level in parts per million
-  google.protobuf.FloatValue carbon_dioxide_level = 2;
+  google.protobuf.FloatValue carbon_dioxide_level = 1;
   // The VOC level in parts per million
-  google.protobuf.FloatValue volatile_organic_compounds = 3;
+  google.protobuf.FloatValue volatile_organic_compounds = 2;
   // The air pressure in hPa
-  google.protobuf.FloatValue air_pressure = 4;
+  google.protobuf.FloatValue air_pressure = 3;
   // General comfort of the area
-  SensorComfort comfort = 5;
+  AirQualityComfort comfort = 4;
 }
 
-// SensorComfort encodes levels of comfort for an area.
-enum SensorComfort {
+// AirQualityComfort encodes levels of comfort for an area.
+enum AirQualityComfort {
   // The comfort level is unknown
-  SENSOR_COMFORT_UNKNOWN = 0;
+  AIR_QUALITY_COMFORT_UNKNOWN = 0;
   // The area should be comfortable for occupants
-  SENSOR_COMFORT_COMFORTABLE = 1;
+  AIR_QUALITY_COMFORT_COMFORTABLE = 1;
   // The area might be uncomfortable for occupants
-  SENSOR_COMFORT_UNCOMFORTABLE = 2;
+  AIR_QUALITY_COMFORT_UNCOMFORTABLE = 2;
 }
 
-message GetSensorStateRequest {
+message GetAirQualityStateRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to fetch
   google.protobuf.FieldMask update_mask = 2;
 }
 
-message PullSensorStateRequest {
+message PullAirQualityStateRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to pull
   google.protobuf.FieldMask update_mask = 2;
 }
 
-message PullSensorStateResponse {
-  repeated SensorStateChange changes = 1;
+message PullAirQualityStateResponse {
+  repeated AirQualityStateChange changes = 1;
 }
 
-message SensorStateChange {
+message AirQualityStateChange {
   // The name of the device that has changed.
   string name = 1;
   // The time the change happened.
   google.protobuf.Timestamp change_time = 2;
   // The new state of the sensor. Changed fields should be reported via the update_mask property.
-  SensorState state = 3;
+  AirQualityState state = 3;
   // The state fields that have changed.
   google.protobuf.FieldMask update_mask = 4;
 }
