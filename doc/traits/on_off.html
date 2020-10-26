@@ -179,46 +179,38 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetOnOffStateRequest"><span class="badge">M</span>GetOnOffStateRequest</a>
+                  <a href="#smartcore.traits.GetOnOffRequest"><span class="badge">M</span>GetOnOffRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetOnOffStateResponse"><span class="badge">M</span>GetOnOffStateResponse</a>
+                  <a href="#smartcore.traits.OnOff"><span class="badge">M</span>OnOff</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OffReply"><span class="badge">M</span>OffReply</a>
+                  <a href="#smartcore.traits.PullOnOffRequest"><span class="badge">M</span>PullOnOffRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OffRequest"><span class="badge">M</span>OffRequest</a>
+                  <a href="#smartcore.traits.PullOnOffResponse"><span class="badge">M</span>PullOnOffResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OnOffChange"><span class="badge">M</span>OnOffChange</a>
+                  <a href="#smartcore.traits.PullOnOffResponse.Change"><span class="badge">M</span>PullOnOffResponse.Change</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OnOffPullRequest"><span class="badge">M</span>OnOffPullRequest</a>
+                  <a href="#smartcore.traits.UpdateOnOffRequest"><span class="badge">M</span>UpdateOnOffRequest</a>
                 </li>
               
-                <li>
-                  <a href="#smartcore.traits.OnOffPullResponse"><span class="badge">M</span>OnOffPullResponse</a>
-                </li>
               
                 <li>
-                  <a href="#smartcore.traits.OnReply"><span class="badge">M</span>OnReply</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.OnRequest"><span class="badge">M</span>OnRequest</a>
+                  <a href="#smartcore.traits.OnOrOff"><span class="badge">E</span>OnOrOff</a>
                 </li>
               
               
               
-              
                 <li>
-                  <a href="#smartcore.traits.OnOff"><span class="badge">S</span>OnOff</a>
+                  <a href="#smartcore.traits.OnOffApi"><span class="badge">S</span>OnOffApi</a>
                 </li>
               
             </ul>
@@ -236,7 +228,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.GetOnOffStateRequest">GetOnOffStateRequest</h3>
+        <h3 id="smartcore.traits.GetOnOffRequest">GetOnOffRequest</h3>
         <p></p>
 
         
@@ -260,7 +252,7 @@
 
         
       
-        <h3 id="smartcore.traits.GetOnOffStateResponse">GetOnOffStateResponse</h3>
+        <h3 id="smartcore.traits.OnOff">OnOff</h3>
         <p></p>
 
         
@@ -271,8 +263,8 @@
             <tbody>
               
                 <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.api.types.OnOffState">smartcore.api.types.OnOffState</a></td>
+                  <td>on_or_off</td>
+                  <td><a href="#smartcore.traits.OnOrOff">OnOrOff</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -284,76 +276,7 @@
 
         
       
-        <h3 id="smartcore.traits.OffReply">OffReply</h3>
-        <p></p>
-
-        
-
-        
-      
-        <h3 id="smartcore.traits.OffRequest">OffRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Required. The name of the device that should be controlled </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OnOffChange">OnOffChange</h3>
-        <p>A change to the state</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>create_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#smartcore.api.types.OnOffState">smartcore.api.types.OnOffState</a></td>
-                  <td></td>
-                  <td><p>the new state for the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OnOffPullRequest">OnOffPullRequest</h3>
+        <h3 id="smartcore.traits.PullOnOffRequest">PullOnOffRequest</h3>
         <p>A request to monitor the state of a device</p>
 
         
@@ -367,7 +290,7 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>todo: filters like name or frequency go here </p></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -377,7 +300,7 @@
 
         
       
-        <h3 id="smartcore.traits.OnOffPullResponse">OnOffPullResponse</h3>
+        <h3 id="smartcore.traits.PullOnOffResponse">PullOnOffResponse</h3>
         <p>Response to a Pull request for OnOffState changes</p>
 
         
@@ -389,7 +312,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.OnOffChange">OnOffChange</a></td>
+                  <td><a href="#smartcore.traits.PullOnOffResponse.Change">PullOnOffResponse.Change</a></td>
                   <td>repeated</td>
                   <td><p>Changes that have occurred since the last event </p></td>
                 </tr>
@@ -401,14 +324,7 @@
 
         
       
-        <h3 id="smartcore.traits.OnReply">OnReply</h3>
-        <p></p>
-
-        
-
-        
-      
-        <h3 id="smartcore.traits.OnRequest">OnRequest</h3>
+        <h3 id="smartcore.traits.PullOnOffResponse.Change">PullOnOffResponse.Change</h3>
         <p></p>
 
         
@@ -422,7 +338,45 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Required. The name of the device that should be controlled </p></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>on_off</td>
+                  <td><a href="#smartcore.traits.OnOff">OnOff</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateOnOffRequest">UpdateOnOffRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -434,11 +388,40 @@
       
 
       
-
+        <h3 id="smartcore.traits.OnOrOff">OnOrOff</h3>
+        <p>Possible states for an On-Off device</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ON_OR_OFF_UNKNOWN</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ON_OR_OFF_ON</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ON_OR_OFF_OFF</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       
-        <h3 id="smartcore.traits.OnOff">OnOff</h3>
+
+      
+        <h3 id="smartcore.traits.OnOffApi">OnOffApi</h3>
         <p>Applicable to devices that have a basic binary on and off functionality.</p>
         <table class="enum-table">
           <thead>
@@ -447,31 +430,24 @@
           <tbody>
             
               <tr>
-                <td>On</td>
-                <td><a href="#smartcore.traits.OnRequest">OnRequest</a></td>
-                <td><a href="#smartcore.traits.OnReply">OnReply</a></td>
-                <td><p>Turn on the device associated with this service or the name specified by the request.</p></td>
+                <td>GetOnOff</td>
+                <td><a href="#smartcore.traits.GetOnOffRequest">GetOnOffRequest</a></td>
+                <td><a href="#smartcore.traits.OnOff">OnOff</a></td>
+                <td><p>Get the current state of the device</p></td>
               </tr>
             
               <tr>
-                <td>Off</td>
-                <td><a href="#smartcore.traits.OffRequest">OffRequest</a></td>
-                <td><a href="#smartcore.traits.OffReply">OffReply</a></td>
-                <td><p>Turn off the device associated with this service or the name specified by the request.</p></td>
+                <td>UpdateOnOff</td>
+                <td><a href="#smartcore.traits.UpdateOnOffRequest">UpdateOnOffRequest</a></td>
+                <td><a href="#smartcore.traits.OnOff">OnOff</a></td>
+                <td><p>Update the device to be on or off</p></td>
               </tr>
             
               <tr>
-                <td>GetOnOffState</td>
-                <td><a href="#smartcore.traits.GetOnOffStateRequest">GetOnOffStateRequest</a></td>
-                <td><a href="#smartcore.traits.GetOnOffStateResponse">GetOnOffStateResponse</a></td>
-                <td><p>get the current state of the device</p></td>
-              </tr>
-            
-              <tr>
-                <td>Pull</td>
-                <td><a href="#smartcore.traits.OnOffPullRequest">OnOffPullRequest</a></td>
-                <td><a href="#smartcore.traits.OnOffPullResponse">OnOffPullResponse</a> stream</td>
-                <td><p>Get notified of changes to the OnOffState of a device</p></td>
+                <td>PullOnOff</td>
+                <td><a href="#smartcore.traits.PullOnOffRequest">PullOnOffRequest</a></td>
+                <td><a href="#smartcore.traits.PullOnOffResponse">PullOnOffResponse</a> stream</td>
+                <td><p>Get notified of changes to the OnOff state of a device</p></td>
               </tr>
             
           </tbody>

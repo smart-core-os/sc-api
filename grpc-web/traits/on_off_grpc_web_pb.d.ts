@@ -3,63 +3,51 @@ import * as grpcWeb from 'grpc-web';
 import * as traits_on_off_pb from '../traits/on_off_pb';
 
 
-export class OnOffClient {
+export class OnOffApiClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  on(
-    request: traits_on_off_pb.OnRequest,
+  getOnOff(
+    request: traits_on_off_pb.GetOnOffRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_on_off_pb.OnReply) => void
-  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnReply>;
+               response: traits_on_off_pb.OnOff) => void
+  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOff>;
 
-  off(
-    request: traits_on_off_pb.OffRequest,
+  updateOnOff(
+    request: traits_on_off_pb.UpdateOnOffRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_on_off_pb.OffReply) => void
-  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OffReply>;
+               response: traits_on_off_pb.OnOff) => void
+  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOff>;
 
-  getOnOffState(
-    request: traits_on_off_pb.GetOnOffStateRequest,
-    metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
-               response: traits_on_off_pb.GetOnOffStateResponse) => void
-  ): grpcWeb.ClientReadableStream<traits_on_off_pb.GetOnOffStateResponse>;
-
-  pull(
-    request: traits_on_off_pb.OnOffPullRequest,
+  pullOnOff(
+    request: traits_on_off_pb.PullOnOffRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOffPullResponse>;
+  ): grpcWeb.ClientReadableStream<traits_on_off_pb.PullOnOffResponse>;
 
 }
 
-export class OnOffPromiseClient {
+export class OnOffApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  on(
-    request: traits_on_off_pb.OnRequest,
+  getOnOff(
+    request: traits_on_off_pb.GetOnOffRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_on_off_pb.OnReply>;
+  ): Promise<traits_on_off_pb.OnOff>;
 
-  off(
-    request: traits_on_off_pb.OffRequest,
+  updateOnOff(
+    request: traits_on_off_pb.UpdateOnOffRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_on_off_pb.OffReply>;
+  ): Promise<traits_on_off_pb.OnOff>;
 
-  getOnOffState(
-    request: traits_on_off_pb.GetOnOffStateRequest,
+  pullOnOff(
+    request: traits_on_off_pb.PullOnOffRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_on_off_pb.GetOnOffStateResponse>;
-
-  pull(
-    request: traits_on_off_pb.OnOffPullRequest,
-    metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOffPullResponse>;
+  ): grpcWeb.ClientReadableStream<traits_on_off_pb.PullOnOffResponse>;
 
 }
 

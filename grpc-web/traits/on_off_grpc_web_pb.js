@@ -17,8 +17,6 @@ grpc.web = require('grpc-web');
 
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
-
-var types_on_off_pb = require('../types/on_off_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./on_off_pb.js');
@@ -31,7 +29,7 @@ proto.smartcore.traits = require('./on_off_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.OnOffClient =
+proto.smartcore.traits.OnOffApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -57,7 +55,7 @@ proto.smartcore.traits.OnOffClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.OnOffPromiseClient =
+proto.smartcore.traits.OnOffApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -78,315 +76,235 @@ proto.smartcore.traits.OnOffPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.OnRequest,
- *   !proto.smartcore.traits.OnReply>}
+ *   !proto.smartcore.traits.GetOnOffRequest,
+ *   !proto.smartcore.traits.OnOff>}
  */
-const methodDescriptor_OnOff_On = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OnOff/On',
+const methodDescriptor_OnOffApi_GetOnOff = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OnOffApi/GetOnOff',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.OnRequest,
-  proto.smartcore.traits.OnReply,
+  proto.smartcore.traits.GetOnOffRequest,
+  proto.smartcore.traits.OnOff,
   /**
-   * @param {!proto.smartcore.traits.OnRequest} request
+   * @param {!proto.smartcore.traits.GetOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OnReply.deserializeBinary
+  proto.smartcore.traits.OnOff.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.OnRequest,
- *   !proto.smartcore.traits.OnReply>}
+ *   !proto.smartcore.traits.GetOnOffRequest,
+ *   !proto.smartcore.traits.OnOff>}
  */
-const methodInfo_OnOff_On = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OnReply,
+const methodInfo_OnOffApi_GetOnOff = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.OnOff,
   /**
-   * @param {!proto.smartcore.traits.OnRequest} request
+   * @param {!proto.smartcore.traits.GetOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OnReply.deserializeBinary
+  proto.smartcore.traits.OnOff.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.OnRequest} request The
+ * @param {!proto.smartcore.traits.GetOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnReply)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnOff)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnReply>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOff>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OnOffClient.prototype.on =
+proto.smartcore.traits.OnOffApiClient.prototype.getOnOff =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OnOff/On',
+      '/smartcore.traits.OnOffApi/GetOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_On,
+      methodDescriptor_OnOffApi_GetOnOff,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OnRequest} request The
+ * @param {!proto.smartcore.traits.GetOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.OnReply>}
+ * @return {!Promise<!proto.smartcore.traits.OnOff>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.OnOffPromiseClient.prototype.on =
+proto.smartcore.traits.OnOffApiPromiseClient.prototype.getOnOff =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OnOff/On',
+      '/smartcore.traits.OnOffApi/GetOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_On);
+      methodDescriptor_OnOffApi_GetOnOff);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.OffRequest,
- *   !proto.smartcore.traits.OffReply>}
+ *   !proto.smartcore.traits.UpdateOnOffRequest,
+ *   !proto.smartcore.traits.OnOff>}
  */
-const methodDescriptor_OnOff_Off = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OnOff/Off',
+const methodDescriptor_OnOffApi_UpdateOnOff = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OnOffApi/UpdateOnOff',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.OffRequest,
-  proto.smartcore.traits.OffReply,
+  proto.smartcore.traits.UpdateOnOffRequest,
+  proto.smartcore.traits.OnOff,
   /**
-   * @param {!proto.smartcore.traits.OffRequest} request
+   * @param {!proto.smartcore.traits.UpdateOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OffReply.deserializeBinary
+  proto.smartcore.traits.OnOff.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.OffRequest,
- *   !proto.smartcore.traits.OffReply>}
+ *   !proto.smartcore.traits.UpdateOnOffRequest,
+ *   !proto.smartcore.traits.OnOff>}
  */
-const methodInfo_OnOff_Off = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OffReply,
+const methodInfo_OnOffApi_UpdateOnOff = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.OnOff,
   /**
-   * @param {!proto.smartcore.traits.OffRequest} request
+   * @param {!proto.smartcore.traits.UpdateOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OffReply.deserializeBinary
+  proto.smartcore.traits.OnOff.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.OffRequest} request The
+ * @param {!proto.smartcore.traits.UpdateOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OffReply)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnOff)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OffReply>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOff>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OnOffClient.prototype.off =
+proto.smartcore.traits.OnOffApiClient.prototype.updateOnOff =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OnOff/Off',
+      '/smartcore.traits.OnOffApi/UpdateOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_Off,
+      methodDescriptor_OnOffApi_UpdateOnOff,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OffRequest} request The
+ * @param {!proto.smartcore.traits.UpdateOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.OffReply>}
+ * @return {!Promise<!proto.smartcore.traits.OnOff>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.OnOffPromiseClient.prototype.off =
+proto.smartcore.traits.OnOffApiPromiseClient.prototype.updateOnOff =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OnOff/Off',
+      '/smartcore.traits.OnOffApi/UpdateOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_Off);
+      methodDescriptor_OnOffApi_UpdateOnOff);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetOnOffStateRequest,
- *   !proto.smartcore.traits.GetOnOffStateResponse>}
+ *   !proto.smartcore.traits.PullOnOffRequest,
+ *   !proto.smartcore.traits.PullOnOffResponse>}
  */
-const methodDescriptor_OnOff_GetOnOffState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OnOff/GetOnOffState',
-  grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetOnOffStateRequest,
-  proto.smartcore.traits.GetOnOffStateResponse,
-  /**
-   * @param {!proto.smartcore.traits.GetOnOffStateRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.GetOnOffStateResponse.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetOnOffStateRequest,
- *   !proto.smartcore.traits.GetOnOffStateResponse>}
- */
-const methodInfo_OnOff_GetOnOffState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.GetOnOffStateResponse,
-  /**
-   * @param {!proto.smartcore.traits.GetOnOffStateRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.GetOnOffStateResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.smartcore.traits.GetOnOffStateRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.GetOnOffStateResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.GetOnOffStateResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.smartcore.traits.OnOffClient.prototype.getOnOffState =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.OnOff/GetOnOffState',
-      request,
-      metadata || {},
-      methodDescriptor_OnOff_GetOnOffState,
-      callback);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.GetOnOffStateRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.smartcore.traits.GetOnOffStateResponse>}
- *     Promise that resolves to the response
- */
-proto.smartcore.traits.OnOffPromiseClient.prototype.getOnOffState =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.OnOff/GetOnOffState',
-      request,
-      metadata || {},
-      methodDescriptor_OnOff_GetOnOffState);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.OnOffPullRequest,
- *   !proto.smartcore.traits.OnOffPullResponse>}
- */
-const methodDescriptor_OnOff_Pull = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.OnOff/Pull',
+const methodDescriptor_OnOffApi_PullOnOff = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OnOffApi/PullOnOff',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.OnOffPullRequest,
-  proto.smartcore.traits.OnOffPullResponse,
+  proto.smartcore.traits.PullOnOffRequest,
+  proto.smartcore.traits.PullOnOffResponse,
   /**
-   * @param {!proto.smartcore.traits.OnOffPullRequest} request
+   * @param {!proto.smartcore.traits.PullOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OnOffPullResponse.deserializeBinary
+  proto.smartcore.traits.PullOnOffResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.OnOffPullRequest,
- *   !proto.smartcore.traits.OnOffPullResponse>}
+ *   !proto.smartcore.traits.PullOnOffRequest,
+ *   !proto.smartcore.traits.PullOnOffResponse>}
  */
-const methodInfo_OnOff_Pull = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OnOffPullResponse,
+const methodInfo_OnOffApi_PullOnOff = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.PullOnOffResponse,
   /**
-   * @param {!proto.smartcore.traits.OnOffPullRequest} request
+   * @param {!proto.smartcore.traits.PullOnOffRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.OnOffPullResponse.deserializeBinary
+  proto.smartcore.traits.PullOnOffResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.OnOffPullRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullOnOffRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOffPullResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOnOffResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OnOffClient.prototype.pull =
+proto.smartcore.traits.OnOffApiClient.prototype.pullOnOff =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OnOff/Pull',
+      '/smartcore.traits.OnOffApi/PullOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_Pull);
+      methodDescriptor_OnOffApi_PullOnOff);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OnOffPullRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullOnOffRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOffPullResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOnOffResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.OnOffPromiseClient.prototype.pull =
+proto.smartcore.traits.OnOffApiPromiseClient.prototype.pullOnOff =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.OnOff/Pull',
+      '/smartcore.traits.OnOffApi/PullOnOff',
       request,
       metadata || {},
-      methodDescriptor_OnOff_Pull);
+      methodDescriptor_OnOffApi_PullOnOff);
 };
 
 

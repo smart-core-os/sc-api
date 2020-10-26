@@ -1,172 +1,133 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as types_on_off_pb from '../types/on_off_pb';
 
 
-export class OnOffChange extends jspb.Message {
-  getName(): string;
-  setName(value: string): OnOffChange;
-
-  getCreateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreateTime(value?: google_protobuf_timestamp_pb.Timestamp): OnOffChange;
-  hasCreateTime(): boolean;
-  clearCreateTime(): OnOffChange;
-
-  getState(): types_on_off_pb.OnOffState;
-  setState(value: types_on_off_pb.OnOffState): OnOffChange;
+export class OnOff extends jspb.Message {
+  getOnOrOff(): OnOrOff;
+  setOnOrOff(value: OnOrOff): OnOff;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnOffChange.AsObject;
-  static toObject(includeInstance: boolean, msg: OnOffChange): OnOffChange.AsObject;
-  static serializeBinaryToWriter(message: OnOffChange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnOffChange;
-  static deserializeBinaryFromReader(message: OnOffChange, reader: jspb.BinaryReader): OnOffChange;
+  toObject(includeInstance?: boolean): OnOff.AsObject;
+  static toObject(includeInstance: boolean, msg: OnOff): OnOff.AsObject;
+  static serializeBinaryToWriter(message: OnOff, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OnOff;
+  static deserializeBinaryFromReader(message: OnOff, reader: jspb.BinaryReader): OnOff;
 }
 
-export namespace OnOffChange {
+export namespace OnOff {
   export type AsObject = {
-    name: string,
-    createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    state: types_on_off_pb.OnOffState,
+    onOrOff: OnOrOff,
   }
 }
 
-export class OnRequest extends jspb.Message {
+export class GetOnOffRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): OnRequest;
+  setName(value: string): GetOnOffRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: OnRequest): OnRequest.AsObject;
-  static serializeBinaryToWriter(message: OnRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnRequest;
-  static deserializeBinaryFromReader(message: OnRequest, reader: jspb.BinaryReader): OnRequest;
+  toObject(includeInstance?: boolean): GetOnOffRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetOnOffRequest): GetOnOffRequest.AsObject;
+  static serializeBinaryToWriter(message: GetOnOffRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetOnOffRequest;
+  static deserializeBinaryFromReader(message: GetOnOffRequest, reader: jspb.BinaryReader): GetOnOffRequest;
 }
 
-export namespace OnRequest {
+export namespace GetOnOffRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class OnReply extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnReply.AsObject;
-  static toObject(includeInstance: boolean, msg: OnReply): OnReply.AsObject;
-  static serializeBinaryToWriter(message: OnReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnReply;
-  static deserializeBinaryFromReader(message: OnReply, reader: jspb.BinaryReader): OnReply;
-}
-
-export namespace OnReply {
-  export type AsObject = {
-  }
-}
-
-export class OffRequest extends jspb.Message {
+export class UpdateOnOffRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): OffRequest;
+  setName(value: string): UpdateOnOffRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OffRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: OffRequest): OffRequest.AsObject;
-  static serializeBinaryToWriter(message: OffRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OffRequest;
-  static deserializeBinaryFromReader(message: OffRequest, reader: jspb.BinaryReader): OffRequest;
+  toObject(includeInstance?: boolean): UpdateOnOffRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateOnOffRequest): UpdateOnOffRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateOnOffRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateOnOffRequest;
+  static deserializeBinaryFromReader(message: UpdateOnOffRequest, reader: jspb.BinaryReader): UpdateOnOffRequest;
 }
 
-export namespace OffRequest {
+export namespace UpdateOnOffRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class OffReply extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OffReply.AsObject;
-  static toObject(includeInstance: boolean, msg: OffReply): OffReply.AsObject;
-  static serializeBinaryToWriter(message: OffReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OffReply;
-  static deserializeBinaryFromReader(message: OffReply, reader: jspb.BinaryReader): OffReply;
-}
-
-export namespace OffReply {
-  export type AsObject = {
-  }
-}
-
-export class GetOnOffStateRequest extends jspb.Message {
+export class PullOnOffRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetOnOffStateRequest;
+  setName(value: string): PullOnOffRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetOnOffStateRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetOnOffStateRequest): GetOnOffStateRequest.AsObject;
-  static serializeBinaryToWriter(message: GetOnOffStateRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetOnOffStateRequest;
-  static deserializeBinaryFromReader(message: GetOnOffStateRequest, reader: jspb.BinaryReader): GetOnOffStateRequest;
+  toObject(includeInstance?: boolean): PullOnOffRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullOnOffRequest): PullOnOffRequest.AsObject;
+  static serializeBinaryToWriter(message: PullOnOffRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullOnOffRequest;
+  static deserializeBinaryFromReader(message: PullOnOffRequest, reader: jspb.BinaryReader): PullOnOffRequest;
 }
 
-export namespace GetOnOffStateRequest {
+export namespace PullOnOffRequest {
   export type AsObject = {
     name: string,
   }
 }
 
-export class GetOnOffStateResponse extends jspb.Message {
-  getState(): types_on_off_pb.OnOffState;
-  setState(value: types_on_off_pb.OnOffState): GetOnOffStateResponse;
+export class PullOnOffResponse extends jspb.Message {
+  getChangesList(): Array<PullOnOffResponse.Change>;
+  setChangesList(value: Array<PullOnOffResponse.Change>): PullOnOffResponse;
+  clearChangesList(): PullOnOffResponse;
+  addChanges(value?: PullOnOffResponse.Change, index?: number): PullOnOffResponse.Change;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetOnOffStateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: GetOnOffStateResponse): GetOnOffStateResponse.AsObject;
-  static serializeBinaryToWriter(message: GetOnOffStateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetOnOffStateResponse;
-  static deserializeBinaryFromReader(message: GetOnOffStateResponse, reader: jspb.BinaryReader): GetOnOffStateResponse;
+  toObject(includeInstance?: boolean): PullOnOffResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullOnOffResponse): PullOnOffResponse.AsObject;
+  static serializeBinaryToWriter(message: PullOnOffResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullOnOffResponse;
+  static deserializeBinaryFromReader(message: PullOnOffResponse, reader: jspb.BinaryReader): PullOnOffResponse;
 }
 
-export namespace GetOnOffStateResponse {
+export namespace PullOnOffResponse {
   export type AsObject = {
-    state: types_on_off_pb.OnOffState,
+    changesList: Array<PullOnOffResponse.Change.AsObject>,
   }
-}
 
-export class OnOffPullRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): OnOffPullRequest;
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnOffPullRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: OnOffPullRequest): OnOffPullRequest.AsObject;
-  static serializeBinaryToWriter(message: OnOffPullRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnOffPullRequest;
-  static deserializeBinaryFromReader(message: OnOffPullRequest, reader: jspb.BinaryReader): OnOffPullRequest;
-}
+    getOnOff(): OnOff | undefined;
+    setOnOff(value?: OnOff): Change;
+    hasOnOff(): boolean;
+    clearOnOff(): Change;
 
-export namespace OnOffPullRequest {
-  export type AsObject = {
-    name: string,
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
   }
-}
 
-export class OnOffPullResponse extends jspb.Message {
-  getChangesList(): Array<OnOffChange>;
-  setChangesList(value: Array<OnOffChange>): OnOffPullResponse;
-  clearChangesList(): OnOffPullResponse;
-  addChanges(value?: OnOffChange, index?: number): OnOffChange;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnOffPullResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: OnOffPullResponse): OnOffPullResponse.AsObject;
-  static serializeBinaryToWriter(message: OnOffPullResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnOffPullResponse;
-  static deserializeBinaryFromReader(message: OnOffPullResponse, reader: jspb.BinaryReader): OnOffPullResponse;
-}
-
-export namespace OnOffPullResponse {
-  export type AsObject = {
-    changesList: Array<OnOffChange.AsObject>,
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      onOff?: OnOff.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
   }
+
 }
 
+export enum OnOrOff { 
+  ON_OR_OFF_UNKNOWN = 0,
+  ON_OR_OFF_ON = 1,
+  ON_OR_OFF_OFF = 2,
+}

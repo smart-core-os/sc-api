@@ -13,61 +13,50 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// OnOffClient is the client API for OnOff service.
+// OnOffApiClient is the client API for OnOffApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type OnOffClient interface {
-	// Turn on the device associated with this service or the name specified by the request.
-	On(ctx context.Context, in *OnRequest, opts ...grpc.CallOption) (*OnReply, error)
-	// Turn off the device associated with this service or the name specified by the request.
-	Off(ctx context.Context, in *OffRequest, opts ...grpc.CallOption) (*OffReply, error)
-	// get the current state of the device
-	GetOnOffState(ctx context.Context, in *GetOnOffStateRequest, opts ...grpc.CallOption) (*GetOnOffStateResponse, error)
-	// Get notified of changes to the OnOffState of a device
-	Pull(ctx context.Context, in *OnOffPullRequest, opts ...grpc.CallOption) (OnOff_PullClient, error)
+type OnOffApiClient interface {
+	// Get the current state of the device
+	GetOnOff(ctx context.Context, in *GetOnOffRequest, opts ...grpc.CallOption) (*OnOff, error)
+	// Update the device to be on or off
+	UpdateOnOff(ctx context.Context, in *UpdateOnOffRequest, opts ...grpc.CallOption) (*OnOff, error)
+	// Get notified of changes to the OnOff state of a device
+	PullOnOff(ctx context.Context, in *PullOnOffRequest, opts ...grpc.CallOption) (OnOffApi_PullOnOffClient, error)
 }
 
-type onOffClient struct {
+type onOffApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewOnOffClient(cc grpc.ClientConnInterface) OnOffClient {
-	return &onOffClient{cc}
+func NewOnOffApiClient(cc grpc.ClientConnInterface) OnOffApiClient {
+	return &onOffApiClient{cc}
 }
 
-func (c *onOffClient) On(ctx context.Context, in *OnRequest, opts ...grpc.CallOption) (*OnReply, error) {
-	out := new(OnReply)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOff/On", in, out, opts...)
+func (c *onOffApiClient) GetOnOff(ctx context.Context, in *GetOnOffRequest, opts ...grpc.CallOption) (*OnOff, error) {
+	out := new(OnOff)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOffApi/GetOnOff", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *onOffClient) Off(ctx context.Context, in *OffRequest, opts ...grpc.CallOption) (*OffReply, error) {
-	out := new(OffReply)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOff/Off", in, out, opts...)
+func (c *onOffApiClient) UpdateOnOff(ctx context.Context, in *UpdateOnOffRequest, opts ...grpc.CallOption) (*OnOff, error) {
+	out := new(OnOff)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOffApi/UpdateOnOff", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *onOffClient) GetOnOffState(ctx context.Context, in *GetOnOffStateRequest, opts ...grpc.CallOption) (*GetOnOffStateResponse, error) {
-	out := new(GetOnOffStateResponse)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOff/GetOnOffState", in, out, opts...)
+func (c *onOffApiClient) PullOnOff(ctx context.Context, in *PullOnOffRequest, opts ...grpc.CallOption) (OnOffApi_PullOnOffClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_OnOffApi_serviceDesc.Streams[0], "/smartcore.traits.OnOffApi/PullOnOff", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *onOffClient) Pull(ctx context.Context, in *OnOffPullRequest, opts ...grpc.CallOption) (OnOff_PullClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_OnOff_serviceDesc.Streams[0], "/smartcore.traits.OnOff/Pull", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &onOffPullClient{stream}
+	x := &onOffApiPullOnOffClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -77,156 +66,129 @@ func (c *onOffClient) Pull(ctx context.Context, in *OnOffPullRequest, opts ...gr
 	return x, nil
 }
 
-type OnOff_PullClient interface {
-	Recv() (*OnOffPullResponse, error)
+type OnOffApi_PullOnOffClient interface {
+	Recv() (*PullOnOffResponse, error)
 	grpc.ClientStream
 }
 
-type onOffPullClient struct {
+type onOffApiPullOnOffClient struct {
 	grpc.ClientStream
 }
 
-func (x *onOffPullClient) Recv() (*OnOffPullResponse, error) {
-	m := new(OnOffPullResponse)
+func (x *onOffApiPullOnOffClient) Recv() (*PullOnOffResponse, error) {
+	m := new(PullOnOffResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-// OnOffServer is the server API for OnOff service.
-// All implementations must embed UnimplementedOnOffServer
+// OnOffApiServer is the server API for OnOffApi service.
+// All implementations must embed UnimplementedOnOffApiServer
 // for forward compatibility
-type OnOffServer interface {
-	// Turn on the device associated with this service or the name specified by the request.
-	On(context.Context, *OnRequest) (*OnReply, error)
-	// Turn off the device associated with this service or the name specified by the request.
-	Off(context.Context, *OffRequest) (*OffReply, error)
-	// get the current state of the device
-	GetOnOffState(context.Context, *GetOnOffStateRequest) (*GetOnOffStateResponse, error)
-	// Get notified of changes to the OnOffState of a device
-	Pull(*OnOffPullRequest, OnOff_PullServer) error
-	mustEmbedUnimplementedOnOffServer()
+type OnOffApiServer interface {
+	// Get the current state of the device
+	GetOnOff(context.Context, *GetOnOffRequest) (*OnOff, error)
+	// Update the device to be on or off
+	UpdateOnOff(context.Context, *UpdateOnOffRequest) (*OnOff, error)
+	// Get notified of changes to the OnOff state of a device
+	PullOnOff(*PullOnOffRequest, OnOffApi_PullOnOffServer) error
+	mustEmbedUnimplementedOnOffApiServer()
 }
 
-// UnimplementedOnOffServer must be embedded to have forward compatible implementations.
-type UnimplementedOnOffServer struct {
+// UnimplementedOnOffApiServer must be embedded to have forward compatible implementations.
+type UnimplementedOnOffApiServer struct {
 }
 
-func (*UnimplementedOnOffServer) On(context.Context, *OnRequest) (*OnReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method On not implemented")
+func (*UnimplementedOnOffApiServer) GetOnOff(context.Context, *GetOnOffRequest) (*OnOff, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOnOff not implemented")
 }
-func (*UnimplementedOnOffServer) Off(context.Context, *OffRequest) (*OffReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Off not implemented")
+func (*UnimplementedOnOffApiServer) UpdateOnOff(context.Context, *UpdateOnOffRequest) (*OnOff, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOnOff not implemented")
 }
-func (*UnimplementedOnOffServer) GetOnOffState(context.Context, *GetOnOffStateRequest) (*GetOnOffStateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOnOffState not implemented")
+func (*UnimplementedOnOffApiServer) PullOnOff(*PullOnOffRequest, OnOffApi_PullOnOffServer) error {
+	return status.Errorf(codes.Unimplemented, "method PullOnOff not implemented")
 }
-func (*UnimplementedOnOffServer) Pull(*OnOffPullRequest, OnOff_PullServer) error {
-	return status.Errorf(codes.Unimplemented, "method Pull not implemented")
-}
-func (*UnimplementedOnOffServer) mustEmbedUnimplementedOnOffServer() {}
+func (*UnimplementedOnOffApiServer) mustEmbedUnimplementedOnOffApiServer() {}
 
-func RegisterOnOffServer(s *grpc.Server, srv OnOffServer) {
-	s.RegisterService(&_OnOff_serviceDesc, srv)
+func RegisterOnOffApiServer(s *grpc.Server, srv OnOffApiServer) {
+	s.RegisterService(&_OnOffApi_serviceDesc, srv)
 }
 
-func _OnOff_On_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OnRequest)
+func _OnOffApi_GetOnOff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOnOffRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OnOffServer).On(ctx, in)
+		return srv.(OnOffApiServer).GetOnOff(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.OnOff/On",
+		FullMethod: "/smartcore.traits.OnOffApi/GetOnOff",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnOffServer).On(ctx, req.(*OnRequest))
+		return srv.(OnOffApiServer).GetOnOff(ctx, req.(*GetOnOffRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OnOff_Off_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OffRequest)
+func _OnOffApi_UpdateOnOff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOnOffRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OnOffServer).Off(ctx, in)
+		return srv.(OnOffApiServer).UpdateOnOff(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.OnOff/Off",
+		FullMethod: "/smartcore.traits.OnOffApi/UpdateOnOff",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnOffServer).Off(ctx, req.(*OffRequest))
+		return srv.(OnOffApiServer).UpdateOnOff(ctx, req.(*UpdateOnOffRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OnOff_GetOnOffState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetOnOffStateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OnOffServer).GetOnOffState(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.OnOff/GetOnOffState",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OnOffServer).GetOnOffState(ctx, req.(*GetOnOffStateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OnOff_Pull_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(OnOffPullRequest)
+func _OnOffApi_PullOnOff_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(PullOnOffRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(OnOffServer).Pull(m, &onOffPullServer{stream})
+	return srv.(OnOffApiServer).PullOnOff(m, &onOffApiPullOnOffServer{stream})
 }
 
-type OnOff_PullServer interface {
-	Send(*OnOffPullResponse) error
+type OnOffApi_PullOnOffServer interface {
+	Send(*PullOnOffResponse) error
 	grpc.ServerStream
 }
 
-type onOffPullServer struct {
+type onOffApiPullOnOffServer struct {
 	grpc.ServerStream
 }
 
-func (x *onOffPullServer) Send(m *OnOffPullResponse) error {
+func (x *onOffApiPullOnOffServer) Send(m *PullOnOffResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _OnOff_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "smartcore.traits.OnOff",
-	HandlerType: (*OnOffServer)(nil),
+var _OnOffApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.OnOffApi",
+	HandlerType: (*OnOffApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "On",
-			Handler:    _OnOff_On_Handler,
+			MethodName: "GetOnOff",
+			Handler:    _OnOffApi_GetOnOff_Handler,
 		},
 		{
-			MethodName: "Off",
-			Handler:    _OnOff_Off_Handler,
-		},
-		{
-			MethodName: "GetOnOffState",
-			Handler:    _OnOff_GetOnOffState_Handler,
+			MethodName: "UpdateOnOff",
+			Handler:    _OnOffApi_UpdateOnOff_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "Pull",
-			Handler:       _OnOff_Pull_Handler,
+			StreamName:    "PullOnOff",
+			Handler:       _OnOffApi_PullOnOff_Handler,
 			ServerStreams: true,
 		},
 	},
