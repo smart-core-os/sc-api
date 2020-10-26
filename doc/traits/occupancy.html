@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#traits%2foccupancy.proto">traits/occupancy.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#smartcore.traits.CreateOccupancyOverrideRequest"><span class="badge">M</span>CreateOccupancyOverrideRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DeleteOccupancyOverrideRequest"><span class="badge">M</span>DeleteOccupancyOverrideRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetOccupancyOverrideRequest"><span class="badge">M</span>GetOccupancyOverrideRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetOccupancyRequest"><span class="badge">M</span>GetOccupancyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListOccupancyOverridesRequest"><span class="badge">M</span>ListOccupancyOverridesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListOccupancyOverridesResponse"><span class="badge">M</span>ListOccupancyOverridesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Occupancy"><span class="badge">M</span>Occupancy</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.OccupancyAttributes"><span class="badge">M</span>OccupancyAttributes</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.OccupancyChange"><span class="badge">M</span>OccupancyChange</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.OccupancyOverride"><span class="badge">M</span>OccupancyOverride</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullOccupancyRequest"><span class="badge">M</span>PullOccupancyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullOccupancyResponse"><span class="badge">M</span>PullOccupancyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.UpdateOccupancyOverrideRequest"><span class="badge">M</span>UpdateOccupancyOverrideRequest</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#smartcore.traits.OccupancyState"><span class="badge">E</span>OccupancyState</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#smartcore.traits.OccupancyApi"><span class="badge">S</span>OccupancyApi</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="traits/occupancy.proto">traits/occupancy.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="smartcore.traits.CreateOccupancyOverrideRequest">CreateOccupancyOverrideRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the device name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>override</td>
+                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DeleteOccupancyOverrideRequest">DeleteOccupancyOverrideRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>device_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the device name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>override_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetOccupancyOverrideRequest">GetOccupancyOverrideRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>device_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the device name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>override_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetOccupancyRequest">GetOccupancyRequest</h3>
+        <p>request to fetch the current state of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the name for the device to get the occupancy state for </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListOccupancyOverridesRequest">ListOccupancyOverridesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the device name
+
+todo: support filters on expired or pending, etc
+todo: support paging if we can be bothered </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListOccupancyOverridesResponse">ListOccupancyOverridesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>overrides</td>
+                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Occupancy">Occupancy</h3>
+        <p>The occupancy state the device is reporting and updating</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.OccupancyState">OccupancyState</a></td>
+                  <td></td>
+                  <td><p>The current occupancy state </p></td>
+                </tr>
+              
+                <tr>
+                  <td>people_count</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The total number of people the occupancy sensor has detected. Do NOT use this value as an indication of occupancy
+state, a value of 0 could be reported for a space that is occupied if the device either doesn&#39;t support people
+counts or there is some other undefined issue with the counting part of the sensor suite. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state_change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the occupancy state last changed. Does not update when people_count changes unlike the timestamp in
+OccupancyChange events </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reasons</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Optional. List of human readable strings explaining why the device thinks the space is in the current state. For
+example could say OCCUPIED:[&#34;Detected people in space&#34;] or IDLE:[&#34;No motion detected for 10 minutes&#34;]. Typically
+used for debugging or troubleshooting purposes. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confidence</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>Optional. How confident is the sensor that the current occupancy state is accurate. A value of 0 means that the
+confidence is unknown </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.OccupancyAttributes">OccupancyAttributes</h3>
+        <p>Trait.attribute for the configuration of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>max_people</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>how many people can the occupancy service report. 0 means it won&#39;t report people counts. Note: this is _not_ the
+total capacity for the space, it&#39;s the capacity of the sensor </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_override</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>does the device support reporting a manual occupancy override, typically used for testing </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.OccupancyChange">OccupancyChange</h3>
+        <p>A change to the occupancy state of the device, including people count</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>create_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>occupancy</td>
+                  <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
+                  <td></td>
+                  <td><p>the new state for the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.OccupancyOverride">OccupancyOverride</h3>
+        <p>Describes a manual override signal for an occupancy device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The unique name of the override so it can be updated or removed. Present during read, required for update, one will
+be created if absent for create </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#smartcore.traits.OccupancyState">OccupancyState</a></td>
+                  <td></td>
+                  <td><p>Manually override the state of the occupancy </p></td>
+                </tr>
+              
+                <tr>
+                  <td>people_count</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Manually override the number of people reported </p></td>
+                </tr>
+              
+                <tr>
+                  <td>begin_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Automatically begin the manual override at this time. If absent then the override begins immediately. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expire_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Automatically expire the manual override after this time. If absent then the override does not expire and should be
+removed manually. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Optional human readable reason to help diagnose this manual override. If the manual override is active then this
+should be included in the Occupancy reasons list. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullOccupancyRequest">PullOccupancyRequest</h3>
+        <p>request to be notified of changes to the state of the device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the name for the device to subscribe to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullOccupancyResponse">PullOccupancyResponse</h3>
+        <p>response containing occupancy state changes</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.OccupancyChange">OccupancyChange</a></td>
+                  <td>repeated</td>
+                  <td><p>the list of changes that have occurred since the last event </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateOccupancyOverrideRequest">UpdateOccupancyOverrideRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the device name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>override</td>
+                  <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="smartcore.traits.OccupancyState">OccupancyState</h3>
+        <p>Possible states for occupancy</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>NO_SIGNALS</td>
+                <td>0</td>
+                <td><p>There are no signals to suggest either an occupied or unoccupied space</p></td>
+              </tr>
+            
+              <tr>
+                <td>OCCUPIED</td>
+                <td>1</td>
+                <td><p>The space is occupied</p></td>
+              </tr>
+            
+              <tr>
+                <td>UNOCCUPIED</td>
+                <td>2</td>
+                <td><p>The space is unoccupied</p></td>
+              </tr>
+            
+              <tr>
+                <td>IDLE</td>
+                <td>3</td>
+                <td><p>The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
+moving for other reasons)</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="smartcore.traits.OccupancyApi">OccupancyApi</h3>
+        <p>The reporting of occupancy in a space. Similar to a MotionSensor, this reports whether a space is occupied or</p><p>unoccupied with additional optional information relating to _how_ occupied the space is (i.e. how many people are</p><p>present)</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetOccupancy</td>
+                <td><a href="#smartcore.traits.GetOccupancyRequest">GetOccupancyRequest</a></td>
+                <td><a href="#smartcore.traits.Occupancy">Occupancy</a></td>
+                <td><p>Get the current motion state for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullOccupancy</td>
+                <td><a href="#smartcore.traits.PullOccupancyRequest">PullOccupancyRequest</a></td>
+                <td><a href="#smartcore.traits.PullOccupancyResponse">PullOccupancyResponse</a> stream</td>
+                <td><p>subscribe to changes in the motion state for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>CreateOccupancyOverride</td>
+                <td><a href="#smartcore.traits.CreateOccupancyOverrideRequest">CreateOccupancyOverrideRequest</a></td>
+                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                <td><p>Create a new override for the occupancy</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateOccupancyOverride</td>
+                <td><a href="#smartcore.traits.UpdateOccupancyOverrideRequest">UpdateOccupancyOverrideRequest</a></td>
+                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                <td><p>Update an existing override</p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteOccupancyOverride</td>
+                <td><a href="#smartcore.traits.DeleteOccupancyOverrideRequest">DeleteOccupancyOverrideRequest</a></td>
+                <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
+                <td><p>Delete an override</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetOccupancyOverride</td>
+                <td><a href="#smartcore.traits.GetOccupancyOverrideRequest">GetOccupancyOverrideRequest</a></td>
+                <td><a href="#smartcore.traits.OccupancyOverride">OccupancyOverride</a></td>
+                <td><p>Get an existing override</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListOccupancyOverrides</td>
+                <td><a href="#smartcore.traits.ListOccupancyOverridesRequest">ListOccupancyOverridesRequest</a></td>
+                <td><a href="#smartcore.traits.ListOccupancyOverridesResponse">ListOccupancyOverridesResponse</a></td>
+                <td><p>List all overrides. The device may discard overrides that have expired.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+

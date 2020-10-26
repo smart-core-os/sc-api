@@ -8,5 +8,7 @@ function gen_folder() {
 
 gen_folder "device/traits"
 gen_folder "device/info"
+gen_folder "info"
+gen_folder "traits"
 gen_folder "types"
 gen_folder "types/time"

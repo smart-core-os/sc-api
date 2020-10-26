@@ -1,54 +1,54 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as device_traits_microphone_pb from '../../device/traits/microphone_pb';
-import * as types_unit_pb from '../../types/unit_pb';
+import * as types_unit_pb from '../types/unit_pb';
+import * as traits_speaker_pb from '../traits/speaker_pb';
 
 
-export class MicrophoneClient {
+export class SpeakerClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getGain(
-    request: device_traits_microphone_pb.GetMicrophoneGainRequest,
+  getVolume(
+    request: traits_speaker_pb.GetSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
                response: types_unit_pb.Volume) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
 
-  updateGain(
-    request: device_traits_microphone_pb.UpdateMicrophoneGainRequest,
+  updateVolume(
+    request: traits_speaker_pb.UpdateSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
                response: types_unit_pb.Volume) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.Volume>;
 
-  pullGain(
-    request: device_traits_microphone_pb.PullMicrophoneGainRequest,
+  pullVolume(
+    request: traits_speaker_pb.PullSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<device_traits_microphone_pb.PullMicrophoneGainResponse>;
+  ): grpcWeb.ClientReadableStream<traits_speaker_pb.PullSpeakerVolumeResponse>;
 
 }
 
-export class MicrophonePromiseClient {
+export class SpeakerPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getGain(
-    request: device_traits_microphone_pb.GetMicrophoneGainRequest,
+  getVolume(
+    request: traits_speaker_pb.GetSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<types_unit_pb.Volume>;
 
-  updateGain(
-    request: device_traits_microphone_pb.UpdateMicrophoneGainRequest,
+  updateVolume(
+    request: traits_speaker_pb.UpdateSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<types_unit_pb.Volume>;
 
-  pullGain(
-    request: device_traits_microphone_pb.PullMicrophoneGainRequest,
+  pullVolume(
+    request: traits_speaker_pb.PullSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<device_traits_microphone_pb.PullMicrophoneGainResponse>;
+  ): grpcWeb.ClientReadableStream<traits_speaker_pb.PullSpeakerVolumeResponse>;
 
 }
 

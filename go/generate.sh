@@ -10,6 +10,8 @@ gen_folder "types"
 gen_folder "types/time"
 gen_folder "device/traits"
 gen_folder "device/info"
+gen_folder "info"
+gen_folder "traits"
 
 go build ./...
 go test ./...
