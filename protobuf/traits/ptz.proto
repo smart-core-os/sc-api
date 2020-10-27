@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 import "types/tween.proto";
 
 // Allows interaction with a pan-tilt-zoom device, typically a camera.
@@ -31,17 +32,25 @@ service PtzApi {
   rpc PullPtz (PullPtzRequest) returns (stream PullPtzResponse);
 }
 
-// Trait.attribute for defining the capabilities of this device
-message PtzAttributes {
+// Describes the capabilities of a specific named device with respect to this trait.
+service PtzInfo {
+  // Get information about how a named device implements Ptz features
+  rpc DescribePtz (DescribePtzRequest) returns (PtzSupport);
+}
+
+// PtzSupport describes the capabilities of devices implementing this trait
+message PtzSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // Can we ask the device to move to a specific position
-  bool supports_position = 1;
+  bool supports_position = 2;
   // Can we move the device without a target position in mind
-  bool supports_movement = 2;
+  bool supports_movement = 3;
   // A list of presets that the device has configured. If the list is empty and supports_custom_presets is false then
   // the device doesn't support presets
-  repeated PtzPreset presets = 3;
+  repeated PtzPreset presets = 4;
   // If true, custom preset names can be used to store ptz positions. If false only writable presets can be updated.
-  bool supports_custom_presets = 4;
+  bool supports_custom_presets = 5;
 }
 
 // The current or intended state for the device
@@ -159,4 +168,9 @@ message PullPtzResponse {
     // The updated state, should be merged with any known state
     Ptz state = 3;
   }
+}
+
+message DescribePtzRequest {
+  // The name of the device
+  string name = 1;
 }

@@ -18,6 +18,8 @@ grpc.web = require('grpc-web');
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_number_pb = require('../types/number_pb.js')
 
 var types_tween_pb = require('../types/tween_pb.js')
@@ -389,6 +391,138 @@ proto.smartcore.traits.OpenCloseApiPromiseClient.prototype.pullPositions =
       request,
       metadata || {},
       methodDescriptor_OpenCloseApi_PullPositions);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.OpenCloseInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.OpenCloseInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribePositionsRequest,
+ *   !proto.smartcore.traits.PositionsSupport>}
+ */
+const methodDescriptor_OpenCloseInfo_DescribePositions = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.OpenCloseInfo/DescribePositions',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribePositionsRequest,
+  proto.smartcore.traits.PositionsSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribePositionsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.PositionsSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribePositionsRequest,
+ *   !proto.smartcore.traits.PositionsSupport>}
+ */
+const methodInfo_OpenCloseInfo_DescribePositions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.PositionsSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribePositionsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.PositionsSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribePositionsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PositionsSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PositionsSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.OpenCloseInfoClient.prototype.describePositions =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.OpenCloseInfo/DescribePositions',
+      request,
+      metadata || {},
+      methodDescriptor_OpenCloseInfo_DescribePositions,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribePositionsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.PositionsSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.OpenCloseInfoPromiseClient.prototype.describePositions =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.OpenCloseInfo/DescribePositions',
+      request,
+      metadata || {},
+      methodDescriptor_OpenCloseInfo_DescribePositions);
 };
 
 

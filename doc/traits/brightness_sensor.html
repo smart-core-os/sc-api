@@ -183,7 +183,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.BrightnessSensorAttributes"><span class="badge">M</span>BrightnessSensorAttributes</a>
+                  <a href="#smartcore.traits.AmbientBrightnessSupport"><span class="badge">M</span>AmbientBrightnessSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeAmbientBrightnessRequest"><span class="badge">M</span>DescribeAmbientBrightnessRequest</a>
                 </li>
               
                 <li>
@@ -207,6 +211,10 @@
               
                 <li>
                   <a href="#smartcore.traits.BrightnessSensorApi"><span class="badge">S</span>BrightnessSensorApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.BrightnessSensorInfo"><span class="badge">S</span>BrightnessSensorInfo</a>
                 </li>
               
             </ul>
@@ -248,8 +256,8 @@
 
         
       
-        <h3 id="smartcore.traits.BrightnessSensorAttributes">BrightnessSensorAttributes</h3>
-        <p>Trait.attributes describing the capabilities of the device</p>
+        <h3 id="smartcore.traits.AmbientBrightnessSupport">AmbientBrightnessSupport</h3>
+        <p>AmbientBrightnessSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -259,10 +267,41 @@
             <tbody>
               
                 <tr>
-                  <td>ambient_brightness_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td>sensor_support</td>
+                  <td><a href="#smartcore.types.SensorSupport">smartcore.types.SensorSupport</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>How a named device supports read/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>brightness_lux</td>
+                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
+                  <td></td>
+                  <td><p>The range of values the device is capable of reporting. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeAmbientBrightnessRequest">DescribeAmbientBrightnessRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -408,6 +447,25 @@
                 <td><a href="#smartcore.traits.PullAmbientBrightnessRequest">PullAmbientBrightnessRequest</a></td>
                 <td><a href="#smartcore.traits.PullAmbientBrightnessResponse">PullAmbientBrightnessResponse</a> stream</td>
                 <td><p>PullAmbientBrightness returns a stream of brightness changes as the device measures them.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.BrightnessSensorInfo">BrightnessSensorInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeAmbientBrightness</td>
+                <td><a href="#smartcore.traits.DescribeAmbientBrightnessRequest">DescribeAmbientBrightnessRequest</a></td>
+                <td><a href="#smartcore.traits.AmbientBrightnessSupport">AmbientBrightnessSupport</a></td>
+                <td><p>Get information about how a named device implements AmbientBrightness measurements</p></td>
               </tr>
             
           </tbody>

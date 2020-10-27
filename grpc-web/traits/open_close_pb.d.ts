@@ -1,34 +1,41 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class OpenCloseAttributes extends jspb.Message {
+export class PositionsSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): PositionsSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): PositionsSupport;
+
   getPositionAttributes(): types_number_pb.FloatAttributes | undefined;
-  setPositionAttributes(value?: types_number_pb.FloatAttributes): OpenCloseAttributes;
+  setPositionAttributes(value?: types_number_pb.FloatAttributes): PositionsSupport;
   hasPositionAttributes(): boolean;
-  clearPositionAttributes(): OpenCloseAttributes;
+  clearPositionAttributes(): PositionsSupport;
 
   getDirectionsList(): Array<OpenCloseDirection>;
-  setDirectionsList(value: Array<OpenCloseDirection>): OpenCloseAttributes;
-  clearDirectionsList(): OpenCloseAttributes;
-  addDirections(value: OpenCloseDirection, index?: number): OpenCloseAttributes;
+  setDirectionsList(value: Array<OpenCloseDirection>): PositionsSupport;
+  clearDirectionsList(): PositionsSupport;
+  addDirections(value: OpenCloseDirection, index?: number): PositionsSupport;
 
   getSupportsStop(): boolean;
-  setSupportsStop(value: boolean): OpenCloseAttributes;
+  setSupportsStop(value: boolean): PositionsSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OpenCloseAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: OpenCloseAttributes): OpenCloseAttributes.AsObject;
-  static serializeBinaryToWriter(message: OpenCloseAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OpenCloseAttributes;
-  static deserializeBinaryFromReader(message: OpenCloseAttributes, reader: jspb.BinaryReader): OpenCloseAttributes;
+  toObject(includeInstance?: boolean): PositionsSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: PositionsSupport): PositionsSupport.AsObject;
+  static serializeBinaryToWriter(message: PositionsSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PositionsSupport;
+  static deserializeBinaryFromReader(message: PositionsSupport, reader: jspb.BinaryReader): PositionsSupport;
 }
 
-export namespace OpenCloseAttributes {
+export namespace PositionsSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     positionAttributes?: types_number_pb.FloatAttributes.AsObject,
     directionsList: Array<OpenCloseDirection>,
     supportsStop: boolean,
@@ -222,6 +229,24 @@ export namespace PullOpenClosePositionsResponse {
     }
   }
 
+}
+
+export class DescribePositionsRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribePositionsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribePositionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribePositionsRequest): DescribePositionsRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribePositionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribePositionsRequest;
+  static deserializeBinaryFromReader(message: DescribePositionsRequest, reader: jspb.BinaryReader): DescribePositionsRequest;
+}
+
+export namespace DescribePositionsRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum OpenCloseDirection { 

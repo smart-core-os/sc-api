@@ -29,6 +29,20 @@ export class InputSelectApiClient {
 
 }
 
+export class InputSelectInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeInput(
+    request: traits_input_select_pb.DescribeInputRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_input_select_pb.InputSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_input_select_pb.InputSupport>;
+
+}
+
 export class InputSelectApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -48,6 +62,18 @@ export class InputSelectApiPromiseClient {
     request: traits_input_select_pb.PullInputRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_input_select_pb.PullInputResponse>;
+
+}
+
+export class InputSelectInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeInput(
+    request: traits_input_select_pb.DescribeInputRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_input_select_pb.InputSupport>;
 
 }
 

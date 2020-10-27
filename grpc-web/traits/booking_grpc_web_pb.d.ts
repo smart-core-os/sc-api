@@ -50,6 +50,20 @@ export class BookingApiClient {
 
 }
 
+export class BookingInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeBooking(
+    request: traits_booking_pb.DescribeBookingRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_booking_pb.BookingSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_booking_pb.BookingSupport>;
+
+}
+
 export class BookingApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -84,6 +98,18 @@ export class BookingApiPromiseClient {
     request: traits_booking_pb.ListBookingsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_booking_pb.PullBookingsResponse>;
+
+}
+
+export class BookingInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeBooking(
+    request: traits_booking_pb.DescribeBookingRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_booking_pb.BookingSupport>;
 
 }
 

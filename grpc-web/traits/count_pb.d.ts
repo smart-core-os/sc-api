@@ -2,28 +2,35 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
-export class CountAttributes extends jspb.Message {
+export class CountSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): CountSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): CountSupport;
+
   getTwoWay(): boolean;
-  setTwoWay(value: boolean): CountAttributes;
+  setTwoWay(value: boolean): CountSupport;
 
   getSupportsReset(): boolean;
-  setSupportsReset(value: boolean): CountAttributes;
+  setSupportsReset(value: boolean): CountSupport;
 
   getSupportsDelta(): boolean;
-  setSupportsDelta(value: boolean): CountAttributes;
+  setSupportsDelta(value: boolean): CountSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CountAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: CountAttributes): CountAttributes.AsObject;
-  static serializeBinaryToWriter(message: CountAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CountAttributes;
-  static deserializeBinaryFromReader(message: CountAttributes, reader: jspb.BinaryReader): CountAttributes;
+  toObject(includeInstance?: boolean): CountSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: CountSupport): CountSupport.AsObject;
+  static serializeBinaryToWriter(message: CountSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CountSupport;
+  static deserializeBinaryFromReader(message: CountSupport, reader: jspb.BinaryReader): CountSupport;
 }
 
-export namespace CountAttributes {
+export namespace CountSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     twoWay: boolean,
     supportsReset: boolean,
     supportsDelta: boolean,
@@ -201,5 +208,23 @@ export namespace PullCountsResponse {
     }
   }
 
+}
+
+export class DescribeCountRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeCountRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeCountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeCountRequest): DescribeCountRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeCountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeCountRequest;
+  static deserializeBinaryFromReader(message: DescribeCountRequest, reader: jspb.BinaryReader): DescribeCountRequest;
+}
+
+export namespace DescribeCountRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

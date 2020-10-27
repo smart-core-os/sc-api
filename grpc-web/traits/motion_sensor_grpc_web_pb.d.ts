@@ -22,6 +22,20 @@ export class MotionSensorApiClient {
 
 }
 
+export class MotionSensorSensorInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeMotionDetection(
+    request: traits_motion_sensor_pb.DescribeMotionDetectionRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_motion_sensor_pb.MotionDetectionSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_motion_sensor_pb.MotionDetectionSupport>;
+
+}
+
 export class MotionSensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -36,6 +50,18 @@ export class MotionSensorApiPromiseClient {
     request: traits_motion_sensor_pb.PullMotionDetectionRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_motion_sensor_pb.PullMotionDetectionResponse>;
+
+}
+
+export class MotionSensorSensorInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeMotionDetection(
+    request: traits_motion_sensor_pb.DescribeMotionDetectionRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_motion_sensor_pb.MotionDetectionSupport>;
 
 }
 

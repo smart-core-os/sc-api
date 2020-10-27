@@ -1,30 +1,37 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_unit_pb from '../types/unit_pb';
 import * as types_volume_pb from '../types/volume_pb';
 
 
-export class MicrophoneAttributes extends jspb.Message {
+export class GainSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): GainSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): GainSupport;
+
   getGainAttributes(): types_number_pb.FloatAttributes | undefined;
-  setGainAttributes(value?: types_number_pb.FloatAttributes): MicrophoneAttributes;
+  setGainAttributes(value?: types_number_pb.FloatAttributes): GainSupport;
   hasGainAttributes(): boolean;
-  clearGainAttributes(): MicrophoneAttributes;
+  clearGainAttributes(): GainSupport;
 
   getMuteSupport(): types_volume_pb.MuteSupport;
-  setMuteSupport(value: types_volume_pb.MuteSupport): MicrophoneAttributes;
+  setMuteSupport(value: types_volume_pb.MuteSupport): GainSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MicrophoneAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: MicrophoneAttributes): MicrophoneAttributes.AsObject;
-  static serializeBinaryToWriter(message: MicrophoneAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MicrophoneAttributes;
-  static deserializeBinaryFromReader(message: MicrophoneAttributes, reader: jspb.BinaryReader): MicrophoneAttributes;
+  toObject(includeInstance?: boolean): GainSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: GainSupport): GainSupport.AsObject;
+  static serializeBinaryToWriter(message: GainSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GainSupport;
+  static deserializeBinaryFromReader(message: GainSupport, reader: jspb.BinaryReader): GainSupport;
 }
 
-export namespace MicrophoneAttributes {
+export namespace GainSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     gainAttributes?: types_number_pb.FloatAttributes.AsObject,
     muteSupport: types_volume_pb.MuteSupport,
   }
@@ -129,6 +136,24 @@ export class PullMicrophoneGainResponse extends jspb.Message {
 export namespace PullMicrophoneGainResponse {
   export type AsObject = {
     changesList: Array<types_unit_pb.AudioLevelChange.AsObject>,
+  }
+}
+
+export class DescribeGainRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeGainRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeGainRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeGainRequest): DescribeGainRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeGainRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeGainRequest;
+  static deserializeBinaryFromReader(message: DescribeGainRequest, reader: jspb.BinaryReader): DescribeGainRequest;
+}
+
+export namespace DescribeGainRequest {
+  export type AsObject = {
+    name: string,
   }
 }
 

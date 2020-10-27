@@ -17,6 +17,8 @@ grpc.web = require('grpc-web');
 
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
+var types_info_pb = require('../types/info_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./channel_pb.js');
@@ -465,6 +467,138 @@ proto.smartcore.traits.ChannelApiPromiseClient.prototype.pullChosenChannel =
       request,
       metadata || {},
       methodDescriptor_ChannelApi_PullChosenChannel);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.ChannelInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.ChannelInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeChosenChannelRequest,
+ *   !proto.smartcore.traits.ChosenChannelSupport>}
+ */
+const methodDescriptor_ChannelInfo_DescribeChosenChannel = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ChannelInfo/DescribeChosenChannel',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeChosenChannelRequest,
+  proto.smartcore.traits.ChosenChannelSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ChosenChannelSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeChosenChannelRequest,
+ *   !proto.smartcore.traits.ChosenChannelSupport>}
+ */
+const methodInfo_ChannelInfo_DescribeChosenChannel = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.ChosenChannelSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ChosenChannelSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChosenChannelSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChosenChannelSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.ChannelInfoClient.prototype.describeChosenChannel =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.ChannelInfo/DescribeChosenChannel',
+      request,
+      metadata || {},
+      methodDescriptor_ChannelInfo_DescribeChosenChannel,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ChosenChannelSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.ChannelInfoPromiseClient.prototype.describeChosenChannel =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.ChannelInfo/DescribeChosenChannel',
+      request,
+      metadata || {},
+      methodDescriptor_ChannelInfo_DescribeChosenChannel);
 };
 
 

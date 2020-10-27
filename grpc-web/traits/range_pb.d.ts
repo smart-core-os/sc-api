@@ -1,26 +1,33 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class RangeAttributes extends jspb.Message {
+export class RangeValueSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): RangeValueSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): RangeValueSupport;
+
   getValueAttributes(): types_number_pb.Int32Attributes | undefined;
-  setValueAttributes(value?: types_number_pb.Int32Attributes): RangeAttributes;
+  setValueAttributes(value?: types_number_pb.Int32Attributes): RangeValueSupport;
   hasValueAttributes(): boolean;
-  clearValueAttributes(): RangeAttributes;
+  clearValueAttributes(): RangeValueSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RangeAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: RangeAttributes): RangeAttributes.AsObject;
-  static serializeBinaryToWriter(message: RangeAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RangeAttributes;
-  static deserializeBinaryFromReader(message: RangeAttributes, reader: jspb.BinaryReader): RangeAttributes;
+  toObject(includeInstance?: boolean): RangeValueSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: RangeValueSupport): RangeValueSupport.AsObject;
+  static serializeBinaryToWriter(message: RangeValueSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RangeValueSupport;
+  static deserializeBinaryFromReader(message: RangeValueSupport, reader: jspb.BinaryReader): RangeValueSupport;
 }
 
-export namespace RangeAttributes {
+export namespace RangeValueSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     valueAttributes?: types_number_pb.Int32Attributes.AsObject,
   }
 }
@@ -170,5 +177,23 @@ export namespace PullRangeValueResponse {
     }
   }
 
+}
+
+export class DescribeRangeValueRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeRangeValueRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeRangeValueRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeRangeValueRequest): DescribeRangeValueRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeRangeValueRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeRangeValueRequest;
+  static deserializeBinaryFromReader(message: DescribeRangeValueRequest, reader: jspb.BinaryReader): DescribeRangeValueRequest;
+}
+
+export namespace DescribeRangeValueRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

@@ -179,11 +179,19 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeOnOffRequest"><span class="badge">M</span>DescribeOnOffRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetOnOffRequest"><span class="badge">M</span>GetOnOffRequest</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.traits.OnOff"><span class="badge">M</span>OnOff</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.OnOffSupport"><span class="badge">M</span>OnOffSupport</a>
                 </li>
               
                 <li>
@@ -213,6 +221,10 @@
                   <a href="#smartcore.traits.OnOffApi"><span class="badge">S</span>OnOffApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.OnOffInfo"><span class="badge">S</span>OnOffInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -227,6 +239,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeOnOffRequest">DescribeOnOffRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetOnOffRequest">GetOnOffRequest</h3>
         <p></p>
@@ -267,6 +303,30 @@
                   <td><a href="#smartcore.traits.OnOrOff">OnOrOff</a></td>
                   <td></td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.OnOffSupport">OnOffSupport</h3>
+        <p>OnOffSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
                 </tr>
               
             </tbody>
@@ -448,6 +508,25 @@
                 <td><a href="#smartcore.traits.PullOnOffRequest">PullOnOffRequest</a></td>
                 <td><a href="#smartcore.traits.PullOnOffResponse">PullOnOffResponse</a> stream</td>
                 <td><p>Get notified of changes to the OnOff state of a device</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.OnOffInfo">OnOffInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeOnOff</td>
+                <td><a href="#smartcore.traits.DescribeOnOffRequest">DescribeOnOffRequest</a></td>
+                <td><a href="#smartcore.traits.OnOffSupport">OnOffSupport</a></td>
+                <td><p>Get information about how a named device implements OnOff features</p></td>
               </tr>
             
           </tbody>

@@ -18,6 +18,8 @@ grpc.web = require('grpc-web');
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_number_pb = require('../types/number_pb.js')
 
 var types_unit_pb = require('../types/unit_pb.js')
@@ -311,6 +313,138 @@ proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.pullGain =
       request,
       metadata || {},
       methodDescriptor_MicrophoneApi_PullGain);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.MicrophoneInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.MicrophoneInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeGainRequest,
+ *   !proto.smartcore.traits.GainSupport>}
+ */
+const methodDescriptor_MicrophoneInfo_DescribeGain = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.MicrophoneInfo/DescribeGain',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeGainRequest,
+  proto.smartcore.traits.GainSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeGainRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.GainSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeGainRequest,
+ *   !proto.smartcore.traits.GainSupport>}
+ */
+const methodInfo_MicrophoneInfo_DescribeGain = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.GainSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeGainRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.GainSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeGainRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.GainSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.GainSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.MicrophoneInfoClient.prototype.describeGain =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.MicrophoneInfo/DescribeGain',
+      request,
+      metadata || {},
+      methodDescriptor_MicrophoneInfo_DescribeGain,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeGainRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.GainSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.MicrophoneInfoPromiseClient.prototype.describeGain =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.MicrophoneInfo/DescribeGain',
+      request,
+      metadata || {},
+      methodDescriptor_MicrophoneInfo_DescribeGain);
 };
 
 

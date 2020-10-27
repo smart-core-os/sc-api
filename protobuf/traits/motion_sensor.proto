@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 
 // Represents a sensor that detects motion. Note that the absence of motion does not directly imply an unoccupied space.
 service MotionSensorApi {
@@ -20,6 +21,12 @@ service MotionSensorApi {
   // subscribe to changes in the motion state for the device.
   rpc PullMotionDetections (PullMotionDetectionRequest) returns (stream PullMotionDetectionResponse) {
   }
+}
+
+// Describes the capabilities of a specific named device with respect to this trait.
+service MotionSensorSensorInfo {
+  // Get information about how a named device implements MotionDetection measurements
+  rpc DescribeMotionDetection (DescribeMotionDetectionRequest) returns (MotionDetectionSupport);
 }
 
 // Possible states for motion detected
@@ -38,10 +45,12 @@ message MotionDetection {
   google.protobuf.Timestamp state_change_time = 2;
 }
 
-// Trait.attribute for the configuration of the device
-message MotionSensorAttributes {
-  // how long the device is configured to wait before reporting a state of NOT_DETECTED. Should default to 30 seconds.
-  google.protobuf.Duration not_detected_delay = 1;
+// MotionDetectionSupport describes the capabilities of devices implementing this trait
+message MotionDetectionSupport {
+  // How a named device supports read/pull apis
+  smartcore.types.SensorSupport sensor_support = 1;
+  // How long the device is configured to wait before reporting a state of NOT_DETECTED
+  google.protobuf.Duration not_detected_delay = 2;
 }
 
 // request to fetch the current state of the device
@@ -70,4 +79,9 @@ message PullMotionDetectionResponse {
     // the new state for the device
     MotionDetection motion_detection = 3;
   }
+}
+
+message DescribeMotionDetectionRequest {
+  // The name of the device
+  string name = 1;
 }

@@ -36,6 +36,20 @@ export class OpenCloseApiClient {
 
 }
 
+export class OpenCloseInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describePositions(
+    request: traits_open_close_pb.DescribePositionsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_open_close_pb.PositionsSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_open_close_pb.PositionsSupport>;
+
+}
+
 export class OpenCloseApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -60,6 +74,18 @@ export class OpenCloseApiPromiseClient {
     request: traits_open_close_pb.PullOpenClosePositionsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.PullOpenClosePositionsResponse>;
+
+}
+
+export class OpenCloseInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describePositions(
+    request: traits_open_close_pb.DescribePositionsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_open_close_pb.PositionsSupport>;
 
 }
 

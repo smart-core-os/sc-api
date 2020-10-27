@@ -194,3 +194,81 @@ var _RangeApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/range.proto",
 }
+
+// RangeInfoClient is the client API for RangeInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RangeInfoClient interface {
+	// Get information about how a named device implements RangeValue features
+	DescribeRangeValue(ctx context.Context, in *DescribeRangeValueRequest, opts ...grpc.CallOption) (*RangeValueSupport, error)
+}
+
+type rangeInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRangeInfoClient(cc grpc.ClientConnInterface) RangeInfoClient {
+	return &rangeInfoClient{cc}
+}
+
+func (c *rangeInfoClient) DescribeRangeValue(ctx context.Context, in *DescribeRangeValueRequest, opts ...grpc.CallOption) (*RangeValueSupport, error) {
+	out := new(RangeValueSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.RangeInfo/DescribeRangeValue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RangeInfoServer is the server API for RangeInfo service.
+// All implementations must embed UnimplementedRangeInfoServer
+// for forward compatibility
+type RangeInfoServer interface {
+	// Get information about how a named device implements RangeValue features
+	DescribeRangeValue(context.Context, *DescribeRangeValueRequest) (*RangeValueSupport, error)
+	mustEmbedUnimplementedRangeInfoServer()
+}
+
+// UnimplementedRangeInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedRangeInfoServer struct {
+}
+
+func (*UnimplementedRangeInfoServer) DescribeRangeValue(context.Context, *DescribeRangeValueRequest) (*RangeValueSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeRangeValue not implemented")
+}
+func (*UnimplementedRangeInfoServer) mustEmbedUnimplementedRangeInfoServer() {}
+
+func RegisterRangeInfoServer(s *grpc.Server, srv RangeInfoServer) {
+	s.RegisterService(&_RangeInfo_serviceDesc, srv)
+}
+
+func _RangeInfo_DescribeRangeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeRangeValueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RangeInfoServer).DescribeRangeValue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.RangeInfo/DescribeRangeValue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RangeInfoServer).DescribeRangeValue(ctx, req.(*DescribeRangeValueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _RangeInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.RangeInfo",
+	HandlerType: (*RangeInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeRangeValue",
+			Handler:    _RangeInfo_DescribeRangeValue_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/range.proto",
+}

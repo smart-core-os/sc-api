@@ -193,3 +193,81 @@ var _SpeakerApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/speaker.proto",
 }
+
+// SpeakerInfoClient is the client API for SpeakerInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SpeakerInfoClient interface {
+	// Get information about how a named device implements Volume features
+	DescribeVolume(ctx context.Context, in *DescribeVolumeRequest, opts ...grpc.CallOption) (*VolumeSupport, error)
+}
+
+type speakerInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSpeakerInfoClient(cc grpc.ClientConnInterface) SpeakerInfoClient {
+	return &speakerInfoClient{cc}
+}
+
+func (c *speakerInfoClient) DescribeVolume(ctx context.Context, in *DescribeVolumeRequest, opts ...grpc.CallOption) (*VolumeSupport, error) {
+	out := new(VolumeSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.SpeakerInfo/DescribeVolume", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SpeakerInfoServer is the server API for SpeakerInfo service.
+// All implementations must embed UnimplementedSpeakerInfoServer
+// for forward compatibility
+type SpeakerInfoServer interface {
+	// Get information about how a named device implements Volume features
+	DescribeVolume(context.Context, *DescribeVolumeRequest) (*VolumeSupport, error)
+	mustEmbedUnimplementedSpeakerInfoServer()
+}
+
+// UnimplementedSpeakerInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedSpeakerInfoServer struct {
+}
+
+func (*UnimplementedSpeakerInfoServer) DescribeVolume(context.Context, *DescribeVolumeRequest) (*VolumeSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeVolume not implemented")
+}
+func (*UnimplementedSpeakerInfoServer) mustEmbedUnimplementedSpeakerInfoServer() {}
+
+func RegisterSpeakerInfoServer(s *grpc.Server, srv SpeakerInfoServer) {
+	s.RegisterService(&_SpeakerInfo_serviceDesc, srv)
+}
+
+func _SpeakerInfo_DescribeVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SpeakerInfoServer).DescribeVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.SpeakerInfo/DescribeVolume",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SpeakerInfoServer).DescribeVolume(ctx, req.(*DescribeVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _SpeakerInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.SpeakerInfo",
+	HandlerType: (*SpeakerInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeVolume",
+			Handler:    _SpeakerInfo_DescribeVolume_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/speaker.proto",
+}

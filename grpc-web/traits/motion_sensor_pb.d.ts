@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
 export class MotionDetection extends jspb.Message {
@@ -28,22 +29,28 @@ export namespace MotionDetection {
   }
 }
 
-export class MotionSensorAttributes extends jspb.Message {
+export class MotionDetectionSupport extends jspb.Message {
+  getSensorSupport(): types_info_pb.SensorSupport | undefined;
+  setSensorSupport(value?: types_info_pb.SensorSupport): MotionDetectionSupport;
+  hasSensorSupport(): boolean;
+  clearSensorSupport(): MotionDetectionSupport;
+
   getNotDetectedDelay(): google_protobuf_duration_pb.Duration | undefined;
-  setNotDetectedDelay(value?: google_protobuf_duration_pb.Duration): MotionSensorAttributes;
+  setNotDetectedDelay(value?: google_protobuf_duration_pb.Duration): MotionDetectionSupport;
   hasNotDetectedDelay(): boolean;
-  clearNotDetectedDelay(): MotionSensorAttributes;
+  clearNotDetectedDelay(): MotionDetectionSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MotionSensorAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: MotionSensorAttributes): MotionSensorAttributes.AsObject;
-  static serializeBinaryToWriter(message: MotionSensorAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MotionSensorAttributes;
-  static deserializeBinaryFromReader(message: MotionSensorAttributes, reader: jspb.BinaryReader): MotionSensorAttributes;
+  toObject(includeInstance?: boolean): MotionDetectionSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: MotionDetectionSupport): MotionDetectionSupport.AsObject;
+  static serializeBinaryToWriter(message: MotionDetectionSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MotionDetectionSupport;
+  static deserializeBinaryFromReader(message: MotionDetectionSupport, reader: jspb.BinaryReader): MotionDetectionSupport;
 }
 
-export namespace MotionSensorAttributes {
+export namespace MotionDetectionSupport {
   export type AsObject = {
+    sensorSupport?: types_info_pb.SensorSupport.AsObject,
     notDetectedDelay?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }
@@ -133,6 +140,24 @@ export namespace PullMotionDetectionResponse {
     }
   }
 
+}
+
+export class DescribeMotionDetectionRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeMotionDetectionRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeMotionDetectionRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeMotionDetectionRequest): DescribeMotionDetectionRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeMotionDetectionRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeMotionDetectionRequest;
+  static deserializeBinaryFromReader(message: DescribeMotionDetectionRequest, reader: jspb.BinaryReader): DescribeMotionDetectionRequest;
+}
+
+export namespace DescribeMotionDetectionRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum MotionDetectionState { 

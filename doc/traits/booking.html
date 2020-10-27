@@ -183,7 +183,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.BookingAttributes"><span class="badge">M</span>BookingAttributes</a>
+                  <a href="#smartcore.traits.BookingSupport"><span class="badge">M</span>BookingSupport</a>
                 </li>
               
                 <li>
@@ -208,6 +208,10 @@
               
                 <li>
                   <a href="#smartcore.traits.CreateBookingResponse"><span class="badge">M</span>CreateBookingResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeBookingRequest"><span class="badge">M</span>DescribeBookingRequest</a>
                 </li>
               
                 <li>
@@ -239,14 +243,14 @@
                   <a href="#smartcore.traits.CheckInSupport"><span class="badge">E</span>CheckInSupport</a>
                 </li>
               
-                <li>
-                  <a href="#smartcore.traits.SubscriptionSupport"><span class="badge">E</span>SubscriptionSupport</a>
-                </li>
-              
               
               
                 <li>
                   <a href="#smartcore.traits.BookingApi"><span class="badge">S</span>BookingApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.BookingInfo"><span class="badge">S</span>BookingInfo</a>
                 </li>
               
             </ul>
@@ -326,8 +330,8 @@ If check_in.end_time is absent, no check out has happened </p></td>
 
         
       
-        <h3 id="smartcore.traits.BookingAttributes">BookingAttributes</h3>
-        <p>Trait.attribute for booking capabilities</p>
+        <h3 id="smartcore.traits.BookingSupport">BookingSupport</h3>
+        <p>BookingSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -337,12 +341,10 @@ If check_in.end_time is absent, no check out has happened </p></td>
             <tbody>
               
                 <tr>
-                  <td>updatable_booking_fields</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
                   <td></td>
-                  <td><p>which fields of a booking can be amended
-if this field is absent, the list of updatable fields is unknown
-any unsupported fields will be ignored, check the return value of UpdateBookingResponse </p></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
                 </tr>
               
                 <tr>
@@ -357,20 +359,6 @@ any unsupported fields will be ignored, check the return value of UpdateBookingR
                   <td><a href="#smartcore.traits.CheckInSupport">CheckInSupport</a></td>
                   <td></td>
                   <td><p>is check out supported, and how </p></td>
-                </tr>
-              
-                <tr>
-                  <td>subscription_support</td>
-                  <td><a href="#smartcore.traits.SubscriptionSupport">SubscriptionSupport</a></td>
-                  <td></td>
-                  <td><p>if subscriptions are supported (see Trait.observable), how are they implemented </p></td>
-                </tr>
-              
-                <tr>
-                  <td>poll_period</td>
-                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
-                  <td></td>
-                  <td><p>if subscriptions are emulated, how often is the system polled for data </p></td>
                 </tr>
               
                 <tr>
@@ -523,6 +511,30 @@ any unsupported fields will be ignored, check the return value of UpdateBookingR
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>The created bookings&#39; id </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeBookingRequest">DescribeBookingRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -763,36 +775,6 @@ bookings are returned if they intersect this time period </p></td>
           </tbody>
         </table>
       
-        <h3 id="smartcore.traits.SubscriptionSupport">SubscriptionSupport</h3>
-        <p></p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>SUBSCRIPTION_SUPPORT_UNKNOWN</td>
-                <td>0</td>
-                <td><p>how subscriptions are implemented is not known</p></td>
-              </tr>
-            
-              <tr>
-                <td>SUBSCRIPTION_SUPPORT_NATIVE</td>
-                <td>1</td>
-                <td><p>subscribing to bookings is supported natively by the underlying system</p></td>
-              </tr>
-            
-              <tr>
-                <td>SUBSCRIPTION_SUPPORT_EMULATED</td>
-                <td>2</td>
-                <td><p>subscribing to bookings is supported in the driver, rather than natively
-usually the driver will poll the system for data</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
 
       
 
@@ -845,6 +827,25 @@ usually the driver will poll the system for data</p></td>
                 <td><a href="#smartcore.traits.ListBookingsRequest">ListBookingsRequest</a></td>
                 <td><a href="#smartcore.traits.PullBookingsResponse">PullBookingsResponse</a> stream</td>
                 <td><p>request updates to booking changes for a given bookable</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.BookingInfo">BookingInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeBooking</td>
+                <td><a href="#smartcore.traits.DescribeBookingRequest">DescribeBookingRequest</a></td>
+                <td><a href="#smartcore.traits.BookingSupport">BookingSupport</a></td>
+                <td><p>Get information about how a named device implements Booking features</p></td>
               </tr>
             
           </tbody>

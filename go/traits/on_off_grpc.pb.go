@@ -194,3 +194,81 @@ var _OnOffApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/on_off.proto",
 }
+
+// OnOffInfoClient is the client API for OnOffInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type OnOffInfoClient interface {
+	// Get information about how a named device implements OnOff features
+	DescribeOnOff(ctx context.Context, in *DescribeOnOffRequest, opts ...grpc.CallOption) (*OnOffSupport, error)
+}
+
+type onOffInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewOnOffInfoClient(cc grpc.ClientConnInterface) OnOffInfoClient {
+	return &onOffInfoClient{cc}
+}
+
+func (c *onOffInfoClient) DescribeOnOff(ctx context.Context, in *DescribeOnOffRequest, opts ...grpc.CallOption) (*OnOffSupport, error) {
+	out := new(OnOffSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OnOffInfo/DescribeOnOff", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// OnOffInfoServer is the server API for OnOffInfo service.
+// All implementations must embed UnimplementedOnOffInfoServer
+// for forward compatibility
+type OnOffInfoServer interface {
+	// Get information about how a named device implements OnOff features
+	DescribeOnOff(context.Context, *DescribeOnOffRequest) (*OnOffSupport, error)
+	mustEmbedUnimplementedOnOffInfoServer()
+}
+
+// UnimplementedOnOffInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedOnOffInfoServer struct {
+}
+
+func (*UnimplementedOnOffInfoServer) DescribeOnOff(context.Context, *DescribeOnOffRequest) (*OnOffSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeOnOff not implemented")
+}
+func (*UnimplementedOnOffInfoServer) mustEmbedUnimplementedOnOffInfoServer() {}
+
+func RegisterOnOffInfoServer(s *grpc.Server, srv OnOffInfoServer) {
+	s.RegisterService(&_OnOffInfo_serviceDesc, srv)
+}
+
+func _OnOffInfo_DescribeOnOff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeOnOffRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnOffInfoServer).DescribeOnOff(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.OnOffInfo/DescribeOnOff",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnOffInfoServer).DescribeOnOff(ctx, req.(*DescribeOnOffRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _OnOffInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.OnOffInfo",
+	HandlerType: (*OnOffInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeOnOff",
+			Handler:    _OnOffInfo_DescribeOnOff_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/on_off.proto",
+}

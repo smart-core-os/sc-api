@@ -43,6 +43,20 @@ export class PtzApiClient {
 
 }
 
+export class PtzInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describePtz(
+    request: traits_ptz_pb.DescribePtzRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_ptz_pb.PtzSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_ptz_pb.PtzSupport>;
+
+}
+
 export class PtzApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -72,6 +86,18 @@ export class PtzApiPromiseClient {
     request: traits_ptz_pb.PullPtzRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.PullPtzResponse>;
+
+}
+
+export class PtzInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describePtz(
+    request: traits_ptz_pb.DescribePtzRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_ptz_pb.PtzSupport>;
 
 }
 

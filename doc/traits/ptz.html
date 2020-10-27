@@ -183,15 +183,15 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.DescribePtzRequest"><span class="badge">M</span>DescribePtzRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetPtzRequest"><span class="badge">M</span>GetPtzRequest</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.traits.Ptz"><span class="badge">M</span>Ptz</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PtzAttributes"><span class="badge">M</span>PtzAttributes</a>
                 </li>
               
                 <li>
@@ -208,6 +208,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PtzPreset"><span class="badge">M</span>PtzPreset</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PtzSupport"><span class="badge">M</span>PtzSupport</a>
                 </li>
               
                 <li>
@@ -239,6 +243,10 @@
               
                 <li>
                   <a href="#smartcore.traits.PtzApi"><span class="badge">S</span>PtzApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PtzInfo"><span class="badge">S</span>PtzInfo</a>
                 </li>
               
             </ul>
@@ -278,6 +286,30 @@
                   <td><a href="#smartcore.traits.PtzPreset">PtzPreset</a></td>
                   <td></td>
                   <td><p>Details for the preset </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribePtzRequest">DescribePtzRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -354,52 +386,6 @@
                   <td><a href="#int32">int32</a></td>
                   <td></td>
                   <td><p>The speed the preset should be applied. 0 for &#39;use device default&#39; </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PtzAttributes">PtzAttributes</h3>
-        <p>Trait.attribute for defining the capabilities of this device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>supports_position</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Can we ask the device to move to a specific position </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supports_movement</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Can we move the device without a target position in mind </p></td>
-                </tr>
-              
-                <tr>
-                  <td>presets</td>
-                  <td><a href="#smartcore.traits.PtzPreset">PtzPreset</a></td>
-                  <td>repeated</td>
-                  <td><p>A list of presets that the device has configured. If the list is empty and supports_custom_presets is false then
-the device doesn&#39;t support presets </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supports_custom_presets</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>If true, custom preset names can be used to store ptz positions. If false only writable presets can be updated. </p></td>
                 </tr>
               
             </tbody>
@@ -567,6 +553,59 @@ movement </p></td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
                   <td><p>Can this preset be stored via the api </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PtzSupport">PtzSupport</h3>
+        <p>PtzSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_position</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Can we ask the device to move to a specific position </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_movement</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Can we move the device without a target position in mind </p></td>
+                </tr>
+              
+                <tr>
+                  <td>presets</td>
+                  <td><a href="#smartcore.traits.PtzPreset">PtzPreset</a></td>
+                  <td>repeated</td>
+                  <td><p>A list of presets that the device has configured. If the list is empty and supports_custom_presets is false then
+the device doesn&#39;t support presets </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_custom_presets</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, custom preset names can be used to store ptz positions. If false only writable presets can be updated. </p></td>
                 </tr>
               
             </tbody>
@@ -809,6 +848,25 @@ movement </p></td>
                 <td><a href="#smartcore.traits.PullPtzRequest">PullPtzRequest</a></td>
                 <td><a href="#smartcore.traits.PullPtzResponse">PullPtzResponse</a> stream</td>
                 <td><p>Get notified of changes to the OnOffState of a device</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.PtzInfo">PtzInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribePtz</td>
+                <td><a href="#smartcore.traits.DescribePtzRequest">DescribePtzRequest</a></td>
+                <td><a href="#smartcore.traits.PtzSupport">PtzSupport</a></td>
+                <td><p>Get information about how a named device implements Ptz features</p></td>
               </tr>
             
           </tbody>

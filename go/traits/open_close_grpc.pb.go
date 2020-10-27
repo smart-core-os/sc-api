@@ -228,3 +228,81 @@ var _OpenCloseApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/open_close.proto",
 }
+
+// OpenCloseInfoClient is the client API for OpenCloseInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type OpenCloseInfoClient interface {
+	// Get information about how a named device implements Positions features
+	DescribePositions(ctx context.Context, in *DescribePositionsRequest, opts ...grpc.CallOption) (*PositionsSupport, error)
+}
+
+type openCloseInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewOpenCloseInfoClient(cc grpc.ClientConnInterface) OpenCloseInfoClient {
+	return &openCloseInfoClient{cc}
+}
+
+func (c *openCloseInfoClient) DescribePositions(ctx context.Context, in *DescribePositionsRequest, opts ...grpc.CallOption) (*PositionsSupport, error) {
+	out := new(PositionsSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OpenCloseInfo/DescribePositions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// OpenCloseInfoServer is the server API for OpenCloseInfo service.
+// All implementations must embed UnimplementedOpenCloseInfoServer
+// for forward compatibility
+type OpenCloseInfoServer interface {
+	// Get information about how a named device implements Positions features
+	DescribePositions(context.Context, *DescribePositionsRequest) (*PositionsSupport, error)
+	mustEmbedUnimplementedOpenCloseInfoServer()
+}
+
+// UnimplementedOpenCloseInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedOpenCloseInfoServer struct {
+}
+
+func (*UnimplementedOpenCloseInfoServer) DescribePositions(context.Context, *DescribePositionsRequest) (*PositionsSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribePositions not implemented")
+}
+func (*UnimplementedOpenCloseInfoServer) mustEmbedUnimplementedOpenCloseInfoServer() {}
+
+func RegisterOpenCloseInfoServer(s *grpc.Server, srv OpenCloseInfoServer) {
+	s.RegisterService(&_OpenCloseInfo_serviceDesc, srv)
+}
+
+func _OpenCloseInfo_DescribePositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribePositionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OpenCloseInfoServer).DescribePositions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.OpenCloseInfo/DescribePositions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OpenCloseInfoServer).DescribePositions(ctx, req.(*DescribePositionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _OpenCloseInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.OpenCloseInfo",
+	HandlerType: (*OpenCloseInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribePositions",
+			Handler:    _OpenCloseInfo_DescribePositions_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/open_close.proto",
+}

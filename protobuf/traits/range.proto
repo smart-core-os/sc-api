@@ -10,6 +10,7 @@ option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 import "types/number.proto";
 import "types/tween.proto";
 
@@ -25,9 +26,18 @@ service RangeApi {
   rpc PullRangeValue (PullRangeValueRequest) returns (stream PullRangeValueResponse);
 }
 
-// Trait.attributes relating to the value for the range
-message RangeAttributes {
-  smartcore.api.types.Int32Attributes value_attributes = 1;
+// Describes the capabilities of a specific named device with respect to this trait.
+service RangeInfo {
+  // Get information about how a named device implements RangeValue features
+  rpc DescribeRangeValue (DescribeRangeValueRequest) returns (RangeValueSupport);
+}
+
+// RangeValueSupport describes the capabilities of devices implementing this trait
+message RangeValueSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // Describes details of the range value
+  smartcore.api.types.Int32Attributes value_attributes = 2;
 }
 
 message RangeValue {
@@ -78,4 +88,9 @@ message PullRangeValueResponse {
     // The new value for the range
     RangeValue range_value = 3;
   }
+}
+
+message DescribeRangeValueRequest {
+  // The name of the device
+  string name = 1;
 }

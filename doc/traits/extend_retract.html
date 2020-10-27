@@ -183,7 +183,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ExtendRetractAttributes"><span class="badge">M</span>ExtendRetractAttributes</a>
+                  <a href="#smartcore.traits.DescribeExtensionRequest"><span class="badge">M</span>DescribeExtensionRequest</a>
                 </li>
               
                 <li>
@@ -196,6 +196,10 @@
               
                 <li>
                   <a href="#smartcore.traits.ExtensionPreset"><span class="badge">M</span>ExtensionPreset</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ExtensionSupport"><span class="badge">M</span>ExtensionSupport</a>
                 </li>
               
                 <li>
@@ -223,6 +227,10 @@
               
                 <li>
                   <a href="#smartcore.traits.ExtendRetractApi"><span class="badge">S</span>ExtendRetractApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ExtendRetractInfo"><span class="badge">S</span>ExtendRetractInfo</a>
                 </li>
               
             </ul>
@@ -271,7 +279,7 @@
 
         
       
-        <h3 id="smartcore.traits.ExtendRetractAttributes">ExtendRetractAttributes</h3>
+        <h3 id="smartcore.traits.DescribeExtensionRequest">DescribeExtensionRequest</h3>
         <p></p>
 
         
@@ -282,32 +290,10 @@
             <tbody>
               
                 <tr>
-                  <td>presets</td>
-                  <td><a href="#smartcore.traits.ExtensionPreset">ExtensionPreset</a></td>
-                  <td>repeated</td>
-                  <td><p>List of presets that this device supports. If empty then the device does not support presets </p></td>
-                </tr>
-              
-                <tr>
-                  <td>step</td>
-                  <td><a href="#float">float</a></td>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>0 to 100, how precise is the control of the extension. A value of 0 (or 100) means only 0 or 100 extend_percent
-are valid. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tween_support</td>
-                  <td><a href="#smartcore.api.types.TweenSupport">smartcore.api.types.TweenSupport</a></td>
-                  <td></td>
-                  <td><p>Does the device support tweening between the current value and a target value </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supports_custom_presets</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>If true, custom preset names can be used to store extension values. If false only writable presets can be updated. </p></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -423,6 +409,59 @@ action to be performed over the given time frame </p></td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
                   <td><p>Can this preset be stored via the api </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ExtensionSupport">ExtensionSupport</h3>
+        <p>ExtensionSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>presets</td>
+                  <td><a href="#smartcore.traits.ExtensionPreset">ExtensionPreset</a></td>
+                  <td>repeated</td>
+                  <td><p>List of presets that this device supports. If empty then the device does not support presets </p></td>
+                </tr>
+              
+                <tr>
+                  <td>step</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>0 to 100, how precise is the control of the extension. A value of 0 (or 100) means only 0 or 100 extend_percent
+are valid. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tween_support</td>
+                  <td><a href="#smartcore.api.types.TweenSupport">smartcore.api.types.TweenSupport</a></td>
+                  <td></td>
+                  <td><p>Does the device support tweening between the current value and a target value </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_custom_presets</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, custom preset names can be used to store extension values. If false only writable presets can be updated. </p></td>
                 </tr>
               
             </tbody>
@@ -627,6 +666,25 @@ action to be performed over the given time frame </p></td>
                 <td><a href="#smartcore.traits.PullExtensionsRequest">PullExtensionsRequest</a></td>
                 <td><a href="#smartcore.traits.PullExtensionsResponse">PullExtensionsResponse</a> stream</td>
                 <td><p>Get notified of changes to the OnOffState of a device</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.ExtendRetractInfo">ExtendRetractInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeExtension</td>
+                <td><a href="#smartcore.traits.DescribeExtensionRequest">DescribeExtensionRequest</a></td>
+                <td><a href="#smartcore.traits.ExtensionSupport">ExtensionSupport</a></td>
+                <td><p>Get information about how a named device implements Extension features</p></td>
               </tr>
             
           </tbody>

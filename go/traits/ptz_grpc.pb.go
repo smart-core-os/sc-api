@@ -270,3 +270,81 @@ var _PtzApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/ptz.proto",
 }
+
+// PtzInfoClient is the client API for PtzInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type PtzInfoClient interface {
+	// Get information about how a named device implements Ptz features
+	DescribePtz(ctx context.Context, in *DescribePtzRequest, opts ...grpc.CallOption) (*PtzSupport, error)
+}
+
+type ptzInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewPtzInfoClient(cc grpc.ClientConnInterface) PtzInfoClient {
+	return &ptzInfoClient{cc}
+}
+
+func (c *ptzInfoClient) DescribePtz(ctx context.Context, in *DescribePtzRequest, opts ...grpc.CallOption) (*PtzSupport, error) {
+	out := new(PtzSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PtzInfo/DescribePtz", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// PtzInfoServer is the server API for PtzInfo service.
+// All implementations must embed UnimplementedPtzInfoServer
+// for forward compatibility
+type PtzInfoServer interface {
+	// Get information about how a named device implements Ptz features
+	DescribePtz(context.Context, *DescribePtzRequest) (*PtzSupport, error)
+	mustEmbedUnimplementedPtzInfoServer()
+}
+
+// UnimplementedPtzInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedPtzInfoServer struct {
+}
+
+func (*UnimplementedPtzInfoServer) DescribePtz(context.Context, *DescribePtzRequest) (*PtzSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribePtz not implemented")
+}
+func (*UnimplementedPtzInfoServer) mustEmbedUnimplementedPtzInfoServer() {}
+
+func RegisterPtzInfoServer(s *grpc.Server, srv PtzInfoServer) {
+	s.RegisterService(&_PtzInfo_serviceDesc, srv)
+}
+
+func _PtzInfo_DescribePtz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribePtzRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PtzInfoServer).DescribePtz(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.PtzInfo/DescribePtz",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PtzInfoServer).DescribePtz(ctx, req.(*DescribePtzRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _PtzInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.PtzInfo",
+	HandlerType: (*PtzInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribePtz",
+			Handler:    _PtzInfo_DescribePtz_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/ptz.proto",
+}

@@ -3,34 +3,41 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class ExtendRetractAttributes extends jspb.Message {
+export class ExtensionSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): ExtensionSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): ExtensionSupport;
+
   getPresetsList(): Array<ExtensionPreset>;
-  setPresetsList(value: Array<ExtensionPreset>): ExtendRetractAttributes;
-  clearPresetsList(): ExtendRetractAttributes;
+  setPresetsList(value: Array<ExtensionPreset>): ExtensionSupport;
+  clearPresetsList(): ExtensionSupport;
   addPresets(value?: ExtensionPreset, index?: number): ExtensionPreset;
 
   getStep(): number;
-  setStep(value: number): ExtendRetractAttributes;
+  setStep(value: number): ExtensionSupport;
 
   getTweenSupport(): types_tween_pb.TweenSupport;
-  setTweenSupport(value: types_tween_pb.TweenSupport): ExtendRetractAttributes;
+  setTweenSupport(value: types_tween_pb.TweenSupport): ExtensionSupport;
 
   getSupportsCustomPresets(): boolean;
-  setSupportsCustomPresets(value: boolean): ExtendRetractAttributes;
+  setSupportsCustomPresets(value: boolean): ExtensionSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtendRetractAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtendRetractAttributes): ExtendRetractAttributes.AsObject;
-  static serializeBinaryToWriter(message: ExtendRetractAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtendRetractAttributes;
-  static deserializeBinaryFromReader(message: ExtendRetractAttributes, reader: jspb.BinaryReader): ExtendRetractAttributes;
+  toObject(includeInstance?: boolean): ExtensionSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtensionSupport): ExtensionSupport.AsObject;
+  static serializeBinaryToWriter(message: ExtensionSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtensionSupport;
+  static deserializeBinaryFromReader(message: ExtensionSupport, reader: jspb.BinaryReader): ExtensionSupport;
 }
 
-export namespace ExtendRetractAttributes {
+export namespace ExtensionSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     presetsList: Array<ExtensionPreset.AsObject>,
     step: number,
     tweenSupport: types_tween_pb.TweenSupport,
@@ -259,5 +266,23 @@ export namespace PullExtensionsResponse {
     }
   }
 
+}
+
+export class DescribeExtensionRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeExtensionRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeExtensionRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeExtensionRequest): DescribeExtensionRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeExtensionRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeExtensionRequest;
+  static deserializeBinaryFromReader(message: DescribeExtensionRequest, reader: jspb.BinaryReader): DescribeExtensionRequest;
+}
+
+export namespace DescribeExtensionRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

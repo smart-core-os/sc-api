@@ -2,32 +2,39 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
-export class InputSelectAttributes extends jspb.Message {
+export class InputSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): InputSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): InputSupport;
+
   getInputsList(): Array<AvPort>;
-  setInputsList(value: Array<AvPort>): InputSelectAttributes;
-  clearInputsList(): InputSelectAttributes;
+  setInputsList(value: Array<AvPort>): InputSupport;
+  clearInputsList(): InputSupport;
   addInputs(value?: AvPort, index?: number): AvPort;
 
   getSupportedFeature(): InputSelectFeature;
-  setSupportedFeature(value: InputSelectFeature): InputSelectAttributes;
+  setSupportedFeature(value: InputSelectFeature): InputSupport;
 
   getOutputsList(): Array<AvPort>;
-  setOutputsList(value: Array<AvPort>): InputSelectAttributes;
-  clearOutputsList(): InputSelectAttributes;
+  setOutputsList(value: Array<AvPort>): InputSupport;
+  clearOutputsList(): InputSupport;
   addOutputs(value?: AvPort, index?: number): AvPort;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): InputSelectAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: InputSelectAttributes): InputSelectAttributes.AsObject;
-  static serializeBinaryToWriter(message: InputSelectAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): InputSelectAttributes;
-  static deserializeBinaryFromReader(message: InputSelectAttributes, reader: jspb.BinaryReader): InputSelectAttributes;
+  toObject(includeInstance?: boolean): InputSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: InputSupport): InputSupport.AsObject;
+  static serializeBinaryToWriter(message: InputSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): InputSupport;
+  static deserializeBinaryFromReader(message: InputSupport, reader: jspb.BinaryReader): InputSupport;
 }
 
-export namespace InputSelectAttributes {
+export namespace InputSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     inputsList: Array<AvPort.AsObject>,
     supportedFeature: InputSelectFeature,
     outputsList: Array<AvPort.AsObject>,
@@ -213,6 +220,24 @@ export namespace PullInputResponse {
     }
   }
 
+}
+
+export class DescribeInputRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeInputRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeInputRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeInputRequest): DescribeInputRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeInputRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeInputRequest;
+  static deserializeBinaryFromReader(message: DescribeInputRequest, reader: jspb.BinaryReader): DescribeInputRequest;
+}
+
+export namespace DescribeInputRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum InputSelectFeature { 

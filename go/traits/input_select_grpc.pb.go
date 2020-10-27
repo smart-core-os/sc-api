@@ -194,3 +194,81 @@ var _InputSelectApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/input_select.proto",
 }
+
+// InputSelectInfoClient is the client API for InputSelectInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type InputSelectInfoClient interface {
+	// Get information about how a named device implements Input features
+	DescribeInput(ctx context.Context, in *DescribeInputRequest, opts ...grpc.CallOption) (*InputSupport, error)
+}
+
+type inputSelectInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewInputSelectInfoClient(cc grpc.ClientConnInterface) InputSelectInfoClient {
+	return &inputSelectInfoClient{cc}
+}
+
+func (c *inputSelectInfoClient) DescribeInput(ctx context.Context, in *DescribeInputRequest, opts ...grpc.CallOption) (*InputSupport, error) {
+	out := new(InputSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.InputSelectInfo/DescribeInput", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// InputSelectInfoServer is the server API for InputSelectInfo service.
+// All implementations must embed UnimplementedInputSelectInfoServer
+// for forward compatibility
+type InputSelectInfoServer interface {
+	// Get information about how a named device implements Input features
+	DescribeInput(context.Context, *DescribeInputRequest) (*InputSupport, error)
+	mustEmbedUnimplementedInputSelectInfoServer()
+}
+
+// UnimplementedInputSelectInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedInputSelectInfoServer struct {
+}
+
+func (*UnimplementedInputSelectInfoServer) DescribeInput(context.Context, *DescribeInputRequest) (*InputSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeInput not implemented")
+}
+func (*UnimplementedInputSelectInfoServer) mustEmbedUnimplementedInputSelectInfoServer() {}
+
+func RegisterInputSelectInfoServer(s *grpc.Server, srv InputSelectInfoServer) {
+	s.RegisterService(&_InputSelectInfo_serviceDesc, srv)
+}
+
+func _InputSelectInfo_DescribeInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeInputRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InputSelectInfoServer).DescribeInput(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.InputSelectInfo/DescribeInput",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InputSelectInfoServer).DescribeInput(ctx, req.(*DescribeInputRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _InputSelectInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.InputSelectInfo",
+	HandlerType: (*InputSelectInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeInput",
+			Handler:    _InputSelectInfo_DescribeInput_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/input_select.proto",
+}

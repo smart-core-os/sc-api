@@ -183,11 +183,15 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetBrightnessRequest"><span class="badge">M</span>GetBrightnessRequest</a>
+                  <a href="#smartcore.traits.BrightnessSupport"><span class="badge">M</span>BrightnessSupport</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.LightAttributes"><span class="badge">M</span>LightAttributes</a>
+                  <a href="#smartcore.traits.DescribeBrightnessRequest"><span class="badge">M</span>DescribeBrightnessRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetBrightnessRequest"><span class="badge">M</span>GetBrightnessRequest</a>
                 </li>
               
                 <li>
@@ -215,6 +219,10 @@
               
                 <li>
                   <a href="#smartcore.traits.LightApi"><span class="badge">S</span>LightApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.LightInfo"><span class="badge">S</span>LightInfo</a>
                 </li>
               
             </ul>
@@ -284,6 +292,68 @@
 
         
       
+        <h3 id="smartcore.traits.BrightnessSupport">BrightnessSupport</h3>
+        <p>BrightnessSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>brightness_attributes</td>
+                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
+                  <td></td>
+                  <td><p>control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>presets</td>
+                  <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
+                  <td>repeated</td>
+                  <td><p>A description of the supported presets, none means no presets </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeBrightnessRequest">DescribeBrightnessRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="smartcore.traits.GetBrightnessRequest">GetBrightnessRequest</h3>
         <p>A request to get the current value of a brightness</p>
 
@@ -299,37 +369,6 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>The name of the device to get the value for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.LightAttributes">LightAttributes</h3>
-        <p>Trait.attribute for light capabilities</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>brightness_attributes</td>
-                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
-                  <td></td>
-                  <td><p>control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage </p></td>
-                </tr>
-              
-                <tr>
-                  <td>presets</td>
-                  <td><a href="#smartcore.traits.LightPreset">LightPreset</a></td>
-                  <td>repeated</td>
-                  <td><p>A description of the supported presets, none means no presets </p></td>
                 </tr>
               
             </tbody>
@@ -535,6 +574,25 @@ capabilities </p></td>
                 <td><a href="#smartcore.traits.PullBrightnessRequest">PullBrightnessRequest</a></td>
                 <td><a href="#smartcore.traits.PullBrightnessResponse">PullBrightnessResponse</a> stream</td>
                 <td><p>request updates to changes in the range value</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.LightInfo">LightInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeBrightness</td>
+                <td><a href="#smartcore.traits.DescribeBrightnessRequest">DescribeBrightnessRequest</a></td>
+                <td><a href="#smartcore.traits.BrightnessSupport">BrightnessSupport</a></td>
+                <td><p>Get information about how a named device implements Brightness features</p></td>
               </tr>
             
           </tbody>

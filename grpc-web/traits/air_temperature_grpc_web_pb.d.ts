@@ -29,6 +29,20 @@ export class AirTemperatureApiClient {
 
 }
 
+export class AirTemperatureInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAirTemperature(
+    request: traits_air_temperature_pb.DescribeAirTemperatureRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_air_temperature_pb.AirTemperatureSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperatureSupport>;
+
+}
+
 export class AirTemperatureApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -48,6 +62,18 @@ export class AirTemperatureApiPromiseClient {
     request: traits_air_temperature_pb.PullAirTemperatureRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.PullAirTemperatureResponse>;
+
+}
+
+export class AirTemperatureInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAirTemperature(
+    request: traits_air_temperature_pb.DescribeAirTemperatureRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_air_temperature_pb.AirTemperatureSupport>;
 
 }
 

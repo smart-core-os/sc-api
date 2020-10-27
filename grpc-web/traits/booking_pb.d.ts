@@ -1,51 +1,41 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_change_pb from '../types/change_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_time_period_pb from '../types/time/period_pb';
 import * as types_time_unit_pb from '../types/time/unit_pb';
 
 
-export class BookingAttributes extends jspb.Message {
-  getUpdatableBookingFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdatableBookingFields(value?: google_protobuf_field_mask_pb.FieldMask): BookingAttributes;
-  hasUpdatableBookingFields(): boolean;
-  clearUpdatableBookingFields(): BookingAttributes;
+export class BookingSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): BookingSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): BookingSupport;
 
   getCheckInSupport(): CheckInSupport;
-  setCheckInSupport(value: CheckInSupport): BookingAttributes;
+  setCheckInSupport(value: CheckInSupport): BookingSupport;
 
   getCheckOutSupport(): CheckInSupport;
-  setCheckOutSupport(value: CheckInSupport): BookingAttributes;
-
-  getSubscriptionSupport(): SubscriptionSupport;
-  setSubscriptionSupport(value: SubscriptionSupport): BookingAttributes;
-
-  getPollPeriod(): google_protobuf_duration_pb.Duration | undefined;
-  setPollPeriod(value?: google_protobuf_duration_pb.Duration): BookingAttributes;
-  hasPollPeriod(): boolean;
-  clearPollPeriod(): BookingAttributes;
+  setCheckOutSupport(value: CheckInSupport): BookingSupport;
 
   getTimeResolution(): types_time_unit_pb.Unit;
-  setTimeResolution(value: types_time_unit_pb.Unit): BookingAttributes;
+  setTimeResolution(value: types_time_unit_pb.Unit): BookingSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BookingAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: BookingAttributes): BookingAttributes.AsObject;
-  static serializeBinaryToWriter(message: BookingAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BookingAttributes;
-  static deserializeBinaryFromReader(message: BookingAttributes, reader: jspb.BinaryReader): BookingAttributes;
+  toObject(includeInstance?: boolean): BookingSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: BookingSupport): BookingSupport.AsObject;
+  static serializeBinaryToWriter(message: BookingSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BookingSupport;
+  static deserializeBinaryFromReader(message: BookingSupport, reader: jspb.BinaryReader): BookingSupport;
 }
 
-export namespace BookingAttributes {
+export namespace BookingSupport {
   export type AsObject = {
-    updatableBookingFields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     checkInSupport: CheckInSupport,
     checkOutSupport: CheckInSupport,
-    subscriptionSupport: SubscriptionSupport,
-    pollPeriod?: google_protobuf_duration_pb.Duration.AsObject,
     timeResolution: types_time_unit_pb.Unit,
   }
 }
@@ -373,14 +363,27 @@ export namespace PullBookingsResponse {
 
 }
 
+export class DescribeBookingRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeBookingRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeBookingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeBookingRequest): DescribeBookingRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeBookingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeBookingRequest;
+  static deserializeBinaryFromReader(message: DescribeBookingRequest, reader: jspb.BinaryReader): DescribeBookingRequest;
+}
+
+export namespace DescribeBookingRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
 export enum CheckInSupport { 
   CHECK_IN_SUPPORT_UNKNOWN = 0,
   CHECK_IN_SUPPORT_NO_SUPPORT = 1,
   CHECK_IN_SUPPORT_STATE = 2,
   CHECK_IN_SUPPORT_TIME = 3,
-}
-export enum SubscriptionSupport { 
-  SUBSCRIPTION_SUPPORT_UNKNOWN = 0,
-  SUBSCRIPTION_SUPPORT_NATIVE = 1,
-  SUBSCRIPTION_SUPPORT_EMULATED = 2,
 }

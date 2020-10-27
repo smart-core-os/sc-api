@@ -36,6 +36,20 @@ export class CountApiClient {
 
 }
 
+export class CountInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeCount(
+    request: traits_count_pb.DescribeCountRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_count_pb.CountSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_count_pb.CountSupport>;
+
+}
+
 export class CountApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -60,6 +74,18 @@ export class CountApiPromiseClient {
     request: traits_count_pb.PullCountsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_count_pb.PullCountsResponse>;
+
+}
+
+export class CountInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeCount(
+    request: traits_count_pb.DescribeCountRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_count_pb.CountSupport>;
 
 }
 

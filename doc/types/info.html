@@ -175,51 +175,23 @@
         
           
           <li>
-            <a href="#traits%2fair_quality_sensor.proto">traits/air_quality_sensor.proto</a>
+            <a href="#types%2finfo.proto">types/info.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.AirQuality"><span class="badge">M</span>AirQuality</a>
+                  <a href="#smartcore.types.ResourceSupport"><span class="badge">M</span>ResourceSupport</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.AirQualitySupport"><span class="badge">M</span>AirQualitySupport</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.DescribeAirQualityRequest"><span class="badge">M</span>DescribeAirQualityRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.GetAirQualityRequest"><span class="badge">M</span>GetAirQualityRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullAirQualityRequest"><span class="badge">M</span>PullAirQualityRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullAirQualityResponse"><span class="badge">M</span>PullAirQualityResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullAirQualityResponse.Change"><span class="badge">M</span>PullAirQualityResponse.Change</a>
+                  <a href="#smartcore.types.SensorSupport"><span class="badge">M</span>SensorSupport</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.traits.AirQualityComfort"><span class="badge">E</span>AirQualityComfort</a>
+                  <a href="#smartcore.types.PullSupport"><span class="badge">E</span>PullSupport</a>
                 </li>
               
               
-              
-                <li>
-                  <a href="#smartcore.traits.AirQualitySensorApi"><span class="badge">S</span>AirQualitySensorApi</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.AirQualitySensorInfo"><span class="badge">S</span>AirQualitySensorInfo</a>
-                </li>
               
             </ul>
           </li>
@@ -231,13 +203,13 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/air_quality_sensor.proto">traits/air_quality_sensor.proto</h2><a href="#title">Top</a>
+        <h2 id="types/info.proto">types/info.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.AirQuality">AirQuality</h3>
-        <p>AirQuality holds the value of all supported sensors.</p>
+        <h3 id="smartcore.types.ResourceSupport">ResourceSupport</h3>
+        <p>ResourceSupport describes how a trait resource supports read/write/subscribe apis.</p>
 
         
           <table class="field-table">
@@ -247,139 +219,50 @@
             <tbody>
               
                 <tr>
-                  <td>carbon_dioxide_level</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
+                  <td>readable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>The CO2 level in parts per million </p></td>
+                  <td><p>Whether the device supports querying, i.e. get apis </p></td>
                 </tr>
               
                 <tr>
-                  <td>volatile_organic_compounds</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
+                  <td>writable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>The VOC level in parts per million </p></td>
+                  <td><p>Whether the device supports writable actions, i.e. update or action apis </p></td>
                 </tr>
               
                 <tr>
-                  <td>air_pressure</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
+                  <td>observable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>The air pressure in hPa </p></td>
+                  <td><p>Whether the device supports subscriptions, i.e. pull apis </p></td>
                 </tr>
               
                 <tr>
-                  <td>comfort</td>
-                  <td><a href="#smartcore.traits.AirQualityComfort">AirQualityComfort</a></td>
-                  <td></td>
-                  <td><p>General comfort of the area </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.AirQualitySupport">AirQualitySupport</h3>
-        <p>AirQualitySupport describes the capabilities of devices implementing this trait</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>sensor_support</td>
-                  <td><a href="#smartcore.types.SensorSupport">smartcore.types.SensorSupport</a></td>
-                  <td></td>
-                  <td><p>How a named device supports read/pull apis </p></td>
-                </tr>
-              
-                <tr>
-                  <td>carbon_dioxide_level</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting CO2 levels, in parts-per-million. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>volatile_organic_compounds</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting volatile organic compounds, in parts-per-million. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>air_pressure</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">smartcore.api.types.FloatBounds</a></td>
-                  <td></td>
-                  <td><p>If present then the sensor supports reporting air pressure, in hPa. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>comfort</td>
-                  <td><a href="#smartcore.traits.AirQualityComfort">AirQualityComfort</a></td>
-                  <td>repeated</td>
-                  <td><p>If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
-Unknown should be assumed to be present if supported. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.DescribeAirQualityRequest">DescribeAirQualityRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.GetAirQualityRequest">GetAirQualityRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device to request state from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
+                  <td>writable_fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The state fields to fetch </p></td>
+                  <td><p>Which fields can be written to.
+Relative to the resource type, not the message (FooRequest) type.
+If this field is absent, the list of updatable fields is unknown, assume all.
+Check the response to your Update request for the values that were updated.
+An attempt to explicitly (via update_mask) write to a non-writable field will error. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pull_support</td>
+                  <td><a href="#smartcore.types.PullSupport">PullSupport</a></td>
+                  <td></td>
+                  <td><p>How Pull is implemented by the server </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pull_poll</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>If Pull is emulated, how often updates can be expected.
+This is not strict, updates may be less or more frequent. </p></td>
                 </tr>
               
             </tbody>
@@ -389,8 +272,8 @@ Unknown should be assumed to be present if supported. </p></td>
 
         
       
-        <h3 id="smartcore.traits.PullAirQualityRequest">PullAirQualityRequest</h3>
-        <p></p>
+        <h3 id="smartcore.types.SensorSupport">SensorSupport</h3>
+        <p>SensorSupport describes how a sensor trait supports read or subscribe apis.</p><p>Note: The field ids here match the ResourceSupport message</p><p>in case we decide to merge them later</p>
 
         
           <table class="field-table">
@@ -400,86 +283,32 @@ Unknown should be assumed to be present if supported. </p></td>
             <tbody>
               
                 <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
+                  <td>readable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>The name of the device to request state from </p></td>
+                  <td><p>Whether the device supports querying, i.e. get apis </p></td>
                 </tr>
               
                 <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td>observable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>The state fields to pull </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullAirQualityResponse">PullAirQualityResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>changes</td>
-                  <td><a href="#smartcore.traits.PullAirQualityResponse.Change">PullAirQualityResponse.Change</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullAirQualityResponse.Change">PullAirQualityResponse.Change</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device that has changed. </p></td>
+                  <td><p>Whether the device supports subscriptions, i.e. pull apis </p></td>
                 </tr>
               
                 <tr>
-                  <td>change_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>pull_support</td>
+                  <td><a href="#smartcore.types.PullSupport">PullSupport</a></td>
                   <td></td>
-                  <td><p>The time the change happened. </p></td>
+                  <td><p>How Pull is implemented by the server </p></td>
                 </tr>
               
                 <tr>
-                  <td>air_quality</td>
-                  <td><a href="#smartcore.traits.AirQuality">AirQuality</a></td>
+                  <td>pull_poll</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p>The new state of the sensor. Changed fields should be reported via the update_mask property. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields that have changed. </p></td>
+                  <td><p>If Pull is emulated, how often updates can be expected.
+This is not strict, updates may be less or more frequent. </p></td>
                 </tr>
               
             </tbody>
@@ -491,8 +320,8 @@ Unknown should be assumed to be present if supported. </p></td>
       
 
       
-        <h3 id="smartcore.traits.AirQualityComfort">AirQualityComfort</h3>
-        <p>AirQualityComfort encodes levels of comfort for an area.</p>
+        <h3 id="smartcore.types.PullSupport">PullSupport</h3>
+        <p>PullSupport describes how Pull methods are implemented by the server</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -500,21 +329,22 @@ Unknown should be assumed to be present if supported. </p></td>
           <tbody>
             
               <tr>
-                <td>AIR_QUALITY_COMFORT_UNKNOWN</td>
+                <td>PULL_SUPPORT_UNKNOWN</td>
                 <td>0</td>
-                <td><p>The comfort level is unknown</p></td>
+                <td><p>How subscriptions are implemented is not known.</p></td>
               </tr>
             
               <tr>
-                <td>AIR_QUALITY_COMFORT_COMFORTABLE</td>
+                <td>PULL_SUPPORT_NATIVE</td>
                 <td>1</td>
-                <td><p>The area should be comfortable for occupants</p></td>
+                <td><p>Subscribing is supported natively by the underlying system.</p></td>
               </tr>
             
               <tr>
-                <td>AIR_QUALITY_COMFORT_UNCOMFORTABLE</td>
+                <td>PULL_SUPPORT_EMULATED</td>
                 <td>2</td>
-                <td><p>The area might be uncomfortable for occupants</p></td>
+                <td><p>Subscribing is supported in the driver, rather than natively.
+Usually the driver will poll the system for data.</p></td>
               </tr>
             
           </tbody>
@@ -524,51 +354,6 @@ Unknown should be assumed to be present if supported. </p></td>
       
 
       
-        <h3 id="smartcore.traits.AirQualitySensorApi">AirQualitySensorApi</h3>
-        <p>Trait for devices that can report either numeric or descriptive readings about air quality and comfort.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>GetAirQuality</td>
-                <td><a href="#smartcore.traits.GetAirQualityRequest">GetAirQualityRequest</a></td>
-                <td><a href="#smartcore.traits.AirQuality">AirQuality</a></td>
-                <td><p>Get the current state of all reading this device supports</p></td>
-              </tr>
-            
-              <tr>
-                <td>PullAirQuality</td>
-                <td><a href="#smartcore.traits.PullAirQualityRequest">PullAirQualityRequest</a></td>
-                <td><a href="#smartcore.traits.PullAirQualityResponse">PullAirQualityResponse</a> stream</td>
-                <td><p>Be notified of changes to any reading</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-
-        
-        <h3 id="smartcore.traits.AirQualitySensorInfo">AirQualitySensorInfo</h3>
-        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>DescribeAirQuality</td>
-                <td><a href="#smartcore.traits.DescribeAirQualityRequest">DescribeAirQualityRequest</a></td>
-                <td><a href="#smartcore.traits.AirQualitySupport">AirQualitySupport</a></td>
-                <td><p>Get information about how a named device implements AirQuality measurements</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-
-        
     
 
     <h2 id="scalar-value-types">Scalar Value Types</h2>

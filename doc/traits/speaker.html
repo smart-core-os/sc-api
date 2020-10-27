@@ -179,6 +179,10 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeVolumeRequest"><span class="badge">M</span>DescribeVolumeRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetSpeakerVolumeRequest"><span class="badge">M</span>GetSpeakerVolumeRequest</a>
                 </li>
               
@@ -191,11 +195,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.SpeakerAttributes"><span class="badge">M</span>SpeakerAttributes</a>
+                  <a href="#smartcore.traits.UpdateSpeakerVolumeRequest"><span class="badge">M</span>UpdateSpeakerVolumeRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.UpdateSpeakerVolumeRequest"><span class="badge">M</span>UpdateSpeakerVolumeRequest</a>
+                  <a href="#smartcore.traits.VolumeSupport"><span class="badge">M</span>VolumeSupport</a>
                 </li>
               
               
@@ -203,6 +207,10 @@
               
                 <li>
                   <a href="#smartcore.traits.SpeakerApi"><span class="badge">S</span>SpeakerApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.SpeakerInfo"><span class="badge">S</span>SpeakerInfo</a>
                 </li>
               
             </ul>
@@ -219,6 +227,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeVolumeRequest">DescribeVolumeRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetSpeakerVolumeRequest">GetSpeakerVolumeRequest</h3>
         <p></p>
@@ -306,39 +338,6 @@
 
         
       
-        <h3 id="smartcore.traits.SpeakerAttributes">SpeakerAttributes</h3>
-        <p>Trait.attribute describing capabilities of the speaker device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>volume_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
-                  <td></td>
-                  <td><p>Attributes associated with the gain property of the speaker. Note that a step value that is the same as the bounds
-implies that the speaker only supports mute </p></td>
-                </tr>
-              
-                <tr>
-                  <td>mute_support</td>
-                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
-                  <td></td>
-                  <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
-disallowing gain change when muted </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.UpdateSpeakerVolumeRequest">UpdateSpeakerVolumeRequest</h3>
         <p></p>
 
@@ -384,6 +383,46 @@ disallowing gain change when muted </p></td>
 
         
       
+        <h3 id="smartcore.traits.VolumeSupport">VolumeSupport</h3>
+        <p>VolumeSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>volume_attributes</td>
+                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td></td>
+                  <td><p>Attributes associated with the gain property of the speaker. Note that a step value that is the same as the bounds
+implies that the speaker only supports mute </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mute_support</td>
+                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
+                  <td></td>
+                  <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
+disallowing gain change when muted </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -417,6 +456,25 @@ disallowing gain change when muted </p></td>
                 <td><a href="#smartcore.traits.PullSpeakerVolumeRequest">PullSpeakerVolumeRequest</a></td>
                 <td><a href="#smartcore.traits.PullSpeakerVolumeResponse">PullSpeakerVolumeResponse</a> stream</td>
                 <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.SpeakerInfo">SpeakerInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeVolume</td>
+                <td><a href="#smartcore.traits.DescribeVolumeRequest">DescribeVolumeRequest</a></td>
+                <td><a href="#smartcore.traits.VolumeSupport">VolumeSupport</a></td>
+                <td><p>Get information about how a named device implements Volume features</p></td>
               </tr>
             
           </tbody>

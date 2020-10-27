@@ -1,30 +1,37 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_unit_pb from '../types/unit_pb';
 import * as types_volume_pb from '../types/volume_pb';
 
 
-export class SpeakerAttributes extends jspb.Message {
+export class VolumeSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): VolumeSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): VolumeSupport;
+
   getVolumeAttributes(): types_number_pb.FloatAttributes | undefined;
-  setVolumeAttributes(value?: types_number_pb.FloatAttributes): SpeakerAttributes;
+  setVolumeAttributes(value?: types_number_pb.FloatAttributes): VolumeSupport;
   hasVolumeAttributes(): boolean;
-  clearVolumeAttributes(): SpeakerAttributes;
+  clearVolumeAttributes(): VolumeSupport;
 
   getMuteSupport(): types_volume_pb.MuteSupport;
-  setMuteSupport(value: types_volume_pb.MuteSupport): SpeakerAttributes;
+  setMuteSupport(value: types_volume_pb.MuteSupport): VolumeSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SpeakerAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: SpeakerAttributes): SpeakerAttributes.AsObject;
-  static serializeBinaryToWriter(message: SpeakerAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SpeakerAttributes;
-  static deserializeBinaryFromReader(message: SpeakerAttributes, reader: jspb.BinaryReader): SpeakerAttributes;
+  toObject(includeInstance?: boolean): VolumeSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: VolumeSupport): VolumeSupport.AsObject;
+  static serializeBinaryToWriter(message: VolumeSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VolumeSupport;
+  static deserializeBinaryFromReader(message: VolumeSupport, reader: jspb.BinaryReader): VolumeSupport;
 }
 
-export namespace SpeakerAttributes {
+export namespace VolumeSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     volumeAttributes?: types_number_pb.FloatAttributes.AsObject,
     muteSupport: types_volume_pb.MuteSupport,
   }
@@ -129,6 +136,24 @@ export class PullSpeakerVolumeResponse extends jspb.Message {
 export namespace PullSpeakerVolumeResponse {
   export type AsObject = {
     changesList: Array<types_unit_pb.AudioLevelChange.AsObject>,
+  }
+}
+
+export class DescribeVolumeRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeVolumeRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeVolumeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeVolumeRequest): DescribeVolumeRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeVolumeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeVolumeRequest;
+  static deserializeBinaryFromReader(message: DescribeVolumeRequest, reader: jspb.BinaryReader): DescribeVolumeRequest;
+}
+
+export namespace DescribeVolumeRequest {
+  export type AsObject = {
+    name: string,
   }
 }
 

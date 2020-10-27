@@ -270,3 +270,81 @@ var _ChannelApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/channel.proto",
 }
+
+// ChannelInfoClient is the client API for ChannelInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ChannelInfoClient interface {
+	// Get information about how a named device implements channel choosing and adjustment
+	DescribeChosenChannel(ctx context.Context, in *DescribeChosenChannelRequest, opts ...grpc.CallOption) (*ChosenChannelSupport, error)
+}
+
+type channelInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewChannelInfoClient(cc grpc.ClientConnInterface) ChannelInfoClient {
+	return &channelInfoClient{cc}
+}
+
+func (c *channelInfoClient) DescribeChosenChannel(ctx context.Context, in *DescribeChosenChannelRequest, opts ...grpc.CallOption) (*ChosenChannelSupport, error) {
+	out := new(ChosenChannelSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ChannelInfo/DescribeChosenChannel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ChannelInfoServer is the server API for ChannelInfo service.
+// All implementations must embed UnimplementedChannelInfoServer
+// for forward compatibility
+type ChannelInfoServer interface {
+	// Get information about how a named device implements channel choosing and adjustment
+	DescribeChosenChannel(context.Context, *DescribeChosenChannelRequest) (*ChosenChannelSupport, error)
+	mustEmbedUnimplementedChannelInfoServer()
+}
+
+// UnimplementedChannelInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedChannelInfoServer struct {
+}
+
+func (*UnimplementedChannelInfoServer) DescribeChosenChannel(context.Context, *DescribeChosenChannelRequest) (*ChosenChannelSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeChosenChannel not implemented")
+}
+func (*UnimplementedChannelInfoServer) mustEmbedUnimplementedChannelInfoServer() {}
+
+func RegisterChannelInfoServer(s *grpc.Server, srv ChannelInfoServer) {
+	s.RegisterService(&_ChannelInfo_serviceDesc, srv)
+}
+
+func _ChannelInfo_DescribeChosenChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeChosenChannelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChannelInfoServer).DescribeChosenChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.ChannelInfo/DescribeChosenChannel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChannelInfoServer).DescribeChosenChannel(ctx, req.(*DescribeChosenChannelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ChannelInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.ChannelInfo",
+	HandlerType: (*ChannelInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeChosenChannel",
+			Handler:    _ChannelInfo_DescribeChosenChannel_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/channel.proto",
+}

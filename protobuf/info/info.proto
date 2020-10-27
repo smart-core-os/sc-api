@@ -84,17 +84,8 @@ message Device {
 
 // describes a trait for the api. See the devices/traits apis for details of these.
 message Trait {
-  // name of the trait service that is implements. In the format package.Service.
+  // Name of the trait service that is implemented. In the format package.Service excluding Api or other type suffix.
   string name = 1;
-  // Whether the device supports querying, i.e. getXxx apis
-  bool readable = 2;
-  // Whether the device supports writable actions, i.e. setXxx or action apis
-  bool writable = 3;
-  // Whether the device supports subscriptions, i.e. pull apis
-  bool observable = 4;
-  // Serialised protobuf message describing any additional attributes for this device. The schema for the protobuf is
-  // defined in the traits proto files and will be clearly documented
-  google.protobuf.Any attributes = 5;
 }
 
 // describes options relating to client connections

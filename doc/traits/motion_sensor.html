@@ -179,6 +179,10 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeMotionDetectionRequest"><span class="badge">M</span>DescribeMotionDetectionRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetMotionDetectionRequest"><span class="badge">M</span>GetMotionDetectionRequest</a>
                 </li>
               
@@ -187,7 +191,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.MotionSensorAttributes"><span class="badge">M</span>MotionSensorAttributes</a>
+                  <a href="#smartcore.traits.MotionDetectionSupport"><span class="badge">M</span>MotionDetectionSupport</a>
                 </li>
               
                 <li>
@@ -213,6 +217,10 @@
                   <a href="#smartcore.traits.MotionSensorApi"><span class="badge">S</span>MotionSensorApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.MotionSensorSensorInfo"><span class="badge">S</span>MotionSensorSensorInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -227,6 +235,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeMotionDetectionRequest">DescribeMotionDetectionRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetMotionDetectionRequest">GetMotionDetectionRequest</h3>
         <p>request to fetch the current state of the device</p>
@@ -283,8 +315,8 @@
 
         
       
-        <h3 id="smartcore.traits.MotionSensorAttributes">MotionSensorAttributes</h3>
-        <p>Trait.attribute for the configuration of the device</p>
+        <h3 id="smartcore.traits.MotionDetectionSupport">MotionDetectionSupport</h3>
+        <p>MotionDetectionSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -294,10 +326,17 @@
             <tbody>
               
                 <tr>
+                  <td>sensor_support</td>
+                  <td><a href="#smartcore.types.SensorSupport">smartcore.types.SensorSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/pull apis </p></td>
+                </tr>
+              
+                <tr>
                   <td>not_detected_delay</td>
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p>how long the device is configured to wait before reporting a state of NOT_DETECTED. Should default to 30 seconds. </p></td>
+                  <td><p>How long the device is configured to wait before reporting a state of NOT_DETECTED </p></td>
                 </tr>
               
             </tbody>
@@ -442,6 +481,25 @@
                 <td><a href="#smartcore.traits.PullMotionDetectionRequest">PullMotionDetectionRequest</a></td>
                 <td><a href="#smartcore.traits.PullMotionDetectionResponse">PullMotionDetectionResponse</a> stream</td>
                 <td><p>subscribe to changes in the motion state for the device.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.MotionSensorSensorInfo">MotionSensorSensorInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeMotionDetection</td>
+                <td><a href="#smartcore.traits.DescribeMotionDetectionRequest">DescribeMotionDetectionRequest</a></td>
+                <td><a href="#smartcore.traits.MotionDetectionSupport">MotionDetectionSupport</a></td>
+                <td><p>Get information about how a named device implements MotionDetection measurements</p></td>
               </tr>
             
           </tbody>

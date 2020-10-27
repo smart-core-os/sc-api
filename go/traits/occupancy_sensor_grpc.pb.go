@@ -156,3 +156,81 @@ var _OccupancySensorApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/occupancy_sensor.proto",
 }
+
+// OccupancySensorInfoClient is the client API for OccupancySensorInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type OccupancySensorInfoClient interface {
+	// Get information about how a named device implements Occupancy measurements
+	DescribeOccupancy(ctx context.Context, in *DescribeOccupancyRequest, opts ...grpc.CallOption) (*OccupancySupport, error)
+}
+
+type occupancySensorInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewOccupancySensorInfoClient(cc grpc.ClientConnInterface) OccupancySensorInfoClient {
+	return &occupancySensorInfoClient{cc}
+}
+
+func (c *occupancySensorInfoClient) DescribeOccupancy(ctx context.Context, in *DescribeOccupancyRequest, opts ...grpc.CallOption) (*OccupancySupport, error) {
+	out := new(OccupancySupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.OccupancySensorInfo/DescribeOccupancy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// OccupancySensorInfoServer is the server API for OccupancySensorInfo service.
+// All implementations must embed UnimplementedOccupancySensorInfoServer
+// for forward compatibility
+type OccupancySensorInfoServer interface {
+	// Get information about how a named device implements Occupancy measurements
+	DescribeOccupancy(context.Context, *DescribeOccupancyRequest) (*OccupancySupport, error)
+	mustEmbedUnimplementedOccupancySensorInfoServer()
+}
+
+// UnimplementedOccupancySensorInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedOccupancySensorInfoServer struct {
+}
+
+func (*UnimplementedOccupancySensorInfoServer) DescribeOccupancy(context.Context, *DescribeOccupancyRequest) (*OccupancySupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeOccupancy not implemented")
+}
+func (*UnimplementedOccupancySensorInfoServer) mustEmbedUnimplementedOccupancySensorInfoServer() {}
+
+func RegisterOccupancySensorInfoServer(s *grpc.Server, srv OccupancySensorInfoServer) {
+	s.RegisterService(&_OccupancySensorInfo_serviceDesc, srv)
+}
+
+func _OccupancySensorInfo_DescribeOccupancy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeOccupancyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OccupancySensorInfoServer).DescribeOccupancy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.OccupancySensorInfo/DescribeOccupancy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OccupancySensorInfoServer).DescribeOccupancy(ctx, req.(*DescribeOccupancyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _OccupancySensorInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.OccupancySensorInfo",
+	HandlerType: (*OccupancySensorInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeOccupancy",
+			Handler:    _OccupancySensorInfo_DescribeOccupancy_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/occupancy_sensor.proto",
+}

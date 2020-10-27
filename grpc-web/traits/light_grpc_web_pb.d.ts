@@ -29,6 +29,20 @@ export class LightApiClient {
 
 }
 
+export class LightInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeBrightness(
+    request: traits_light_pb.DescribeBrightnessRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_light_pb.BrightnessSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_light_pb.BrightnessSupport>;
+
+}
+
 export class LightApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -48,6 +62,18 @@ export class LightApiPromiseClient {
     request: traits_light_pb.PullBrightnessRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_light_pb.PullBrightnessResponse>;
+
+}
+
+export class LightInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeBrightness(
+    request: traits_light_pb.DescribeBrightnessRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_light_pb.BrightnessSupport>;
 
 }
 

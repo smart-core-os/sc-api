@@ -43,6 +43,20 @@ export class ChannelApiClient {
 
 }
 
+export class ChannelInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeChosenChannel(
+    request: traits_channel_pb.DescribeChosenChannelRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_channel_pb.ChosenChannelSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_channel_pb.ChosenChannelSupport>;
+
+}
+
 export class ChannelApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -72,6 +86,18 @@ export class ChannelApiPromiseClient {
     request: traits_channel_pb.PullChosenChannelRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_channel_pb.PullChosenChannelResponse>;
+
+}
+
+export class ChannelInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeChosenChannel(
+    request: traits_channel_pb.DescribeChosenChannelRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_channel_pb.ChosenChannelSupport>;
 
 }
 

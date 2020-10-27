@@ -3,40 +3,47 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
 
-export class AirQualitySensorAttributes extends jspb.Message {
+export class AirQualitySupport extends jspb.Message {
+  getSensorSupport(): types_info_pb.SensorSupport | undefined;
+  setSensorSupport(value?: types_info_pb.SensorSupport): AirQualitySupport;
+  hasSensorSupport(): boolean;
+  clearSensorSupport(): AirQualitySupport;
+
   getCarbonDioxideLevel(): types_number_pb.FloatBounds | undefined;
-  setCarbonDioxideLevel(value?: types_number_pb.FloatBounds): AirQualitySensorAttributes;
+  setCarbonDioxideLevel(value?: types_number_pb.FloatBounds): AirQualitySupport;
   hasCarbonDioxideLevel(): boolean;
-  clearCarbonDioxideLevel(): AirQualitySensorAttributes;
+  clearCarbonDioxideLevel(): AirQualitySupport;
 
   getVolatileOrganicCompounds(): types_number_pb.FloatBounds | undefined;
-  setVolatileOrganicCompounds(value?: types_number_pb.FloatBounds): AirQualitySensorAttributes;
+  setVolatileOrganicCompounds(value?: types_number_pb.FloatBounds): AirQualitySupport;
   hasVolatileOrganicCompounds(): boolean;
-  clearVolatileOrganicCompounds(): AirQualitySensorAttributes;
+  clearVolatileOrganicCompounds(): AirQualitySupport;
 
   getAirPressure(): types_number_pb.FloatBounds | undefined;
-  setAirPressure(value?: types_number_pb.FloatBounds): AirQualitySensorAttributes;
+  setAirPressure(value?: types_number_pb.FloatBounds): AirQualitySupport;
   hasAirPressure(): boolean;
-  clearAirPressure(): AirQualitySensorAttributes;
+  clearAirPressure(): AirQualitySupport;
 
   getComfortList(): Array<AirQualityComfort>;
-  setComfortList(value: Array<AirQualityComfort>): AirQualitySensorAttributes;
-  clearComfortList(): AirQualitySensorAttributes;
-  addComfort(value: AirQualityComfort, index?: number): AirQualitySensorAttributes;
+  setComfortList(value: Array<AirQualityComfort>): AirQualitySupport;
+  clearComfortList(): AirQualitySupport;
+  addComfort(value: AirQualityComfort, index?: number): AirQualitySupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirQualitySensorAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: AirQualitySensorAttributes): AirQualitySensorAttributes.AsObject;
-  static serializeBinaryToWriter(message: AirQualitySensorAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirQualitySensorAttributes;
-  static deserializeBinaryFromReader(message: AirQualitySensorAttributes, reader: jspb.BinaryReader): AirQualitySensorAttributes;
+  toObject(includeInstance?: boolean): AirQualitySupport.AsObject;
+  static toObject(includeInstance: boolean, msg: AirQualitySupport): AirQualitySupport.AsObject;
+  static serializeBinaryToWriter(message: AirQualitySupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirQualitySupport;
+  static deserializeBinaryFromReader(message: AirQualitySupport, reader: jspb.BinaryReader): AirQualitySupport;
 }
 
-export namespace AirQualitySensorAttributes {
+export namespace AirQualitySupport {
   export type AsObject = {
+    sensorSupport?: types_info_pb.SensorSupport.AsObject,
     carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject,
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,
@@ -183,6 +190,24 @@ export namespace PullAirQualityResponse {
     }
   }
 
+}
+
+export class DescribeAirQualityRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeAirQualityRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeAirQualityRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeAirQualityRequest): DescribeAirQualityRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeAirQualityRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeAirQualityRequest;
+  static deserializeBinaryFromReader(message: DescribeAirQualityRequest, reader: jspb.BinaryReader): DescribeAirQualityRequest;
+}
+
+export namespace DescribeAirQualityRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum AirQualityComfort { 

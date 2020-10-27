@@ -179,6 +179,10 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeOccupancyRequest"><span class="badge">M</span>DescribeOccupancyRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetOccupancyRequest"><span class="badge">M</span>GetOccupancyRequest</a>
                 </li>
               
@@ -187,7 +191,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OccupancySensorAttributes"><span class="badge">M</span>OccupancySensorAttributes</a>
+                  <a href="#smartcore.traits.OccupancySupport"><span class="badge">M</span>OccupancySupport</a>
                 </li>
               
                 <li>
@@ -213,6 +217,10 @@
                   <a href="#smartcore.traits.OccupancySensorApi"><span class="badge">S</span>OccupancySensorApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.OccupancySensorInfo"><span class="badge">S</span>OccupancySensorInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -227,6 +235,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeOccupancyRequest">DescribeOccupancyRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetOccupancyRequest">GetOccupancyRequest</h3>
         <p>request to fetch the current state of the device</p>
@@ -310,8 +342,8 @@ confidence is unknown </p></td>
 
         
       
-        <h3 id="smartcore.traits.OccupancySensorAttributes">OccupancySensorAttributes</h3>
-        <p>Trait.attribute for the configuration of the device</p>
+        <h3 id="smartcore.traits.OccupancySupport">OccupancySupport</h3>
+        <p>OccupancySupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -319,6 +351,13 @@ confidence is unknown </p></td>
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>sensor_support</td>
+                  <td><a href="#smartcore.types.SensorSupport">smartcore.types.SensorSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/pull apis </p></td>
+                </tr>
               
                 <tr>
                   <td>max_people</td>
@@ -483,6 +522,25 @@ moving for other reasons)</p></td>
                 <td><a href="#smartcore.traits.PullOccupancyRequest">PullOccupancyRequest</a></td>
                 <td><a href="#smartcore.traits.PullOccupancyResponse">PullOccupancyResponse</a> stream</td>
                 <td><p>subscribe to changes in the motion state for the device.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.OccupancySensorInfo">OccupancySensorInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeOccupancy</td>
+                <td><a href="#smartcore.traits.DescribeOccupancyRequest">DescribeOccupancyRequest</a></td>
+                <td><a href="#smartcore.traits.OccupancySupport">OccupancySupport</a></td>
+                <td><p>Get information about how a named device implements Occupancy measurements</p></td>
               </tr>
             
           </tbody>

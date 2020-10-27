@@ -232,3 +232,81 @@ var _CountApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/count.proto",
 }
+
+// CountInfoClient is the client API for CountInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CountInfoClient interface {
+	// Get information about how a named device implements Count features
+	DescribeCount(ctx context.Context, in *DescribeCountRequest, opts ...grpc.CallOption) (*CountSupport, error)
+}
+
+type countInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCountInfoClient(cc grpc.ClientConnInterface) CountInfoClient {
+	return &countInfoClient{cc}
+}
+
+func (c *countInfoClient) DescribeCount(ctx context.Context, in *DescribeCountRequest, opts ...grpc.CallOption) (*CountSupport, error) {
+	out := new(CountSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.CountInfo/DescribeCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CountInfoServer is the server API for CountInfo service.
+// All implementations must embed UnimplementedCountInfoServer
+// for forward compatibility
+type CountInfoServer interface {
+	// Get information about how a named device implements Count features
+	DescribeCount(context.Context, *DescribeCountRequest) (*CountSupport, error)
+	mustEmbedUnimplementedCountInfoServer()
+}
+
+// UnimplementedCountInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedCountInfoServer struct {
+}
+
+func (*UnimplementedCountInfoServer) DescribeCount(context.Context, *DescribeCountRequest) (*CountSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeCount not implemented")
+}
+func (*UnimplementedCountInfoServer) mustEmbedUnimplementedCountInfoServer() {}
+
+func RegisterCountInfoServer(s *grpc.Server, srv CountInfoServer) {
+	s.RegisterService(&_CountInfo_serviceDesc, srv)
+}
+
+func _CountInfo_DescribeCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeCountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CountInfoServer).DescribeCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.CountInfo/DescribeCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CountInfoServer).DescribeCount(ctx, req.(*DescribeCountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _CountInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.CountInfo",
+	HandlerType: (*CountInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeCount",
+			Handler:    _CountInfo_DescribeCount_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/count.proto",
+}

@@ -30,6 +30,20 @@ export class MicrophoneApiClient {
 
 }
 
+export class MicrophoneInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeGain(
+    request: traits_microphone_pb.DescribeGainRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_microphone_pb.GainSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_microphone_pb.GainSupport>;
+
+}
+
 export class MicrophoneApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -49,6 +63,18 @@ export class MicrophoneApiPromiseClient {
     request: traits_microphone_pb.PullMicrophoneGainRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_microphone_pb.PullMicrophoneGainResponse>;
+
+}
+
+export class MicrophoneInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeGain(
+    request: traits_microphone_pb.DescribeGainRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_microphone_pb.GainSupport>;
 
 }
 

@@ -10,6 +10,7 @@ option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
+import "types/info.proto";
 import "types/number.proto";
 import "types/unit.proto";
 import "types/volume.proto";
@@ -28,11 +29,19 @@ service MicrophoneApi {
   rpc PullGain (PullMicrophoneGainRequest) returns (stream PullMicrophoneGainResponse);
 }
 
+// Describes the capabilities of a specific named device with respect to this trait.
+service MicrophoneInfo {
+  // Get information about how a named device implements Gain features
+  rpc DescribeGain (DescribeGainRequest) returns (GainSupport);
+}
+
 // Trait.attribute describing capabilities of the microphone device
-message MicrophoneAttributes {
+message GainSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
   // implies that the microphone only supports mute
-  smartcore.api.types.FloatAttributes gain_attributes = 1;
+  smartcore.api.types.FloatAttributes gain_attributes = 2;
   // How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
   // disallowing gain change when muted
   smartcore.api.types.MuteSupport mute_support = 3;
@@ -66,4 +75,9 @@ message PullMicrophoneGainRequest {
 message PullMicrophoneGainResponse {
   // Changes since the last message
   repeated smartcore.api.types.AudioLevelChange changes = 1;
+}
+
+message DescribeGainRequest {
+  // The name of the device
+  string name = 1;
 }

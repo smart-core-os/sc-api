@@ -22,6 +22,20 @@ export class OccupancySensorApiClient {
 
 }
 
+export class OccupancySensorInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeOccupancy(
+    request: traits_occupancy_sensor_pb.DescribeOccupancyRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_occupancy_sensor_pb.OccupancySupport) => void
+  ): grpcWeb.ClientReadableStream<traits_occupancy_sensor_pb.OccupancySupport>;
+
+}
+
 export class OccupancySensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -36,6 +50,18 @@ export class OccupancySensorApiPromiseClient {
     request: traits_occupancy_sensor_pb.PullOccupancyRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_occupancy_sensor_pb.PullOccupancyResponse>;
+
+}
+
+export class OccupancySensorInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeOccupancy(
+    request: traits_occupancy_sensor_pb.DescribeOccupancyRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_occupancy_sensor_pb.OccupancySupport>;
 
 }
 

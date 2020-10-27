@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
+import "types/info.proto";
 
 // CountApi tracks both a positive and negative count of some quantity. Can be used for tickers, footfall sensors, and
 // devices like that.
@@ -25,15 +26,22 @@ service CountApi {
   rpc PullCounts (PullCountsRequest) returns (stream PullCountsResponse);
 }
 
-// Trait.attributes for this trait.
-message CountAttributes {
+// Describes the capabilities of a specific named device with respect to this trait.
+service CountInfo {
+  // Get information about how a named device implements Count features
+  rpc DescribeCount (DescribeCountRequest) returns (CountSupport);
+}
+
+// CountSupport describes the capabilities of devices implementing this trait
+message CountSupport {
+  smartcore.types.ResourceSupport resource_support = 1;
   // Two way counters count additions and removals separately. Do NOT use this as a way to ignore the Count.removed
   // property, the total count is always added - removed.
-  bool two_way = 1;
+  bool two_way = 2;
   // Does the api support resetting the count timer.
-  bool supports_reset = 2;
+  bool supports_reset = 3;
   // When updating the count does this device support the delta property
-  bool supports_delta = 3;
+  bool supports_delta = 4;
 }
 
 // Count represents how many of a thing exist. The total measured count is added - removed. Some devices may adjust
@@ -78,4 +86,9 @@ message PullCountsResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 3;
   }
+}
+
+message DescribeCountRequest {
+  // The name of the device
+  string name = 1;
 }

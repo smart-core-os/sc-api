@@ -1,26 +1,33 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
 
-export class BrightnessSensorAttributes extends jspb.Message {
-  getAmbientBrightnessAttributes(): types_number_pb.FloatAttributes | undefined;
-  setAmbientBrightnessAttributes(value?: types_number_pb.FloatAttributes): BrightnessSensorAttributes;
-  hasAmbientBrightnessAttributes(): boolean;
-  clearAmbientBrightnessAttributes(): BrightnessSensorAttributes;
+export class AmbientBrightnessSupport extends jspb.Message {
+  getSensorSupport(): types_info_pb.SensorSupport | undefined;
+  setSensorSupport(value?: types_info_pb.SensorSupport): AmbientBrightnessSupport;
+  hasSensorSupport(): boolean;
+  clearSensorSupport(): AmbientBrightnessSupport;
+
+  getBrightnessLux(): types_number_pb.FloatBounds | undefined;
+  setBrightnessLux(value?: types_number_pb.FloatBounds): AmbientBrightnessSupport;
+  hasBrightnessLux(): boolean;
+  clearBrightnessLux(): AmbientBrightnessSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BrightnessSensorAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: BrightnessSensorAttributes): BrightnessSensorAttributes.AsObject;
-  static serializeBinaryToWriter(message: BrightnessSensorAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BrightnessSensorAttributes;
-  static deserializeBinaryFromReader(message: BrightnessSensorAttributes, reader: jspb.BinaryReader): BrightnessSensorAttributes;
+  toObject(includeInstance?: boolean): AmbientBrightnessSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: AmbientBrightnessSupport): AmbientBrightnessSupport.AsObject;
+  static serializeBinaryToWriter(message: AmbientBrightnessSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AmbientBrightnessSupport;
+  static deserializeBinaryFromReader(message: AmbientBrightnessSupport, reader: jspb.BinaryReader): AmbientBrightnessSupport;
 }
 
-export namespace BrightnessSensorAttributes {
+export namespace AmbientBrightnessSupport {
   export type AsObject = {
-    ambientBrightnessAttributes?: types_number_pb.FloatAttributes.AsObject,
+    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    brightnessLux?: types_number_pb.FloatBounds.AsObject,
   }
 }
 
@@ -127,5 +134,23 @@ export namespace PullAmbientBrightnessResponse {
     }
   }
 
+}
+
+export class DescribeAmbientBrightnessRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeAmbientBrightnessRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeAmbientBrightnessRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeAmbientBrightnessRequest): DescribeAmbientBrightnessRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeAmbientBrightnessRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeAmbientBrightnessRequest;
+  static deserializeBinaryFromReader(message: DescribeAmbientBrightnessRequest, reader: jspb.BinaryReader): DescribeAmbientBrightnessRequest;
+}
+
+export namespace DescribeAmbientBrightnessRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

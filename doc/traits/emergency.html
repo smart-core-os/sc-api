@@ -179,11 +179,15 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeEmergencyRequest"><span class="badge">M</span>DescribeEmergencyRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.Emergency"><span class="badge">M</span>Emergency</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.EmergencyApiAttributes"><span class="badge">M</span>EmergencyApiAttributes</a>
+                  <a href="#smartcore.traits.EmergencySupport"><span class="badge">M</span>EmergencySupport</a>
                 </li>
               
                 <li>
@@ -217,6 +221,10 @@
                   <a href="#smartcore.traits.EmergencyApi"><span class="badge">S</span>EmergencyApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.EmergencyInfo"><span class="badge">S</span>EmergencyInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -231,6 +239,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeEmergencyRequest">DescribeEmergencyRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.Emergency">Emergency</h3>
         <p>An emergency is a life threatening event.</p>
@@ -284,10 +316,27 @@
 
         
       
-        <h3 id="smartcore.traits.EmergencyApiAttributes">EmergencyApiAttributes</h3>
-        <p>Trait.attribute for emergency capabilities</p>
+        <h3 id="smartcore.traits.EmergencySupport">EmergencySupport</h3>
+        <p>EmergencySupport describes the capabilities of devices implementing this trait</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -508,6 +557,25 @@ but not enough to trigger the alarm yet.</p></td>
                 <td><a href="#smartcore.traits.PullEmergencyRequest">PullEmergencyRequest</a></td>
                 <td><a href="#smartcore.traits.PullEmergencyResponse">PullEmergencyResponse</a> stream</td>
                 <td><p>Be notified of changes to the emergency state</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.EmergencyInfo">EmergencyInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeEmergency</td>
+                <td><a href="#smartcore.traits.DescribeEmergencyRequest">DescribeEmergencyRequest</a></td>
+                <td><a href="#smartcore.traits.EmergencySupport">EmergencySupport</a></td>
+                <td><p>Get information about how a named device implements Emergency features</p></td>
               </tr>
             
           </tbody>

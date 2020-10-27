@@ -12,6 +12,7 @@ option php_namespace = "Smartcore\\Traits";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
+import "types/info.proto";
 import "types/unit.proto";
 
 // Device trait allowing query and control of the air temperature for a space. Like a thermostat and associated HVAC
@@ -30,13 +31,22 @@ service AirTemperatureApi {
   rpc PullAirTemperature (PullAirTemperatureRequest) returns (stream PullAirTemperatureResponse);
 }
 
-// Trait.attributes message for describing this device trait.
-message AirTemperatureAttributes {
+// Describes the capabilities of a specific named device with respect to this trait.
+service AirTemperatureInfo {
+  // Get information about how a named device implements AirTemperature features
+  rpc DescribeAirTemperature (DescribeAirTemperatureRequest) returns (AirTemperatureSupport);
+}
+
+// AirTemperatureSupport describes the capabilities of devices implementing this trait
+message AirTemperatureSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // How the device thinks, all communications will be in celsius but the device's native unit is this.
-  smartcore.api.types.TemperatureUnit native_unit = 1;
-  repeated AirTemperatureMode supported_modes = 2;
+  smartcore.api.types.TemperatureUnit native_unit = 2;
+  // The list of modes a device supports.
+  repeated AirTemperatureMode supported_modes = 3;
   // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
-  double min_range_celsius = 3;
+  double min_range_celsius = 4;
 }
 
 // Request message for fetching device state
@@ -70,6 +80,11 @@ message PullAirTemperatureResponse {
     // response as required.
     AirTemperature state = 3;
   }
+}
+
+message DescribeAirTemperatureRequest {
+  // The name of the device
+  string name = 1;
 }
 
 // Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control

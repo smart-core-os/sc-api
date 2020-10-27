@@ -10,6 +10,7 @@ option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 
 // Applicable to devices that have a basic binary on and off functionality.
 service OnOffApi {
@@ -20,6 +21,18 @@ service OnOffApi {
 
   // Get notified of changes to the OnOff state of a device
   rpc PullOnOff (PullOnOffRequest) returns (stream PullOnOffResponse);
+}
+
+// Describes the capabilities of a specific named device with respect to this trait.
+service OnOffInfo {
+  // Get information about how a named device implements OnOff features
+  rpc DescribeOnOff (DescribeOnOffRequest) returns (OnOffSupport);
+}
+
+// OnOffSupport describes the capabilities of devices implementing this trait
+message OnOffSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
 }
 
 message OnOff {
@@ -59,3 +72,7 @@ message PullOnOffResponse {
   }
 }
 
+message DescribeOnOffRequest {
+  // The name of the device
+  string name = 1;
+}

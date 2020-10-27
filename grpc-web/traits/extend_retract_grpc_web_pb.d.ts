@@ -43,6 +43,20 @@ export class ExtendRetractApiClient {
 
 }
 
+export class ExtendRetractInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeExtension(
+    request: traits_extend_retract_pb.DescribeExtensionRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_extend_retract_pb.ExtensionSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.ExtensionSupport>;
+
+}
+
 export class ExtendRetractApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -72,6 +86,18 @@ export class ExtendRetractApiPromiseClient {
     request: traits_extend_retract_pb.PullExtensionsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.PullExtensionsResponse>;
+
+}
+
+export class ExtendRetractInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeExtension(
+    request: traits_extend_retract_pb.DescribeExtensionRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_extend_retract_pb.ExtensionSupport>;
 
 }
 

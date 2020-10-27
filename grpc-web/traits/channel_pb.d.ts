@@ -1,22 +1,29 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
-export class ChannelApiAttributes extends jspb.Message {
+export class ChosenChannelSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): ChosenChannelSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): ChosenChannelSupport;
+
   getAdjustMax(): number;
-  setAdjustMax(value: number): ChannelApiAttributes;
+  setAdjustMax(value: number): ChosenChannelSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChannelApiAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: ChannelApiAttributes): ChannelApiAttributes.AsObject;
-  static serializeBinaryToWriter(message: ChannelApiAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChannelApiAttributes;
-  static deserializeBinaryFromReader(message: ChannelApiAttributes, reader: jspb.BinaryReader): ChannelApiAttributes;
+  toObject(includeInstance?: boolean): ChosenChannelSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: ChosenChannelSupport): ChosenChannelSupport.AsObject;
+  static serializeBinaryToWriter(message: ChosenChannelSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChosenChannelSupport;
+  static deserializeBinaryFromReader(message: ChosenChannelSupport, reader: jspb.BinaryReader): ChosenChannelSupport;
 }
 
-export namespace ChannelApiAttributes {
+export namespace ChosenChannelSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     adjustMax: number,
   }
 }
@@ -196,5 +203,23 @@ export namespace PullChosenChannelResponse {
     }
   }
 
+}
+
+export class DescribeChosenChannelRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeChosenChannelRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeChosenChannelRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeChosenChannelRequest): DescribeChosenChannelRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeChosenChannelRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeChosenChannelRequest;
+  static deserializeBinaryFromReader(message: DescribeChosenChannelRequest, reader: jspb.BinaryReader): DescribeChosenChannelRequest;
+}
+
+export namespace DescribeChosenChannelRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

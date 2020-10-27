@@ -183,6 +183,10 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeInputRequest"><span class="badge">M</span>DescribeInputRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetInputRequest"><span class="badge">M</span>GetInputRequest</a>
                 </li>
               
@@ -191,7 +195,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.InputSelectAttributes"><span class="badge">M</span>InputSelectAttributes</a>
+                  <a href="#smartcore.traits.InputSupport"><span class="badge">M</span>InputSupport</a>
                 </li>
               
                 <li>
@@ -219,6 +223,10 @@
               
                 <li>
                   <a href="#smartcore.traits.InputSelectApi"><span class="badge">S</span>InputSelectApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.InputSelectInfo"><span class="badge">S</span>InputSelectInfo</a>
                 </li>
               
             </ul>
@@ -273,6 +281,30 @@
                   <td></td>
                   <td><p>If this port supports different features from the device as a whole, specify them here. For example some ports
 might be audio only or not support audio breakout </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeInputRequest">DescribeInputRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -360,8 +392,8 @@ change the input selection for the other to keep them consistent </p></td>
 
         
       
-        <h3 id="smartcore.traits.InputSelectAttributes">InputSelectAttributes</h3>
-        <p>Trait.attributes relating to the input select device</p>
+        <h3 id="smartcore.traits.InputSupport">InputSupport</h3>
+        <p>InputSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -369,6 +401,13 @@ change the input selection for the other to keep them consistent </p></td>
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
               
                 <tr>
                   <td>inputs</td>
@@ -592,6 +631,25 @@ be true in this mode only</p></td>
                 <td><a href="#smartcore.traits.PullInputRequest">PullInputRequest</a></td>
                 <td><a href="#smartcore.traits.PullInputResponse">PullInputResponse</a> stream</td>
                 <td><p>request updates to changes in the selected input</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.InputSelectInfo">InputSelectInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeInput</td>
+                <td><a href="#smartcore.traits.DescribeInputRequest">DescribeInputRequest</a></td>
+                <td><a href="#smartcore.traits.InputSupport">InputSupport</a></td>
+                <td><p>Get information about how a named device implements Input features</p></td>
               </tr>
             
           </tbody>

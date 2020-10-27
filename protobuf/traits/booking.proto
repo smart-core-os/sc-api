@@ -9,10 +9,10 @@ option java_outer_classname = "BookingProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
-import "google/protobuf/duration.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/change.proto";
+import "types/info.proto";
 import "types/time/period.proto";
 import "types/time/unit.proto";
 
@@ -36,22 +36,22 @@ service BookingApi {
   rpc PullBookings (ListBookingsRequest) returns (stream PullBookingsResponse);
 }
 
-// Trait.attribute for booking capabilities
-message BookingAttributes {
-  // which fields of a booking can be amended
-  // if this field is absent, the list of updatable fields is unknown
-  // any unsupported fields will be ignored, check the return value of UpdateBookingResponse
-  google.protobuf.FieldMask updatable_booking_fields = 1;
+// Describes the capabilities of a specific named device with respect to this trait.
+service BookingInfo {
+  // Get information about how a named device implements Booking features
+  rpc DescribeBooking (DescribeBookingRequest) returns (BookingSupport);
+}
+
+// BookingSupport describes the capabilities of devices implementing this trait
+message BookingSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // is check in supported, and how
   CheckInSupport check_in_support = 2;
   // is check out supported, and how
   CheckInSupport check_out_support = 3;
-  // if subscriptions are supported (see Trait.observable), how are they implemented
-  SubscriptionSupport subscription_support = 4;
-  // if subscriptions are emulated, how often is the system polled for data
-  google.protobuf.Duration poll_period = 5;
   // the supported time resolution for date time fields and queries
-  smartcore.api.types.time.Unit time_resolution = 6;
+  smartcore.api.types.time.Unit time_resolution = 4;
 }
 
 enum CheckInSupport {
@@ -63,16 +63,6 @@ enum CheckInSupport {
   CHECK_IN_SUPPORT_STATE = 2;
   // check in is supported with an associated time
   CHECK_IN_SUPPORT_TIME = 3;
-}
-
-enum SubscriptionSupport {
-  // how subscriptions are implemented is not known
-  SUBSCRIPTION_SUPPORT_UNKNOWN = 0;
-  // subscribing to bookings is supported natively by the underlying system
-  SUBSCRIPTION_SUPPORT_NATIVE = 1;
-  // subscribing to bookings is supported in the driver, rather than natively
-  // usually the driver will poll the system for data
-  SUBSCRIPTION_SUPPORT_EMULATED = 2;
 }
 
 message ListBookingsRequest {
@@ -172,4 +162,9 @@ message PullBookingsResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 5;
   }
+}
+
+message DescribeBookingRequest {
+  // The name of the device
+  string name = 1;
 }

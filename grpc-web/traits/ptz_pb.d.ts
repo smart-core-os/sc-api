@@ -2,34 +2,41 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class PtzAttributes extends jspb.Message {
+export class PtzSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): PtzSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): PtzSupport;
+
   getSupportsPosition(): boolean;
-  setSupportsPosition(value: boolean): PtzAttributes;
+  setSupportsPosition(value: boolean): PtzSupport;
 
   getSupportsMovement(): boolean;
-  setSupportsMovement(value: boolean): PtzAttributes;
+  setSupportsMovement(value: boolean): PtzSupport;
 
   getPresetsList(): Array<PtzPreset>;
-  setPresetsList(value: Array<PtzPreset>): PtzAttributes;
-  clearPresetsList(): PtzAttributes;
+  setPresetsList(value: Array<PtzPreset>): PtzSupport;
+  clearPresetsList(): PtzSupport;
   addPresets(value?: PtzPreset, index?: number): PtzPreset;
 
   getSupportsCustomPresets(): boolean;
-  setSupportsCustomPresets(value: boolean): PtzAttributes;
+  setSupportsCustomPresets(value: boolean): PtzSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PtzAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: PtzAttributes): PtzAttributes.AsObject;
-  static serializeBinaryToWriter(message: PtzAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PtzAttributes;
-  static deserializeBinaryFromReader(message: PtzAttributes, reader: jspb.BinaryReader): PtzAttributes;
+  toObject(includeInstance?: boolean): PtzSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: PtzSupport): PtzSupport.AsObject;
+  static serializeBinaryToWriter(message: PtzSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PtzSupport;
+  static deserializeBinaryFromReader(message: PtzSupport, reader: jspb.BinaryReader): PtzSupport;
 }
 
-export namespace PtzAttributes {
+export namespace PtzSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     supportsPosition: boolean,
     supportsMovement: boolean,
     presetsList: Array<PtzPreset.AsObject>,
@@ -388,5 +395,23 @@ export namespace PullPtzResponse {
     }
   }
 
+}
+
+export class DescribePtzRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribePtzRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribePtzRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribePtzRequest): DescribePtzRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribePtzRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribePtzRequest;
+  static deserializeBinaryFromReader(message: DescribePtzRequest, reader: jspb.BinaryReader): DescribePtzRequest;
+}
+
+export namespace DescribePtzRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

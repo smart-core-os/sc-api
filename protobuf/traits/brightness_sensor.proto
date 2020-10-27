@@ -10,6 +10,7 @@ option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 import "types/number.proto";
 
 // BrightnessSensorApi reports on the measured ambient brightness for a space.
@@ -20,9 +21,18 @@ service BrightnessSensorApi {
   rpc PullAmbientBrightness (PullAmbientBrightnessRequest) returns (stream PullAmbientBrightnessResponse);
 }
 
-// Trait.attributes describing the capabilities of the device
-message BrightnessSensorAttributes {
-  smartcore.api.types.FloatAttributes ambient_brightness_attributes = 1;
+// Describes the capabilities of a specific named device with respect to this trait.
+service BrightnessSensorInfo {
+  // Get information about how a named device implements AmbientBrightness measurements
+  rpc DescribeAmbientBrightness (DescribeAmbientBrightnessRequest) returns (AmbientBrightnessSupport);
+}
+
+// AmbientBrightnessSupport describes the capabilities of devices implementing this trait
+message AmbientBrightnessSupport {
+  // How a named device supports read/pull apis
+  smartcore.types.SensorSupport sensor_support = 1;
+  // The range of values the device is capable of reporting.
+  smartcore.api.types.FloatBounds brightness_lux = 2;
 }
 
 // AmbientBrightness records the light level measured by a device.
@@ -51,4 +61,9 @@ message PullAmbientBrightnessResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 3;
   }
+}
+
+message DescribeAmbientBrightnessRequest {
+  // The name of the device
+  string name = 1;
 }

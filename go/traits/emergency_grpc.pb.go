@@ -194,3 +194,81 @@ var _EmergencyApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/emergency.proto",
 }
+
+// EmergencyInfoClient is the client API for EmergencyInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type EmergencyInfoClient interface {
+	// Get information about how a named device implements Emergency features
+	DescribeEmergency(ctx context.Context, in *DescribeEmergencyRequest, opts ...grpc.CallOption) (*EmergencySupport, error)
+}
+
+type emergencyInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewEmergencyInfoClient(cc grpc.ClientConnInterface) EmergencyInfoClient {
+	return &emergencyInfoClient{cc}
+}
+
+func (c *emergencyInfoClient) DescribeEmergency(ctx context.Context, in *DescribeEmergencyRequest, opts ...grpc.CallOption) (*EmergencySupport, error) {
+	out := new(EmergencySupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.EmergencyInfo/DescribeEmergency", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// EmergencyInfoServer is the server API for EmergencyInfo service.
+// All implementations must embed UnimplementedEmergencyInfoServer
+// for forward compatibility
+type EmergencyInfoServer interface {
+	// Get information about how a named device implements Emergency features
+	DescribeEmergency(context.Context, *DescribeEmergencyRequest) (*EmergencySupport, error)
+	mustEmbedUnimplementedEmergencyInfoServer()
+}
+
+// UnimplementedEmergencyInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedEmergencyInfoServer struct {
+}
+
+func (*UnimplementedEmergencyInfoServer) DescribeEmergency(context.Context, *DescribeEmergencyRequest) (*EmergencySupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeEmergency not implemented")
+}
+func (*UnimplementedEmergencyInfoServer) mustEmbedUnimplementedEmergencyInfoServer() {}
+
+func RegisterEmergencyInfoServer(s *grpc.Server, srv EmergencyInfoServer) {
+	s.RegisterService(&_EmergencyInfo_serviceDesc, srv)
+}
+
+func _EmergencyInfo_DescribeEmergency_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeEmergencyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EmergencyInfoServer).DescribeEmergency(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.EmergencyInfo/DescribeEmergency",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EmergencyInfoServer).DescribeEmergency(ctx, req.(*DescribeEmergencyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _EmergencyInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.EmergencyInfo",
+	HandlerType: (*EmergencyInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeEmergency",
+			Handler:    _EmergencyInfo_DescribeEmergency_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/emergency.proto",
+}

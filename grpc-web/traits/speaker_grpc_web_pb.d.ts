@@ -30,6 +30,20 @@ export class SpeakerApiClient {
 
 }
 
+export class SpeakerInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeVolume(
+    request: traits_speaker_pb.DescribeVolumeRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_speaker_pb.VolumeSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_speaker_pb.VolumeSupport>;
+
+}
+
 export class SpeakerApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -49,6 +63,18 @@ export class SpeakerApiPromiseClient {
     request: traits_speaker_pb.PullSpeakerVolumeRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_speaker_pb.PullSpeakerVolumeResponse>;
+
+}
+
+export class SpeakerInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeVolume(
+    request: traits_speaker_pb.DescribeVolumeRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_speaker_pb.VolumeSupport>;
 
 }
 

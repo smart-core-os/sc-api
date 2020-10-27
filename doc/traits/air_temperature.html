@@ -183,7 +183,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.AirTemperatureAttributes"><span class="badge">M</span>AirTemperatureAttributes</a>
+                  <a href="#smartcore.traits.AirTemperatureSupport"><span class="badge">M</span>AirTemperatureSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeAirTemperatureRequest"><span class="badge">M</span>DescribeAirTemperatureRequest</a>
                 </li>
               
                 <li>
@@ -219,6 +223,10 @@
               
                 <li>
                   <a href="#smartcore.traits.AirTemperatureApi"><span class="badge">S</span>AirTemperatureApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.AirTemperatureInfo"><span class="badge">S</span>AirTemperatureInfo</a>
                 </li>
               
             </ul>
@@ -302,8 +310,8 @@
 
         
       
-        <h3 id="smartcore.traits.AirTemperatureAttributes">AirTemperatureAttributes</h3>
-        <p>Trait.attributes message for describing this device trait.</p>
+        <h3 id="smartcore.traits.AirTemperatureSupport">AirTemperatureSupport</h3>
+        <p>AirTemperatureSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -311,6 +319,13 @@
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
               
                 <tr>
                   <td>native_unit</td>
@@ -323,7 +338,7 @@
                   <td>supported_modes</td>
                   <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
                   <td>repeated</td>
-                  <td><p> </p></td>
+                  <td><p>The list of modes a device supports. </p></td>
                 </tr>
               
                 <tr>
@@ -331,6 +346,30 @@
                   <td><a href="#double">double</a></td>
                   <td></td>
                   <td><p>The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeAirTemperatureRequest">DescribeAirTemperatureRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -649,6 +688,25 @@ current values for any set fields as part of the request.</p></td>
                 <td><p>Request notification of change to the device state. The messages in the response stream may not be complete
 but will indicate the changes as they occur. They should be merged with the full state as fetched by the
 GetAirTemperature method.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.AirTemperatureInfo">AirTemperatureInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeAirTemperature</td>
+                <td><a href="#smartcore.traits.DescribeAirTemperatureRequest">DescribeAirTemperatureRequest</a></td>
+                <td><a href="#smartcore.traits.AirTemperatureSupport">AirTemperatureSupport</a></td>
+                <td><p>Get information about how a named device implements AirTemperature features</p></td>
               </tr>
             
           </tbody>

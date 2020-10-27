@@ -193,3 +193,81 @@ var _MicrophoneApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/microphone.proto",
 }
+
+// MicrophoneInfoClient is the client API for MicrophoneInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MicrophoneInfoClient interface {
+	// Get information about how a named device implements Gain features
+	DescribeGain(ctx context.Context, in *DescribeGainRequest, opts ...grpc.CallOption) (*GainSupport, error)
+}
+
+type microphoneInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMicrophoneInfoClient(cc grpc.ClientConnInterface) MicrophoneInfoClient {
+	return &microphoneInfoClient{cc}
+}
+
+func (c *microphoneInfoClient) DescribeGain(ctx context.Context, in *DescribeGainRequest, opts ...grpc.CallOption) (*GainSupport, error) {
+	out := new(GainSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.MicrophoneInfo/DescribeGain", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MicrophoneInfoServer is the server API for MicrophoneInfo service.
+// All implementations must embed UnimplementedMicrophoneInfoServer
+// for forward compatibility
+type MicrophoneInfoServer interface {
+	// Get information about how a named device implements Gain features
+	DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error)
+	mustEmbedUnimplementedMicrophoneInfoServer()
+}
+
+// UnimplementedMicrophoneInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedMicrophoneInfoServer struct {
+}
+
+func (*UnimplementedMicrophoneInfoServer) DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeGain not implemented")
+}
+func (*UnimplementedMicrophoneInfoServer) mustEmbedUnimplementedMicrophoneInfoServer() {}
+
+func RegisterMicrophoneInfoServer(s *grpc.Server, srv MicrophoneInfoServer) {
+	s.RegisterService(&_MicrophoneInfo_serviceDesc, srv)
+}
+
+func _MicrophoneInfo_DescribeGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeGainRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MicrophoneInfoServer).DescribeGain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.MicrophoneInfo/DescribeGain",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MicrophoneInfoServer).DescribeGain(ctx, req.(*DescribeGainRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _MicrophoneInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.MicrophoneInfo",
+	HandlerType: (*MicrophoneInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeGain",
+			Handler:    _MicrophoneInfo_DescribeGain_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/microphone.proto",
+}

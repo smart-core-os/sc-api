@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 
 // Report and manages emergencies. Typically not associated with a single device, more suited to buildings or spaces.
 // It's likely that some implementation will not allow write of emergency state.
@@ -23,8 +24,16 @@ service EmergencyApi {
   rpc PullEmergency (PullEmergencyRequest) returns (stream PullEmergencyResponse);
 }
 
-// Trait.attribute for emergency capabilities
-message EmergencyApiAttributes {
+// Describes the capabilities of a specific named device with respect to this trait.
+service EmergencyInfo {
+  // Get information about how a named device implements Emergency features
+  rpc DescribeEmergency (DescribeEmergencyRequest) returns (EmergencySupport);
+}
+
+// EmergencySupport describes the capabilities of devices implementing this trait
+message EmergencySupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
 }
 
 // An emergency is a life threatening event.
@@ -80,5 +89,10 @@ message PullEmergencyResponse {
     // The new value for the emergency.
     Emergency emergency = 3;
   }
+}
+
+message DescribeEmergencyRequest {
+  // The name of the device
+  string name = 1;
 }
 

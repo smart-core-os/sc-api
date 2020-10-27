@@ -29,6 +29,20 @@ export class OnOffApiClient {
 
 }
 
+export class OnOffInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeOnOff(
+    request: traits_on_off_pb.DescribeOnOffRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_on_off_pb.OnOffSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOffSupport>;
+
+}
+
 export class OnOffApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -48,6 +62,18 @@ export class OnOffApiPromiseClient {
     request: traits_on_off_pb.PullOnOffRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_on_off_pb.PullOnOffResponse>;
+
+}
+
+export class OnOffInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeOnOff(
+    request: traits_on_off_pb.DescribeOnOffRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_on_off_pb.OnOffSupport>;
 
 }
 

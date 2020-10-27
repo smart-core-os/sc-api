@@ -2,19 +2,26 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
-export class EmergencyApiAttributes extends jspb.Message {
+export class EmergencySupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): EmergencySupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): EmergencySupport;
+
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): EmergencyApiAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: EmergencyApiAttributes): EmergencyApiAttributes.AsObject;
-  static serializeBinaryToWriter(message: EmergencyApiAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): EmergencyApiAttributes;
-  static deserializeBinaryFromReader(message: EmergencyApiAttributes, reader: jspb.BinaryReader): EmergencyApiAttributes;
+  toObject(includeInstance?: boolean): EmergencySupport.AsObject;
+  static toObject(includeInstance: boolean, msg: EmergencySupport): EmergencySupport.AsObject;
+  static serializeBinaryToWriter(message: EmergencySupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EmergencySupport;
+  static deserializeBinaryFromReader(message: EmergencySupport, reader: jspb.BinaryReader): EmergencySupport;
 }
 
-export namespace EmergencyApiAttributes {
+export namespace EmergencySupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
   }
 }
 
@@ -169,6 +176,24 @@ export namespace PullEmergencyResponse {
     }
   }
 
+}
+
+export class DescribeEmergencyRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeEmergencyRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeEmergencyRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeEmergencyRequest): DescribeEmergencyRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeEmergencyRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeEmergencyRequest;
+  static deserializeBinaryFromReader(message: DescribeEmergencyRequest, reader: jspb.BinaryReader): DescribeEmergencyRequest;
+}
+
+export namespace DescribeEmergencyRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum EmergencyLevel { 

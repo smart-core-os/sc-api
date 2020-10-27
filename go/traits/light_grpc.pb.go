@@ -194,3 +194,81 @@ var _LightApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/light.proto",
 }
+
+// LightInfoClient is the client API for LightInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type LightInfoClient interface {
+	// Get information about how a named device implements Brightness features
+	DescribeBrightness(ctx context.Context, in *DescribeBrightnessRequest, opts ...grpc.CallOption) (*BrightnessSupport, error)
+}
+
+type lightInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewLightInfoClient(cc grpc.ClientConnInterface) LightInfoClient {
+	return &lightInfoClient{cc}
+}
+
+func (c *lightInfoClient) DescribeBrightness(ctx context.Context, in *DescribeBrightnessRequest, opts ...grpc.CallOption) (*BrightnessSupport, error) {
+	out := new(BrightnessSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.LightInfo/DescribeBrightness", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// LightInfoServer is the server API for LightInfo service.
+// All implementations must embed UnimplementedLightInfoServer
+// for forward compatibility
+type LightInfoServer interface {
+	// Get information about how a named device implements Brightness features
+	DescribeBrightness(context.Context, *DescribeBrightnessRequest) (*BrightnessSupport, error)
+	mustEmbedUnimplementedLightInfoServer()
+}
+
+// UnimplementedLightInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedLightInfoServer struct {
+}
+
+func (*UnimplementedLightInfoServer) DescribeBrightness(context.Context, *DescribeBrightnessRequest) (*BrightnessSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeBrightness not implemented")
+}
+func (*UnimplementedLightInfoServer) mustEmbedUnimplementedLightInfoServer() {}
+
+func RegisterLightInfoServer(s *grpc.Server, srv LightInfoServer) {
+	s.RegisterService(&_LightInfo_serviceDesc, srv)
+}
+
+func _LightInfo_DescribeBrightness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeBrightnessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LightInfoServer).DescribeBrightness(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.LightInfo/DescribeBrightness",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LightInfoServer).DescribeBrightness(ctx, req.(*DescribeBrightnessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _LightInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.LightInfo",
+	HandlerType: (*LightInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeBrightness",
+			Handler:    _LightInfo_DescribeBrightness_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/light.proto",
+}

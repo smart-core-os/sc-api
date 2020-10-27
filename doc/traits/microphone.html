@@ -179,11 +179,15 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetMicrophoneGainRequest"><span class="badge">M</span>GetMicrophoneGainRequest</a>
+                  <a href="#smartcore.traits.DescribeGainRequest"><span class="badge">M</span>DescribeGainRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.MicrophoneAttributes"><span class="badge">M</span>MicrophoneAttributes</a>
+                  <a href="#smartcore.traits.GainSupport"><span class="badge">M</span>GainSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetMicrophoneGainRequest"><span class="badge">M</span>GetMicrophoneGainRequest</a>
                 </li>
               
                 <li>
@@ -205,6 +209,10 @@
                   <a href="#smartcore.traits.MicrophoneApi"><span class="badge">S</span>MicrophoneApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.MicrophoneInfo"><span class="badge">S</span>MicrophoneInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -219,6 +227,70 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeGainRequest">DescribeGainRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GainSupport">GainSupport</h3>
+        <p>Trait.attribute describing capabilities of the microphone device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gain_attributes</td>
+                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td></td>
+                  <td><p>Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
+implies that the microphone only supports mute </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mute_support</td>
+                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
+                  <td></td>
+                  <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
+disallowing gain change when muted </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetMicrophoneGainRequest">GetMicrophoneGainRequest</h3>
         <p></p>
@@ -242,39 +314,6 @@
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
                   <td><p>fields to fetch relative the the Volume type </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.MicrophoneAttributes">MicrophoneAttributes</h3>
-        <p>Trait.attribute describing capabilities of the microphone device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>gain_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
-                  <td></td>
-                  <td><p>Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
-implies that the microphone only supports mute </p></td>
-                </tr>
-              
-                <tr>
-                  <td>mute_support</td>
-                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
-                  <td></td>
-                  <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
-disallowing gain change when muted </p></td>
                 </tr>
               
             </tbody>
@@ -417,6 +456,25 @@ disallowing gain change when muted </p></td>
                 <td><a href="#smartcore.traits.PullMicrophoneGainRequest">PullMicrophoneGainRequest</a></td>
                 <td><a href="#smartcore.traits.PullMicrophoneGainResponse">PullMicrophoneGainResponse</a> stream</td>
                 <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.MicrophoneInfo">MicrophoneInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeGain</td>
+                <td><a href="#smartcore.traits.DescribeGainRequest">DescribeGainRequest</a></td>
+                <td><a href="#smartcore.traits.GainSupport">GainSupport</a></td>
+                <td><p>Get information about how a named device implements Gain features</p></td>
               </tr>
             
           </tbody>

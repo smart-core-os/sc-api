@@ -22,6 +22,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_unit_pb = require('../types/unit_pb.js')
 const proto = {};
 proto.smartcore = {};
@@ -311,6 +313,138 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullAirTemperatu
       request,
       metadata || {},
       methodDescriptor_AirTemperatureApi_PullAirTemperature);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.AirTemperatureInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.AirTemperatureInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperatureSupport>}
+ */
+const methodDescriptor_AirTemperatureInfo_DescribeAirTemperature = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirTemperatureInfo/DescribeAirTemperature',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeAirTemperatureRequest,
+  proto.smartcore.traits.AirTemperatureSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.AirTemperatureSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeAirTemperatureRequest,
+ *   !proto.smartcore.traits.AirTemperatureSupport>}
+ */
+const methodInfo_AirTemperatureInfo_DescribeAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.AirTemperatureSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.AirTemperatureSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperatureSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperatureSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.AirTemperatureInfoClient.prototype.describeAirTemperature =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.AirTemperatureInfo/DescribeAirTemperature',
+      request,
+      metadata || {},
+      methodDescriptor_AirTemperatureInfo_DescribeAirTemperature,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.AirTemperatureSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.AirTemperatureInfoPromiseClient.prototype.describeAirTemperature =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.AirTemperatureInfo/DescribeAirTemperature',
+      request,
+      metadata || {},
+      methodDescriptor_AirTemperatureInfo_DescribeAirTemperature);
 };
 
 

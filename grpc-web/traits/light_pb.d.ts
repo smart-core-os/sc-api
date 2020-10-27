@@ -1,31 +1,38 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class LightAttributes extends jspb.Message {
+export class BrightnessSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): BrightnessSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): BrightnessSupport;
+
   getBrightnessAttributes(): types_number_pb.Int32Attributes | undefined;
-  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): LightAttributes;
+  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): BrightnessSupport;
   hasBrightnessAttributes(): boolean;
-  clearBrightnessAttributes(): LightAttributes;
+  clearBrightnessAttributes(): BrightnessSupport;
 
   getPresetsList(): Array<LightPreset>;
-  setPresetsList(value: Array<LightPreset>): LightAttributes;
-  clearPresetsList(): LightAttributes;
+  setPresetsList(value: Array<LightPreset>): BrightnessSupport;
+  clearPresetsList(): BrightnessSupport;
   addPresets(value?: LightPreset, index?: number): LightPreset;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LightAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: LightAttributes): LightAttributes.AsObject;
-  static serializeBinaryToWriter(message: LightAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LightAttributes;
-  static deserializeBinaryFromReader(message: LightAttributes, reader: jspb.BinaryReader): LightAttributes;
+  toObject(includeInstance?: boolean): BrightnessSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: BrightnessSupport): BrightnessSupport.AsObject;
+  static serializeBinaryToWriter(message: BrightnessSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BrightnessSupport;
+  static deserializeBinaryFromReader(message: BrightnessSupport, reader: jspb.BinaryReader): BrightnessSupport;
 }
 
-export namespace LightAttributes {
+export namespace BrightnessSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     brightnessAttributes?: types_number_pb.Int32Attributes.AsObject,
     presetsList: Array<LightPreset.AsObject>,
   }
@@ -210,5 +217,23 @@ export namespace PullBrightnessResponse {
     }
   }
 
+}
+
+export class DescribeBrightnessRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeBrightnessRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeBrightnessRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeBrightnessRequest): DescribeBrightnessRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeBrightnessRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeBrightnessRequest;
+  static deserializeBinaryFromReader(message: DescribeBrightnessRequest, reader: jspb.BinaryReader): DescribeBrightnessRequest;
+}
+
+export namespace DescribeBrightnessRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 

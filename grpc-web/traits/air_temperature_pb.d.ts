@@ -3,31 +3,38 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
+import * as types_info_pb from '../types/info_pb';
 import * as types_unit_pb from '../types/unit_pb';
 
 
-export class AirTemperatureAttributes extends jspb.Message {
+export class AirTemperatureSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): AirTemperatureSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): AirTemperatureSupport;
+
   getNativeUnit(): types_unit_pb.TemperatureUnit;
-  setNativeUnit(value: types_unit_pb.TemperatureUnit): AirTemperatureAttributes;
+  setNativeUnit(value: types_unit_pb.TemperatureUnit): AirTemperatureSupport;
 
   getSupportedModesList(): Array<AirTemperatureMode>;
-  setSupportedModesList(value: Array<AirTemperatureMode>): AirTemperatureAttributes;
-  clearSupportedModesList(): AirTemperatureAttributes;
-  addSupportedModes(value: AirTemperatureMode, index?: number): AirTemperatureAttributes;
+  setSupportedModesList(value: Array<AirTemperatureMode>): AirTemperatureSupport;
+  clearSupportedModesList(): AirTemperatureSupport;
+  addSupportedModes(value: AirTemperatureMode, index?: number): AirTemperatureSupport;
 
   getMinRangeCelsius(): number;
-  setMinRangeCelsius(value: number): AirTemperatureAttributes;
+  setMinRangeCelsius(value: number): AirTemperatureSupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirTemperatureAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: AirTemperatureAttributes): AirTemperatureAttributes.AsObject;
-  static serializeBinaryToWriter(message: AirTemperatureAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirTemperatureAttributes;
-  static deserializeBinaryFromReader(message: AirTemperatureAttributes, reader: jspb.BinaryReader): AirTemperatureAttributes;
+  toObject(includeInstance?: boolean): AirTemperatureSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: AirTemperatureSupport): AirTemperatureSupport.AsObject;
+  static serializeBinaryToWriter(message: AirTemperatureSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirTemperatureSupport;
+  static deserializeBinaryFromReader(message: AirTemperatureSupport, reader: jspb.BinaryReader): AirTemperatureSupport;
 }
 
-export namespace AirTemperatureAttributes {
+export namespace AirTemperatureSupport {
   export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     nativeUnit: types_unit_pb.TemperatureUnit,
     supportedModesList: Array<AirTemperatureMode>,
     minRangeCelsius: number,
@@ -149,6 +156,24 @@ export namespace PullAirTemperatureResponse {
     }
   }
 
+}
+
+export class DescribeAirTemperatureRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeAirTemperatureRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeAirTemperatureRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeAirTemperatureRequest): DescribeAirTemperatureRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeAirTemperatureRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeAirTemperatureRequest;
+  static deserializeBinaryFromReader(message: DescribeAirTemperatureRequest, reader: jspb.BinaryReader): DescribeAirTemperatureRequest;
+}
+
+export namespace DescribeAirTemperatureRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export class AirTemperature extends jspb.Message {

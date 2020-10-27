@@ -200,3 +200,81 @@ var _AirTemperatureApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/air_temperature.proto",
 }
+
+// AirTemperatureInfoClient is the client API for AirTemperatureInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type AirTemperatureInfoClient interface {
+	// Get information about how a named device implements AirTemperature features
+	DescribeAirTemperature(ctx context.Context, in *DescribeAirTemperatureRequest, opts ...grpc.CallOption) (*AirTemperatureSupport, error)
+}
+
+type airTemperatureInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewAirTemperatureInfoClient(cc grpc.ClientConnInterface) AirTemperatureInfoClient {
+	return &airTemperatureInfoClient{cc}
+}
+
+func (c *airTemperatureInfoClient) DescribeAirTemperature(ctx context.Context, in *DescribeAirTemperatureRequest, opts ...grpc.CallOption) (*AirTemperatureSupport, error) {
+	out := new(AirTemperatureSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.AirTemperatureInfo/DescribeAirTemperature", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AirTemperatureInfoServer is the server API for AirTemperatureInfo service.
+// All implementations must embed UnimplementedAirTemperatureInfoServer
+// for forward compatibility
+type AirTemperatureInfoServer interface {
+	// Get information about how a named device implements AirTemperature features
+	DescribeAirTemperature(context.Context, *DescribeAirTemperatureRequest) (*AirTemperatureSupport, error)
+	mustEmbedUnimplementedAirTemperatureInfoServer()
+}
+
+// UnimplementedAirTemperatureInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedAirTemperatureInfoServer struct {
+}
+
+func (*UnimplementedAirTemperatureInfoServer) DescribeAirTemperature(context.Context, *DescribeAirTemperatureRequest) (*AirTemperatureSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAirTemperature not implemented")
+}
+func (*UnimplementedAirTemperatureInfoServer) mustEmbedUnimplementedAirTemperatureInfoServer() {}
+
+func RegisterAirTemperatureInfoServer(s *grpc.Server, srv AirTemperatureInfoServer) {
+	s.RegisterService(&_AirTemperatureInfo_serviceDesc, srv)
+}
+
+func _AirTemperatureInfo_DescribeAirTemperature_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAirTemperatureRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AirTemperatureInfoServer).DescribeAirTemperature(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.AirTemperatureInfo/DescribeAirTemperature",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AirTemperatureInfoServer).DescribeAirTemperature(ctx, req.(*DescribeAirTemperatureRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _AirTemperatureInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.AirTemperatureInfo",
+	HandlerType: (*AirTemperatureInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeAirTemperature",
+			Handler:    _AirTemperatureInfo_DescribeAirTemperature_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/air_temperature.proto",
+}

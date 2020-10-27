@@ -179,6 +179,10 @@
             <ul>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeRangeValueRequest"><span class="badge">M</span>DescribeRangeValueRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.GetRangeValueRequest"><span class="badge">M</span>GetRangeValueRequest</a>
                 </li>
               
@@ -195,11 +199,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.RangeAttributes"><span class="badge">M</span>RangeAttributes</a>
+                  <a href="#smartcore.traits.RangeValue"><span class="badge">M</span>RangeValue</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.RangeValue"><span class="badge">M</span>RangeValue</a>
+                  <a href="#smartcore.traits.RangeValueSupport"><span class="badge">M</span>RangeValueSupport</a>
                 </li>
               
                 <li>
@@ -211,6 +215,10 @@
               
                 <li>
                   <a href="#smartcore.traits.RangeApi"><span class="badge">S</span>RangeApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.RangeInfo"><span class="badge">S</span>RangeInfo</a>
                 </li>
               
             </ul>
@@ -227,6 +235,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribeRangeValueRequest">DescribeRangeValueRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetRangeValueRequest">GetRangeValueRequest</h3>
         <p>A request to get the current value of a range</p>
@@ -346,30 +378,6 @@ capabilities </p></td>
 
         
       
-        <h3 id="smartcore.traits.RangeAttributes">RangeAttributes</h3>
-        <p>Trait.attributes relating to the value for the range</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>value_attributes</td>
-                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.RangeValue">RangeValue</h3>
         <p></p>
 
@@ -399,6 +407,37 @@ capabilities </p></td>
                   <td><a href="#int32">int32</a></td>
                   <td></td>
                   <td><p>Read-only, the target value after a transition </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.RangeValueSupport">RangeValueSupport</h3>
+        <p>RangeValueSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value_attributes</td>
+                  <td><a href="#smartcore.api.types.Int32Attributes">smartcore.api.types.Int32Attributes</a></td>
+                  <td></td>
+                  <td><p>Describes details of the range value </p></td>
                 </tr>
               
             </tbody>
@@ -479,6 +518,25 @@ capabilities </p></td>
                 <td><a href="#smartcore.traits.PullRangeValueRequest">PullRangeValueRequest</a></td>
                 <td><a href="#smartcore.traits.PullRangeValueResponse">PullRangeValueResponse</a> stream</td>
                 <td><p>request updates to changes in the range value</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.RangeInfo">RangeInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeRangeValue</td>
+                <td><a href="#smartcore.traits.DescribeRangeValueRequest">DescribeRangeValueRequest</a></td>
+                <td><a href="#smartcore.traits.RangeValueSupport">RangeValueSupport</a></td>
+                <td><p>Get information about how a named device implements RangeValue features</p></td>
               </tr>
             
           </tbody>

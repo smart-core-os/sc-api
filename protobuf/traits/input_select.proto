@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
+import "types/info.proto";
 
 // A trait to control the input for a device. Typically related to AV devices like displays or presentation switchers.
 // A more complicated device might have multiple outputs, this trait also supports this.
@@ -27,6 +28,12 @@ service InputSelectApi {
   // todo: support ListInput to query for 'outputs that show input A' or 'the state of all outputs'
 }
 
+// Describes the capabilities of a specific named device with respect to this trait.
+service InputSelectInfo {
+  // Get information about how a named device implements Input features
+  rpc DescribeInput (DescribeInputRequest) returns (InputSupport);
+}
+
 // possible modes an input select device can
 enum InputSelectFeature {
   // both audio and video are treated as one. independent_av should be considered false in this mode
@@ -40,15 +47,17 @@ enum InputSelectFeature {
   INPUT_SELECT_FEATURE_INDEPENDENT = 3;
 }
 
-// Trait.attributes relating to the input select device
-message InputSelectAttributes {
+// InputSupport describes the capabilities of devices implementing this trait
+message InputSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // the list of inputs that can be selected on this device
-  repeated AvPort inputs = 1;
+  repeated AvPort inputs = 2;
   // indicate the possible mode of input selection that are supported by this device. This is not the current mode, just
   // the supported mode the device allows
-  InputSelectFeature supported_feature = 2;
+  InputSelectFeature supported_feature = 3;
   // The list of outputs that can have inputs on this device
-  repeated AvPort outputs = 3;
+  repeated AvPort outputs = 4;
 }
 
 // represents a source (or destination) for the AV signal
@@ -118,4 +127,9 @@ message PullInputResponse {
     // The new value for the selected input
     Input input = 3;
   }
+}
+
+message DescribeInputRequest {
+  // The name of the device
+  string name = 1;
 }

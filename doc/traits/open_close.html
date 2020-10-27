@@ -179,11 +179,11 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.GetOpenClosePositionsRequest"><span class="badge">M</span>GetOpenClosePositionsRequest</a>
+                  <a href="#smartcore.traits.DescribePositionsRequest"><span class="badge">M</span>DescribePositionsRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenCloseAttributes"><span class="badge">M</span>OpenCloseAttributes</a>
+                  <a href="#smartcore.traits.GetOpenClosePositionsRequest"><span class="badge">M</span>GetOpenClosePositionsRequest</a>
                 </li>
               
                 <li>
@@ -192,6 +192,10 @@
               
                 <li>
                   <a href="#smartcore.traits.OpenClosePositions"><span class="badge">M</span>OpenClosePositions</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PositionsSupport"><span class="badge">M</span>PositionsSupport</a>
                 </li>
               
                 <li>
@@ -225,6 +229,10 @@
                   <a href="#smartcore.traits.OpenCloseApi"><span class="badge">S</span>OpenCloseApi</a>
                 </li>
               
+                <li>
+                  <a href="#smartcore.traits.OpenCloseInfo"><span class="badge">S</span>OpenCloseInfo</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -239,6 +247,30 @@
       </div>
       <p></p>
 
+      
+        <h3 id="smartcore.traits.DescribePositionsRequest">DescribePositionsRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="smartcore.traits.GetOpenClosePositionsRequest">GetOpenClosePositionsRequest</h3>
         <p></p>
@@ -255,45 +287,6 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Name of the device to get the state for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OpenCloseAttributes">OpenCloseAttributes</h3>
-        <p>Trait.attribute for OpenClose devices</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>position_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
-                  <td></td>
-                  <td><p>Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
-0-100 to represent a percentage </p></td>
-                </tr>
-              
-                <tr>
-                  <td>directions</td>
-                  <td><a href="#smartcore.traits.OpenCloseDirection">OpenCloseDirection</a></td>
-                  <td>repeated</td>
-                  <td><p>The supported directions for the device. If none then assume only a single direction is supported </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supports_stop</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Does the device support the Stop method </p></td>
                 </tr>
               
             </tbody>
@@ -364,6 +357,52 @@
                   <td>repeated</td>
                   <td><p>The state of each of the devices open-able elements. Most devices will only have a single value here as they can
 only be opened from a single direction. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PositionsSupport">PositionsSupport</h3>
+        <p>PositionsSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>position_attributes</td>
+                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td></td>
+                  <td><p>Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
+0-100 to represent a percentage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>directions</td>
+                  <td><a href="#smartcore.traits.OpenCloseDirection">OpenCloseDirection</a></td>
+                  <td>repeated</td>
+                  <td><p>The supported directions for the device. If none then assume only a single direction is supported </p></td>
+                </tr>
+              
+                <tr>
+                  <td>supports_stop</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Does the device support the Stop method </p></td>
                 </tr>
               
             </tbody>
@@ -623,6 +662,25 @@ include it in the states list. </p></td>
                 <td><a href="#smartcore.traits.PullOpenClosePositionsRequest">PullOpenClosePositionsRequest</a></td>
                 <td><a href="#smartcore.traits.PullOpenClosePositionsResponse">PullOpenClosePositionsResponse</a> stream</td>
                 <td><p>Get notified of changes to the OpenCloseState of a device</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.OpenCloseInfo">OpenCloseInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribePositions</td>
+                <td><a href="#smartcore.traits.DescribePositionsRequest">DescribePositionsRequest</a></td>
+                <td><a href="#smartcore.traits.PositionsSupport">PositionsSupport</a></td>
+                <td><p>Get information about how a named device implements Positions features</p></td>
               </tr>
             
           </tbody>

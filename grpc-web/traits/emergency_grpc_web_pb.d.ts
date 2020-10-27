@@ -29,6 +29,20 @@ export class EmergencyApiClient {
 
 }
 
+export class EmergencyInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeEmergency(
+    request: traits_emergency_pb.DescribeEmergencyRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_emergency_pb.EmergencySupport) => void
+  ): grpcWeb.ClientReadableStream<traits_emergency_pb.EmergencySupport>;
+
+}
+
 export class EmergencyApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -48,6 +62,18 @@ export class EmergencyApiPromiseClient {
     request: traits_emergency_pb.PullEmergencyRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_emergency_pb.PullEmergencyResponse>;
+
+}
+
+export class EmergencyInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeEmergency(
+    request: traits_emergency_pb.DescribeEmergencyRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_emergency_pb.EmergencySupport>;
 
 }
 

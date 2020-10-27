@@ -183,7 +183,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.CountAttributes"><span class="badge">M</span>CountAttributes</a>
+                  <a href="#smartcore.traits.CountSupport"><span class="badge">M</span>CountSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeCountRequest"><span class="badge">M</span>DescribeCountRequest</a>
                 </li>
               
                 <li>
@@ -215,6 +219,10 @@
               
                 <li>
                   <a href="#smartcore.traits.CountApi"><span class="badge">S</span>CountApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.CountInfo"><span class="badge">S</span>CountInfo</a>
                 </li>
               
             </ul>
@@ -270,8 +278,8 @@
 
         
       
-        <h3 id="smartcore.traits.CountAttributes">CountAttributes</h3>
-        <p>Trait.attributes for this trait.</p>
+        <h3 id="smartcore.traits.CountSupport">CountSupport</h3>
+        <p>CountSupport describes the capabilities of devices implementing this trait</p>
 
         
           <table class="field-table">
@@ -279,6 +287,13 @@
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
               
                 <tr>
                   <td>two_way</td>
@@ -300,6 +315,30 @@ property, the total count is always added - removed. </p></td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
                   <td><p>When updating the count does this device support the delta property </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeCountRequest">DescribeCountRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -535,6 +574,25 @@ property, the total count is always added - removed. </p></td>
                 <td><a href="#smartcore.traits.PullCountsRequest">PullCountsRequest</a></td>
                 <td><a href="#smartcore.traits.PullCountsResponse">PullCountsResponse</a> stream</td>
                 <td><p>Subscribe to changes to the count.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.CountInfo">CountInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeCount</td>
+                <td><a href="#smartcore.traits.DescribeCountRequest">DescribeCountRequest</a></td>
+                <td><a href="#smartcore.traits.CountSupport">CountSupport</a></td>
+                <td><p>Get information about how a named device implements Count features</p></td>
               </tr>
             
           </tbody>

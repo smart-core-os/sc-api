@@ -270,3 +270,81 @@ var _ExtendRetractApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/extend_retract.proto",
 }
+
+// ExtendRetractInfoClient is the client API for ExtendRetractInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ExtendRetractInfoClient interface {
+	// Get information about how a named device implements Extension features
+	DescribeExtension(ctx context.Context, in *DescribeExtensionRequest, opts ...grpc.CallOption) (*ExtensionSupport, error)
+}
+
+type extendRetractInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewExtendRetractInfoClient(cc grpc.ClientConnInterface) ExtendRetractInfoClient {
+	return &extendRetractInfoClient{cc}
+}
+
+func (c *extendRetractInfoClient) DescribeExtension(ctx context.Context, in *DescribeExtensionRequest, opts ...grpc.CallOption) (*ExtensionSupport, error) {
+	out := new(ExtensionSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.ExtendRetractInfo/DescribeExtension", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ExtendRetractInfoServer is the server API for ExtendRetractInfo service.
+// All implementations must embed UnimplementedExtendRetractInfoServer
+// for forward compatibility
+type ExtendRetractInfoServer interface {
+	// Get information about how a named device implements Extension features
+	DescribeExtension(context.Context, *DescribeExtensionRequest) (*ExtensionSupport, error)
+	mustEmbedUnimplementedExtendRetractInfoServer()
+}
+
+// UnimplementedExtendRetractInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedExtendRetractInfoServer struct {
+}
+
+func (*UnimplementedExtendRetractInfoServer) DescribeExtension(context.Context, *DescribeExtensionRequest) (*ExtensionSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeExtension not implemented")
+}
+func (*UnimplementedExtendRetractInfoServer) mustEmbedUnimplementedExtendRetractInfoServer() {}
+
+func RegisterExtendRetractInfoServer(s *grpc.Server, srv ExtendRetractInfoServer) {
+	s.RegisterService(&_ExtendRetractInfo_serviceDesc, srv)
+}
+
+func _ExtendRetractInfo_DescribeExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeExtensionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExtendRetractInfoServer).DescribeExtension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.ExtendRetractInfo/DescribeExtension",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExtendRetractInfoServer).DescribeExtension(ctx, req.(*DescribeExtensionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ExtendRetractInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.ExtendRetractInfo",
+	HandlerType: (*ExtendRetractInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeExtension",
+			Handler:    _ExtendRetractInfo_DescribeExtension_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/extend_retract.proto",
+}

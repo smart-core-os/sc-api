@@ -308,3 +308,81 @@ var _BookingApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/booking.proto",
 }
+
+// BookingInfoClient is the client API for BookingInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type BookingInfoClient interface {
+	// Get information about how a named device implements Booking features
+	DescribeBooking(ctx context.Context, in *DescribeBookingRequest, opts ...grpc.CallOption) (*BookingSupport, error)
+}
+
+type bookingInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewBookingInfoClient(cc grpc.ClientConnInterface) BookingInfoClient {
+	return &bookingInfoClient{cc}
+}
+
+func (c *bookingInfoClient) DescribeBooking(ctx context.Context, in *DescribeBookingRequest, opts ...grpc.CallOption) (*BookingSupport, error) {
+	out := new(BookingSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.BookingInfo/DescribeBooking", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// BookingInfoServer is the server API for BookingInfo service.
+// All implementations must embed UnimplementedBookingInfoServer
+// for forward compatibility
+type BookingInfoServer interface {
+	// Get information about how a named device implements Booking features
+	DescribeBooking(context.Context, *DescribeBookingRequest) (*BookingSupport, error)
+	mustEmbedUnimplementedBookingInfoServer()
+}
+
+// UnimplementedBookingInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedBookingInfoServer struct {
+}
+
+func (*UnimplementedBookingInfoServer) DescribeBooking(context.Context, *DescribeBookingRequest) (*BookingSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeBooking not implemented")
+}
+func (*UnimplementedBookingInfoServer) mustEmbedUnimplementedBookingInfoServer() {}
+
+func RegisterBookingInfoServer(s *grpc.Server, srv BookingInfoServer) {
+	s.RegisterService(&_BookingInfo_serviceDesc, srv)
+}
+
+func _BookingInfo_DescribeBooking_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeBookingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookingInfoServer).DescribeBooking(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.BookingInfo/DescribeBooking",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookingInfoServer).DescribeBooking(ctx, req.(*DescribeBookingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _BookingInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.BookingInfo",
+	HandlerType: (*BookingInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeBooking",
+			Handler:    _BookingInfo_DescribeBooking_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/booking.proto",
+}

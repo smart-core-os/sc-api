@@ -18,6 +18,8 @@ grpc.web = require('grpc-web');
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_number_pb = require('../types/number_pb.js')
 
 var types_tween_pb = require('../types/tween_pb.js')
@@ -309,6 +311,138 @@ proto.smartcore.traits.LightApiPromiseClient.prototype.pullBrightness =
       request,
       metadata || {},
       methodDescriptor_LightApi_PullBrightness);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.LightInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.LightInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeBrightnessRequest,
+ *   !proto.smartcore.traits.BrightnessSupport>}
+ */
+const methodDescriptor_LightInfo_DescribeBrightness = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LightInfo/DescribeBrightness',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeBrightnessRequest,
+  proto.smartcore.traits.BrightnessSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.BrightnessSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeBrightnessRequest,
+ *   !proto.smartcore.traits.BrightnessSupport>}
+ */
+const methodInfo_LightInfo_DescribeBrightness = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.BrightnessSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.BrightnessSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.BrightnessSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.BrightnessSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.LightInfoClient.prototype.describeBrightness =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.LightInfo/DescribeBrightness',
+      request,
+      metadata || {},
+      methodDescriptor_LightInfo_DescribeBrightness,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.BrightnessSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.LightInfoPromiseClient.prototype.describeBrightness =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.LightInfo/DescribeBrightness',
+      request,
+      metadata || {},
+      methodDescriptor_LightInfo_DescribeBrightness);
 };
 
 

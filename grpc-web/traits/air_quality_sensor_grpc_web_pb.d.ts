@@ -22,6 +22,20 @@ export class AirQualitySensorApiClient {
 
 }
 
+export class AirQualitySensorInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAirQuality(
+    request: traits_air_quality_sensor_pb.DescribeAirQualityRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_air_quality_sensor_pb.AirQualitySupport) => void
+  ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.AirQualitySupport>;
+
+}
+
 export class AirQualitySensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -36,6 +50,18 @@ export class AirQualitySensorApiPromiseClient {
     request: traits_air_quality_sensor_pb.PullAirQualityRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.PullAirQualityResponse>;
+
+}
+
+export class AirQualitySensorInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAirQuality(
+    request: traits_air_quality_sensor_pb.DescribeAirQualityRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_air_quality_sensor_pb.AirQualitySupport>;
 
 }
 

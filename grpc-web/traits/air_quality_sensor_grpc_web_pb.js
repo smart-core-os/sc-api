@@ -22,6 +22,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_number_pb = require('../types/number_pb.js')
 const proto = {};
 proto.smartcore = {};
@@ -231,6 +233,138 @@ proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.pullAirQuality
       request,
       metadata || {},
       methodDescriptor_AirQualitySensorApi_PullAirQuality);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.AirQualitySensorInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.AirQualitySensorInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeAirQualityRequest,
+ *   !proto.smartcore.traits.AirQualitySupport>}
+ */
+const methodDescriptor_AirQualitySensorInfo_DescribeAirQuality = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.AirQualitySensorInfo/DescribeAirQuality',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeAirQualityRequest,
+  proto.smartcore.traits.AirQualitySupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.AirQualitySupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeAirQualityRequest,
+ *   !proto.smartcore.traits.AirQualitySupport>}
+ */
+const methodInfo_AirQualitySensorInfo_DescribeAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.AirQualitySupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.AirQualitySupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirQualitySupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirQualitySupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.AirQualitySensorInfoClient.prototype.describeAirQuality =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.AirQualitySensorInfo/DescribeAirQuality',
+      request,
+      metadata || {},
+      methodDescriptor_AirQualitySensorInfo_DescribeAirQuality,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.AirQualitySupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.AirQualitySensorInfoPromiseClient.prototype.describeAirQuality =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.AirQualitySensorInfo/DescribeAirQuality',
+      request,
+      metadata || {},
+      methodDescriptor_AirQualitySensorInfo_DescribeAirQuality);
 };
 
 

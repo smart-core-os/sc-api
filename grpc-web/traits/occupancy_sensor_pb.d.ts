@@ -1,22 +1,29 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_info_pb from '../types/info_pb';
 
 
-export class OccupancySensorAttributes extends jspb.Message {
+export class OccupancySupport extends jspb.Message {
+  getSensorSupport(): types_info_pb.SensorSupport | undefined;
+  setSensorSupport(value?: types_info_pb.SensorSupport): OccupancySupport;
+  hasSensorSupport(): boolean;
+  clearSensorSupport(): OccupancySupport;
+
   getMaxPeople(): number;
-  setMaxPeople(value: number): OccupancySensorAttributes;
+  setMaxPeople(value: number): OccupancySupport;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OccupancySensorAttributes.AsObject;
-  static toObject(includeInstance: boolean, msg: OccupancySensorAttributes): OccupancySensorAttributes.AsObject;
-  static serializeBinaryToWriter(message: OccupancySensorAttributes, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OccupancySensorAttributes;
-  static deserializeBinaryFromReader(message: OccupancySensorAttributes, reader: jspb.BinaryReader): OccupancySensorAttributes;
+  toObject(includeInstance?: boolean): OccupancySupport.AsObject;
+  static toObject(includeInstance: boolean, msg: OccupancySupport): OccupancySupport.AsObject;
+  static serializeBinaryToWriter(message: OccupancySupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OccupancySupport;
+  static deserializeBinaryFromReader(message: OccupancySupport, reader: jspb.BinaryReader): OccupancySupport;
 }
 
-export namespace OccupancySensorAttributes {
+export namespace OccupancySupport {
   export type AsObject = {
+    sensorSupport?: types_info_pb.SensorSupport.AsObject,
     maxPeople: number,
   }
 }
@@ -144,6 +151,24 @@ export namespace PullOccupancyResponse {
     }
   }
 
+}
+
+export class DescribeOccupancyRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeOccupancyRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeOccupancyRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeOccupancyRequest): DescribeOccupancyRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeOccupancyRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeOccupancyRequest;
+  static deserializeBinaryFromReader(message: DescribeOccupancyRequest, reader: jspb.BinaryReader): DescribeOccupancyRequest;
+}
+
+export namespace DescribeOccupancyRequest {
+  export type AsObject = {
+    name: string,
+  }
 }
 
 export enum OccupancyState { 

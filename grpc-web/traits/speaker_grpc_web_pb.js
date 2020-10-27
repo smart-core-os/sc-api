@@ -18,6 +18,8 @@ grpc.web = require('grpc-web');
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_number_pb = require('../types/number_pb.js')
 
 var types_unit_pb = require('../types/unit_pb.js')
@@ -311,6 +313,138 @@ proto.smartcore.traits.SpeakerApiPromiseClient.prototype.pullVolume =
       request,
       metadata || {},
       methodDescriptor_SpeakerApi_PullVolume);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.SpeakerInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.SpeakerInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeVolumeRequest,
+ *   !proto.smartcore.traits.VolumeSupport>}
+ */
+const methodDescriptor_SpeakerInfo_DescribeVolume = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.SpeakerInfo/DescribeVolume',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeVolumeRequest,
+  proto.smartcore.traits.VolumeSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeVolumeRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.VolumeSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeVolumeRequest,
+ *   !proto.smartcore.traits.VolumeSupport>}
+ */
+const methodInfo_SpeakerInfo_DescribeVolume = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.VolumeSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeVolumeRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.VolumeSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeVolumeRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.VolumeSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.VolumeSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.SpeakerInfoClient.prototype.describeVolume =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.SpeakerInfo/DescribeVolume',
+      request,
+      metadata || {},
+      methodDescriptor_SpeakerInfo_DescribeVolume,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeVolumeRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.VolumeSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.SpeakerInfoPromiseClient.prototype.describeVolume =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.SpeakerInfo/DescribeVolume',
+      request,
+      metadata || {},
+      methodDescriptor_SpeakerInfo_DescribeVolume);
 };
 
 

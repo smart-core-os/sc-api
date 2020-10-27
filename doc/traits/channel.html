@@ -187,11 +187,15 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ChannelApiAttributes"><span class="badge">M</span>ChannelApiAttributes</a>
+                  <a href="#smartcore.traits.ChooseChannelRequest"><span class="badge">M</span>ChooseChannelRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ChooseChannelRequest"><span class="badge">M</span>ChooseChannelRequest</a>
+                  <a href="#smartcore.traits.ChosenChannelSupport"><span class="badge">M</span>ChosenChannelSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeChosenChannelRequest"><span class="badge">M</span>DescribeChosenChannelRequest</a>
                 </li>
               
                 <li>
@@ -219,6 +223,10 @@
               
                 <li>
                   <a href="#smartcore.traits.ChannelApi"><span class="badge">S</span>ChannelApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ChannelInfo"><span class="badge">S</span>ChannelInfo</a>
                 </li>
               
             </ul>
@@ -305,32 +313,6 @@
 
         
       
-        <h3 id="smartcore.traits.ChannelApiAttributes">ChannelApiAttributes</h3>
-        <p>Trait.attributes relating to the channel api</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>adjust_max</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p>The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
-
-todo: support for [choose,adjust,return], not sure what the defaults should be </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.ChooseChannelRequest">ChooseChannelRequest</h3>
         <p>ChooseChannelRequest describes which channel to select.</p>
 
@@ -353,6 +335,63 @@ todo: support for [choose,adjust,return], not sure what the defaults should be <
                   <td><a href="#smartcore.traits.Channel">Channel</a></td>
                   <td></td>
                   <td><p>The channel to select. Must contain either id or number. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ChosenChannelSupport">ChosenChannelSupport</h3>
+        <p>ChosenChannelSupport describes the capabilities of devices implementing this trait</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>adjust_max</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
+
+todo: support for [choose,adjust,return], not sure what the defaults should be </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeChosenChannelRequest">DescribeChosenChannelRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
                 </tr>
               
             </tbody>
@@ -543,6 +582,25 @@ todo: support for [choose,adjust,return], not sure what the defaults should be <
                 <td><a href="#smartcore.traits.PullChosenChannelRequest">PullChosenChannelRequest</a></td>
                 <td><a href="#smartcore.traits.PullChosenChannelResponse">PullChosenChannelResponse</a> stream</td>
                 <td><p>PullChosenChannel subscribes to chosen channel changes</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.ChannelInfo">ChannelInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeChosenChannel</td>
+                <td><a href="#smartcore.traits.DescribeChosenChannelRequest">DescribeChosenChannelRequest</a></td>
+                <td><a href="#smartcore.traits.ChosenChannelSupport">ChosenChannelSupport</a></td>
+                <td><p>Get information about how a named device implements channel choosing and adjustment</p></td>
               </tr>
             
           </tbody>

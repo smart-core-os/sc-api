@@ -22,6 +22,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js')
 
+var types_info_pb = require('../types/info_pb.js')
+
 var types_tween_pb = require('../types/tween_pb.js')
 const proto = {};
 proto.smartcore = {};
@@ -471,6 +473,138 @@ proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.pullExtensions =
       request,
       metadata || {},
       methodDescriptor_ExtendRetractApi_PullExtensions);
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.ExtendRetractInfoClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.ExtendRetractInfoPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeExtensionRequest,
+ *   !proto.smartcore.traits.ExtensionSupport>}
+ */
+const methodDescriptor_ExtendRetractInfo_DescribeExtension = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.ExtendRetractInfo/DescribeExtension',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeExtensionRequest,
+  proto.smartcore.traits.ExtensionSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeExtensionRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ExtensionSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeExtensionRequest,
+ *   !proto.smartcore.traits.ExtensionSupport>}
+ */
+const methodInfo_ExtendRetractInfo_DescribeExtension = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.ExtensionSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeExtensionRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ExtensionSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeExtensionRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ExtensionSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ExtensionSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.ExtendRetractInfoClient.prototype.describeExtension =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.ExtendRetractInfo/DescribeExtension',
+      request,
+      metadata || {},
+      methodDescriptor_ExtendRetractInfo_DescribeExtension,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeExtensionRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ExtensionSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.ExtendRetractInfoPromiseClient.prototype.describeExtension =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.ExtendRetractInfo/DescribeExtension',
+      request,
+      metadata || {},
+      methodDescriptor_ExtendRetractInfo_DescribeExtension);
 };
 
 

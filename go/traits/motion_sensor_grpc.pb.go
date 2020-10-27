@@ -156,3 +156,82 @@ var _MotionSensorApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/motion_sensor.proto",
 }
+
+// MotionSensorSensorInfoClient is the client API for MotionSensorSensorInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MotionSensorSensorInfoClient interface {
+	// Get information about how a named device implements MotionDetection measurements
+	DescribeMotionDetection(ctx context.Context, in *DescribeMotionDetectionRequest, opts ...grpc.CallOption) (*MotionDetectionSupport, error)
+}
+
+type motionSensorSensorInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMotionSensorSensorInfoClient(cc grpc.ClientConnInterface) MotionSensorSensorInfoClient {
+	return &motionSensorSensorInfoClient{cc}
+}
+
+func (c *motionSensorSensorInfoClient) DescribeMotionDetection(ctx context.Context, in *DescribeMotionDetectionRequest, opts ...grpc.CallOption) (*MotionDetectionSupport, error) {
+	out := new(MotionDetectionSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.MotionSensorSensorInfo/DescribeMotionDetection", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MotionSensorSensorInfoServer is the server API for MotionSensorSensorInfo service.
+// All implementations must embed UnimplementedMotionSensorSensorInfoServer
+// for forward compatibility
+type MotionSensorSensorInfoServer interface {
+	// Get information about how a named device implements MotionDetection measurements
+	DescribeMotionDetection(context.Context, *DescribeMotionDetectionRequest) (*MotionDetectionSupport, error)
+	mustEmbedUnimplementedMotionSensorSensorInfoServer()
+}
+
+// UnimplementedMotionSensorSensorInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedMotionSensorSensorInfoServer struct {
+}
+
+func (*UnimplementedMotionSensorSensorInfoServer) DescribeMotionDetection(context.Context, *DescribeMotionDetectionRequest) (*MotionDetectionSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeMotionDetection not implemented")
+}
+func (*UnimplementedMotionSensorSensorInfoServer) mustEmbedUnimplementedMotionSensorSensorInfoServer() {
+}
+
+func RegisterMotionSensorSensorInfoServer(s *grpc.Server, srv MotionSensorSensorInfoServer) {
+	s.RegisterService(&_MotionSensorSensorInfo_serviceDesc, srv)
+}
+
+func _MotionSensorSensorInfo_DescribeMotionDetection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeMotionDetectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MotionSensorSensorInfoServer).DescribeMotionDetection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.MotionSensorSensorInfo/DescribeMotionDetection",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MotionSensorSensorInfoServer).DescribeMotionDetection(ctx, req.(*DescribeMotionDetectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _MotionSensorSensorInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.MotionSensorSensorInfo",
+	HandlerType: (*MotionSensorSensorInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeMotionDetection",
+			Handler:    _MotionSensorSensorInfo_DescribeMotionDetection_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/motion_sensor.proto",
+}

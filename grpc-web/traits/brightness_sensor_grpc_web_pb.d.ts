@@ -22,6 +22,20 @@ export class BrightnessSensorApiClient {
 
 }
 
+export class BrightnessSensorInfoClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAmbientBrightness(
+    request: traits_brightness_sensor_pb.DescribeAmbientBrightnessRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_brightness_sensor_pb.AmbientBrightnessSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_brightness_sensor_pb.AmbientBrightnessSupport>;
+
+}
+
 export class BrightnessSensorApiPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
@@ -36,6 +50,18 @@ export class BrightnessSensorApiPromiseClient {
     request: traits_brightness_sensor_pb.PullAmbientBrightnessRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_brightness_sensor_pb.PullAmbientBrightnessResponse>;
+
+}
+
+export class BrightnessSensorInfoPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  describeAmbientBrightness(
+    request: traits_brightness_sensor_pb.DescribeAmbientBrightnessRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_brightness_sensor_pb.AmbientBrightnessSupport>;
 
 }
 

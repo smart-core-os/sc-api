@@ -156,3 +156,81 @@ var _BrightnessSensorApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/brightness_sensor.proto",
 }
+
+// BrightnessSensorInfoClient is the client API for BrightnessSensorInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type BrightnessSensorInfoClient interface {
+	// Get information about how a named device implements AmbientBrightness measurements
+	DescribeAmbientBrightness(ctx context.Context, in *DescribeAmbientBrightnessRequest, opts ...grpc.CallOption) (*AmbientBrightnessSupport, error)
+}
+
+type brightnessSensorInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewBrightnessSensorInfoClient(cc grpc.ClientConnInterface) BrightnessSensorInfoClient {
+	return &brightnessSensorInfoClient{cc}
+}
+
+func (c *brightnessSensorInfoClient) DescribeAmbientBrightness(ctx context.Context, in *DescribeAmbientBrightnessRequest, opts ...grpc.CallOption) (*AmbientBrightnessSupport, error) {
+	out := new(AmbientBrightnessSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.BrightnessSensorInfo/DescribeAmbientBrightness", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// BrightnessSensorInfoServer is the server API for BrightnessSensorInfo service.
+// All implementations must embed UnimplementedBrightnessSensorInfoServer
+// for forward compatibility
+type BrightnessSensorInfoServer interface {
+	// Get information about how a named device implements AmbientBrightness measurements
+	DescribeAmbientBrightness(context.Context, *DescribeAmbientBrightnessRequest) (*AmbientBrightnessSupport, error)
+	mustEmbedUnimplementedBrightnessSensorInfoServer()
+}
+
+// UnimplementedBrightnessSensorInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedBrightnessSensorInfoServer struct {
+}
+
+func (*UnimplementedBrightnessSensorInfoServer) DescribeAmbientBrightness(context.Context, *DescribeAmbientBrightnessRequest) (*AmbientBrightnessSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAmbientBrightness not implemented")
+}
+func (*UnimplementedBrightnessSensorInfoServer) mustEmbedUnimplementedBrightnessSensorInfoServer() {}
+
+func RegisterBrightnessSensorInfoServer(s *grpc.Server, srv BrightnessSensorInfoServer) {
+	s.RegisterService(&_BrightnessSensorInfo_serviceDesc, srv)
+}
+
+func _BrightnessSensorInfo_DescribeAmbientBrightness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAmbientBrightnessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BrightnessSensorInfoServer).DescribeAmbientBrightness(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.BrightnessSensorInfo/DescribeAmbientBrightness",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BrightnessSensorInfoServer).DescribeAmbientBrightness(ctx, req.(*DescribeAmbientBrightnessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _BrightnessSensorInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.BrightnessSensorInfo",
+	HandlerType: (*BrightnessSensorInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeAmbientBrightness",
+			Handler:    _BrightnessSensorInfo_DescribeAmbientBrightness_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/brightness_sensor.proto",
+}

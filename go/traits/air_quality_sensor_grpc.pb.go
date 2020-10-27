@@ -156,3 +156,81 @@ var _AirQualitySensorApi_serviceDesc = grpc.ServiceDesc{
 	},
 	Metadata: "traits/air_quality_sensor.proto",
 }
+
+// AirQualitySensorInfoClient is the client API for AirQualitySensorInfo service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type AirQualitySensorInfoClient interface {
+	// Get information about how a named device implements AirQuality measurements
+	DescribeAirQuality(ctx context.Context, in *DescribeAirQualityRequest, opts ...grpc.CallOption) (*AirQualitySupport, error)
+}
+
+type airQualitySensorInfoClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewAirQualitySensorInfoClient(cc grpc.ClientConnInterface) AirQualitySensorInfoClient {
+	return &airQualitySensorInfoClient{cc}
+}
+
+func (c *airQualitySensorInfoClient) DescribeAirQuality(ctx context.Context, in *DescribeAirQualityRequest, opts ...grpc.CallOption) (*AirQualitySupport, error) {
+	out := new(AirQualitySupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.AirQualitySensorInfo/DescribeAirQuality", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AirQualitySensorInfoServer is the server API for AirQualitySensorInfo service.
+// All implementations must embed UnimplementedAirQualitySensorInfoServer
+// for forward compatibility
+type AirQualitySensorInfoServer interface {
+	// Get information about how a named device implements AirQuality measurements
+	DescribeAirQuality(context.Context, *DescribeAirQualityRequest) (*AirQualitySupport, error)
+	mustEmbedUnimplementedAirQualitySensorInfoServer()
+}
+
+// UnimplementedAirQualitySensorInfoServer must be embedded to have forward compatible implementations.
+type UnimplementedAirQualitySensorInfoServer struct {
+}
+
+func (*UnimplementedAirQualitySensorInfoServer) DescribeAirQuality(context.Context, *DescribeAirQualityRequest) (*AirQualitySupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAirQuality not implemented")
+}
+func (*UnimplementedAirQualitySensorInfoServer) mustEmbedUnimplementedAirQualitySensorInfoServer() {}
+
+func RegisterAirQualitySensorInfoServer(s *grpc.Server, srv AirQualitySensorInfoServer) {
+	s.RegisterService(&_AirQualitySensorInfo_serviceDesc, srv)
+}
+
+func _AirQualitySensorInfo_DescribeAirQuality_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAirQualityRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AirQualitySensorInfoServer).DescribeAirQuality(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.AirQualitySensorInfo/DescribeAirQuality",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AirQualitySensorInfoServer).DescribeAirQuality(ctx, req.(*DescribeAirQualityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _AirQualitySensorInfo_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.AirQualitySensorInfo",
+	HandlerType: (*AirQualitySensorInfoServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "DescribeAirQuality",
+			Handler:    _AirQualitySensorInfo_DescribeAirQuality_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/air_quality_sensor.proto",
+}
