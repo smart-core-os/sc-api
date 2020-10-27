@@ -573,36 +573,7 @@ return devices owned by the enclosing service. </p></td>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>name of the trait service that is implements. In the format package.Service. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>readable</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Whether the device supports querying, i.e. getXxx apis </p></td>
-                </tr>
-              
-                <tr>
-                  <td>writable</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Whether the device supports writable actions, i.e. setXxx or action apis </p></td>
-                </tr>
-              
-                <tr>
-                  <td>observable</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Whether the device supports subscriptions, i.e. pull apis </p></td>
-                </tr>
-              
-                <tr>
-                  <td>attributes</td>
-                  <td><a href="#google.protobuf.Any">google.protobuf.Any</a></td>
-                  <td></td>
-                  <td><p>Serialised protobuf message describing any additional attributes for this device. The schema for the protobuf is
-defined in the traits proto files and will be clearly documented </p></td>
+                  <td><p>Name of the trait service that is implemented. In the format package.Service excluding Api or other type suffix. </p></td>
                 </tr>
               
             </tbody>

@@ -34,6 +34,7 @@ type CountSupport struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// How a named device supports read/write/pull apis
 	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
 	// Two way counters count additions and removals separately. Do NOT use this as a way to ignore the Count.removed
 	// property, the total count is always added - removed.

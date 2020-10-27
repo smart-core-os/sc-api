@@ -1601,11 +1601,7 @@ proto.smartcore.info.Trait.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.info.Trait.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readable: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    writable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    observable: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    attributes: (f = msg.getAttributes()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
+    name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1646,23 +1642,6 @@ proto.smartcore.info.Trait.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
-    case 2:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setReadable(value);
-      break;
-    case 3:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setWritable(value);
-      break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setObservable(value);
-      break;
-    case 5:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setAttributes(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1699,35 +1678,6 @@ proto.smartcore.info.Trait.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getReadable();
-  if (f) {
-    writer.writeBool(
-      2,
-      f
-    );
-  }
-  f = message.getWritable();
-  if (f) {
-    writer.writeBool(
-      3,
-      f
-    );
-  }
-  f = message.getObservable();
-  if (f) {
-    writer.writeBool(
-      4,
-      f
-    );
-  }
-  f = message.getAttributes();
-  if (f != null) {
-    writer.writeMessage(
-      5,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
-  }
 };
 
 
@@ -1746,97 +1696,6 @@ proto.smartcore.info.Trait.prototype.getName = function() {
  */
 proto.smartcore.info.Trait.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional bool readable = 2;
- * @return {boolean}
- */
-proto.smartcore.info.Trait.prototype.getReadable = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.smartcore.info.Trait} returns this
- */
-proto.smartcore.info.Trait.prototype.setReadable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 2, value);
-};
-
-
-/**
- * optional bool writable = 3;
- * @return {boolean}
- */
-proto.smartcore.info.Trait.prototype.getWritable = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.smartcore.info.Trait} returns this
- */
-proto.smartcore.info.Trait.prototype.setWritable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 3, value);
-};
-
-
-/**
- * optional bool observable = 4;
- * @return {boolean}
- */
-proto.smartcore.info.Trait.prototype.getObservable = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.smartcore.info.Trait} returns this
- */
-proto.smartcore.info.Trait.prototype.setObservable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
-};
-
-
-/**
- * optional google.protobuf.Any attributes = 5;
- * @return {?proto.google.protobuf.Any}
- */
-proto.smartcore.info.Trait.prototype.getAttributes = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 5));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Any|undefined} value
- * @return {!proto.smartcore.info.Trait} returns this
-*/
-proto.smartcore.info.Trait.prototype.setAttributes = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.smartcore.info.Trait} returns this
- */
-proto.smartcore.info.Trait.prototype.clearAttributes = function() {
-  return this.setAttributes(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.info.Trait.prototype.hasAttributes = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 

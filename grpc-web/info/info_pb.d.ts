@@ -187,20 +187,6 @@ export class Trait extends jspb.Message {
   getName(): string;
   setName(value: string): Trait;
 
-  getReadable(): boolean;
-  setReadable(value: boolean): Trait;
-
-  getWritable(): boolean;
-  setWritable(value: boolean): Trait;
-
-  getObservable(): boolean;
-  setObservable(value: boolean): Trait;
-
-  getAttributes(): google_protobuf_any_pb.Any | undefined;
-  setAttributes(value?: google_protobuf_any_pb.Any): Trait;
-  hasAttributes(): boolean;
-  clearAttributes(): Trait;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Trait.AsObject;
   static toObject(includeInstance: boolean, msg: Trait): Trait.AsObject;
@@ -212,10 +198,6 @@ export class Trait extends jspb.Message {
 export namespace Trait {
   export type AsObject = {
     name: string,
-    readable: boolean,
-    writable: boolean,
-    observable: boolean,
-    attributes?: google_protobuf_any_pb.Any.AsObject,
   }
 }
 
