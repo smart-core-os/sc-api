@@ -10,7 +10,7 @@ updating or publishing these dependencies.
 
 A trait is some characteristic of a device. In Smart Core each device has a list of traits that make up the whole api
 for that device. Think of a trait as an api for controlling some aspect of the device, maybe the device represents a 
-light and as such has the `smartcore.api.device.traits.OnOff` trait.
+switch and as such has the `smartcore.traits.OnOff` trait.
 
 The full list of traits and their documentation can be found in the [protobuf traits folder].
 
