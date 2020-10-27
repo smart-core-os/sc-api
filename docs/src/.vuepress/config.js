@@ -49,8 +49,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'concepts',
-            'traits',
+            'traits-and-services',
           ]
         }
       ],
