@@ -225,7 +225,8 @@ type UpdateOnOffRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OnOff *OnOff `protobuf:"bytes,2,opt,name=on_off,json=onOff,proto3" json:"on_off,omitempty"`
 }
 
 func (x *UpdateOnOffRequest) Reset() {
@@ -265,6 +266,13 @@ func (x *UpdateOnOffRequest) GetName() string {
 		return x.Name
 	}
 	return ""
+}
+
+func (x *UpdateOnOffRequest) GetOnOff() *OnOff {
+	if x != nil {
+		return x.OnOff
+	}
+	return nil
 }
 
 // A request to monitor the state of a device
@@ -496,10 +504,13 @@ var file_traits_on_off_proto_rawDesc = []byte{
 	0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x0f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
 	0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x22, 0x25, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x4f, 0x6e,
 	0x4f, 0x66, 0x66, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x28,
+	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x58,
 	0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x4f, 0x66, 0x66, 0x52, 0x65, 0x71,
 	0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x26, 0x0a, 0x10, 0x50, 0x75, 0x6c, 0x6c,
+	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2e, 0x0a, 0x06, 0x6f, 0x6e, 0x5f, 0x6f,
+	0x66, 0x66, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74,
+	0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x4f, 0x6e, 0x4f, 0x66,
+	0x66, 0x52, 0x05, 0x6f, 0x6e, 0x4f, 0x66, 0x66, 0x22, 0x26, 0x0a, 0x10, 0x50, 0x75, 0x6c, 0x6c,
 	0x4f, 0x6e, 0x4f, 0x66, 0x66, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04,
 	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
 	0x22, 0xe5, 0x01, 0x0a, 0x11, 0x50, 0x75, 0x6c, 0x6c, 0x4f, 0x6e, 0x4f, 0x66, 0x66, 0x52, 0x65,
@@ -586,22 +597,23 @@ var file_traits_on_off_proto_goTypes = []interface{}{
 var file_traits_on_off_proto_depIdxs = []int32{
 	0,  // 0: smartcore.traits.OnOff.on_or_off:type_name -> smartcore.traits.OnOrOff
 	9,  // 1: smartcore.traits.OnOffSupport.resource_support:type_name -> smartcore.types.ResourceSupport
-	8,  // 2: smartcore.traits.PullOnOffResponse.changes:type_name -> smartcore.traits.PullOnOffResponse.Change
-	1,  // 3: smartcore.traits.PullOnOffResponse.Change.on_off:type_name -> smartcore.traits.OnOff
-	10, // 4: smartcore.traits.PullOnOffResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	3,  // 5: smartcore.traits.OnOffApi.GetOnOff:input_type -> smartcore.traits.GetOnOffRequest
-	4,  // 6: smartcore.traits.OnOffApi.UpdateOnOff:input_type -> smartcore.traits.UpdateOnOffRequest
-	5,  // 7: smartcore.traits.OnOffApi.PullOnOff:input_type -> smartcore.traits.PullOnOffRequest
-	7,  // 8: smartcore.traits.OnOffInfo.DescribeOnOff:input_type -> smartcore.traits.DescribeOnOffRequest
-	1,  // 9: smartcore.traits.OnOffApi.GetOnOff:output_type -> smartcore.traits.OnOff
-	1,  // 10: smartcore.traits.OnOffApi.UpdateOnOff:output_type -> smartcore.traits.OnOff
-	6,  // 11: smartcore.traits.OnOffApi.PullOnOff:output_type -> smartcore.traits.PullOnOffResponse
-	2,  // 12: smartcore.traits.OnOffInfo.DescribeOnOff:output_type -> smartcore.traits.OnOffSupport
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	1,  // 2: smartcore.traits.UpdateOnOffRequest.on_off:type_name -> smartcore.traits.OnOff
+	8,  // 3: smartcore.traits.PullOnOffResponse.changes:type_name -> smartcore.traits.PullOnOffResponse.Change
+	1,  // 4: smartcore.traits.PullOnOffResponse.Change.on_off:type_name -> smartcore.traits.OnOff
+	10, // 5: smartcore.traits.PullOnOffResponse.Change.change_time:type_name -> google.protobuf.Timestamp
+	3,  // 6: smartcore.traits.OnOffApi.GetOnOff:input_type -> smartcore.traits.GetOnOffRequest
+	4,  // 7: smartcore.traits.OnOffApi.UpdateOnOff:input_type -> smartcore.traits.UpdateOnOffRequest
+	5,  // 8: smartcore.traits.OnOffApi.PullOnOff:input_type -> smartcore.traits.PullOnOffRequest
+	7,  // 9: smartcore.traits.OnOffInfo.DescribeOnOff:input_type -> smartcore.traits.DescribeOnOffRequest
+	1,  // 10: smartcore.traits.OnOffApi.GetOnOff:output_type -> smartcore.traits.OnOff
+	1,  // 11: smartcore.traits.OnOffApi.UpdateOnOff:output_type -> smartcore.traits.OnOff
+	6,  // 12: smartcore.traits.OnOffApi.PullOnOff:output_type -> smartcore.traits.PullOnOffResponse
+	2,  // 13: smartcore.traits.OnOffInfo.DescribeOnOff:output_type -> smartcore.traits.OnOffSupport
+	10, // [10:14] is the sub-list for method output_type
+	6,  // [6:10] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_traits_on_off_proto_init() }

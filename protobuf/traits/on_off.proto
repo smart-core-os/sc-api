@@ -52,6 +52,7 @@ message GetOnOffRequest {
 
 message UpdateOnOffRequest {
   string name = 1;
+  OnOff on_off = 2;
 }
 
 // A request to monitor the state of a device

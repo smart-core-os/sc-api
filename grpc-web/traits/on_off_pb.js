@@ -636,7 +636,8 @@ proto.smartcore.traits.UpdateOnOffRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.UpdateOnOffRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    onOff: (f = msg.getOnOff()) && proto.smartcore.traits.OnOff.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -677,6 +678,11 @@ proto.smartcore.traits.UpdateOnOffRequest.deserializeBinaryFromReader = function
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new proto.smartcore.traits.OnOff;
+      reader.readMessage(value,proto.smartcore.traits.OnOff.deserializeBinaryFromReader);
+      msg.setOnOff(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -713,6 +719,14 @@ proto.smartcore.traits.UpdateOnOffRequest.serializeBinaryToWriter = function(mes
       f
     );
   }
+  f = message.getOnOff();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.smartcore.traits.OnOff.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -731,6 +745,43 @@ proto.smartcore.traits.UpdateOnOffRequest.prototype.getName = function() {
  */
 proto.smartcore.traits.UpdateOnOffRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional OnOff on_off = 2;
+ * @return {?proto.smartcore.traits.OnOff}
+ */
+proto.smartcore.traits.UpdateOnOffRequest.prototype.getOnOff = function() {
+  return /** @type{?proto.smartcore.traits.OnOff} */ (
+    jspb.Message.getWrapperField(this, proto.smartcore.traits.OnOff, 2));
+};
+
+
+/**
+ * @param {?proto.smartcore.traits.OnOff|undefined} value
+ * @return {!proto.smartcore.traits.UpdateOnOffRequest} returns this
+*/
+proto.smartcore.traits.UpdateOnOffRequest.prototype.setOnOff = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.UpdateOnOffRequest} returns this
+ */
+proto.smartcore.traits.UpdateOnOffRequest.prototype.clearOnOff = function() {
+  return this.setOnOff(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.UpdateOnOffRequest.prototype.hasOnOff = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

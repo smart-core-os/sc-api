@@ -64,6 +64,11 @@ export class UpdateOnOffRequest extends jspb.Message {
   getName(): string;
   setName(value: string): UpdateOnOffRequest;
 
+  getOnOff(): OnOff | undefined;
+  setOnOff(value?: OnOff): UpdateOnOffRequest;
+  hasOnOff(): boolean;
+  clearOnOff(): UpdateOnOffRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateOnOffRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateOnOffRequest): UpdateOnOffRequest.AsObject;
@@ -75,6 +80,7 @@ export class UpdateOnOffRequest extends jspb.Message {
 export namespace UpdateOnOffRequest {
   export type AsObject = {
     name: string,
+    onOff?: OnOff.AsObject,
   }
 }
 
