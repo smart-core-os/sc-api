@@ -1,0 +1,19 @@
+{
+  "name": "@smart-core-os/docs",
+  "version": "0.0.1",
+  "description": "Smart building integration platform",
+  "main": "index.js",
+  "authors": {
+    "name": "Matt Nathan",
+    "email": "matt.nathan@vanti.co.uk"
+  },
+  "repository": "https://git.vanti.co.uk/smartcore/sc-api/sc-api",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
