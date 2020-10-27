@@ -12,8 +12,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
 var types_change_pb = require('../types/change_pb.js');
 goog.object.extend(proto, types_change_pb);
 goog.exportSymbol('proto.smartcore.info.Device', null, global);

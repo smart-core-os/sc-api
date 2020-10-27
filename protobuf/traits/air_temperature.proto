@@ -37,56 +37,6 @@ service AirTemperatureInfo {
   rpc DescribeAirTemperature (DescribeAirTemperatureRequest) returns (AirTemperatureSupport);
 }
 
-// AirTemperatureSupport describes the capabilities of devices implementing this trait
-message AirTemperatureSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // How the device thinks, all communications will be in celsius but the device's native unit is this.
-  smartcore.api.types.TemperatureUnit native_unit = 2;
-  // The list of modes a device supports.
-  repeated AirTemperatureMode supported_modes = 3;
-  // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
-  double min_range_celsius = 4;
-}
-
-// Request message for fetching device state
-message GetAirTemperatureRequest {
-  string name = 1;
-}
-
-// Request message for updating the device state
-message UpdateAirTemperatureRequest {
-  string name = 1;
-  AirTemperature state = 2;
-  // The fields relative to state we intend to update
-  google.protobuf.FieldMask update_mask = 3;
-}
-
-// Request message for subscribing to changes in the devices state
-message PullAirTemperatureRequest {
-  string name = 1;
-}
-
-// Response message enclosing device state changes
-message PullAirTemperatureResponse {
-  repeated Change changes = 1;
-
-  message Change {
-    // name for the device that issued the change
-    string name = 1;
-    // when the change occurred
-    google.protobuf.Timestamp change_time = 2;
-    // The new value for the device state. Only changed fields will be set, should be merged with GetState full
-    // response as required.
-    AirTemperature state = 3;
-  }
-}
-
-message DescribeAirTemperatureRequest {
-  // The name of the device
-  string name = 1;
-}
-
 // Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control
 enum AirTemperatureMode {
   // The mode is unknown during a query. If used during a write then no change will be made, if part of a
@@ -146,4 +96,54 @@ message TemperatureRange {
   smartcore.api.types.Temperature high = 2;
   // Optional. An ideal value for cases where a device supports three set points
   smartcore.api.types.Temperature ideal = 3;
+}
+
+// AirTemperatureSupport describes the capabilities of devices implementing this trait
+message AirTemperatureSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // How the device thinks, all communications will be in celsius but the device's native unit is this.
+  smartcore.api.types.TemperatureUnit native_unit = 2;
+  // The list of modes a device supports.
+  repeated AirTemperatureMode supported_modes = 3;
+  // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
+  double min_range_celsius = 4;
+}
+
+// Request message for fetching device state
+message GetAirTemperatureRequest {
+  string name = 1;
+}
+
+// Request message for updating the device state
+message UpdateAirTemperatureRequest {
+  string name = 1;
+  AirTemperature state = 2;
+  // The fields relative to state we intend to update
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+// Request message for subscribing to changes in the devices state
+message PullAirTemperatureRequest {
+  string name = 1;
+}
+
+// Response message enclosing device state changes
+message PullAirTemperatureResponse {
+  repeated Change changes = 1;
+
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // The new value for the device state. Only changed fields will be set, should be merged with GetState full
+    // response as required.
+    AirTemperature state = 3;
+  }
+}
+
+message DescribeAirTemperatureRequest {
+  // The name of the device
+  string name = 1;
 }

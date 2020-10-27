@@ -32,6 +32,17 @@ service CountInfo {
   rpc DescribeCount (DescribeCountRequest) returns (CountSupport);
 }
 
+// Count represents how many of a thing exist. The total measured count is added - removed. Some devices may adjust
+// added up and down and leave removed at 0, some might increase both properties.
+message Count {
+  // Total number of added items
+  int32 added = 1;
+  // Total number of removed items
+  int32 removed = 2;
+  // The time the counts were reset
+  google.protobuf.Timestamp reset_time = 3;
+}
+
 // CountSupport describes the capabilities of devices implementing this trait
 message CountSupport {
   // How a named device supports read/write/pull apis
@@ -43,17 +54,6 @@ message CountSupport {
   bool supports_reset = 3;
   // When updating the count does this device support the delta property
   bool supports_delta = 4;
-}
-
-// Count represents how many of a thing exist. The total measured count is added - removed. Some devices may adjust
-// added up and down and leave removed at 0, some might increase both properties.
-message Count {
-  // Total number of added items
-  int32 added = 1;
-  // Total number of removed items
-  int32 removed = 2;
-  // The time the counts were reset
-  google.protobuf.Timestamp reset_time = 3;
 }
 
 message GetCountRequest {

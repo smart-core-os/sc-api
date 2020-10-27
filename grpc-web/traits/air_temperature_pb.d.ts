@@ -7,6 +7,101 @@ import * as types_info_pb from '../types/info_pb';
 import * as types_unit_pb from '../types/unit_pb';
 
 
+export class AirTemperature extends jspb.Message {
+  getMode(): AirTemperatureMode;
+  setMode(value: AirTemperatureMode): AirTemperature;
+
+  getTemperatureSetPoint(): types_unit_pb.Temperature | undefined;
+  setTemperatureSetPoint(value?: types_unit_pb.Temperature): AirTemperature;
+  hasTemperatureSetPoint(): boolean;
+  clearTemperatureSetPoint(): AirTemperature;
+
+  getTemperatureSetPointDelta(): types_unit_pb.Temperature | undefined;
+  setTemperatureSetPointDelta(value?: types_unit_pb.Temperature): AirTemperature;
+  hasTemperatureSetPointDelta(): boolean;
+  clearTemperatureSetPointDelta(): AirTemperature;
+
+  getTemperatureRange(): TemperatureRange | undefined;
+  setTemperatureRange(value?: TemperatureRange): AirTemperature;
+  hasTemperatureRange(): boolean;
+  clearTemperatureRange(): AirTemperature;
+
+  getAmbientTemperature(): types_unit_pb.Temperature | undefined;
+  setAmbientTemperature(value?: types_unit_pb.Temperature): AirTemperature;
+  hasAmbientTemperature(): boolean;
+  clearAmbientTemperature(): AirTemperature;
+
+  getAmbientHumidity(): google_protobuf_wrappers_pb.FloatValue | undefined;
+  setAmbientHumidity(value?: google_protobuf_wrappers_pb.FloatValue): AirTemperature;
+  hasAmbientHumidity(): boolean;
+  clearAmbientHumidity(): AirTemperature;
+
+  getDewPoint(): types_unit_pb.Temperature | undefined;
+  setDewPoint(value?: types_unit_pb.Temperature): AirTemperature;
+  hasDewPoint(): boolean;
+  clearDewPoint(): AirTemperature;
+
+  getTemperatureGoalCase(): AirTemperature.TemperatureGoalCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AirTemperature.AsObject;
+  static toObject(includeInstance: boolean, msg: AirTemperature): AirTemperature.AsObject;
+  static serializeBinaryToWriter(message: AirTemperature, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirTemperature;
+  static deserializeBinaryFromReader(message: AirTemperature, reader: jspb.BinaryReader): AirTemperature;
+}
+
+export namespace AirTemperature {
+  export type AsObject = {
+    mode: AirTemperatureMode,
+    temperatureSetPoint?: types_unit_pb.Temperature.AsObject,
+    temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject,
+    temperatureRange?: TemperatureRange.AsObject,
+    ambientTemperature?: types_unit_pb.Temperature.AsObject,
+    ambientHumidity?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    dewPoint?: types_unit_pb.Temperature.AsObject,
+  }
+
+  export enum TemperatureGoalCase { 
+    TEMPERATURE_GOAL_NOT_SET = 0,
+    TEMPERATURE_SET_POINT = 2,
+    TEMPERATURE_SET_POINT_DELTA = 3,
+    TEMPERATURE_RANGE = 4,
+  }
+}
+
+export class TemperatureRange extends jspb.Message {
+  getLow(): types_unit_pb.Temperature | undefined;
+  setLow(value?: types_unit_pb.Temperature): TemperatureRange;
+  hasLow(): boolean;
+  clearLow(): TemperatureRange;
+
+  getHigh(): types_unit_pb.Temperature | undefined;
+  setHigh(value?: types_unit_pb.Temperature): TemperatureRange;
+  hasHigh(): boolean;
+  clearHigh(): TemperatureRange;
+
+  getIdeal(): types_unit_pb.Temperature | undefined;
+  setIdeal(value?: types_unit_pb.Temperature): TemperatureRange;
+  hasIdeal(): boolean;
+  clearIdeal(): TemperatureRange;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TemperatureRange.AsObject;
+  static toObject(includeInstance: boolean, msg: TemperatureRange): TemperatureRange.AsObject;
+  static serializeBinaryToWriter(message: TemperatureRange, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TemperatureRange;
+  static deserializeBinaryFromReader(message: TemperatureRange, reader: jspb.BinaryReader): TemperatureRange;
+}
+
+export namespace TemperatureRange {
+  export type AsObject = {
+    low?: types_unit_pb.Temperature.AsObject,
+    high?: types_unit_pb.Temperature.AsObject,
+    ideal?: types_unit_pb.Temperature.AsObject,
+  }
+}
+
 export class AirTemperatureSupport extends jspb.Message {
   getResourceSupport(): types_info_pb.ResourceSupport | undefined;
   setResourceSupport(value?: types_info_pb.ResourceSupport): AirTemperatureSupport;
@@ -173,101 +268,6 @@ export class DescribeAirTemperatureRequest extends jspb.Message {
 export namespace DescribeAirTemperatureRequest {
   export type AsObject = {
     name: string,
-  }
-}
-
-export class AirTemperature extends jspb.Message {
-  getMode(): AirTemperatureMode;
-  setMode(value: AirTemperatureMode): AirTemperature;
-
-  getTemperatureSetPoint(): types_unit_pb.Temperature | undefined;
-  setTemperatureSetPoint(value?: types_unit_pb.Temperature): AirTemperature;
-  hasTemperatureSetPoint(): boolean;
-  clearTemperatureSetPoint(): AirTemperature;
-
-  getTemperatureSetPointDelta(): types_unit_pb.Temperature | undefined;
-  setTemperatureSetPointDelta(value?: types_unit_pb.Temperature): AirTemperature;
-  hasTemperatureSetPointDelta(): boolean;
-  clearTemperatureSetPointDelta(): AirTemperature;
-
-  getTemperatureRange(): TemperatureRange | undefined;
-  setTemperatureRange(value?: TemperatureRange): AirTemperature;
-  hasTemperatureRange(): boolean;
-  clearTemperatureRange(): AirTemperature;
-
-  getAmbientTemperature(): types_unit_pb.Temperature | undefined;
-  setAmbientTemperature(value?: types_unit_pb.Temperature): AirTemperature;
-  hasAmbientTemperature(): boolean;
-  clearAmbientTemperature(): AirTemperature;
-
-  getAmbientHumidity(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAmbientHumidity(value?: google_protobuf_wrappers_pb.FloatValue): AirTemperature;
-  hasAmbientHumidity(): boolean;
-  clearAmbientHumidity(): AirTemperature;
-
-  getDewPoint(): types_unit_pb.Temperature | undefined;
-  setDewPoint(value?: types_unit_pb.Temperature): AirTemperature;
-  hasDewPoint(): boolean;
-  clearDewPoint(): AirTemperature;
-
-  getTemperatureGoalCase(): AirTemperature.TemperatureGoalCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirTemperature.AsObject;
-  static toObject(includeInstance: boolean, msg: AirTemperature): AirTemperature.AsObject;
-  static serializeBinaryToWriter(message: AirTemperature, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirTemperature;
-  static deserializeBinaryFromReader(message: AirTemperature, reader: jspb.BinaryReader): AirTemperature;
-}
-
-export namespace AirTemperature {
-  export type AsObject = {
-    mode: AirTemperatureMode,
-    temperatureSetPoint?: types_unit_pb.Temperature.AsObject,
-    temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject,
-    temperatureRange?: TemperatureRange.AsObject,
-    ambientTemperature?: types_unit_pb.Temperature.AsObject,
-    ambientHumidity?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    dewPoint?: types_unit_pb.Temperature.AsObject,
-  }
-
-  export enum TemperatureGoalCase { 
-    TEMPERATURE_GOAL_NOT_SET = 0,
-    TEMPERATURE_SET_POINT = 2,
-    TEMPERATURE_SET_POINT_DELTA = 3,
-    TEMPERATURE_RANGE = 4,
-  }
-}
-
-export class TemperatureRange extends jspb.Message {
-  getLow(): types_unit_pb.Temperature | undefined;
-  setLow(value?: types_unit_pb.Temperature): TemperatureRange;
-  hasLow(): boolean;
-  clearLow(): TemperatureRange;
-
-  getHigh(): types_unit_pb.Temperature | undefined;
-  setHigh(value?: types_unit_pb.Temperature): TemperatureRange;
-  hasHigh(): boolean;
-  clearHigh(): TemperatureRange;
-
-  getIdeal(): types_unit_pb.Temperature | undefined;
-  setIdeal(value?: types_unit_pb.Temperature): TemperatureRange;
-  hasIdeal(): boolean;
-  clearIdeal(): TemperatureRange;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TemperatureRange.AsObject;
-  static toObject(includeInstance: boolean, msg: TemperatureRange): TemperatureRange.AsObject;
-  static serializeBinaryToWriter(message: TemperatureRange, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TemperatureRange;
-  static deserializeBinaryFromReader(message: TemperatureRange, reader: jspb.BinaryReader): TemperatureRange;
-}
-
-export namespace TemperatureRange {
-  export type AsObject = {
-    low?: types_unit_pb.Temperature.AsObject,
-    high?: types_unit_pb.Temperature.AsObject,
-    ideal?: types_unit_pb.Temperature.AsObject,
   }
 }
 

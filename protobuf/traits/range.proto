@@ -32,14 +32,6 @@ service RangeInfo {
   rpc DescribeRangeValue (DescribeRangeValueRequest) returns (RangeValueSupport);
 }
 
-// RangeValueSupport describes the capabilities of devices implementing this trait
-message RangeValueSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // Describes details of the range value
-  smartcore.api.types.Int32Attributes value_attributes = 2;
-}
-
 message RangeValue {
   // The current value.
   int32 value = 1;
@@ -47,6 +39,14 @@ message RangeValue {
   smartcore.api.types.Tween value_tween = 2;
   // Read-only, the target value after a transition
   int32 target_value = 3;
+}
+
+// RangeValueSupport describes the capabilities of devices implementing this trait
+message RangeValueSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // Describes details of the range value
+  smartcore.api.types.Int32Attributes value_attributes = 2;
 }
 
 // A request to update the value of a range

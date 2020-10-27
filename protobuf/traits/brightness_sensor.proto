@@ -27,18 +27,18 @@ service BrightnessSensorInfo {
   rpc DescribeAmbientBrightness (DescribeAmbientBrightnessRequest) returns (AmbientBrightnessSupport);
 }
 
+// AmbientBrightness records the light level measured by a device.
+message AmbientBrightness {
+  // Brightness measured in LUX
+  float brightness_lux = 1;
+}
+
 // AmbientBrightnessSupport describes the capabilities of devices implementing this trait
 message AmbientBrightnessSupport {
   // How a named device supports read/pull apis
   smartcore.types.SensorSupport sensor_support = 1;
   // The range of values the device is capable of reporting.
   smartcore.api.types.FloatBounds brightness_lux = 2;
-}
-
-// AmbientBrightness records the light level measured by a device.
-message AmbientBrightness {
-  // Brightness measured in LUX
-  float brightness_lux = 1;
 }
 
 message GetAmbientBrightnessRequest {

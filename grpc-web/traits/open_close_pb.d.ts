@@ -6,42 +6,6 @@ import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class PositionsSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): PositionsSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): PositionsSupport;
-
-  getPositionAttributes(): types_number_pb.FloatAttributes | undefined;
-  setPositionAttributes(value?: types_number_pb.FloatAttributes): PositionsSupport;
-  hasPositionAttributes(): boolean;
-  clearPositionAttributes(): PositionsSupport;
-
-  getDirectionsList(): Array<OpenCloseDirection>;
-  setDirectionsList(value: Array<OpenCloseDirection>): PositionsSupport;
-  clearDirectionsList(): PositionsSupport;
-  addDirections(value: OpenCloseDirection, index?: number): PositionsSupport;
-
-  getSupportsStop(): boolean;
-  setSupportsStop(value: boolean): PositionsSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PositionsSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: PositionsSupport): PositionsSupport.AsObject;
-  static serializeBinaryToWriter(message: PositionsSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PositionsSupport;
-  static deserializeBinaryFromReader(message: PositionsSupport, reader: jspb.BinaryReader): PositionsSupport;
-}
-
-export namespace PositionsSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    positionAttributes?: types_number_pb.FloatAttributes.AsObject,
-    directionsList: Array<OpenCloseDirection>,
-    supportsStop: boolean,
-  }
-}
-
 export class OpenClosePositions extends jspb.Message {
   getStatesList(): Array<OpenClosePosition>;
   setStatesList(value: Array<OpenClosePosition>): OpenClosePositions;
@@ -91,6 +55,42 @@ export namespace OpenClosePosition {
     positionPercentTween?: types_tween_pb.Tween.AsObject,
     targetPositionPercent: number,
     direction: OpenCloseDirection,
+  }
+}
+
+export class PositionsSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): PositionsSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): PositionsSupport;
+
+  getPositionAttributes(): types_number_pb.FloatAttributes | undefined;
+  setPositionAttributes(value?: types_number_pb.FloatAttributes): PositionsSupport;
+  hasPositionAttributes(): boolean;
+  clearPositionAttributes(): PositionsSupport;
+
+  getDirectionsList(): Array<OpenCloseDirection>;
+  setDirectionsList(value: Array<OpenCloseDirection>): PositionsSupport;
+  clearDirectionsList(): PositionsSupport;
+  addDirections(value: OpenCloseDirection, index?: number): PositionsSupport;
+
+  getSupportsStop(): boolean;
+  setSupportsStop(value: boolean): PositionsSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PositionsSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: PositionsSupport): PositionsSupport.AsObject;
+  static serializeBinaryToWriter(message: PositionsSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PositionsSupport;
+  static deserializeBinaryFromReader(message: PositionsSupport, reader: jspb.BinaryReader): PositionsSupport;
+}
+
+export namespace PositionsSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    positionAttributes?: types_number_pb.FloatAttributes.AsObject,
+    directionsList: Array<OpenCloseDirection>,
+    supportsStop: boolean,
   }
 }
 

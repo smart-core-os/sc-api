@@ -30,12 +30,6 @@ service EmergencyInfo {
   rpc DescribeEmergency (DescribeEmergencyRequest) returns (EmergencySupport);
 }
 
-// EmergencySupport describes the capabilities of devices implementing this trait
-message EmergencySupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-}
-
 // An emergency is a life threatening event.
 message Emergency {
   // The level of emergency that is active.
@@ -61,6 +55,12 @@ enum EmergencyLevel {
   EMERGENCY_LEVEL_WARNING = 2;
   // There is an emergency. Please protect yourself and follow emergency procedures.
   EMERGENCY_LEVEL_EMERGENCY = 3;
+}
+
+// EmergencySupport describes the capabilities of devices implementing this trait
+message EmergencySupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
 }
 
 message GetEmergencyRequest {

@@ -7,6 +7,42 @@ import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
 
+export class AirQuality extends jspb.Message {
+  getCarbonDioxideLevel(): google_protobuf_wrappers_pb.FloatValue | undefined;
+  setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  hasCarbonDioxideLevel(): boolean;
+  clearCarbonDioxideLevel(): AirQuality;
+
+  getVolatileOrganicCompounds(): google_protobuf_wrappers_pb.FloatValue | undefined;
+  setVolatileOrganicCompounds(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  hasVolatileOrganicCompounds(): boolean;
+  clearVolatileOrganicCompounds(): AirQuality;
+
+  getAirPressure(): google_protobuf_wrappers_pb.FloatValue | undefined;
+  setAirPressure(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  hasAirPressure(): boolean;
+  clearAirPressure(): AirQuality;
+
+  getComfort(): AirQualityComfort;
+  setComfort(value: AirQualityComfort): AirQuality;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AirQuality.AsObject;
+  static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
+  static serializeBinaryToWriter(message: AirQuality, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AirQuality;
+  static deserializeBinaryFromReader(message: AirQuality, reader: jspb.BinaryReader): AirQuality;
+}
+
+export namespace AirQuality {
+  export type AsObject = {
+    carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    airPressure?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    comfort: AirQualityComfort,
+  }
+}
+
 export class AirQualitySupport extends jspb.Message {
   getSensorSupport(): types_info_pb.SensorSupport | undefined;
   setSensorSupport(value?: types_info_pb.SensorSupport): AirQualitySupport;
@@ -48,42 +84,6 @@ export namespace AirQualitySupport {
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,
     comfortList: Array<AirQualityComfort>,
-  }
-}
-
-export class AirQuality extends jspb.Message {
-  getCarbonDioxideLevel(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
-  hasCarbonDioxideLevel(): boolean;
-  clearCarbonDioxideLevel(): AirQuality;
-
-  getVolatileOrganicCompounds(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setVolatileOrganicCompounds(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
-  hasVolatileOrganicCompounds(): boolean;
-  clearVolatileOrganicCompounds(): AirQuality;
-
-  getAirPressure(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAirPressure(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
-  hasAirPressure(): boolean;
-  clearAirPressure(): AirQuality;
-
-  getComfort(): AirQualityComfort;
-  setComfort(value: AirQualityComfort): AirQuality;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AirQuality.AsObject;
-  static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
-  static serializeBinaryToWriter(message: AirQuality, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AirQuality;
-  static deserializeBinaryFromReader(message: AirQuality, reader: jspb.BinaryReader): AirQuality;
-}
-
-export namespace AirQuality {
-  export type AsObject = {
-    carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    airPressure?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    comfort: AirQualityComfort,
   }
 }
 

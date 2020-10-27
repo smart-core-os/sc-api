@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as device_traits_occupancy_pb from '../../device/traits/occupancy_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as device_traits_occupancy_pb from '../../device/traits/occupancy_pb';
 
 
 export class OccupancyApiClient {

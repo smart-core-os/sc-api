@@ -39,21 +39,6 @@ service ExtendRetractInfo {
   rpc DescribeExtension (DescribeExtensionRequest) returns (ExtensionSupport);
 }
 
-// ExtensionSupport describes the capabilities of devices implementing this trait
-message ExtensionSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // List of presets that this device supports. If empty then the device does not support presets
-  repeated ExtensionPreset presets = 2;
-  // 0 to 100, how precise is the control of the extension. A value of 0 (or 100) means only 0 or 100 extend_percent
-  // are valid.
-  float step = 3;
-  // Does the device support tweening between the current value and a target value
-  smartcore.api.types.TweenSupport tween_support = 4;
-  // If true, custom preset names can be used to store extension values. If false only writable presets can be updated.
-  bool supports_custom_presets = 5;
-}
-
 // How extended the device is.
 message Extension {
   // 0 to 100, representing the extension percentage of the device
@@ -78,6 +63,21 @@ message ExtensionPreset {
   google.protobuf.FloatValue extend_percent = 2;
   // Can this preset be stored via the api
   bool writable = 3;
+}
+
+// ExtensionSupport describes the capabilities of devices implementing this trait
+message ExtensionSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // List of presets that this device supports. If empty then the device does not support presets
+  repeated ExtensionPreset presets = 2;
+  // 0 to 100, how precise is the control of the extension. A value of 0 (or 100) means only 0 or 100 extend_percent
+  // are valid.
+  float step = 3;
+  // Does the device support tweening between the current value and a target value
+  smartcore.api.types.TweenSupport tween_support = 4;
+  // If true, custom preset names can be used to store extension values. If false only writable presets can be updated.
+  bool supports_custom_presets = 5;
 }
 
 // request to fetch the current extension for the device

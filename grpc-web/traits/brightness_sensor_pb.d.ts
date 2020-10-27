@@ -5,6 +5,24 @@ import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
 
+export class AmbientBrightness extends jspb.Message {
+  getBrightnessLux(): number;
+  setBrightnessLux(value: number): AmbientBrightness;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AmbientBrightness.AsObject;
+  static toObject(includeInstance: boolean, msg: AmbientBrightness): AmbientBrightness.AsObject;
+  static serializeBinaryToWriter(message: AmbientBrightness, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AmbientBrightness;
+  static deserializeBinaryFromReader(message: AmbientBrightness, reader: jspb.BinaryReader): AmbientBrightness;
+}
+
+export namespace AmbientBrightness {
+  export type AsObject = {
+    brightnessLux: number,
+  }
+}
+
 export class AmbientBrightnessSupport extends jspb.Message {
   getSensorSupport(): types_info_pb.SensorSupport | undefined;
   setSensorSupport(value?: types_info_pb.SensorSupport): AmbientBrightnessSupport;
@@ -28,24 +46,6 @@ export namespace AmbientBrightnessSupport {
   export type AsObject = {
     sensorSupport?: types_info_pb.SensorSupport.AsObject,
     brightnessLux?: types_number_pb.FloatBounds.AsObject,
-  }
-}
-
-export class AmbientBrightness extends jspb.Message {
-  getBrightnessLux(): number;
-  setBrightnessLux(value: number): AmbientBrightness;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AmbientBrightness.AsObject;
-  static toObject(includeInstance: boolean, msg: AmbientBrightness): AmbientBrightness.AsObject;
-  static serializeBinaryToWriter(message: AmbientBrightness, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AmbientBrightness;
-  static deserializeBinaryFromReader(message: AmbientBrightness, reader: jspb.BinaryReader): AmbientBrightness;
-}
-
-export namespace AmbientBrightness {
-  export type AsObject = {
-    brightnessLux: number,
   }
 }
 

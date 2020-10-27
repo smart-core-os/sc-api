@@ -38,21 +38,6 @@ service PtzInfo {
   rpc DescribePtz (DescribePtzRequest) returns (PtzSupport);
 }
 
-// PtzSupport describes the capabilities of devices implementing this trait
-message PtzSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // Can we ask the device to move to a specific position
-  bool supports_position = 2;
-  // Can we move the device without a target position in mind
-  bool supports_movement = 3;
-  // A list of presets that the device has configured. If the list is empty and supports_custom_presets is false then
-  // the device doesn't support presets
-  repeated PtzPreset presets = 4;
-  // If true, custom preset names can be used to store ptz positions. If false only writable presets can be updated.
-  bool supports_custom_presets = 5;
-}
-
 // The current or intended state for the device
 message Ptz {
   // The current position of the PTZ device (if known)
@@ -122,6 +107,21 @@ message PtzPreset {
   PtzVector position = 4;
   // Can this preset be stored via the api
   bool writable = 5;
+}
+
+// PtzSupport describes the capabilities of devices implementing this trait
+message PtzSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // Can we ask the device to move to a specific position
+  bool supports_position = 2;
+  // Can we move the device without a target position in mind
+  bool supports_movement = 3;
+  // A list of presets that the device has configured. If the list is empty and supports_custom_presets is false then
+  // the device doesn't support presets
+  repeated PtzPreset presets = 4;
+  // If true, custom preset names can be used to store ptz positions. If false only writable presets can be updated.
+  bool supports_custom_presets = 5;
 }
 
 message GetPtzRequest {

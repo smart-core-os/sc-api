@@ -4,30 +4,6 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_info_pb from '../types/info_pb';
 
 
-export class ChosenChannelSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): ChosenChannelSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): ChosenChannelSupport;
-
-  getAdjustMax(): number;
-  setAdjustMax(value: number): ChosenChannelSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChosenChannelSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: ChosenChannelSupport): ChosenChannelSupport.AsObject;
-  static serializeBinaryToWriter(message: ChosenChannelSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChosenChannelSupport;
-  static deserializeBinaryFromReader(message: ChosenChannelSupport, reader: jspb.BinaryReader): ChosenChannelSupport;
-}
-
-export namespace ChosenChannelSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    adjustMax: number,
-  }
-}
-
 export class Channel extends jspb.Message {
   getId(): string;
   setId(value: string): Channel;
@@ -51,6 +27,30 @@ export namespace Channel {
     id: string,
     channelNumber: string,
     title: string,
+  }
+}
+
+export class ChosenChannelSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): ChosenChannelSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): ChosenChannelSupport;
+
+  getAdjustMax(): number;
+  setAdjustMax(value: number): ChosenChannelSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ChosenChannelSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: ChosenChannelSupport): ChosenChannelSupport.AsObject;
+  static serializeBinaryToWriter(message: ChosenChannelSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChosenChannelSupport;
+  static deserializeBinaryFromReader(message: ChosenChannelSupport, reader: jspb.BinaryReader): ChosenChannelSupport;
+}
+
+export namespace ChosenChannelSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    adjustMax: number,
   }
 }
 

@@ -27,6 +27,55 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// AmbientBrightness records the light level measured by a device.
+type AmbientBrightness struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Brightness measured in LUX
+	BrightnessLux float32 `protobuf:"fixed32,1,opt,name=brightness_lux,json=brightnessLux,proto3" json:"brightness_lux,omitempty"`
+}
+
+func (x *AmbientBrightness) Reset() {
+	*x = AmbientBrightness{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_brightness_sensor_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AmbientBrightness) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AmbientBrightness) ProtoMessage() {}
+
+func (x *AmbientBrightness) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_brightness_sensor_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AmbientBrightness.ProtoReflect.Descriptor instead.
+func (*AmbientBrightness) Descriptor() ([]byte, []int) {
+	return file_traits_brightness_sensor_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AmbientBrightness) GetBrightnessLux() float32 {
+	if x != nil {
+		return x.BrightnessLux
+	}
+	return 0
+}
+
 // AmbientBrightnessSupport describes the capabilities of devices implementing this trait
 type AmbientBrightnessSupport struct {
 	state         protoimpl.MessageState
@@ -42,7 +91,7 @@ type AmbientBrightnessSupport struct {
 func (x *AmbientBrightnessSupport) Reset() {
 	*x = AmbientBrightnessSupport{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_brightness_sensor_proto_msgTypes[0]
+		mi := &file_traits_brightness_sensor_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -55,7 +104,7 @@ func (x *AmbientBrightnessSupport) String() string {
 func (*AmbientBrightnessSupport) ProtoMessage() {}
 
 func (x *AmbientBrightnessSupport) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_brightness_sensor_proto_msgTypes[0]
+	mi := &file_traits_brightness_sensor_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -68,7 +117,7 @@ func (x *AmbientBrightnessSupport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AmbientBrightnessSupport.ProtoReflect.Descriptor instead.
 func (*AmbientBrightnessSupport) Descriptor() ([]byte, []int) {
-	return file_traits_brightness_sensor_proto_rawDescGZIP(), []int{0}
+	return file_traits_brightness_sensor_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AmbientBrightnessSupport) GetSensorSupport() *types.SensorSupport {
@@ -83,55 +132,6 @@ func (x *AmbientBrightnessSupport) GetBrightnessLux() *types.FloatBounds {
 		return x.BrightnessLux
 	}
 	return nil
-}
-
-// AmbientBrightness records the light level measured by a device.
-type AmbientBrightness struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Brightness measured in LUX
-	BrightnessLux float32 `protobuf:"fixed32,1,opt,name=brightness_lux,json=brightnessLux,proto3" json:"brightness_lux,omitempty"`
-}
-
-func (x *AmbientBrightness) Reset() {
-	*x = AmbientBrightness{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_brightness_sensor_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *AmbientBrightness) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AmbientBrightness) ProtoMessage() {}
-
-func (x *AmbientBrightness) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_brightness_sensor_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AmbientBrightness.ProtoReflect.Descriptor instead.
-func (*AmbientBrightness) Descriptor() ([]byte, []int) {
-	return file_traits_brightness_sensor_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AmbientBrightness) GetBrightnessLux() float32 {
-	if x != nil {
-		return x.BrightnessLux
-	}
-	return 0
 }
 
 type GetAmbientBrightnessRequest struct {
@@ -400,21 +400,21 @@ var file_traits_brightness_sensor_proto_rawDesc = []byte{
 	0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x1a, 0x10, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x12, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x6e, 0x75, 0x6d,
-	0x62, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xaa, 0x01, 0x0a, 0x18, 0x41, 0x6d,
-	0x62, 0x69, 0x65, 0x6e, 0x74, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x53,
-	0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x45, 0x0a, 0x0e, 0x73, 0x65, 0x6e, 0x73, 0x6f, 0x72,
-	0x5f, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e,
-	0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0x2e, 0x53, 0x65, 0x6e, 0x73, 0x6f, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x0d,
-	0x73, 0x65, 0x6e, 0x73, 0x6f, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x47, 0x0a,
-	0x0e, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x5f, 0x6c, 0x75, 0x78, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72,
-	0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x46, 0x6c, 0x6f, 0x61,
-	0x74, 0x42, 0x6f, 0x75, 0x6e, 0x64, 0x73, 0x52, 0x0d, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e,
-	0x65, 0x73, 0x73, 0x4c, 0x75, 0x78, 0x22, 0x3a, 0x0a, 0x11, 0x41, 0x6d, 0x62, 0x69, 0x65, 0x6e,
-	0x74, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x12, 0x25, 0x0a, 0x0e, 0x62,
-	0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x5f, 0x6c, 0x75, 0x78, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x02, 0x52, 0x0d, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x4c,
+	0x62, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x3a, 0x0a, 0x11, 0x41, 0x6d, 0x62,
+	0x69, 0x65, 0x6e, 0x74, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x12, 0x25,
+	0x0a, 0x0e, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x5f, 0x6c, 0x75, 0x78,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0d, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65,
+	0x73, 0x73, 0x4c, 0x75, 0x78, 0x22, 0xaa, 0x01, 0x0a, 0x18, 0x41, 0x6d, 0x62, 0x69, 0x65, 0x6e,
+	0x74, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x53, 0x75, 0x70, 0x70, 0x6f,
+	0x72, 0x74, 0x12, 0x45, 0x0a, 0x0e, 0x73, 0x65, 0x6e, 0x73, 0x6f, 0x72, 0x5f, 0x73, 0x75, 0x70,
+	0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6d, 0x61,
+	0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x53, 0x65, 0x6e,
+	0x73, 0x6f, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x0d, 0x73, 0x65, 0x6e, 0x73,
+	0x6f, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x47, 0x0a, 0x0e, 0x62, 0x72, 0x69,
+	0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x5f, 0x6c, 0x75, 0x78, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x42, 0x6f, 0x75,
+	0x6e, 0x64, 0x73, 0x52, 0x0d, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x4c,
 	0x75, 0x78, 0x22, 0x31, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x41, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74,
 	0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
@@ -494,8 +494,8 @@ func file_traits_brightness_sensor_proto_rawDescGZIP() []byte {
 
 var file_traits_brightness_sensor_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_traits_brightness_sensor_proto_goTypes = []interface{}{
-	(*AmbientBrightnessSupport)(nil),             // 0: smartcore.traits.AmbientBrightnessSupport
-	(*AmbientBrightness)(nil),                    // 1: smartcore.traits.AmbientBrightness
+	(*AmbientBrightness)(nil),                    // 0: smartcore.traits.AmbientBrightness
+	(*AmbientBrightnessSupport)(nil),             // 1: smartcore.traits.AmbientBrightnessSupport
 	(*GetAmbientBrightnessRequest)(nil),          // 2: smartcore.traits.GetAmbientBrightnessRequest
 	(*PullAmbientBrightnessRequest)(nil),         // 3: smartcore.traits.PullAmbientBrightnessRequest
 	(*PullAmbientBrightnessResponse)(nil),        // 4: smartcore.traits.PullAmbientBrightnessResponse
@@ -509,14 +509,14 @@ var file_traits_brightness_sensor_proto_depIdxs = []int32{
 	7, // 0: smartcore.traits.AmbientBrightnessSupport.sensor_support:type_name -> smartcore.types.SensorSupport
 	8, // 1: smartcore.traits.AmbientBrightnessSupport.brightness_lux:type_name -> smartcore.api.types.FloatBounds
 	6, // 2: smartcore.traits.PullAmbientBrightnessResponse.changes:type_name -> smartcore.traits.PullAmbientBrightnessResponse.Change
-	1, // 3: smartcore.traits.PullAmbientBrightnessResponse.Change.ambient_brightness:type_name -> smartcore.traits.AmbientBrightness
+	0, // 3: smartcore.traits.PullAmbientBrightnessResponse.Change.ambient_brightness:type_name -> smartcore.traits.AmbientBrightness
 	9, // 4: smartcore.traits.PullAmbientBrightnessResponse.Change.change_time:type_name -> google.protobuf.Timestamp
 	2, // 5: smartcore.traits.BrightnessSensorApi.GetAmbientBrightness:input_type -> smartcore.traits.GetAmbientBrightnessRequest
 	3, // 6: smartcore.traits.BrightnessSensorApi.PullAmbientBrightness:input_type -> smartcore.traits.PullAmbientBrightnessRequest
 	5, // 7: smartcore.traits.BrightnessSensorInfo.DescribeAmbientBrightness:input_type -> smartcore.traits.DescribeAmbientBrightnessRequest
-	1, // 8: smartcore.traits.BrightnessSensorApi.GetAmbientBrightness:output_type -> smartcore.traits.AmbientBrightness
+	0, // 8: smartcore.traits.BrightnessSensorApi.GetAmbientBrightness:output_type -> smartcore.traits.AmbientBrightness
 	4, // 9: smartcore.traits.BrightnessSensorApi.PullAmbientBrightness:output_type -> smartcore.traits.PullAmbientBrightnessResponse
-	0, // 10: smartcore.traits.BrightnessSensorInfo.DescribeAmbientBrightness:output_type -> smartcore.traits.AmbientBrightnessSupport
+	1, // 10: smartcore.traits.BrightnessSensorInfo.DescribeAmbientBrightness:output_type -> smartcore.traits.AmbientBrightnessSupport
 	8, // [8:11] is the sub-list for method output_type
 	5, // [5:8] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -531,7 +531,7 @@ func file_traits_brightness_sensor_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_traits_brightness_sensor_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AmbientBrightnessSupport); i {
+			switch v := v.(*AmbientBrightness); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -543,7 +543,7 @@ func file_traits_brightness_sensor_proto_init() {
 			}
 		}
 		file_traits_brightness_sensor_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AmbientBrightness); i {
+			switch v := v.(*AmbientBrightnessSupport); i {
 			case 0:
 				return &v.state
 			case 1:

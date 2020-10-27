@@ -4,6 +4,24 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_info_pb from '../types/info_pb';
 
 
+export class OnOff extends jspb.Message {
+  getOnOrOff(): OnOrOff;
+  setOnOrOff(value: OnOrOff): OnOff;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OnOff.AsObject;
+  static toObject(includeInstance: boolean, msg: OnOff): OnOff.AsObject;
+  static serializeBinaryToWriter(message: OnOff, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OnOff;
+  static deserializeBinaryFromReader(message: OnOff, reader: jspb.BinaryReader): OnOff;
+}
+
+export namespace OnOff {
+  export type AsObject = {
+    onOrOff: OnOrOff,
+  }
+}
+
 export class OnOffSupport extends jspb.Message {
   getResourceSupport(): types_info_pb.ResourceSupport | undefined;
   setResourceSupport(value?: types_info_pb.ResourceSupport): OnOffSupport;
@@ -21,24 +39,6 @@ export class OnOffSupport extends jspb.Message {
 export namespace OnOffSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-  }
-}
-
-export class OnOff extends jspb.Message {
-  getOnOrOff(): OnOrOff;
-  setOnOrOff(value: OnOrOff): OnOff;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OnOff.AsObject;
-  static toObject(includeInstance: boolean, msg: OnOff): OnOff.AsObject;
-  static serializeBinaryToWriter(message: OnOff, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OnOff;
-  static deserializeBinaryFromReader(message: OnOff, reader: jspb.BinaryReader): OnOff;
-}
-
-export namespace OnOff {
-  export type AsObject = {
-    onOrOff: OnOrOff,
   }
 }
 

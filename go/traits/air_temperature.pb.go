@@ -121,339 +121,6 @@ func (AirTemperatureMode) EnumDescriptor() ([]byte, []int) {
 	return file_traits_air_temperature_proto_rawDescGZIP(), []int{0}
 }
 
-// AirTemperatureSupport describes the capabilities of devices implementing this trait
-type AirTemperatureSupport struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// How a named device supports read/write/pull apis
-	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
-	// How the device thinks, all communications will be in celsius but the device's native unit is this.
-	NativeUnit types.TemperatureUnit `protobuf:"varint,2,opt,name=native_unit,json=nativeUnit,proto3,enum=smartcore.api.types.TemperatureUnit" json:"native_unit,omitempty"`
-	// The list of modes a device supports.
-	SupportedModes []AirTemperatureMode `protobuf:"varint,3,rep,packed,name=supported_modes,json=supportedModes,proto3,enum=smartcore.traits.AirTemperatureMode" json:"supported_modes,omitempty"`
-	// The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
-	MinRangeCelsius float64 `protobuf:"fixed64,4,opt,name=min_range_celsius,json=minRangeCelsius,proto3" json:"min_range_celsius,omitempty"`
-}
-
-func (x *AirTemperatureSupport) Reset() {
-	*x = AirTemperatureSupport{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *AirTemperatureSupport) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AirTemperatureSupport) ProtoMessage() {}
-
-func (x *AirTemperatureSupport) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AirTemperatureSupport.ProtoReflect.Descriptor instead.
-func (*AirTemperatureSupport) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *AirTemperatureSupport) GetResourceSupport() *types.ResourceSupport {
-	if x != nil {
-		return x.ResourceSupport
-	}
-	return nil
-}
-
-func (x *AirTemperatureSupport) GetNativeUnit() types.TemperatureUnit {
-	if x != nil {
-		return x.NativeUnit
-	}
-	return types.TemperatureUnit_CELSIUS
-}
-
-func (x *AirTemperatureSupport) GetSupportedModes() []AirTemperatureMode {
-	if x != nil {
-		return x.SupportedModes
-	}
-	return nil
-}
-
-func (x *AirTemperatureSupport) GetMinRangeCelsius() float64 {
-	if x != nil {
-		return x.MinRangeCelsius
-	}
-	return 0
-}
-
-// Request message for fetching device state
-type GetAirTemperatureRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-}
-
-func (x *GetAirTemperatureRequest) Reset() {
-	*x = GetAirTemperatureRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetAirTemperatureRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAirTemperatureRequest) ProtoMessage() {}
-
-func (x *GetAirTemperatureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAirTemperatureRequest.ProtoReflect.Descriptor instead.
-func (*GetAirTemperatureRequest) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *GetAirTemperatureRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-// Request message for updating the device state
-type UpdateAirTemperatureRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Name  string          `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	State *AirTemperature `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	// The fields relative to state we intend to update
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
-}
-
-func (x *UpdateAirTemperatureRequest) Reset() {
-	*x = UpdateAirTemperatureRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *UpdateAirTemperatureRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateAirTemperatureRequest) ProtoMessage() {}
-
-func (x *UpdateAirTemperatureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateAirTemperatureRequest.ProtoReflect.Descriptor instead.
-func (*UpdateAirTemperatureRequest) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateAirTemperatureRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *UpdateAirTemperatureRequest) GetState() *AirTemperature {
-	if x != nil {
-		return x.State
-	}
-	return nil
-}
-
-func (x *UpdateAirTemperatureRequest) GetUpdateMask() *field_mask.FieldMask {
-	if x != nil {
-		return x.UpdateMask
-	}
-	return nil
-}
-
-// Request message for subscribing to changes in the devices state
-type PullAirTemperatureRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-}
-
-func (x *PullAirTemperatureRequest) Reset() {
-	*x = PullAirTemperatureRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *PullAirTemperatureRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PullAirTemperatureRequest) ProtoMessage() {}
-
-func (x *PullAirTemperatureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PullAirTemperatureRequest.ProtoReflect.Descriptor instead.
-func (*PullAirTemperatureRequest) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *PullAirTemperatureRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-// Response message enclosing device state changes
-type PullAirTemperatureResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Changes []*PullAirTemperatureResponse_Change `protobuf:"bytes,1,rep,name=changes,proto3" json:"changes,omitempty"`
-}
-
-func (x *PullAirTemperatureResponse) Reset() {
-	*x = PullAirTemperatureResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *PullAirTemperatureResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PullAirTemperatureResponse) ProtoMessage() {}
-
-func (x *PullAirTemperatureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PullAirTemperatureResponse.ProtoReflect.Descriptor instead.
-func (*PullAirTemperatureResponse) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *PullAirTemperatureResponse) GetChanges() []*PullAirTemperatureResponse_Change {
-	if x != nil {
-		return x.Changes
-	}
-	return nil
-}
-
-type DescribeAirTemperatureRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The name of the device
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-}
-
-func (x *DescribeAirTemperatureRequest) Reset() {
-	*x = DescribeAirTemperatureRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DescribeAirTemperatureRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DescribeAirTemperatureRequest) ProtoMessage() {}
-
-func (x *DescribeAirTemperatureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DescribeAirTemperatureRequest.ProtoReflect.Descriptor instead.
-func (*DescribeAirTemperatureRequest) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DescribeAirTemperatureRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
 // All the properties of the device
 type AirTemperature struct {
 	state         protoimpl.MessageState
@@ -478,7 +145,7 @@ type AirTemperature struct {
 func (x *AirTemperature) Reset() {
 	*x = AirTemperature{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[6]
+		mi := &file_traits_air_temperature_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -491,7 +158,7 @@ func (x *AirTemperature) String() string {
 func (*AirTemperature) ProtoMessage() {}
 
 func (x *AirTemperature) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[6]
+	mi := &file_traits_air_temperature_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -504,7 +171,7 @@ func (x *AirTemperature) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AirTemperature.ProtoReflect.Descriptor instead.
 func (*AirTemperature) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{6}
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AirTemperature) GetMode() AirTemperatureMode {
@@ -605,7 +272,7 @@ type TemperatureRange struct {
 func (x *TemperatureRange) Reset() {
 	*x = TemperatureRange{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_air_temperature_proto_msgTypes[7]
+		mi := &file_traits_air_temperature_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -618,7 +285,7 @@ func (x *TemperatureRange) String() string {
 func (*TemperatureRange) ProtoMessage() {}
 
 func (x *TemperatureRange) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_air_temperature_proto_msgTypes[7]
+	mi := &file_traits_air_temperature_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -631,7 +298,7 @@ func (x *TemperatureRange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TemperatureRange.ProtoReflect.Descriptor instead.
 func (*TemperatureRange) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{7}
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TemperatureRange) GetLow() *types.Temperature {
@@ -653,6 +320,339 @@ func (x *TemperatureRange) GetIdeal() *types.Temperature {
 		return x.Ideal
 	}
 	return nil
+}
+
+// AirTemperatureSupport describes the capabilities of devices implementing this trait
+type AirTemperatureSupport struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// How a named device supports read/write/pull apis
+	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
+	// How the device thinks, all communications will be in celsius but the device's native unit is this.
+	NativeUnit types.TemperatureUnit `protobuf:"varint,2,opt,name=native_unit,json=nativeUnit,proto3,enum=smartcore.api.types.TemperatureUnit" json:"native_unit,omitempty"`
+	// The list of modes a device supports.
+	SupportedModes []AirTemperatureMode `protobuf:"varint,3,rep,packed,name=supported_modes,json=supportedModes,proto3,enum=smartcore.traits.AirTemperatureMode" json:"supported_modes,omitempty"`
+	// The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
+	MinRangeCelsius float64 `protobuf:"fixed64,4,opt,name=min_range_celsius,json=minRangeCelsius,proto3" json:"min_range_celsius,omitempty"`
+}
+
+func (x *AirTemperatureSupport) Reset() {
+	*x = AirTemperatureSupport{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AirTemperatureSupport) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AirTemperatureSupport) ProtoMessage() {}
+
+func (x *AirTemperatureSupport) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AirTemperatureSupport.ProtoReflect.Descriptor instead.
+func (*AirTemperatureSupport) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AirTemperatureSupport) GetResourceSupport() *types.ResourceSupport {
+	if x != nil {
+		return x.ResourceSupport
+	}
+	return nil
+}
+
+func (x *AirTemperatureSupport) GetNativeUnit() types.TemperatureUnit {
+	if x != nil {
+		return x.NativeUnit
+	}
+	return types.TemperatureUnit_CELSIUS
+}
+
+func (x *AirTemperatureSupport) GetSupportedModes() []AirTemperatureMode {
+	if x != nil {
+		return x.SupportedModes
+	}
+	return nil
+}
+
+func (x *AirTemperatureSupport) GetMinRangeCelsius() float64 {
+	if x != nil {
+		return x.MinRangeCelsius
+	}
+	return 0
+}
+
+// Request message for fetching device state
+type GetAirTemperatureRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *GetAirTemperatureRequest) Reset() {
+	*x = GetAirTemperatureRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAirTemperatureRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAirTemperatureRequest) ProtoMessage() {}
+
+func (x *GetAirTemperatureRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAirTemperatureRequest.ProtoReflect.Descriptor instead.
+func (*GetAirTemperatureRequest) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetAirTemperatureRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+// Request message for updating the device state
+type UpdateAirTemperatureRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name  string          `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	State *AirTemperature `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
+	// The fields relative to state we intend to update
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+}
+
+func (x *UpdateAirTemperatureRequest) Reset() {
+	*x = UpdateAirTemperatureRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateAirTemperatureRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAirTemperatureRequest) ProtoMessage() {}
+
+func (x *UpdateAirTemperatureRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAirTemperatureRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAirTemperatureRequest) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateAirTemperatureRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateAirTemperatureRequest) GetState() *AirTemperature {
+	if x != nil {
+		return x.State
+	}
+	return nil
+}
+
+func (x *UpdateAirTemperatureRequest) GetUpdateMask() *field_mask.FieldMask {
+	if x != nil {
+		return x.UpdateMask
+	}
+	return nil
+}
+
+// Request message for subscribing to changes in the devices state
+type PullAirTemperatureRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *PullAirTemperatureRequest) Reset() {
+	*x = PullAirTemperatureRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PullAirTemperatureRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PullAirTemperatureRequest) ProtoMessage() {}
+
+func (x *PullAirTemperatureRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PullAirTemperatureRequest.ProtoReflect.Descriptor instead.
+func (*PullAirTemperatureRequest) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PullAirTemperatureRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+// Response message enclosing device state changes
+type PullAirTemperatureResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Changes []*PullAirTemperatureResponse_Change `protobuf:"bytes,1,rep,name=changes,proto3" json:"changes,omitempty"`
+}
+
+func (x *PullAirTemperatureResponse) Reset() {
+	*x = PullAirTemperatureResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PullAirTemperatureResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PullAirTemperatureResponse) ProtoMessage() {}
+
+func (x *PullAirTemperatureResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PullAirTemperatureResponse.ProtoReflect.Descriptor instead.
+func (*PullAirTemperatureResponse) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *PullAirTemperatureResponse) GetChanges() []*PullAirTemperatureResponse_Change {
+	if x != nil {
+		return x.Changes
+	}
+	return nil
+}
+
+type DescribeAirTemperatureRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The name of the device
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *DescribeAirTemperatureRequest) Reset() {
+	*x = DescribeAirTemperatureRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_air_temperature_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DescribeAirTemperatureRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DescribeAirTemperatureRequest) ProtoMessage() {}
+
+func (x *DescribeAirTemperatureRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_air_temperature_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DescribeAirTemperatureRequest.ProtoReflect.Descriptor instead.
+func (*DescribeAirTemperatureRequest) Descriptor() ([]byte, []int) {
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DescribeAirTemperatureRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 type PullAirTemperatureResponse_Change struct {
@@ -698,7 +698,7 @@ func (x *PullAirTemperatureResponse_Change) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use PullAirTemperatureResponse_Change.ProtoReflect.Descriptor instead.
 func (*PullAirTemperatureResponse_Change) Descriptor() ([]byte, []int) {
-	return file_traits_air_temperature_proto_rawDescGZIP(), []int{4, 0}
+	return file_traits_air_temperature_proto_rawDescGZIP(), []int{6, 0}
 }
 
 func (x *PullAirTemperatureResponse_Change) GetName() string {
@@ -736,7 +736,55 @@ var file_traits_air_temperature_proto_rawDesc = []byte{
 	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x1a, 0x10, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x10, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x75, 0x6e, 0x69,
-	0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xa6, 0x02, 0x0a, 0x15, 0x41, 0x69, 0x72, 0x54,
+	0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc6, 0x04, 0x0a, 0x0e, 0x41, 0x69, 0x72, 0x54,
+	0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x38, 0x0a, 0x04, 0x6d, 0x6f,
+	0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x24, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74,
+	0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x41, 0x69, 0x72, 0x54,
+	0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x4d, 0x6f, 0x64, 0x65, 0x52, 0x04,
+	0x6d, 0x6f, 0x64, 0x65, 0x12, 0x56, 0x0a, 0x15, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74,
+	0x75, 0x72, 0x65, 0x5f, 0x73, 0x65, 0x74, 0x5f, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x75, 0x72, 0x65, 0x48, 0x00, 0x52, 0x13, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
+	0x74, 0x75, 0x72, 0x65, 0x53, 0x65, 0x74, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x12, 0x61, 0x0a, 0x1b,
+	0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x73, 0x65, 0x74, 0x5f,
+	0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x64, 0x65, 0x6c, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74,
+	0x75, 0x72, 0x65, 0x48, 0x00, 0x52, 0x18, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75,
+	0x72, 0x65, 0x53, 0x65, 0x74, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x74, 0x61, 0x12,
+	0x51, 0x0a, 0x11, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x72,
+	0x61, 0x6e, 0x67, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x73, 0x6d, 0x61,
+	0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x54, 0x65,
+	0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x48, 0x00,
+	0x52, 0x10, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x61, 0x6e,
+	0x67, 0x65, 0x12, 0x51, 0x0a, 0x13, 0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x74, 0x65,
+	0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72,
+	0x65, 0x52, 0x12, 0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x46, 0x0a, 0x10, 0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74,
+	0x5f, 0x68, 0x75, 0x6d, 0x69, 0x64, 0x69, 0x74, 0x79, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0f, 0x61, 0x6d,
+	0x62, 0x69, 0x65, 0x6e, 0x74, 0x48, 0x75, 0x6d, 0x69, 0x64, 0x69, 0x74, 0x79, 0x12, 0x3d, 0x0a,
+	0x09, 0x64, 0x65, 0x77, 0x5f, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75,
+	0x72, 0x65, 0x52, 0x08, 0x64, 0x65, 0x77, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x42, 0x12, 0x0a, 0x10,
+	0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x67, 0x6f, 0x61, 0x6c,
+	0x22, 0xb4, 0x01, 0x0a, 0x10, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65,
+	0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x32, 0x0a, 0x03, 0x6c, 0x6f, 0x77, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
+	0x74, 0x75, 0x72, 0x65, 0x52, 0x03, 0x6c, 0x6f, 0x77, 0x12, 0x34, 0x0a, 0x04, 0x68, 0x69, 0x67,
+	0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63,
+	0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65,
+	0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x04, 0x68, 0x69, 0x67, 0x68, 0x12,
+	0x36, 0x0a, 0x05, 0x69, 0x64, 0x65, 0x61, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20,
+	0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74,
+	0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65,
+	0x52, 0x05, 0x69, 0x64, 0x65, 0x61, 0x6c, 0x22, 0xa6, 0x02, 0x0a, 0x15, 0x41, 0x69, 0x72, 0x54,
 	0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72,
 	0x74, 0x12, 0x4b, 0x0a, 0x10, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x73, 0x75,
 	0x70, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d,
@@ -791,55 +839,7 @@ var file_traits_air_temperature_proto_rawDesc = []byte{
 	0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x41, 0x69, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x65,
 	0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a,
 	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x22, 0xc6, 0x04, 0x0a, 0x0e, 0x41, 0x69, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
-	0x74, 0x75, 0x72, 0x65, 0x12, 0x38, 0x0a, 0x04, 0x6d, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0e, 0x32, 0x24, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74,
-	0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x41, 0x69, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
-	0x74, 0x75, 0x72, 0x65, 0x4d, 0x6f, 0x64, 0x65, 0x52, 0x04, 0x6d, 0x6f, 0x64, 0x65, 0x12, 0x56,
-	0x0a, 0x15, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x73, 0x65,
-	0x74, 0x5f, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e,
-	0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79,
-	0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x48,
-	0x00, 0x52, 0x13, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x53, 0x65,
-	0x74, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x12, 0x61, 0x0a, 0x1b, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72,
-	0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x73, 0x65, 0x74, 0x5f, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f,
-	0x64, 0x65, 0x6c, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d,
-	0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65,
-	0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x48, 0x00, 0x52,
-	0x18, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x53, 0x65, 0x74, 0x50,
-	0x6f, 0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x74, 0x61, 0x12, 0x51, 0x0a, 0x11, 0x74, 0x65, 0x6d,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65,
-	0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74,
-	0x75, 0x72, 0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x48, 0x00, 0x52, 0x10, 0x74, 0x65, 0x6d, 0x70,
-	0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x51, 0x0a, 0x13,
-	0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74,
-	0x75, 0x72, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72,
-	0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e,
-	0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x12, 0x61, 0x6d, 0x62,
-	0x69, 0x65, 0x6e, 0x74, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12,
-	0x46, 0x0a, 0x10, 0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x68, 0x75, 0x6d, 0x69, 0x64,
-	0x69, 0x74, 0x79, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46, 0x6c, 0x6f, 0x61,
-	0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0f, 0x61, 0x6d, 0x62, 0x69, 0x65, 0x6e, 0x74, 0x48,
-	0x75, 0x6d, 0x69, 0x64, 0x69, 0x74, 0x79, 0x12, 0x3d, 0x0a, 0x09, 0x64, 0x65, 0x77, 0x5f, 0x70,
-	0x6f, 0x69, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61,
-	0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x08, 0x64, 0x65,
-	0x77, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x42, 0x12, 0x0a, 0x10, 0x74, 0x65, 0x6d, 0x70, 0x65, 0x72,
-	0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x67, 0x6f, 0x61, 0x6c, 0x22, 0xb4, 0x01, 0x0a, 0x10, 0x54,
-	0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12,
-	0x32, 0x0a, 0x03, 0x6c, 0x6f, 0x77, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73,
-	0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70,
-	0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x03,
-	0x6c, 0x6f, 0x77, 0x12, 0x34, 0x0a, 0x04, 0x68, 0x69, 0x67, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74,
-	0x75, 0x72, 0x65, 0x52, 0x04, 0x68, 0x69, 0x67, 0x68, 0x12, 0x36, 0x0a, 0x05, 0x69, 0x64, 0x65,
-	0x61, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74,
-	0x63, 0x6f, 0x72, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x54,
-	0x65, 0x6d, 0x70, 0x65, 0x72, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x05, 0x69, 0x64, 0x65, 0x61,
-	0x6c, 0x2a, 0x95, 0x03, 0x0a, 0x12, 0x41, 0x69, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
+	0x65, 0x2a, 0x95, 0x03, 0x0a, 0x12, 0x41, 0x69, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x65, 0x72, 0x61,
 	0x74, 0x75, 0x72, 0x65, 0x4d, 0x6f, 0x64, 0x65, 0x12, 0x20, 0x0a, 0x1c, 0x41, 0x49, 0x52, 0x5f,
 	0x54, 0x45, 0x4d, 0x50, 0x45, 0x52, 0x41, 0x54, 0x55, 0x52, 0x45, 0x5f, 0x4d, 0x4f, 0x44, 0x45,
 	0x5f, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12, 0x1b, 0x0a, 0x17, 0x41, 0x49,
@@ -921,49 +921,49 @@ var file_traits_air_temperature_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_traits_air_temperature_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_traits_air_temperature_proto_goTypes = []interface{}{
 	(AirTemperatureMode)(0),                   // 0: smartcore.traits.AirTemperatureMode
-	(*AirTemperatureSupport)(nil),             // 1: smartcore.traits.AirTemperatureSupport
-	(*GetAirTemperatureRequest)(nil),          // 2: smartcore.traits.GetAirTemperatureRequest
-	(*UpdateAirTemperatureRequest)(nil),       // 3: smartcore.traits.UpdateAirTemperatureRequest
-	(*PullAirTemperatureRequest)(nil),         // 4: smartcore.traits.PullAirTemperatureRequest
-	(*PullAirTemperatureResponse)(nil),        // 5: smartcore.traits.PullAirTemperatureResponse
-	(*DescribeAirTemperatureRequest)(nil),     // 6: smartcore.traits.DescribeAirTemperatureRequest
-	(*AirTemperature)(nil),                    // 7: smartcore.traits.AirTemperature
-	(*TemperatureRange)(nil),                  // 8: smartcore.traits.TemperatureRange
+	(*AirTemperature)(nil),                    // 1: smartcore.traits.AirTemperature
+	(*TemperatureRange)(nil),                  // 2: smartcore.traits.TemperatureRange
+	(*AirTemperatureSupport)(nil),             // 3: smartcore.traits.AirTemperatureSupport
+	(*GetAirTemperatureRequest)(nil),          // 4: smartcore.traits.GetAirTemperatureRequest
+	(*UpdateAirTemperatureRequest)(nil),       // 5: smartcore.traits.UpdateAirTemperatureRequest
+	(*PullAirTemperatureRequest)(nil),         // 6: smartcore.traits.PullAirTemperatureRequest
+	(*PullAirTemperatureResponse)(nil),        // 7: smartcore.traits.PullAirTemperatureResponse
+	(*DescribeAirTemperatureRequest)(nil),     // 8: smartcore.traits.DescribeAirTemperatureRequest
 	(*PullAirTemperatureResponse_Change)(nil), // 9: smartcore.traits.PullAirTemperatureResponse.Change
-	(*types.ResourceSupport)(nil),             // 10: smartcore.types.ResourceSupport
-	(types.TemperatureUnit)(0),                // 11: smartcore.api.types.TemperatureUnit
-	(*field_mask.FieldMask)(nil),              // 12: google.protobuf.FieldMask
-	(*types.Temperature)(nil),                 // 13: smartcore.api.types.Temperature
-	(*wrappers.FloatValue)(nil),               // 14: google.protobuf.FloatValue
+	(*types.Temperature)(nil),                 // 10: smartcore.api.types.Temperature
+	(*wrappers.FloatValue)(nil),               // 11: google.protobuf.FloatValue
+	(*types.ResourceSupport)(nil),             // 12: smartcore.types.ResourceSupport
+	(types.TemperatureUnit)(0),                // 13: smartcore.api.types.TemperatureUnit
+	(*field_mask.FieldMask)(nil),              // 14: google.protobuf.FieldMask
 	(*timestamp.Timestamp)(nil),               // 15: google.protobuf.Timestamp
 }
 var file_traits_air_temperature_proto_depIdxs = []int32{
-	10, // 0: smartcore.traits.AirTemperatureSupport.resource_support:type_name -> smartcore.types.ResourceSupport
-	11, // 1: smartcore.traits.AirTemperatureSupport.native_unit:type_name -> smartcore.api.types.TemperatureUnit
-	0,  // 2: smartcore.traits.AirTemperatureSupport.supported_modes:type_name -> smartcore.traits.AirTemperatureMode
-	7,  // 3: smartcore.traits.UpdateAirTemperatureRequest.state:type_name -> smartcore.traits.AirTemperature
-	12, // 4: smartcore.traits.UpdateAirTemperatureRequest.update_mask:type_name -> google.protobuf.FieldMask
-	9,  // 5: smartcore.traits.PullAirTemperatureResponse.changes:type_name -> smartcore.traits.PullAirTemperatureResponse.Change
-	0,  // 6: smartcore.traits.AirTemperature.mode:type_name -> smartcore.traits.AirTemperatureMode
-	13, // 7: smartcore.traits.AirTemperature.temperature_set_point:type_name -> smartcore.api.types.Temperature
-	13, // 8: smartcore.traits.AirTemperature.temperature_set_point_delta:type_name -> smartcore.api.types.Temperature
-	8,  // 9: smartcore.traits.AirTemperature.temperature_range:type_name -> smartcore.traits.TemperatureRange
-	13, // 10: smartcore.traits.AirTemperature.ambient_temperature:type_name -> smartcore.api.types.Temperature
-	14, // 11: smartcore.traits.AirTemperature.ambient_humidity:type_name -> google.protobuf.FloatValue
-	13, // 12: smartcore.traits.AirTemperature.dew_point:type_name -> smartcore.api.types.Temperature
-	13, // 13: smartcore.traits.TemperatureRange.low:type_name -> smartcore.api.types.Temperature
-	13, // 14: smartcore.traits.TemperatureRange.high:type_name -> smartcore.api.types.Temperature
-	13, // 15: smartcore.traits.TemperatureRange.ideal:type_name -> smartcore.api.types.Temperature
+	0,  // 0: smartcore.traits.AirTemperature.mode:type_name -> smartcore.traits.AirTemperatureMode
+	10, // 1: smartcore.traits.AirTemperature.temperature_set_point:type_name -> smartcore.api.types.Temperature
+	10, // 2: smartcore.traits.AirTemperature.temperature_set_point_delta:type_name -> smartcore.api.types.Temperature
+	2,  // 3: smartcore.traits.AirTemperature.temperature_range:type_name -> smartcore.traits.TemperatureRange
+	10, // 4: smartcore.traits.AirTemperature.ambient_temperature:type_name -> smartcore.api.types.Temperature
+	11, // 5: smartcore.traits.AirTemperature.ambient_humidity:type_name -> google.protobuf.FloatValue
+	10, // 6: smartcore.traits.AirTemperature.dew_point:type_name -> smartcore.api.types.Temperature
+	10, // 7: smartcore.traits.TemperatureRange.low:type_name -> smartcore.api.types.Temperature
+	10, // 8: smartcore.traits.TemperatureRange.high:type_name -> smartcore.api.types.Temperature
+	10, // 9: smartcore.traits.TemperatureRange.ideal:type_name -> smartcore.api.types.Temperature
+	12, // 10: smartcore.traits.AirTemperatureSupport.resource_support:type_name -> smartcore.types.ResourceSupport
+	13, // 11: smartcore.traits.AirTemperatureSupport.native_unit:type_name -> smartcore.api.types.TemperatureUnit
+	0,  // 12: smartcore.traits.AirTemperatureSupport.supported_modes:type_name -> smartcore.traits.AirTemperatureMode
+	1,  // 13: smartcore.traits.UpdateAirTemperatureRequest.state:type_name -> smartcore.traits.AirTemperature
+	14, // 14: smartcore.traits.UpdateAirTemperatureRequest.update_mask:type_name -> google.protobuf.FieldMask
+	9,  // 15: smartcore.traits.PullAirTemperatureResponse.changes:type_name -> smartcore.traits.PullAirTemperatureResponse.Change
 	15, // 16: smartcore.traits.PullAirTemperatureResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	7,  // 17: smartcore.traits.PullAirTemperatureResponse.Change.state:type_name -> smartcore.traits.AirTemperature
-	2,  // 18: smartcore.traits.AirTemperatureApi.GetAirTemperature:input_type -> smartcore.traits.GetAirTemperatureRequest
-	3,  // 19: smartcore.traits.AirTemperatureApi.UpdateAirTemperature:input_type -> smartcore.traits.UpdateAirTemperatureRequest
-	4,  // 20: smartcore.traits.AirTemperatureApi.PullAirTemperature:input_type -> smartcore.traits.PullAirTemperatureRequest
-	6,  // 21: smartcore.traits.AirTemperatureInfo.DescribeAirTemperature:input_type -> smartcore.traits.DescribeAirTemperatureRequest
-	7,  // 22: smartcore.traits.AirTemperatureApi.GetAirTemperature:output_type -> smartcore.traits.AirTemperature
-	7,  // 23: smartcore.traits.AirTemperatureApi.UpdateAirTemperature:output_type -> smartcore.traits.AirTemperature
-	5,  // 24: smartcore.traits.AirTemperatureApi.PullAirTemperature:output_type -> smartcore.traits.PullAirTemperatureResponse
-	1,  // 25: smartcore.traits.AirTemperatureInfo.DescribeAirTemperature:output_type -> smartcore.traits.AirTemperatureSupport
+	1,  // 17: smartcore.traits.PullAirTemperatureResponse.Change.state:type_name -> smartcore.traits.AirTemperature
+	4,  // 18: smartcore.traits.AirTemperatureApi.GetAirTemperature:input_type -> smartcore.traits.GetAirTemperatureRequest
+	5,  // 19: smartcore.traits.AirTemperatureApi.UpdateAirTemperature:input_type -> smartcore.traits.UpdateAirTemperatureRequest
+	6,  // 20: smartcore.traits.AirTemperatureApi.PullAirTemperature:input_type -> smartcore.traits.PullAirTemperatureRequest
+	8,  // 21: smartcore.traits.AirTemperatureInfo.DescribeAirTemperature:input_type -> smartcore.traits.DescribeAirTemperatureRequest
+	1,  // 22: smartcore.traits.AirTemperatureApi.GetAirTemperature:output_type -> smartcore.traits.AirTemperature
+	1,  // 23: smartcore.traits.AirTemperatureApi.UpdateAirTemperature:output_type -> smartcore.traits.AirTemperature
+	7,  // 24: smartcore.traits.AirTemperatureApi.PullAirTemperature:output_type -> smartcore.traits.PullAirTemperatureResponse
+	3,  // 25: smartcore.traits.AirTemperatureInfo.DescribeAirTemperature:output_type -> smartcore.traits.AirTemperatureSupport
 	22, // [22:26] is the sub-list for method output_type
 	18, // [18:22] is the sub-list for method input_type
 	18, // [18:18] is the sub-list for extension type_name
@@ -978,78 +978,6 @@ func file_traits_air_temperature_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_traits_air_temperature_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AirTemperatureSupport); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetAirTemperatureRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateAirTemperatureRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullAirTemperatureRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullAirTemperatureResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribeAirTemperatureRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_traits_air_temperature_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AirTemperature); i {
 			case 0:
 				return &v.state
@@ -1061,8 +989,80 @@ func file_traits_air_temperature_proto_init() {
 				return nil
 			}
 		}
-		file_traits_air_temperature_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_traits_air_temperature_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TemperatureRange); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AirTemperatureSupport); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAirTemperatureRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateAirTemperatureRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PullAirTemperatureRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PullAirTemperatureResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_air_temperature_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DescribeAirTemperatureRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1086,7 +1086,7 @@ func file_traits_air_temperature_proto_init() {
 			}
 		}
 	}
-	file_traits_air_temperature_proto_msgTypes[6].OneofWrappers = []interface{}{
+	file_traits_air_temperature_proto_msgTypes[0].OneofWrappers = []interface{}{
 		(*AirTemperature_TemperatureSetPoint)(nil),
 		(*AirTemperature_TemperatureSetPointDelta)(nil),
 		(*AirTemperature_TemperatureRange)(nil),

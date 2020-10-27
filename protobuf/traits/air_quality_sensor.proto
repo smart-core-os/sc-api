@@ -29,21 +29,6 @@ service AirQualitySensorInfo {
   rpc DescribeAirQuality (DescribeAirQualityRequest) returns (AirQualitySupport);
 }
 
-// AirQualitySupport describes the capabilities of devices implementing this trait
-message AirQualitySupport {
-  // How a named device supports read/pull apis
-  smartcore.types.SensorSupport sensor_support = 1;
-  // If present then the sensor supports reporting CO2 levels, in parts-per-million.
-  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
-  // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.
-  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
-  // If present then the sensor supports reporting air pressure, in hPa.
-  smartcore.api.types.FloatBounds air_pressure = 4;
-  // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
-  // Unknown should be assumed to be present if supported.
-  repeated AirQualityComfort comfort = 5;
-}
-
 // AirQuality holds the value of all supported sensors.
 message AirQuality {
   // The CO2 level in parts per million
@@ -64,6 +49,21 @@ enum AirQualityComfort {
   AIR_QUALITY_COMFORT_COMFORTABLE = 1;
   // The area might be uncomfortable for occupants
   AIR_QUALITY_COMFORT_UNCOMFORTABLE = 2;
+}
+
+// AirQualitySupport describes the capabilities of devices implementing this trait
+message AirQualitySupport {
+  // How a named device supports read/pull apis
+  smartcore.types.SensorSupport sensor_support = 1;
+  // If present then the sensor supports reporting CO2 levels, in parts-per-million.
+  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
+  // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.
+  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
+  // If present then the sensor supports reporting air pressure, in hPa.
+  smartcore.api.types.FloatBounds air_pressure = 4;
+  // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
+  // Unknown should be assumed to be present if supported.
+  repeated AirQualityComfort comfort = 5;
 }
 
 message GetAirQualityRequest {

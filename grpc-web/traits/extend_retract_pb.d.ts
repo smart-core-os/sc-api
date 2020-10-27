@@ -7,44 +7,6 @@ import * as types_info_pb from '../types/info_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class ExtensionSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): ExtensionSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): ExtensionSupport;
-
-  getPresetsList(): Array<ExtensionPreset>;
-  setPresetsList(value: Array<ExtensionPreset>): ExtensionSupport;
-  clearPresetsList(): ExtensionSupport;
-  addPresets(value?: ExtensionPreset, index?: number): ExtensionPreset;
-
-  getStep(): number;
-  setStep(value: number): ExtensionSupport;
-
-  getTweenSupport(): types_tween_pb.TweenSupport;
-  setTweenSupport(value: types_tween_pb.TweenSupport): ExtensionSupport;
-
-  getSupportsCustomPresets(): boolean;
-  setSupportsCustomPresets(value: boolean): ExtensionSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtensionSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtensionSupport): ExtensionSupport.AsObject;
-  static serializeBinaryToWriter(message: ExtensionSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtensionSupport;
-  static deserializeBinaryFromReader(message: ExtensionSupport, reader: jspb.BinaryReader): ExtensionSupport;
-}
-
-export namespace ExtensionSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    presetsList: Array<ExtensionPreset.AsObject>,
-    step: number,
-    tweenSupport: types_tween_pb.TweenSupport,
-    supportsCustomPresets: boolean,
-  }
-}
-
 export class Extension extends jspb.Message {
   getExtendPercent(): number;
   setExtendPercent(value: number): Extension;
@@ -106,6 +68,44 @@ export namespace ExtensionPreset {
     name: string,
     extendPercent?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     writable: boolean,
+  }
+}
+
+export class ExtensionSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): ExtensionSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): ExtensionSupport;
+
+  getPresetsList(): Array<ExtensionPreset>;
+  setPresetsList(value: Array<ExtensionPreset>): ExtensionSupport;
+  clearPresetsList(): ExtensionSupport;
+  addPresets(value?: ExtensionPreset, index?: number): ExtensionPreset;
+
+  getStep(): number;
+  setStep(value: number): ExtensionSupport;
+
+  getTweenSupport(): types_tween_pb.TweenSupport;
+  setTweenSupport(value: types_tween_pb.TweenSupport): ExtensionSupport;
+
+  getSupportsCustomPresets(): boolean;
+  setSupportsCustomPresets(value: boolean): ExtensionSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtensionSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtensionSupport): ExtensionSupport.AsObject;
+  static serializeBinaryToWriter(message: ExtensionSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtensionSupport;
+  static deserializeBinaryFromReader(message: ExtensionSupport, reader: jspb.BinaryReader): ExtensionSupport;
+}
+
+export namespace ExtensionSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    presetsList: Array<ExtensionPreset.AsObject>,
+    step: number,
+    tweenSupport: types_tween_pb.TweenSupport,
+    supportsCustomPresets: boolean,
   }
 }
 

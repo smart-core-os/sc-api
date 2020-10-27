@@ -4,30 +4,6 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_info_pb from '../types/info_pb';
 
 
-export class OccupancySupport extends jspb.Message {
-  getSensorSupport(): types_info_pb.SensorSupport | undefined;
-  setSensorSupport(value?: types_info_pb.SensorSupport): OccupancySupport;
-  hasSensorSupport(): boolean;
-  clearSensorSupport(): OccupancySupport;
-
-  getMaxPeople(): number;
-  setMaxPeople(value: number): OccupancySupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OccupancySupport.AsObject;
-  static toObject(includeInstance: boolean, msg: OccupancySupport): OccupancySupport.AsObject;
-  static serializeBinaryToWriter(message: OccupancySupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OccupancySupport;
-  static deserializeBinaryFromReader(message: OccupancySupport, reader: jspb.BinaryReader): OccupancySupport;
-}
-
-export namespace OccupancySupport {
-  export type AsObject = {
-    sensorSupport?: types_info_pb.SensorSupport.AsObject,
-    maxPeople: number,
-  }
-}
-
 export class Occupancy extends jspb.Message {
   getState(): OccupancyState;
   setState(value: OccupancyState): Occupancy;
@@ -63,6 +39,30 @@ export namespace Occupancy {
     stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     reasonsList: Array<string>,
     confidence: number,
+  }
+}
+
+export class OccupancySupport extends jspb.Message {
+  getSensorSupport(): types_info_pb.SensorSupport | undefined;
+  setSensorSupport(value?: types_info_pb.SensorSupport): OccupancySupport;
+  hasSensorSupport(): boolean;
+  clearSensorSupport(): OccupancySupport;
+
+  getMaxPeople(): number;
+  setMaxPeople(value: number): OccupancySupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OccupancySupport.AsObject;
+  static toObject(includeInstance: boolean, msg: OccupancySupport): OccupancySupport.AsObject;
+  static serializeBinaryToWriter(message: OccupancySupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OccupancySupport;
+  static deserializeBinaryFromReader(message: OccupancySupport, reader: jspb.BinaryReader): OccupancySupport;
+}
+
+export namespace OccupancySupport {
+  export type AsObject = {
+    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    maxPeople: number,
   }
 }
 

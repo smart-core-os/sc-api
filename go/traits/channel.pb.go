@@ -27,64 +27,6 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// ChosenChannelSupport describes the capabilities of devices implementing this trait
-type ChosenChannelSupport struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// How a named device supports read/write/pull apis
-	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
-	// The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
-	AdjustMax int32 `protobuf:"varint,2,opt,name=adjust_max,json=adjustMax,proto3" json:"adjust_max,omitempty"` // todo: support for [choose,adjust,return], not sure what the defaults should be
-}
-
-func (x *ChosenChannelSupport) Reset() {
-	*x = ChosenChannelSupport{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_channel_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ChosenChannelSupport) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChosenChannelSupport) ProtoMessage() {}
-
-func (x *ChosenChannelSupport) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_channel_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChosenChannelSupport.ProtoReflect.Descriptor instead.
-func (*ChosenChannelSupport) Descriptor() ([]byte, []int) {
-	return file_traits_channel_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ChosenChannelSupport) GetResourceSupport() *types.ResourceSupport {
-	if x != nil {
-		return x.ResourceSupport
-	}
-	return nil
-}
-
-func (x *ChosenChannelSupport) GetAdjustMax() int32 {
-	if x != nil {
-		return x.AdjustMax
-	}
-	return 0
-}
-
 // Channel describes a single channel that can be chosen on the device.
 //
 // During read all known properties will be populated, id and title will always be present. On write either id or
@@ -105,7 +47,7 @@ type Channel struct {
 func (x *Channel) Reset() {
 	*x = Channel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_channel_proto_msgTypes[1]
+		mi := &file_traits_channel_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -118,7 +60,7 @@ func (x *Channel) String() string {
 func (*Channel) ProtoMessage() {}
 
 func (x *Channel) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_channel_proto_msgTypes[1]
+	mi := &file_traits_channel_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -131,7 +73,7 @@ func (x *Channel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Channel.ProtoReflect.Descriptor instead.
 func (*Channel) Descriptor() ([]byte, []int) {
-	return file_traits_channel_proto_rawDescGZIP(), []int{1}
+	return file_traits_channel_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Channel) GetId() string {
@@ -153,6 +95,64 @@ func (x *Channel) GetTitle() string {
 		return x.Title
 	}
 	return ""
+}
+
+// ChosenChannelSupport describes the capabilities of devices implementing this trait
+type ChosenChannelSupport struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// How a named device supports read/write/pull apis
+	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
+	// The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
+	AdjustMax int32 `protobuf:"varint,2,opt,name=adjust_max,json=adjustMax,proto3" json:"adjust_max,omitempty"` // todo: support for [choose,adjust,return], not sure what the defaults should be
+}
+
+func (x *ChosenChannelSupport) Reset() {
+	*x = ChosenChannelSupport{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_channel_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ChosenChannelSupport) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChosenChannelSupport) ProtoMessage() {}
+
+func (x *ChosenChannelSupport) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_channel_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChosenChannelSupport.ProtoReflect.Descriptor instead.
+func (*ChosenChannelSupport) Descriptor() ([]byte, []int) {
+	return file_traits_channel_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ChosenChannelSupport) GetResourceSupport() *types.ResourceSupport {
+	if x != nil {
+		return x.ResourceSupport
+	}
+	return nil
+}
+
+func (x *ChosenChannelSupport) GetAdjustMax() int32 {
+	if x != nil {
+		return x.AdjustMax
+	}
+	return 0
 }
 
 type GetChosenChannelRequest struct {
@@ -585,21 +585,21 @@ var file_traits_channel_proto_rawDesc = []byte{
 	0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74,
 	0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x10, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x82, 0x01, 0x0a, 0x14,
-	0x43, 0x68, 0x6f, 0x73, 0x65, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x53, 0x75, 0x70,
-	0x70, 0x6f, 0x72, 0x74, 0x12, 0x4b, 0x0a, 0x10, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
-	0x5f, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20,
-	0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0x2e, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74,
-	0x52, 0x0f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72,
-	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x64, 0x6a, 0x75, 0x73, 0x74, 0x5f, 0x6d, 0x61, 0x78, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x61, 0x64, 0x6a, 0x75, 0x73, 0x74, 0x4d, 0x61, 0x78,
-	0x22, 0x56, 0x0a, 0x07, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x25, 0x0a, 0x0e, 0x63,
-	0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0d, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x4e, 0x75, 0x6d, 0x62,
-	0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x22, 0x2d, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x43,
+	0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x56, 0x0a, 0x07, 0x43,
+	0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x25, 0x0a, 0x0e, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65,
+	0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d,
+	0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x14, 0x0a,
+	0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69,
+	0x74, 0x6c, 0x65, 0x22, 0x82, 0x01, 0x0a, 0x14, 0x43, 0x68, 0x6f, 0x73, 0x65, 0x6e, 0x43, 0x68,
+	0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x4b, 0x0a, 0x10,
+	0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f,
+	0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x0f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x64, 0x6a,
+	0x75, 0x73, 0x74, 0x5f, 0x6d, 0x61, 0x78, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x61,
+	0x64, 0x6a, 0x75, 0x73, 0x74, 0x4d, 0x61, 0x78, 0x22, 0x2d, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x43,
 	0x68, 0x6f, 0x73, 0x65, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x5f, 0x0a, 0x14, 0x43, 0x68, 0x6f, 0x6f, 0x73,
@@ -699,8 +699,8 @@ func file_traits_channel_proto_rawDescGZIP() []byte {
 
 var file_traits_channel_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_traits_channel_proto_goTypes = []interface{}{
-	(*ChosenChannelSupport)(nil),             // 0: smartcore.traits.ChosenChannelSupport
-	(*Channel)(nil),                          // 1: smartcore.traits.Channel
+	(*Channel)(nil),                          // 0: smartcore.traits.Channel
+	(*ChosenChannelSupport)(nil),             // 1: smartcore.traits.ChosenChannelSupport
 	(*GetChosenChannelRequest)(nil),          // 2: smartcore.traits.GetChosenChannelRequest
 	(*ChooseChannelRequest)(nil),             // 3: smartcore.traits.ChooseChannelRequest
 	(*AdjustChannelRequest)(nil),             // 4: smartcore.traits.AdjustChannelRequest
@@ -714,22 +714,22 @@ var file_traits_channel_proto_goTypes = []interface{}{
 }
 var file_traits_channel_proto_depIdxs = []int32{
 	10, // 0: smartcore.traits.ChosenChannelSupport.resource_support:type_name -> smartcore.types.ResourceSupport
-	1,  // 1: smartcore.traits.ChooseChannelRequest.channel:type_name -> smartcore.traits.Channel
+	0,  // 1: smartcore.traits.ChooseChannelRequest.channel:type_name -> smartcore.traits.Channel
 	9,  // 2: smartcore.traits.PullChosenChannelResponse.changes:type_name -> smartcore.traits.PullChosenChannelResponse.Change
 	11, // 3: smartcore.traits.PullChosenChannelResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	1,  // 4: smartcore.traits.PullChosenChannelResponse.Change.channel:type_name -> smartcore.traits.Channel
+	0,  // 4: smartcore.traits.PullChosenChannelResponse.Change.channel:type_name -> smartcore.traits.Channel
 	2,  // 5: smartcore.traits.ChannelApi.GetChosenChannel:input_type -> smartcore.traits.GetChosenChannelRequest
 	3,  // 6: smartcore.traits.ChannelApi.ChooseChannel:input_type -> smartcore.traits.ChooseChannelRequest
 	4,  // 7: smartcore.traits.ChannelApi.AdjustChannel:input_type -> smartcore.traits.AdjustChannelRequest
 	5,  // 8: smartcore.traits.ChannelApi.ReturnChannel:input_type -> smartcore.traits.ReturnChannelRequest
 	6,  // 9: smartcore.traits.ChannelApi.PullChosenChannel:input_type -> smartcore.traits.PullChosenChannelRequest
 	8,  // 10: smartcore.traits.ChannelInfo.DescribeChosenChannel:input_type -> smartcore.traits.DescribeChosenChannelRequest
-	1,  // 11: smartcore.traits.ChannelApi.GetChosenChannel:output_type -> smartcore.traits.Channel
-	1,  // 12: smartcore.traits.ChannelApi.ChooseChannel:output_type -> smartcore.traits.Channel
-	1,  // 13: smartcore.traits.ChannelApi.AdjustChannel:output_type -> smartcore.traits.Channel
-	1,  // 14: smartcore.traits.ChannelApi.ReturnChannel:output_type -> smartcore.traits.Channel
+	0,  // 11: smartcore.traits.ChannelApi.GetChosenChannel:output_type -> smartcore.traits.Channel
+	0,  // 12: smartcore.traits.ChannelApi.ChooseChannel:output_type -> smartcore.traits.Channel
+	0,  // 13: smartcore.traits.ChannelApi.AdjustChannel:output_type -> smartcore.traits.Channel
+	0,  // 14: smartcore.traits.ChannelApi.ReturnChannel:output_type -> smartcore.traits.Channel
 	7,  // 15: smartcore.traits.ChannelApi.PullChosenChannel:output_type -> smartcore.traits.PullChosenChannelResponse
-	0,  // 16: smartcore.traits.ChannelInfo.DescribeChosenChannel:output_type -> smartcore.traits.ChosenChannelSupport
+	1,  // 16: smartcore.traits.ChannelInfo.DescribeChosenChannel:output_type -> smartcore.traits.ChosenChannelSupport
 	11, // [11:17] is the sub-list for method output_type
 	5,  // [5:11] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -744,7 +744,7 @@ func file_traits_channel_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_traits_channel_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChosenChannelSupport); i {
+			switch v := v.(*Channel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -756,7 +756,7 @@ func file_traits_channel_proto_init() {
 			}
 		}
 		file_traits_channel_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Channel); i {
+			switch v := v.(*ChosenChannelSupport); i {
 			case 0:
 				return &v.state
 			case 1:

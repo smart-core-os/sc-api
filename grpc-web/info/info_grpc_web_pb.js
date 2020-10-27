@@ -16,8 +16,6 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js')
-
 var types_change_pb = require('../types/change_pb.js')
 const proto = {};
 proto.smartcore = {};

@@ -29,28 +29,6 @@ service OccupancySensorInfo {
   rpc DescribeOccupancy (DescribeOccupancyRequest) returns (OccupancySupport);
 }
 
-// OccupancySupport describes the capabilities of devices implementing this trait
-message OccupancySupport {
-  // How a named device supports read/pull apis
-  smartcore.types.SensorSupport sensor_support = 1;
-  // how many people can the occupancy service report. 0 means it won't report people counts. Note: this is _not_ the
-  // total capacity for the space, it's the capacity of the sensor
-  int32 max_people = 2;
-}
-
-// Possible states for occupancy
-enum OccupancyState {
-  // There are no signals to suggest either an occupied or unoccupied space
-  OCCUPANCY_STATE_NO_SIGNALS = 0;
-  // The space is occupied
-  OCCUPANCY_STATE_OCCUPIED = 1;
-  // The space is unoccupied
-  OCCUPANCY_STATE_UNOCCUPIED = 2;
-  // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
-  // moving for other reasons)
-  OCCUPANCY_STATE_IDLE = 3;
-}
-
 // The occupancy state the device is reporting and updating
 message Occupancy {
   // The current occupancy state
@@ -70,6 +48,28 @@ message Occupancy {
   // Optional. How confident is the sensor that the current occupancy state is accurate. A value of 0 means that the
   // confidence is unknown
   double confidence = 5;
+}
+
+// Possible states for occupancy
+enum OccupancyState {
+  // There are no signals to suggest either an occupied or unoccupied space
+  OCCUPANCY_STATE_NO_SIGNALS = 0;
+  // The space is occupied
+  OCCUPANCY_STATE_OCCUPIED = 1;
+  // The space is unoccupied
+  OCCUPANCY_STATE_UNOCCUPIED = 2;
+  // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
+  // moving for other reasons)
+  OCCUPANCY_STATE_IDLE = 3;
+}
+
+// OccupancySupport describes the capabilities of devices implementing this trait
+message OccupancySupport {
+  // How a named device supports read/pull apis
+  smartcore.types.SensorSupport sensor_support = 1;
+  // how many people can the occupancy service report. 0 means it won't report people counts. Note: this is _not_ the
+  // total capacity for the space, it's the capacity of the sensor
+  int32 max_people = 2;
 }
 
 // request to fetch the current state of the device

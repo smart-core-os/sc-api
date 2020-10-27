@@ -33,19 +33,6 @@ service OpenCloseInfo {
   rpc DescribePositions (DescribePositionsRequest) returns (PositionsSupport);
 }
 
-// PositionsSupport describes the capabilities of devices implementing this trait
-message PositionsSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
-  // 0-100 to represent a percentage
-  smartcore.api.types.FloatAttributes position_attributes = 2;
-  // The supported directions for the device. If none then assume only a single direction is supported
-  repeated OpenCloseDirection directions = 3;
-  // Does the device support the Stop method
-  bool supports_stop = 4;
-}
-
 // All open/closable elements for the device
 message OpenClosePositions {
   // The state of each of the devices open-able elements. Most devices will only have a single value here as they can
@@ -74,6 +61,19 @@ message OpenClosePosition {
   float target_position_percent = 3;
   // Optional direction for devices that support multiple open/close directions
   OpenCloseDirection direction = 4;
+}
+
+// PositionsSupport describes the capabilities of devices implementing this trait
+message PositionsSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
+  // 0-100 to represent a percentage
+  smartcore.api.types.FloatAttributes position_attributes = 2;
+  // The supported directions for the device. If none then assume only a single direction is supported
+  repeated OpenCloseDirection directions = 3;
+  // Does the device support the Stop method
+  bool supports_stop = 4;
 }
 
 message GetOpenClosePositionsRequest {

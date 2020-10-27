@@ -5,6 +5,34 @@ import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/
 import * as types_info_pb from '../types/info_pb';
 
 
+export class Count extends jspb.Message {
+  getAdded(): number;
+  setAdded(value: number): Count;
+
+  getRemoved(): number;
+  setRemoved(value: number): Count;
+
+  getResetTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setResetTime(value?: google_protobuf_timestamp_pb.Timestamp): Count;
+  hasResetTime(): boolean;
+  clearResetTime(): Count;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Count.AsObject;
+  static toObject(includeInstance: boolean, msg: Count): Count.AsObject;
+  static serializeBinaryToWriter(message: Count, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Count;
+  static deserializeBinaryFromReader(message: Count, reader: jspb.BinaryReader): Count;
+}
+
+export namespace Count {
+  export type AsObject = {
+    added: number,
+    removed: number,
+    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
 export class CountSupport extends jspb.Message {
   getResourceSupport(): types_info_pb.ResourceSupport | undefined;
   setResourceSupport(value?: types_info_pb.ResourceSupport): CountSupport;
@@ -34,34 +62,6 @@ export namespace CountSupport {
     twoWay: boolean,
     supportsReset: boolean,
     supportsDelta: boolean,
-  }
-}
-
-export class Count extends jspb.Message {
-  getAdded(): number;
-  setAdded(value: number): Count;
-
-  getRemoved(): number;
-  setRemoved(value: number): Count;
-
-  getResetTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setResetTime(value?: google_protobuf_timestamp_pb.Timestamp): Count;
-  hasResetTime(): boolean;
-  clearResetTime(): Count;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Count.AsObject;
-  static toObject(includeInstance: boolean, msg: Count): Count.AsObject;
-  static serializeBinaryToWriter(message: Count, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Count;
-  static deserializeBinaryFromReader(message: Count, reader: jspb.BinaryReader): Count;
-}
-
-export namespace Count {
-  export type AsObject = {
-    added: number,
-    removed: number,
-    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

@@ -5,26 +5,6 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_info_pb from '../types/info_pb';
 
 
-export class EmergencySupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): EmergencySupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): EmergencySupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): EmergencySupport.AsObject;
-  static toObject(includeInstance: boolean, msg: EmergencySupport): EmergencySupport.AsObject;
-  static serializeBinaryToWriter(message: EmergencySupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): EmergencySupport;
-  static deserializeBinaryFromReader(message: EmergencySupport, reader: jspb.BinaryReader): EmergencySupport;
-}
-
-export namespace EmergencySupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-  }
-}
-
 export class Emergency extends jspb.Message {
   getLevel(): EmergencyLevel;
   setLevel(value: EmergencyLevel): Emergency;
@@ -58,6 +38,26 @@ export namespace Emergency {
     levelChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     silent: boolean,
     drill: boolean,
+  }
+}
+
+export class EmergencySupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): EmergencySupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): EmergencySupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EmergencySupport.AsObject;
+  static toObject(includeInstance: boolean, msg: EmergencySupport): EmergencySupport.AsObject;
+  static serializeBinaryToWriter(message: EmergencySupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EmergencySupport;
+  static deserializeBinaryFromReader(message: EmergencySupport, reader: jspb.BinaryReader): EmergencySupport;
+}
+
+export namespace EmergencySupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
   }
 }
 

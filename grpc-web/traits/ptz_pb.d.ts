@@ -6,44 +6,6 @@ import * as types_info_pb from '../types/info_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class PtzSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): PtzSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): PtzSupport;
-
-  getSupportsPosition(): boolean;
-  setSupportsPosition(value: boolean): PtzSupport;
-
-  getSupportsMovement(): boolean;
-  setSupportsMovement(value: boolean): PtzSupport;
-
-  getPresetsList(): Array<PtzPreset>;
-  setPresetsList(value: Array<PtzPreset>): PtzSupport;
-  clearPresetsList(): PtzSupport;
-  addPresets(value?: PtzPreset, index?: number): PtzPreset;
-
-  getSupportsCustomPresets(): boolean;
-  setSupportsCustomPresets(value: boolean): PtzSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PtzSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: PtzSupport): PtzSupport.AsObject;
-  static serializeBinaryToWriter(message: PtzSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PtzSupport;
-  static deserializeBinaryFromReader(message: PtzSupport, reader: jspb.BinaryReader): PtzSupport;
-}
-
-export namespace PtzSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    supportsPosition: boolean,
-    supportsMovement: boolean,
-    presetsList: Array<PtzPreset.AsObject>,
-    supportsCustomPresets: boolean,
-  }
-}
-
 export class Ptz extends jspb.Message {
   getPosition(): PtzPosition | undefined;
   setPosition(value?: PtzPosition): Ptz;
@@ -229,6 +191,44 @@ export namespace PtzPreset {
     description: string,
     position?: PtzVector.AsObject,
     writable: boolean,
+  }
+}
+
+export class PtzSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): PtzSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): PtzSupport;
+
+  getSupportsPosition(): boolean;
+  setSupportsPosition(value: boolean): PtzSupport;
+
+  getSupportsMovement(): boolean;
+  setSupportsMovement(value: boolean): PtzSupport;
+
+  getPresetsList(): Array<PtzPreset>;
+  setPresetsList(value: Array<PtzPreset>): PtzSupport;
+  clearPresetsList(): PtzSupport;
+  addPresets(value?: PtzPreset, index?: number): PtzPreset;
+
+  getSupportsCustomPresets(): boolean;
+  setSupportsCustomPresets(value: boolean): PtzSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PtzSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: PtzSupport): PtzSupport.AsObject;
+  static serializeBinaryToWriter(message: PtzSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PtzSupport;
+  static deserializeBinaryFromReader(message: PtzSupport, reader: jspb.BinaryReader): PtzSupport;
+}
+
+export namespace PtzSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    supportsPosition: boolean,
+    supportsMovement: boolean,
+    presetsList: Array<PtzPreset.AsObject>,
+    supportsCustomPresets: boolean,
   }
 }
 

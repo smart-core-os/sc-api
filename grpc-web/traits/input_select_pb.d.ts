@@ -5,6 +5,36 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 import * as types_info_pb from '../types/info_pb';
 
 
+export class Input extends jspb.Message {
+  getVideoInput(): string;
+  setVideoInput(value: string): Input;
+
+  getAudioInput(): string;
+  setAudioInput(value: string): Input;
+
+  getIndependentAv(): boolean;
+  setIndependentAv(value: boolean): Input;
+
+  getOutput(): string;
+  setOutput(value: string): Input;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Input.AsObject;
+  static toObject(includeInstance: boolean, msg: Input): Input.AsObject;
+  static serializeBinaryToWriter(message: Input, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Input;
+  static deserializeBinaryFromReader(message: Input, reader: jspb.BinaryReader): Input;
+}
+
+export namespace Input {
+  export type AsObject = {
+    videoInput: string,
+    audioInput: string,
+    independentAv: boolean,
+    output: string,
+  }
+}
+
 export class InputSupport extends jspb.Message {
   getResourceSupport(): types_info_pb.ResourceSupport | undefined;
   setResourceSupport(value?: types_info_pb.ResourceSupport): InputSupport;
@@ -68,36 +98,6 @@ export namespace AvPort {
     title: string,
     description: string,
     supportedFeature: InputSelectFeature,
-  }
-}
-
-export class Input extends jspb.Message {
-  getVideoInput(): string;
-  setVideoInput(value: string): Input;
-
-  getAudioInput(): string;
-  setAudioInput(value: string): Input;
-
-  getIndependentAv(): boolean;
-  setIndependentAv(value: boolean): Input;
-
-  getOutput(): string;
-  setOutput(value: string): Input;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Input.AsObject;
-  static toObject(includeInstance: boolean, msg: Input): Input.AsObject;
-  static serializeBinaryToWriter(message: Input, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Input;
-  static deserializeBinaryFromReader(message: Input, reader: jspb.BinaryReader): Input;
-}
-
-export namespace Input {
-  export type AsObject = {
-    videoInput: string,
-    audioInput: string,
-    independentAv: boolean,
-    output: string,
   }
 }
 

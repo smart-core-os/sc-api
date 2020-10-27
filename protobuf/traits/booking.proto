@@ -42,6 +42,24 @@ service BookingInfo {
   rpc DescribeBooking (DescribeBookingRequest) returns (BookingSupport);
 }
 
+message Booking {
+  // The name of the bookable (e.g. the resource name)
+  string bookable = 1;
+  // the unique identifier for this booking
+  string id = 2;
+  // the title of this booking
+  string title = 3;
+  // the name of the owner of this booking
+  string owner_name = 4;
+  // the time period this booking is for
+  smartcore.api.types.time.Period booked = 5;
+  // The time period this booking was checked in for.
+  // If this is absent, then no check in or check out has happened
+  // If check_in.start_time is absent, no check in has happened
+  // If check_in.end_time is absent, no check out has happened
+  smartcore.api.types.time.Period check_in = 6;
+}
+
 // BookingSupport describes the capabilities of devices implementing this trait
 message BookingSupport {
   // How a named device supports read/write/pull apis
@@ -76,24 +94,6 @@ message ListBookingsRequest {
 message ListBookingsResponse {
   // the list of bookings for the given request
   repeated Booking bookings = 1;
-}
-
-message Booking {
-  // The name of the bookable (e.g. the resource name)
-  string bookable = 1;
-  // the unique identifier for this booking
-  string id = 2;
-  // the title of this booking
-  string title = 3;
-  // the name of the owner of this booking
-  string owner_name = 4;
-  // the time period this booking is for
-  smartcore.api.types.time.Period booked = 5;
-  // The time period this booking was checked in for.
-  // If this is absent, then no check in or check out has happened
-  // If check_in.start_time is absent, no check in has happened
-  // If check_in.end_time is absent, no check out has happened
-  smartcore.api.types.time.Period check_in = 6;
 }
 
 message CheckInBookingRequest {

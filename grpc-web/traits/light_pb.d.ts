@@ -6,38 +6,6 @@ import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class BrightnessSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): BrightnessSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): BrightnessSupport;
-
-  getBrightnessAttributes(): types_number_pb.Int32Attributes | undefined;
-  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): BrightnessSupport;
-  hasBrightnessAttributes(): boolean;
-  clearBrightnessAttributes(): BrightnessSupport;
-
-  getPresetsList(): Array<LightPreset>;
-  setPresetsList(value: Array<LightPreset>): BrightnessSupport;
-  clearPresetsList(): BrightnessSupport;
-  addPresets(value?: LightPreset, index?: number): LightPreset;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BrightnessSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: BrightnessSupport): BrightnessSupport.AsObject;
-  static serializeBinaryToWriter(message: BrightnessSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BrightnessSupport;
-  static deserializeBinaryFromReader(message: BrightnessSupport, reader: jspb.BinaryReader): BrightnessSupport;
-}
-
-export namespace BrightnessSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    brightnessAttributes?: types_number_pb.Int32Attributes.AsObject,
-    presetsList: Array<LightPreset.AsObject>,
-  }
-}
-
 export class Brightness extends jspb.Message {
   getLevelPercent(): number;
   setLevelPercent(value: number): Brightness;
@@ -97,6 +65,38 @@ export namespace LightPreset {
   export type AsObject = {
     name: string,
     title: string,
+  }
+}
+
+export class BrightnessSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): BrightnessSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): BrightnessSupport;
+
+  getBrightnessAttributes(): types_number_pb.Int32Attributes | undefined;
+  setBrightnessAttributes(value?: types_number_pb.Int32Attributes): BrightnessSupport;
+  hasBrightnessAttributes(): boolean;
+  clearBrightnessAttributes(): BrightnessSupport;
+
+  getPresetsList(): Array<LightPreset>;
+  setPresetsList(value: Array<LightPreset>): BrightnessSupport;
+  clearPresetsList(): BrightnessSupport;
+  addPresets(value?: LightPreset, index?: number): LightPreset;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BrightnessSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: BrightnessSupport): BrightnessSupport.AsObject;
+  static serializeBinaryToWriter(message: BrightnessSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BrightnessSupport;
+  static deserializeBinaryFromReader(message: BrightnessSupport, reader: jspb.BinaryReader): BrightnessSupport;
+}
+
+export namespace BrightnessSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    brightnessAttributes?: types_number_pb.Int32Attributes.AsObject,
+    presetsList: Array<LightPreset.AsObject>,
   }
 }
 

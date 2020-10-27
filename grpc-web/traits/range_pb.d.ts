@@ -6,32 +6,6 @@ import * as types_number_pb from '../types/number_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
-export class RangeValueSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): RangeValueSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): RangeValueSupport;
-
-  getValueAttributes(): types_number_pb.Int32Attributes | undefined;
-  setValueAttributes(value?: types_number_pb.Int32Attributes): RangeValueSupport;
-  hasValueAttributes(): boolean;
-  clearValueAttributes(): RangeValueSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RangeValueSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: RangeValueSupport): RangeValueSupport.AsObject;
-  static serializeBinaryToWriter(message: RangeValueSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RangeValueSupport;
-  static deserializeBinaryFromReader(message: RangeValueSupport, reader: jspb.BinaryReader): RangeValueSupport;
-}
-
-export namespace RangeValueSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    valueAttributes?: types_number_pb.Int32Attributes.AsObject,
-  }
-}
-
 export class RangeValue extends jspb.Message {
   getValue(): number;
   setValue(value: number): RangeValue;
@@ -57,6 +31,32 @@ export namespace RangeValue {
     value: number,
     valueTween?: types_tween_pb.Tween.AsObject,
     targetValue: number,
+  }
+}
+
+export class RangeValueSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): RangeValueSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): RangeValueSupport;
+
+  getValueAttributes(): types_number_pb.Int32Attributes | undefined;
+  setValueAttributes(value?: types_number_pb.Int32Attributes): RangeValueSupport;
+  hasValueAttributes(): boolean;
+  clearValueAttributes(): RangeValueSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RangeValueSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: RangeValueSupport): RangeValueSupport.AsObject;
+  static serializeBinaryToWriter(message: RangeValueSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RangeValueSupport;
+  static deserializeBinaryFromReader(message: RangeValueSupport, reader: jspb.BinaryReader): RangeValueSupport;
+}
+
+export namespace RangeValueSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    valueAttributes?: types_number_pb.Int32Attributes.AsObject,
   }
 }
 

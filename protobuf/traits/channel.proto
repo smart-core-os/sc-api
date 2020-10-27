@@ -36,15 +36,6 @@ service ChannelInfo {
   // todo: define how channel lists are reported
 }
 
-// ChosenChannelSupport describes the capabilities of devices implementing this trait
-message ChosenChannelSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
-  int32 adjust_max = 2;
-  // todo: support for [choose,adjust,return], not sure what the defaults should be
-}
-
 // Channel describes a single channel that can be chosen on the device.
 //
 // During read all known properties will be populated, id and title will always be present. On write either id or
@@ -56,6 +47,15 @@ message Channel {
   string channel_number = 2;
   // A human readable name for the channel.
   string title = 3;
+}
+
+// ChosenChannelSupport describes the capabilities of devices implementing this trait
+message ChosenChannelSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // The max number of channels away from the current that are supported when adjusting channels. Defaults to 1.
+  int32 adjust_max = 2;
+  // todo: support for [choose,adjust,return], not sure what the defaults should be
 }
 
 message GetChosenChannelRequest {

@@ -33,16 +33,6 @@ service LightInfo {
   rpc DescribeBrightness (DescribeBrightnessRequest) returns (BrightnessSupport);
 }
 
-// BrightnessSupport describes the capabilities of devices implementing this trait
-message BrightnessSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-  // control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage
-  smartcore.api.types.Int32Attributes brightness_attributes = 2;
-  // A description of the supported presets, none means no presets
-  repeated LightPreset presets = 3;
-}
-
 message Brightness {
   // A level that the device is set to. [0-100] as a percentage. A zero value will be ignored iff preset is present.
   int32 level_percent = 1;
@@ -60,6 +50,16 @@ message Brightness {
 message LightPreset {
   string name = 1;
   string title = 2;
+}
+
+// BrightnessSupport describes the capabilities of devices implementing this trait
+message BrightnessSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage
+  smartcore.api.types.Int32Attributes brightness_attributes = 2;
+  // A description of the supported presets, none means no presets
+  repeated LightPreset presets = 3;
 }
 
 // A request to update the value of a brightness

@@ -8,6 +8,48 @@ import * as types_time_period_pb from '../types/time/period_pb';
 import * as types_time_unit_pb from '../types/time/unit_pb';
 
 
+export class Booking extends jspb.Message {
+  getBookable(): string;
+  setBookable(value: string): Booking;
+
+  getId(): string;
+  setId(value: string): Booking;
+
+  getTitle(): string;
+  setTitle(value: string): Booking;
+
+  getOwnerName(): string;
+  setOwnerName(value: string): Booking;
+
+  getBooked(): types_time_period_pb.Period | undefined;
+  setBooked(value?: types_time_period_pb.Period): Booking;
+  hasBooked(): boolean;
+  clearBooked(): Booking;
+
+  getCheckIn(): types_time_period_pb.Period | undefined;
+  setCheckIn(value?: types_time_period_pb.Period): Booking;
+  hasCheckIn(): boolean;
+  clearCheckIn(): Booking;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Booking.AsObject;
+  static toObject(includeInstance: boolean, msg: Booking): Booking.AsObject;
+  static serializeBinaryToWriter(message: Booking, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Booking;
+  static deserializeBinaryFromReader(message: Booking, reader: jspb.BinaryReader): Booking;
+}
+
+export namespace Booking {
+  export type AsObject = {
+    bookable: string,
+    id: string,
+    title: string,
+    ownerName: string,
+    booked?: types_time_period_pb.Period.AsObject,
+    checkIn?: types_time_period_pb.Period.AsObject,
+  }
+}
+
 export class BookingSupport extends jspb.Message {
   getResourceSupport(): types_info_pb.ResourceSupport | undefined;
   setResourceSupport(value?: types_info_pb.ResourceSupport): BookingSupport;
@@ -81,48 +123,6 @@ export class ListBookingsResponse extends jspb.Message {
 export namespace ListBookingsResponse {
   export type AsObject = {
     bookingsList: Array<Booking.AsObject>,
-  }
-}
-
-export class Booking extends jspb.Message {
-  getBookable(): string;
-  setBookable(value: string): Booking;
-
-  getId(): string;
-  setId(value: string): Booking;
-
-  getTitle(): string;
-  setTitle(value: string): Booking;
-
-  getOwnerName(): string;
-  setOwnerName(value: string): Booking;
-
-  getBooked(): types_time_period_pb.Period | undefined;
-  setBooked(value?: types_time_period_pb.Period): Booking;
-  hasBooked(): boolean;
-  clearBooked(): Booking;
-
-  getCheckIn(): types_time_period_pb.Period | undefined;
-  setCheckIn(value?: types_time_period_pb.Period): Booking;
-  hasCheckIn(): boolean;
-  clearCheckIn(): Booking;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Booking.AsObject;
-  static toObject(includeInstance: boolean, msg: Booking): Booking.AsObject;
-  static serializeBinaryToWriter(message: Booking, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Booking;
-  static deserializeBinaryFromReader(message: Booking, reader: jspb.BinaryReader): Booking;
-}
-
-export namespace Booking {
-  export type AsObject = {
-    bookable: string,
-    id: string,
-    title: string,
-    ownerName: string,
-    booked?: types_time_period_pb.Period.AsObject,
-    checkIn?: types_time_period_pb.Period.AsObject,
   }
 }
 

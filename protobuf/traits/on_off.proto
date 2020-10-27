@@ -29,12 +29,6 @@ service OnOffInfo {
   rpc DescribeOnOff (DescribeOnOffRequest) returns (OnOffSupport);
 }
 
-// OnOffSupport describes the capabilities of devices implementing this trait
-message OnOffSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
-}
-
 message OnOff {
   OnOrOff on_or_off = 1;
 }
@@ -44,6 +38,12 @@ enum OnOrOff {
   ON_OR_OFF_UNKNOWN = 0;
   ON_OR_OFF_ON = 1;
   ON_OR_OFF_OFF = 2;
+}
+
+// OnOffSupport describes the capabilities of devices implementing this trait
+message OnOffSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
 }
 
 message GetOnOffRequest {
