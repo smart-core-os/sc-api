@@ -26,19 +26,48 @@ The API definitions are split into two main categories [Traits and Services](tra
 
 The simplest way to begin with a Smart Core building is add one of the pre-built Smart Core API libraries to your project.
 
- * For Go `go get -u git.vanti.co.uk/smartcore/sc-api/go`
- * For Java add `dev.smartcore:sc-api-java:1.0.0-SNAPSHOT` to your POM
- * For NodeJS `yarn add @smart-core-os/sc-api`
+<code-switcher :languages="{go:'Go', java:'Java', nodejs: 'NodeJS'}">
+<template v-slot:go>
+
+```bash
+go get -u git.vanti.co.uk/smartcore/sc-api/go
+```
+</template>
+<template v-slot:java>
+
+```xml
+<dependency>
+  <groupId>dev.smartcore</groupId>
+  <artifactId>sc-api-java</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+</template>
+<template v-slot:nodejs>
+
+```bash
+# api proto files
+yarn add @smart-core-os/sc-api
+# tools used to call the api
+yarn add grpc @grpc/proto-loader google-proto-files
+```
+</template>
+</code-switcher>
 
 If your programming platform isn't pre-built you can clone the Smart Core repository and run the `protoc` tool against the source `.proto` files as needed.
 
-Using the API follows standard gRPC patterns for your chosen platform, for Go this would look something like this
+Using the API follows standard [gRPC patterns](https://grpc.io/docs/languages/) for your chosen platform
+
+<code-switcher :languages="{go:'Go',java:'Java',nodejs:'NodeJS'}">
+<template v-slot:go>
 
 ```go
 package main
 
 import (
     "fmt"
+    
     "git.vanti.co.uk/smartcore/sc-api/go/traits"
     "google.golang.org/grpc"
 )
@@ -60,3 +89,73 @@ func main() {
     // Outputs: my-device is now ON_OR_OFF_ON
 }
 ```
+
+</template>
+<template v-slot:java>
+
+```java
+import dev.smartcore.traits.*;
+import io.grpc.*;
+
+class OnOffClient {
+  public static void main(String[] args) {
+    // connect to the Smart Core server
+    Channel channel = ManagedChannelBuilder.forAddress("10.11.100.200", 23557).build();
+    // create a trait client
+    OnOffApiBlockingStub onOffClient = OnOffApiGrpc.newBlockingStub(channel);
+    try {
+      // turn on my-device
+      OnOff res = onOffClient.UpdateOnOff(UpdateOnOffRequest.newBuilder()
+          .setOnOff(OnOff.newBuilder()
+              .setOnOrOff(OnOrOff.ON_OR_OFF_ON)
+          )
+          .build());
+      System.out.println("my-device is now " + res.getOnOrOff());
+      // > my-device is now ON_OR_OFF_ON
+    } catch (StatusRuntimeException e) {
+      // handle the error
+    }
+  }
+}
+```
+</template>
+<template v-slot:nodejs>
+
+```js
+const path = require('path'); 
+const PROTO_ROOT = path.dirname(require.resolve('@smart-core-os/sc-api/package.json'));
+const INCLUDE_DIRS = [
+  path.dirname(require.resolve('google-proto-files/package.json')), // well-known-types
+  path.resolve(PROTO_ROOT, './proto/'), // root of all the smart core protos
+];
+const PROTO_PATH = path.resolve(PROTO_ROOT, './protos/traits/on-off.proto');
+
+const grpc = require('grpc');
+const protoLoader = require('@grpc/proto-loader');
+const packageDefinition = protoLoader.loadSync(
+  PROTO_PATH,
+  {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    default: true,
+    oneofs: true,
+    includeDirs: INCLUDE_DIRS
+  }
+);
+const traits = grpc.loadPackageDefinition(packageDefinition).smartcore.traits;
+
+// create a trait client that talks to the Smart Core server
+const client = new traits.OnOffApi('10.11.100.200:23557');
+// turn on my-device
+client.updateOnOff({
+  name: 'my-device',
+  on_off: {on_or_off: 'ON_OR_OFF_ON'}
+}, (err, res) => {
+  if (err) return; // handle errors
+  console.log(`my-device is now ${res.on_or_off}`);
+  // prints 'my-device is now ON_OR_OFF_ON'
+});
+```
+</template>
+</code-switcher>
