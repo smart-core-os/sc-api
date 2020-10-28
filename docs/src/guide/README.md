@@ -177,3 +177,12 @@ The thing that is identified by a name is a logical component of a building, it 
 Smart Core recommends a hierarchical structure for your names, typically following the [relative resource name](https://cloud.google.com/apis/design/resource_names) pattern: `{collection}/{resource}/{collection}/{resource}`. Using a known scheme allows the people using the building to infer and deduce expected names, which reduces how many times you need to refer back to that spreadsheet of names.
 
 Where possible, device names should be human understandable, globally unique, and describe how the name is different from the other names in the building. `ns/acme/sites/12way/floors/7/rooms/N12/devices/VC_001` is a good name for the _video conference unit_ in room _N12_, on _floor 7_, in the _ACME_ site _12 Way_. Using this example you can imagine a suite of rooms that all look similar having `VC_001` devices in them, and you can imagine `N12` having a number of devices that make up the functionality of the room.
+
+
+## Nodes
+
+Thinking back to the [Getting Started](#getting-started) example, the client code connected to a Smart Core server located at `10.11.100.200:23557`. We call this a Smart Core node. Any `host:port` that exposes a Smart Core API is classed as a Smart Core node. Nodes also have [names](#names).
+
+Nodes can use the Smart Core API to talk to each other allowing nodes to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated control. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
+
+Nodes can be used to directly control devices within a building by bridging the gap between a devices native control api and the buildings Smart Core API. These nodes tend to be distributed physically within a building, connecting to and controlling a localised set of devices that all contribute to a space. We call these **Area Controllers**.
