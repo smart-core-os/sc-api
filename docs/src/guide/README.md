@@ -165,11 +165,11 @@ Congratulations :rocket:, you've just successfully connected to a Smart Core bui
 
 ## Names
 
-Everything that can be queried or controlled in a Smart Core building has a name. In the [Getting Started](#getting-started) example we used the name `my-device` to identify within the Smart Core server located at `10.11.100.200:23557` the thing that we wished to turn on.
+Everything that can be queried or controlled in a Smart Core building has a name. In the [Getting Started](#getting-started) example we used the name `my-device` to identify the thing that we wished to turn on within the Smart Core server located at `10.11.100.200:23557`.
 
-Names in Smart Core are simply a sequence of characters, there is no restriction on length, content, format, or anything else. `my-device`, `The Front Door`, `cn=Office,dc=Company`, `uk/lon/hq/l14/printer2`, and `LT_021` are all perfectly valid Smart Core names. 
+Names in Smart Core are simply a sequence of characters, there is no restriction on length, content, format, or anything else. `my-device`, `The Front Door`, `cn=Office,dc=Company`, `uk/lon/hq/l14/printer2`, and `LT_021` are all perfectly valid Smart Core names. If your building has a naming standard, we don't want to get in the way of that.
 
-The thing that is identified by a name is a logical component of a building, it responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk`, or a sub-device `tv/left-speaker`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed.
+The thing that is identified by a name is a logical component of a building, it responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk` or sub-device `tv/left-speaker`, or a Smart Core node `lobby-controller`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed, everything that references that name continues to work.
 
 
 ### Best Practices
