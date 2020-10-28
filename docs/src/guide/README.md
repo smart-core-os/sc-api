@@ -9,17 +9,17 @@ These documents describe the API of Smart Core.
 
 ## API Basics
 
-::: warning
-This guide assumes a working understanding of [protocol buffers](https://developers.google.com/protocol-buffers) and 
-knowledge of concepts like programming languages, APIs, networks, and code generation. Some parts will talk about 
-[gRPC](https://grpc.io/) though that will come later.
+::: warning Prerequisites
+This guide assumes awareness of concepts like APIs, networks, servers, and programming languages. It references [protocol buffers](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/) and shows examples in common programming languages like Go, Java, and NodeJS.
 :::
 
-The Smart Core API isn't something you can simply install to magically get a smart building. It is a tool used by programmers to have the programs they write talk to each other without needing to go through the effort and pain of defining the API language itself.
+The Smart Core API defines how different parts of a building can talk to each other to enable building features. It defines common language and concepts allowing individual parts of a building to do what they do best.
 
-The API is defined by a set of `*.proto` files located in the `protobuf` directory of the Smart Core repository. To help, Smart Core also maintains a number of generated libraries for languages like `Go` and `NodeJS` so you don't have to re-generate the Smart Core client and server libraries yourself.
+The API is defined by a set of `*.proto` files located in the `protobuf` directory of the Smart Core repository. Protocol Buffers (aka protos or protobufs) are a way of describing the API of a server in a portable, typesafe, and future-proof way. 
 
-The API definitions are split into two main categories [Traits and Services](traits-and-services.md). Traits define how to talk to devices, services define everything else.
+[Nodes](#nodes) in a Smart Core building talk to each other using the gRPC protocol. Based on HTTP/2, gRPC gives us Request/Response and streaming requests, strong security, and reliable messaging amongst other things. 
+
+To aid with development, Smart Core also maintains a number of platform libraries for common languages like `Go` and `NodeJS` so you don't have to re-generate the Smart Core client and server libraries yourself.
 
 
 ## Getting Started
