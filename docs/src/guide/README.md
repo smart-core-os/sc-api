@@ -159,3 +159,21 @@ client.updateOnOff({
 ```
 </template>
 </code-switcher>
+
+Congratulations :rocket:, you've just successfully connected to a Smart Core building and asked it to turn something on.
+
+
+## Names
+
+Everything that can be queried or controlled in a Smart Core building has a name. In the [Getting Started](#getting-started) example we used the name `my-device` to identify within the Smart Core server located at `10.11.100.200:23557` the thing that we wished to turn on.
+
+Names in Smart Core are simply a sequence of characters, there is no restriction on length, content, format, or anything else. `my-device`, `The Front Door`, `cn=Office,dc=Company`, `uk/lon/hq/l14/printer2`, and `LT_021` are all perfectly valid Smart Core names. 
+
+The thing that is identified by a name is a logical component of a building, it responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk`, or a sub-device `tv/left-speaker`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed.
+
+
+### Best Practices
+
+Smart Core recommends a hierarchical structure for your names, typically following the [relative resource name](https://cloud.google.com/apis/design/resource_names) pattern: `{collection}/{resource}/{collection}/{resource}`. Using a known scheme allows the people using the building to infer and deduce expected names, which reduces how many times you need to refer back to that spreadsheet of names.
+
+Where possible, device names should be human understandable, globally unique, and describe how the name is different from the other names in the building. `ns/acme/sites/12way/floors/7/rooms/N12/devices/VC_001` is a good name for the _video conference unit_ in room _N12_, on _floor 7_, in the _ACME_ site _12 Way_. Using this example you can imagine a suite of rooms that all look similar having `VC_001` devices in them, and you can imagine `N12` having a number of devices that make up the functionality of the room.
