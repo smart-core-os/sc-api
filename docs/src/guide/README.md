@@ -17,7 +17,7 @@ knowledge of concepts like programming languages, APIs, networks, and code gener
 
 The Smart Core API isn't something you can simply install to magically get a smart building. It is a tool used by programmers to have the programs they write talk to each other without needing to go through the effort and pain of defining the API language itself.
 
-The API is defined by a set of `*.proto` files located in the `protobuf` directory of the Smart Core repository. To help Smart Core also maintains a number of generated libraries for languages like `Go` and `NodeJS` so you don't have to re-generate the Smart Core client and server libraries yourself.
+The API is defined by a set of `*.proto` files located in the `protobuf` directory of the Smart Core repository. To help, Smart Core also maintains a number of generated libraries for languages like `Go` and `NodeJS` so you don't have to re-generate the Smart Core client and server libraries yourself.
 
 The API definitions are split into two main categories [Traits and Services](traits-and-services.md). Traits define how to talk to devices, services define everything else.
 
