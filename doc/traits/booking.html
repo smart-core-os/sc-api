@@ -240,7 +240,7 @@
               
               
                 <li>
-                  <a href="#smartcore.traits.CheckInSupport"><span class="badge">E</span>CheckInSupport</a>
+                  <a href="#smartcore.traits.BookingSupport.CheckInSupport"><span class="badge">E</span>BookingSupport.CheckInSupport</a>
                 </li>
               
               
@@ -349,14 +349,14 @@ If check_in.end_time is absent, no check out has happened </p></td>
               
                 <tr>
                   <td>check_in_support</td>
-                  <td><a href="#smartcore.traits.CheckInSupport">CheckInSupport</a></td>
+                  <td><a href="#smartcore.traits.BookingSupport.CheckInSupport">BookingSupport.CheckInSupport</a></td>
                   <td></td>
                   <td><p>is check in supported, and how </p></td>
                 </tr>
               
                 <tr>
                   <td>check_out_support</td>
-                  <td><a href="#smartcore.traits.CheckInSupport">CheckInSupport</a></td>
+                  <td><a href="#smartcore.traits.BookingSupport.CheckInSupport">BookingSupport.CheckInSupport</a></td>
                   <td></td>
                   <td><p>is check out supported, and how </p></td>
                 </tr>
@@ -740,7 +740,7 @@ bookings are returned if they intersect this time period </p></td>
       
 
       
-        <h3 id="smartcore.traits.CheckInSupport">CheckInSupport</h3>
+        <h3 id="smartcore.traits.BookingSupport.CheckInSupport">BookingSupport.CheckInSupport</h3>
         <p></p>
         <table class="enum-table">
           <thead>
@@ -749,25 +749,25 @@ bookings are returned if they intersect this time period </p></td>
           <tbody>
             
               <tr>
-                <td>CHECK_IN_SUPPORT_UNKNOWN</td>
+                <td>UNKNOWN</td>
                 <td>0</td>
                 <td><p>check in support is unknown</p></td>
               </tr>
             
               <tr>
-                <td>CHECK_IN_SUPPORT_NO_SUPPORT</td>
+                <td>NO_SUPPORT</td>
                 <td>1</td>
                 <td><p>check in is not supported</p></td>
               </tr>
             
               <tr>
-                <td>CHECK_IN_SUPPORT_STATE</td>
+                <td>STATE</td>
                 <td>2</td>
                 <td><p>check in is supported as a state, without an associated time</p></td>
               </tr>
             
               <tr>
-                <td>CHECK_IN_SUPPORT_TIME</td>
+                <td>TIME</td>
                 <td>3</td>
                 <td><p>check in is supported with an associated time</p></td>
               </tr>

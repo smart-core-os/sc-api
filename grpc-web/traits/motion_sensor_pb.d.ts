@@ -6,8 +6,8 @@ import * as types_info_pb from '../types/info_pb';
 
 
 export class MotionDetection extends jspb.Message {
-  getState(): MotionDetectionState;
-  setState(value: MotionDetectionState): MotionDetection;
+  getState(): MotionDetection.State;
+  setState(value: MotionDetection.State): MotionDetection;
 
   getStateChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setStateChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): MotionDetection;
@@ -24,8 +24,13 @@ export class MotionDetection extends jspb.Message {
 
 export namespace MotionDetection {
   export type AsObject = {
-    state: MotionDetectionState,
+    state: MotionDetection.State,
     stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+
+  export enum State { 
+    NOT_DETECTED = 0,
+    DETECTED = 1,
   }
 }
 
@@ -160,7 +165,3 @@ export namespace DescribeMotionDetectionRequest {
   }
 }
 
-export enum MotionDetectionState { 
-  MOTION_DETECTION_STATE_NOT_DETECTED = 0,
-  MOTION_DETECTION_STATE_DETECTED = 1,
-}

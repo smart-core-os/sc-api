@@ -5,8 +5,8 @@ import * as types_info_pb from '../types/info_pb';
 
 
 export class OnOff extends jspb.Message {
-  getOnOrOff(): OnOrOff;
-  setOnOrOff(value: OnOrOff): OnOff;
+  getState(): OnOff.State;
+  setState(value: OnOff.State): OnOff;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OnOff.AsObject;
@@ -18,7 +18,13 @@ export class OnOff extends jspb.Message {
 
 export namespace OnOff {
   export type AsObject = {
-    onOrOff: OnOrOff,
+    state: OnOff.State,
+  }
+
+  export enum State { 
+    UNKNOWN = 0,
+    ON = 1,
+    OFF = 2,
   }
 }
 
@@ -171,8 +177,3 @@ export namespace DescribeOnOffRequest {
   }
 }
 
-export enum OnOrOff { 
-  ON_OR_OFF_UNKNOWN = 0,
-  ON_OR_OFF_ON = 1,
-  ON_OR_OFF_OFF = 2,
-}

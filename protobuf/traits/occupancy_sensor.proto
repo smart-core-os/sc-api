@@ -32,7 +32,7 @@ service OccupancySensorInfo {
 // The occupancy state the device is reporting and updating
 message Occupancy {
   // The current occupancy state
-  OccupancyState state = 1;
+  State state = 1;
   // The total number of people the occupancy sensor has detected. Do NOT use this value as an indication of occupancy
   // state, a value of 0 could be reported for a space that is occupied if the device either doesn't support people
   // counts or there is some other undefined issue with the counting part of the sensor suite.
@@ -48,19 +48,19 @@ message Occupancy {
   // Optional. How confident is the sensor that the current occupancy state is accurate. A value of 0 means that the
   // confidence is unknown
   double confidence = 5;
-}
 
-// Possible states for occupancy
-enum OccupancyState {
-  // There are no signals to suggest either an occupied or unoccupied space
-  OCCUPANCY_STATE_NO_SIGNALS = 0;
-  // The space is occupied
-  OCCUPANCY_STATE_OCCUPIED = 1;
-  // The space is unoccupied
-  OCCUPANCY_STATE_UNOCCUPIED = 2;
-  // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
-  // moving for other reasons)
-  OCCUPANCY_STATE_IDLE = 3;
+  // Possible states for occupancy
+  enum State {
+    // There are no signals to suggest either an occupied or unoccupied space
+    NO_SIGNALS = 0;
+    // The space is occupied
+    OCCUPIED = 1;
+    // The space is unoccupied
+    UNOCCUPIED = 2;
+    // The space is likely occupied but some signals suggest that no activity is occurring (i.e. people are asleep or not
+    // moving for other reasons)
+    IDLE = 3;
+  }
 }
 
 // OccupancySupport describes the capabilities of devices implementing this trait

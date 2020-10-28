@@ -70,17 +70,17 @@ message BookingSupport {
   CheckInSupport check_out_support = 3;
   // the supported time resolution for date time fields and queries
   smartcore.api.types.time.Unit time_resolution = 4;
-}
 
-enum CheckInSupport {
-  // check in support is unknown
-  CHECK_IN_SUPPORT_UNKNOWN = 0;
-  // check in is not supported
-  CHECK_IN_SUPPORT_NO_SUPPORT = 1;
-  // check in is supported as a state, without an associated time
-  CHECK_IN_SUPPORT_STATE = 2;
-  // check in is supported with an associated time
-  CHECK_IN_SUPPORT_TIME = 3;
+  enum CheckInSupport {
+    // check in support is unknown
+    UNKNOWN = 0;
+    // check in is not supported
+    NO_SUPPORT = 1;
+    // check in is supported as a state, without an associated time
+    STATE = 2;
+    // check in is supported with an associated time
+    TIME = 3;
+  }
 }
 
 message ListBookingsRequest {

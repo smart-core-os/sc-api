@@ -22,8 +22,8 @@ goog.exportSymbol('proto.smartcore.traits.AvPort', null, global);
 goog.exportSymbol('proto.smartcore.traits.DescribeInputRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetInputRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.Input', null, global);
-goog.exportSymbol('proto.smartcore.traits.InputSelectFeature', null, global);
 goog.exportSymbol('proto.smartcore.traits.InputSupport', null, global);
+goog.exportSymbol('proto.smartcore.traits.InputSupport.Feature', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullInputRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullInputResponse', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullInputResponse.Change', null, global);
@@ -529,7 +529,7 @@ proto.smartcore.traits.InputSupport.deserializeBinaryFromReader = function(msg, 
       msg.addInputs(value);
       break;
     case 3:
-      var value = /** @type {!proto.smartcore.traits.InputSelectFeature} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.InputSupport.Feature} */ (reader.readEnum());
       msg.setSupportedFeature(value);
       break;
     case 4:
@@ -599,6 +599,16 @@ proto.smartcore.traits.InputSupport.serializeBinaryToWriter = function(message, 
   }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.smartcore.traits.InputSupport.Feature = {
+  AV: 0,
+  AUDIO_ONLY: 1,
+  VIDEO_ONLY: 2,
+  INDEPENDENT: 3
+};
 
 /**
  * optional smartcore.types.ResourceSupport resource_support = 1;
@@ -676,16 +686,16 @@ proto.smartcore.traits.InputSupport.prototype.clearInputsList = function() {
 
 
 /**
- * optional InputSelectFeature supported_feature = 3;
- * @return {!proto.smartcore.traits.InputSelectFeature}
+ * optional Feature supported_feature = 3;
+ * @return {!proto.smartcore.traits.InputSupport.Feature}
  */
 proto.smartcore.traits.InputSupport.prototype.getSupportedFeature = function() {
-  return /** @type {!proto.smartcore.traits.InputSelectFeature} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.smartcore.traits.InputSupport.Feature} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.InputSelectFeature} value
+ * @param {!proto.smartcore.traits.InputSupport.Feature} value
  * @return {!proto.smartcore.traits.InputSupport} returns this
  */
 proto.smartcore.traits.InputSupport.prototype.setSupportedFeature = function(value) {
@@ -816,7 +826,7 @@ proto.smartcore.traits.AvPort.deserializeBinaryFromReader = function(msg, reader
       msg.setDescription(value);
       break;
     case 4:
-      var value = /** @type {!proto.smartcore.traits.InputSelectFeature} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.InputSupport.Feature} */ (reader.readEnum());
       msg.setSupportedFeature(value);
       break;
     default:
@@ -934,16 +944,16 @@ proto.smartcore.traits.AvPort.prototype.setDescription = function(value) {
 
 
 /**
- * optional InputSelectFeature supported_feature = 4;
- * @return {!proto.smartcore.traits.InputSelectFeature}
+ * optional InputSupport.Feature supported_feature = 4;
+ * @return {!proto.smartcore.traits.InputSupport.Feature}
  */
 proto.smartcore.traits.AvPort.prototype.getSupportedFeature = function() {
-  return /** @type {!proto.smartcore.traits.InputSelectFeature} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {!proto.smartcore.traits.InputSupport.Feature} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.InputSelectFeature} value
+ * @param {!proto.smartcore.traits.InputSupport.Feature} value
  * @return {!proto.smartcore.traits.AvPort} returns this
  */
 proto.smartcore.traits.AvPort.prototype.setSupportedFeature = function(value) {
@@ -1994,15 +2004,5 @@ proto.smartcore.traits.DescribeInputRequest.prototype.setName = function(value) 
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.InputSelectFeature = {
-  INPUT_SELECT_FEATURE_AV: 0,
-  INPUT_SELECT_FEATURE_AUDIO_ONLY: 1,
-  INPUT_SELECT_FEATURE_VIDEO_ONLY: 2,
-  INPUT_SELECT_FEATURE_INDEPENDENT: 3
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

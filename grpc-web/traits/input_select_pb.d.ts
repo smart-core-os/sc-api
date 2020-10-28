@@ -46,8 +46,8 @@ export class InputSupport extends jspb.Message {
   clearInputsList(): InputSupport;
   addInputs(value?: AvPort, index?: number): AvPort;
 
-  getSupportedFeature(): InputSelectFeature;
-  setSupportedFeature(value: InputSelectFeature): InputSupport;
+  getSupportedFeature(): InputSupport.Feature;
+  setSupportedFeature(value: InputSupport.Feature): InputSupport;
 
   getOutputsList(): Array<AvPort>;
   setOutputsList(value: Array<AvPort>): InputSupport;
@@ -66,8 +66,15 @@ export namespace InputSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     inputsList: Array<AvPort.AsObject>,
-    supportedFeature: InputSelectFeature,
+    supportedFeature: InputSupport.Feature,
     outputsList: Array<AvPort.AsObject>,
+  }
+
+  export enum Feature { 
+    AV = 0,
+    AUDIO_ONLY = 1,
+    VIDEO_ONLY = 2,
+    INDEPENDENT = 3,
   }
 }
 
@@ -81,8 +88,8 @@ export class AvPort extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): AvPort;
 
-  getSupportedFeature(): InputSelectFeature;
-  setSupportedFeature(value: InputSelectFeature): AvPort;
+  getSupportedFeature(): InputSupport.Feature;
+  setSupportedFeature(value: InputSupport.Feature): AvPort;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AvPort.AsObject;
@@ -97,7 +104,7 @@ export namespace AvPort {
     name: string,
     title: string,
     description: string,
-    supportedFeature: InputSelectFeature,
+    supportedFeature: InputSupport.Feature,
   }
 }
 
@@ -240,9 +247,3 @@ export namespace DescribeInputRequest {
   }
 }
 
-export enum InputSelectFeature { 
-  INPUT_SELECT_FEATURE_AV = 0,
-  INPUT_SELECT_FEATURE_AUDIO_ONLY = 1,
-  INPUT_SELECT_FEATURE_VIDEO_ONLY = 2,
-  INPUT_SELECT_FEATURE_INDEPENDENT = 3,
-}

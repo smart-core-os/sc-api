@@ -30,14 +30,14 @@ service OnOffInfo {
 }
 
 message OnOff {
-  OnOrOff on_or_off = 1;
-}
+  State state = 1;
 
-// Possible states for an On-Off device
-enum OnOrOff {
-  ON_OR_OFF_UNKNOWN = 0;
-  ON_OR_OFF_ON = 1;
-  ON_OR_OFF_OFF = 2;
+  // Possible states for an On-Off device
+  enum State {
+    UNKNOWN = 0;
+    ON = 1;
+    OFF = 2;
+  }
 }
 
 // OnOffSupport describes the capabilities of devices implementing this trait

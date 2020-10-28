@@ -56,11 +56,11 @@ export class BookingSupport extends jspb.Message {
   hasResourceSupport(): boolean;
   clearResourceSupport(): BookingSupport;
 
-  getCheckInSupport(): CheckInSupport;
-  setCheckInSupport(value: CheckInSupport): BookingSupport;
+  getCheckInSupport(): BookingSupport.CheckInSupport;
+  setCheckInSupport(value: BookingSupport.CheckInSupport): BookingSupport;
 
-  getCheckOutSupport(): CheckInSupport;
-  setCheckOutSupport(value: CheckInSupport): BookingSupport;
+  getCheckOutSupport(): BookingSupport.CheckInSupport;
+  setCheckOutSupport(value: BookingSupport.CheckInSupport): BookingSupport;
 
   getTimeResolution(): types_time_unit_pb.Unit;
   setTimeResolution(value: types_time_unit_pb.Unit): BookingSupport;
@@ -76,9 +76,16 @@ export class BookingSupport extends jspb.Message {
 export namespace BookingSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    checkInSupport: CheckInSupport,
-    checkOutSupport: CheckInSupport,
+    checkInSupport: BookingSupport.CheckInSupport,
+    checkOutSupport: BookingSupport.CheckInSupport,
     timeResolution: types_time_unit_pb.Unit,
+  }
+
+  export enum CheckInSupport { 
+    UNKNOWN = 0,
+    NO_SUPPORT = 1,
+    STATE = 2,
+    TIME = 3,
   }
 }
 
@@ -381,9 +388,3 @@ export namespace DescribeBookingRequest {
   }
 }
 
-export enum CheckInSupport { 
-  CHECK_IN_SUPPORT_UNKNOWN = 0,
-  CHECK_IN_SUPPORT_NO_SUPPORT = 1,
-  CHECK_IN_SUPPORT_STATE = 2,
-  CHECK_IN_SUPPORT_TIME = 3,
-}

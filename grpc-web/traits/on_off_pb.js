@@ -19,8 +19,8 @@ goog.object.extend(proto, types_info_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribeOnOffRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetOnOffRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.OnOff', null, global);
+goog.exportSymbol('proto.smartcore.traits.OnOff.State', null, global);
 goog.exportSymbol('proto.smartcore.traits.OnOffSupport', null, global);
-goog.exportSymbol('proto.smartcore.traits.OnOrOff', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOnOffRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOnOffResponse', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOnOffResponse.Change', null, global);
@@ -225,7 +225,7 @@ proto.smartcore.traits.OnOff.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.OnOff.toObject = function(includeInstance, msg) {
   var f, obj = {
-    onOrOff: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -263,8 +263,8 @@ proto.smartcore.traits.OnOff.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.traits.OnOrOff} */ (reader.readEnum());
-      msg.setOnOrOff(value);
+      var value = /** @type {!proto.smartcore.traits.OnOff.State} */ (reader.readEnum());
+      msg.setState(value);
       break;
     default:
       reader.skipField();
@@ -295,7 +295,7 @@ proto.smartcore.traits.OnOff.prototype.serializeBinary = function() {
  */
 proto.smartcore.traits.OnOff.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getOnOrOff();
+  f = message.getState();
   if (f !== 0.0) {
     writer.writeEnum(
       1,
@@ -306,19 +306,28 @@ proto.smartcore.traits.OnOff.serializeBinaryToWriter = function(message, writer)
 
 
 /**
- * optional OnOrOff on_or_off = 1;
- * @return {!proto.smartcore.traits.OnOrOff}
+ * @enum {number}
  */
-proto.smartcore.traits.OnOff.prototype.getOnOrOff = function() {
-  return /** @type {!proto.smartcore.traits.OnOrOff} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.smartcore.traits.OnOff.State = {
+  UNKNOWN: 0,
+  ON: 1,
+  OFF: 2
+};
+
+/**
+ * optional State state = 1;
+ * @return {!proto.smartcore.traits.OnOff.State}
+ */
+proto.smartcore.traits.OnOff.prototype.getState = function() {
+  return /** @type {!proto.smartcore.traits.OnOff.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OnOrOff} value
+ * @param {!proto.smartcore.traits.OnOff.State} value
  * @return {!proto.smartcore.traits.OnOff} returns this
  */
-proto.smartcore.traits.OnOff.prototype.setOnOrOff = function(value) {
+proto.smartcore.traits.OnOff.prototype.setState = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -1436,14 +1445,5 @@ proto.smartcore.traits.DescribeOnOffRequest.prototype.setName = function(value) 
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.OnOrOff = {
-  ON_OR_OFF_UNKNOWN: 0,
-  ON_OR_OFF_ON: 1,
-  ON_OR_OFF_OFF: 2
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

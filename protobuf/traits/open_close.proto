@@ -40,17 +40,6 @@ message OpenClosePositions {
   repeated OpenClosePosition states = 1;
 }
 
-// Possible directions the device can open/close
-enum OpenCloseDirection {
-  OPEN_CLOSE_DIRECTION_UNSPECIFIED = 0;
-  OPEN_CLOSE_DIRECTION_UP = 1;
-  OPEN_CLOSE_DIRECTION_DOWN = 2;
-  OPEN_CLOSE_DIRECTION_LEFT = 3;
-  OPEN_CLOSE_DIRECTION_RIGHT = 4;
-  OPEN_CLOSE_DIRECTION_IN = 5;
-  OPEN_CLOSE_DIRECTION_OUT = 6;
-}
-
 // Defines the position of one open close element for the device
 message OpenClosePosition {
   // 0-100, the current value for the open close position of the device in this direction
@@ -60,7 +49,18 @@ message OpenClosePosition {
   // Read-only, the target position_percent after a transition
   float target_position_percent = 3;
   // Optional direction for devices that support multiple open/close directions
-  OpenCloseDirection direction = 4;
+  Direction direction = 4;
+
+  // Possible directions the device can open/close
+  enum Direction {
+    UNSPECIFIED = 0;
+    UP = 1;
+    DOWN = 2;
+    LEFT = 3;
+    RIGHT = 4;
+    IN = 5;
+    OUT = 6;
+  }
 }
 
 // PositionsSupport describes the capabilities of devices implementing this trait
@@ -71,7 +71,7 @@ message PositionsSupport {
   // 0-100 to represent a percentage
   smartcore.api.types.FloatAttributes position_attributes = 2;
   // The supported directions for the device. If none then assume only a single direction is supported
-  repeated OpenCloseDirection directions = 3;
+  repeated OpenClosePosition.Direction directions = 3;
   // Does the device support the Stop method
   bool supports_stop = 4;
 }

@@ -38,8 +38,8 @@ export class OpenClosePosition extends jspb.Message {
   getTargetPositionPercent(): number;
   setTargetPositionPercent(value: number): OpenClosePosition;
 
-  getDirection(): OpenCloseDirection;
-  setDirection(value: OpenCloseDirection): OpenClosePosition;
+  getDirection(): OpenClosePosition.Direction;
+  setDirection(value: OpenClosePosition.Direction): OpenClosePosition;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenClosePosition.AsObject;
@@ -54,7 +54,17 @@ export namespace OpenClosePosition {
     positionPercent: number,
     positionPercentTween?: types_tween_pb.Tween.AsObject,
     targetPositionPercent: number,
-    direction: OpenCloseDirection,
+    direction: OpenClosePosition.Direction,
+  }
+
+  export enum Direction { 
+    UNSPECIFIED = 0,
+    UP = 1,
+    DOWN = 2,
+    LEFT = 3,
+    RIGHT = 4,
+    IN = 5,
+    OUT = 6,
   }
 }
 
@@ -69,10 +79,10 @@ export class PositionsSupport extends jspb.Message {
   hasPositionAttributes(): boolean;
   clearPositionAttributes(): PositionsSupport;
 
-  getDirectionsList(): Array<OpenCloseDirection>;
-  setDirectionsList(value: Array<OpenCloseDirection>): PositionsSupport;
+  getDirectionsList(): Array<OpenClosePosition.Direction>;
+  setDirectionsList(value: Array<OpenClosePosition.Direction>): PositionsSupport;
   clearDirectionsList(): PositionsSupport;
-  addDirections(value: OpenCloseDirection, index?: number): PositionsSupport;
+  addDirections(value: OpenClosePosition.Direction, index?: number): PositionsSupport;
 
   getSupportsStop(): boolean;
   setSupportsStop(value: boolean): PositionsSupport;
@@ -89,7 +99,7 @@ export namespace PositionsSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     positionAttributes?: types_number_pb.FloatAttributes.AsObject,
-    directionsList: Array<OpenCloseDirection>,
+    directionsList: Array<OpenClosePosition.Direction>,
     supportsStop: boolean,
   }
 }
@@ -249,12 +259,3 @@ export namespace DescribePositionsRequest {
   }
 }
 
-export enum OpenCloseDirection { 
-  OPEN_CLOSE_DIRECTION_UNSPECIFIED = 0,
-  OPEN_CLOSE_DIRECTION_UP = 1,
-  OPEN_CLOSE_DIRECTION_DOWN = 2,
-  OPEN_CLOSE_DIRECTION_LEFT = 3,
-  OPEN_CLOSE_DIRECTION_RIGHT = 4,
-  OPEN_CLOSE_DIRECTION_IN = 5,
-  OPEN_CLOSE_DIRECTION_OUT = 6,
-}

@@ -216,7 +216,7 @@
               
               
                 <li>
-                  <a href="#smartcore.traits.AirTemperatureMode"><span class="badge">E</span>AirTemperatureMode</a>
+                  <a href="#smartcore.traits.AirTemperature.Mode"><span class="badge">E</span>AirTemperature.Mode</a>
                 </li>
               
               
@@ -256,7 +256,7 @@
               
                 <tr>
                   <td>mode</td>
-                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
+                  <td><a href="#smartcore.traits.AirTemperature.Mode">AirTemperature.Mode</a></td>
                   <td></td>
                   <td><p>The current mode for the device </p></td>
                 </tr>
@@ -336,7 +336,7 @@
               
                 <tr>
                   <td>supported_modes</td>
-                  <td><a href="#smartcore.traits.AirTemperatureMode">AirTemperatureMode</a></td>
+                  <td><a href="#smartcore.traits.AirTemperature.Mode">AirTemperature.Mode</a></td>
                   <td>repeated</td>
                   <td><p>The list of modes a device supports. </p></td>
                 </tr>
@@ -568,7 +568,7 @@ response as required. </p></td>
       
 
       
-        <h3 id="smartcore.traits.AirTemperatureMode">AirTemperatureMode</h3>
+        <h3 id="smartcore.traits.AirTemperature.Mode">AirTemperature.Mode</h3>
         <p>Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control</p>
         <table class="enum-table">
           <thead>
@@ -577,76 +577,76 @@ response as required. </p></td>
           <tbody>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_UNKNOWN</td>
+                <td>UNKNOWN</td>
                 <td>0</td>
                 <td><p>The mode is unknown during a query. If used during a write then no change will be made, if part of a
 read then the mode is unknown. This makes no sense as part of an attribute.</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_ON</td>
+                <td>ON</td>
                 <td>1</td>
                 <td><p>Write-only. If the device is OFF restore it to it&#39;s previous state</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_OFF</td>
+                <td>OFF</td>
                 <td>2</td>
                 <td><p>Attr, read, write. The device supports, is, or should be disabled</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_HEAT</td>
+                <td>HEAT</td>
                 <td>3</td>
                 <td><p>Attr, read, write. The device supports, is, or should be heating</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_COOL</td>
+                <td>COOL</td>
                 <td>4</td>
                 <td><p>Attr, read, write. The device supports, is, or should be cooling</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_HEAT_COOL</td>
+                <td>HEAT_COOL</td>
                 <td>5</td>
                 <td><p>Attr, read, write. The device supports, is, or should be maintaining heating/cooling to target a specific set
 point (and/or min &#43; max)</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_AUTO</td>
+                <td>AUTO</td>
                 <td>6</td>
                 <td><p>Attr. The device supports automatic control of set points and/or schedules based on some other means (AI for
 example)</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_FAN_ONLY</td>
+                <td>FAN_ONLY</td>
                 <td>7</td>
                 <td><p>Attr, read, write. The device supports, is, or should be able to use only the fan without heating/cooling elements.</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_ECO</td>
+                <td>ECO</td>
                 <td>8</td>
                 <td><p>Attr, read, write. The device supports, is, or should be in an energy saving &#34;eco&#34; mode</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_PURIFIER</td>
+                <td>PURIFIER</td>
                 <td>9</td>
                 <td><p>Attr, read, write. The device supports, is, or should be in an air purifying mode</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_DRY</td>
+                <td>DRY</td>
                 <td>10</td>
                 <td><p>Attr, read, write. The device supports, is, or should be in an air drying mode</p></td>
               </tr>
             
               <tr>
-                <td>AIR_TEMPERATURE_MODE_LOCKED</td>
+                <td>LOCKED</td>
                 <td>11</td>
                 <td><p>Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)</p></td>
               </tr>

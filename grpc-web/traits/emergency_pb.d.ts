@@ -6,8 +6,8 @@ import * as types_info_pb from '../types/info_pb';
 
 
 export class Emergency extends jspb.Message {
-  getLevel(): EmergencyLevel;
-  setLevel(value: EmergencyLevel): Emergency;
+  getLevel(): Emergency.Level;
+  setLevel(value: Emergency.Level): Emergency;
 
   getReason(): string;
   setReason(value: string): Emergency;
@@ -33,11 +33,18 @@ export class Emergency extends jspb.Message {
 
 export namespace Emergency {
   export type AsObject = {
-    level: EmergencyLevel,
+    level: Emergency.Level,
     reason: string,
     levelChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     silent: boolean,
     drill: boolean,
+  }
+
+  export enum Level { 
+    UNKNOWN = 0,
+    OK = 1,
+    WARNING = 2,
+    EMERGENCY = 3,
   }
 }
 
@@ -196,9 +203,3 @@ export namespace DescribeEmergencyRequest {
   }
 }
 
-export enum EmergencyLevel { 
-  EMERGENCY_LEVEL_UNKNOWN = 0,
-  EMERGENCY_LEVEL_OK = 1,
-  EMERGENCY_LEVEL_WARNING = 2,
-  EMERGENCY_LEVEL_EMERGENCY = 3,
-}

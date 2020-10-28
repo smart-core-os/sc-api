@@ -33,7 +33,7 @@ service EmergencyInfo {
 // An emergency is a life threatening event.
 message Emergency {
   // The level of emergency that is active.
-  EmergencyLevel level = 1;
+  Level level = 1;
   // A textual description of the reason for the emergency. For example "Fire alarm triggered", "Excessive pressure"
   string reason = 2;
   // The time the emergency level was changed. When writing and absent, and the level has changed, then server time will be used.
@@ -42,19 +42,19 @@ message Emergency {
   bool silent = 4;
   // The emergency being fabricated, typically for testing.
   bool drill = 5;
-}
 
-// Levels of emergency
-enum EmergencyLevel {
-  // The level is unknown, applications may choose to be cautious or care-free with this lack of information.
-  EMERGENCY_LEVEL_UNKNOWN = 0;
-  // There is no emergency.
-  EMERGENCY_LEVEL_OK = 1;
-  // There is a chance of an emergency soon. This might be reported by a smoke detector that has detected some particles
-  // but not enough to trigger the alarm yet.
-  EMERGENCY_LEVEL_WARNING = 2;
-  // There is an emergency. Please protect yourself and follow emergency procedures.
-  EMERGENCY_LEVEL_EMERGENCY = 3;
+  // Levels of emergency
+  enum Level {
+    // The level is unknown, applications may choose to be cautious or care-free with this lack of information.
+    UNKNOWN = 0;
+    // There is no emergency.
+    OK = 1;
+    // There is a chance of an emergency soon. This might be reported by a smoke detector that has detected some particles
+    // but not enough to trigger the alarm yet.
+    WARNING = 2;
+    // There is an emergency. Please protect yourself and follow emergency procedures.
+    EMERGENCY = 3;
+  }
 }
 
 // EmergencySupport describes the capabilities of devices implementing this trait

@@ -8,8 +8,8 @@ import * as types_unit_pb from '../types/unit_pb';
 
 
 export class AirTemperature extends jspb.Message {
-  getMode(): AirTemperatureMode;
-  setMode(value: AirTemperatureMode): AirTemperature;
+  getMode(): AirTemperature.Mode;
+  setMode(value: AirTemperature.Mode): AirTemperature;
 
   getTemperatureSetPoint(): types_unit_pb.Temperature | undefined;
   setTemperatureSetPoint(value?: types_unit_pb.Temperature): AirTemperature;
@@ -53,13 +53,28 @@ export class AirTemperature extends jspb.Message {
 
 export namespace AirTemperature {
   export type AsObject = {
-    mode: AirTemperatureMode,
+    mode: AirTemperature.Mode,
     temperatureSetPoint?: types_unit_pb.Temperature.AsObject,
     temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject,
     temperatureRange?: TemperatureRange.AsObject,
     ambientTemperature?: types_unit_pb.Temperature.AsObject,
     ambientHumidity?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     dewPoint?: types_unit_pb.Temperature.AsObject,
+  }
+
+  export enum Mode { 
+    UNKNOWN = 0,
+    ON = 1,
+    OFF = 2,
+    HEAT = 3,
+    COOL = 4,
+    HEAT_COOL = 5,
+    AUTO = 6,
+    FAN_ONLY = 7,
+    ECO = 8,
+    PURIFIER = 9,
+    DRY = 10,
+    LOCKED = 11,
   }
 
   export enum TemperatureGoalCase { 
@@ -111,10 +126,10 @@ export class AirTemperatureSupport extends jspb.Message {
   getNativeUnit(): types_unit_pb.TemperatureUnit;
   setNativeUnit(value: types_unit_pb.TemperatureUnit): AirTemperatureSupport;
 
-  getSupportedModesList(): Array<AirTemperatureMode>;
-  setSupportedModesList(value: Array<AirTemperatureMode>): AirTemperatureSupport;
+  getSupportedModesList(): Array<AirTemperature.Mode>;
+  setSupportedModesList(value: Array<AirTemperature.Mode>): AirTemperatureSupport;
   clearSupportedModesList(): AirTemperatureSupport;
-  addSupportedModes(value: AirTemperatureMode, index?: number): AirTemperatureSupport;
+  addSupportedModes(value: AirTemperature.Mode, index?: number): AirTemperatureSupport;
 
   getMinRangeCelsius(): number;
   setMinRangeCelsius(value: number): AirTemperatureSupport;
@@ -131,7 +146,7 @@ export namespace AirTemperatureSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     nativeUnit: types_unit_pb.TemperatureUnit,
-    supportedModesList: Array<AirTemperatureMode>,
+    supportedModesList: Array<AirTemperature.Mode>,
     minRangeCelsius: number,
   }
 }
@@ -271,17 +286,3 @@ export namespace DescribeAirTemperatureRequest {
   }
 }
 
-export enum AirTemperatureMode { 
-  AIR_TEMPERATURE_MODE_UNKNOWN = 0,
-  AIR_TEMPERATURE_MODE_ON = 1,
-  AIR_TEMPERATURE_MODE_OFF = 2,
-  AIR_TEMPERATURE_MODE_HEAT = 3,
-  AIR_TEMPERATURE_MODE_COOL = 4,
-  AIR_TEMPERATURE_MODE_HEAT_COOL = 5,
-  AIR_TEMPERATURE_MODE_AUTO = 6,
-  AIR_TEMPERATURE_MODE_FAN_ONLY = 7,
-  AIR_TEMPERATURE_MODE_ECO = 8,
-  AIR_TEMPERATURE_MODE_PURIFIER = 9,
-  AIR_TEMPERATURE_MODE_DRY = 10,
-  AIR_TEMPERATURE_MODE_LOCKED = 11,
-}

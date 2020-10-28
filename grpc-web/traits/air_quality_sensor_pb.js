@@ -23,7 +23,7 @@ goog.object.extend(proto, types_info_pb);
 var types_number_pb = require('../types/number_pb.js');
 goog.object.extend(proto, types_number_pb);
 goog.exportSymbol('proto.smartcore.traits.AirQuality', null, global);
-goog.exportSymbol('proto.smartcore.traits.AirQualityComfort', null, global);
+goog.exportSymbol('proto.smartcore.traits.AirQuality.Comfort', null, global);
 goog.exportSymbol('proto.smartcore.traits.AirQualitySupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.DescribeAirQualityRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetAirQualityRequest', null, global);
@@ -265,7 +265,7 @@ proto.smartcore.traits.AirQuality.deserializeBinaryFromReader = function(msg, re
       msg.setAirPressure(value);
       break;
     case 4:
-      var value = /** @type {!proto.smartcore.traits.AirQualityComfort} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.AirQuality.Comfort} */ (reader.readEnum());
       msg.setComfort(value);
       break;
     default:
@@ -330,6 +330,15 @@ proto.smartcore.traits.AirQuality.serializeBinaryToWriter = function(message, wr
   }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.smartcore.traits.AirQuality.Comfort = {
+  UNKNOWN: 0,
+  COMFORTABLE: 1,
+  UNCOMFORTABLE: 2
+};
 
 /**
  * optional google.protobuf.FloatValue carbon_dioxide_level = 1;
@@ -443,16 +452,16 @@ proto.smartcore.traits.AirQuality.prototype.hasAirPressure = function() {
 
 
 /**
- * optional AirQualityComfort comfort = 4;
- * @return {!proto.smartcore.traits.AirQualityComfort}
+ * optional Comfort comfort = 4;
+ * @return {!proto.smartcore.traits.AirQuality.Comfort}
  */
 proto.smartcore.traits.AirQuality.prototype.getComfort = function() {
-  return /** @type {!proto.smartcore.traits.AirQualityComfort} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {!proto.smartcore.traits.AirQuality.Comfort} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.AirQualityComfort} value
+ * @param {!proto.smartcore.traits.AirQuality.Comfort} value
  * @return {!proto.smartcore.traits.AirQuality} returns this
  */
 proto.smartcore.traits.AirQuality.prototype.setComfort = function(value) {
@@ -561,7 +570,7 @@ proto.smartcore.traits.AirQualitySupport.deserializeBinaryFromReader = function(
       msg.setAirPressure(value);
       break;
     case 5:
-      var value = /** @type {!Array<!proto.smartcore.traits.AirQualityComfort>} */ (reader.readPackedEnum());
+      var value = /** @type {!Array<!proto.smartcore.traits.AirQuality.Comfort>} */ (reader.readPackedEnum());
       msg.setComfortList(value);
       break;
     default:
@@ -784,16 +793,16 @@ proto.smartcore.traits.AirQualitySupport.prototype.hasAirPressure = function() {
 
 
 /**
- * repeated AirQualityComfort comfort = 5;
- * @return {!Array<!proto.smartcore.traits.AirQualityComfort>}
+ * repeated AirQuality.Comfort comfort = 5;
+ * @return {!Array<!proto.smartcore.traits.AirQuality.Comfort>}
  */
 proto.smartcore.traits.AirQualitySupport.prototype.getComfortList = function() {
-  return /** @type {!Array<!proto.smartcore.traits.AirQualityComfort>} */ (jspb.Message.getRepeatedField(this, 5));
+  return /** @type {!Array<!proto.smartcore.traits.AirQuality.Comfort>} */ (jspb.Message.getRepeatedField(this, 5));
 };
 
 
 /**
- * @param {!Array<!proto.smartcore.traits.AirQualityComfort>} value
+ * @param {!Array<!proto.smartcore.traits.AirQuality.Comfort>} value
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
  */
 proto.smartcore.traits.AirQualitySupport.prototype.setComfortList = function(value) {
@@ -802,7 +811,7 @@ proto.smartcore.traits.AirQualitySupport.prototype.setComfortList = function(val
 
 
 /**
- * @param {!proto.smartcore.traits.AirQualityComfort} value
+ * @param {!proto.smartcore.traits.AirQuality.Comfort} value
  * @param {number=} opt_index
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
  */
@@ -1754,14 +1763,5 @@ proto.smartcore.traits.DescribeAirQualityRequest.prototype.setName = function(va
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.AirQualityComfort = {
-  AIR_QUALITY_COMFORT_UNKNOWN: 0,
-  AIR_QUALITY_COMFORT_COMFORTABLE: 1,
-  AIR_QUALITY_COMFORT_UNCOMFORTABLE: 2
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

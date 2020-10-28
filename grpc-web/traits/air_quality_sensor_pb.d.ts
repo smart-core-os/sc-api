@@ -23,8 +23,8 @@ export class AirQuality extends jspb.Message {
   hasAirPressure(): boolean;
   clearAirPressure(): AirQuality;
 
-  getComfort(): AirQualityComfort;
-  setComfort(value: AirQualityComfort): AirQuality;
+  getComfort(): AirQuality.Comfort;
+  setComfort(value: AirQuality.Comfort): AirQuality;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQuality.AsObject;
@@ -39,7 +39,13 @@ export namespace AirQuality {
     carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     airPressure?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    comfort: AirQualityComfort,
+    comfort: AirQuality.Comfort,
+  }
+
+  export enum Comfort { 
+    UNKNOWN = 0,
+    COMFORTABLE = 1,
+    UNCOMFORTABLE = 2,
   }
 }
 
@@ -64,10 +70,10 @@ export class AirQualitySupport extends jspb.Message {
   hasAirPressure(): boolean;
   clearAirPressure(): AirQualitySupport;
 
-  getComfortList(): Array<AirQualityComfort>;
-  setComfortList(value: Array<AirQualityComfort>): AirQualitySupport;
+  getComfortList(): Array<AirQuality.Comfort>;
+  setComfortList(value: Array<AirQuality.Comfort>): AirQualitySupport;
   clearComfortList(): AirQualitySupport;
-  addComfort(value: AirQualityComfort, index?: number): AirQualitySupport;
+  addComfort(value: AirQuality.Comfort, index?: number): AirQualitySupport;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQualitySupport.AsObject;
@@ -83,7 +89,7 @@ export namespace AirQualitySupport {
     carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject,
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,
-    comfortList: Array<AirQualityComfort>,
+    comfortList: Array<AirQuality.Comfort>,
   }
 }
 
@@ -210,8 +216,3 @@ export namespace DescribeAirQualityRequest {
   }
 }
 
-export enum AirQualityComfort { 
-  AIR_QUALITY_COMFORT_UNKNOWN = 0,
-  AIR_QUALITY_COMFORT_COMFORTABLE = 1,
-  AIR_QUALITY_COMFORT_UNCOMFORTABLE = 2,
-}

@@ -37,41 +37,10 @@ service AirTemperatureInfo {
   rpc DescribeAirTemperature (DescribeAirTemperatureRequest) returns (AirTemperatureSupport);
 }
 
-// Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control
-enum AirTemperatureMode {
-  // The mode is unknown during a query. If used during a write then no change will be made, if part of a
-  // read then the mode is unknown. This makes no sense as part of an attribute.
-  AIR_TEMPERATURE_MODE_UNKNOWN = 0;
-  // Write-only. If the device is OFF restore it to it's previous state
-  AIR_TEMPERATURE_MODE_ON = 1;
-  // Attr, read, write. The device supports, is, or should be disabled
-  AIR_TEMPERATURE_MODE_OFF = 2;
-  // Attr, read, write. The device supports, is, or should be heating
-  AIR_TEMPERATURE_MODE_HEAT = 3;
-  // Attr, read, write. The device supports, is, or should be cooling
-  AIR_TEMPERATURE_MODE_COOL = 4;
-  // Attr, read, write. The device supports, is, or should be maintaining heating/cooling to target a specific set
-  // point (and/or min + max)
-  AIR_TEMPERATURE_MODE_HEAT_COOL = 5;
-  // Attr. The device supports automatic control of set points and/or schedules based on some other means (AI for
-  // example)
-  AIR_TEMPERATURE_MODE_AUTO = 6;
-  // Attr, read, write. The device supports, is, or should be able to use only the fan without heating/cooling elements.
-  AIR_TEMPERATURE_MODE_FAN_ONLY = 7;
-  // Attr, read, write. The device supports, is, or should be in an energy saving "eco" mode
-  AIR_TEMPERATURE_MODE_ECO = 8;
-  // Attr, read, write. The device supports, is, or should be in an air purifying mode
-  AIR_TEMPERATURE_MODE_PURIFIER = 9;
-  // Attr, read, write. The device supports, is, or should be in an air drying mode
-  AIR_TEMPERATURE_MODE_DRY = 10;
-  // Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)
-  AIR_TEMPERATURE_MODE_LOCKED = 11;
-}
-
 // All the properties of the device
 message AirTemperature {
   // The current mode for the device
-  AirTemperatureMode mode = 1;
+  Mode mode = 1;
   oneof temperature_goal {
     // A target temperature for the device
     smartcore.api.types.Temperature temperature_set_point = 2;
@@ -86,6 +55,38 @@ message AirTemperature {
   google.protobuf.FloatValue ambient_humidity = 6;
   // Optional, read-only. The dew-point as read by the device
   smartcore.api.types.Temperature dew_point = 7;
+
+
+  // Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control
+  enum Mode {
+    // The mode is unknown during a query. If used during a write then no change will be made, if part of a
+    // read then the mode is unknown. This makes no sense as part of an attribute.
+    UNKNOWN = 0;
+    // Write-only. If the device is OFF restore it to it's previous state
+    ON = 1;
+    // Attr, read, write. The device supports, is, or should be disabled
+    OFF = 2;
+    // Attr, read, write. The device supports, is, or should be heating
+    HEAT = 3;
+    // Attr, read, write. The device supports, is, or should be cooling
+    COOL = 4;
+    // Attr, read, write. The device supports, is, or should be maintaining heating/cooling to target a specific set
+    // point (and/or min + max)
+    HEAT_COOL = 5;
+    // Attr. The device supports automatic control of set points and/or schedules based on some other means (AI for
+    // example)
+    AUTO = 6;
+    // Attr, read, write. The device supports, is, or should be able to use only the fan without heating/cooling elements.
+    FAN_ONLY = 7;
+    // Attr, read, write. The device supports, is, or should be in an energy saving "eco" mode
+    ECO = 8;
+    // Attr, read, write. The device supports, is, or should be in an air purifying mode
+    PURIFIER = 9;
+    // Attr, read, write. The device supports, is, or should be in an air drying mode
+    DRY = 10;
+    // Attr, read, write. The device supports, is, or should be in locked mode (i.e. not user-editable)
+    LOCKED = 11;
+  }
 }
 
 // A setting for devices that target a temperature between a range.
@@ -105,7 +106,7 @@ message AirTemperatureSupport {
   // How the device thinks, all communications will be in celsius but the device's native unit is this.
   smartcore.api.types.TemperatureUnit native_unit = 2;
   // The list of modes a device supports.
-  repeated AirTemperatureMode supported_modes = 3;
+  repeated AirTemperature.Mode supported_modes = 3;
   // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.
   double min_range_celsius = 4;
 }

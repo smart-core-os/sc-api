@@ -5,8 +5,8 @@ import * as types_info_pb from '../types/info_pb';
 
 
 export class Occupancy extends jspb.Message {
-  getState(): OccupancyState;
-  setState(value: OccupancyState): Occupancy;
+  getState(): Occupancy.State;
+  setState(value: Occupancy.State): Occupancy;
 
   getPeopleCount(): number;
   setPeopleCount(value: number): Occupancy;
@@ -34,11 +34,18 @@ export class Occupancy extends jspb.Message {
 
 export namespace Occupancy {
   export type AsObject = {
-    state: OccupancyState,
+    state: Occupancy.State,
     peopleCount: number,
     stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     reasonsList: Array<string>,
     confidence: number,
+  }
+
+  export enum State { 
+    NO_SIGNALS = 0,
+    OCCUPIED = 1,
+    UNOCCUPIED = 2,
+    IDLE = 3,
   }
 }
 
@@ -171,9 +178,3 @@ export namespace DescribeOccupancyRequest {
   }
 }
 
-export enum OccupancyState { 
-  OCCUPANCY_STATE_NO_SIGNALS = 0,
-  OCCUPANCY_STATE_OCCUPIED = 1,
-  OCCUPANCY_STATE_UNOCCUPIED = 2,
-  OCCUPANCY_STATE_IDLE = 3,
-}

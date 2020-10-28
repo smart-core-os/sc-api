@@ -19,7 +19,7 @@ goog.object.extend(proto, types_info_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribeOccupancyRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetOccupancyRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.Occupancy', null, global);
-goog.exportSymbol('proto.smartcore.traits.OccupancyState', null, global);
+goog.exportSymbol('proto.smartcore.traits.Occupancy.State', null, global);
 goog.exportSymbol('proto.smartcore.traits.OccupancySupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOccupancyRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOccupancyResponse', null, global);
@@ -252,7 +252,7 @@ proto.smartcore.traits.Occupancy.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.traits.OccupancyState} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.Occupancy.State} */ (reader.readEnum());
       msg.setState(value);
       break;
     case 2:
@@ -341,16 +341,26 @@ proto.smartcore.traits.Occupancy.serializeBinaryToWriter = function(message, wri
 
 
 /**
- * optional OccupancyState state = 1;
- * @return {!proto.smartcore.traits.OccupancyState}
+ * @enum {number}
+ */
+proto.smartcore.traits.Occupancy.State = {
+  NO_SIGNALS: 0,
+  OCCUPIED: 1,
+  UNOCCUPIED: 2,
+  IDLE: 3
+};
+
+/**
+ * optional State state = 1;
+ * @return {!proto.smartcore.traits.Occupancy.State}
  */
 proto.smartcore.traits.Occupancy.prototype.getState = function() {
-  return /** @type {!proto.smartcore.traits.OccupancyState} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.traits.Occupancy.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OccupancyState} value
+ * @param {!proto.smartcore.traits.Occupancy.State} value
  * @return {!proto.smartcore.traits.Occupancy} returns this
  */
 proto.smartcore.traits.Occupancy.prototype.setState = function(value) {
@@ -1430,15 +1440,5 @@ proto.smartcore.traits.DescribeOccupancyRequest.prototype.setName = function(val
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.OccupancyState = {
-  OCCUPANCY_STATE_NO_SIGNALS: 0,
-  OCCUPANCY_STATE_OCCUPIED: 1,
-  OCCUPANCY_STATE_UNOCCUPIED: 2,
-  OCCUPANCY_STATE_IDLE: 3
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

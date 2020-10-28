@@ -23,8 +23,8 @@ goog.object.extend(proto, types_info_pb);
 var types_unit_pb = require('../types/unit_pb.js');
 goog.object.extend(proto, types_unit_pb);
 goog.exportSymbol('proto.smartcore.traits.AirTemperature', null, global);
+goog.exportSymbol('proto.smartcore.traits.AirTemperature.Mode', null, global);
 goog.exportSymbol('proto.smartcore.traits.AirTemperature.TemperatureGoalCase', null, global);
-goog.exportSymbol('proto.smartcore.traits.AirTemperatureMode', null, global);
 goog.exportSymbol('proto.smartcore.traits.AirTemperatureSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.DescribeAirTemperatureRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetAirTemperatureRequest', null, global);
@@ -325,7 +325,7 @@ proto.smartcore.traits.AirTemperature.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.traits.AirTemperatureMode} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.AirTemperature.Mode} */ (reader.readEnum());
       msg.setMode(value);
       break;
     case 2:
@@ -446,16 +446,34 @@ proto.smartcore.traits.AirTemperature.serializeBinaryToWriter = function(message
 
 
 /**
- * optional AirTemperatureMode mode = 1;
- * @return {!proto.smartcore.traits.AirTemperatureMode}
+ * @enum {number}
+ */
+proto.smartcore.traits.AirTemperature.Mode = {
+  UNKNOWN: 0,
+  ON: 1,
+  OFF: 2,
+  HEAT: 3,
+  COOL: 4,
+  HEAT_COOL: 5,
+  AUTO: 6,
+  FAN_ONLY: 7,
+  ECO: 8,
+  PURIFIER: 9,
+  DRY: 10,
+  LOCKED: 11
+};
+
+/**
+ * optional Mode mode = 1;
+ * @return {!proto.smartcore.traits.AirTemperature.Mode}
  */
 proto.smartcore.traits.AirTemperature.prototype.getMode = function() {
-  return /** @type {!proto.smartcore.traits.AirTemperatureMode} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.traits.AirTemperature.Mode} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.AirTemperatureMode} value
+ * @param {!proto.smartcore.traits.AirTemperature.Mode} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
  */
 proto.smartcore.traits.AirTemperature.prototype.setMode = function(value) {
@@ -1027,7 +1045,7 @@ proto.smartcore.traits.AirTemperatureSupport.deserializeBinaryFromReader = funct
       msg.setNativeUnit(value);
       break;
     case 3:
-      var value = /** @type {!Array<!proto.smartcore.traits.AirTemperatureMode>} */ (reader.readPackedEnum());
+      var value = /** @type {!Array<!proto.smartcore.traits.AirTemperature.Mode>} */ (reader.readPackedEnum());
       msg.setSupportedModesList(value);
       break;
     case 4:
@@ -1151,16 +1169,16 @@ proto.smartcore.traits.AirTemperatureSupport.prototype.setNativeUnit = function(
 
 
 /**
- * repeated AirTemperatureMode supported_modes = 3;
- * @return {!Array<!proto.smartcore.traits.AirTemperatureMode>}
+ * repeated AirTemperature.Mode supported_modes = 3;
+ * @return {!Array<!proto.smartcore.traits.AirTemperature.Mode>}
  */
 proto.smartcore.traits.AirTemperatureSupport.prototype.getSupportedModesList = function() {
-  return /** @type {!Array<!proto.smartcore.traits.AirTemperatureMode>} */ (jspb.Message.getRepeatedField(this, 3));
+  return /** @type {!Array<!proto.smartcore.traits.AirTemperature.Mode>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /**
- * @param {!Array<!proto.smartcore.traits.AirTemperatureMode>} value
+ * @param {!Array<!proto.smartcore.traits.AirTemperature.Mode>} value
  * @return {!proto.smartcore.traits.AirTemperatureSupport} returns this
  */
 proto.smartcore.traits.AirTemperatureSupport.prototype.setSupportedModesList = function(value) {
@@ -1169,7 +1187,7 @@ proto.smartcore.traits.AirTemperatureSupport.prototype.setSupportedModesList = f
 
 
 /**
- * @param {!proto.smartcore.traits.AirTemperatureMode} value
+ * @param {!proto.smartcore.traits.AirTemperature.Mode} value
  * @param {number=} opt_index
  * @return {!proto.smartcore.traits.AirTemperatureSupport} returns this
  */
@@ -2218,23 +2236,5 @@ proto.smartcore.traits.DescribeAirTemperatureRequest.prototype.setName = functio
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.AirTemperatureMode = {
-  AIR_TEMPERATURE_MODE_UNKNOWN: 0,
-  AIR_TEMPERATURE_MODE_ON: 1,
-  AIR_TEMPERATURE_MODE_OFF: 2,
-  AIR_TEMPERATURE_MODE_HEAT: 3,
-  AIR_TEMPERATURE_MODE_COOL: 4,
-  AIR_TEMPERATURE_MODE_HEAT_COOL: 5,
-  AIR_TEMPERATURE_MODE_AUTO: 6,
-  AIR_TEMPERATURE_MODE_FAN_ONLY: 7,
-  AIR_TEMPERATURE_MODE_ECO: 8,
-  AIR_TEMPERATURE_MODE_PURIFIER: 9,
-  AIR_TEMPERATURE_MODE_DRY: 10,
-  AIR_TEMPERATURE_MODE_LOCKED: 11
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

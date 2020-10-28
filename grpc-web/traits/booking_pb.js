@@ -26,9 +26,9 @@ var types_time_unit_pb = require('../types/time/unit_pb.js');
 goog.object.extend(proto, types_time_unit_pb);
 goog.exportSymbol('proto.smartcore.traits.Booking', null, global);
 goog.exportSymbol('proto.smartcore.traits.BookingSupport', null, global);
+goog.exportSymbol('proto.smartcore.traits.BookingSupport.CheckInSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.CheckInBookingRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.CheckInBookingResponse', null, global);
-goog.exportSymbol('proto.smartcore.traits.CheckInSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.CheckOutBookingRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.CheckOutBookingResponse', null, global);
 goog.exportSymbol('proto.smartcore.traits.CreateBookingRequest', null, global);
@@ -755,11 +755,11 @@ proto.smartcore.traits.BookingSupport.deserializeBinaryFromReader = function(msg
       msg.setResourceSupport(value);
       break;
     case 2:
-      var value = /** @type {!proto.smartcore.traits.CheckInSupport} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.BookingSupport.CheckInSupport} */ (reader.readEnum());
       msg.setCheckInSupport(value);
       break;
     case 3:
-      var value = /** @type {!proto.smartcore.traits.CheckInSupport} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.BookingSupport.CheckInSupport} */ (reader.readEnum());
       msg.setCheckOutSupport(value);
       break;
     case 4:
@@ -828,6 +828,16 @@ proto.smartcore.traits.BookingSupport.serializeBinaryToWriter = function(message
 
 
 /**
+ * @enum {number}
+ */
+proto.smartcore.traits.BookingSupport.CheckInSupport = {
+  UNKNOWN: 0,
+  NO_SUPPORT: 1,
+  STATE: 2,
+  TIME: 3
+};
+
+/**
  * optional smartcore.types.ResourceSupport resource_support = 1;
  * @return {?proto.smartcore.types.ResourceSupport}
  */
@@ -866,15 +876,15 @@ proto.smartcore.traits.BookingSupport.prototype.hasResourceSupport = function() 
 
 /**
  * optional CheckInSupport check_in_support = 2;
- * @return {!proto.smartcore.traits.CheckInSupport}
+ * @return {!proto.smartcore.traits.BookingSupport.CheckInSupport}
  */
 proto.smartcore.traits.BookingSupport.prototype.getCheckInSupport = function() {
-  return /** @type {!proto.smartcore.traits.CheckInSupport} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.smartcore.traits.BookingSupport.CheckInSupport} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.CheckInSupport} value
+ * @param {!proto.smartcore.traits.BookingSupport.CheckInSupport} value
  * @return {!proto.smartcore.traits.BookingSupport} returns this
  */
 proto.smartcore.traits.BookingSupport.prototype.setCheckInSupport = function(value) {
@@ -884,15 +894,15 @@ proto.smartcore.traits.BookingSupport.prototype.setCheckInSupport = function(val
 
 /**
  * optional CheckInSupport check_out_support = 3;
- * @return {!proto.smartcore.traits.CheckInSupport}
+ * @return {!proto.smartcore.traits.BookingSupport.CheckInSupport}
  */
 proto.smartcore.traits.BookingSupport.prototype.getCheckOutSupport = function() {
-  return /** @type {!proto.smartcore.traits.CheckInSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.smartcore.traits.BookingSupport.CheckInSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.CheckInSupport} value
+ * @param {!proto.smartcore.traits.BookingSupport.CheckInSupport} value
  * @return {!proto.smartcore.traits.BookingSupport} returns this
  */
 proto.smartcore.traits.BookingSupport.prototype.setCheckOutSupport = function(value) {
@@ -3179,15 +3189,5 @@ proto.smartcore.traits.DescribeBookingRequest.prototype.setName = function(value
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.CheckInSupport = {
-  CHECK_IN_SUPPORT_UNKNOWN: 0,
-  CHECK_IN_SUPPORT_NO_SUPPORT: 1,
-  CHECK_IN_SUPPORT_STATE: 2,
-  CHECK_IN_SUPPORT_TIME: 3
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

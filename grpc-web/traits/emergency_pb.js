@@ -20,7 +20,7 @@ var types_info_pb = require('../types/info_pb.js');
 goog.object.extend(proto, types_info_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribeEmergencyRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.Emergency', null, global);
-goog.exportSymbol('proto.smartcore.traits.EmergencyLevel', null, global);
+goog.exportSymbol('proto.smartcore.traits.Emergency.Level', null, global);
 goog.exportSymbol('proto.smartcore.traits.EmergencySupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetEmergencyRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullEmergencyRequest', null, global);
@@ -269,7 +269,7 @@ proto.smartcore.traits.Emergency.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.traits.EmergencyLevel} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.Emergency.Level} */ (reader.readEnum());
       msg.setLevel(value);
       break;
     case 2:
@@ -358,16 +358,26 @@ proto.smartcore.traits.Emergency.serializeBinaryToWriter = function(message, wri
 
 
 /**
- * optional EmergencyLevel level = 1;
- * @return {!proto.smartcore.traits.EmergencyLevel}
+ * @enum {number}
+ */
+proto.smartcore.traits.Emergency.Level = {
+  UNKNOWN: 0,
+  OK: 1,
+  WARNING: 2,
+  EMERGENCY: 3
+};
+
+/**
+ * optional Level level = 1;
+ * @return {!proto.smartcore.traits.Emergency.Level}
  */
 proto.smartcore.traits.Emergency.prototype.getLevel = function() {
-  return /** @type {!proto.smartcore.traits.EmergencyLevel} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.traits.Emergency.Level} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.EmergencyLevel} value
+ * @param {!proto.smartcore.traits.Emergency.Level} value
  * @return {!proto.smartcore.traits.Emergency} returns this
  */
 proto.smartcore.traits.Emergency.prototype.setLevel = function(value) {
@@ -1630,15 +1640,5 @@ proto.smartcore.traits.DescribeEmergencyRequest.prototype.setName = function(val
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.EmergencyLevel = {
-  EMERGENCY_LEVEL_UNKNOWN: 0,
-  EMERGENCY_LEVEL_OK: 1,
-  EMERGENCY_LEVEL_WARNING: 2,
-  EMERGENCY_LEVEL_EMERGENCY: 3
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

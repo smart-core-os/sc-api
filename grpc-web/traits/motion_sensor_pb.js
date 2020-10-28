@@ -21,7 +21,7 @@ goog.object.extend(proto, types_info_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribeMotionDetectionRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetMotionDetectionRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.MotionDetection', null, global);
-goog.exportSymbol('proto.smartcore.traits.MotionDetectionState', null, global);
+goog.exportSymbol('proto.smartcore.traits.MotionDetection.State', null, global);
 goog.exportSymbol('proto.smartcore.traits.MotionDetectionSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullMotionDetectionRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullMotionDetectionResponse', null, global);
@@ -244,7 +244,7 @@ proto.smartcore.traits.MotionDetection.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.traits.MotionDetectionState} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.MotionDetection.State} */ (reader.readEnum());
       msg.setState(value);
       break;
     case 2:
@@ -300,16 +300,24 @@ proto.smartcore.traits.MotionDetection.serializeBinaryToWriter = function(messag
 
 
 /**
- * optional MotionDetectionState state = 1;
- * @return {!proto.smartcore.traits.MotionDetectionState}
+ * @enum {number}
+ */
+proto.smartcore.traits.MotionDetection.State = {
+  NOT_DETECTED: 0,
+  DETECTED: 1
+};
+
+/**
+ * optional State state = 1;
+ * @return {!proto.smartcore.traits.MotionDetection.State}
  */
 proto.smartcore.traits.MotionDetection.prototype.getState = function() {
-  return /** @type {!proto.smartcore.traits.MotionDetectionState} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.traits.MotionDetection.State} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.MotionDetectionState} value
+ * @param {!proto.smartcore.traits.MotionDetection.State} value
  * @return {!proto.smartcore.traits.MotionDetection} returns this
  */
 proto.smartcore.traits.MotionDetection.prototype.setState = function(value) {
@@ -1337,13 +1345,5 @@ proto.smartcore.traits.DescribeMotionDetectionRequest.prototype.setName = functi
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.MotionDetectionState = {
-  MOTION_DETECTION_STATE_NOT_DETECTED: 0,
-  MOTION_DETECTION_STATE_DETECTED: 1
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

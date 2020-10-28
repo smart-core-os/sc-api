@@ -22,8 +22,8 @@ var types_tween_pb = require('../types/tween_pb.js');
 goog.object.extend(proto, types_tween_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribePositionsRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetOpenClosePositionsRequest', null, global);
-goog.exportSymbol('proto.smartcore.traits.OpenCloseDirection', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePosition', null, global);
+goog.exportSymbol('proto.smartcore.traits.OpenClosePosition.Direction', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePositions', null, global);
 goog.exportSymbol('proto.smartcore.traits.PositionsSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOpenClosePositionsRequest', null, global);
@@ -487,7 +487,7 @@ proto.smartcore.traits.OpenClosePosition.deserializeBinaryFromReader = function(
       msg.setTargetPositionPercent(value);
       break;
     case 4:
-      var value = /** @type {!proto.smartcore.traits.OpenCloseDirection} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.traits.OpenClosePosition.Direction} */ (reader.readEnum());
       msg.setDirection(value);
       break;
     default:
@@ -550,6 +550,19 @@ proto.smartcore.traits.OpenClosePosition.serializeBinaryToWriter = function(mess
   }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.smartcore.traits.OpenClosePosition.Direction = {
+  UNSPECIFIED: 0,
+  UP: 1,
+  DOWN: 2,
+  LEFT: 3,
+  RIGHT: 4,
+  IN: 5,
+  OUT: 6
+};
 
 /**
  * optional float position_percent = 1;
@@ -625,16 +638,16 @@ proto.smartcore.traits.OpenClosePosition.prototype.setTargetPositionPercent = fu
 
 
 /**
- * optional OpenCloseDirection direction = 4;
- * @return {!proto.smartcore.traits.OpenCloseDirection}
+ * optional Direction direction = 4;
+ * @return {!proto.smartcore.traits.OpenClosePosition.Direction}
  */
 proto.smartcore.traits.OpenClosePosition.prototype.getDirection = function() {
-  return /** @type {!proto.smartcore.traits.OpenCloseDirection} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {!proto.smartcore.traits.OpenClosePosition.Direction} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.traits.OpenCloseDirection} value
+ * @param {!proto.smartcore.traits.OpenClosePosition.Direction} value
  * @return {!proto.smartcore.traits.OpenClosePosition} returns this
  */
 proto.smartcore.traits.OpenClosePosition.prototype.setDirection = function(value) {
@@ -732,7 +745,7 @@ proto.smartcore.traits.PositionsSupport.deserializeBinaryFromReader = function(m
       msg.setPositionAttributes(value);
       break;
     case 3:
-      var value = /** @type {!Array<!proto.smartcore.traits.OpenCloseDirection>} */ (reader.readPackedEnum());
+      var value = /** @type {!Array<!proto.smartcore.traits.OpenClosePosition.Direction>} */ (reader.readPackedEnum());
       msg.setDirectionsList(value);
       break;
     case 4:
@@ -876,16 +889,16 @@ proto.smartcore.traits.PositionsSupport.prototype.hasPositionAttributes = functi
 
 
 /**
- * repeated OpenCloseDirection directions = 3;
- * @return {!Array<!proto.smartcore.traits.OpenCloseDirection>}
+ * repeated OpenClosePosition.Direction directions = 3;
+ * @return {!Array<!proto.smartcore.traits.OpenClosePosition.Direction>}
  */
 proto.smartcore.traits.PositionsSupport.prototype.getDirectionsList = function() {
-  return /** @type {!Array<!proto.smartcore.traits.OpenCloseDirection>} */ (jspb.Message.getRepeatedField(this, 3));
+  return /** @type {!Array<!proto.smartcore.traits.OpenClosePosition.Direction>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /**
- * @param {!Array<!proto.smartcore.traits.OpenCloseDirection>} value
+ * @param {!Array<!proto.smartcore.traits.OpenClosePosition.Direction>} value
  * @return {!proto.smartcore.traits.PositionsSupport} returns this
  */
 proto.smartcore.traits.PositionsSupport.prototype.setDirectionsList = function(value) {
@@ -894,7 +907,7 @@ proto.smartcore.traits.PositionsSupport.prototype.setDirectionsList = function(v
 
 
 /**
- * @param {!proto.smartcore.traits.OpenCloseDirection} value
+ * @param {!proto.smartcore.traits.OpenClosePosition.Direction} value
  * @param {number=} opt_index
  * @return {!proto.smartcore.traits.PositionsSupport} returns this
  */
@@ -2082,18 +2095,5 @@ proto.smartcore.traits.DescribePositionsRequest.prototype.setName = function(val
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
-
-/**
- * @enum {number}
- */
-proto.smartcore.traits.OpenCloseDirection = {
-  OPEN_CLOSE_DIRECTION_UNSPECIFIED: 0,
-  OPEN_CLOSE_DIRECTION_UP: 1,
-  OPEN_CLOSE_DIRECTION_DOWN: 2,
-  OPEN_CLOSE_DIRECTION_LEFT: 3,
-  OPEN_CLOSE_DIRECTION_RIGHT: 4,
-  OPEN_CLOSE_DIRECTION_IN: 5,
-  OPEN_CLOSE_DIRECTION_OUT: 6
-};
 
 goog.object.extend(exports, proto.smartcore.traits);

@@ -38,18 +38,19 @@ message AirQuality {
   // The air pressure in hPa
   google.protobuf.FloatValue air_pressure = 3;
   // General comfort of the area
-  AirQualityComfort comfort = 4;
+  Comfort comfort = 4;
+
+  // Comfort encodes levels of comfort for an area.
+  enum Comfort {
+    // The comfort level is unknown
+    UNKNOWN = 0;
+    // The area should be comfortable for occupants
+    COMFORTABLE = 1;
+    // The area might be uncomfortable for occupants
+    UNCOMFORTABLE = 2;
+  }
 }
 
-// AirQualityComfort encodes levels of comfort for an area.
-enum AirQualityComfort {
-  // The comfort level is unknown
-  AIR_QUALITY_COMFORT_UNKNOWN = 0;
-  // The area should be comfortable for occupants
-  AIR_QUALITY_COMFORT_COMFORTABLE = 1;
-  // The area might be uncomfortable for occupants
-  AIR_QUALITY_COMFORT_UNCOMFORTABLE = 2;
-}
 
 // AirQualitySupport describes the capabilities of devices implementing this trait
 message AirQualitySupport {
@@ -63,7 +64,7 @@ message AirQualitySupport {
   smartcore.api.types.FloatBounds air_pressure = 4;
   // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
   // Unknown should be assumed to be present if supported.
-  repeated AirQualityComfort comfort = 5;
+  repeated AirQuality.Comfort comfort = 5;
 }
 
 message GetAirQualityRequest {

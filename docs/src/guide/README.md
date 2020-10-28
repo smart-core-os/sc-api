@@ -82,11 +82,11 @@ func main() {
     res, _ := onOffClient.UpdateOnOff(&traits.UpdateOnOffRequest{
         Name: "my-device",
         OnOff: &traits.OnOff{
-            OnOrOff: traits.OnOrOff_ON_OR_OFF_ON,
+            State: traits.OnOff_ON,
         },
     })
-    fmt.Printf("my-device is now %v", res.GetOnOrOff())
-    // Outputs: my-device is now ON_OR_OFF_ON
+    fmt.Printf("my-device is now %v", res.GetState())
+    // Outputs: my-device is now ON
 }
 ```
 
@@ -107,11 +107,11 @@ class OnOffClient {
       // turn on my-device
       OnOff res = onOffClient.UpdateOnOff(UpdateOnOffRequest.newBuilder()
           .setOnOff(OnOff.newBuilder()
-              .setOnOrOff(OnOrOff.ON_OR_OFF_ON)
+              .setState(OnOff.State.ON)
           )
           .build());
-      System.out.println("my-device is now " + res.getOnOrOff());
-      // > my-device is now ON_OR_OFF_ON
+      System.out.println("my-device is now " + res.getState());
+      // > my-device is now ON
     } catch (StatusRuntimeException e) {
       // handle the error
     }
@@ -150,11 +150,11 @@ const client = new traits.OnOffApi('10.11.100.200:23557');
 // turn on my-device
 client.updateOnOff({
   name: 'my-device',
-  on_off: {on_or_off: 'ON_OR_OFF_ON'}
+  on_off: {state: 'ON'}
 }, (err, res) => {
   if (err) return; // handle errors
-  console.log(`my-device is now ${res.on_or_off}`);
-  // prints 'my-device is now ON_OR_OFF_ON'
+  console.log(`my-device is now ${res.state}`);
+  // prints 'my-device is now ON'
 });
 ```
 </template>
