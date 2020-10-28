@@ -160,7 +160,7 @@ client.updateOnOff({
 </template>
 </code-switcher>
 
-Congratulations :rocket:, you've just successfully connected to a Smart Core building and asked it to turn something on.
+Congratulations, you've just successfully connected to a Smart Core building and asked it to turn something on.
 
 
 ## Names
@@ -186,3 +186,24 @@ Looking back at the [Getting Started](#getting-started) example, the client code
 Nodes can use the Smart Core API to talk to each other allowing nodes to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated features. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
 
 Nodes can be used to directly control devices within a building by bridging the gap between a devices native control language and the buildings Smart Core API. These nodes tend to be distributed physically within a building, connecting to and controlling a localised set of devices that all contribute to a space. We call these **Area Controllers**.
+
+
+## Traits
+
+The primary organisational unit of the Smart Core API is the [Trait](traits-and-services.md#traits). It describes a set of resources and actions that can be applied to a named device, space, or node. Traits can be combined, that is to say a device can both emit light and sense occupancy, it can implement both the `Light` and `OccupancySensor` traits.
+
+The `smartcore.traits.OnOff` trait API that we used in the [Getting Started](#getting-started) example is defined as the Protobuf service
+
+```protobuf
+service OnOffApi {
+  // Update the device to be on or off
+  rpc UpdateOnOff (UpdateOnOffRequest) returns (OnOff);
+
+  // other rpc methods relating to the on/off concept
+}
+```
+
+
+## Ready for More?
+
+This introduction has covered the central concepts of the Smart Core API and hopefully has given you an idea what it's like to develop and interact with a Smart Core building. The rest of this guide will delve into more of the details and expand on these concepts. Strap in! :rocket:
