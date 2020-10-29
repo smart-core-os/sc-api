@@ -65,7 +65,7 @@ In all cases we use the [protobuf style guide](https://developers.google.com/pro
 
  * Files use `lower_snake_case.proto`
  * Services and messages use `PascalCase`
- * Fields us `lower_snake_case`
+ * Fields use `lower_snake_case`
  
 see the linked style guide for more details.
 
