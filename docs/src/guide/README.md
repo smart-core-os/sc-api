@@ -165,16 +165,28 @@ Congratulations, you've just successfully connected to a Smart Core building and
 
 ## Names
 
+> “There are only two hard things in computer science: cache invalidation and naming things.” — Phil Karlton
+
 Everything that can be queried or controlled in a Smart Core building has a name. In the [Getting Started](#getting-started) example we used the name `my-device` to identify the thing that we wished to turn on within the Smart Core server located at `10.11.100.200:23557`.
 
-Names in Smart Core are simply a sequence of characters, there is no restriction on length, content, format, or anything else. `my-device`, `The Front Door`, `cn=Office,dc=Company`, `uk/lon/hq/l14/printer2`, and `LT_021` are all perfectly valid Smart Core names. If your building has a naming standard, we don't want to get in the way of that.
+Names in Smart Core are simply a sequence of characters, there is no restriction on length, content, format, or anything else. 
 
-The thing that is identified by a name is a logical component of a building, it responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk` or sub-device `tv/left-speaker`, or a Smart Core node `lobby-controller`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed, everything that references that name continues to work.
+```
+"my-device"
+"The Front Door"
+"cn=Office,dc=Company"
+"uk/lon/hq/l14/printer2"
+"LT-021"
+```
+
+These are all perfectly valid Smart Core names. If your building has a naming standard, we don't want to get in the way of that.
+
+The thing that is identified by a name is a logical component of a building, it is responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk` or sub-device `tv/left-speaker`, or a Smart Core node `lobby-controller`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed, everything that references that name continues to work.
 
 
 ### Best Practices
 
-Smart Core recommends a hierarchical structure for your names, typically following the [relative resource name](https://cloud.google.com/apis/design/resource_names) pattern: `{collection}/{resource}/{collection}/{resource}`. Using a known scheme allows the people using the building to infer and deduce expected names, which reduces how many times you need to refer back to that spreadsheet of names.
+Smart Core _recommends_ a hierarchical structure for your names following the [relative resource name](https://cloud.google.com/apis/design/resource_names) pattern: `{collection}/{resource}/{collection}/{resource}`. Using a known scheme allows the people using the building to infer and deduce expected names, which reduces how many times you need to refer back to that spreadsheet of names.
 
 Where possible, device names should be human understandable, globally unique, and describe how the name is different from the other names in the building. `ns/acme/sites/12way/floors/7/rooms/N12/devices/VC_001` is a good name for the _video conference unit_ in room _N12_, on _floor 7_, in the _ACME_ site _12 Way_. Using this example you can imagine a suite of rooms that all look similar having `VC_001` devices in them, and you can imagine `N12` having a number of devices that make up the functionality of the room.
 
