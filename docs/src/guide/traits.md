@@ -1,6 +1,4 @@
-# Traits and Services
-
-## Traits
+# Traits
 
 Each named device, space, or node of a Smart Core building does at least one thing. Maybe it can emit light, maybe it can detect occupancy, maybe it can do both. These capabilities are defined in Smart Core as **Traits**.
 
@@ -18,7 +16,7 @@ service OnOffApi {
 
 In the introduction example we use the `UpdateOnOff` rpc call to control `my-device`. As you can see we could also have fetched the current value using `GetOnOff` or subscribed to changes using `PullOnOff`.
 
-### What Makes a Trait
+## What Makes a Trait
 
 Traits are intended to describe a single concept, not a device type. The concepts should be concrete not abstract, they should be specific and not general, and they should express their intent upfront in simple words instead of using jargon or technically correct wording.
 
@@ -36,7 +34,7 @@ The concepts represented by traits are designed to be tailored to how they will 
 Smart Core traits do not deal with high bandwidth data transfer. For example while the `Channel` trait allows you to control the current channel, it doesn't have APIs for publishing a stream of bytes representing a network video. It is assumed that the devices themselves have these capabilities, Smart Core is then used to coordinate and control these features.
 
 
-### Naming by Convention
+## Naming by Convention
 
 Most of the traits Smart Core defines are centered around a specific resource type. For the `OnOff` trait the resource is the `OnOff` message type. You interact with that resource using rpc methods prefixed with the verb describing that interaction.
 
@@ -57,7 +55,7 @@ A trait is officially named `smartcore.traits.{Trait}`, any reference to a trait
  * It is located in a file named `on_off.proto`
  * Its control API is named `OnOffApi`
  * The primary resource is named `OnOff`
- * It also defines `service OnOffInfo` and `message OnOffSettings` - these concepts are covered by [trait settings](#trait-settings)
+ * It also defines `service OnOffInfo` and `message OnOffSupport` - these concepts are covered by [trait info](#trait-info)
  
 Using this naming convention it becomes easy to guess what the different parts of a trait would be named without having to check the documentation all the time.
 
@@ -72,10 +70,42 @@ see the linked style guide for more details.
 Words and symbols in Smart Core use the common American English spelling for words, following the pattern of most open-source software libraries and programming languages.
 
  
-### Trait Settings
+## Trait Info
 
-todo: describe the `TraitInfo` and `TraitSettings` concepts
+Think of trait info as fine tuning knobs for describing how a device implements a trait.
 
-## Services
+![Control Dials](./william-warby-WahfNoqbYnM-unsplash.jpg)
 
-todo: describe the Info service and name discovery
+Maybe the device displays temperature in Fahrenheit, maybe it can only sense up to 900 LUX, maybe it doesn't support the `Pull` verb. All of this variance is exposed via the **Trait Info** service.
+
+Every trait in Smart Core defines it's API via `service TraitApi` and _how_ it implements that API via `service TraitInfo`. The trait info service describes all the ways an implementor of a trait can vary, from describing support for the different resource verbs, to native units, and so on.
+
+As an example the `OnOff` trait defines an `OnOffInfo` service as a companion to the `OnOffApi` service we covered [above](#traits) which looks like this
+
+```protobuf
+service OnOffInfo {
+  rpc DescribeOnOff (DescribeOnOffRequest) returns (OnOffSupport);
+}
+```
+
+You'll notice we've introduced a new verb `Describe`. Each resource the trait exposes will have it's own describe method, just like it would have it's own get or update methods. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
+
+The support message for the `OnOff` trait is as simple as it can be
+
+```protobuf
+message OnOffSupport {
+  smartcore.types.ResourceSupport resource_support = 1;
+}
+```
+
+There are no trait specific toggles, flags, or customisations that are available. Instead all you get is a `ResourceSupport` field, this field describes the configurable properties of all Smart Core trait resources
+
+```protobuf
+message ResourceSupport {
+  bool readable = 1;   // true if the resource is readable,   i.e. supports Get
+  bool writable = 2;   // true if the resource is writable,   i.e. supports Update
+  bool observable = 3; // true if the resource is observable, i.e. supports Pull
+
+  // Other common support properties
+}
+```
