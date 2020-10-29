@@ -215,6 +215,7 @@ service OnOffApi {
 }
 ```
 
+We used the `UpdateOnOff` method of this trait, via the generated client library, to ask the `my-device` to turn on.
 
 ## Ready for More?
 
