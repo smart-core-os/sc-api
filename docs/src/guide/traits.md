@@ -88,7 +88,7 @@ service AirQualitySensorInfo {
 }
 ```
 
-You'll notice we've introduced a new verb `Describe`. For each resource the trait exposes, ot will have it's own describe method, just like it would have it's own get or update methods as part of the control API. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
+You'll notice we've introduced a new verb `Describe`. For each resource the trait exposes, it will have it's own describe method, just like it would have it's own get or update methods as part of the control API. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
 
 Support messages have a standard name `{Resource}Support`, and follow a common pattern. The support message for the `AirQuality` resource would look like
 
