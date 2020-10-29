@@ -94,7 +94,7 @@ Support messages have a standard name `{Resource}Support`, and follow a common p
 
 ```protobuf{3}
 message AirQualitySupport {
-  // common to all ResourceSupport messages
+  // common to all support messages
   smartcore.types.ResourceSupport resource_support = 1;
   // unique to this resource type...
   smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
