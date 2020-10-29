@@ -193,7 +193,7 @@ Where possible, device names should be human understandable, globally unique, an
 
 ## Nodes
 
-Looking back at the [Getting Started](#getting-started) example, the client code connected to a Smart Core server located at `10.11.100.200:23557`. We call this a Smart Core node. Any `host:port` that exposes a Smart Core API is classed as a Smart Core node. Nodes also have [names](#names).
+Looking back at the [Getting Started](#getting-started) example, the client code connected to a Smart Core server located at `10.11.100.200:23557`. We call this a Smart Core **node**. Any `host:port` that exposes a Smart Core API is classed as a Smart Core node. Nodes also have [names](#names).
 
 Nodes can use the Smart Core API to talk to each other allowing nodes to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated features. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
 
