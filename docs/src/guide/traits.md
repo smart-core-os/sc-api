@@ -78,34 +78,66 @@ Think of trait info as fine tuning knobs for describing how a device implements 
 
 Maybe the device displays temperature in Fahrenheit, maybe it can only sense up to 900 LUX, maybe it doesn't support the `Pull` verb. All of this variance is exposed via the **Trait Info** service.
 
-Every trait in Smart Core defines it's API via `service TraitApi` and _how_ it implements that API via `service TraitInfo`. The trait info service describes all the ways an implementor of a trait can vary, from describing support for the different resource verbs, to native units, and so on.
+Every trait in Smart Core defines _what_ it does via `service TraitApi` and _how_ it implements that API via `service TraitInfo`. The trait info service describes all the ways an implementor of a trait can vary, from describing support for the different resource verbs, to native units, and so on.
 
-As an example the `OnOff` trait defines an `OnOffInfo` service as a companion to the `OnOffApi` service we covered [above](#traits) which looks like this
+As an example the `AirQualitySensor` trait defines an `AirQualitySensorInfo` service as a companion to the `AirQualitySensorApi` service.
 
 ```protobuf
-service OnOffInfo {
-  rpc DescribeOnOff (DescribeOnOffRequest) returns (OnOffSupport);
+service AirQualitySensorInfo {
+  rpc DescribeAirQuality (DescribeAirQualityRequest) returns (AirQualitySupport);
 }
 ```
 
-You'll notice we've introduced a new verb `Describe`. Each resource the trait exposes will have it's own describe method, just like it would have it's own get or update methods. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
+You'll notice we've introduced a new verb `Describe`. For each resource the trait exposes, ot will have it's own describe method, just like it would have it's own get or update methods as part of the control API. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
 
-The support message for the `OnOff` trait is as simple as it can be
+Support messages have a standard name `{Resource}Support`, and follow a common pattern. The support message for the `AirQuality` resource would look like
 
-```protobuf
-message OnOffSupport {
+```protobuf{3}
+message AirQualitySupport {
+  // common to all ResourceSupport messages
   smartcore.types.ResourceSupport resource_support = 1;
+  // unique to this resource type...
+  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
+  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
+  smartcore.api.types.FloatBounds air_pressure = 4;
+  // other fields
 }
 ```
 
-There are no trait specific toggles, flags, or customisations that are available. Instead all you get is a `ResourceSupport` field, this field describes the configurable properties of all Smart Core trait resources
+For each resource in a trait there is a basic set of actions that can be performed - the verbs we mentioned earlier - highlighted in the snippet above. Some implementors of the trait might not support all of these verbs, or their implementation might be limited. This variation in the trait is encoded into the `ResourceSupport` type, which describes support for reading, writing, and observing the resource.
+
+In addition to the common verbs, each resource can also describe specific variations relative to it's own information. In the `AirQualitySupport` example above you can see this with these lines
 
 ```protobuf
-message ResourceSupport {
-  bool readable = 1;   // true if the resource is readable,   i.e. supports Get
-  bool writable = 2;   // true if the resource is writable,   i.e. supports Update
-  bool observable = 3; // true if the resource is observable, i.e. supports Pull
-
-  // Other common support properties
-}
+smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
+smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
+smartcore.api.types.FloatBounds air_pressure = 4;
 ```
+
+Each field in this case describes the bounds (min and max) values that would be reported by the device implementing this trait.
+
+### Info is Optional!
+
+A specific device or implementor of a trait is **not** required to implement the info service for that trait. While we recommend that you do, the trait info api is designed with enhancement in mind. Clients are not expected to ask the info service what is possible before calling a method, servers are not expected to respond to info requests when asked.
+
+_So what's the point?_
+
+The trait info API exists to enable general tools and integrations to get better at their job without complicating the core control api of the traits. The more complicated the core functions are, the harder it is to learn, implement, or use. 
+
+A facility dashboard should work perfectly fine without knowing that `my-sensor` has a max `carbon_dioxide_level` reading of `1400ppm`, but knowing that information _could_ help with display and analysis of the information. Similarly a controller might not know that `pandoras-box` doesn't support the `close` method, but that's ok - if they try then an error will be returned, but if they did know then they could optimise their interaction ahead of time.
+
+That's what this is all about, we want to provide some way for clients or implementors to optimise their interaction if they want to, but we don't want to force everyone to have to do it.
+
+
+
+## Similar Concepts in Other Systems
+
+Smart home companies tend to have a concept similar to traits, here are a list of them:
+
+* [Google Smart Home device traits]
+* [Amazon Alexa capability interfaces]
+* [Apple HomeKit Characteristics]
+
+[Google Smart Home device traits]: https://developers.google.com/actions/smarthome/traits/
+[Amazon Alexa capability interfaces]: https://developer.amazon.com/docs/device-apis/list-of-interfaces.html
+[Apple HomeKit Characteristics]: https://developer.apple.com/documentation/homekit/hmcharacteristic/characteristic_types
