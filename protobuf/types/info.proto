@@ -11,24 +11,9 @@ option java_package = "dev.smartcore.types";
 import "google/protobuf/duration.proto";
 import "google/protobuf/field_mask.proto";
 
-// SensorSupport describes how a sensor trait supports read or subscribe apis.
-message SensorSupport {
-  // Note: The field ids here match the ResourceSupport message
-  // in case we decide to merge them later
-
-  // Whether the device supports querying, i.e. get apis
-  bool readable = 1;
-  // Whether the device supports subscriptions, i.e. pull apis
-  bool observable = 3;
-
-  // How Pull is implemented by the server
-  PullSupport pull_support = 5;
-  // If Pull is emulated, how often updates can be expected.
-  // This is not strict, updates may be less or more frequent.
-  google.protobuf.Duration pull_poll = 6;
-}
-
 // ResourceSupport describes how a trait resource supports read/write/subscribe apis.
+//
+// For sensor traits any write oriented properties should be and will be ignored.
 message ResourceSupport {
   // Whether the device supports querying, i.e. get apis
   bool readable = 1;

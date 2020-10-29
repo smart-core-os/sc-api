@@ -394,7 +394,7 @@ proto.smartcore.traits.MotionDetectionSupport.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.MotionDetectionSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sensorSupport: (f = msg.getSensorSupport()) && types_info_pb.SensorSupport.toObject(includeInstance, f),
+    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
     notDetectedDelay: (f = msg.getNotDetectedDelay()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
@@ -433,9 +433,9 @@ proto.smartcore.traits.MotionDetectionSupport.deserializeBinaryFromReader = func
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new types_info_pb.SensorSupport;
-      reader.readMessage(value,types_info_pb.SensorSupport.deserializeBinaryFromReader);
-      msg.setSensorSupport(value);
+      var value = new types_info_pb.ResourceSupport;
+      reader.readMessage(value,types_info_pb.ResourceSupport.deserializeBinaryFromReader);
+      msg.setResourceSupport(value);
       break;
     case 2:
       var value = new google_protobuf_duration_pb.Duration;
@@ -471,12 +471,12 @@ proto.smartcore.traits.MotionDetectionSupport.prototype.serializeBinary = functi
  */
 proto.smartcore.traits.MotionDetectionSupport.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSensorSupport();
+  f = message.getResourceSupport();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      types_info_pb.SensorSupport.serializeBinaryToWriter
+      types_info_pb.ResourceSupport.serializeBinaryToWriter
     );
   }
   f = message.getNotDetectedDelay();
@@ -491,20 +491,20 @@ proto.smartcore.traits.MotionDetectionSupport.serializeBinaryToWriter = function
 
 
 /**
- * optional smartcore.types.SensorSupport sensor_support = 1;
- * @return {?proto.smartcore.types.SensorSupport}
+ * optional smartcore.types.ResourceSupport resource_support = 1;
+ * @return {?proto.smartcore.types.ResourceSupport}
  */
-proto.smartcore.traits.MotionDetectionSupport.prototype.getSensorSupport = function() {
-  return /** @type{?proto.smartcore.types.SensorSupport} */ (
-    jspb.Message.getWrapperField(this, types_info_pb.SensorSupport, 1));
+proto.smartcore.traits.MotionDetectionSupport.prototype.getResourceSupport = function() {
+  return /** @type{?proto.smartcore.types.ResourceSupport} */ (
+    jspb.Message.getWrapperField(this, types_info_pb.ResourceSupport, 1));
 };
 
 
 /**
- * @param {?proto.smartcore.types.SensorSupport|undefined} value
+ * @param {?proto.smartcore.types.ResourceSupport|undefined} value
  * @return {!proto.smartcore.traits.MotionDetectionSupport} returns this
 */
-proto.smartcore.traits.MotionDetectionSupport.prototype.setSensorSupport = function(value) {
+proto.smartcore.traits.MotionDetectionSupport.prototype.setResourceSupport = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -513,8 +513,8 @@ proto.smartcore.traits.MotionDetectionSupport.prototype.setSensorSupport = funct
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.MotionDetectionSupport} returns this
  */
-proto.smartcore.traits.MotionDetectionSupport.prototype.clearSensorSupport = function() {
-  return this.setSensorSupport(undefined);
+proto.smartcore.traits.MotionDetectionSupport.prototype.clearResourceSupport = function() {
+  return this.setResourceSupport(undefined);
 };
 
 
@@ -522,7 +522,7 @@ proto.smartcore.traits.MotionDetectionSupport.prototype.clearSensorSupport = fun
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.MotionDetectionSupport.prototype.hasSensorSupport = function() {
+proto.smartcore.traits.MotionDetectionSupport.prototype.hasResourceSupport = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 

@@ -66,7 +66,7 @@ message Occupancy {
 // OccupancySupport describes the capabilities of devices implementing this trait
 message OccupancySupport {
   // How a named device supports read/pull apis
-  smartcore.types.SensorSupport sensor_support = 1;
+  smartcore.types.ResourceSupport resource_support = 1;
   // how many people can the occupancy service report. 0 means it won't report people counts. Note: this is _not_ the
   // total capacity for the space, it's the capacity of the sensor
   int32 max_people = 2;

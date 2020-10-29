@@ -48,7 +48,7 @@ message MotionDetection {
 // MotionDetectionSupport describes the capabilities of devices implementing this trait
 message MotionDetectionSupport {
   // How a named device supports read/pull apis
-  smartcore.types.SensorSupport sensor_support = 1;
+  smartcore.types.ResourceSupport resource_support = 1;
   // How long the device is configured to wait before reporting a state of NOT_DETECTED
   google.protobuf.Duration not_detected_delay = 2;
 }

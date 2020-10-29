@@ -35,10 +35,10 @@ export namespace MotionDetection {
 }
 
 export class MotionDetectionSupport extends jspb.Message {
-  getSensorSupport(): types_info_pb.SensorSupport | undefined;
-  setSensorSupport(value?: types_info_pb.SensorSupport): MotionDetectionSupport;
-  hasSensorSupport(): boolean;
-  clearSensorSupport(): MotionDetectionSupport;
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): MotionDetectionSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): MotionDetectionSupport;
 
   getNotDetectedDelay(): google_protobuf_duration_pb.Duration | undefined;
   setNotDetectedDelay(value?: google_protobuf_duration_pb.Duration): MotionDetectionSupport;
@@ -55,7 +55,7 @@ export class MotionDetectionSupport extends jspb.Message {
 
 export namespace MotionDetectionSupport {
   export type AsObject = {
-    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     notDetectedDelay?: google_protobuf_duration_pb.Duration.AsObject,
   }
 }

@@ -50,10 +50,10 @@ export namespace AirQuality {
 }
 
 export class AirQualitySupport extends jspb.Message {
-  getSensorSupport(): types_info_pb.SensorSupport | undefined;
-  setSensorSupport(value?: types_info_pb.SensorSupport): AirQualitySupport;
-  hasSensorSupport(): boolean;
-  clearSensorSupport(): AirQualitySupport;
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): AirQualitySupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): AirQualitySupport;
 
   getCarbonDioxideLevel(): types_number_pb.FloatBounds | undefined;
   setCarbonDioxideLevel(value?: types_number_pb.FloatBounds): AirQualitySupport;
@@ -85,7 +85,7 @@ export class AirQualitySupport extends jspb.Message {
 
 export namespace AirQualitySupport {
   export type AsObject = {
-    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject,
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,

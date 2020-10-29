@@ -50,10 +50,10 @@ export namespace Occupancy {
 }
 
 export class OccupancySupport extends jspb.Message {
-  getSensorSupport(): types_info_pb.SensorSupport | undefined;
-  setSensorSupport(value?: types_info_pb.SensorSupport): OccupancySupport;
-  hasSensorSupport(): boolean;
-  clearSensorSupport(): OccupancySupport;
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): OccupancySupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): OccupancySupport;
 
   getMaxPeople(): number;
   setMaxPeople(value: number): OccupancySupport;
@@ -68,7 +68,7 @@ export class OccupancySupport extends jspb.Message {
 
 export namespace OccupancySupport {
   export type AsObject = {
-    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     maxPeople: number,
   }
 }

@@ -55,7 +55,7 @@ message AirQuality {
 // AirQualitySupport describes the capabilities of devices implementing this trait
 message AirQualitySupport {
   // How a named device supports read/pull apis
-  smartcore.types.SensorSupport sensor_support = 1;
+  smartcore.types.ResourceSupport resource_support = 1;
   // If present then the sensor supports reporting CO2 levels, in parts-per-million.
   smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
   // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.

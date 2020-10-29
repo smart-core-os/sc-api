@@ -508,7 +508,7 @@ proto.smartcore.traits.AirQualitySupport.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.AirQualitySupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sensorSupport: (f = msg.getSensorSupport()) && types_info_pb.SensorSupport.toObject(includeInstance, f),
+    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
     carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     airPressure: (f = msg.getAirPressure()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
@@ -550,9 +550,9 @@ proto.smartcore.traits.AirQualitySupport.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new types_info_pb.SensorSupport;
-      reader.readMessage(value,types_info_pb.SensorSupport.deserializeBinaryFromReader);
-      msg.setSensorSupport(value);
+      var value = new types_info_pb.ResourceSupport;
+      reader.readMessage(value,types_info_pb.ResourceSupport.deserializeBinaryFromReader);
+      msg.setResourceSupport(value);
       break;
     case 2:
       var value = new types_number_pb.FloatBounds;
@@ -602,12 +602,12 @@ proto.smartcore.traits.AirQualitySupport.prototype.serializeBinary = function() 
  */
 proto.smartcore.traits.AirQualitySupport.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSensorSupport();
+  f = message.getResourceSupport();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      types_info_pb.SensorSupport.serializeBinaryToWriter
+      types_info_pb.ResourceSupport.serializeBinaryToWriter
     );
   }
   f = message.getCarbonDioxideLevel();
@@ -645,20 +645,20 @@ proto.smartcore.traits.AirQualitySupport.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional smartcore.types.SensorSupport sensor_support = 1;
- * @return {?proto.smartcore.types.SensorSupport}
+ * optional smartcore.types.ResourceSupport resource_support = 1;
+ * @return {?proto.smartcore.types.ResourceSupport}
  */
-proto.smartcore.traits.AirQualitySupport.prototype.getSensorSupport = function() {
-  return /** @type{?proto.smartcore.types.SensorSupport} */ (
-    jspb.Message.getWrapperField(this, types_info_pb.SensorSupport, 1));
+proto.smartcore.traits.AirQualitySupport.prototype.getResourceSupport = function() {
+  return /** @type{?proto.smartcore.types.ResourceSupport} */ (
+    jspb.Message.getWrapperField(this, types_info_pb.ResourceSupport, 1));
 };
 
 
 /**
- * @param {?proto.smartcore.types.SensorSupport|undefined} value
+ * @param {?proto.smartcore.types.ResourceSupport|undefined} value
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
 */
-proto.smartcore.traits.AirQualitySupport.prototype.setSensorSupport = function(value) {
+proto.smartcore.traits.AirQualitySupport.prototype.setResourceSupport = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -667,8 +667,8 @@ proto.smartcore.traits.AirQualitySupport.prototype.setSensorSupport = function(v
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
  */
-proto.smartcore.traits.AirQualitySupport.prototype.clearSensorSupport = function() {
-  return this.setSensorSupport(undefined);
+proto.smartcore.traits.AirQualitySupport.prototype.clearResourceSupport = function() {
+  return this.setResourceSupport(undefined);
 };
 
 
@@ -676,7 +676,7 @@ proto.smartcore.traits.AirQualitySupport.prototype.clearSensorSupport = function
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.AirQualitySupport.prototype.hasSensorSupport = function() {
+proto.smartcore.traits.AirQualitySupport.prototype.hasResourceSupport = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 

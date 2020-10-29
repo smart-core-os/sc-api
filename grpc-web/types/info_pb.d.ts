@@ -4,38 +4,6 @@ import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/du
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 
 
-export class SensorSupport extends jspb.Message {
-  getReadable(): boolean;
-  setReadable(value: boolean): SensorSupport;
-
-  getObservable(): boolean;
-  setObservable(value: boolean): SensorSupport;
-
-  getPullSupport(): PullSupport;
-  setPullSupport(value: PullSupport): SensorSupport;
-
-  getPullPoll(): google_protobuf_duration_pb.Duration | undefined;
-  setPullPoll(value?: google_protobuf_duration_pb.Duration): SensorSupport;
-  hasPullPoll(): boolean;
-  clearPullPoll(): SensorSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SensorSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: SensorSupport): SensorSupport.AsObject;
-  static serializeBinaryToWriter(message: SensorSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SensorSupport;
-  static deserializeBinaryFromReader(message: SensorSupport, reader: jspb.BinaryReader): SensorSupport;
-}
-
-export namespace SensorSupport {
-  export type AsObject = {
-    readable: boolean,
-    observable: boolean,
-    pullSupport: PullSupport,
-    pullPoll?: google_protobuf_duration_pb.Duration.AsObject,
-  }
-}
-
 export class ResourceSupport extends jspb.Message {
   getReadable(): boolean;
   setReadable(value: boolean): ResourceSupport;

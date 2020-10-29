@@ -24,10 +24,10 @@ export namespace AmbientBrightness {
 }
 
 export class AmbientBrightnessSupport extends jspb.Message {
-  getSensorSupport(): types_info_pb.SensorSupport | undefined;
-  setSensorSupport(value?: types_info_pb.SensorSupport): AmbientBrightnessSupport;
-  hasSensorSupport(): boolean;
-  clearSensorSupport(): AmbientBrightnessSupport;
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): AmbientBrightnessSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): AmbientBrightnessSupport;
 
   getBrightnessLux(): types_number_pb.FloatBounds | undefined;
   setBrightnessLux(value?: types_number_pb.FloatBounds): AmbientBrightnessSupport;
@@ -44,7 +44,7 @@ export class AmbientBrightnessSupport extends jspb.Message {
 
 export namespace AmbientBrightnessSupport {
   export type AsObject = {
-    sensorSupport?: types_info_pb.SensorSupport.AsObject,
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     brightnessLux?: types_number_pb.FloatBounds.AsObject,
   }
 }
