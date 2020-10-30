@@ -195,7 +195,7 @@ Where possible, device names should be human understandable, globally unique, an
 
 Looking back at the [Getting Started](#getting-started) example, the client code connected to a Smart Core server located at `10.11.100.200:23557`. We call this a Smart Core **node**. Any `host:port` that exposes a Smart Core API is classed as a Smart Core node. Nodes also have [names](#names).
 
-Nodes can use the Smart Core API to talk to each other allowing nodes to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated features. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
+Nodes can use the Smart Core API to talk to each other allowing them to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated features. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
 
 Nodes can be used to directly control devices within a building by bridging the gap between a devices native control language and the building's Smart Core API. These nodes tend to be distributed physically within a building, connecting to and controlling a localised set of devices that all contribute to a space. We call these **Area Controllers**.
 
