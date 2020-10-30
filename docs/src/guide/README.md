@@ -2,7 +2,7 @@
 
 ## What is Smart Core
 
-Smart Core is an API, tools, and recipes for creating smart buildings. It is built using modern and open IT approaches to allow building users and developers to get the most out of the built environment.
+Smart Core is an open platform that connects technology systems in the built environment, enabling a consistent approach to systems integration.
 
 These documents describe the API of Smart Core.
 
