@@ -202,7 +202,7 @@ Nodes can be used to directly control devices within a building by bridging the 
 
 ## Traits
 
-The primary organisational unit of the Smart Core API is the [Trait](traits.md). It describes a set of resources and actions that can be applied to a named device, space, or node. Traits can be combined, that is to say a device can both emit light and sense occupancy, it can implement both the `Light` and `OccupancySensor` traits.
+The primary organisational unit of the Smart Core API is the [Trait](traits.md). It describes a set of resources and actions that can be applied to a named device, space, or node. Traits can be combined, for example a device that can both emit light and sense occupancy, can implement both the `Light` and `OccupancySensor` traits.
 
 The `smartcore.traits.OnOff` trait API that we used in the [Getting Started](#getting-started) example is defined as the Protobuf service
 
