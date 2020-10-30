@@ -241,7 +241,7 @@
 
       
         <h3 id="smartcore.traits.Brightness">Brightness</h3>
-        <p></p>
+        <p>Brightness represent the light level that is being emitted.</p><p>It represents the output level as either a percentage or a preset.</p><p>Both percentage and preset can be present on read if the device supports exposing a presets underlying value,</p><p>e.g. Full (100%).</p><p>Off (0%) cannot be distinguished from Off (not present), this is by design as the alternative would complicate the</p><p>type use for all other cases.</p><p>If the output level is transitioning towards a value then target_level_percent or target_preset may be present on</p><p>read to indicate what the final state will be. The level_percent and preset value always represent the current value.</p>
 
         
           <table class="field-table">
@@ -252,9 +252,11 @@
               
                 <tr>
                   <td>level_percent</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>A level that the device is set to. [0-100] as a percentage. A zero value will be ignored iff preset is present. </p></td>
+                  <td><p>A level that the device is set to. [0-100] as a percentage.
+A zero value will be ignored iff preset is present.
+On write only one of level_percent or preset should be set. </p></td>
                 </tr>
               
                 <tr>
@@ -273,7 +275,7 @@
               
                 <tr>
                   <td>target_level_percent</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
                   <td><p>The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present. </p></td>
                 </tr>

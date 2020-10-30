@@ -250,10 +250,10 @@ proto.smartcore.traits.Brightness.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Brightness.toObject = function(includeInstance, msg) {
   var f, obj = {
-    levelPercent: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    levelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
     preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f),
     brightnessTween: (f = msg.getBrightnessTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetLevelPercent: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    targetLevelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
     targetPreset: (f = msg.getTargetPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
   };
 
@@ -292,7 +292,7 @@ proto.smartcore.traits.Brightness.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setLevelPercent(value);
       break;
     case 2:
@@ -306,7 +306,7 @@ proto.smartcore.traits.Brightness.deserializeBinaryFromReader = function(msg, re
       msg.setBrightnessTween(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setTargetLevelPercent(value);
       break;
     case 5:
@@ -344,8 +344,8 @@ proto.smartcore.traits.Brightness.prototype.serializeBinary = function() {
 proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLevelPercent();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f !== 0.0) {
+    writer.writeFloat(
       1,
       f
     );
@@ -367,8 +367,8 @@ proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, wr
     );
   }
   f = message.getTargetLevelPercent();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f !== 0.0) {
+    writer.writeFloat(
       4,
       f
     );
@@ -385,11 +385,11 @@ proto.smartcore.traits.Brightness.serializeBinaryToWriter = function(message, wr
 
 
 /**
- * optional int32 level_percent = 1;
+ * optional float level_percent = 1;
  * @return {number}
  */
 proto.smartcore.traits.Brightness.prototype.getLevelPercent = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
 };
 
 
@@ -398,7 +398,7 @@ proto.smartcore.traits.Brightness.prototype.getLevelPercent = function() {
  * @return {!proto.smartcore.traits.Brightness} returns this
  */
 proto.smartcore.traits.Brightness.prototype.setLevelPercent = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3FloatField(this, 1, value);
 };
 
 
@@ -477,11 +477,11 @@ proto.smartcore.traits.Brightness.prototype.hasBrightnessTween = function() {
 
 
 /**
- * optional int32 target_level_percent = 4;
+ * optional float target_level_percent = 4;
  * @return {number}
  */
 proto.smartcore.traits.Brightness.prototype.getTargetLevelPercent = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
 };
 
 
@@ -490,7 +490,7 @@ proto.smartcore.traits.Brightness.prototype.getTargetLevelPercent = function() {
  * @return {!proto.smartcore.traits.Brightness} returns this
  */
 proto.smartcore.traits.Brightness.prototype.setTargetLevelPercent = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3FloatField(this, 4, value);
 };
 
 

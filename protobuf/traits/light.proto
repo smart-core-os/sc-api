@@ -33,16 +33,27 @@ service LightInfo {
   rpc DescribeBrightness (DescribeBrightnessRequest) returns (BrightnessSupport);
 }
 
+// Brightness represent the light level that is being emitted.
+// It represents the output level as either a percentage or a preset.
+// Both percentage and preset can be present on read if the device supports exposing a presets underlying value,
+// e.g. Full (100%).
+// Off (0%) cannot be distinguished from Off (not present), this is by design as the alternative would complicate the
+// type use for all other cases.
+//
+// If the output level is transitioning towards a value then target_level_percent or target_preset may be present on
+// read to indicate what the final state will be. The level_percent and preset value always represent the current value.
 message Brightness {
-  // A level that the device is set to. [0-100] as a percentage. A zero value will be ignored iff preset is present.
-  int32 level_percent = 1;
+  // A level that the device is set to. [0-100] as a percentage.
+  // A zero value will be ignored iff preset is present.
+  // On write only one of level_percent or preset should be set.
+  float level_percent = 1;
   // A preset that the device is using
   LightPreset preset = 2;
 
   // The progress of the change. On write only duration should be set.
   smartcore.api.types.Tween brightness_tween = 3;
   // The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present.
-  int32 target_level_percent = 4;
+  float target_level_percent = 4;
   // The target preset. Ignored on write. If present ignore target_level_percent
   LightPreset target_preset = 5;
 }
