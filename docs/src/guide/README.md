@@ -24,7 +24,7 @@ To aid with development, Smart Core also maintains a number of platform librarie
 
 ## Getting Started
 
-The simplest way to begin with a Smart Core building is add one of the pre-built Smart Core API libraries to your project.
+The simplest way to begin with a Smart Core building is to add one of the pre-built Smart Core API libraries to your project.
 
 <code-switcher :languages="{go:'Go', java:'Java', nodejs: 'NodeJS'}">
 <template v-slot:go>
