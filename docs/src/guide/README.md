@@ -181,7 +181,7 @@ Names in Smart Core are simply a sequence of characters, there is no restriction
 
 These are all perfectly valid Smart Core names. If your building has a naming standard, we don't want to get in the way of that.
 
-The thing that is identified by a name is a logical component of a building, it is responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk` or sub-device `tv/left-speaker`, or a Smart Core node `lobby-controller`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed, everything that references that name continues to work.
+The thing that is identified by a name is a logical component of a building, it is responsible for some aspect of the buildings function. It could be a space `room-42`, a device `visitor-kiosk`, a sub-device `tv/left-speaker`, or a Smart Core node `lobby-controller`. If it is replaced, maybe it is faulty, then the Smart Core name remains the same as the building function hasn't changed, everything that references that name continues to work.
 
 
 ### Best Practices
