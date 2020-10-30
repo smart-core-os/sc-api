@@ -192,7 +192,7 @@ type AudioLevel struct {
 
 	// The current gain, typically as a percentage unless documented in the AudioLevel usage.
 	Gain float32 `protobuf:"fixed32,1,opt,name=gain,proto3" json:"gain,omitempty"`
-	// How the gain is changing or should change over time.
+	// How the gain changes or should change over time. On write only duration should be set.
 	GainTween *Tween `protobuf:"bytes,2,opt,name=gain_tween,json=gainTween,proto3" json:"gain_tween,omitempty"`
 	// Read-only, the target value for the gain during a transition
 	TargetGain float32 `protobuf:"fixed32,3,opt,name=target_gain,json=targetGain,proto3" json:"target_gain,omitempty"`

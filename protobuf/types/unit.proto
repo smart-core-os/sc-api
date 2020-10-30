@@ -38,7 +38,7 @@ message Volume {
 message AudioLevel {
   // The current gain, typically as a percentage unless documented in the AudioLevel usage.
   float gain = 1;
-  // How the gain is changing or should change over time.
+  // How the gain changes or should change over time. On write only duration should be set.
   smartcore.api.types.Tween gain_tween = 2;
   // Read-only, the target value for the gain during a transition
   float target_gain = 3;
