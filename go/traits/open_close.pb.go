@@ -147,7 +147,7 @@ type OpenClosePosition struct {
 
 	// 0-100, the current value for the open close position of the device in this direction
 	PositionPercent float32 `protobuf:"fixed32,1,opt,name=position_percent,json=positionPercent,proto3" json:"position_percent,omitempty"`
-	// How the position_percent changes or should change over time.
+	// How the position changes or should change over time. On write only duration should be set.
 	PositionPercentTween *types.Tween `protobuf:"bytes,2,opt,name=position_percent_tween,json=positionPercentTween,proto3" json:"position_percent_tween,omitempty"`
 	// Read-only, the target position_percent after a transition
 	TargetPositionPercent float32 `protobuf:"fixed32,3,opt,name=target_position_percent,json=targetPositionPercent,proto3" json:"target_position_percent,omitempty"`

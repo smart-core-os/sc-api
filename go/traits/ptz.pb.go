@@ -243,7 +243,7 @@ type PtzMovement struct {
 	Direction *PtzVector `protobuf:"bytes,1,opt,name=direction,proto3" json:"direction,omitempty"`
 	// The speed at which the PTZ device should move. If not specified the device may ramp speed on its own
 	Speed int32 `protobuf:"varint,2,opt,name=speed,proto3" json:"speed,omitempty"`
-	// How the speed changes or should change over time.
+	// How the speed changes or should change over time. On write only duration should be set.
 	SpeedTween *types.Tween `protobuf:"bytes,3,opt,name=speed_tween,json=speedTween,proto3" json:"speed_tween,omitempty"`
 	// Read-only, the target speed value after a transition
 	TargetSpeed int32 `protobuf:"varint,4,opt,name=target_speed,json=targetSpeed,proto3" json:"target_speed,omitempty"`
@@ -317,7 +317,7 @@ type PtzPosition struct {
 
 	// The current position.
 	Position *PtzVector `protobuf:"bytes,1,opt,name=position,proto3" json:"position,omitempty"`
-	// How long the should the device take to get to the target position.
+	// How the position changes or should change over time. On write only duration should be set.
 	Tween *types.Tween `protobuf:"bytes,2,opt,name=tween,proto3" json:"tween,omitempty"`
 	// The target position that will be reached after the tween duration.
 	TargetPosition *PtzVector `protobuf:"bytes,3,opt,name=target_position,json=targetPosition,proto3" json:"target_position,omitempty"`

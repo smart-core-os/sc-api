@@ -44,7 +44,7 @@ message OpenClosePositions {
 message OpenClosePosition {
   // 0-100, the current value for the open close position of the device in this direction
   float position_percent = 1;
-  // How the position_percent changes or should change over time.
+  // How the position changes or should change over time. On write only duration should be set.
   smartcore.api.types.Tween position_percent_tween = 2;
   // Read-only, the target position_percent after a transition
   float target_position_percent = 3;

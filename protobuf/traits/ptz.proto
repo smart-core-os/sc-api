@@ -80,7 +80,7 @@ message PtzMovement {
   PtzVector direction = 1;
   // The speed at which the PTZ device should move. If not specified the device may ramp speed on its own
   int32 speed = 2;
-  // How the speed changes or should change over time.
+  // How the speed changes or should change over time. On write only duration should be set.
   smartcore.api.types.Tween speed_tween = 3;
   // Read-only, the target speed value after a transition
   int32 target_speed = 4;
@@ -90,7 +90,7 @@ message PtzMovement {
 message PtzPosition {
   // The current position.
   PtzVector position = 1;
-  // How long the should the device take to get to the target position.
+  // How the position changes or should change over time. On write only duration should be set.
   smartcore.api.types.Tween tween = 2;
   // The target position that will be reached after the tween duration.
   PtzVector target_position = 3;

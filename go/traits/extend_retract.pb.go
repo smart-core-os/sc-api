@@ -39,8 +39,7 @@ type Extension struct {
 	ExtendPercent float32 `protobuf:"fixed32,1,opt,name=extend_percent,json=extendPercent,proto3" json:"extend_percent,omitempty"`
 	// A named preset for recall to extend the device to a specific point
 	ExtendPreset string `protobuf:"bytes,2,opt,name=extend_preset,json=extendPreset,proto3" json:"extend_preset,omitempty"`
-	// if extending/retracting over time then this contains the current progress, if setting then this asks for the
-	// action to be performed over the given time frame
+	// How the extension changes or should change over time. On write only duration should be set.
 	ExtendTween *types.Tween `protobuf:"bytes,3,opt,name=extend_tween,json=extendTween,proto3" json:"extend_tween,omitempty"`
 	// if tweening between values, this is our end goal
 	TargetExtendPercent float32 `protobuf:"fixed32,4,opt,name=target_extend_percent,json=targetExtendPercent,proto3" json:"target_extend_percent,omitempty"`

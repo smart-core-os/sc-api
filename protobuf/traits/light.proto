@@ -50,7 +50,7 @@ message Brightness {
   // A preset that the device is using
   LightPreset preset = 2;
 
-  // The progress of the change. On write only duration should be set.
+  // How the brightness changes or should change over time. On write only duration should be set.
   smartcore.api.types.Tween brightness_tween = 3;
   // The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present.
   float target_level_percent = 4;

@@ -47,7 +47,7 @@ type Brightness struct {
 	LevelPercent float32 `protobuf:"fixed32,1,opt,name=level_percent,json=levelPercent,proto3" json:"level_percent,omitempty"`
 	// A preset that the device is using
 	Preset *LightPreset `protobuf:"bytes,2,opt,name=preset,proto3" json:"preset,omitempty"`
-	// The progress of the change. On write only duration should be set.
+	// How the brightness changes or should change over time. On write only duration should be set.
 	BrightnessTween *types.Tween `protobuf:"bytes,3,opt,name=brightness_tween,json=brightnessTween,proto3" json:"brightness_tween,omitempty"`
 	// The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present.
 	TargetLevelPercent float32 `protobuf:"fixed32,4,opt,name=target_level_percent,json=targetLevelPercent,proto3" json:"target_level_percent,omitempty"`
