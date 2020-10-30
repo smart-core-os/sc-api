@@ -66,7 +66,8 @@ Using the API follows standard [gRPC patterns](https://grpc.io/docs/languages/) 
 package main
 
 import (
-    "fmt"
+	"context"
+	"fmt"
     
     "git.vanti.co.uk/smartcore/sc-api/go/traits"
     "google.golang.org/grpc"
@@ -79,7 +80,7 @@ func main() {
     // create a trait client
     onOffClient := traits.NewOnOffApiClient(conn)
     // turn my-device on
-    res, _ := onOffClient.UpdateOnOff(&traits.UpdateOnOffRequest{
+    res, _ := onOffClient.UpdateOnOff(context.Background(), &traits.UpdateOnOffRequest{
         Name: "my-device",
         OnOff: &traits.OnOff{
             State: traits.OnOff_ON,
