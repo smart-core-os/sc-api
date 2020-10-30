@@ -197,7 +197,7 @@ Looking back at the [Getting Started](#getting-started) example, the client code
 
 Nodes can use the Smart Core API to talk to each other allowing nodes to take on many responsibilities within the building. Some examples include routing requests, aggregating data and control, intercepting requests or responses, providing load balancing and fail over, or implementing automated features. While dedicated nodes can be deployed, i.e. a router node, an aggregation node, etc, it's more likely that a node will take on multiple responsibilities at the same time, we call these **Controllers**.
 
-Nodes can be used to directly control devices within a building by bridging the gap between a devices native control language and the buildings Smart Core API. These nodes tend to be distributed physically within a building, connecting to and controlling a localised set of devices that all contribute to a space. We call these **Area Controllers**.
+Nodes can be used to directly control devices within a building by bridging the gap between a devices native control language and the building's Smart Core API. These nodes tend to be distributed physically within a building, connecting to and controlling a localised set of devices that all contribute to a space. We call these **Area Controllers**.
 
 
 ## Traits
