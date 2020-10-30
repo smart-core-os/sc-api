@@ -97,9 +97,9 @@ message AirQualitySupport {
   // common to all support messages
   smartcore.types.ResourceSupport resource_support = 1;
   // unique to this resource type...
-  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
-  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
-  smartcore.api.types.FloatBounds air_pressure = 4;
+  smartcore.types.FloatBounds carbon_dioxide_level = 2;
+  smartcore.types.FloatBounds volatile_organic_compounds = 3;
+  smartcore.types.FloatBounds air_pressure = 4;
   // other fields
 }
 ```
@@ -109,9 +109,9 @@ For each resource in a trait there is a basic set of actions that can be perform
 In addition to the common verbs, each resource can also describe specific variations relative to it's own information. In the `AirQualitySupport` example above you can see this with these lines
 
 ```protobuf
-smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
-smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
-smartcore.api.types.FloatBounds air_pressure = 4;
+smartcore.types.FloatBounds carbon_dioxide_level = 2;
+smartcore.types.FloatBounds volatile_organic_compounds = 3;
+smartcore.types.FloatBounds air_pressure = 4;
 ```
 
 Each field in this case describes the bounds (min and max) values that would be reported by the device implementing this trait.
