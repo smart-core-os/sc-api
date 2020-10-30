@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "smartcore"
+  },
+  "targets": {
+    "smartcore": {
+      "hosting": {
+        "docs": [
+          "sc-api-docs"
+        ]
+      }
+    }
+  }
+}
