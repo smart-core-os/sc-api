@@ -78,7 +78,7 @@ Think of trait info as fine tuning knobs for describing how a device implements 
 
 Maybe the device natively displays height in inches, maybe it can only sense up to 900 LUX, maybe it doesn't support the `Pull` verb. All of this variance is exposed via the **Trait Info** service.
 
-Every trait in Smart Core defines _what_ it does via `service TraitApi` and _how_ it implements that API via `service TraitInfo`. The trait info service describes all the ways an implementor of a trait can vary, from describing support for the different resource verbs, to native units, and so on.
+Every trait in Smart Core defines _what_ it does via `service {Trait}Api` and _how_ it implements that API via `service {Trait}Info`. The trait info service describes all the ways an implementor of a trait can vary, from describing support for the different resource verbs, to native units, and so on.
 
 As an example the `AirQualitySensor` trait defines an `AirQualitySensorInfo` service as a companion to the `AirQualitySensorApi` service.
 
