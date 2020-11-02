@@ -118,7 +118,7 @@ Each field in this case describes the bounds (min and max) values that would be 
 
 ### Info is Optional!
 
-A specific device or implementor of a trait is **not** required to implement the info service for that trait. While we recommend that you do, the trait info api is designed with enhancement in mind. Clients are not expected to ask the info service what is possible before calling a method, servers are not expected to respond to info requests when asked.
+A specific device or implementor of a trait is **not** required to implement the info service for that trait. While we recommend that you do, the trait info api is designed with enhancement in mind. Clients are not expected to ask the info service what is possible before calling a method, servers are not required to implement the info service, so may not respond to info requests when asked.
 
 _So what's the point?_
 
