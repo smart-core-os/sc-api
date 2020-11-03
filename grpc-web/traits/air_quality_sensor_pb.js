@@ -682,17 +682,17 @@ proto.smartcore.traits.AirQualitySupport.prototype.hasResourceSupport = function
 
 
 /**
- * optional smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
- * @return {?proto.smartcore.api.types.FloatBounds}
+ * optional smartcore.types.FloatBounds carbon_dioxide_level = 2;
+ * @return {?proto.smartcore.types.FloatBounds}
  */
 proto.smartcore.traits.AirQualitySupport.prototype.getCarbonDioxideLevel = function() {
-  return /** @type{?proto.smartcore.api.types.FloatBounds} */ (
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatBounds|undefined} value
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
 */
 proto.smartcore.traits.AirQualitySupport.prototype.setCarbonDioxideLevel = function(value) {
@@ -719,17 +719,17 @@ proto.smartcore.traits.AirQualitySupport.prototype.hasCarbonDioxideLevel = funct
 
 
 /**
- * optional smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
- * @return {?proto.smartcore.api.types.FloatBounds}
+ * optional smartcore.types.FloatBounds volatile_organic_compounds = 3;
+ * @return {?proto.smartcore.types.FloatBounds}
  */
 proto.smartcore.traits.AirQualitySupport.prototype.getVolatileOrganicCompounds = function() {
-  return /** @type{?proto.smartcore.api.types.FloatBounds} */ (
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatBounds|undefined} value
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
 */
 proto.smartcore.traits.AirQualitySupport.prototype.setVolatileOrganicCompounds = function(value) {
@@ -756,17 +756,17 @@ proto.smartcore.traits.AirQualitySupport.prototype.hasVolatileOrganicCompounds =
 
 
 /**
- * optional smartcore.api.types.FloatBounds air_pressure = 4;
- * @return {?proto.smartcore.api.types.FloatBounds}
+ * optional smartcore.types.FloatBounds air_pressure = 4;
+ * @return {?proto.smartcore.types.FloatBounds}
  */
 proto.smartcore.traits.AirQualitySupport.prototype.getAirPressure = function() {
-  return /** @type{?proto.smartcore.api.types.FloatBounds} */ (
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 4));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatBounds|undefined} value
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
  * @return {!proto.smartcore.traits.AirQualitySupport} returns this
 */
 proto.smartcore.traits.AirQualitySupport.prototype.setAirPressure = function(value) {

@@ -12,11 +12,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.smartcore.api.types.ChangeType', null, global);
+goog.exportSymbol('proto.smartcore.types.ChangeType', null, global);
 /**
  * @enum {number}
  */
-proto.smartcore.api.types.ChangeType = {
+proto.smartcore.types.ChangeType = {
   NONE: 0,
   ADD: 1,
   UPDATE: 2,
@@ -24,4 +24,4 @@ proto.smartcore.api.types.ChangeType = {
   REPLACE: 4
 };
 
-goog.object.extend(exports, proto.smartcore.api.types);
+goog.object.extend(exports, proto.smartcore.types);

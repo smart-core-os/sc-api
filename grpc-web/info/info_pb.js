@@ -954,7 +954,7 @@ proto.smartcore.info.PullDevicesResponse.Change.deserializeBinaryFromReader = fu
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.api.types.ChangeType} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.ChangeType} */ (reader.readEnum());
       msg.setType(value);
       break;
     case 2:
@@ -1023,16 +1023,16 @@ proto.smartcore.info.PullDevicesResponse.Change.serializeBinaryToWriter = functi
 
 
 /**
- * optional smartcore.api.types.ChangeType type = 1;
- * @return {!proto.smartcore.api.types.ChangeType}
+ * optional smartcore.types.ChangeType type = 1;
+ * @return {!proto.smartcore.types.ChangeType}
  */
 proto.smartcore.info.PullDevicesResponse.Change.prototype.getType = function() {
-  return /** @type {!proto.smartcore.api.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.ChangeType} value
+ * @param {!proto.smartcore.types.ChangeType} value
  * @return {!proto.smartcore.info.PullDevicesResponse.Change} returns this
  */
 proto.smartcore.info.PullDevicesResponse.Change.prototype.setType = function(value) {

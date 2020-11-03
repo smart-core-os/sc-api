@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package smartcore.api.types;
+package smartcore.types;
 
-option csharp_namespace = "Smartcore.Api.Types";
+option csharp_namespace = "Smartcore.Types";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types";
 option java_multiple_files = true;
 option java_outer_classname = "ConnectionProto";
-option java_package = "dev.smartcore.api.types";
+option java_package = "dev.smartcore.types";
 
 // Defines the connection state between two entities. This could be a TCP network connection or a HDMI connection.
 // In cases where a connection is possible but the state of the connection can never be determined directly use

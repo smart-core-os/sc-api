@@ -440,17 +440,17 @@ proto.smartcore.traits.Brightness.prototype.hasPreset = function() {
 
 
 /**
- * optional smartcore.api.types.Tween brightness_tween = 3;
- * @return {?proto.smartcore.api.types.Tween}
+ * optional smartcore.types.Tween brightness_tween = 3;
+ * @return {?proto.smartcore.types.Tween}
  */
 proto.smartcore.traits.Brightness.prototype.getBrightnessTween = function() {
-  return /** @type{?proto.smartcore.api.types.Tween} */ (
+  return /** @type{?proto.smartcore.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @param {?proto.smartcore.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.Brightness} returns this
 */
 proto.smartcore.traits.Brightness.prototype.setBrightnessTween = function(value) {
@@ -879,17 +879,17 @@ proto.smartcore.traits.BrightnessSupport.prototype.hasResourceSupport = function
 
 
 /**
- * optional smartcore.api.types.Int32Attributes brightness_attributes = 2;
- * @return {?proto.smartcore.api.types.Int32Attributes}
+ * optional smartcore.types.Int32Attributes brightness_attributes = 2;
+ * @return {?proto.smartcore.types.Int32Attributes}
  */
 proto.smartcore.traits.BrightnessSupport.prototype.getBrightnessAttributes = function() {
-  return /** @type{?proto.smartcore.api.types.Int32Attributes} */ (
+  return /** @type{?proto.smartcore.types.Int32Attributes} */ (
     jspb.Message.getWrapperField(this, types_number_pb.Int32Attributes, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Int32Attributes|undefined} value
+ * @param {?proto.smartcore.types.Int32Attributes|undefined} value
  * @return {!proto.smartcore.traits.BrightnessSupport} returns this
 */
 proto.smartcore.traits.BrightnessSupport.prototype.setBrightnessAttributes = function(value) {

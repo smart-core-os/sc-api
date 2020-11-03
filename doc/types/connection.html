@@ -180,11 +180,11 @@
               
               
                 <li>
-                  <a href="#smartcore.api.types.CommStatus"><span class="badge">E</span>CommStatus</a>
+                  <a href="#smartcore.types.CommStatus"><span class="badge">E</span>CommStatus</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Connectivity"><span class="badge">E</span>Connectivity</a>
+                  <a href="#smartcore.types.Connectivity"><span class="badge">E</span>Connectivity</a>
                 </li>
               
               
@@ -206,7 +206,7 @@
       
 
       
-        <h3 id="smartcore.api.types.CommStatus">CommStatus</h3>
+        <h3 id="smartcore.types.CommStatus">CommStatus</h3>
         <p>Describes the state of communication between two entities. the CommStatus typically represents the application layer</p><p>rather than any transport layer. For example TCP messages may be sent and ACKs received for them but if the</p><p>application protocol response are never received then the CommStatus should not be COMM_SUCCESS.</p>
         <table class="enum-table">
           <thead>
@@ -235,7 +235,7 @@
           </tbody>
         </table>
       
-        <h3 id="smartcore.api.types.Connectivity">Connectivity</h3>
+        <h3 id="smartcore.types.Connectivity">Connectivity</h3>
         <p>Defines the connection state between two entities. This could be a TCP network connection or a HDMI connection.</p><p>In cases where a connection is possible but the state of the connection can never be determined directly use</p><p>NOT_APPLICABLE, for example a simple io connection has no concept of 'alive'.</p><p>The state of DISCONNECTED is not automatically an indication if issues in a system. A device may decide to disconnect</p><p>to save resources.</p>
         <table class="enum-table">
           <thead>

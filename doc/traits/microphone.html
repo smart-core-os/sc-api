@@ -271,7 +271,7 @@
               
                 <tr>
                   <td>gain_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td><a href="#smartcore.types.FloatAttributes">smartcore.types.FloatAttributes</a></td>
                   <td></td>
                   <td><p>Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
 implies that the microphone only supports mute </p></td>
@@ -279,7 +279,7 @@ implies that the microphone only supports mute </p></td>
               
                 <tr>
                   <td>mute_support</td>
-                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
+                  <td><a href="#smartcore.types.MuteSupport">smartcore.types.MuteSupport</a></td>
                   <td></td>
                   <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
 disallowing gain change when muted </p></td>
@@ -366,7 +366,7 @@ disallowing gain change when muted </p></td>
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.api.types.AudioLevelChange">smartcore.api.types.AudioLevelChange</a></td>
+                  <td><a href="#smartcore.types.AudioLevelChange">smartcore.types.AudioLevelChange</a></td>
                   <td>repeated</td>
                   <td><p>Changes since the last message </p></td>
                 </tr>
@@ -397,7 +397,7 @@ disallowing gain change when muted </p></td>
               
                 <tr>
                   <td>gain</td>
-                  <td><a href="#smartcore.api.types.AudioLevel">smartcore.api.types.AudioLevel</a></td>
+                  <td><a href="#smartcore.types.AudioLevel">smartcore.types.AudioLevel</a></td>
                   <td></td>
                   <td><p>The updated gain value </p></td>
                 </tr>
@@ -440,14 +440,14 @@ disallowing gain change when muted </p></td>
               <tr>
                 <td>GetGain</td>
                 <td><a href="#smartcore.traits.GetMicrophoneGainRequest">GetMicrophoneGainRequest</a></td>
-                <td><a href="#smartcore.api.types.AudioLevel">.smartcore.api.types.AudioLevel</a></td>
+                <td><a href="#smartcore.types.AudioLevel">.smartcore.types.AudioLevel</a></td>
                 <td><p>Get the current state of the gain for the device</p></td>
               </tr>
             
               <tr>
                 <td>UpdateGain</td>
                 <td><a href="#smartcore.traits.UpdateMicrophoneGainRequest">UpdateMicrophoneGainRequest</a></td>
-                <td><a href="#smartcore.api.types.AudioLevel">.smartcore.api.types.AudioLevel</a></td>
+                <td><a href="#smartcore.types.AudioLevel">.smartcore.types.AudioLevel</a></td>
                 <td><p>update the gain state for the device</p></td>
               </tr>
             

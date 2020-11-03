@@ -43,18 +43,18 @@ message AirTemperature {
   Mode mode = 1;
   oneof temperature_goal {
     // A target temperature for the device
-    smartcore.api.types.Temperature temperature_set_point = 2;
+    smartcore.types.Temperature temperature_set_point = 2;
     // Write-only. Set the target temperature to a value relative to the current value.
-    smartcore.api.types.Temperature temperature_set_point_delta = 3;
+    smartcore.types.Temperature temperature_set_point_delta = 3;
     // A target range for the device. Only supported when in HEAT_COOL mode
     TemperatureRange temperature_range = 4;
   }
   // Optional, read-only. The ambient temperature as read by the device
-  smartcore.api.types.Temperature ambient_temperature = 5;
+  smartcore.types.Temperature ambient_temperature = 5;
   // Optional, read-only. The ambient humidity as read by the device
   google.protobuf.FloatValue ambient_humidity = 6;
   // Optional, read-only. The dew-point as read by the device
-  smartcore.api.types.Temperature dew_point = 7;
+  smartcore.types.Temperature dew_point = 7;
 
 
   // Supported modes for a device. Some of these values are used as descriptive attributes, some are used for control
@@ -92,11 +92,11 @@ message AirTemperature {
 // A setting for devices that target a temperature between a range.
 message TemperatureRange {
   // Required. The low threshold for the range
-  smartcore.api.types.Temperature low = 1;
+  smartcore.types.Temperature low = 1;
   // Required. The high threshold for the range
-  smartcore.api.types.Temperature high = 2;
+  smartcore.types.Temperature high = 2;
   // Optional. An ideal value for cases where a device supports three set points
-  smartcore.api.types.Temperature ideal = 3;
+  smartcore.types.Temperature ideal = 3;
 }
 
 // AirTemperatureSupport describes the capabilities of devices implementing this trait
@@ -104,7 +104,7 @@ message AirTemperatureSupport {
   // How a named device supports read/write/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
   // How the device thinks, all communications will be in celsius but the device's native unit is this.
-  smartcore.api.types.TemperatureUnit native_unit = 2;
+  smartcore.types.TemperatureUnit native_unit = 2;
   // The list of modes a device supports.
   repeated AirTemperature.Mode supported_modes = 3;
   // The minimum difference between the low and high temperatures when set using a range. 0 means unset, default to 2.

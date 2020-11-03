@@ -74,7 +74,7 @@ message RemoveAccountResponse {
 }
 
 message UpdateAccountPermissionsRequest {
-  smartcore.api.types.ChangeType change_type = 1;
+  smartcore.types.ChangeType change_type = 1;
   repeated Permission permissions = 2;
 }
 

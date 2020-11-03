@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package smartcore.api.types;
+package smartcore.types;
 
-option csharp_namespace = "Smartcore.Api.Types";
+option csharp_namespace = "Smartcore.Types";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types";
 option java_multiple_files = true;
 option java_outer_classname = "NumberProto";
-option java_package = "dev.smartcore.api.types";
+option java_package = "dev.smartcore.types";
 
 import "google/protobuf/wrappers.proto";
 import "types/tween.proto";
@@ -56,23 +56,23 @@ message Int32Var {
   google.protobuf.Int32Value value = 1;
   // Optional. Indicates the current progress through a transition. If present then target_value may be set. When
   // writing a value this denotes the intended tween duration.
-  smartcore.api.types.Tween ramp = 2;
+  smartcore.types.Tween ramp = 2;
   // If ramping, then defines the value that we are ramping towards
   google.protobuf.Int32Value target_value = 3;
 }
 
 // Describes features and restrictions applied to a number that is typically used as part of an apis value
 message Int32Attributes {
-  smartcore.api.types.Int32Bounds bounds = 1;
+  smartcore.types.Int32Bounds bounds = 1;
   // The stepping interval, how little the value can change in one go. A default value of 0 is equivalent to a
   // continuous step, i.e. step=1
   int32 step = 3;
   // Indicate whether the device supports delta adjustments when changing the value
   bool supports_delta = 4;
   // Indicate the level of ramp support the device has
-  smartcore.api.types.TweenSupport ramp_support = 5;
+  smartcore.types.TweenSupport ramp_support = 5;
   // Provide information on how invalid values will be handled
-  smartcore.api.types.NumberCapping default_capping = 6;
+  smartcore.types.NumberCapping default_capping = 6;
 }
 
 // Defines the bounds for a number. Either of the min or max values can be absent which means those aspects are
@@ -98,21 +98,21 @@ message FloatVar {
   google.protobuf.FloatValue value = 1;
   // Optional. Indicates the current progress through a transition. If present then target_value may be set. When
   // writing a value this denotes the intended tween duration.
-  smartcore.api.types.Tween ramp = 2;
+  smartcore.types.Tween ramp = 2;
   // If ramping, then defines the value that we are ramping towards
   google.protobuf.FloatValue target_value = 3;
 }
 
 // Describes features and restrictions applied to a number that is typically used as part of an apis value
 message FloatAttributes {
-  smartcore.api.types.FloatBounds bounds = 1;
+  smartcore.types.FloatBounds bounds = 1;
   // The stepping interval, how little the value can change in one go. A default value of 0 is equivalent to a
   // continuous step, i.e. all possible float values are supported
   float step = 3;
   // Indicate whether the device supports delta adjustments when changing the value
   bool supports_delta = 4;
   // Indicate the level of ramp support the device has
-  smartcore.api.types.TweenSupport ramp_support = 5;
+  smartcore.types.TweenSupport ramp_support = 5;
   // Provide information on how invalid values will be handled
-  smartcore.api.types.NumberCapping default_capping = 6;
+  smartcore.types.NumberCapping default_capping = 6;
 }

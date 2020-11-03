@@ -179,24 +179,24 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.api.types.AudioLevel"><span class="badge">M</span>AudioLevel</a>
+                  <a href="#smartcore.types.AudioLevel"><span class="badge">M</span>AudioLevel</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.AudioLevelChange"><span class="badge">M</span>AudioLevelChange</a>
+                  <a href="#smartcore.types.AudioLevelChange"><span class="badge">M</span>AudioLevelChange</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Temperature"><span class="badge">M</span>Temperature</a>
+                  <a href="#smartcore.types.Temperature"><span class="badge">M</span>Temperature</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Volume"><span class="badge">M</span>Volume</a>
+                  <a href="#smartcore.types.Volume"><span class="badge">M</span>Volume</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.api.types.TemperatureUnit"><span class="badge">E</span>TemperatureUnit</a>
+                  <a href="#smartcore.types.TemperatureUnit"><span class="badge">E</span>TemperatureUnit</a>
                 </li>
               
               
@@ -216,7 +216,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.api.types.AudioLevel">AudioLevel</h3>
+        <h3 id="smartcore.types.AudioLevel">AudioLevel</h3>
         <p>Represents an audio signal level for either input or output devices. Typically if fine grained control of either</p><p>gain or muted is required then a FieldMask should describe this.</p>
 
         
@@ -235,7 +235,7 @@
               
                 <tr>
                   <td>gain_tween</td>
-                  <td><a href="#smartcore.api.types.Tween">Tween</a></td>
+                  <td><a href="#smartcore.types.Tween">Tween</a></td>
                   <td></td>
                   <td><p>How the gain changes or should change over time. On write only duration should be set. </p></td>
                 </tr>
@@ -261,7 +261,7 @@
 
         
       
-        <h3 id="smartcore.api.types.AudioLevelChange">AudioLevelChange</h3>
+        <h3 id="smartcore.types.AudioLevelChange">AudioLevelChange</h3>
         <p>A change to the audio level</p>
 
         
@@ -287,7 +287,7 @@
               
                 <tr>
                   <td>level</td>
-                  <td><a href="#smartcore.api.types.AudioLevel">AudioLevel</a></td>
+                  <td><a href="#smartcore.types.AudioLevel">AudioLevel</a></td>
                   <td></td>
                   <td><p>The new state for the change </p></td>
                 </tr>
@@ -299,7 +299,7 @@
 
         
       
-        <h3 id="smartcore.api.types.Temperature">Temperature</h3>
+        <h3 id="smartcore.types.Temperature">Temperature</h3>
         <p>A temperature value</p>
 
         
@@ -324,7 +324,7 @@ communicate in celsius. </p></td>
 
         
       
-        <h3 id="smartcore.api.types.Volume">Volume</h3>
+        <h3 id="smartcore.types.Volume">Volume</h3>
         <p>Represents the audio signal level for either input or output devices. When reading mute is always accurate, when</p><p>writing please use a FieldMask to exclude the mute value if you do not intend on changing it.</p>
 
         
@@ -336,7 +336,7 @@ communicate in celsius. </p></td>
               
                 <tr>
                   <td>gain</td>
-                  <td><a href="#smartcore.api.types.FloatVar">FloatVar</a></td>
+                  <td><a href="#smartcore.types.FloatVar">FloatVar</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -357,7 +357,7 @@ communicate in celsius. </p></td>
       
 
       
-        <h3 id="smartcore.api.types.TemperatureUnit">TemperatureUnit</h3>
+        <h3 id="smartcore.types.TemperatureUnit">TemperatureUnit</h3>
         <p>Possible temperature units for physical bodies.</p>
         <table class="enum-table">
           <thead>

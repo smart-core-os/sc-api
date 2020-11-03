@@ -1641,7 +1641,7 @@ proto.smartcore.info.UpdateAccountPermissionsRequest.deserializeBinaryFromReader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.api.types.ChangeType} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.ChangeType} */ (reader.readEnum());
       msg.setChangeType(value);
       break;
     case 2:
@@ -1697,16 +1697,16 @@ proto.smartcore.info.UpdateAccountPermissionsRequest.serializeBinaryToWriter = f
 
 
 /**
- * optional smartcore.api.types.ChangeType change_type = 1;
- * @return {!proto.smartcore.api.types.ChangeType}
+ * optional smartcore.types.ChangeType change_type = 1;
+ * @return {!proto.smartcore.types.ChangeType}
  */
 proto.smartcore.info.UpdateAccountPermissionsRequest.prototype.getChangeType = function() {
-  return /** @type {!proto.smartcore.api.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.ChangeType} value
+ * @param {!proto.smartcore.types.ChangeType} value
  * @return {!proto.smartcore.info.UpdateAccountPermissionsRequest} returns this
  */
 proto.smartcore.info.UpdateAccountPermissionsRequest.prototype.setChangeType = function(value) {

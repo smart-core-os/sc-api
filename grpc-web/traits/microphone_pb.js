@@ -236,7 +236,7 @@ proto.smartcore.traits.GainSupport.deserializeBinaryFromReader = function(msg, r
       msg.setGainAttributes(value);
       break;
     case 3:
-      var value = /** @type {!proto.smartcore.api.types.MuteSupport} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.MuteSupport} */ (reader.readEnum());
       msg.setMuteSupport(value);
       break;
     default:
@@ -332,17 +332,17 @@ proto.smartcore.traits.GainSupport.prototype.hasResourceSupport = function() {
 
 
 /**
- * optional smartcore.api.types.FloatAttributes gain_attributes = 2;
- * @return {?proto.smartcore.api.types.FloatAttributes}
+ * optional smartcore.types.FloatAttributes gain_attributes = 2;
+ * @return {?proto.smartcore.types.FloatAttributes}
  */
 proto.smartcore.traits.GainSupport.prototype.getGainAttributes = function() {
-  return /** @type{?proto.smartcore.api.types.FloatAttributes} */ (
+  return /** @type{?proto.smartcore.types.FloatAttributes} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatAttributes, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatAttributes|undefined} value
+ * @param {?proto.smartcore.types.FloatAttributes|undefined} value
  * @return {!proto.smartcore.traits.GainSupport} returns this
 */
 proto.smartcore.traits.GainSupport.prototype.setGainAttributes = function(value) {
@@ -369,16 +369,16 @@ proto.smartcore.traits.GainSupport.prototype.hasGainAttributes = function() {
 
 
 /**
- * optional smartcore.api.types.MuteSupport mute_support = 3;
- * @return {!proto.smartcore.api.types.MuteSupport}
+ * optional smartcore.types.MuteSupport mute_support = 3;
+ * @return {!proto.smartcore.types.MuteSupport}
  */
 proto.smartcore.traits.GainSupport.prototype.getMuteSupport = function() {
-  return /** @type {!proto.smartcore.api.types.MuteSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.smartcore.types.MuteSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.MuteSupport} value
+ * @param {!proto.smartcore.types.MuteSupport} value
  * @return {!proto.smartcore.traits.GainSupport} returns this
  */
 proto.smartcore.traits.GainSupport.prototype.setMuteSupport = function(value) {
@@ -738,17 +738,17 @@ proto.smartcore.traits.UpdateMicrophoneGainRequest.prototype.setName = function(
 
 
 /**
- * optional smartcore.api.types.AudioLevel gain = 2;
- * @return {?proto.smartcore.api.types.AudioLevel}
+ * optional smartcore.types.AudioLevel gain = 2;
+ * @return {?proto.smartcore.types.AudioLevel}
  */
 proto.smartcore.traits.UpdateMicrophoneGainRequest.prototype.getGain = function() {
-  return /** @type{?proto.smartcore.api.types.AudioLevel} */ (
+  return /** @type{?proto.smartcore.types.AudioLevel} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.AudioLevel, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.AudioLevel|undefined} value
+ * @param {?proto.smartcore.types.AudioLevel|undefined} value
  * @return {!proto.smartcore.traits.UpdateMicrophoneGainRequest} returns this
 */
 proto.smartcore.traits.UpdateMicrophoneGainRequest.prototype.setGain = function(value) {
@@ -1133,17 +1133,17 @@ proto.smartcore.traits.PullMicrophoneGainResponse.serializeBinaryToWriter = func
 
 
 /**
- * repeated smartcore.api.types.AudioLevelChange changes = 1;
- * @return {!Array<!proto.smartcore.api.types.AudioLevelChange>}
+ * repeated smartcore.types.AudioLevelChange changes = 1;
+ * @return {!Array<!proto.smartcore.types.AudioLevelChange>}
  */
 proto.smartcore.traits.PullMicrophoneGainResponse.prototype.getChangesList = function() {
-  return /** @type{!Array<!proto.smartcore.api.types.AudioLevelChange>} */ (
+  return /** @type{!Array<!proto.smartcore.types.AudioLevelChange>} */ (
     jspb.Message.getRepeatedWrapperField(this, types_unit_pb.AudioLevelChange, 1));
 };
 
 
 /**
- * @param {!Array<!proto.smartcore.api.types.AudioLevelChange>} value
+ * @param {!Array<!proto.smartcore.types.AudioLevelChange>} value
  * @return {!proto.smartcore.traits.PullMicrophoneGainResponse} returns this
 */
 proto.smartcore.traits.PullMicrophoneGainResponse.prototype.setChangesList = function(value) {
@@ -1152,12 +1152,12 @@ proto.smartcore.traits.PullMicrophoneGainResponse.prototype.setChangesList = fun
 
 
 /**
- * @param {!proto.smartcore.api.types.AudioLevelChange=} opt_value
+ * @param {!proto.smartcore.types.AudioLevelChange=} opt_value
  * @param {number=} opt_index
- * @return {!proto.smartcore.api.types.AudioLevelChange}
+ * @return {!proto.smartcore.types.AudioLevelChange}
  */
 proto.smartcore.traits.PullMicrophoneGainResponse.prototype.addChanges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.api.types.AudioLevelChange, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.types.AudioLevelChange, opt_index);
 };
 
 

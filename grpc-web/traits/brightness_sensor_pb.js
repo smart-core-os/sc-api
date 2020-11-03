@@ -468,17 +468,17 @@ proto.smartcore.traits.AmbientBrightnessSupport.prototype.hasResourceSupport = f
 
 
 /**
- * optional smartcore.api.types.FloatBounds brightness_lux = 2;
- * @return {?proto.smartcore.api.types.FloatBounds}
+ * optional smartcore.types.FloatBounds brightness_lux = 2;
+ * @return {?proto.smartcore.types.FloatBounds}
  */
 proto.smartcore.traits.AmbientBrightnessSupport.prototype.getBrightnessLux = function() {
-  return /** @type{?proto.smartcore.api.types.FloatBounds} */ (
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatBounds|undefined} value
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
  * @return {!proto.smartcore.traits.AmbientBrightnessSupport} returns this
 */
 proto.smartcore.traits.AmbientBrightnessSupport.prototype.setBrightnessLux = function(value) {

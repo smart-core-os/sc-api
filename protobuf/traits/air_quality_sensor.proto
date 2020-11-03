@@ -57,11 +57,11 @@ message AirQualitySupport {
   // How a named device supports read/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
   // If present then the sensor supports reporting CO2 levels, in parts-per-million.
-  smartcore.api.types.FloatBounds carbon_dioxide_level = 2;
+  smartcore.types.FloatBounds carbon_dioxide_level = 2;
   // If present then the sensor supports reporting volatile organic compounds, in parts-per-million.
-  smartcore.api.types.FloatBounds volatile_organic_compounds = 3;
+  smartcore.types.FloatBounds volatile_organic_compounds = 3;
   // If present then the sensor supports reporting air pressure, in hPa.
-  smartcore.api.types.FloatBounds air_pressure = 4;
+  smartcore.types.FloatBounds air_pressure = 4;
   // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
   // Unknown should be assumed to be present if supported.
   repeated AirQuality.Comfort comfort = 5;

@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package smartcore.api.types;
+package smartcore.types;
 
-option csharp_namespace = "Smartcore.Api.Types";
+option csharp_namespace = "Smartcore.Types";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types";
 option java_multiple_files = true;
 option java_outer_classname = "VolumeProto";
-option java_package = "dev.smartcore.api.types";
+option java_package = "dev.smartcore.types";
 
 import "google/protobuf/timestamp.proto";
 import "types/unit.proto";
@@ -18,7 +18,7 @@ message VolumeChange {
   // When the change was applied
   google.protobuf.Timestamp change_time = 2;
   // The new state for the change
-  smartcore.api.types.Volume volume = 3;
+  smartcore.types.Volume volume = 3;
 }
 
 // What is the level of mute support that the speaker provides

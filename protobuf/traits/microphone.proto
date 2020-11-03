@@ -21,10 +21,10 @@ import "types/volume.proto";
 // For the sakes of this trait Volume means the combination of a gain and a mute state.
 service MicrophoneApi {
   // Get the current state of the gain for the device
-  rpc GetGain (GetMicrophoneGainRequest) returns (smartcore.api.types.AudioLevel);
+  rpc GetGain (GetMicrophoneGainRequest) returns (smartcore.types.AudioLevel);
 
   // update the gain state for the device
-  rpc UpdateGain (UpdateMicrophoneGainRequest) returns (smartcore.api.types.AudioLevel);
+  rpc UpdateGain (UpdateMicrophoneGainRequest) returns (smartcore.types.AudioLevel);
 
   rpc PullGain (PullMicrophoneGainRequest) returns (stream PullMicrophoneGainResponse);
 }
@@ -41,10 +41,10 @@ message GainSupport {
   smartcore.types.ResourceSupport resource_support = 1;
   // Attributes associated with the gain property of the microphone. Note that a step value that is the same as the bounds
   // implies that the microphone only supports mute
-  smartcore.api.types.FloatAttributes gain_attributes = 2;
+  smartcore.types.FloatAttributes gain_attributes = 2;
   // How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
   // disallowing gain change when muted
-  smartcore.api.types.MuteSupport mute_support = 3;
+  smartcore.types.MuteSupport mute_support = 3;
 }
 
 message GetMicrophoneGainRequest {
@@ -58,7 +58,7 @@ message UpdateMicrophoneGainRequest {
   // Name of the device to update the state for
   string name = 1;
   // The updated gain value
-  smartcore.api.types.AudioLevel gain = 2;
+  smartcore.types.AudioLevel gain = 2;
   // Only supported for Volume.level. Update the value relative to the current value.
   bool delta = 3;
   // The fields we intend to update relative to the Volume type
@@ -74,7 +74,7 @@ message PullMicrophoneGainRequest {
 
 message PullMicrophoneGainResponse {
   // Changes since the last message
-  repeated smartcore.api.types.AudioLevelChange changes = 1;
+  repeated smartcore.types.AudioLevelChange changes = 1;
 }
 
 message DescribeGainRequest {

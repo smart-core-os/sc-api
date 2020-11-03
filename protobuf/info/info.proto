@@ -51,7 +51,7 @@ message PullDevicesResponse {
   repeated Change changes = 1;
 
   message Change {
-    smartcore.api.types.ChangeType type = 1;
+    smartcore.types.ChangeType type = 1;
     Device new_value = 2;
     Device old_value = 3;
   }

@@ -604,17 +604,17 @@ proto.smartcore.traits.Booking.prototype.setOwnerName = function(value) {
 
 
 /**
- * optional smartcore.api.types.time.Period booked = 5;
- * @return {?proto.smartcore.api.types.time.Period}
+ * optional smartcore.types.time.Period booked = 5;
+ * @return {?proto.smartcore.types.time.Period}
  */
 proto.smartcore.traits.Booking.prototype.getBooked = function() {
-  return /** @type{?proto.smartcore.api.types.time.Period} */ (
+  return /** @type{?proto.smartcore.types.time.Period} */ (
     jspb.Message.getWrapperField(this, types_time_period_pb.Period, 5));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.time.Period|undefined} value
+ * @param {?proto.smartcore.types.time.Period|undefined} value
  * @return {!proto.smartcore.traits.Booking} returns this
 */
 proto.smartcore.traits.Booking.prototype.setBooked = function(value) {
@@ -641,17 +641,17 @@ proto.smartcore.traits.Booking.prototype.hasBooked = function() {
 
 
 /**
- * optional smartcore.api.types.time.Period check_in = 6;
- * @return {?proto.smartcore.api.types.time.Period}
+ * optional smartcore.types.time.Period check_in = 6;
+ * @return {?proto.smartcore.types.time.Period}
  */
 proto.smartcore.traits.Booking.prototype.getCheckIn = function() {
-  return /** @type{?proto.smartcore.api.types.time.Period} */ (
+  return /** @type{?proto.smartcore.types.time.Period} */ (
     jspb.Message.getWrapperField(this, types_time_period_pb.Period, 6));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.time.Period|undefined} value
+ * @param {?proto.smartcore.types.time.Period|undefined} value
  * @return {!proto.smartcore.traits.Booking} returns this
 */
 proto.smartcore.traits.Booking.prototype.setCheckIn = function(value) {
@@ -763,7 +763,7 @@ proto.smartcore.traits.BookingSupport.deserializeBinaryFromReader = function(msg
       msg.setCheckOutSupport(value);
       break;
     case 4:
-      var value = /** @type {!proto.smartcore.api.types.time.Unit} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.time.Unit} */ (reader.readEnum());
       msg.setTimeResolution(value);
       break;
     default:
@@ -911,16 +911,16 @@ proto.smartcore.traits.BookingSupport.prototype.setCheckOutSupport = function(va
 
 
 /**
- * optional smartcore.api.types.time.Unit time_resolution = 4;
- * @return {!proto.smartcore.api.types.time.Unit}
+ * optional smartcore.types.time.Unit time_resolution = 4;
+ * @return {!proto.smartcore.types.time.Unit}
  */
 proto.smartcore.traits.BookingSupport.prototype.getTimeResolution = function() {
-  return /** @type {!proto.smartcore.api.types.time.Unit} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {!proto.smartcore.types.time.Unit} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.time.Unit} value
+ * @param {!proto.smartcore.types.time.Unit} value
  * @return {!proto.smartcore.traits.BookingSupport} returns this
  */
 proto.smartcore.traits.BookingSupport.prototype.setTimeResolution = function(value) {
@@ -1073,17 +1073,17 @@ proto.smartcore.traits.ListBookingsRequest.prototype.setName = function(value) {
 
 
 /**
- * optional smartcore.api.types.time.Period booking_intersects = 2;
- * @return {?proto.smartcore.api.types.time.Period}
+ * optional smartcore.types.time.Period booking_intersects = 2;
+ * @return {?proto.smartcore.types.time.Period}
  */
 proto.smartcore.traits.ListBookingsRequest.prototype.getBookingIntersects = function() {
-  return /** @type{?proto.smartcore.api.types.time.Period} */ (
+  return /** @type{?proto.smartcore.types.time.Period} */ (
     jspb.Message.getWrapperField(this, types_time_period_pb.Period, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.time.Period|undefined} value
+ * @param {?proto.smartcore.types.time.Period|undefined} value
  * @return {!proto.smartcore.traits.ListBookingsRequest} returns this
 */
 proto.smartcore.traits.ListBookingsRequest.prototype.setBookingIntersects = function(value) {
@@ -2787,7 +2787,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.deserializeBinaryFromReader =
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {!proto.smartcore.api.types.ChangeType} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.ChangeType} */ (reader.readEnum());
       msg.setType(value);
       break;
     case 3:
@@ -2894,16 +2894,16 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.setName = function(
 
 
 /**
- * optional smartcore.api.types.ChangeType type = 2;
- * @return {!proto.smartcore.api.types.ChangeType}
+ * optional smartcore.types.ChangeType type = 2;
+ * @return {!proto.smartcore.types.ChangeType}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.getType = function() {
-  return /** @type {!proto.smartcore.api.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.smartcore.types.ChangeType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.ChangeType} value
+ * @param {!proto.smartcore.types.ChangeType} value
  * @return {!proto.smartcore.traits.PullBookingsResponse.Change} returns this
  */
 proto.smartcore.traits.PullBookingsResponse.Change.prototype.setType = function(value) {

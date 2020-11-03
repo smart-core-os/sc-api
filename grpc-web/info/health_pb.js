@@ -444,7 +444,7 @@ proto.smartcore.info.ConnectionHealth.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.api.types.Connectivity} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.Connectivity} */ (reader.readEnum());
       msg.setStatus(value);
       break;
     case 2:
@@ -513,16 +513,16 @@ proto.smartcore.info.ConnectionHealth.serializeBinaryToWriter = function(message
 
 
 /**
- * optional smartcore.api.types.Connectivity status = 1;
- * @return {!proto.smartcore.api.types.Connectivity}
+ * optional smartcore.types.Connectivity status = 1;
+ * @return {!proto.smartcore.types.Connectivity}
  */
 proto.smartcore.info.ConnectionHealth.prototype.getStatus = function() {
-  return /** @type {!proto.smartcore.api.types.Connectivity} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.types.Connectivity} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.Connectivity} value
+ * @param {!proto.smartcore.types.Connectivity} value
  * @return {!proto.smartcore.info.ConnectionHealth} returns this
  */
 proto.smartcore.info.ConnectionHealth.prototype.setStatus = function(value) {
@@ -676,7 +676,7 @@ proto.smartcore.info.CommHealth.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.smartcore.api.types.CommStatus} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.CommStatus} */ (reader.readEnum());
       msg.setStatus(value);
       break;
     case 2:
@@ -745,16 +745,16 @@ proto.smartcore.info.CommHealth.serializeBinaryToWriter = function(message, writ
 
 
 /**
- * optional smartcore.api.types.CommStatus status = 1;
- * @return {!proto.smartcore.api.types.CommStatus}
+ * optional smartcore.types.CommStatus status = 1;
+ * @return {!proto.smartcore.types.CommStatus}
  */
 proto.smartcore.info.CommHealth.prototype.getStatus = function() {
-  return /** @type {!proto.smartcore.api.types.CommStatus} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.smartcore.types.CommStatus} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.CommStatus} value
+ * @param {!proto.smartcore.types.CommStatus} value
  * @return {!proto.smartcore.info.CommHealth} returns this
  */
 proto.smartcore.info.CommHealth.prototype.setStatus = function(value) {

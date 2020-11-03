@@ -482,17 +482,17 @@ proto.smartcore.traits.AirTemperature.prototype.setMode = function(value) {
 
 
 /**
- * optional smartcore.api.types.Temperature temperature_set_point = 2;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature temperature_set_point = 2;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.AirTemperature.prototype.getTemperatureSetPoint = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
 */
 proto.smartcore.traits.AirTemperature.prototype.setTemperatureSetPoint = function(value) {
@@ -519,17 +519,17 @@ proto.smartcore.traits.AirTemperature.prototype.hasTemperatureSetPoint = functio
 
 
 /**
- * optional smartcore.api.types.Temperature temperature_set_point_delta = 3;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature temperature_set_point_delta = 3;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.AirTemperature.prototype.getTemperatureSetPointDelta = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
 */
 proto.smartcore.traits.AirTemperature.prototype.setTemperatureSetPointDelta = function(value) {
@@ -593,17 +593,17 @@ proto.smartcore.traits.AirTemperature.prototype.hasTemperatureRange = function()
 
 
 /**
- * optional smartcore.api.types.Temperature ambient_temperature = 5;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature ambient_temperature = 5;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.AirTemperature.prototype.getAmbientTemperature = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 5));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
 */
 proto.smartcore.traits.AirTemperature.prototype.setAmbientTemperature = function(value) {
@@ -667,17 +667,17 @@ proto.smartcore.traits.AirTemperature.prototype.hasAmbientHumidity = function() 
 
 
 /**
- * optional smartcore.api.types.Temperature dew_point = 7;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature dew_point = 7;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.AirTemperature.prototype.getDewPoint = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 7));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
 */
 proto.smartcore.traits.AirTemperature.prototype.setDewPoint = function(value) {
@@ -846,17 +846,17 @@ proto.smartcore.traits.TemperatureRange.serializeBinaryToWriter = function(messa
 
 
 /**
- * optional smartcore.api.types.Temperature low = 1;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature low = 1;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.TemperatureRange.prototype.getLow = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 1));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.TemperatureRange} returns this
 */
 proto.smartcore.traits.TemperatureRange.prototype.setLow = function(value) {
@@ -883,17 +883,17 @@ proto.smartcore.traits.TemperatureRange.prototype.hasLow = function() {
 
 
 /**
- * optional smartcore.api.types.Temperature high = 2;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature high = 2;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.TemperatureRange.prototype.getHigh = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.TemperatureRange} returns this
 */
 proto.smartcore.traits.TemperatureRange.prototype.setHigh = function(value) {
@@ -920,17 +920,17 @@ proto.smartcore.traits.TemperatureRange.prototype.hasHigh = function() {
 
 
 /**
- * optional smartcore.api.types.Temperature ideal = 3;
- * @return {?proto.smartcore.api.types.Temperature}
+ * optional smartcore.types.Temperature ideal = 3;
+ * @return {?proto.smartcore.types.Temperature}
  */
 proto.smartcore.traits.TemperatureRange.prototype.getIdeal = function() {
-  return /** @type{?proto.smartcore.api.types.Temperature} */ (
+  return /** @type{?proto.smartcore.types.Temperature} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.Temperature, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Temperature|undefined} value
+ * @param {?proto.smartcore.types.Temperature|undefined} value
  * @return {!proto.smartcore.traits.TemperatureRange} returns this
 */
 proto.smartcore.traits.TemperatureRange.prototype.setIdeal = function(value) {
@@ -1041,7 +1041,7 @@ proto.smartcore.traits.AirTemperatureSupport.deserializeBinaryFromReader = funct
       msg.setResourceSupport(value);
       break;
     case 2:
-      var value = /** @type {!proto.smartcore.api.types.TemperatureUnit} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.TemperatureUnit} */ (reader.readEnum());
       msg.setNativeUnit(value);
       break;
     case 3:
@@ -1151,16 +1151,16 @@ proto.smartcore.traits.AirTemperatureSupport.prototype.hasResourceSupport = func
 
 
 /**
- * optional smartcore.api.types.TemperatureUnit native_unit = 2;
- * @return {!proto.smartcore.api.types.TemperatureUnit}
+ * optional smartcore.types.TemperatureUnit native_unit = 2;
+ * @return {!proto.smartcore.types.TemperatureUnit}
  */
 proto.smartcore.traits.AirTemperatureSupport.prototype.getNativeUnit = function() {
-  return /** @type {!proto.smartcore.api.types.TemperatureUnit} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.smartcore.types.TemperatureUnit} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.TemperatureUnit} value
+ * @param {!proto.smartcore.types.TemperatureUnit} value
  * @return {!proto.smartcore.traits.AirTemperatureSupport} returns this
  */
 proto.smartcore.traits.AirTemperatureSupport.prototype.setNativeUnit = function(value) {

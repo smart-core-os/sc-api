@@ -52,12 +52,12 @@ message Booking {
   // the name of the owner of this booking
   string owner_name = 4;
   // the time period this booking is for
-  smartcore.api.types.time.Period booked = 5;
+  smartcore.types.time.Period booked = 5;
   // The time period this booking was checked in for.
   // If this is absent, then no check in or check out has happened
   // If check_in.start_time is absent, no check in has happened
   // If check_in.end_time is absent, no check out has happened
-  smartcore.api.types.time.Period check_in = 6;
+  smartcore.types.time.Period check_in = 6;
 }
 
 // BookingSupport describes the capabilities of devices implementing this trait
@@ -69,7 +69,7 @@ message BookingSupport {
   // is check out supported, and how
   CheckInSupport check_out_support = 3;
   // the supported time resolution for date time fields and queries
-  smartcore.api.types.time.Unit time_resolution = 4;
+  smartcore.types.time.Unit time_resolution = 4;
 
   enum CheckInSupport {
     // check in support is unknown
@@ -88,7 +88,7 @@ message ListBookingsRequest {
   string name = 1;
   // Specify the time period to return bookings for
   // bookings are returned if they intersect this time period
-  smartcore.api.types.time.Period booking_intersects = 2;
+  smartcore.types.time.Period booking_intersects = 2;
 }
 
 message ListBookingsResponse {
@@ -154,7 +154,7 @@ message PullBookingsResponse {
     // the name of the device that emitted this change
     string name = 1;
     // the type of change (e.g. ADD, UPDATE, etc...)
-    smartcore.api.types.ChangeType type = 2;
+    smartcore.types.ChangeType type = 2;
     // the new value to use for ADD|UPDATE changes
     Booking new_value = 3;
     // the old value to use for UPDATE|REMOVE changes

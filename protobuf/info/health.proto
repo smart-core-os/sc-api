@@ -31,7 +31,7 @@ message HealthState {
 // Describes the health of a connection
 message ConnectionHealth {
   // are we currently connected
-  smartcore.api.types.Connectivity status = 1;
+  smartcore.types.Connectivity status = 1;
   // When was the last time a successful connection was established
   google.protobuf.Timestamp connect_time = 2;
   // When was the last time a connection was closed/ended
@@ -40,7 +40,7 @@ message ConnectionHealth {
 
 // Describes the health of communication.
 message CommHealth {
-  smartcore.api.types.CommStatus status = 1;
+  smartcore.types.CommStatus status = 1;
   // The most recent time the status changed to COMM_FAILURE
   google.protobuf.Timestamp failure_time = 2;
   // The most recent time the status changed to COMM_SUCCESS

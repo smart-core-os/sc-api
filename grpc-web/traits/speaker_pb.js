@@ -236,7 +236,7 @@ proto.smartcore.traits.VolumeSupport.deserializeBinaryFromReader = function(msg,
       msg.setVolumeAttributes(value);
       break;
     case 3:
-      var value = /** @type {!proto.smartcore.api.types.MuteSupport} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.MuteSupport} */ (reader.readEnum());
       msg.setMuteSupport(value);
       break;
     default:
@@ -332,17 +332,17 @@ proto.smartcore.traits.VolumeSupport.prototype.hasResourceSupport = function() {
 
 
 /**
- * optional smartcore.api.types.FloatAttributes volume_attributes = 2;
- * @return {?proto.smartcore.api.types.FloatAttributes}
+ * optional smartcore.types.FloatAttributes volume_attributes = 2;
+ * @return {?proto.smartcore.types.FloatAttributes}
  */
 proto.smartcore.traits.VolumeSupport.prototype.getVolumeAttributes = function() {
-  return /** @type{?proto.smartcore.api.types.FloatAttributes} */ (
+  return /** @type{?proto.smartcore.types.FloatAttributes} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatAttributes, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatAttributes|undefined} value
+ * @param {?proto.smartcore.types.FloatAttributes|undefined} value
  * @return {!proto.smartcore.traits.VolumeSupport} returns this
 */
 proto.smartcore.traits.VolumeSupport.prototype.setVolumeAttributes = function(value) {
@@ -369,16 +369,16 @@ proto.smartcore.traits.VolumeSupport.prototype.hasVolumeAttributes = function() 
 
 
 /**
- * optional smartcore.api.types.MuteSupport mute_support = 3;
- * @return {!proto.smartcore.api.types.MuteSupport}
+ * optional smartcore.types.MuteSupport mute_support = 3;
+ * @return {!proto.smartcore.types.MuteSupport}
  */
 proto.smartcore.traits.VolumeSupport.prototype.getMuteSupport = function() {
-  return /** @type {!proto.smartcore.api.types.MuteSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {!proto.smartcore.types.MuteSupport} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.MuteSupport} value
+ * @param {!proto.smartcore.types.MuteSupport} value
  * @return {!proto.smartcore.traits.VolumeSupport} returns this
  */
 proto.smartcore.traits.VolumeSupport.prototype.setMuteSupport = function(value) {
@@ -738,17 +738,17 @@ proto.smartcore.traits.UpdateSpeakerVolumeRequest.prototype.setName = function(v
 
 
 /**
- * optional smartcore.api.types.AudioLevel volume = 2;
- * @return {?proto.smartcore.api.types.AudioLevel}
+ * optional smartcore.types.AudioLevel volume = 2;
+ * @return {?proto.smartcore.types.AudioLevel}
  */
 proto.smartcore.traits.UpdateSpeakerVolumeRequest.prototype.getVolume = function() {
-  return /** @type{?proto.smartcore.api.types.AudioLevel} */ (
+  return /** @type{?proto.smartcore.types.AudioLevel} */ (
     jspb.Message.getWrapperField(this, types_unit_pb.AudioLevel, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.AudioLevel|undefined} value
+ * @param {?proto.smartcore.types.AudioLevel|undefined} value
  * @return {!proto.smartcore.traits.UpdateSpeakerVolumeRequest} returns this
 */
 proto.smartcore.traits.UpdateSpeakerVolumeRequest.prototype.setVolume = function(value) {
@@ -1133,17 +1133,17 @@ proto.smartcore.traits.PullSpeakerVolumeResponse.serializeBinaryToWriter = funct
 
 
 /**
- * repeated smartcore.api.types.AudioLevelChange changes = 1;
- * @return {!Array<!proto.smartcore.api.types.AudioLevelChange>}
+ * repeated smartcore.types.AudioLevelChange changes = 1;
+ * @return {!Array<!proto.smartcore.types.AudioLevelChange>}
  */
 proto.smartcore.traits.PullSpeakerVolumeResponse.prototype.getChangesList = function() {
-  return /** @type{!Array<!proto.smartcore.api.types.AudioLevelChange>} */ (
+  return /** @type{!Array<!proto.smartcore.types.AudioLevelChange>} */ (
     jspb.Message.getRepeatedWrapperField(this, types_unit_pb.AudioLevelChange, 1));
 };
 
 
 /**
- * @param {!Array<!proto.smartcore.api.types.AudioLevelChange>} value
+ * @param {!Array<!proto.smartcore.types.AudioLevelChange>} value
  * @return {!proto.smartcore.traits.PullSpeakerVolumeResponse} returns this
 */
 proto.smartcore.traits.PullSpeakerVolumeResponse.prototype.setChangesList = function(value) {
@@ -1152,12 +1152,12 @@ proto.smartcore.traits.PullSpeakerVolumeResponse.prototype.setChangesList = func
 
 
 /**
- * @param {!proto.smartcore.api.types.AudioLevelChange=} opt_value
+ * @param {!proto.smartcore.types.AudioLevelChange=} opt_value
  * @param {number=} opt_index
- * @return {!proto.smartcore.api.types.AudioLevelChange}
+ * @return {!proto.smartcore.types.AudioLevelChange}
  */
 proto.smartcore.traits.PullSpeakerVolumeResponse.prototype.addChanges = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.api.types.AudioLevelChange, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.smartcore.types.AudioLevelChange, opt_index);
 };
 
 

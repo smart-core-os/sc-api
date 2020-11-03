@@ -463,17 +463,17 @@ proto.smartcore.traits.Extension.prototype.setExtendPreset = function(value) {
 
 
 /**
- * optional smartcore.api.types.Tween extend_tween = 3;
- * @return {?proto.smartcore.api.types.Tween}
+ * optional smartcore.types.Tween extend_tween = 3;
+ * @return {?proto.smartcore.types.Tween}
  */
 proto.smartcore.traits.Extension.prototype.getExtendTween = function() {
-  return /** @type{?proto.smartcore.api.types.Tween} */ (
+  return /** @type{?proto.smartcore.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @param {?proto.smartcore.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.Extension} returns this
 */
 proto.smartcore.traits.Extension.prototype.setExtendTween = function(value) {
@@ -842,7 +842,7 @@ proto.smartcore.traits.ExtensionSupport.deserializeBinaryFromReader = function(m
       msg.setStep(value);
       break;
     case 4:
-      var value = /** @type {!proto.smartcore.api.types.TweenSupport} */ (reader.readEnum());
+      var value = /** @type {!proto.smartcore.types.TweenSupport} */ (reader.readEnum());
       msg.setTweenSupport(value);
       break;
     case 5:
@@ -1012,16 +1012,16 @@ proto.smartcore.traits.ExtensionSupport.prototype.setStep = function(value) {
 
 
 /**
- * optional smartcore.api.types.TweenSupport tween_support = 4;
- * @return {!proto.smartcore.api.types.TweenSupport}
+ * optional smartcore.types.TweenSupport tween_support = 4;
+ * @return {!proto.smartcore.types.TweenSupport}
  */
 proto.smartcore.traits.ExtensionSupport.prototype.getTweenSupport = function() {
-  return /** @type {!proto.smartcore.api.types.TweenSupport} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {!proto.smartcore.types.TweenSupport} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {!proto.smartcore.api.types.TweenSupport} value
+ * @param {!proto.smartcore.types.TweenSupport} value
  * @return {!proto.smartcore.traits.ExtensionSupport} returns this
  */
 proto.smartcore.traits.ExtensionSupport.prototype.setTweenSupport = function(value) {

@@ -12,12 +12,12 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.smartcore.api.types.CommStatus', null, global);
-goog.exportSymbol('proto.smartcore.api.types.Connectivity', null, global);
+goog.exportSymbol('proto.smartcore.types.CommStatus', null, global);
+goog.exportSymbol('proto.smartcore.types.Connectivity', null, global);
 /**
  * @enum {number}
  */
-proto.smartcore.api.types.Connectivity = {
+proto.smartcore.types.Connectivity = {
   NOT_APPLICABLE: 0,
   DISCONNECTED: 1,
   CONNECTED: 2
@@ -26,10 +26,10 @@ proto.smartcore.api.types.Connectivity = {
 /**
  * @enum {number}
  */
-proto.smartcore.api.types.CommStatus = {
+proto.smartcore.types.CommStatus = {
   COMM_UNKNOWN: 0,
   COMM_SUCCESS: 1,
   COMM_FAILURE: 2
 };
 
-goog.object.extend(exports, proto.smartcore.api.types);
+goog.object.extend(exports, proto.smartcore.types);

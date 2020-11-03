@@ -12,14 +12,14 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.smartcore.api.types.OnOffState', null, global);
+goog.exportSymbol('proto.smartcore.types.OnOffState', null, global);
 /**
  * @enum {number}
  */
-proto.smartcore.api.types.OnOffState = {
+proto.smartcore.types.OnOffState = {
   UNKNOWN: 0,
   ON: 1,
   OFF: 2
 };
 
-goog.object.extend(exports, proto.smartcore.api.types);
+goog.object.extend(exports, proto.smartcore.types);

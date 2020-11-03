@@ -179,36 +179,36 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.api.types.FloatAttributes"><span class="badge">M</span>FloatAttributes</a>
+                  <a href="#smartcore.types.FloatAttributes"><span class="badge">M</span>FloatAttributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.FloatBounds"><span class="badge">M</span>FloatBounds</a>
+                  <a href="#smartcore.types.FloatBounds"><span class="badge">M</span>FloatBounds</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.FloatVar"><span class="badge">M</span>FloatVar</a>
+                  <a href="#smartcore.types.FloatVar"><span class="badge">M</span>FloatVar</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Int32Attributes"><span class="badge">M</span>Int32Attributes</a>
+                  <a href="#smartcore.types.Int32Attributes"><span class="badge">M</span>Int32Attributes</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Int32Bounds"><span class="badge">M</span>Int32Bounds</a>
+                  <a href="#smartcore.types.Int32Bounds"><span class="badge">M</span>Int32Bounds</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.Int32Var"><span class="badge">M</span>Int32Var</a>
+                  <a href="#smartcore.types.Int32Var"><span class="badge">M</span>Int32Var</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.api.types.NumberCapping"><span class="badge">M</span>NumberCapping</a>
+                  <a href="#smartcore.types.NumberCapping"><span class="badge">M</span>NumberCapping</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.api.types.InvalidNumberBehaviour"><span class="badge">E</span>InvalidNumberBehaviour</a>
+                  <a href="#smartcore.types.InvalidNumberBehaviour"><span class="badge">E</span>InvalidNumberBehaviour</a>
                 </li>
               
               
@@ -228,7 +228,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.api.types.FloatAttributes">FloatAttributes</h3>
+        <h3 id="smartcore.types.FloatAttributes">FloatAttributes</h3>
         <p>Describes features and restrictions applied to a number that is typically used as part of an apis value</p>
 
         
@@ -240,7 +240,7 @@
               
                 <tr>
                   <td>bounds</td>
-                  <td><a href="#smartcore.api.types.FloatBounds">FloatBounds</a></td>
+                  <td><a href="#smartcore.types.FloatBounds">FloatBounds</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -262,14 +262,14 @@ continuous step, i.e. all possible float values are supported </p></td>
               
                 <tr>
                   <td>ramp_support</td>
-                  <td><a href="#smartcore.api.types.TweenSupport">TweenSupport</a></td>
+                  <td><a href="#smartcore.types.TweenSupport">TweenSupport</a></td>
                   <td></td>
                   <td><p>Indicate the level of ramp support the device has </p></td>
                 </tr>
               
                 <tr>
                   <td>default_capping</td>
-                  <td><a href="#smartcore.api.types.NumberCapping">NumberCapping</a></td>
+                  <td><a href="#smartcore.types.NumberCapping">NumberCapping</a></td>
                   <td></td>
                   <td><p>Provide information on how invalid values will be handled </p></td>
                 </tr>
@@ -281,7 +281,7 @@ continuous step, i.e. all possible float values are supported </p></td>
 
         
       
-        <h3 id="smartcore.api.types.FloatBounds">FloatBounds</h3>
+        <h3 id="smartcore.types.FloatBounds">FloatBounds</h3>
         <p>Defines the bounds for a number. Either of the min or max values can be absent which means those aspects are</p><p>unbounded. It makes no sense for both to be unset, if so then this is no longer a bounds but that isn't</p><p>disallowed.</p><p>Contrary to most programming practices both min and max are inclusive and denote the max allowed value, just like</p><p>htmls input type=range.</p>
 
         
@@ -312,7 +312,7 @@ continuous step, i.e. all possible float values are supported </p></td>
 
         
       
-        <h3 id="smartcore.api.types.FloatVar">FloatVar</h3>
+        <h3 id="smartcore.types.FloatVar">FloatVar</h3>
         <p>Describes a numerical value. Can describe the current value or be used for updates.</p><p>When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then</p><p>this will be treated as a transition between value and target_value. If no value is present in this case then the</p><p>current value of the number will be used creating a transition from current to target_value.</p>
 
         
@@ -331,7 +331,7 @@ continuous step, i.e. all possible float values are supported </p></td>
               
                 <tr>
                   <td>ramp</td>
-                  <td><a href="#smartcore.api.types.Tween">Tween</a></td>
+                  <td><a href="#smartcore.types.Tween">Tween</a></td>
                   <td></td>
                   <td><p>Optional. Indicates the current progress through a transition. If present then target_value may be set. When
 writing a value this denotes the intended tween duration. </p></td>
@@ -351,7 +351,7 @@ writing a value this denotes the intended tween duration. </p></td>
 
         
       
-        <h3 id="smartcore.api.types.Int32Attributes">Int32Attributes</h3>
+        <h3 id="smartcore.types.Int32Attributes">Int32Attributes</h3>
         <p>Describes features and restrictions applied to a number that is typically used as part of an apis value</p>
 
         
@@ -363,7 +363,7 @@ writing a value this denotes the intended tween duration. </p></td>
               
                 <tr>
                   <td>bounds</td>
-                  <td><a href="#smartcore.api.types.Int32Bounds">Int32Bounds</a></td>
+                  <td><a href="#smartcore.types.Int32Bounds">Int32Bounds</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -385,14 +385,14 @@ continuous step, i.e. step=1 </p></td>
               
                 <tr>
                   <td>ramp_support</td>
-                  <td><a href="#smartcore.api.types.TweenSupport">TweenSupport</a></td>
+                  <td><a href="#smartcore.types.TweenSupport">TweenSupport</a></td>
                   <td></td>
                   <td><p>Indicate the level of ramp support the device has </p></td>
                 </tr>
               
                 <tr>
                   <td>default_capping</td>
-                  <td><a href="#smartcore.api.types.NumberCapping">NumberCapping</a></td>
+                  <td><a href="#smartcore.types.NumberCapping">NumberCapping</a></td>
                   <td></td>
                   <td><p>Provide information on how invalid values will be handled </p></td>
                 </tr>
@@ -404,7 +404,7 @@ continuous step, i.e. step=1 </p></td>
 
         
       
-        <h3 id="smartcore.api.types.Int32Bounds">Int32Bounds</h3>
+        <h3 id="smartcore.types.Int32Bounds">Int32Bounds</h3>
         <p>Defines the bounds for a number. Either of the min or max values can be absent which means those aspects are</p><p>unbounded. It makes no sense for both to be unset, if so then this is no longer a bounds but that isn't</p><p>disallowed.</p><p>Contrary to most programming practices both min and max are inclusive and denote the max allowed value, just like</p><p>htmls input type=range.</p>
 
         
@@ -435,7 +435,7 @@ continuous step, i.e. step=1 </p></td>
 
         
       
-        <h3 id="smartcore.api.types.Int32Var">Int32Var</h3>
+        <h3 id="smartcore.types.Int32Var">Int32Var</h3>
         <p>Describes a numerical value. Can describe the current value or be used for updates.</p><p>When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then</p><p>this will be treated as a transition between value and target_value. If no value is present in this case then the</p><p>current value of the number will be used creating a transition from current to target_value.</p>
 
         
@@ -454,7 +454,7 @@ continuous step, i.e. step=1 </p></td>
               
                 <tr>
                   <td>ramp</td>
-                  <td><a href="#smartcore.api.types.Tween">Tween</a></td>
+                  <td><a href="#smartcore.types.Tween">Tween</a></td>
                   <td></td>
                   <td><p>Optional. Indicates the current progress through a transition. If present then target_value may be set. When
 writing a value this denotes the intended tween duration. </p></td>
@@ -474,7 +474,7 @@ writing a value this denotes the intended tween duration. </p></td>
 
         
       
-        <h3 id="smartcore.api.types.NumberCapping">NumberCapping</h3>
+        <h3 id="smartcore.types.NumberCapping">NumberCapping</h3>
         <p>Options for how invalid number values will be handled</p>
 
         
@@ -486,21 +486,21 @@ writing a value this denotes the intended tween duration. </p></td>
               
                 <tr>
                   <td>min</td>
-                  <td><a href="#smartcore.api.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
+                  <td><a href="#smartcore.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
                   <td></td>
                   <td><p>If the value is less than the minimum, behave this way. Should default to RESTRICT </p></td>
                 </tr>
               
                 <tr>
                   <td>step</td>
-                  <td><a href="#smartcore.api.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
+                  <td><a href="#smartcore.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
                   <td></td>
                   <td><p>If the value does not lie on a step value, behave this way. Should default to ALLOW </p></td>
                 </tr>
               
                 <tr>
                   <td>max</td>
-                  <td><a href="#smartcore.api.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
+                  <td><a href="#smartcore.types.InvalidNumberBehaviour">InvalidNumberBehaviour</a></td>
                   <td></td>
                   <td><p>If the value is greater than the maximum, behave this way. Should default to RESTRICT </p></td>
                 </tr>
@@ -514,7 +514,7 @@ writing a value this denotes the intended tween duration. </p></td>
       
 
       
-        <h3 id="smartcore.api.types.InvalidNumberBehaviour">InvalidNumberBehaviour</h3>
+        <h3 id="smartcore.types.InvalidNumberBehaviour">InvalidNumberBehaviour</h3>
         <p>Possible behaviours for values that are not allowed by the number</p>
         <table class="enum-table">
           <thead>

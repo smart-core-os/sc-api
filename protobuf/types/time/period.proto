@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package smartcore.api.types.time;
+package smartcore.types.time;
 
-option csharp_namespace = "Smartcore.Api.Types.Time";
+option csharp_namespace = "Smartcore.Types.Time";
 option go_package = "git.vanti.co.uk/smartcore/sc-api/go/types/time";
 option java_multiple_files = true;
 option java_outer_classname = "PeriodProto";
-option java_package = "dev.smartcore.api.types.time";
+option java_package = "dev.smartcore.types.time";
 
 import "google/protobuf/timestamp.proto";
 

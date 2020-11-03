@@ -1212,17 +1212,17 @@ proto.smartcore.traits.PtzMovement.prototype.setSpeed = function(value) {
 
 
 /**
- * optional smartcore.api.types.Tween speed_tween = 3;
- * @return {?proto.smartcore.api.types.Tween}
+ * optional smartcore.types.Tween speed_tween = 3;
+ * @return {?proto.smartcore.types.Tween}
  */
 proto.smartcore.traits.PtzMovement.prototype.getSpeedTween = function() {
-  return /** @type{?proto.smartcore.api.types.Tween} */ (
+  return /** @type{?proto.smartcore.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 3));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @param {?proto.smartcore.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.PtzMovement} returns this
 */
 proto.smartcore.traits.PtzMovement.prototype.setSpeedTween = function(value) {
@@ -1446,17 +1446,17 @@ proto.smartcore.traits.PtzPosition.prototype.hasPosition = function() {
 
 
 /**
- * optional smartcore.api.types.Tween tween = 2;
- * @return {?proto.smartcore.api.types.Tween}
+ * optional smartcore.types.Tween tween = 2;
+ * @return {?proto.smartcore.types.Tween}
  */
 proto.smartcore.traits.PtzPosition.prototype.getTween = function() {
-  return /** @type{?proto.smartcore.api.types.Tween} */ (
+  return /** @type{?proto.smartcore.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @param {?proto.smartcore.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.PtzPosition} returns this
 */
 proto.smartcore.traits.PtzPosition.prototype.setTween = function(value) {

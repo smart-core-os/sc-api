@@ -38,7 +38,7 @@ message AmbientBrightnessSupport {
   // How a named device supports read/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
   // The range of values the device is capable of reporting.
-  smartcore.api.types.FloatBounds brightness_lux = 2;
+  smartcore.types.FloatBounds brightness_lux = 2;
 }
 
 message GetAmbientBrightnessRequest {

@@ -326,7 +326,7 @@
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.api.types.AudioLevelChange">smartcore.api.types.AudioLevelChange</a></td>
+                  <td><a href="#smartcore.types.AudioLevelChange">smartcore.types.AudioLevelChange</a></td>
                   <td>repeated</td>
                   <td><p>Changes since the last message </p></td>
                 </tr>
@@ -357,7 +357,7 @@
               
                 <tr>
                   <td>volume</td>
-                  <td><a href="#smartcore.api.types.AudioLevel">smartcore.api.types.AudioLevel</a></td>
+                  <td><a href="#smartcore.types.AudioLevel">smartcore.types.AudioLevel</a></td>
                   <td></td>
                   <td><p>The updated volume value </p></td>
                 </tr>
@@ -402,7 +402,7 @@
               
                 <tr>
                   <td>volume_attributes</td>
-                  <td><a href="#smartcore.api.types.FloatAttributes">smartcore.api.types.FloatAttributes</a></td>
+                  <td><a href="#smartcore.types.FloatAttributes">smartcore.types.FloatAttributes</a></td>
                   <td></td>
                   <td><p>Attributes associated with the gain property of the speaker. Note that a step value that is the same as the bounds
 implies that the speaker only supports mute </p></td>
@@ -410,7 +410,7 @@ implies that the speaker only supports mute </p></td>
               
                 <tr>
                   <td>mute_support</td>
-                  <td><a href="#smartcore.api.types.MuteSupport">smartcore.api.types.MuteSupport</a></td>
+                  <td><a href="#smartcore.types.MuteSupport">smartcore.types.MuteSupport</a></td>
                   <td></td>
                   <td><p>How is mute implemented by the device. Can help to customise behaviour of interfaces to the device, e.g. by
 disallowing gain change when muted </p></td>
@@ -440,14 +440,14 @@ disallowing gain change when muted </p></td>
               <tr>
                 <td>GetVolume</td>
                 <td><a href="#smartcore.traits.GetSpeakerVolumeRequest">GetSpeakerVolumeRequest</a></td>
-                <td><a href="#smartcore.api.types.AudioLevel">.smartcore.api.types.AudioLevel</a></td>
+                <td><a href="#smartcore.types.AudioLevel">.smartcore.types.AudioLevel</a></td>
                 <td><p>Get the current state of the volume for the device</p></td>
               </tr>
             
               <tr>
                 <td>UpdateVolume</td>
                 <td><a href="#smartcore.traits.UpdateSpeakerVolumeRequest">UpdateSpeakerVolumeRequest</a></td>
-                <td><a href="#smartcore.api.types.AudioLevel">.smartcore.api.types.AudioLevel</a></td>
+                <td><a href="#smartcore.types.AudioLevel">.smartcore.types.AudioLevel</a></td>
                 <td><p>update the volume state for the device</p></td>
               </tr>
             

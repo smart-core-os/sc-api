@@ -12,11 +12,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.smartcore.api.types.time.Unit', null, global);
+goog.exportSymbol('proto.smartcore.types.time.Unit', null, global);
 /**
  * @enum {number}
  */
-proto.smartcore.api.types.time.Unit = {
+proto.smartcore.types.time.Unit = {
   UNIT_SECONDS: 0,
   UNIT_MICROSECONDS: 1,
   UNIT_MILLISECONDS: 2,
@@ -29,4 +29,4 @@ proto.smartcore.api.types.time.Unit = {
   UNIT_MINUTES: 9
 };
 
-goog.object.extend(exports, proto.smartcore.api.types.time);
+goog.object.extend(exports, proto.smartcore.types.time);

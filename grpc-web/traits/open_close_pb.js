@@ -583,17 +583,17 @@ proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercent = function
 
 
 /**
- * optional smartcore.api.types.Tween position_percent_tween = 2;
- * @return {?proto.smartcore.api.types.Tween}
+ * optional smartcore.types.Tween position_percent_tween = 2;
+ * @return {?proto.smartcore.types.Tween}
  */
 proto.smartcore.traits.OpenClosePosition.prototype.getPositionPercentTween = function() {
-  return /** @type{?proto.smartcore.api.types.Tween} */ (
+  return /** @type{?proto.smartcore.types.Tween} */ (
     jspb.Message.getWrapperField(this, types_tween_pb.Tween, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.Tween|undefined} value
+ * @param {?proto.smartcore.types.Tween|undefined} value
  * @return {!proto.smartcore.traits.OpenClosePosition} returns this
 */
 proto.smartcore.traits.OpenClosePosition.prototype.setPositionPercentTween = function(value) {
@@ -852,17 +852,17 @@ proto.smartcore.traits.PositionsSupport.prototype.hasResourceSupport = function(
 
 
 /**
- * optional smartcore.api.types.FloatAttributes position_attributes = 2;
- * @return {?proto.smartcore.api.types.FloatAttributes}
+ * optional smartcore.types.FloatAttributes position_attributes = 2;
+ * @return {?proto.smartcore.types.FloatAttributes}
  */
 proto.smartcore.traits.PositionsSupport.prototype.getPositionAttributes = function() {
-  return /** @type{?proto.smartcore.api.types.FloatAttributes} */ (
+  return /** @type{?proto.smartcore.types.FloatAttributes} */ (
     jspb.Message.getWrapperField(this, types_number_pb.FloatAttributes, 2));
 };
 
 
 /**
- * @param {?proto.smartcore.api.types.FloatAttributes|undefined} value
+ * @param {?proto.smartcore.types.FloatAttributes|undefined} value
  * @return {!proto.smartcore.traits.PositionsSupport} returns this
 */
 proto.smartcore.traits.PositionsSupport.prototype.setPositionAttributes = function(value) {

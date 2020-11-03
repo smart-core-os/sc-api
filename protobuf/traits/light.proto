@@ -51,7 +51,7 @@ message Brightness {
   LightPreset preset = 2;
 
   // How the brightness changes or should change over time. On write only duration should be set.
-  smartcore.api.types.Tween brightness_tween = 3;
+  smartcore.types.Tween brightness_tween = 3;
   // The target level_percent. Ignored on write. On read zero values should be ignored iff target_preset is present.
   float target_level_percent = 4;
   // The target preset. Ignored on write. If present ignore target_level_percent
@@ -68,7 +68,7 @@ message BrightnessSupport {
   // How a named device supports read/write/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
   // control how the brightness can be controlled. The range of these attributes is fixed at 0-100 as a percentage
-  smartcore.api.types.Int32Attributes brightness_attributes = 2;
+  smartcore.types.Int32Attributes brightness_attributes = 2;
   // A description of the supported presets, none means no presets
   repeated LightPreset presets = 3;
 }

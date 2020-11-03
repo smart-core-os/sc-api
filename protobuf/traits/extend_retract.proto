@@ -47,7 +47,7 @@ message Extension {
   string extend_preset = 2;
 
   // How the extension changes or should change over time. On write only duration should be set.
-  smartcore.api.types.Tween extend_tween = 3;
+  smartcore.types.Tween extend_tween = 3;
   // if tweening between values, this is our end goal
   float target_extend_percent = 4;
   // if tweening between values, this is our end goal
@@ -74,7 +74,7 @@ message ExtensionSupport {
   // are valid.
   float step = 3;
   // Does the device support tweening between the current value and a target value
-  smartcore.api.types.TweenSupport tween_support = 4;
+  smartcore.types.TweenSupport tween_support = 4;
   // If true, custom preset names can be used to store extension values. If false only writable presets can be updated.
   bool supports_custom_presets = 5;
 }
