@@ -4,7 +4,6 @@ import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 import * as types_unit_pb from '../types/unit_pb';
-import * as types_volume_pb from '../types/volume_pb';
 
 
 export class GainSupport extends jspb.Message {
@@ -18,8 +17,8 @@ export class GainSupport extends jspb.Message {
   hasGainAttributes(): boolean;
   clearGainAttributes(): GainSupport;
 
-  getMuteSupport(): types_volume_pb.MuteSupport;
-  setMuteSupport(value: types_volume_pb.MuteSupport): GainSupport;
+  getMuteSupport(): types_unit_pb.MuteSupport;
+  setMuteSupport(value: types_unit_pb.MuteSupport): GainSupport;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GainSupport.AsObject;
@@ -33,7 +32,7 @@ export namespace GainSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     gainAttributes?: types_number_pb.FloatAttributes.AsObject,
-    muteSupport: types_volume_pb.MuteSupport,
+    muteSupport: types_unit_pb.MuteSupport,
   }
 }
 

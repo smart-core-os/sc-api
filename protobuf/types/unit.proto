@@ -9,7 +9,6 @@ option java_outer_classname = "UnitProto";
 option java_package = "dev.smartcore.types";
 
 import "google/protobuf/timestamp.proto";
-import "types/number.proto";
 import "types/tween.proto";
 
 // Possible temperature units for physical bodies.
@@ -24,13 +23,6 @@ message Temperature {
   // The value in celsius, always! Use device attributes if the device 'thinks' in a different unit but always
   // communicate in celsius.
   double value_celsius = 1;
-}
-
-// Represents the audio signal level for either input or output devices. When reading mute is always accurate, when
-// writing please use a FieldMask to exclude the mute value if you do not intend on changing it.
-message Volume {
-  smartcore.types.FloatVar gain = 1;
-  bool mute = 2;
 }
 
 // Represents an audio signal level for either input or output devices. Typically if fine grained control of either
@@ -54,4 +46,12 @@ message AudioLevelChange {
   google.protobuf.Timestamp change_time = 2;
   // The new state for the change
   AudioLevel level = 3;
+}
+
+// What is the level of mute support that the speaker provides
+enum MuteSupport {
+  // The speaker natively supports mute
+  MUTE_NATIVE = 0;
+  // Muting is emulated, typically by setting the gain to 0
+  MUTE_EMULATED = 1;
 }

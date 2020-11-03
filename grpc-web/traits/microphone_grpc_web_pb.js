@@ -23,8 +23,6 @@ var types_info_pb = require('../types/info_pb.js')
 var types_number_pb = require('../types/number_pb.js')
 
 var types_unit_pb = require('../types/unit_pb.js')
-
-var types_volume_pb = require('../types/volume_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./microphone_pb.js');

@@ -190,10 +190,10 @@
                   <a href="#smartcore.types.Temperature"><span class="badge">M</span>Temperature</a>
                 </li>
               
-                <li>
-                  <a href="#smartcore.types.Volume"><span class="badge">M</span>Volume</a>
-                </li>
               
+                <li>
+                  <a href="#smartcore.types.MuteSupport"><span class="badge">E</span>MuteSupport</a>
+                </li>
               
                 <li>
                   <a href="#smartcore.types.TemperatureUnit"><span class="badge">E</span>TemperatureUnit</a>
@@ -324,38 +324,30 @@ communicate in celsius. </p></td>
 
         
       
-        <h3 id="smartcore.types.Volume">Volume</h3>
-        <p>Represents the audio signal level for either input or output devices. When reading mute is always accurate, when</p><p>writing please use a FieldMask to exclude the mute value if you do not intend on changing it.</p>
 
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>gain</td>
-                  <td><a href="#smartcore.types.FloatVar">FloatVar</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>mute</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
       
-
+        <h3 id="smartcore.types.MuteSupport">MuteSupport</h3>
+        <p>What is the level of mute support that the speaker provides</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MUTE_NATIVE</td>
+                <td>0</td>
+                <td><p>The speaker natively supports mute</p></td>
+              </tr>
+            
+              <tr>
+                <td>MUTE_EMULATED</td>
+                <td>1</td>
+                <td><p>Muting is emulated, typically by setting the gain to 0</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
         <h3 id="smartcore.types.TemperatureUnit">TemperatureUnit</h3>
         <p>Possible temperature units for physical bodies.</p>

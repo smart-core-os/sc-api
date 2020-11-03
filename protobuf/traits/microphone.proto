@@ -13,7 +13,6 @@ import "google/protobuf/field_mask.proto";
 import "types/info.proto";
 import "types/number.proto";
 import "types/unit.proto";
-import "types/volume.proto";
 
 // Trait for devices that support some kind of audio input. The most basic is a simple muting microphone, it's optional
 // to support gain adjustment on a scale.

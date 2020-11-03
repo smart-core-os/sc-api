@@ -20,8 +20,6 @@ var types_number_pb = require('../types/number_pb.js');
 goog.object.extend(proto, types_number_pb);
 var types_unit_pb = require('../types/unit_pb.js');
 goog.object.extend(proto, types_unit_pb);
-var types_volume_pb = require('../types/volume_pb.js');
-goog.object.extend(proto, types_volume_pb);
 goog.exportSymbol('proto.smartcore.traits.DescribeVolumeRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.GetSpeakerVolumeRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullSpeakerVolumeRequest', null, global);
