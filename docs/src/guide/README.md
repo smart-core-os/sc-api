@@ -129,7 +129,7 @@ const INCLUDE_DIRS = [
   path.dirname(require.resolve('google-proto-files/package.json')), // well-known-types
   path.resolve(PROTO_ROOT, './proto/'), // root of all the smart core protos
 ];
-const PROTO_PATH = path.resolve(PROTO_ROOT, './protos/traits/on-off.proto');
+const PROTO_PATH = path.resolve(PROTO_ROOT, './protos/traits/on_off.proto');
 
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
