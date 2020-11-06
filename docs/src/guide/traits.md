@@ -131,10 +131,10 @@ That's what this is all about, we want to provide some way for clients or implem
 
 > Inbetweening or tweening is a key process in all types of animation, including computer animation. It is the process of generating intermediate frames between two images, called key frames, to give the appearance that the first image evolves smoothly into the second image. — [Wikipedia](https://en.wikipedia.org/wiki/Inbetweening)
 
-Some resources and fields of some traits support the concept of animating or ramping between values. 
+Some resources and fields of some traits support the concept of animating or ramping between values. As an example in words, we might want to
 
 ```
-Set the light level_percent to 100% over 3 seconds
+Set the light level_percent to 70% over 3 seconds
 ```
 
 In Smart Core traits we call this concept **tweening**. Any field than can be transitioned from one value to another allows you to specify during write how long to take to reach that new value. On read the same structure can report on the progress towards that value. Lets use the `Light` trait and work through an example.
