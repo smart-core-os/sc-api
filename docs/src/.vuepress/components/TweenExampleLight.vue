@@ -174,7 +174,7 @@ fmt<span
       <p>Have a play setting the lights level and duration then click
         <button @click="run" class="small">Run</button>
         to watch how the device reacts. Running the
-        update will tween from the current value <code>{{ currentValue.toFixed(0) }}</code> to the level you have
+        update will tween from the current value (<code>{{ currentValue.toFixed(0) }}</code>) to the level you have
         selected <code>{{ target }}</code>.
       </p>
 
