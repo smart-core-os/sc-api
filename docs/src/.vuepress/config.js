@@ -34,12 +34,20 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
+        text: 'About',
+        link: '/about/',
+      },
+      {
         text: 'Guide',
         link: '/guide/',
       },
       {
         text: 'API',
         link: '/api/'
+      },
+      {
+        text: 'Contribute',
+        link: '/contribute/'
       }
     ],
     sidebar: {
