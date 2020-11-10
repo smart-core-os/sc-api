@@ -11,5 +11,5 @@ features:
   details: Your data and the actions of your clients will be safe
 - title: Flexible
   details: Design your building for your use cases
-footer: Made by Vanti with 🧡️
+footer: Founded by Vanti with 🧡️
 ---
