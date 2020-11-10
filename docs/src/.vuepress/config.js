@@ -61,7 +61,7 @@ module.exports = {
           ]
         }
       ],
-	  '/about/': 'auto'
+      '/about/': 'auto'
     }
   },
 
