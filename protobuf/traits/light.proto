@@ -15,7 +15,7 @@ import "types/number.proto";
 import "types/tween.proto";
 
 // Control the light output of a device. Brightness values should be normalised to 0-100 as a percentage, though the
-// device may not support all steps within. See the LightAttributes for step values of the device.
+// device may not support all steps within. See BrightnessSupport for step values of the device.
 service LightApi {
   // request that the brightness be changed
   rpc UpdateBrightness (UpdateBrightnessRequest) returns (Brightness);
