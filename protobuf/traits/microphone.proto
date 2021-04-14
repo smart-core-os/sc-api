@@ -34,7 +34,7 @@ service MicrophoneInfo {
   rpc DescribeGain (DescribeGainRequest) returns (GainSupport);
 }
 
-// Trait.attribute describing capabilities of the microphone device
+// GainSupport describes the capabilities of devices implementing this trait.
 message GainSupport {
   // How a named device supports read/write/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
