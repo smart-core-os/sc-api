@@ -17,7 +17,7 @@ import "types/unit.proto";
 // Trait for devices that support some kind of audio input. The most basic is a simple muting microphone, it's optional
 // to support gain adjustment on a scale.
 //
-// For the sakes of this trait Volume means the combination of a gain and a mute state.
+// For the sakes of this trait "gain" means the combination of a gain and a mute state.
 service MicrophoneApi {
   // Get the current state of the gain for the device
   rpc GetGain (GetMicrophoneGainRequest) returns (smartcore.types.AudioLevel);
@@ -49,7 +49,7 @@ message GainSupport {
 message GetMicrophoneGainRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // fields to fetch relative the the Volume type
+  // fields to fetch relative the the AudioLevel type
   google.protobuf.FieldMask fields = 2;
 }
 
@@ -58,16 +58,16 @@ message UpdateMicrophoneGainRequest {
   string name = 1;
   // The updated gain value
   smartcore.types.AudioLevel gain = 2;
-  // Only supported for Volume.level. Update the value relative to the current value.
+  // Only supported for AudioLevel.gain. Update the value relative to the current value.
   bool delta = 3;
-  // The fields we intend to update relative to the Volume type
+  // The fields we intend to update relative to the AudioLevel type
   google.protobuf.FieldMask update_mask = 4;
 }
 
 message PullMicrophoneGainRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // fields to fetch relative the the Volume type
+  // fields to fetch relative the the AudioLevel type
   google.protobuf.FieldMask fields = 2;
 }
 

@@ -17,7 +17,7 @@ import "types/unit.proto";
 // Trait for devices that support some kind of audio output. The most basic is a simple on/off speaker, it's optional to
 // support volume adjustment on a scale.
 //
-// For the sakes of this trait Volume means the combination of a gain and a mute state.
+// For the sakes of this trait "volume" means the combination of a gain and a mute state.
 service SpeakerApi {
   // Get the current state of the volume for the device
   rpc GetVolume (GetSpeakerVolumeRequest) returns (smartcore.types.AudioLevel);
@@ -30,7 +30,7 @@ service SpeakerApi {
 
 // Describes the capabilities of a specific named device with respect to this trait.
 service SpeakerInfo {
-  // Get information about how a named device implements Volume features
+  // Get information about how a named device implements volume features
   rpc DescribeVolume (DescribeVolumeRequest) returns (VolumeSupport);
 }
 
@@ -49,7 +49,7 @@ message VolumeSupport {
 message GetSpeakerVolumeRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // fields to fetch relative the the Volume type
+  // fields to fetch relative the the AudioLevel type
   google.protobuf.FieldMask fields = 2;
 }
 
@@ -58,16 +58,16 @@ message UpdateSpeakerVolumeRequest {
   string name = 1;
   // The updated volume value
   smartcore.types.AudioLevel volume = 2;
-  // Only supported for Volume.level. Update the value relative to the current value.
+  // Only supported for AudioLevel.gain. Update the value relative to the current value.
   bool delta = 3;
-  // The fields we intend to update relative to the Volume type
+  // The fields we intend to update relative to the AudioLevel type
   google.protobuf.FieldMask update_mask = 4;
 }
 
 message PullSpeakerVolumeRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // fields to fetch relative the the Volume type
+  // fields to fetch relative the the AudioLevel type
   google.protobuf.FieldMask fields = 2;
 }
 
