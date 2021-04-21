@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // MotionSensorApiClient is the client API for MotionSensorApi service.
 //
@@ -41,7 +42,7 @@ func (c *motionSensorApiClient) GetMotionDetection(ctx context.Context, in *GetM
 }
 
 func (c *motionSensorApiClient) PullMotionDetections(ctx context.Context, in *PullMotionDetectionRequest, opts ...grpc.CallOption) (MotionSensorApi_PullMotionDetectionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MotionSensorApi_serviceDesc.Streams[0], "/smartcore.traits.MotionSensorApi/PullMotionDetections", opts...)
+	stream, err := c.cc.NewStream(ctx, &MotionSensorApi_ServiceDesc.Streams[0], "/smartcore.traits.MotionSensorApi/PullMotionDetections", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,16 +88,23 @@ type MotionSensorApiServer interface {
 type UnimplementedMotionSensorApiServer struct {
 }
 
-func (*UnimplementedMotionSensorApiServer) GetMotionDetection(context.Context, *GetMotionDetectionRequest) (*MotionDetection, error) {
+func (UnimplementedMotionSensorApiServer) GetMotionDetection(context.Context, *GetMotionDetectionRequest) (*MotionDetection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMotionDetection not implemented")
 }
-func (*UnimplementedMotionSensorApiServer) PullMotionDetections(*PullMotionDetectionRequest, MotionSensorApi_PullMotionDetectionsServer) error {
+func (UnimplementedMotionSensorApiServer) PullMotionDetections(*PullMotionDetectionRequest, MotionSensorApi_PullMotionDetectionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullMotionDetections not implemented")
 }
-func (*UnimplementedMotionSensorApiServer) mustEmbedUnimplementedMotionSensorApiServer() {}
+func (UnimplementedMotionSensorApiServer) mustEmbedUnimplementedMotionSensorApiServer() {}
 
-func RegisterMotionSensorApiServer(s *grpc.Server, srv MotionSensorApiServer) {
-	s.RegisterService(&_MotionSensorApi_serviceDesc, srv)
+// UnsafeMotionSensorApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MotionSensorApiServer will
+// result in compilation errors.
+type UnsafeMotionSensorApiServer interface {
+	mustEmbedUnimplementedMotionSensorApiServer()
+}
+
+func RegisterMotionSensorApiServer(s grpc.ServiceRegistrar, srv MotionSensorApiServer) {
+	s.RegisterService(&MotionSensorApi_ServiceDesc, srv)
 }
 
 func _MotionSensorApi_GetMotionDetection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,7 +146,10 @@ func (x *motionSensorApiPullMotionDetectionsServer) Send(m *PullMotionDetectionR
 	return x.ServerStream.SendMsg(m)
 }
 
-var _MotionSensorApi_serviceDesc = grpc.ServiceDesc{
+// MotionSensorApi_ServiceDesc is the grpc.ServiceDesc for MotionSensorApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MotionSensorApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.MotionSensorApi",
 	HandlerType: (*MotionSensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -195,14 +206,21 @@ type MotionSensorSensorInfoServer interface {
 type UnimplementedMotionSensorSensorInfoServer struct {
 }
 
-func (*UnimplementedMotionSensorSensorInfoServer) DescribeMotionDetection(context.Context, *DescribeMotionDetectionRequest) (*MotionDetectionSupport, error) {
+func (UnimplementedMotionSensorSensorInfoServer) DescribeMotionDetection(context.Context, *DescribeMotionDetectionRequest) (*MotionDetectionSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeMotionDetection not implemented")
 }
-func (*UnimplementedMotionSensorSensorInfoServer) mustEmbedUnimplementedMotionSensorSensorInfoServer() {
+func (UnimplementedMotionSensorSensorInfoServer) mustEmbedUnimplementedMotionSensorSensorInfoServer() {
 }
 
-func RegisterMotionSensorSensorInfoServer(s *grpc.Server, srv MotionSensorSensorInfoServer) {
-	s.RegisterService(&_MotionSensorSensorInfo_serviceDesc, srv)
+// UnsafeMotionSensorSensorInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MotionSensorSensorInfoServer will
+// result in compilation errors.
+type UnsafeMotionSensorSensorInfoServer interface {
+	mustEmbedUnimplementedMotionSensorSensorInfoServer()
+}
+
+func RegisterMotionSensorSensorInfoServer(s grpc.ServiceRegistrar, srv MotionSensorSensorInfoServer) {
+	s.RegisterService(&MotionSensorSensorInfo_ServiceDesc, srv)
 }
 
 func _MotionSensorSensorInfo_DescribeMotionDetection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -223,7 +241,10 @@ func _MotionSensorSensorInfo_DescribeMotionDetection_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-var _MotionSensorSensorInfo_serviceDesc = grpc.ServiceDesc{
+// MotionSensorSensorInfo_ServiceDesc is the grpc.ServiceDesc for MotionSensorSensorInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MotionSensorSensorInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.MotionSensorSensorInfo",
 	HandlerType: (*MotionSensorSensorInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

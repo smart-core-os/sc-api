@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // AirQualitySensorApiClient is the client API for AirQualitySensorApi service.
 //
@@ -41,7 +42,7 @@ func (c *airQualitySensorApiClient) GetAirQuality(ctx context.Context, in *GetAi
 }
 
 func (c *airQualitySensorApiClient) PullAirQuality(ctx context.Context, in *PullAirQualityRequest, opts ...grpc.CallOption) (AirQualitySensorApi_PullAirQualityClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AirQualitySensorApi_serviceDesc.Streams[0], "/smartcore.traits.AirQualitySensorApi/PullAirQuality", opts...)
+	stream, err := c.cc.NewStream(ctx, &AirQualitySensorApi_ServiceDesc.Streams[0], "/smartcore.traits.AirQualitySensorApi/PullAirQuality", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,16 +88,23 @@ type AirQualitySensorApiServer interface {
 type UnimplementedAirQualitySensorApiServer struct {
 }
 
-func (*UnimplementedAirQualitySensorApiServer) GetAirQuality(context.Context, *GetAirQualityRequest) (*AirQuality, error) {
+func (UnimplementedAirQualitySensorApiServer) GetAirQuality(context.Context, *GetAirQualityRequest) (*AirQuality, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAirQuality not implemented")
 }
-func (*UnimplementedAirQualitySensorApiServer) PullAirQuality(*PullAirQualityRequest, AirQualitySensorApi_PullAirQualityServer) error {
+func (UnimplementedAirQualitySensorApiServer) PullAirQuality(*PullAirQualityRequest, AirQualitySensorApi_PullAirQualityServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullAirQuality not implemented")
 }
-func (*UnimplementedAirQualitySensorApiServer) mustEmbedUnimplementedAirQualitySensorApiServer() {}
+func (UnimplementedAirQualitySensorApiServer) mustEmbedUnimplementedAirQualitySensorApiServer() {}
 
-func RegisterAirQualitySensorApiServer(s *grpc.Server, srv AirQualitySensorApiServer) {
-	s.RegisterService(&_AirQualitySensorApi_serviceDesc, srv)
+// UnsafeAirQualitySensorApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AirQualitySensorApiServer will
+// result in compilation errors.
+type UnsafeAirQualitySensorApiServer interface {
+	mustEmbedUnimplementedAirQualitySensorApiServer()
+}
+
+func RegisterAirQualitySensorApiServer(s grpc.ServiceRegistrar, srv AirQualitySensorApiServer) {
+	s.RegisterService(&AirQualitySensorApi_ServiceDesc, srv)
 }
 
 func _AirQualitySensorApi_GetAirQuality_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,7 +146,10 @@ func (x *airQualitySensorApiPullAirQualityServer) Send(m *PullAirQualityResponse
 	return x.ServerStream.SendMsg(m)
 }
 
-var _AirQualitySensorApi_serviceDesc = grpc.ServiceDesc{
+// AirQualitySensorApi_ServiceDesc is the grpc.ServiceDesc for AirQualitySensorApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AirQualitySensorApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.AirQualitySensorApi",
 	HandlerType: (*AirQualitySensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -195,13 +206,20 @@ type AirQualitySensorInfoServer interface {
 type UnimplementedAirQualitySensorInfoServer struct {
 }
 
-func (*UnimplementedAirQualitySensorInfoServer) DescribeAirQuality(context.Context, *DescribeAirQualityRequest) (*AirQualitySupport, error) {
+func (UnimplementedAirQualitySensorInfoServer) DescribeAirQuality(context.Context, *DescribeAirQualityRequest) (*AirQualitySupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeAirQuality not implemented")
 }
-func (*UnimplementedAirQualitySensorInfoServer) mustEmbedUnimplementedAirQualitySensorInfoServer() {}
+func (UnimplementedAirQualitySensorInfoServer) mustEmbedUnimplementedAirQualitySensorInfoServer() {}
 
-func RegisterAirQualitySensorInfoServer(s *grpc.Server, srv AirQualitySensorInfoServer) {
-	s.RegisterService(&_AirQualitySensorInfo_serviceDesc, srv)
+// UnsafeAirQualitySensorInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AirQualitySensorInfoServer will
+// result in compilation errors.
+type UnsafeAirQualitySensorInfoServer interface {
+	mustEmbedUnimplementedAirQualitySensorInfoServer()
+}
+
+func RegisterAirQualitySensorInfoServer(s grpc.ServiceRegistrar, srv AirQualitySensorInfoServer) {
+	s.RegisterService(&AirQualitySensorInfo_ServiceDesc, srv)
 }
 
 func _AirQualitySensorInfo_DescribeAirQuality_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -222,7 +240,10 @@ func _AirQualitySensorInfo_DescribeAirQuality_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AirQualitySensorInfo_serviceDesc = grpc.ServiceDesc{
+// AirQualitySensorInfo_ServiceDesc is the grpc.ServiceDesc for AirQualitySensorInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AirQualitySensorInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.AirQualitySensorInfo",
 	HandlerType: (*AirQualitySensorInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

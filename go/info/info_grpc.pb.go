@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // InfoClient is the client API for Info service.
 //
@@ -41,7 +42,7 @@ func (c *infoClient) ListDevices(ctx context.Context, in *ListDevicesRequest, op
 }
 
 func (c *infoClient) PullDevices(ctx context.Context, in *PullDevicesRequest, opts ...grpc.CallOption) (Info_PullDevicesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Info_serviceDesc.Streams[0], "/smartcore.info.Info/PullDevices", opts...)
+	stream, err := c.cc.NewStream(ctx, &Info_ServiceDesc.Streams[0], "/smartcore.info.Info/PullDevices", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,16 +88,23 @@ type InfoServer interface {
 type UnimplementedInfoServer struct {
 }
 
-func (*UnimplementedInfoServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
+func (UnimplementedInfoServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDevices not implemented")
 }
-func (*UnimplementedInfoServer) PullDevices(*PullDevicesRequest, Info_PullDevicesServer) error {
+func (UnimplementedInfoServer) PullDevices(*PullDevicesRequest, Info_PullDevicesServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullDevices not implemented")
 }
-func (*UnimplementedInfoServer) mustEmbedUnimplementedInfoServer() {}
+func (UnimplementedInfoServer) mustEmbedUnimplementedInfoServer() {}
 
-func RegisterInfoServer(s *grpc.Server, srv InfoServer) {
-	s.RegisterService(&_Info_serviceDesc, srv)
+// UnsafeInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to InfoServer will
+// result in compilation errors.
+type UnsafeInfoServer interface {
+	mustEmbedUnimplementedInfoServer()
+}
+
+func RegisterInfoServer(s grpc.ServiceRegistrar, srv InfoServer) {
+	s.RegisterService(&Info_ServiceDesc, srv)
 }
 
 func _Info_ListDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,7 +146,10 @@ func (x *infoPullDevicesServer) Send(m *PullDevicesResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Info_serviceDesc = grpc.ServiceDesc{
+// Info_ServiceDesc is the grpc.ServiceDesc for Info service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Info_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.info.Info",
 	HandlerType: (*InfoServer)(nil),
 	Methods: []grpc.MethodDesc{

@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // ChannelApiClient is the client API for ChannelApi service.
 //
@@ -74,7 +75,7 @@ func (c *channelApiClient) ReturnChannel(ctx context.Context, in *ReturnChannelR
 }
 
 func (c *channelApiClient) PullChosenChannel(ctx context.Context, in *PullChosenChannelRequest, opts ...grpc.CallOption) (ChannelApi_PullChosenChannelClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_ChannelApi_serviceDesc.Streams[0], "/smartcore.traits.ChannelApi/PullChosenChannel", opts...)
+	stream, err := c.cc.NewStream(ctx, &ChannelApi_ServiceDesc.Streams[0], "/smartcore.traits.ChannelApi/PullChosenChannel", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,25 +127,32 @@ type ChannelApiServer interface {
 type UnimplementedChannelApiServer struct {
 }
 
-func (*UnimplementedChannelApiServer) GetChosenChannel(context.Context, *GetChosenChannelRequest) (*Channel, error) {
+func (UnimplementedChannelApiServer) GetChosenChannel(context.Context, *GetChosenChannelRequest) (*Channel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetChosenChannel not implemented")
 }
-func (*UnimplementedChannelApiServer) ChooseChannel(context.Context, *ChooseChannelRequest) (*Channel, error) {
+func (UnimplementedChannelApiServer) ChooseChannel(context.Context, *ChooseChannelRequest) (*Channel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChooseChannel not implemented")
 }
-func (*UnimplementedChannelApiServer) AdjustChannel(context.Context, *AdjustChannelRequest) (*Channel, error) {
+func (UnimplementedChannelApiServer) AdjustChannel(context.Context, *AdjustChannelRequest) (*Channel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AdjustChannel not implemented")
 }
-func (*UnimplementedChannelApiServer) ReturnChannel(context.Context, *ReturnChannelRequest) (*Channel, error) {
+func (UnimplementedChannelApiServer) ReturnChannel(context.Context, *ReturnChannelRequest) (*Channel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReturnChannel not implemented")
 }
-func (*UnimplementedChannelApiServer) PullChosenChannel(*PullChosenChannelRequest, ChannelApi_PullChosenChannelServer) error {
+func (UnimplementedChannelApiServer) PullChosenChannel(*PullChosenChannelRequest, ChannelApi_PullChosenChannelServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullChosenChannel not implemented")
 }
-func (*UnimplementedChannelApiServer) mustEmbedUnimplementedChannelApiServer() {}
+func (UnimplementedChannelApiServer) mustEmbedUnimplementedChannelApiServer() {}
 
-func RegisterChannelApiServer(s *grpc.Server, srv ChannelApiServer) {
-	s.RegisterService(&_ChannelApi_serviceDesc, srv)
+// UnsafeChannelApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ChannelApiServer will
+// result in compilation errors.
+type UnsafeChannelApiServer interface {
+	mustEmbedUnimplementedChannelApiServer()
+}
+
+func RegisterChannelApiServer(s grpc.ServiceRegistrar, srv ChannelApiServer) {
+	s.RegisterService(&ChannelApi_ServiceDesc, srv)
 }
 
 func _ChannelApi_GetChosenChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -240,7 +248,10 @@ func (x *channelApiPullChosenChannelServer) Send(m *PullChosenChannelResponse) e
 	return x.ServerStream.SendMsg(m)
 }
 
-var _ChannelApi_serviceDesc = grpc.ServiceDesc{
+// ChannelApi_ServiceDesc is the grpc.ServiceDesc for ChannelApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ChannelApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.ChannelApi",
 	HandlerType: (*ChannelApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -309,13 +320,20 @@ type ChannelInfoServer interface {
 type UnimplementedChannelInfoServer struct {
 }
 
-func (*UnimplementedChannelInfoServer) DescribeChosenChannel(context.Context, *DescribeChosenChannelRequest) (*ChosenChannelSupport, error) {
+func (UnimplementedChannelInfoServer) DescribeChosenChannel(context.Context, *DescribeChosenChannelRequest) (*ChosenChannelSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeChosenChannel not implemented")
 }
-func (*UnimplementedChannelInfoServer) mustEmbedUnimplementedChannelInfoServer() {}
+func (UnimplementedChannelInfoServer) mustEmbedUnimplementedChannelInfoServer() {}
 
-func RegisterChannelInfoServer(s *grpc.Server, srv ChannelInfoServer) {
-	s.RegisterService(&_ChannelInfo_serviceDesc, srv)
+// UnsafeChannelInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ChannelInfoServer will
+// result in compilation errors.
+type UnsafeChannelInfoServer interface {
+	mustEmbedUnimplementedChannelInfoServer()
+}
+
+func RegisterChannelInfoServer(s grpc.ServiceRegistrar, srv ChannelInfoServer) {
+	s.RegisterService(&ChannelInfo_ServiceDesc, srv)
 }
 
 func _ChannelInfo_DescribeChosenChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -336,7 +354,10 @@ func _ChannelInfo_DescribeChosenChannel_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-var _ChannelInfo_serviceDesc = grpc.ServiceDesc{
+// ChannelInfo_ServiceDesc is the grpc.ServiceDesc for ChannelInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ChannelInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.ChannelInfo",
 	HandlerType: (*ChannelInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

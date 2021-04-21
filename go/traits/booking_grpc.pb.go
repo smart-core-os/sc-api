@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // BookingApiClient is the client API for BookingApi service.
 //
@@ -85,7 +86,7 @@ func (c *bookingApiClient) UpdateBooking(ctx context.Context, in *UpdateBookingR
 }
 
 func (c *bookingApiClient) PullBookings(ctx context.Context, in *ListBookingsRequest, opts ...grpc.CallOption) (BookingApi_PullBookingsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_BookingApi_serviceDesc.Streams[0], "/smartcore.traits.BookingApi/PullBookings", opts...)
+	stream, err := c.cc.NewStream(ctx, &BookingApi_ServiceDesc.Streams[0], "/smartcore.traits.BookingApi/PullBookings", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -139,28 +140,35 @@ type BookingApiServer interface {
 type UnimplementedBookingApiServer struct {
 }
 
-func (*UnimplementedBookingApiServer) ListBookings(context.Context, *ListBookingsRequest) (*ListBookingsResponse, error) {
+func (UnimplementedBookingApiServer) ListBookings(context.Context, *ListBookingsRequest) (*ListBookingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBookings not implemented")
 }
-func (*UnimplementedBookingApiServer) CheckInBooking(context.Context, *CheckInBookingRequest) (*CheckInBookingResponse, error) {
+func (UnimplementedBookingApiServer) CheckInBooking(context.Context, *CheckInBookingRequest) (*CheckInBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckInBooking not implemented")
 }
-func (*UnimplementedBookingApiServer) CheckOutBooking(context.Context, *CheckOutBookingRequest) (*CheckOutBookingResponse, error) {
+func (UnimplementedBookingApiServer) CheckOutBooking(context.Context, *CheckOutBookingRequest) (*CheckOutBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckOutBooking not implemented")
 }
-func (*UnimplementedBookingApiServer) CreateBooking(context.Context, *CreateBookingRequest) (*CreateBookingResponse, error) {
+func (UnimplementedBookingApiServer) CreateBooking(context.Context, *CreateBookingRequest) (*CreateBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBooking not implemented")
 }
-func (*UnimplementedBookingApiServer) UpdateBooking(context.Context, *UpdateBookingRequest) (*UpdateBookingResponse, error) {
+func (UnimplementedBookingApiServer) UpdateBooking(context.Context, *UpdateBookingRequest) (*UpdateBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBooking not implemented")
 }
-func (*UnimplementedBookingApiServer) PullBookings(*ListBookingsRequest, BookingApi_PullBookingsServer) error {
+func (UnimplementedBookingApiServer) PullBookings(*ListBookingsRequest, BookingApi_PullBookingsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullBookings not implemented")
 }
-func (*UnimplementedBookingApiServer) mustEmbedUnimplementedBookingApiServer() {}
+func (UnimplementedBookingApiServer) mustEmbedUnimplementedBookingApiServer() {}
 
-func RegisterBookingApiServer(s *grpc.Server, srv BookingApiServer) {
-	s.RegisterService(&_BookingApi_serviceDesc, srv)
+// UnsafeBookingApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BookingApiServer will
+// result in compilation errors.
+type UnsafeBookingApiServer interface {
+	mustEmbedUnimplementedBookingApiServer()
+}
+
+func RegisterBookingApiServer(s grpc.ServiceRegistrar, srv BookingApiServer) {
+	s.RegisterService(&BookingApi_ServiceDesc, srv)
 }
 
 func _BookingApi_ListBookings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -274,7 +282,10 @@ func (x *bookingApiPullBookingsServer) Send(m *PullBookingsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _BookingApi_serviceDesc = grpc.ServiceDesc{
+// BookingApi_ServiceDesc is the grpc.ServiceDesc for BookingApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BookingApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.BookingApi",
 	HandlerType: (*BookingApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -347,13 +358,20 @@ type BookingInfoServer interface {
 type UnimplementedBookingInfoServer struct {
 }
 
-func (*UnimplementedBookingInfoServer) DescribeBooking(context.Context, *DescribeBookingRequest) (*BookingSupport, error) {
+func (UnimplementedBookingInfoServer) DescribeBooking(context.Context, *DescribeBookingRequest) (*BookingSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeBooking not implemented")
 }
-func (*UnimplementedBookingInfoServer) mustEmbedUnimplementedBookingInfoServer() {}
+func (UnimplementedBookingInfoServer) mustEmbedUnimplementedBookingInfoServer() {}
 
-func RegisterBookingInfoServer(s *grpc.Server, srv BookingInfoServer) {
-	s.RegisterService(&_BookingInfo_serviceDesc, srv)
+// UnsafeBookingInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BookingInfoServer will
+// result in compilation errors.
+type UnsafeBookingInfoServer interface {
+	mustEmbedUnimplementedBookingInfoServer()
+}
+
+func RegisterBookingInfoServer(s grpc.ServiceRegistrar, srv BookingInfoServer) {
+	s.RegisterService(&BookingInfo_ServiceDesc, srv)
 }
 
 func _BookingInfo_DescribeBooking_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -374,7 +392,10 @@ func _BookingInfo_DescribeBooking_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-var _BookingInfo_serviceDesc = grpc.ServiceDesc{
+// BookingInfo_ServiceDesc is the grpc.ServiceDesc for BookingInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BookingInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.BookingInfo",
 	HandlerType: (*BookingInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

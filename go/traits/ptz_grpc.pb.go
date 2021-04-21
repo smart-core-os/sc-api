@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // PtzApiClient is the client API for PtzApi service.
 //
@@ -74,7 +75,7 @@ func (c *ptzApiClient) CreatePreset(ctx context.Context, in *CreatePtzPresetRequ
 }
 
 func (c *ptzApiClient) PullPtz(ctx context.Context, in *PullPtzRequest, opts ...grpc.CallOption) (PtzApi_PullPtzClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_PtzApi_serviceDesc.Streams[0], "/smartcore.traits.PtzApi/PullPtz", opts...)
+	stream, err := c.cc.NewStream(ctx, &PtzApi_ServiceDesc.Streams[0], "/smartcore.traits.PtzApi/PullPtz", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,25 +127,32 @@ type PtzApiServer interface {
 type UnimplementedPtzApiServer struct {
 }
 
-func (*UnimplementedPtzApiServer) GetPtz(context.Context, *GetPtzRequest) (*Ptz, error) {
+func (UnimplementedPtzApiServer) GetPtz(context.Context, *GetPtzRequest) (*Ptz, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPtz not implemented")
 }
-func (*UnimplementedPtzApiServer) UpdatePtz(context.Context, *UpdatePtzRequest) (*Ptz, error) {
+func (UnimplementedPtzApiServer) UpdatePtz(context.Context, *UpdatePtzRequest) (*Ptz, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePtz not implemented")
 }
-func (*UnimplementedPtzApiServer) Stop(context.Context, *StopPtzRequest) (*Ptz, error) {
+func (UnimplementedPtzApiServer) Stop(context.Context, *StopPtzRequest) (*Ptz, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (*UnimplementedPtzApiServer) CreatePreset(context.Context, *CreatePtzPresetRequest) (*PtzPreset, error) {
+func (UnimplementedPtzApiServer) CreatePreset(context.Context, *CreatePtzPresetRequest) (*PtzPreset, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePreset not implemented")
 }
-func (*UnimplementedPtzApiServer) PullPtz(*PullPtzRequest, PtzApi_PullPtzServer) error {
+func (UnimplementedPtzApiServer) PullPtz(*PullPtzRequest, PtzApi_PullPtzServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullPtz not implemented")
 }
-func (*UnimplementedPtzApiServer) mustEmbedUnimplementedPtzApiServer() {}
+func (UnimplementedPtzApiServer) mustEmbedUnimplementedPtzApiServer() {}
 
-func RegisterPtzApiServer(s *grpc.Server, srv PtzApiServer) {
-	s.RegisterService(&_PtzApi_serviceDesc, srv)
+// UnsafePtzApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PtzApiServer will
+// result in compilation errors.
+type UnsafePtzApiServer interface {
+	mustEmbedUnimplementedPtzApiServer()
+}
+
+func RegisterPtzApiServer(s grpc.ServiceRegistrar, srv PtzApiServer) {
+	s.RegisterService(&PtzApi_ServiceDesc, srv)
 }
 
 func _PtzApi_GetPtz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -240,7 +248,10 @@ func (x *ptzApiPullPtzServer) Send(m *PullPtzResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _PtzApi_serviceDesc = grpc.ServiceDesc{
+// PtzApi_ServiceDesc is the grpc.ServiceDesc for PtzApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var PtzApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.PtzApi",
 	HandlerType: (*PtzApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -309,13 +320,20 @@ type PtzInfoServer interface {
 type UnimplementedPtzInfoServer struct {
 }
 
-func (*UnimplementedPtzInfoServer) DescribePtz(context.Context, *DescribePtzRequest) (*PtzSupport, error) {
+func (UnimplementedPtzInfoServer) DescribePtz(context.Context, *DescribePtzRequest) (*PtzSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribePtz not implemented")
 }
-func (*UnimplementedPtzInfoServer) mustEmbedUnimplementedPtzInfoServer() {}
+func (UnimplementedPtzInfoServer) mustEmbedUnimplementedPtzInfoServer() {}
 
-func RegisterPtzInfoServer(s *grpc.Server, srv PtzInfoServer) {
-	s.RegisterService(&_PtzInfo_serviceDesc, srv)
+// UnsafePtzInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PtzInfoServer will
+// result in compilation errors.
+type UnsafePtzInfoServer interface {
+	mustEmbedUnimplementedPtzInfoServer()
+}
+
+func RegisterPtzInfoServer(s grpc.ServiceRegistrar, srv PtzInfoServer) {
+	s.RegisterService(&PtzInfo_ServiceDesc, srv)
 }
 
 func _PtzInfo_DescribePtz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -336,7 +354,10 @@ func _PtzInfo_DescribePtz_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-var _PtzInfo_serviceDesc = grpc.ServiceDesc{
+// PtzInfo_ServiceDesc is the grpc.ServiceDesc for PtzInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var PtzInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.PtzInfo",
 	HandlerType: (*PtzInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

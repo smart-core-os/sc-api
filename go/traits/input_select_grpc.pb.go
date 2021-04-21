@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // InputSelectApiClient is the client API for InputSelectApi service.
 //
@@ -52,7 +53,7 @@ func (c *inputSelectApiClient) GetInput(ctx context.Context, in *GetInputRequest
 }
 
 func (c *inputSelectApiClient) PullInput(ctx context.Context, in *PullInputRequest, opts ...grpc.CallOption) (InputSelectApi_PullInputClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_InputSelectApi_serviceDesc.Streams[0], "/smartcore.traits.InputSelectApi/PullInput", opts...)
+	stream, err := c.cc.NewStream(ctx, &InputSelectApi_ServiceDesc.Streams[0], "/smartcore.traits.InputSelectApi/PullInput", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,19 +101,26 @@ type InputSelectApiServer interface {
 type UnimplementedInputSelectApiServer struct {
 }
 
-func (*UnimplementedInputSelectApiServer) UpdateInput(context.Context, *UpdateInputRequest) (*Input, error) {
+func (UnimplementedInputSelectApiServer) UpdateInput(context.Context, *UpdateInputRequest) (*Input, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInput not implemented")
 }
-func (*UnimplementedInputSelectApiServer) GetInput(context.Context, *GetInputRequest) (*Input, error) {
+func (UnimplementedInputSelectApiServer) GetInput(context.Context, *GetInputRequest) (*Input, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInput not implemented")
 }
-func (*UnimplementedInputSelectApiServer) PullInput(*PullInputRequest, InputSelectApi_PullInputServer) error {
+func (UnimplementedInputSelectApiServer) PullInput(*PullInputRequest, InputSelectApi_PullInputServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullInput not implemented")
 }
-func (*UnimplementedInputSelectApiServer) mustEmbedUnimplementedInputSelectApiServer() {}
+func (UnimplementedInputSelectApiServer) mustEmbedUnimplementedInputSelectApiServer() {}
 
-func RegisterInputSelectApiServer(s *grpc.Server, srv InputSelectApiServer) {
-	s.RegisterService(&_InputSelectApi_serviceDesc, srv)
+// UnsafeInputSelectApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to InputSelectApiServer will
+// result in compilation errors.
+type UnsafeInputSelectApiServer interface {
+	mustEmbedUnimplementedInputSelectApiServer()
+}
+
+func RegisterInputSelectApiServer(s grpc.ServiceRegistrar, srv InputSelectApiServer) {
+	s.RegisterService(&InputSelectApi_ServiceDesc, srv)
 }
 
 func _InputSelectApi_UpdateInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -172,7 +180,10 @@ func (x *inputSelectApiPullInputServer) Send(m *PullInputResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _InputSelectApi_serviceDesc = grpc.ServiceDesc{
+// InputSelectApi_ServiceDesc is the grpc.ServiceDesc for InputSelectApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var InputSelectApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.InputSelectApi",
 	HandlerType: (*InputSelectApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -233,13 +244,20 @@ type InputSelectInfoServer interface {
 type UnimplementedInputSelectInfoServer struct {
 }
 
-func (*UnimplementedInputSelectInfoServer) DescribeInput(context.Context, *DescribeInputRequest) (*InputSupport, error) {
+func (UnimplementedInputSelectInfoServer) DescribeInput(context.Context, *DescribeInputRequest) (*InputSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeInput not implemented")
 }
-func (*UnimplementedInputSelectInfoServer) mustEmbedUnimplementedInputSelectInfoServer() {}
+func (UnimplementedInputSelectInfoServer) mustEmbedUnimplementedInputSelectInfoServer() {}
 
-func RegisterInputSelectInfoServer(s *grpc.Server, srv InputSelectInfoServer) {
-	s.RegisterService(&_InputSelectInfo_serviceDesc, srv)
+// UnsafeInputSelectInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to InputSelectInfoServer will
+// result in compilation errors.
+type UnsafeInputSelectInfoServer interface {
+	mustEmbedUnimplementedInputSelectInfoServer()
+}
+
+func RegisterInputSelectInfoServer(s grpc.ServiceRegistrar, srv InputSelectInfoServer) {
+	s.RegisterService(&InputSelectInfo_ServiceDesc, srv)
 }
 
 func _InputSelectInfo_DescribeInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -260,7 +278,10 @@ func _InputSelectInfo_DescribeInput_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-var _InputSelectInfo_serviceDesc = grpc.ServiceDesc{
+// InputSelectInfo_ServiceDesc is the grpc.ServiceDesc for InputSelectInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var InputSelectInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.InputSelectInfo",
 	HandlerType: (*InputSelectInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

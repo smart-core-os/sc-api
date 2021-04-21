@@ -12,7 +12,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // SpeakerApiClient is the client API for SpeakerApi service.
 //
@@ -52,7 +53,7 @@ func (c *speakerApiClient) UpdateVolume(ctx context.Context, in *UpdateSpeakerVo
 }
 
 func (c *speakerApiClient) PullVolume(ctx context.Context, in *PullSpeakerVolumeRequest, opts ...grpc.CallOption) (SpeakerApi_PullVolumeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_SpeakerApi_serviceDesc.Streams[0], "/smartcore.traits.SpeakerApi/PullVolume", opts...)
+	stream, err := c.cc.NewStream(ctx, &SpeakerApi_ServiceDesc.Streams[0], "/smartcore.traits.SpeakerApi/PullVolume", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,19 +100,26 @@ type SpeakerApiServer interface {
 type UnimplementedSpeakerApiServer struct {
 }
 
-func (*UnimplementedSpeakerApiServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.AudioLevel, error) {
+func (UnimplementedSpeakerApiServer) GetVolume(context.Context, *GetSpeakerVolumeRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVolume not implemented")
 }
-func (*UnimplementedSpeakerApiServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.AudioLevel, error) {
+func (UnimplementedSpeakerApiServer) UpdateVolume(context.Context, *UpdateSpeakerVolumeRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolume not implemented")
 }
-func (*UnimplementedSpeakerApiServer) PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error {
+func (UnimplementedSpeakerApiServer) PullVolume(*PullSpeakerVolumeRequest, SpeakerApi_PullVolumeServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullVolume not implemented")
 }
-func (*UnimplementedSpeakerApiServer) mustEmbedUnimplementedSpeakerApiServer() {}
+func (UnimplementedSpeakerApiServer) mustEmbedUnimplementedSpeakerApiServer() {}
 
-func RegisterSpeakerApiServer(s *grpc.Server, srv SpeakerApiServer) {
-	s.RegisterService(&_SpeakerApi_serviceDesc, srv)
+// UnsafeSpeakerApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SpeakerApiServer will
+// result in compilation errors.
+type UnsafeSpeakerApiServer interface {
+	mustEmbedUnimplementedSpeakerApiServer()
+}
+
+func RegisterSpeakerApiServer(s grpc.ServiceRegistrar, srv SpeakerApiServer) {
+	s.RegisterService(&SpeakerApi_ServiceDesc, srv)
 }
 
 func _SpeakerApi_GetVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -171,7 +179,10 @@ func (x *speakerApiPullVolumeServer) Send(m *PullSpeakerVolumeResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _SpeakerApi_serviceDesc = grpc.ServiceDesc{
+// SpeakerApi_ServiceDesc is the grpc.ServiceDesc for SpeakerApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SpeakerApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.SpeakerApi",
 	HandlerType: (*SpeakerApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -198,7 +209,7 @@ var _SpeakerApi_serviceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SpeakerInfoClient interface {
-	// Get information about how a named device implements Volume features
+	// Get information about how a named device implements volume features
 	DescribeVolume(ctx context.Context, in *DescribeVolumeRequest, opts ...grpc.CallOption) (*VolumeSupport, error)
 }
 
@@ -223,7 +234,7 @@ func (c *speakerInfoClient) DescribeVolume(ctx context.Context, in *DescribeVolu
 // All implementations must embed UnimplementedSpeakerInfoServer
 // for forward compatibility
 type SpeakerInfoServer interface {
-	// Get information about how a named device implements Volume features
+	// Get information about how a named device implements volume features
 	DescribeVolume(context.Context, *DescribeVolumeRequest) (*VolumeSupport, error)
 	mustEmbedUnimplementedSpeakerInfoServer()
 }
@@ -232,13 +243,20 @@ type SpeakerInfoServer interface {
 type UnimplementedSpeakerInfoServer struct {
 }
 
-func (*UnimplementedSpeakerInfoServer) DescribeVolume(context.Context, *DescribeVolumeRequest) (*VolumeSupport, error) {
+func (UnimplementedSpeakerInfoServer) DescribeVolume(context.Context, *DescribeVolumeRequest) (*VolumeSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeVolume not implemented")
 }
-func (*UnimplementedSpeakerInfoServer) mustEmbedUnimplementedSpeakerInfoServer() {}
+func (UnimplementedSpeakerInfoServer) mustEmbedUnimplementedSpeakerInfoServer() {}
 
-func RegisterSpeakerInfoServer(s *grpc.Server, srv SpeakerInfoServer) {
-	s.RegisterService(&_SpeakerInfo_serviceDesc, srv)
+// UnsafeSpeakerInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SpeakerInfoServer will
+// result in compilation errors.
+type UnsafeSpeakerInfoServer interface {
+	mustEmbedUnimplementedSpeakerInfoServer()
+}
+
+func RegisterSpeakerInfoServer(s grpc.ServiceRegistrar, srv SpeakerInfoServer) {
+	s.RegisterService(&SpeakerInfo_ServiceDesc, srv)
 }
 
 func _SpeakerInfo_DescribeVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -259,7 +277,10 @@ func _SpeakerInfo_DescribeVolume_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-var _SpeakerInfo_serviceDesc = grpc.ServiceDesc{
+// SpeakerInfo_ServiceDesc is the grpc.ServiceDesc for SpeakerInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SpeakerInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.SpeakerInfo",
 	HandlerType: (*SpeakerInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // BrightnessSensorApiClient is the client API for BrightnessSensorApi service.
 //
@@ -41,7 +42,7 @@ func (c *brightnessSensorApiClient) GetAmbientBrightness(ctx context.Context, in
 }
 
 func (c *brightnessSensorApiClient) PullAmbientBrightness(ctx context.Context, in *PullAmbientBrightnessRequest, opts ...grpc.CallOption) (BrightnessSensorApi_PullAmbientBrightnessClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_BrightnessSensorApi_serviceDesc.Streams[0], "/smartcore.traits.BrightnessSensorApi/PullAmbientBrightness", opts...)
+	stream, err := c.cc.NewStream(ctx, &BrightnessSensorApi_ServiceDesc.Streams[0], "/smartcore.traits.BrightnessSensorApi/PullAmbientBrightness", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,16 +88,23 @@ type BrightnessSensorApiServer interface {
 type UnimplementedBrightnessSensorApiServer struct {
 }
 
-func (*UnimplementedBrightnessSensorApiServer) GetAmbientBrightness(context.Context, *GetAmbientBrightnessRequest) (*AmbientBrightness, error) {
+func (UnimplementedBrightnessSensorApiServer) GetAmbientBrightness(context.Context, *GetAmbientBrightnessRequest) (*AmbientBrightness, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAmbientBrightness not implemented")
 }
-func (*UnimplementedBrightnessSensorApiServer) PullAmbientBrightness(*PullAmbientBrightnessRequest, BrightnessSensorApi_PullAmbientBrightnessServer) error {
+func (UnimplementedBrightnessSensorApiServer) PullAmbientBrightness(*PullAmbientBrightnessRequest, BrightnessSensorApi_PullAmbientBrightnessServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullAmbientBrightness not implemented")
 }
-func (*UnimplementedBrightnessSensorApiServer) mustEmbedUnimplementedBrightnessSensorApiServer() {}
+func (UnimplementedBrightnessSensorApiServer) mustEmbedUnimplementedBrightnessSensorApiServer() {}
 
-func RegisterBrightnessSensorApiServer(s *grpc.Server, srv BrightnessSensorApiServer) {
-	s.RegisterService(&_BrightnessSensorApi_serviceDesc, srv)
+// UnsafeBrightnessSensorApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BrightnessSensorApiServer will
+// result in compilation errors.
+type UnsafeBrightnessSensorApiServer interface {
+	mustEmbedUnimplementedBrightnessSensorApiServer()
+}
+
+func RegisterBrightnessSensorApiServer(s grpc.ServiceRegistrar, srv BrightnessSensorApiServer) {
+	s.RegisterService(&BrightnessSensorApi_ServiceDesc, srv)
 }
 
 func _BrightnessSensorApi_GetAmbientBrightness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,7 +146,10 @@ func (x *brightnessSensorApiPullAmbientBrightnessServer) Send(m *PullAmbientBrig
 	return x.ServerStream.SendMsg(m)
 }
 
-var _BrightnessSensorApi_serviceDesc = grpc.ServiceDesc{
+// BrightnessSensorApi_ServiceDesc is the grpc.ServiceDesc for BrightnessSensorApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BrightnessSensorApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.BrightnessSensorApi",
 	HandlerType: (*BrightnessSensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -195,13 +206,20 @@ type BrightnessSensorInfoServer interface {
 type UnimplementedBrightnessSensorInfoServer struct {
 }
 
-func (*UnimplementedBrightnessSensorInfoServer) DescribeAmbientBrightness(context.Context, *DescribeAmbientBrightnessRequest) (*AmbientBrightnessSupport, error) {
+func (UnimplementedBrightnessSensorInfoServer) DescribeAmbientBrightness(context.Context, *DescribeAmbientBrightnessRequest) (*AmbientBrightnessSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeAmbientBrightness not implemented")
 }
-func (*UnimplementedBrightnessSensorInfoServer) mustEmbedUnimplementedBrightnessSensorInfoServer() {}
+func (UnimplementedBrightnessSensorInfoServer) mustEmbedUnimplementedBrightnessSensorInfoServer() {}
 
-func RegisterBrightnessSensorInfoServer(s *grpc.Server, srv BrightnessSensorInfoServer) {
-	s.RegisterService(&_BrightnessSensorInfo_serviceDesc, srv)
+// UnsafeBrightnessSensorInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BrightnessSensorInfoServer will
+// result in compilation errors.
+type UnsafeBrightnessSensorInfoServer interface {
+	mustEmbedUnimplementedBrightnessSensorInfoServer()
+}
+
+func RegisterBrightnessSensorInfoServer(s grpc.ServiceRegistrar, srv BrightnessSensorInfoServer) {
+	s.RegisterService(&BrightnessSensorInfo_ServiceDesc, srv)
 }
 
 func _BrightnessSensorInfo_DescribeAmbientBrightness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -222,7 +240,10 @@ func _BrightnessSensorInfo_DescribeAmbientBrightness_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-var _BrightnessSensorInfo_serviceDesc = grpc.ServiceDesc{
+// BrightnessSensorInfo_ServiceDesc is the grpc.ServiceDesc for BrightnessSensorInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BrightnessSensorInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.BrightnessSensorInfo",
 	HandlerType: (*BrightnessSensorInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

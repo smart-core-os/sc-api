@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // OnOffApiClient is the client API for OnOffApi service.
 //
@@ -52,7 +53,7 @@ func (c *onOffApiClient) UpdateOnOff(ctx context.Context, in *UpdateOnOffRequest
 }
 
 func (c *onOffApiClient) PullOnOff(ctx context.Context, in *PullOnOffRequest, opts ...grpc.CallOption) (OnOffApi_PullOnOffClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_OnOffApi_serviceDesc.Streams[0], "/smartcore.traits.OnOffApi/PullOnOff", opts...)
+	stream, err := c.cc.NewStream(ctx, &OnOffApi_ServiceDesc.Streams[0], "/smartcore.traits.OnOffApi/PullOnOff", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,19 +101,26 @@ type OnOffApiServer interface {
 type UnimplementedOnOffApiServer struct {
 }
 
-func (*UnimplementedOnOffApiServer) GetOnOff(context.Context, *GetOnOffRequest) (*OnOff, error) {
+func (UnimplementedOnOffApiServer) GetOnOff(context.Context, *GetOnOffRequest) (*OnOff, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOnOff not implemented")
 }
-func (*UnimplementedOnOffApiServer) UpdateOnOff(context.Context, *UpdateOnOffRequest) (*OnOff, error) {
+func (UnimplementedOnOffApiServer) UpdateOnOff(context.Context, *UpdateOnOffRequest) (*OnOff, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOnOff not implemented")
 }
-func (*UnimplementedOnOffApiServer) PullOnOff(*PullOnOffRequest, OnOffApi_PullOnOffServer) error {
+func (UnimplementedOnOffApiServer) PullOnOff(*PullOnOffRequest, OnOffApi_PullOnOffServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullOnOff not implemented")
 }
-func (*UnimplementedOnOffApiServer) mustEmbedUnimplementedOnOffApiServer() {}
+func (UnimplementedOnOffApiServer) mustEmbedUnimplementedOnOffApiServer() {}
 
-func RegisterOnOffApiServer(s *grpc.Server, srv OnOffApiServer) {
-	s.RegisterService(&_OnOffApi_serviceDesc, srv)
+// UnsafeOnOffApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OnOffApiServer will
+// result in compilation errors.
+type UnsafeOnOffApiServer interface {
+	mustEmbedUnimplementedOnOffApiServer()
+}
+
+func RegisterOnOffApiServer(s grpc.ServiceRegistrar, srv OnOffApiServer) {
+	s.RegisterService(&OnOffApi_ServiceDesc, srv)
 }
 
 func _OnOffApi_GetOnOff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -172,7 +180,10 @@ func (x *onOffApiPullOnOffServer) Send(m *PullOnOffResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _OnOffApi_serviceDesc = grpc.ServiceDesc{
+// OnOffApi_ServiceDesc is the grpc.ServiceDesc for OnOffApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OnOffApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OnOffApi",
 	HandlerType: (*OnOffApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -233,13 +244,20 @@ type OnOffInfoServer interface {
 type UnimplementedOnOffInfoServer struct {
 }
 
-func (*UnimplementedOnOffInfoServer) DescribeOnOff(context.Context, *DescribeOnOffRequest) (*OnOffSupport, error) {
+func (UnimplementedOnOffInfoServer) DescribeOnOff(context.Context, *DescribeOnOffRequest) (*OnOffSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeOnOff not implemented")
 }
-func (*UnimplementedOnOffInfoServer) mustEmbedUnimplementedOnOffInfoServer() {}
+func (UnimplementedOnOffInfoServer) mustEmbedUnimplementedOnOffInfoServer() {}
 
-func RegisterOnOffInfoServer(s *grpc.Server, srv OnOffInfoServer) {
-	s.RegisterService(&_OnOffInfo_serviceDesc, srv)
+// UnsafeOnOffInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OnOffInfoServer will
+// result in compilation errors.
+type UnsafeOnOffInfoServer interface {
+	mustEmbedUnimplementedOnOffInfoServer()
+}
+
+func RegisterOnOffInfoServer(s grpc.ServiceRegistrar, srv OnOffInfoServer) {
+	s.RegisterService(&OnOffInfo_ServiceDesc, srv)
 }
 
 func _OnOffInfo_DescribeOnOff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -260,7 +278,10 @@ func _OnOffInfo_DescribeOnOff_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-var _OnOffInfo_serviceDesc = grpc.ServiceDesc{
+// OnOffInfo_ServiceDesc is the grpc.ServiceDesc for OnOffInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OnOffInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OnOffInfo",
 	HandlerType: (*OnOffInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

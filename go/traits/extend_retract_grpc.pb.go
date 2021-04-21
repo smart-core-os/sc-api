@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // ExtendRetractApiClient is the client API for ExtendRetractApi service.
 //
@@ -74,7 +75,7 @@ func (c *extendRetractApiClient) CreateExtensionPreset(ctx context.Context, in *
 }
 
 func (c *extendRetractApiClient) PullExtensions(ctx context.Context, in *PullExtensionsRequest, opts ...grpc.CallOption) (ExtendRetractApi_PullExtensionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_ExtendRetractApi_serviceDesc.Streams[0], "/smartcore.traits.ExtendRetractApi/PullExtensions", opts...)
+	stream, err := c.cc.NewStream(ctx, &ExtendRetractApi_ServiceDesc.Streams[0], "/smartcore.traits.ExtendRetractApi/PullExtensions", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,25 +127,32 @@ type ExtendRetractApiServer interface {
 type UnimplementedExtendRetractApiServer struct {
 }
 
-func (*UnimplementedExtendRetractApiServer) GetExtension(context.Context, *GetExtensionRequest) (*Extension, error) {
+func (UnimplementedExtendRetractApiServer) GetExtension(context.Context, *GetExtensionRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExtension not implemented")
 }
-func (*UnimplementedExtendRetractApiServer) UpdateExtension(context.Context, *UpdateExtensionRequest) (*Extension, error) {
+func (UnimplementedExtendRetractApiServer) UpdateExtension(context.Context, *UpdateExtensionRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateExtension not implemented")
 }
-func (*UnimplementedExtendRetractApiServer) Stop(context.Context, *ExtendRetractStopRequest) (*Extension, error) {
+func (UnimplementedExtendRetractApiServer) Stop(context.Context, *ExtendRetractStopRequest) (*Extension, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (*UnimplementedExtendRetractApiServer) CreateExtensionPreset(context.Context, *CreateExtensionPresetRequest) (*ExtensionPreset, error) {
+func (UnimplementedExtendRetractApiServer) CreateExtensionPreset(context.Context, *CreateExtensionPresetRequest) (*ExtensionPreset, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateExtensionPreset not implemented")
 }
-func (*UnimplementedExtendRetractApiServer) PullExtensions(*PullExtensionsRequest, ExtendRetractApi_PullExtensionsServer) error {
+func (UnimplementedExtendRetractApiServer) PullExtensions(*PullExtensionsRequest, ExtendRetractApi_PullExtensionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullExtensions not implemented")
 }
-func (*UnimplementedExtendRetractApiServer) mustEmbedUnimplementedExtendRetractApiServer() {}
+func (UnimplementedExtendRetractApiServer) mustEmbedUnimplementedExtendRetractApiServer() {}
 
-func RegisterExtendRetractApiServer(s *grpc.Server, srv ExtendRetractApiServer) {
-	s.RegisterService(&_ExtendRetractApi_serviceDesc, srv)
+// UnsafeExtendRetractApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ExtendRetractApiServer will
+// result in compilation errors.
+type UnsafeExtendRetractApiServer interface {
+	mustEmbedUnimplementedExtendRetractApiServer()
+}
+
+func RegisterExtendRetractApiServer(s grpc.ServiceRegistrar, srv ExtendRetractApiServer) {
+	s.RegisterService(&ExtendRetractApi_ServiceDesc, srv)
 }
 
 func _ExtendRetractApi_GetExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -240,7 +248,10 @@ func (x *extendRetractApiPullExtensionsServer) Send(m *PullExtensionsResponse) e
 	return x.ServerStream.SendMsg(m)
 }
 
-var _ExtendRetractApi_serviceDesc = grpc.ServiceDesc{
+// ExtendRetractApi_ServiceDesc is the grpc.ServiceDesc for ExtendRetractApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ExtendRetractApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.ExtendRetractApi",
 	HandlerType: (*ExtendRetractApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -309,13 +320,20 @@ type ExtendRetractInfoServer interface {
 type UnimplementedExtendRetractInfoServer struct {
 }
 
-func (*UnimplementedExtendRetractInfoServer) DescribeExtension(context.Context, *DescribeExtensionRequest) (*ExtensionSupport, error) {
+func (UnimplementedExtendRetractInfoServer) DescribeExtension(context.Context, *DescribeExtensionRequest) (*ExtensionSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeExtension not implemented")
 }
-func (*UnimplementedExtendRetractInfoServer) mustEmbedUnimplementedExtendRetractInfoServer() {}
+func (UnimplementedExtendRetractInfoServer) mustEmbedUnimplementedExtendRetractInfoServer() {}
 
-func RegisterExtendRetractInfoServer(s *grpc.Server, srv ExtendRetractInfoServer) {
-	s.RegisterService(&_ExtendRetractInfo_serviceDesc, srv)
+// UnsafeExtendRetractInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ExtendRetractInfoServer will
+// result in compilation errors.
+type UnsafeExtendRetractInfoServer interface {
+	mustEmbedUnimplementedExtendRetractInfoServer()
+}
+
+func RegisterExtendRetractInfoServer(s grpc.ServiceRegistrar, srv ExtendRetractInfoServer) {
+	s.RegisterService(&ExtendRetractInfo_ServiceDesc, srv)
 }
 
 func _ExtendRetractInfo_DescribeExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -336,7 +354,10 @@ func _ExtendRetractInfo_DescribeExtension_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-var _ExtendRetractInfo_serviceDesc = grpc.ServiceDesc{
+// ExtendRetractInfo_ServiceDesc is the grpc.ServiceDesc for ExtendRetractInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ExtendRetractInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.ExtendRetractInfo",
 	HandlerType: (*ExtendRetractInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

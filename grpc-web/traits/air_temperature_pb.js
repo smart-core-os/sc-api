@@ -2,11 +2,14 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
+/* eslint-disable */
+// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
@@ -1045,8 +1048,10 @@ proto.smartcore.traits.AirTemperatureSupport.deserializeBinaryFromReader = funct
       msg.setNativeUnit(value);
       break;
     case 3:
-      var value = /** @type {!Array<!proto.smartcore.traits.AirTemperature.Mode>} */ (reader.readPackedEnum());
-      msg.setSupportedModesList(value);
+      var values = /** @type {!Array<!proto.smartcore.traits.AirTemperature.Mode>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addSupportedModes(values[i]);
+      }
       break;
     case 4:
       var value = /** @type {number} */ (reader.readDouble());

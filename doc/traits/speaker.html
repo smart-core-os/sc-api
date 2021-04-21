@@ -273,7 +273,7 @@
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>fields to fetch relative the the Volume type </p></td>
+                  <td><p>fields to fetch relative the the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -304,7 +304,7 @@
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>fields to fetch relative the the Volume type </p></td>
+                  <td><p>fields to fetch relative the the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -366,14 +366,14 @@
                   <td>delta</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Only supported for Volume.level. Update the value relative to the current value. </p></td>
+                  <td><p>Only supported for AudioLevel.gain. Update the value relative to the current value. </p></td>
                 </tr>
               
                 <tr>
                   <td>update_mask</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The fields we intend to update relative to the Volume type </p></td>
+                  <td><p>The fields we intend to update relative to the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -430,7 +430,7 @@ disallowing gain change when muted </p></td>
 
       
         <h3 id="smartcore.traits.SpeakerApi">SpeakerApi</h3>
-        <p>Trait for devices that support some kind of audio output. The most basic is a simple on/off speaker, it's optional to</p><p>support volume adjustment on a scale.</p><p>For the sakes of this trait Volume means the combination of a gain and a mute state.</p>
+        <p>Trait for devices that support some kind of audio output. The most basic is a simple on/off speaker, it's optional to</p><p>support volume adjustment on a scale.</p><p>For the sakes of this trait "volume" means the combination of a gain and a mute state.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -474,7 +474,7 @@ disallowing gain change when muted </p></td>
                 <td>DescribeVolume</td>
                 <td><a href="#smartcore.traits.DescribeVolumeRequest">DescribeVolumeRequest</a></td>
                 <td><a href="#smartcore.traits.VolumeSupport">VolumeSupport</a></td>
-                <td><p>Get information about how a named device implements Volume features</p></td>
+                <td><p>Get information about how a named device implements volume features</p></td>
               </tr>
             
           </tbody>

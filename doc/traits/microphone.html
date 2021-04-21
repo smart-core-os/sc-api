@@ -253,7 +253,7 @@
         
       
         <h3 id="smartcore.traits.GainSupport">GainSupport</h3>
-        <p>Trait.attribute describing capabilities of the microphone device</p>
+        <p>GainSupport describes the capabilities of devices implementing this trait.</p>
 
         
           <table class="field-table">
@@ -313,7 +313,7 @@ disallowing gain change when muted </p></td>
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>fields to fetch relative the the Volume type </p></td>
+                  <td><p>fields to fetch relative the the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -344,7 +344,7 @@ disallowing gain change when muted </p></td>
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>fields to fetch relative the the Volume type </p></td>
+                  <td><p>fields to fetch relative the the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -406,14 +406,14 @@ disallowing gain change when muted </p></td>
                   <td>delta</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Only supported for Volume.level. Update the value relative to the current value. </p></td>
+                  <td><p>Only supported for AudioLevel.gain. Update the value relative to the current value. </p></td>
                 </tr>
               
                 <tr>
                   <td>update_mask</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The fields we intend to update relative to the Volume type </p></td>
+                  <td><p>The fields we intend to update relative to the AudioLevel type </p></td>
                 </tr>
               
             </tbody>
@@ -430,7 +430,7 @@ disallowing gain change when muted </p></td>
 
       
         <h3 id="smartcore.traits.MicrophoneApi">MicrophoneApi</h3>
-        <p>Trait for devices that support some kind of audio input. The most basic is a simple muting microphone, it's optional</p><p>to support gain adjustment on a scale.</p><p>For the sakes of this trait Volume means the combination of a gain and a mute state.</p>
+        <p>Trait for devices that support some kind of audio input. The most basic is a simple muting microphone, it's optional</p><p>to support gain adjustment on a scale.</p><p>For the sakes of this trait "gain" means the combination of a gain and a mute state.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>

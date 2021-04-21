@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // EmergencyApiClient is the client API for EmergencyApi service.
 //
@@ -52,7 +53,7 @@ func (c *emergencyApiClient) UpdateEmergency(ctx context.Context, in *UpdateEmer
 }
 
 func (c *emergencyApiClient) PullEmergency(ctx context.Context, in *PullEmergencyRequest, opts ...grpc.CallOption) (EmergencyApi_PullEmergencyClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_EmergencyApi_serviceDesc.Streams[0], "/smartcore.traits.EmergencyApi/PullEmergency", opts...)
+	stream, err := c.cc.NewStream(ctx, &EmergencyApi_ServiceDesc.Streams[0], "/smartcore.traits.EmergencyApi/PullEmergency", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,19 +101,26 @@ type EmergencyApiServer interface {
 type UnimplementedEmergencyApiServer struct {
 }
 
-func (*UnimplementedEmergencyApiServer) GetEmergency(context.Context, *GetEmergencyRequest) (*Emergency, error) {
+func (UnimplementedEmergencyApiServer) GetEmergency(context.Context, *GetEmergencyRequest) (*Emergency, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEmergency not implemented")
 }
-func (*UnimplementedEmergencyApiServer) UpdateEmergency(context.Context, *UpdateEmergencyRequest) (*Emergency, error) {
+func (UnimplementedEmergencyApiServer) UpdateEmergency(context.Context, *UpdateEmergencyRequest) (*Emergency, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmergency not implemented")
 }
-func (*UnimplementedEmergencyApiServer) PullEmergency(*PullEmergencyRequest, EmergencyApi_PullEmergencyServer) error {
+func (UnimplementedEmergencyApiServer) PullEmergency(*PullEmergencyRequest, EmergencyApi_PullEmergencyServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullEmergency not implemented")
 }
-func (*UnimplementedEmergencyApiServer) mustEmbedUnimplementedEmergencyApiServer() {}
+func (UnimplementedEmergencyApiServer) mustEmbedUnimplementedEmergencyApiServer() {}
 
-func RegisterEmergencyApiServer(s *grpc.Server, srv EmergencyApiServer) {
-	s.RegisterService(&_EmergencyApi_serviceDesc, srv)
+// UnsafeEmergencyApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to EmergencyApiServer will
+// result in compilation errors.
+type UnsafeEmergencyApiServer interface {
+	mustEmbedUnimplementedEmergencyApiServer()
+}
+
+func RegisterEmergencyApiServer(s grpc.ServiceRegistrar, srv EmergencyApiServer) {
+	s.RegisterService(&EmergencyApi_ServiceDesc, srv)
 }
 
 func _EmergencyApi_GetEmergency_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -172,7 +180,10 @@ func (x *emergencyApiPullEmergencyServer) Send(m *PullEmergencyResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _EmergencyApi_serviceDesc = grpc.ServiceDesc{
+// EmergencyApi_ServiceDesc is the grpc.ServiceDesc for EmergencyApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var EmergencyApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.EmergencyApi",
 	HandlerType: (*EmergencyApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -233,13 +244,20 @@ type EmergencyInfoServer interface {
 type UnimplementedEmergencyInfoServer struct {
 }
 
-func (*UnimplementedEmergencyInfoServer) DescribeEmergency(context.Context, *DescribeEmergencyRequest) (*EmergencySupport, error) {
+func (UnimplementedEmergencyInfoServer) DescribeEmergency(context.Context, *DescribeEmergencyRequest) (*EmergencySupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeEmergency not implemented")
 }
-func (*UnimplementedEmergencyInfoServer) mustEmbedUnimplementedEmergencyInfoServer() {}
+func (UnimplementedEmergencyInfoServer) mustEmbedUnimplementedEmergencyInfoServer() {}
 
-func RegisterEmergencyInfoServer(s *grpc.Server, srv EmergencyInfoServer) {
-	s.RegisterService(&_EmergencyInfo_serviceDesc, srv)
+// UnsafeEmergencyInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to EmergencyInfoServer will
+// result in compilation errors.
+type UnsafeEmergencyInfoServer interface {
+	mustEmbedUnimplementedEmergencyInfoServer()
+}
+
+func RegisterEmergencyInfoServer(s grpc.ServiceRegistrar, srv EmergencyInfoServer) {
+	s.RegisterService(&EmergencyInfo_ServiceDesc, srv)
 }
 
 func _EmergencyInfo_DescribeEmergency_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -260,7 +278,10 @@ func _EmergencyInfo_DescribeEmergency_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-var _EmergencyInfo_serviceDesc = grpc.ServiceDesc{
+// EmergencyInfo_ServiceDesc is the grpc.ServiceDesc for EmergencyInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var EmergencyInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.EmergencyInfo",
 	HandlerType: (*EmergencyInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

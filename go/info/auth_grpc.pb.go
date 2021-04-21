@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // AuthProviderClient is the client API for AuthProvider service.
 //
@@ -82,22 +83,29 @@ type AuthProviderServer interface {
 type UnimplementedAuthProviderServer struct {
 }
 
-func (*UnimplementedAuthProviderServer) AddAccount(context.Context, *AddAccountRequest) (*AddAccountResponse, error) {
+func (UnimplementedAuthProviderServer) AddAccount(context.Context, *AddAccountRequest) (*AddAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddAccount not implemented")
 }
-func (*UnimplementedAuthProviderServer) RemoveAccount(context.Context, *RemoveAccountRequest) (*RemoveAccountResponse, error) {
+func (UnimplementedAuthProviderServer) RemoveAccount(context.Context, *RemoveAccountRequest) (*RemoveAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveAccount not implemented")
 }
-func (*UnimplementedAuthProviderServer) UpdateAccountPermissions(context.Context, *UpdateAccountPermissionsRequest) (*UpdateAccountPermissionsResponse, error) {
+func (UnimplementedAuthProviderServer) UpdateAccountPermissions(context.Context, *UpdateAccountPermissionsRequest) (*UpdateAccountPermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccountPermissions not implemented")
 }
-func (*UnimplementedAuthProviderServer) GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error) {
+func (UnimplementedAuthProviderServer) GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateToken not implemented")
 }
-func (*UnimplementedAuthProviderServer) mustEmbedUnimplementedAuthProviderServer() {}
+func (UnimplementedAuthProviderServer) mustEmbedUnimplementedAuthProviderServer() {}
 
-func RegisterAuthProviderServer(s *grpc.Server, srv AuthProviderServer) {
-	s.RegisterService(&_AuthProvider_serviceDesc, srv)
+// UnsafeAuthProviderServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AuthProviderServer will
+// result in compilation errors.
+type UnsafeAuthProviderServer interface {
+	mustEmbedUnimplementedAuthProviderServer()
+}
+
+func RegisterAuthProviderServer(s grpc.ServiceRegistrar, srv AuthProviderServer) {
+	s.RegisterService(&AuthProvider_ServiceDesc, srv)
 }
 
 func _AuthProvider_AddAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -172,7 +180,10 @@ func _AuthProvider_GenerateToken_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AuthProvider_serviceDesc = grpc.ServiceDesc{
+// AuthProvider_ServiceDesc is the grpc.ServiceDesc for AuthProvider service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AuthProvider_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.info.AuthProvider",
 	HandlerType: (*AuthProviderServer)(nil),
 	Methods: []grpc.MethodDesc{

@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // OpenCloseApiClient is the client API for OpenCloseApi service.
 //
@@ -61,7 +62,7 @@ func (c *openCloseApiClient) Stop(ctx context.Context, in *StopOpenCloseRequest,
 }
 
 func (c *openCloseApiClient) PullPositions(ctx context.Context, in *PullOpenClosePositionsRequest, opts ...grpc.CallOption) (OpenCloseApi_PullPositionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_OpenCloseApi_serviceDesc.Streams[0], "/smartcore.traits.OpenCloseApi/PullPositions", opts...)
+	stream, err := c.cc.NewStream(ctx, &OpenCloseApi_ServiceDesc.Streams[0], "/smartcore.traits.OpenCloseApi/PullPositions", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,22 +110,29 @@ type OpenCloseApiServer interface {
 type UnimplementedOpenCloseApiServer struct {
 }
 
-func (*UnimplementedOpenCloseApiServer) GetPositions(context.Context, *GetOpenClosePositionsRequest) (*OpenClosePositions, error) {
+func (UnimplementedOpenCloseApiServer) GetPositions(context.Context, *GetOpenClosePositionsRequest) (*OpenClosePositions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPositions not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) UpdatePositions(context.Context, *UpdateOpenClosePositionsRequest) (*OpenClosePositions, error) {
+func (UnimplementedOpenCloseApiServer) UpdatePositions(context.Context, *UpdateOpenClosePositionsRequest) (*OpenClosePositions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePositions not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) Stop(context.Context, *StopOpenCloseRequest) (*OpenClosePositions, error) {
+func (UnimplementedOpenCloseApiServer) Stop(context.Context, *StopOpenCloseRequest) (*OpenClosePositions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) PullPositions(*PullOpenClosePositionsRequest, OpenCloseApi_PullPositionsServer) error {
+func (UnimplementedOpenCloseApiServer) PullPositions(*PullOpenClosePositionsRequest, OpenCloseApi_PullPositionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullPositions not implemented")
 }
-func (*UnimplementedOpenCloseApiServer) mustEmbedUnimplementedOpenCloseApiServer() {}
+func (UnimplementedOpenCloseApiServer) mustEmbedUnimplementedOpenCloseApiServer() {}
 
-func RegisterOpenCloseApiServer(s *grpc.Server, srv OpenCloseApiServer) {
-	s.RegisterService(&_OpenCloseApi_serviceDesc, srv)
+// UnsafeOpenCloseApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OpenCloseApiServer will
+// result in compilation errors.
+type UnsafeOpenCloseApiServer interface {
+	mustEmbedUnimplementedOpenCloseApiServer()
+}
+
+func RegisterOpenCloseApiServer(s grpc.ServiceRegistrar, srv OpenCloseApiServer) {
+	s.RegisterService(&OpenCloseApi_ServiceDesc, srv)
 }
 
 func _OpenCloseApi_GetPositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -202,7 +210,10 @@ func (x *openCloseApiPullPositionsServer) Send(m *PullOpenClosePositionsResponse
 	return x.ServerStream.SendMsg(m)
 }
 
-var _OpenCloseApi_serviceDesc = grpc.ServiceDesc{
+// OpenCloseApi_ServiceDesc is the grpc.ServiceDesc for OpenCloseApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OpenCloseApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OpenCloseApi",
 	HandlerType: (*OpenCloseApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -267,13 +278,20 @@ type OpenCloseInfoServer interface {
 type UnimplementedOpenCloseInfoServer struct {
 }
 
-func (*UnimplementedOpenCloseInfoServer) DescribePositions(context.Context, *DescribePositionsRequest) (*PositionsSupport, error) {
+func (UnimplementedOpenCloseInfoServer) DescribePositions(context.Context, *DescribePositionsRequest) (*PositionsSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribePositions not implemented")
 }
-func (*UnimplementedOpenCloseInfoServer) mustEmbedUnimplementedOpenCloseInfoServer() {}
+func (UnimplementedOpenCloseInfoServer) mustEmbedUnimplementedOpenCloseInfoServer() {}
 
-func RegisterOpenCloseInfoServer(s *grpc.Server, srv OpenCloseInfoServer) {
-	s.RegisterService(&_OpenCloseInfo_serviceDesc, srv)
+// UnsafeOpenCloseInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OpenCloseInfoServer will
+// result in compilation errors.
+type UnsafeOpenCloseInfoServer interface {
+	mustEmbedUnimplementedOpenCloseInfoServer()
+}
+
+func RegisterOpenCloseInfoServer(s grpc.ServiceRegistrar, srv OpenCloseInfoServer) {
+	s.RegisterService(&OpenCloseInfo_ServiceDesc, srv)
 }
 
 func _OpenCloseInfo_DescribePositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -294,7 +312,10 @@ func _OpenCloseInfo_DescribePositions_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-var _OpenCloseInfo_serviceDesc = grpc.ServiceDesc{
+// OpenCloseInfo_ServiceDesc is the grpc.ServiceDesc for OpenCloseInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OpenCloseInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OpenCloseInfo",
 	HandlerType: (*OpenCloseInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

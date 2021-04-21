@@ -12,7 +12,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // MicrophoneApiClient is the client API for MicrophoneApi service.
 //
@@ -52,7 +53,7 @@ func (c *microphoneApiClient) UpdateGain(ctx context.Context, in *UpdateMicropho
 }
 
 func (c *microphoneApiClient) PullGain(ctx context.Context, in *PullMicrophoneGainRequest, opts ...grpc.CallOption) (MicrophoneApi_PullGainClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_MicrophoneApi_serviceDesc.Streams[0], "/smartcore.traits.MicrophoneApi/PullGain", opts...)
+	stream, err := c.cc.NewStream(ctx, &MicrophoneApi_ServiceDesc.Streams[0], "/smartcore.traits.MicrophoneApi/PullGain", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,19 +100,26 @@ type MicrophoneApiServer interface {
 type UnimplementedMicrophoneApiServer struct {
 }
 
-func (*UnimplementedMicrophoneApiServer) GetGain(context.Context, *GetMicrophoneGainRequest) (*types.AudioLevel, error) {
+func (UnimplementedMicrophoneApiServer) GetGain(context.Context, *GetMicrophoneGainRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGain not implemented")
 }
-func (*UnimplementedMicrophoneApiServer) UpdateGain(context.Context, *UpdateMicrophoneGainRequest) (*types.AudioLevel, error) {
+func (UnimplementedMicrophoneApiServer) UpdateGain(context.Context, *UpdateMicrophoneGainRequest) (*types.AudioLevel, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGain not implemented")
 }
-func (*UnimplementedMicrophoneApiServer) PullGain(*PullMicrophoneGainRequest, MicrophoneApi_PullGainServer) error {
+func (UnimplementedMicrophoneApiServer) PullGain(*PullMicrophoneGainRequest, MicrophoneApi_PullGainServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullGain not implemented")
 }
-func (*UnimplementedMicrophoneApiServer) mustEmbedUnimplementedMicrophoneApiServer() {}
+func (UnimplementedMicrophoneApiServer) mustEmbedUnimplementedMicrophoneApiServer() {}
 
-func RegisterMicrophoneApiServer(s *grpc.Server, srv MicrophoneApiServer) {
-	s.RegisterService(&_MicrophoneApi_serviceDesc, srv)
+// UnsafeMicrophoneApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MicrophoneApiServer will
+// result in compilation errors.
+type UnsafeMicrophoneApiServer interface {
+	mustEmbedUnimplementedMicrophoneApiServer()
+}
+
+func RegisterMicrophoneApiServer(s grpc.ServiceRegistrar, srv MicrophoneApiServer) {
+	s.RegisterService(&MicrophoneApi_ServiceDesc, srv)
 }
 
 func _MicrophoneApi_GetGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -171,7 +179,10 @@ func (x *microphoneApiPullGainServer) Send(m *PullMicrophoneGainResponse) error 
 	return x.ServerStream.SendMsg(m)
 }
 
-var _MicrophoneApi_serviceDesc = grpc.ServiceDesc{
+// MicrophoneApi_ServiceDesc is the grpc.ServiceDesc for MicrophoneApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MicrophoneApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.MicrophoneApi",
 	HandlerType: (*MicrophoneApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -232,13 +243,20 @@ type MicrophoneInfoServer interface {
 type UnimplementedMicrophoneInfoServer struct {
 }
 
-func (*UnimplementedMicrophoneInfoServer) DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error) {
+func (UnimplementedMicrophoneInfoServer) DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeGain not implemented")
 }
-func (*UnimplementedMicrophoneInfoServer) mustEmbedUnimplementedMicrophoneInfoServer() {}
+func (UnimplementedMicrophoneInfoServer) mustEmbedUnimplementedMicrophoneInfoServer() {}
 
-func RegisterMicrophoneInfoServer(s *grpc.Server, srv MicrophoneInfoServer) {
-	s.RegisterService(&_MicrophoneInfo_serviceDesc, srv)
+// UnsafeMicrophoneInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MicrophoneInfoServer will
+// result in compilation errors.
+type UnsafeMicrophoneInfoServer interface {
+	mustEmbedUnimplementedMicrophoneInfoServer()
+}
+
+func RegisterMicrophoneInfoServer(s grpc.ServiceRegistrar, srv MicrophoneInfoServer) {
+	s.RegisterService(&MicrophoneInfo_ServiceDesc, srv)
 }
 
 func _MicrophoneInfo_DescribeGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -259,7 +277,10 @@ func _MicrophoneInfo_DescribeGain_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-var _MicrophoneInfo_serviceDesc = grpc.ServiceDesc{
+// MicrophoneInfo_ServiceDesc is the grpc.ServiceDesc for MicrophoneInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MicrophoneInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.MicrophoneInfo",
 	HandlerType: (*MicrophoneInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

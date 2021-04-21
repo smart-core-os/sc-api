@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // CountApiClient is the client API for CountApi service.
 //
@@ -63,7 +64,7 @@ func (c *countApiClient) UpdateCount(ctx context.Context, in *UpdateCountRequest
 }
 
 func (c *countApiClient) PullCounts(ctx context.Context, in *PullCountsRequest, opts ...grpc.CallOption) (CountApi_PullCountsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_CountApi_serviceDesc.Streams[0], "/smartcore.traits.CountApi/PullCounts", opts...)
+	stream, err := c.cc.NewStream(ctx, &CountApi_ServiceDesc.Streams[0], "/smartcore.traits.CountApi/PullCounts", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,22 +114,29 @@ type CountApiServer interface {
 type UnimplementedCountApiServer struct {
 }
 
-func (*UnimplementedCountApiServer) GetCount(context.Context, *GetCountRequest) (*Count, error) {
+func (UnimplementedCountApiServer) GetCount(context.Context, *GetCountRequest) (*Count, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCount not implemented")
 }
-func (*UnimplementedCountApiServer) ResetCount(context.Context, *ResetCountRequest) (*Count, error) {
+func (UnimplementedCountApiServer) ResetCount(context.Context, *ResetCountRequest) (*Count, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetCount not implemented")
 }
-func (*UnimplementedCountApiServer) UpdateCount(context.Context, *UpdateCountRequest) (*Count, error) {
+func (UnimplementedCountApiServer) UpdateCount(context.Context, *UpdateCountRequest) (*Count, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCount not implemented")
 }
-func (*UnimplementedCountApiServer) PullCounts(*PullCountsRequest, CountApi_PullCountsServer) error {
+func (UnimplementedCountApiServer) PullCounts(*PullCountsRequest, CountApi_PullCountsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullCounts not implemented")
 }
-func (*UnimplementedCountApiServer) mustEmbedUnimplementedCountApiServer() {}
+func (UnimplementedCountApiServer) mustEmbedUnimplementedCountApiServer() {}
 
-func RegisterCountApiServer(s *grpc.Server, srv CountApiServer) {
-	s.RegisterService(&_CountApi_serviceDesc, srv)
+// UnsafeCountApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CountApiServer will
+// result in compilation errors.
+type UnsafeCountApiServer interface {
+	mustEmbedUnimplementedCountApiServer()
+}
+
+func RegisterCountApiServer(s grpc.ServiceRegistrar, srv CountApiServer) {
+	s.RegisterService(&CountApi_ServiceDesc, srv)
 }
 
 func _CountApi_GetCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -206,7 +214,10 @@ func (x *countApiPullCountsServer) Send(m *PullCountsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _CountApi_serviceDesc = grpc.ServiceDesc{
+// CountApi_ServiceDesc is the grpc.ServiceDesc for CountApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CountApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.CountApi",
 	HandlerType: (*CountApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -271,13 +282,20 @@ type CountInfoServer interface {
 type UnimplementedCountInfoServer struct {
 }
 
-func (*UnimplementedCountInfoServer) DescribeCount(context.Context, *DescribeCountRequest) (*CountSupport, error) {
+func (UnimplementedCountInfoServer) DescribeCount(context.Context, *DescribeCountRequest) (*CountSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeCount not implemented")
 }
-func (*UnimplementedCountInfoServer) mustEmbedUnimplementedCountInfoServer() {}
+func (UnimplementedCountInfoServer) mustEmbedUnimplementedCountInfoServer() {}
 
-func RegisterCountInfoServer(s *grpc.Server, srv CountInfoServer) {
-	s.RegisterService(&_CountInfo_serviceDesc, srv)
+// UnsafeCountInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CountInfoServer will
+// result in compilation errors.
+type UnsafeCountInfoServer interface {
+	mustEmbedUnimplementedCountInfoServer()
+}
+
+func RegisterCountInfoServer(s grpc.ServiceRegistrar, srv CountInfoServer) {
+	s.RegisterService(&CountInfo_ServiceDesc, srv)
 }
 
 func _CountInfo_DescribeCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -298,7 +316,10 @@ func _CountInfo_DescribeCount_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-var _CountInfo_serviceDesc = grpc.ServiceDesc{
+// CountInfo_ServiceDesc is the grpc.ServiceDesc for CountInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CountInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.CountInfo",
 	HandlerType: (*CountInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

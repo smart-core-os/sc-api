@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // HealthClient is the client API for Health service.
 //
@@ -39,7 +40,7 @@ func (c *healthClient) GetHealthState(ctx context.Context, in *GetHealthStateReq
 }
 
 func (c *healthClient) PullHealthStates(ctx context.Context, in *PullHealthStatesRequest, opts ...grpc.CallOption) (Health_PullHealthStatesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Health_serviceDesc.Streams[0], "/smartcore.info.Health/PullHealthStates", opts...)
+	stream, err := c.cc.NewStream(ctx, &Health_ServiceDesc.Streams[0], "/smartcore.info.Health/PullHealthStates", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,16 +84,23 @@ type HealthServer interface {
 type UnimplementedHealthServer struct {
 }
 
-func (*UnimplementedHealthServer) GetHealthState(context.Context, *GetHealthStateRequest) (*HealthState, error) {
+func (UnimplementedHealthServer) GetHealthState(context.Context, *GetHealthStateRequest) (*HealthState, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHealthState not implemented")
 }
-func (*UnimplementedHealthServer) PullHealthStates(*PullHealthStatesRequest, Health_PullHealthStatesServer) error {
+func (UnimplementedHealthServer) PullHealthStates(*PullHealthStatesRequest, Health_PullHealthStatesServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullHealthStates not implemented")
 }
-func (*UnimplementedHealthServer) mustEmbedUnimplementedHealthServer() {}
+func (UnimplementedHealthServer) mustEmbedUnimplementedHealthServer() {}
 
-func RegisterHealthServer(s *grpc.Server, srv HealthServer) {
-	s.RegisterService(&_Health_serviceDesc, srv)
+// UnsafeHealthServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to HealthServer will
+// result in compilation errors.
+type UnsafeHealthServer interface {
+	mustEmbedUnimplementedHealthServer()
+}
+
+func RegisterHealthServer(s grpc.ServiceRegistrar, srv HealthServer) {
+	s.RegisterService(&Health_ServiceDesc, srv)
 }
 
 func _Health_GetHealthState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -134,7 +142,10 @@ func (x *healthPullHealthStatesServer) Send(m *PullHealthStatesResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Health_serviceDesc = grpc.ServiceDesc{
+// Health_ServiceDesc is the grpc.ServiceDesc for Health service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Health_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.info.Health",
 	HandlerType: (*HealthServer)(nil),
 	Methods: []grpc.MethodDesc{

@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // AirTemperatureApiClient is the client API for AirTemperatureApi service.
 //
@@ -55,7 +56,7 @@ func (c *airTemperatureApiClient) UpdateAirTemperature(ctx context.Context, in *
 }
 
 func (c *airTemperatureApiClient) PullAirTemperature(ctx context.Context, in *PullAirTemperatureRequest, opts ...grpc.CallOption) (AirTemperatureApi_PullAirTemperatureClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AirTemperatureApi_serviceDesc.Streams[0], "/smartcore.traits.AirTemperatureApi/PullAirTemperature", opts...)
+	stream, err := c.cc.NewStream(ctx, &AirTemperatureApi_ServiceDesc.Streams[0], "/smartcore.traits.AirTemperatureApi/PullAirTemperature", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -106,19 +107,26 @@ type AirTemperatureApiServer interface {
 type UnimplementedAirTemperatureApiServer struct {
 }
 
-func (*UnimplementedAirTemperatureApiServer) GetAirTemperature(context.Context, *GetAirTemperatureRequest) (*AirTemperature, error) {
+func (UnimplementedAirTemperatureApiServer) GetAirTemperature(context.Context, *GetAirTemperatureRequest) (*AirTemperature, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAirTemperature not implemented")
 }
-func (*UnimplementedAirTemperatureApiServer) UpdateAirTemperature(context.Context, *UpdateAirTemperatureRequest) (*AirTemperature, error) {
+func (UnimplementedAirTemperatureApiServer) UpdateAirTemperature(context.Context, *UpdateAirTemperatureRequest) (*AirTemperature, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAirTemperature not implemented")
 }
-func (*UnimplementedAirTemperatureApiServer) PullAirTemperature(*PullAirTemperatureRequest, AirTemperatureApi_PullAirTemperatureServer) error {
+func (UnimplementedAirTemperatureApiServer) PullAirTemperature(*PullAirTemperatureRequest, AirTemperatureApi_PullAirTemperatureServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullAirTemperature not implemented")
 }
-func (*UnimplementedAirTemperatureApiServer) mustEmbedUnimplementedAirTemperatureApiServer() {}
+func (UnimplementedAirTemperatureApiServer) mustEmbedUnimplementedAirTemperatureApiServer() {}
 
-func RegisterAirTemperatureApiServer(s *grpc.Server, srv AirTemperatureApiServer) {
-	s.RegisterService(&_AirTemperatureApi_serviceDesc, srv)
+// UnsafeAirTemperatureApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AirTemperatureApiServer will
+// result in compilation errors.
+type UnsafeAirTemperatureApiServer interface {
+	mustEmbedUnimplementedAirTemperatureApiServer()
+}
+
+func RegisterAirTemperatureApiServer(s grpc.ServiceRegistrar, srv AirTemperatureApiServer) {
+	s.RegisterService(&AirTemperatureApi_ServiceDesc, srv)
 }
 
 func _AirTemperatureApi_GetAirTemperature_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -178,7 +186,10 @@ func (x *airTemperatureApiPullAirTemperatureServer) Send(m *PullAirTemperatureRe
 	return x.ServerStream.SendMsg(m)
 }
 
-var _AirTemperatureApi_serviceDesc = grpc.ServiceDesc{
+// AirTemperatureApi_ServiceDesc is the grpc.ServiceDesc for AirTemperatureApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AirTemperatureApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.AirTemperatureApi",
 	HandlerType: (*AirTemperatureApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -239,13 +250,20 @@ type AirTemperatureInfoServer interface {
 type UnimplementedAirTemperatureInfoServer struct {
 }
 
-func (*UnimplementedAirTemperatureInfoServer) DescribeAirTemperature(context.Context, *DescribeAirTemperatureRequest) (*AirTemperatureSupport, error) {
+func (UnimplementedAirTemperatureInfoServer) DescribeAirTemperature(context.Context, *DescribeAirTemperatureRequest) (*AirTemperatureSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeAirTemperature not implemented")
 }
-func (*UnimplementedAirTemperatureInfoServer) mustEmbedUnimplementedAirTemperatureInfoServer() {}
+func (UnimplementedAirTemperatureInfoServer) mustEmbedUnimplementedAirTemperatureInfoServer() {}
 
-func RegisterAirTemperatureInfoServer(s *grpc.Server, srv AirTemperatureInfoServer) {
-	s.RegisterService(&_AirTemperatureInfo_serviceDesc, srv)
+// UnsafeAirTemperatureInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AirTemperatureInfoServer will
+// result in compilation errors.
+type UnsafeAirTemperatureInfoServer interface {
+	mustEmbedUnimplementedAirTemperatureInfoServer()
+}
+
+func RegisterAirTemperatureInfoServer(s grpc.ServiceRegistrar, srv AirTemperatureInfoServer) {
+	s.RegisterService(&AirTemperatureInfo_ServiceDesc, srv)
 }
 
 func _AirTemperatureInfo_DescribeAirTemperature_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -266,7 +284,10 @@ func _AirTemperatureInfo_DescribeAirTemperature_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AirTemperatureInfo_serviceDesc = grpc.ServiceDesc{
+// AirTemperatureInfo_ServiceDesc is the grpc.ServiceDesc for AirTemperatureInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AirTemperatureInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.AirTemperatureInfo",
 	HandlerType: (*AirTemperatureInfoServer)(nil),
 	Methods: []grpc.MethodDesc{

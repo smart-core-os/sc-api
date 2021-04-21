@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // OccupancySensorApiClient is the client API for OccupancySensorApi service.
 //
@@ -41,7 +42,7 @@ func (c *occupancySensorApiClient) GetOccupancy(ctx context.Context, in *GetOccu
 }
 
 func (c *occupancySensorApiClient) PullOccupancy(ctx context.Context, in *PullOccupancyRequest, opts ...grpc.CallOption) (OccupancySensorApi_PullOccupancyClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_OccupancySensorApi_serviceDesc.Streams[0], "/smartcore.traits.OccupancySensorApi/PullOccupancy", opts...)
+	stream, err := c.cc.NewStream(ctx, &OccupancySensorApi_ServiceDesc.Streams[0], "/smartcore.traits.OccupancySensorApi/PullOccupancy", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,16 +88,23 @@ type OccupancySensorApiServer interface {
 type UnimplementedOccupancySensorApiServer struct {
 }
 
-func (*UnimplementedOccupancySensorApiServer) GetOccupancy(context.Context, *GetOccupancyRequest) (*Occupancy, error) {
+func (UnimplementedOccupancySensorApiServer) GetOccupancy(context.Context, *GetOccupancyRequest) (*Occupancy, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOccupancy not implemented")
 }
-func (*UnimplementedOccupancySensorApiServer) PullOccupancy(*PullOccupancyRequest, OccupancySensorApi_PullOccupancyServer) error {
+func (UnimplementedOccupancySensorApiServer) PullOccupancy(*PullOccupancyRequest, OccupancySensorApi_PullOccupancyServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullOccupancy not implemented")
 }
-func (*UnimplementedOccupancySensorApiServer) mustEmbedUnimplementedOccupancySensorApiServer() {}
+func (UnimplementedOccupancySensorApiServer) mustEmbedUnimplementedOccupancySensorApiServer() {}
 
-func RegisterOccupancySensorApiServer(s *grpc.Server, srv OccupancySensorApiServer) {
-	s.RegisterService(&_OccupancySensorApi_serviceDesc, srv)
+// UnsafeOccupancySensorApiServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OccupancySensorApiServer will
+// result in compilation errors.
+type UnsafeOccupancySensorApiServer interface {
+	mustEmbedUnimplementedOccupancySensorApiServer()
+}
+
+func RegisterOccupancySensorApiServer(s grpc.ServiceRegistrar, srv OccupancySensorApiServer) {
+	s.RegisterService(&OccupancySensorApi_ServiceDesc, srv)
 }
 
 func _OccupancySensorApi_GetOccupancy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,7 +146,10 @@ func (x *occupancySensorApiPullOccupancyServer) Send(m *PullOccupancyResponse) e
 	return x.ServerStream.SendMsg(m)
 }
 
-var _OccupancySensorApi_serviceDesc = grpc.ServiceDesc{
+// OccupancySensorApi_ServiceDesc is the grpc.ServiceDesc for OccupancySensorApi service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OccupancySensorApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OccupancySensorApi",
 	HandlerType: (*OccupancySensorApiServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -195,13 +206,20 @@ type OccupancySensorInfoServer interface {
 type UnimplementedOccupancySensorInfoServer struct {
 }
 
-func (*UnimplementedOccupancySensorInfoServer) DescribeOccupancy(context.Context, *DescribeOccupancyRequest) (*OccupancySupport, error) {
+func (UnimplementedOccupancySensorInfoServer) DescribeOccupancy(context.Context, *DescribeOccupancyRequest) (*OccupancySupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeOccupancy not implemented")
 }
-func (*UnimplementedOccupancySensorInfoServer) mustEmbedUnimplementedOccupancySensorInfoServer() {}
+func (UnimplementedOccupancySensorInfoServer) mustEmbedUnimplementedOccupancySensorInfoServer() {}
 
-func RegisterOccupancySensorInfoServer(s *grpc.Server, srv OccupancySensorInfoServer) {
-	s.RegisterService(&_OccupancySensorInfo_serviceDesc, srv)
+// UnsafeOccupancySensorInfoServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OccupancySensorInfoServer will
+// result in compilation errors.
+type UnsafeOccupancySensorInfoServer interface {
+	mustEmbedUnimplementedOccupancySensorInfoServer()
+}
+
+func RegisterOccupancySensorInfoServer(s grpc.ServiceRegistrar, srv OccupancySensorInfoServer) {
+	s.RegisterService(&OccupancySensorInfo_ServiceDesc, srv)
 }
 
 func _OccupancySensorInfo_DescribeOccupancy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -222,7 +240,10 @@ func _OccupancySensorInfo_DescribeOccupancy_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-var _OccupancySensorInfo_serviceDesc = grpc.ServiceDesc{
+// OccupancySensorInfo_ServiceDesc is the grpc.ServiceDesc for OccupancySensorInfo service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var OccupancySensorInfo_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.OccupancySensorInfo",
 	HandlerType: (*OccupancySensorInfoServer)(nil),
 	Methods: []grpc.MethodDesc{
