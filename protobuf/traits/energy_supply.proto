@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "PowerSupplyProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "types/info.proto";
+import "types/number.proto";
+
+// Trait for devices that can supply power, typically electrical.
+service PowerSupplyApi {
+  // Get the current capacity available for supply.
+  // The available capacity shouldn't include any draw made on this device directly.
+  rpc GetPowerCapacity (GetPowerCapacityRequest) returns (PowerCapacity);
+  // Be notified of changes to the available capacity.
+  rpc PullPowerCapacity (PullPowerCapacityRequest) returns (stream PullPowerCapacityResponse);
+
+  // AddDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
+  // This device may respond to say that the requested draw is not available at this time.
+  rpc AddDrawNotification (AddDrawNotificationRequest) returns (DrawNotification);
+  // Update an existing draw notification.
+  // If no such draw notification exists, will return an error.
+  rpc UpdateDrawNotification (UpdateDrawNotificationRequest) returns (DrawNotification);
+  // Remove an existing draw notification.
+  // If no such draw notification exists, does nothing.
+  rpc RemoveDrawNotification (RemoveDrawNotificationRequest) returns (google.protobuf.Empty);
+}
+
+// Describes the capabilities of a specific named device with respect to this trait.
+service PowerSupplyInfo {
+  // Get information about how a named device implements Gain features
+  rpc DescribePowerCapacity (DescribePowerCapacityRequest) returns (PowerCapacitySupport);
+}
+
+// PowerCapacitySupport describes the capabilities of devices implementing this trait.
+message PowerCapacitySupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // Attributes associated with the available capacity property of the supply.
+  // This applies to the rating, load, capacity, and free properties of PowerCapacity.
+  smartcore.types.FloatAttributes available_attributes = 2;
+}
+
+// PowerCapacity describes how much power is available to be supplied by a device.
+// This can also describe how much isn't available.
+//
+// Note that load + free <= rating (when rating is present).
+// When rating is absent it is acceptable to estimate it using load + free for most cases.
+// The device may only make some of the total power available for consumption.
+//
+// Notified draw is not accounted for as part of the free calculation.
+// If it were, during the ramp period the device would count the notified load + the actual load
+// and potentially double count how much capacity is being used.
+message PowerCapacity {
+  // What is the maximum rating the device can ever supply.
+  // Unlikely to change without changes to the electric circuit.
+  // In amps.
+  // Zero means absent, not a rating of 0 amp.
+  float rating = 1;
+  // How much power is currently drawn from this device.
+  // In amps.
+  optional float load = 2;
+  // How much of the rated capacity can be supplied from this device.
+  // This will update as available capacity changes.
+  // In amps.
+  optional float capacity = 3;
+  // How much more capacity can be drawn from this device.
+  // In amps.
+  // Notification of draw should _not_ be included in the calculation for this value.
+  optional float free = 4;
+  // A total for how much draw consumers of this supply have notified they will be consuming.
+  // See DrawNotification.
+  float notified = 5;
+}
+
+// DrawNotification represents a consuming device informing a supply device that it intends to draw current.
+// Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting
+// their draw at the same time.
+//
+// Min Draw Example
+//
+// Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.
+// The device may decide to respond as if the notification was for exactly 30A,
+// as 30A is within the [10,50] amp range specified in the request.
+//
+// If no min_draw was specified the device may have responded with an error indicating that
+// the value of max_draw:50A isn't available.
+message DrawNotification {
+  // Identifies the notification of draw.
+  // Required for update or delete operations, should be absent for add operations
+  string id = 1;
+  // The maximum draw that the caller is expecting to consume.
+  // In Amps.
+  // During read, or as part of a write response, this is the maximum draw the supply expects the caller to consume.
+  float max_draw = 2;
+  // How long does the caller expect it will be before the draw level has reached its maximum.
+  // The device is free to forget draw notifications after this duration as elapsed as it is expected
+  // the caller is actually drawing the current so it is not available anymore.
+  google.protobuf.Duration ramp_duration = 3;
+  // The minimum draw that the caller will accept.
+  // If not 0, this is an indication to the device that if the max_draw is not available but some capacity is,
+  // that the device will act as if that draw level is expected from the device.
+  // See message docs for more details.
+  float min_draw = 4;
+}
+
+message GetPowerCapacityRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative the the PowerCapacity type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message PullPowerCapacityRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative the the PowerCapacity type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message PullPowerCapacityResponse {
+  // Changes since the last message
+  repeated Change changes = 1;
+
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // The new value for the available capacity
+    PowerCapacity available_capacity = 3;
+  }
+}
+
+message DescribePowerCapacityRequest {
+  // The name of the device
+  string name = 1;
+}
+
+message AddDrawNotificationRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  DrawNotification draw_notification = 2;
+}
+
+message UpdateDrawNotificationRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  DrawNotification draw_notification = 2;
+}
+
+message RemoveDrawNotificationRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Id of the draw notification returned during the AddDrawNotification call.
+  string id = 2;
+}
