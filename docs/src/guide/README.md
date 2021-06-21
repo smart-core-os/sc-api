@@ -30,7 +30,7 @@ The simplest way to begin with a Smart Core building is to add one of the pre-bu
 <template v-slot:go>
 
 ```bash
-go get -u git.vanti.co.uk/smartcore/sc-api/go
+go get -u github.com/smart-core-os/sc-api/go
 ```
 </template>
 <template v-slot:java>
@@ -69,7 +69,7 @@ import (
 	"context"
 	"fmt"
     
-    "git.vanti.co.uk/smartcore/sc-api/go/traits"
+    "github.com/smart-core-os/sc-api/go/traits"
     "google.golang.org/grpc"
 )
 

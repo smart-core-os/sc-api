@@ -4,7 +4,7 @@ package traits
 
 import (
 	context "context"
-	types "git.vanti.co.uk/smartcore/sc-api/go/types"
+	types "github.com/smart-core-os/sc-api/go/types"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

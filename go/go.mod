@@ -1,4 +1,4 @@
-module git.vanti.co.uk/smartcore/sc-api/go
+module github.com/smart-core-os/sc-api/go
 
 go 1.13
 

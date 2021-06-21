@@ -2,14 +2,14 @@
   "name": "@smart-core-os/sc-api-grpc-web",
   "version": "1.0.0-beta.21",
   "description": "grpc-web client library",
-  "license": "CC BY-SA 4.0",
+  "license": "AGPL-3.0",
   "dependencies": {
     "google-protobuf": "^3.13.0",
     "grpc-web": "^1.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://git.vanti.co.uk/smartcore/sc-api",
+    "url": "https://github.com/smart-core-os/sc-api",
     "directory": "grpc-web"
   },
   "publishConfig": {
