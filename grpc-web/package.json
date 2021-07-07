@@ -1,6 +1,6 @@
 {
   "name": "@smart-core-os/sc-api-grpc-web",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "description": "grpc-web client library",
   "license": "AGPL-3.0",
   "dependencies": {
