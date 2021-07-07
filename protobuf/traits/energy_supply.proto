@@ -30,8 +30,11 @@ service PowerSupplyApi {
   // Update an existing draw notification.
   // If no such draw notification exists, will return an error.
   rpc UpdateDrawNotification (UpdateDrawNotificationRequest) returns (DrawNotification);
-  // Remove an existing draw notification.
+  // RemoveDrawNotification allows the caller to remove their notification of draw.
+  // Typically used if the situation has changed and the expected draw will no longer happen.
+  // If the expected draw level has changed consider using UpdateDrawNotification.
   // If no such draw notification exists, does nothing.
+  // There is no need to remove notifications after their ramp_duration has expired.
   rpc RemoveDrawNotification (RemoveDrawNotificationRequest) returns (google.protobuf.Empty);
 }
 
