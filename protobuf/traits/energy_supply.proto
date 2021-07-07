@@ -79,10 +79,12 @@ message PowerCapacity {
   // How much of the rated capacity can be supplied from this device.
   // This will update as available capacity changes.
   // In amps.
+  // For example a 100A rating with 30A load is likely to respond with 70A capacity.
   optional float capacity = 4;
   // How much more capacity can be drawn from this device.
   // In amps.
   // Notification of draw should _not_ be included in the calculation for this value.
+  // For example a 100A rating with 30A load with a 10A configured safety margin is likely to respond with 60%.
   optional float free = 5;
   // A total for how much current (in amps) consumers of this supply have notified they will be drawing.
   // See DrawNotification.
