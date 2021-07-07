@@ -154,19 +154,19 @@ message DescribePowerCapacityRequest {
 }
 
 message AddDrawNotificationRequest {
-  // Name of the device to fetch the state for
+  // Name of the device
   string name = 1;
   DrawNotification draw_notification = 2;
 }
 
 message UpdateDrawNotificationRequest {
-  // Name of the device to fetch the state for
+  // Name of the device
   string name = 1;
   DrawNotification draw_notification = 2;
 }
 
 message RemoveDrawNotificationRequest {
-  // Name of the device to fetch the state for
+  // Name of the device
   string name = 1;
   // Id of the draw notification returned during the AddDrawNotification call.
   string id = 2;
