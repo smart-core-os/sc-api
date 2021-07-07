@@ -119,7 +119,7 @@ type PowerCapacity struct {
 	// How much more capacity can be drawn from this device.
 	// In amps.
 	// Notification of draw should _not_ be included in the calculation for this value.
-	// For example a 100A rating with 30A load with a 10A configured safety margin is likely to respond with 60%.
+	// For example a 100A rating with 30A load with a 10A configured safety margin is likely to respond with 60A.
 	Free *float32 `protobuf:"fixed32,5,opt,name=free,proto3,oneof" json:"free,omitempty"`
 	// A total for how much current (in amps) consumers of this supply have notified they will be drawing.
 	// See DrawNotification.
