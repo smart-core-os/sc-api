@@ -242,24 +242,24 @@ export namespace DescribePowerCapacityRequest {
   }
 }
 
-export class AddDrawNotificationRequest extends jspb.Message {
+export class CreateDrawNotificationRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): AddDrawNotificationRequest;
+  setName(value: string): CreateDrawNotificationRequest;
 
   getDrawNotification(): DrawNotification | undefined;
-  setDrawNotification(value?: DrawNotification): AddDrawNotificationRequest;
+  setDrawNotification(value?: DrawNotification): CreateDrawNotificationRequest;
   hasDrawNotification(): boolean;
-  clearDrawNotification(): AddDrawNotificationRequest;
+  clearDrawNotification(): CreateDrawNotificationRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): AddDrawNotificationRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: AddDrawNotificationRequest): AddDrawNotificationRequest.AsObject;
-  static serializeBinaryToWriter(message: AddDrawNotificationRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): AddDrawNotificationRequest;
-  static deserializeBinaryFromReader(message: AddDrawNotificationRequest, reader: jspb.BinaryReader): AddDrawNotificationRequest;
+  toObject(includeInstance?: boolean): CreateDrawNotificationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateDrawNotificationRequest): CreateDrawNotificationRequest.AsObject;
+  static serializeBinaryToWriter(message: CreateDrawNotificationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateDrawNotificationRequest;
+  static deserializeBinaryFromReader(message: CreateDrawNotificationRequest, reader: jspb.BinaryReader): CreateDrawNotificationRequest;
 }
 
-export namespace AddDrawNotificationRequest {
+export namespace CreateDrawNotificationRequest {
   export type AsObject = {
     name: string,
     drawNotification?: DrawNotification.AsObject,
@@ -290,22 +290,22 @@ export namespace UpdateDrawNotificationRequest {
   }
 }
 
-export class RemoveDrawNotificationRequest extends jspb.Message {
+export class DeleteDrawNotificationRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): RemoveDrawNotificationRequest;
+  setName(value: string): DeleteDrawNotificationRequest;
 
   getId(): string;
-  setId(value: string): RemoveDrawNotificationRequest;
+  setId(value: string): DeleteDrawNotificationRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RemoveDrawNotificationRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: RemoveDrawNotificationRequest): RemoveDrawNotificationRequest.AsObject;
-  static serializeBinaryToWriter(message: RemoveDrawNotificationRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RemoveDrawNotificationRequest;
-  static deserializeBinaryFromReader(message: RemoveDrawNotificationRequest, reader: jspb.BinaryReader): RemoveDrawNotificationRequest;
+  toObject(includeInstance?: boolean): DeleteDrawNotificationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteDrawNotificationRequest): DeleteDrawNotificationRequest.AsObject;
+  static serializeBinaryToWriter(message: DeleteDrawNotificationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteDrawNotificationRequest;
+  static deserializeBinaryFromReader(message: DeleteDrawNotificationRequest, reader: jspb.BinaryReader): DeleteDrawNotificationRequest;
 }
 
-export namespace RemoveDrawNotificationRequest {
+export namespace DeleteDrawNotificationRequest {
   export type AsObject = {
     name: string,
     id: string,

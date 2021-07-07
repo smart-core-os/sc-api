@@ -179,7 +179,11 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.AddDrawNotificationRequest"><span class="badge">M</span>AddDrawNotificationRequest</a>
+                  <a href="#smartcore.traits.CreateDrawNotificationRequest"><span class="badge">M</span>CreateDrawNotificationRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DeleteDrawNotificationRequest"><span class="badge">M</span>DeleteDrawNotificationRequest</a>
                 </li>
               
                 <li>
@@ -215,10 +219,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.RemoveDrawNotificationRequest"><span class="badge">M</span>RemoveDrawNotificationRequest</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.UpdateDrawNotificationRequest"><span class="badge">M</span>UpdateDrawNotificationRequest</a>
                 </li>
               
@@ -248,7 +248,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.AddDrawNotificationRequest">AddDrawNotificationRequest</h3>
+        <h3 id="smartcore.traits.CreateDrawNotificationRequest">CreateDrawNotificationRequest</h3>
         <p></p>
 
         
@@ -262,7 +262,7 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Name of the device to fetch the state for </p></td>
+                  <td><p>Name of the device </p></td>
                 </tr>
               
                 <tr>
@@ -270,6 +270,37 @@
                   <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
                   <td></td>
                   <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DeleteDrawNotificationRequest">DeleteDrawNotificationRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the draw notification returned during the CreateDrawNotification call. </p></td>
                 </tr>
               
             </tbody>
@@ -326,7 +357,7 @@ Required for update or delete operations, should be absent for add operations </
                   <td><a href="#float">float</a></td>
                   <td></td>
                   <td><p>The maximum draw that the caller is expecting to consume.
-In Amps.
+In amps.
 During read, or as part of a write response, this is the maximum draw the supply expects the caller to consume. </p></td>
                 </tr>
               
@@ -335,7 +366,7 @@ During read, or as part of a write response, this is the maximum draw the supply
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
                   <td><p>How long does the caller expect it will be before the draw level has reached its maximum.
-The device is free to forget draw notifications after this duration as elapsed as it is expected
+The device is free to forget draw notifications after this duration has elapsed as it is expected
 the caller is actually drawing the current so it is not available anymore. </p></td>
                 </tr>
               
@@ -344,8 +375,10 @@ the caller is actually drawing the current so it is not available anymore. </p><
                   <td><a href="#float">float</a></td>
                   <td></td>
                   <td><p>The minimum draw that the caller will accept.
-If not 0, this is an indication to the device that if the max_draw is not available but some capacity is,
-that the device will act as if that draw level is expected from the device.
+A zero value indicates that the caller only draws using max_draw and no less.
+During write, a non-zero value is an indication to the device that it may choose an expected draw value
+somewhere between the min_draw and max_draw, typically based on free and unallocated current.
+The max_draw of the response will inform the caller which value has been chosen.
 See message docs for more details. </p></td>
                 </tr>
               
@@ -377,7 +410,7 @@ See message docs for more details. </p></td>
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>Fields to fetch relative the the PowerCapacity type </p></td>
+                  <td><p>Fields to fetch relative to the PowerCapacity type </p></td>
                 </tr>
               
             </tbody>
@@ -404,7 +437,7 @@ See message docs for more details. </p></td>
                   <td><p>What is the maximum rating the device can ever supply.
 Unlikely to change without changes to the electric circuit.
 In amps.
-Zero means absent, not a rating of 0 amp. </p></td>
+Zero means absent, not a rating of 0 amps. </p></td>
                 </tr>
               
                 <tr>
@@ -430,7 +463,8 @@ In amps. </p></td>
                   <td>optional</td>
                   <td><p>How much of the rated capacity can be supplied from this device.
 This will update as available capacity changes.
-In amps. </p></td>
+In amps.
+For example a 100A rating with 30A load is likely to respond with 70A capacity. </p></td>
                 </tr>
               
                 <tr>
@@ -439,14 +473,15 @@ In amps. </p></td>
                   <td>optional</td>
                   <td><p>How much more capacity can be drawn from this device.
 In amps.
-Notification of draw should _not_ be included in the calculation for this value. </p></td>
+Notification of draw should _not_ be included in the calculation for this value.
+For example a 100A rating with 30A load with a 10A configured safety margin is likely to respond with 60%. </p></td>
                 </tr>
               
                 <tr>
                   <td>notified</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>A total for how much draw consumers of this supply have notified they will be consuming.
+                  <td><p>A total for how much current (in amps) consumers of this supply have notified they will be drawing.
 See DrawNotification. </p></td>
                 </tr>
               
@@ -510,7 +545,7 @@ This applies to the rating, load, capacity, and free properties of PowerCapacity
                   <td>fields</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>Fields to fetch relative the the PowerCapacity type </p></td>
+                  <td><p>Fields to fetch relative to the PowerCapacity type </p></td>
                 </tr>
               
             </tbody>
@@ -582,37 +617,6 @@ This applies to the rating, load, capacity, and free properties of PowerCapacity
 
         
       
-        <h3 id="smartcore.traits.RemoveDrawNotificationRequest">RemoveDrawNotificationRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the device to fetch the state for </p></td>
-                </tr>
-              
-                <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Id of the draw notification returned during the AddDrawNotification call. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.traits.UpdateDrawNotificationRequest">UpdateDrawNotificationRequest</h3>
         <p></p>
 
@@ -627,7 +631,7 @@ This applies to the rating, load, capacity, and free properties of PowerCapacity
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Name of the device to fetch the state for </p></td>
+                  <td><p>Name of the device </p></td>
                 </tr>
               
                 <tr>
@@ -674,10 +678,10 @@ The available capacity shouldn&#39;t include any draw made on this device direct
               </tr>
             
               <tr>
-                <td>AddDrawNotification</td>
-                <td><a href="#smartcore.traits.AddDrawNotificationRequest">AddDrawNotificationRequest</a></td>
+                <td>CreateDrawNotification</td>
+                <td><a href="#smartcore.traits.CreateDrawNotificationRequest">CreateDrawNotificationRequest</a></td>
                 <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
-                <td><p>AddDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
+                <td><p>CreateDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
 This device may respond to say that the requested draw is not available at this time.</p></td>
               </tr>
             
@@ -690,11 +694,14 @@ If no such draw notification exists, will return an error.</p></td>
               </tr>
             
               <tr>
-                <td>RemoveDrawNotification</td>
-                <td><a href="#smartcore.traits.RemoveDrawNotificationRequest">RemoveDrawNotificationRequest</a></td>
+                <td>DeleteDrawNotification</td>
+                <td><a href="#smartcore.traits.DeleteDrawNotificationRequest">DeleteDrawNotificationRequest</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
-                <td><p>Remove an existing draw notification.
-If no such draw notification exists, does nothing.</p></td>
+                <td><p>DeleteDrawNotification allows the caller to remove their notification of draw.
+Typically used if the situation has changed and the expected draw will no longer happen.
+If the expected draw level has changed consider using UpdateDrawNotification.
+If no such draw notification exists, does nothing.
+There is no need to remove notifications after their ramp_duration has expired.</p></td>
               </tr>
             
           </tbody>

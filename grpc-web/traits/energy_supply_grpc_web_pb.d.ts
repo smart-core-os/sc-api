@@ -21,8 +21,8 @@ export class PowerSupplyApiClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PullPowerCapacityResponse>;
 
-  addDrawNotification(
-    request: traits_energy_supply_pb.AddDrawNotificationRequest,
+  createDrawNotification(
+    request: traits_energy_supply_pb.CreateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
                response: traits_energy_supply_pb.DrawNotification) => void
@@ -35,8 +35,8 @@ export class PowerSupplyApiClient {
                response: traits_energy_supply_pb.DrawNotification) => void
   ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.DrawNotification>;
 
-  removeDrawNotification(
-    request: traits_energy_supply_pb.RemoveDrawNotificationRequest,
+  deleteDrawNotification(
+    request: traits_energy_supply_pb.DeleteDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
                response: google_protobuf_empty_pb.Empty) => void
@@ -73,8 +73,8 @@ export class PowerSupplyApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PullPowerCapacityResponse>;
 
-  addDrawNotification(
-    request: traits_energy_supply_pb.AddDrawNotificationRequest,
+  createDrawNotification(
+    request: traits_energy_supply_pb.CreateDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<traits_energy_supply_pb.DrawNotification>;
 
@@ -83,8 +83,8 @@ export class PowerSupplyApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): Promise<traits_energy_supply_pb.DrawNotification>;
 
-  removeDrawNotification(
-    request: traits_energy_supply_pb.RemoveDrawNotificationRequest,
+  deleteDrawNotification(
+    request: traits_energy_supply_pb.DeleteDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 

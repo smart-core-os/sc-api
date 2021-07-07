@@ -24,15 +24,18 @@ type PowerSupplyApiClient interface {
 	GetPowerCapacity(ctx context.Context, in *GetPowerCapacityRequest, opts ...grpc.CallOption) (*PowerCapacity, error)
 	// Be notified of changes to the available capacity.
 	PullPowerCapacity(ctx context.Context, in *PullPowerCapacityRequest, opts ...grpc.CallOption) (PowerSupplyApi_PullPowerCapacityClient, error)
-	// AddDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
+	// CreateDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
 	// This device may respond to say that the requested draw is not available at this time.
-	AddDrawNotification(ctx context.Context, in *AddDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotification, error)
+	CreateDrawNotification(ctx context.Context, in *CreateDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotification, error)
 	// Update an existing draw notification.
 	// If no such draw notification exists, will return an error.
 	UpdateDrawNotification(ctx context.Context, in *UpdateDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotification, error)
-	// Remove an existing draw notification.
+	// DeleteDrawNotification allows the caller to remove their notification of draw.
+	// Typically used if the situation has changed and the expected draw will no longer happen.
+	// If the expected draw level has changed consider using UpdateDrawNotification.
 	// If no such draw notification exists, does nothing.
-	RemoveDrawNotification(ctx context.Context, in *RemoveDrawNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// There is no need to remove notifications after their ramp_duration has expired.
+	DeleteDrawNotification(ctx context.Context, in *DeleteDrawNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type powerSupplyApiClient struct {
@@ -84,9 +87,9 @@ func (x *powerSupplyApiPullPowerCapacityClient) Recv() (*PullPowerCapacityRespon
 	return m, nil
 }
 
-func (c *powerSupplyApiClient) AddDrawNotification(ctx context.Context, in *AddDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotification, error) {
+func (c *powerSupplyApiClient) CreateDrawNotification(ctx context.Context, in *CreateDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotification, error) {
 	out := new(DrawNotification)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.PowerSupplyApi/AddDrawNotification", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PowerSupplyApi/CreateDrawNotification", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,9 +105,9 @@ func (c *powerSupplyApiClient) UpdateDrawNotification(ctx context.Context, in *U
 	return out, nil
 }
 
-func (c *powerSupplyApiClient) RemoveDrawNotification(ctx context.Context, in *RemoveDrawNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *powerSupplyApiClient) DeleteDrawNotification(ctx context.Context, in *DeleteDrawNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.PowerSupplyApi/RemoveDrawNotification", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PowerSupplyApi/DeleteDrawNotification", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,15 +123,18 @@ type PowerSupplyApiServer interface {
 	GetPowerCapacity(context.Context, *GetPowerCapacityRequest) (*PowerCapacity, error)
 	// Be notified of changes to the available capacity.
 	PullPowerCapacity(*PullPowerCapacityRequest, PowerSupplyApi_PullPowerCapacityServer) error
-	// AddDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
+	// CreateDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
 	// This device may respond to say that the requested draw is not available at this time.
-	AddDrawNotification(context.Context, *AddDrawNotificationRequest) (*DrawNotification, error)
+	CreateDrawNotification(context.Context, *CreateDrawNotificationRequest) (*DrawNotification, error)
 	// Update an existing draw notification.
 	// If no such draw notification exists, will return an error.
 	UpdateDrawNotification(context.Context, *UpdateDrawNotificationRequest) (*DrawNotification, error)
-	// Remove an existing draw notification.
+	// DeleteDrawNotification allows the caller to remove their notification of draw.
+	// Typically used if the situation has changed and the expected draw will no longer happen.
+	// If the expected draw level has changed consider using UpdateDrawNotification.
 	// If no such draw notification exists, does nothing.
-	RemoveDrawNotification(context.Context, *RemoveDrawNotificationRequest) (*emptypb.Empty, error)
+	// There is no need to remove notifications after their ramp_duration has expired.
+	DeleteDrawNotification(context.Context, *DeleteDrawNotificationRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedPowerSupplyApiServer()
 }
 
@@ -142,14 +148,14 @@ func (UnimplementedPowerSupplyApiServer) GetPowerCapacity(context.Context, *GetP
 func (UnimplementedPowerSupplyApiServer) PullPowerCapacity(*PullPowerCapacityRequest, PowerSupplyApi_PullPowerCapacityServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullPowerCapacity not implemented")
 }
-func (UnimplementedPowerSupplyApiServer) AddDrawNotification(context.Context, *AddDrawNotificationRequest) (*DrawNotification, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddDrawNotification not implemented")
+func (UnimplementedPowerSupplyApiServer) CreateDrawNotification(context.Context, *CreateDrawNotificationRequest) (*DrawNotification, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDrawNotification not implemented")
 }
 func (UnimplementedPowerSupplyApiServer) UpdateDrawNotification(context.Context, *UpdateDrawNotificationRequest) (*DrawNotification, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDrawNotification not implemented")
 }
-func (UnimplementedPowerSupplyApiServer) RemoveDrawNotification(context.Context, *RemoveDrawNotificationRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveDrawNotification not implemented")
+func (UnimplementedPowerSupplyApiServer) DeleteDrawNotification(context.Context, *DeleteDrawNotificationRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDrawNotification not implemented")
 }
 func (UnimplementedPowerSupplyApiServer) mustEmbedUnimplementedPowerSupplyApiServer() {}
 
@@ -203,20 +209,20 @@ func (x *powerSupplyApiPullPowerCapacityServer) Send(m *PullPowerCapacityRespons
 	return x.ServerStream.SendMsg(m)
 }
 
-func _PowerSupplyApi_AddDrawNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddDrawNotificationRequest)
+func _PowerSupplyApi_CreateDrawNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateDrawNotificationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PowerSupplyApiServer).AddDrawNotification(ctx, in)
+		return srv.(PowerSupplyApiServer).CreateDrawNotification(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.PowerSupplyApi/AddDrawNotification",
+		FullMethod: "/smartcore.traits.PowerSupplyApi/CreateDrawNotification",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PowerSupplyApiServer).AddDrawNotification(ctx, req.(*AddDrawNotificationRequest))
+		return srv.(PowerSupplyApiServer).CreateDrawNotification(ctx, req.(*CreateDrawNotificationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -239,20 +245,20 @@ func _PowerSupplyApi_UpdateDrawNotification_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PowerSupplyApi_RemoveDrawNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveDrawNotificationRequest)
+func _PowerSupplyApi_DeleteDrawNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDrawNotificationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PowerSupplyApiServer).RemoveDrawNotification(ctx, in)
+		return srv.(PowerSupplyApiServer).DeleteDrawNotification(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.PowerSupplyApi/RemoveDrawNotification",
+		FullMethod: "/smartcore.traits.PowerSupplyApi/DeleteDrawNotification",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PowerSupplyApiServer).RemoveDrawNotification(ctx, req.(*RemoveDrawNotificationRequest))
+		return srv.(PowerSupplyApiServer).DeleteDrawNotification(ctx, req.(*DeleteDrawNotificationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -269,16 +275,16 @@ var PowerSupplyApi_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PowerSupplyApi_GetPowerCapacity_Handler,
 		},
 		{
-			MethodName: "AddDrawNotification",
-			Handler:    _PowerSupplyApi_AddDrawNotification_Handler,
+			MethodName: "CreateDrawNotification",
+			Handler:    _PowerSupplyApi_CreateDrawNotification_Handler,
 		},
 		{
 			MethodName: "UpdateDrawNotification",
 			Handler:    _PowerSupplyApi_UpdateDrawNotification_Handler,
 		},
 		{
-			MethodName: "RemoveDrawNotification",
-			Handler:    _PowerSupplyApi_RemoveDrawNotification_Handler,
+			MethodName: "DeleteDrawNotification",
+			Handler:    _PowerSupplyApi_DeleteDrawNotification_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

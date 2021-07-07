@@ -241,16 +241,16 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.pullPowerCapacity =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.AddDrawNotificationRequest,
+ *   !proto.smartcore.traits.CreateDrawNotificationRequest,
  *   !proto.smartcore.traits.DrawNotification>}
  */
-const methodDescriptor_PowerSupplyApi_AddDrawNotification = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.PowerSupplyApi/AddDrawNotification',
+const methodDescriptor_PowerSupplyApi_CreateDrawNotification = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PowerSupplyApi/CreateDrawNotification',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.AddDrawNotificationRequest,
+  proto.smartcore.traits.CreateDrawNotificationRequest,
   proto.smartcore.traits.DrawNotification,
   /**
-   * @param {!proto.smartcore.traits.AddDrawNotificationRequest} request
+   * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -263,13 +263,13 @@ const methodDescriptor_PowerSupplyApi_AddDrawNotification = new grpc.web.MethodD
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.AddDrawNotificationRequest,
+ *   !proto.smartcore.traits.CreateDrawNotificationRequest,
  *   !proto.smartcore.traits.DrawNotification>}
  */
-const methodInfo_PowerSupplyApi_AddDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PowerSupplyApi_CreateDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
   proto.smartcore.traits.DrawNotification,
   /**
-   * @param {!proto.smartcore.traits.AddDrawNotificationRequest} request
+   * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -280,7 +280,7 @@ const methodInfo_PowerSupplyApi_AddDrawNotification = new grpc.web.AbstractClien
 
 
 /**
- * @param {!proto.smartcore.traits.AddDrawNotificationRequest} request The
+ * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -289,32 +289,32 @@ const methodInfo_PowerSupplyApi_AddDrawNotification = new grpc.web.AbstractClien
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.DrawNotification>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PowerSupplyApiClient.prototype.addDrawNotification =
+proto.smartcore.traits.PowerSupplyApiClient.prototype.createDrawNotification =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.PowerSupplyApi/AddDrawNotification',
+      '/smartcore.traits.PowerSupplyApi/CreateDrawNotification',
       request,
       metadata || {},
-      methodDescriptor_PowerSupplyApi_AddDrawNotification,
+      methodDescriptor_PowerSupplyApi_CreateDrawNotification,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.AddDrawNotificationRequest} request The
+ * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.DrawNotification>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.addDrawNotification =
+proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.createDrawNotification =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.PowerSupplyApi/AddDrawNotification',
+      '/smartcore.traits.PowerSupplyApi/CreateDrawNotification',
       request,
       metadata || {},
-      methodDescriptor_PowerSupplyApi_AddDrawNotification);
+      methodDescriptor_PowerSupplyApi_CreateDrawNotification);
 };
 
 
@@ -401,16 +401,16 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.updateDrawNotificat
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.RemoveDrawNotificationRequest,
+ *   !proto.smartcore.traits.DeleteDrawNotificationRequest,
  *   !proto.google.protobuf.Empty>}
  */
-const methodDescriptor_PowerSupplyApi_RemoveDrawNotification = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.PowerSupplyApi/RemoveDrawNotification',
+const methodDescriptor_PowerSupplyApi_DeleteDrawNotification = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PowerSupplyApi/DeleteDrawNotification',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.RemoveDrawNotificationRequest,
+  proto.smartcore.traits.DeleteDrawNotificationRequest,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.smartcore.traits.RemoveDrawNotificationRequest} request
+   * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -423,13 +423,13 @@ const methodDescriptor_PowerSupplyApi_RemoveDrawNotification = new grpc.web.Meth
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.RemoveDrawNotificationRequest,
+ *   !proto.smartcore.traits.DeleteDrawNotificationRequest,
  *   !proto.google.protobuf.Empty>}
  */
-const methodInfo_PowerSupplyApi_RemoveDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_PowerSupplyApi_DeleteDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.smartcore.traits.RemoveDrawNotificationRequest} request
+   * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -440,7 +440,7 @@ const methodInfo_PowerSupplyApi_RemoveDrawNotification = new grpc.web.AbstractCl
 
 
 /**
- * @param {!proto.smartcore.traits.RemoveDrawNotificationRequest} request The
+ * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -449,32 +449,32 @@ const methodInfo_PowerSupplyApi_RemoveDrawNotification = new grpc.web.AbstractCl
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.PowerSupplyApiClient.prototype.removeDrawNotification =
+proto.smartcore.traits.PowerSupplyApiClient.prototype.deleteDrawNotification =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.PowerSupplyApi/RemoveDrawNotification',
+      '/smartcore.traits.PowerSupplyApi/DeleteDrawNotification',
       request,
       metadata || {},
-      methodDescriptor_PowerSupplyApi_RemoveDrawNotification,
+      methodDescriptor_PowerSupplyApi_DeleteDrawNotification,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.RemoveDrawNotificationRequest} request The
+ * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.removeDrawNotification =
+proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.deleteDrawNotification =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.PowerSupplyApi/RemoveDrawNotification',
+      '/smartcore.traits.PowerSupplyApi/DeleteDrawNotification',
       request,
       metadata || {},
-      methodDescriptor_PowerSupplyApi_RemoveDrawNotification);
+      methodDescriptor_PowerSupplyApi_DeleteDrawNotification);
 };
 
 
