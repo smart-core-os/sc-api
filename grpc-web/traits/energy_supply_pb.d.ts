@@ -38,6 +38,9 @@ export class PowerCapacity extends jspb.Message {
   getRating(): number;
   setRating(value: number): PowerCapacity;
 
+  getVoltage(): number;
+  setVoltage(value: number): PowerCapacity;
+
   getLoad(): number;
   setLoad(value: number): PowerCapacity;
 
@@ -67,6 +70,7 @@ export class PowerCapacity extends jspb.Message {
 export namespace PowerCapacity {
   export type AsObject = {
     rating: number,
+    voltage: number,
     load: number,
     capacity: number,
     free: number,
@@ -75,17 +79,17 @@ export namespace PowerCapacity {
 
   export enum LoadCase { 
     _LOAD_NOT_SET = 0,
-    LOAD = 2,
+    LOAD = 3,
   }
 
   export enum CapacityCase { 
     _CAPACITY_NOT_SET = 0,
-    CAPACITY = 3,
+    CAPACITY = 4,
   }
 
   export enum FreeCase { 
     _FREE_NOT_SET = 0,
-    FREE = 4,
+    FREE = 5,
   }
 }
 

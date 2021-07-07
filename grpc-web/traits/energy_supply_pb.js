@@ -504,10 +504,11 @@ proto.smartcore.traits.PowerCapacity.prototype.toObject = function(opt_includeIn
 proto.smartcore.traits.PowerCapacity.toObject = function(includeInstance, msg) {
   var f, obj = {
     rating: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    load: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    capacity: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    free: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    notified: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
+    voltage: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+    load: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+    capacity: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+    free: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+    notified: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
   };
 
   if (includeInstance) {
@@ -550,17 +551,21 @@ proto.smartcore.traits.PowerCapacity.deserializeBinaryFromReader = function(msg,
       break;
     case 2:
       var value = /** @type {number} */ (reader.readFloat());
-      msg.setLoad(value);
+      msg.setVoltage(value);
       break;
     case 3:
       var value = /** @type {number} */ (reader.readFloat());
-      msg.setCapacity(value);
+      msg.setLoad(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readFloat());
-      msg.setFree(value);
+      msg.setCapacity(value);
       break;
     case 5:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setFree(value);
+      break;
+    case 6:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setNotified(value);
       break;
@@ -600,8 +605,8 @@ proto.smartcore.traits.PowerCapacity.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 2));
-  if (f != null) {
+  f = message.getVoltage();
+  if (f !== 0.0) {
     writer.writeFloat(
       2,
       f
@@ -621,10 +626,17 @@ proto.smartcore.traits.PowerCapacity.serializeBinaryToWriter = function(message,
       f
     );
   }
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeFloat(
+      5,
+      f
+    );
+  }
   f = message.getNotified();
   if (f !== 0.0) {
     writer.writeFloat(
-      5,
+      6,
       f
     );
   }
@@ -650,10 +662,10 @@ proto.smartcore.traits.PowerCapacity.prototype.setRating = function(value) {
 
 
 /**
- * optional float load = 2;
+ * optional float voltage = 2;
  * @return {number}
  */
-proto.smartcore.traits.PowerCapacity.prototype.getLoad = function() {
+proto.smartcore.traits.PowerCapacity.prototype.getVoltage = function() {
   return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
@@ -662,34 +674,16 @@ proto.smartcore.traits.PowerCapacity.prototype.getLoad = function() {
  * @param {number} value
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
-proto.smartcore.traits.PowerCapacity.prototype.setLoad = function(value) {
-  return jspb.Message.setField(this, 2, value);
+proto.smartcore.traits.PowerCapacity.prototype.setVoltage = function(value) {
+  return jspb.Message.setProto3FloatField(this, 2, value);
 };
 
 
 /**
- * Clears the field making it undefined.
- * @return {!proto.smartcore.traits.PowerCapacity} returns this
- */
-proto.smartcore.traits.PowerCapacity.prototype.clearLoad = function() {
-  return jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.PowerCapacity.prototype.hasLoad = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional float capacity = 3;
+ * optional float load = 3;
  * @return {number}
  */
-proto.smartcore.traits.PowerCapacity.prototype.getCapacity = function() {
+proto.smartcore.traits.PowerCapacity.prototype.getLoad = function() {
   return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
 };
 
@@ -698,7 +692,7 @@ proto.smartcore.traits.PowerCapacity.prototype.getCapacity = function() {
  * @param {number} value
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
-proto.smartcore.traits.PowerCapacity.prototype.setCapacity = function(value) {
+proto.smartcore.traits.PowerCapacity.prototype.setLoad = function(value) {
   return jspb.Message.setField(this, 3, value);
 };
 
@@ -707,7 +701,7 @@ proto.smartcore.traits.PowerCapacity.prototype.setCapacity = function(value) {
  * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
-proto.smartcore.traits.PowerCapacity.prototype.clearCapacity = function() {
+proto.smartcore.traits.PowerCapacity.prototype.clearLoad = function() {
   return jspb.Message.setField(this, 3, undefined);
 };
 
@@ -716,16 +710,16 @@ proto.smartcore.traits.PowerCapacity.prototype.clearCapacity = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PowerCapacity.prototype.hasCapacity = function() {
+proto.smartcore.traits.PowerCapacity.prototype.hasLoad = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional float free = 4;
+ * optional float capacity = 4;
  * @return {number}
  */
-proto.smartcore.traits.PowerCapacity.prototype.getFree = function() {
+proto.smartcore.traits.PowerCapacity.prototype.getCapacity = function() {
   return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
 };
 
@@ -734,7 +728,7 @@ proto.smartcore.traits.PowerCapacity.prototype.getFree = function() {
  * @param {number} value
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
-proto.smartcore.traits.PowerCapacity.prototype.setFree = function(value) {
+proto.smartcore.traits.PowerCapacity.prototype.setCapacity = function(value) {
   return jspb.Message.setField(this, 4, value);
 };
 
@@ -743,7 +737,7 @@ proto.smartcore.traits.PowerCapacity.prototype.setFree = function(value) {
  * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
-proto.smartcore.traits.PowerCapacity.prototype.clearFree = function() {
+proto.smartcore.traits.PowerCapacity.prototype.clearCapacity = function() {
   return jspb.Message.setField(this, 4, undefined);
 };
 
@@ -752,16 +746,16 @@ proto.smartcore.traits.PowerCapacity.prototype.clearFree = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PowerCapacity.prototype.hasFree = function() {
+proto.smartcore.traits.PowerCapacity.prototype.hasCapacity = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 
 
 /**
- * optional float notified = 5;
+ * optional float free = 5;
  * @return {number}
  */
-proto.smartcore.traits.PowerCapacity.prototype.getNotified = function() {
+proto.smartcore.traits.PowerCapacity.prototype.getFree = function() {
   return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
 };
 
@@ -770,8 +764,44 @@ proto.smartcore.traits.PowerCapacity.prototype.getNotified = function() {
  * @param {number} value
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
+proto.smartcore.traits.PowerCapacity.prototype.setFree = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.PowerCapacity} returns this
+ */
+proto.smartcore.traits.PowerCapacity.prototype.clearFree = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PowerCapacity.prototype.hasFree = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional float notified = 6;
+ * @return {number}
+ */
+proto.smartcore.traits.PowerCapacity.prototype.getNotified = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.PowerCapacity} returns this
+ */
 proto.smartcore.traits.PowerCapacity.prototype.setNotified = function(value) {
-  return jspb.Message.setProto3FloatField(this, 5, value);
+  return jspb.Message.setProto3FloatField(this, 6, value);
 };
 
 
