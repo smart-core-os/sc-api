@@ -64,7 +64,7 @@ message PowerCapacity {
   // What is the maximum rating the device can ever supply.
   // Unlikely to change without changes to the electric circuit.
   // In amps.
-  // Zero means absent, not a rating of 0 amp.
+  // Zero means absent, not a rating of 0 amps.
   float rating = 1;
   // The voltage level the device supplies.
   // In volts.
