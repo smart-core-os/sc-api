@@ -29,7 +29,7 @@ var types_info_pb = require('../types/info_pb.js')
 var types_number_pb = require('../types/number_pb.js')
 const proto = {};
 proto.smartcore = {};
-proto.smartcore.traits = require('./energy_supply_pb.js');
+proto.smartcore.traits = require('./power_supply_pb.js');
 
 /**
  * @param {string} hostname

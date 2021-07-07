@@ -1,4 +1,4 @@
-// source: traits/energy_supply.proto
+// source: traits/power_supply.proto
 /**
  * @fileoverview
  * @enhanceable

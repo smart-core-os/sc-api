@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
-import * as traits_energy_supply_pb from '../traits/energy_supply_pb';
+import * as traits_power_supply_pb from '../traits/power_supply_pb';
 
 
 export class PowerSupplyApiClient {
@@ -10,33 +10,33 @@ export class PowerSupplyApiClient {
                options?: null | { [index: string]: any; });
 
   getPowerCapacity(
-    request: traits_energy_supply_pb.GetPowerCapacityRequest,
+    request: traits_power_supply_pb.GetPowerCapacityRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_energy_supply_pb.PowerCapacity) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PowerCapacity>;
+               response: traits_power_supply_pb.PowerCapacity) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PowerCapacity>;
 
   pullPowerCapacity(
-    request: traits_energy_supply_pb.PullPowerCapacityRequest,
+    request: traits_power_supply_pb.PullPowerCapacityRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PullPowerCapacityResponse>;
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullPowerCapacityResponse>;
 
   createDrawNotification(
-    request: traits_energy_supply_pb.CreateDrawNotificationRequest,
+    request: traits_power_supply_pb.CreateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_energy_supply_pb.DrawNotification) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.DrawNotification>;
+               response: traits_power_supply_pb.DrawNotification) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotification>;
 
   updateDrawNotification(
-    request: traits_energy_supply_pb.UpdateDrawNotificationRequest,
+    request: traits_power_supply_pb.UpdateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_energy_supply_pb.DrawNotification) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.DrawNotification>;
+               response: traits_power_supply_pb.DrawNotification) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotification>;
 
   deleteDrawNotification(
-    request: traits_energy_supply_pb.DeleteDrawNotificationRequest,
+    request: traits_power_supply_pb.DeleteDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
                response: google_protobuf_empty_pb.Empty) => void
@@ -50,11 +50,11 @@ export class PowerSupplyInfoClient {
                options?: null | { [index: string]: any; });
 
   describePowerCapacity(
-    request: traits_energy_supply_pb.DescribePowerCapacityRequest,
+    request: traits_power_supply_pb.DescribePowerCapacityRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_energy_supply_pb.PowerCapacitySupport) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PowerCapacitySupport>;
+               response: traits_power_supply_pb.PowerCapacitySupport) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PowerCapacitySupport>;
 
 }
 
@@ -64,27 +64,27 @@ export class PowerSupplyApiPromiseClient {
                options?: null | { [index: string]: any; });
 
   getPowerCapacity(
-    request: traits_energy_supply_pb.GetPowerCapacityRequest,
+    request: traits_power_supply_pb.GetPowerCapacityRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_supply_pb.PowerCapacity>;
+  ): Promise<traits_power_supply_pb.PowerCapacity>;
 
   pullPowerCapacity(
-    request: traits_energy_supply_pb.PullPowerCapacityRequest,
+    request: traits_power_supply_pb.PullPowerCapacityRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_energy_supply_pb.PullPowerCapacityResponse>;
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullPowerCapacityResponse>;
 
   createDrawNotification(
-    request: traits_energy_supply_pb.CreateDrawNotificationRequest,
+    request: traits_power_supply_pb.CreateDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_supply_pb.DrawNotification>;
+  ): Promise<traits_power_supply_pb.DrawNotification>;
 
   updateDrawNotification(
-    request: traits_energy_supply_pb.UpdateDrawNotificationRequest,
+    request: traits_power_supply_pb.UpdateDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_supply_pb.DrawNotification>;
+  ): Promise<traits_power_supply_pb.DrawNotification>;
 
   deleteDrawNotification(
-    request: traits_energy_supply_pb.DeleteDrawNotificationRequest,
+    request: traits_power_supply_pb.DeleteDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 
@@ -96,9 +96,9 @@ export class PowerSupplyInfoPromiseClient {
                options?: null | { [index: string]: any; });
 
   describePowerCapacity(
-    request: traits_energy_supply_pb.DescribePowerCapacityRequest,
+    request: traits_power_supply_pb.DescribePowerCapacityRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_supply_pb.PowerCapacitySupport>;
+  ): Promise<traits_power_supply_pb.PowerCapacitySupport>;
 
 }
 

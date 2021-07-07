@@ -294,7 +294,7 @@ var PowerSupplyApi_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "traits/energy_supply.proto",
+	Metadata: "traits/power_supply.proto",
 }
 
 // PowerSupplyInfoClient is the client API for PowerSupplyInfo service.
@@ -382,5 +382,5 @@ var PowerSupplyInfo_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "traits/energy_supply.proto",
+	Metadata: "traits/power_supply.proto",
 }
