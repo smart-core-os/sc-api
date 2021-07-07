@@ -110,7 +110,7 @@ message DrawNotification {
   // During read, or as part of a write response, this is the maximum draw the supply expects the caller to consume.
   float max_draw = 2;
   // How long does the caller expect it will be before the draw level has reached its maximum.
-  // The device is free to forget draw notifications after this duration as elapsed as it is expected
+  // The device is free to forget draw notifications after this duration has elapsed as it is expected
   // the caller is actually drawing the current so it is not available anymore.
   google.protobuf.Duration ramp_duration = 3;
   // The minimum draw that the caller will accept.
