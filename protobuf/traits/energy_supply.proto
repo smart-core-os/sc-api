@@ -24,18 +24,18 @@ service PowerSupplyApi {
   // Be notified of changes to the available capacity.
   rpc PullPowerCapacity (PullPowerCapacityRequest) returns (stream PullPowerCapacityResponse);
 
-  // AddDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
+  // CreateDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
   // This device may respond to say that the requested draw is not available at this time.
-  rpc AddDrawNotification (AddDrawNotificationRequest) returns (DrawNotification);
+  rpc CreateDrawNotification (CreateDrawNotificationRequest) returns (DrawNotification);
   // Update an existing draw notification.
   // If no such draw notification exists, will return an error.
   rpc UpdateDrawNotification (UpdateDrawNotificationRequest) returns (DrawNotification);
-  // RemoveDrawNotification allows the caller to remove their notification of draw.
+  // DeleteDrawNotification allows the caller to remove their notification of draw.
   // Typically used if the situation has changed and the expected draw will no longer happen.
   // If the expected draw level has changed consider using UpdateDrawNotification.
   // If no such draw notification exists, does nothing.
   // There is no need to remove notifications after their ramp_duration has expired.
-  rpc RemoveDrawNotification (RemoveDrawNotificationRequest) returns (google.protobuf.Empty);
+  rpc DeleteDrawNotification (DeleteDrawNotificationRequest) returns (google.protobuf.Empty);
 }
 
 // Describes the capabilities of a specific named device with respect to this trait.
@@ -116,8 +116,10 @@ message DrawNotification {
   // the caller is actually drawing the current so it is not available anymore.
   google.protobuf.Duration ramp_duration = 3;
   // The minimum draw that the caller will accept.
-  // If not 0, this is an indication to the device that if the max_draw is not available but some capacity is,
-  // that the device will act as if that draw level is expected from the device.
+  // A zero value indicates that the caller only draws using max_draw and no less.
+  // During write, a non-zero value is an indication to the device that it may choose an expected draw value
+  // somewhere between the min_draw and max_draw, typically based on free and unallocated current.
+  // The max_draw of the response will inform the caller which value has been chosen.
   // See message docs for more details.
   float min_draw = 4;
 }
@@ -155,7 +157,7 @@ message DescribePowerCapacityRequest {
   string name = 1;
 }
 
-message AddDrawNotificationRequest {
+message CreateDrawNotificationRequest {
   // Name of the device
   string name = 1;
   DrawNotification draw_notification = 2;
@@ -167,9 +169,9 @@ message UpdateDrawNotificationRequest {
   DrawNotification draw_notification = 2;
 }
 
-message RemoveDrawNotificationRequest {
+message DeleteDrawNotificationRequest {
   // Name of the device
   string name = 1;
-  // Id of the draw notification returned during the AddDrawNotification call.
+  // Id of the draw notification returned during the CreateDrawNotification call.
   string id = 2;
 }
