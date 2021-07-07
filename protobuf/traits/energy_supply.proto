@@ -123,14 +123,14 @@ message DrawNotification {
 message GetPowerCapacityRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // Fields to fetch relative the the PowerCapacity type
+  // Fields to fetch relative to the PowerCapacity type
   google.protobuf.FieldMask fields = 2;
 }
 
 message PullPowerCapacityRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // Fields to fetch relative the the PowerCapacity type
+  // Fields to fetch relative to the PowerCapacity type
   google.protobuf.FieldMask fields = 2;
 }
 
