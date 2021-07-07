@@ -106,7 +106,7 @@ message DrawNotification {
   // Required for update or delete operations, should be absent for add operations
   string id = 1;
   // The maximum draw that the caller is expecting to consume.
-  // In Amps.
+  // In amps.
   // During read, or as part of a write response, this is the maximum draw the supply expects the caller to consume.
   float max_draw = 2;
   // How long does the caller expect it will be before the draw level has reached its maximum.
