@@ -57,8 +57,6 @@ export class PowerCapacity extends jspb.Message {
 
   getCapacityCase(): PowerCapacity.CapacityCase;
 
-  getFreeCase(): PowerCapacity.FreeCase;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PowerCapacity.AsObject;
   static toObject(includeInstance: boolean, msg: PowerCapacity): PowerCapacity.AsObject;
@@ -85,11 +83,6 @@ export namespace PowerCapacity {
   export enum CapacityCase { 
     _CAPACITY_NOT_SET = 0,
     CAPACITY = 4,
-  }
-
-  export enum FreeCase { 
-    _FREE_NOT_SET = 0,
-    FREE = 5,
   }
 }
 

@@ -626,8 +626,8 @@ proto.smartcore.traits.PowerCapacity.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = /** @type {number} */ (jspb.Message.getField(message, 5));
-  if (f != null) {
+  f = message.getFree();
+  if (f !== 0.0) {
     writer.writeFloat(
       5,
       f
@@ -765,25 +765,7 @@ proto.smartcore.traits.PowerCapacity.prototype.getFree = function() {
  * @return {!proto.smartcore.traits.PowerCapacity} returns this
  */
 proto.smartcore.traits.PowerCapacity.prototype.setFree = function(value) {
-  return jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.smartcore.traits.PowerCapacity} returns this
- */
-proto.smartcore.traits.PowerCapacity.prototype.clearFree = function() {
-  return jspb.Message.setField(this, 5, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.smartcore.traits.PowerCapacity.prototype.hasFree = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.setProto3FloatField(this, 5, value);
 };
 
 
