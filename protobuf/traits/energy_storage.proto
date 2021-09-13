@@ -1,0 +1,174 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "EnergyStorageProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "types/info.proto";
+
+// Trait for devices that can store power or charge another device.
+service EnergyStorageApi {
+  // GetEnergyLevel retrieves the current charge level and potential charge level for the device.
+  rpc GetEnergyLevel(GetEnergyLevelRequest) returns (EnergyLevel);
+  // PullEnergyLevel subscribes to changes in energy level.
+  rpc PullEnergyLevel(PullEnergyLevelRequest) returns (stream PullEnergyLevelResponse);
+
+  // GetChargingStatus retrieves the current charging status for the device.
+  rpc GetChargingStatus(GetChargingStatusRequest) returns (ChargingStatus);
+  // UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.
+  rpc UpdateChargingStatus(UpdateChargingStatusRequest) returns (ChargingStatus);
+  // PullChargingStatus subscribes to changes in charging status.
+  rpc PullChargingStatus(PullChargingStatusRequest) returns (stream PullChargingStatusResponse);
+}
+
+// Describes the capabilities of a specific named device with respect to this trait.
+service EnergyStorageInfo {
+  // Get information about how a named device implements EnergyLevel features
+  rpc DescribeEnergyLevel (DescribeEnergyLevelRequest) returns (EnergyLevelSupport);
+  // Get information about how a named device implements ChargingStatus features
+  rpc DescribeChargingStatus (DescribeChargingStatusRequest) returns (ChargingStatusSupport);
+}
+
+// EnergyLevelSupport describes the capabilities of devices implementing this trait.
+message EnergyLevelSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+}
+
+// ChargingStatusSupport describes the capabilities of devices implementing this trait.
+message ChargingStatusSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+}
+
+// EnergyLevel describes properties related to the current and potential charge levels of the device.
+message EnergyLevel {
+  // Threshold defines preset descriptive quantities for the energy level of the device.
+  // Numeric values will be preferred if provided.
+  enum Threshold {
+    THRESHOLD_UNKNOWN = 0;
+    CRITICALLY_LOW = 1;
+    LOW = 2;
+    MEDIUM = 3;
+    HIGH = 4;
+    FULL = 6;
+    CRITICALLY_HIGH = 7;
+  }
+  // Threshold defines preset descriptive quantities for the energy level of the device.
+  // Numeric values will be preferred if provided.
+  Threshold descriptive_threshold = 1;
+
+  // Remaining describes different unit quantities for how much energy is stored or available.
+  message Remaining {
+    google.protobuf.Duration time = 1;
+    float distance_km = 2;
+    float percentage = 3; // [0, 100]
+    float energy_kwh = 4;
+  }
+  // Remaining describes different unit quantities for how much energy is stored or available.
+  Remaining remaining = 2;
+
+  // UntilFull describes how much is needed until the device is full.
+  message UntilFull {
+    google.protobuf.Duration time = 1;
+    float distance_km = 2; // you know, just in case
+    float percentage = 3; // [0, 100]
+    float energy_kwh = 4;
+  }
+  // UntilFull describes how much is needed until the device is full.
+  UntilFull until_full = 3;
+}
+
+// ChargingStatus describes whether a device is being charged or not.
+message ChargingStatus {
+  // Is the device actively charging.
+  bool charging = 1;
+  // Is the device plugged in.
+  bool plugged_in = 2;
+
+  // todo: information about the other end of the connection
+}
+
+
+message GetEnergyLevelRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the EnergyLevel type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message PullEnergyLevelRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the EnergyLevel type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message PullEnergyLevelResponse {
+  // Changes since the last message
+  repeated Change changes = 1;
+
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // The new value for the energy level
+    EnergyLevel energy_level = 3;
+  }
+}
+
+message GetChargingStatusRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the ChargingStatus type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message UpdateChargingStatusRequest {
+  // Name of the device to update the state for
+  string name = 1;
+  // The updated charging status
+  ChargingStatus charging_status = 2;
+  // The fields we intend to update relative to the ChargingStatus type.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message PullChargingStatusRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the ChargingStatus type
+  google.protobuf.FieldMask fields = 2;
+}
+
+message PullChargingStatusResponse {
+  // Changes since the last message
+  repeated Change changes = 1;
+
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // The new value for the charging status
+    ChargingStatus charging_status = 3;
+  }
+}
+
+message DescribeEnergyLevelRequest {
+  // The name of the device
+  string name = 1;
+}
+
+message DescribeChargingStatusRequest {
+  // The name of the device
+  string name = 1;
+}

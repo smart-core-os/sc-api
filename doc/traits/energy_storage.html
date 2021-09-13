@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#traits%2fenergy_storage.proto">traits/energy_storage.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#smartcore.traits.ChargingStatus"><span class="badge">M</span>ChargingStatus</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ChargingStatusSupport"><span class="badge">M</span>ChargingStatusSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeChargingStatusRequest"><span class="badge">M</span>DescribeChargingStatusRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeEnergyLevelRequest"><span class="badge">M</span>DescribeEnergyLevelRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel"><span class="badge">M</span>EnergyLevel</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel.Remaining"><span class="badge">M</span>EnergyLevel.Remaining</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel.UntilFull"><span class="badge">M</span>EnergyLevel.UntilFull</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevelSupport"><span class="badge">M</span>EnergyLevelSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetChargingStatusRequest"><span class="badge">M</span>GetChargingStatusRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetEnergyLevelRequest"><span class="badge">M</span>GetEnergyLevelRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullChargingStatusRequest"><span class="badge">M</span>PullChargingStatusRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullChargingStatusResponse"><span class="badge">M</span>PullChargingStatusResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullChargingStatusResponse.Change"><span class="badge">M</span>PullChargingStatusResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullEnergyLevelRequest"><span class="badge">M</span>PullEnergyLevelRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullEnergyLevelResponse"><span class="badge">M</span>PullEnergyLevelResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullEnergyLevelResponse.Change"><span class="badge">M</span>PullEnergyLevelResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.UpdateChargingStatusRequest"><span class="badge">M</span>UpdateChargingStatusRequest</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel.Threshold"><span class="badge">E</span>EnergyLevel.Threshold</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyStorageApi"><span class="badge">S</span>EnergyStorageApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyStorageInfo"><span class="badge">S</span>EnergyStorageInfo</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="traits/energy_storage.proto">traits/energy_storage.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="smartcore.traits.ChargingStatus">ChargingStatus</h3>
+        <p>ChargingStatus describes whether a device is being charged or not.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>charging</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Is the device actively charging. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plugged_in</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Is the device plugged in. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ChargingStatusSupport">ChargingStatusSupport</h3>
+        <p>ChargingStatusSupport describes the capabilities of devices implementing this trait.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeChargingStatusRequest">DescribeChargingStatusRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DescribeEnergyLevelRequest">DescribeEnergyLevelRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevel">EnergyLevel</h3>
+        <p>EnergyLevel describes properties related to the current and potential charge levels of the device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>descriptive_threshold</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Threshold">EnergyLevel.Threshold</a></td>
+                  <td></td>
+                  <td><p>Threshold defines preset descriptive quantities for the energy level of the device.
+Numeric values will be preferred if provided. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>remaining</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Remaining">EnergyLevel.Remaining</a></td>
+                  <td></td>
+                  <td><p>Remaining describes different unit quantities for how much energy is stored or available. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>until_full</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.UntilFull">EnergyLevel.UntilFull</a></td>
+                  <td></td>
+                  <td><p>UntilFull describes how much is needed until the device is full. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevel.Remaining">EnergyLevel.Remaining</h3>
+        <p>Remaining describes different unit quantities for how much energy is stored or available.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>distance_km</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>percentage</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>[0, 100] </p></td>
+                </tr>
+              
+                <tr>
+                  <td>energy_kwh</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevel.UntilFull">EnergyLevel.UntilFull</h3>
+        <p>UntilFull describes how much is needed until the device is full.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>distance_km</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>you know, just in case </p></td>
+                </tr>
+              
+                <tr>
+                  <td>percentage</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>[0, 100] </p></td>
+                </tr>
+              
+                <tr>
+                  <td>energy_kwh</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevelSupport">EnergyLevelSupport</h3>
+        <p>EnergyLevelSupport describes the capabilities of devices implementing this trait.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetChargingStatusRequest">GetChargingStatusRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fields</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ChargingStatus type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetEnergyLevelRequest">GetEnergyLevelRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fields</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the EnergyLevel type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullChargingStatusRequest">PullChargingStatusRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fields</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ChargingStatus type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullChargingStatusResponse">PullChargingStatusResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullChargingStatusResponse.Change">PullChargingStatusResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes since the last message </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullChargingStatusResponse.Change">PullChargingStatusResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>charging_status</td>
+                  <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
+                  <td></td>
+                  <td><p>The new value for the charging status </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullEnergyLevelRequest">PullEnergyLevelRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fields</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the EnergyLevel type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullEnergyLevelResponse">PullEnergyLevelResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullEnergyLevelResponse.Change">PullEnergyLevelResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes since the last message </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullEnergyLevelResponse.Change">PullEnergyLevelResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>energy_level</td>
+                  <td><a href="#smartcore.traits.EnergyLevel">EnergyLevel</a></td>
+                  <td></td>
+                  <td><p>The new value for the energy level </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateChargingStatusRequest">UpdateChargingStatusRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to update the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>charging_status</td>
+                  <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
+                  <td></td>
+                  <td><p>The updated charging status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The fields we intend to update relative to the ChargingStatus type. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="smartcore.traits.EnergyLevel.Threshold">EnergyLevel.Threshold</h3>
+        <p>Threshold defines preset descriptive quantities for the energy level of the device.</p><p>Numeric values will be preferred if provided.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>THRESHOLD_UNKNOWN</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CRITICALLY_LOW</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LOW</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>MEDIUM</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>HIGH</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FULL</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CRITICALLY_HIGH</td>
+                <td>7</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="smartcore.traits.EnergyStorageApi">EnergyStorageApi</h3>
+        <p>Trait for devices that can store power or charge another device.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetEnergyLevel</td>
+                <td><a href="#smartcore.traits.GetEnergyLevelRequest">GetEnergyLevelRequest</a></td>
+                <td><a href="#smartcore.traits.EnergyLevel">EnergyLevel</a></td>
+                <td><p>GetEnergyLevel retrieves the current charge level and potential charge level for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullEnergyLevel</td>
+                <td><a href="#smartcore.traits.PullEnergyLevelRequest">PullEnergyLevelRequest</a></td>
+                <td><a href="#smartcore.traits.PullEnergyLevelResponse">PullEnergyLevelResponse</a> stream</td>
+                <td><p>PullEnergyLevel subscribes to changes in energy level.</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetChargingStatus</td>
+                <td><a href="#smartcore.traits.GetChargingStatusRequest">GetChargingStatusRequest</a></td>
+                <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
+                <td><p>GetChargingStatus retrieves the current charging status for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateChargingStatus</td>
+                <td><a href="#smartcore.traits.UpdateChargingStatusRequest">UpdateChargingStatusRequest</a></td>
+                <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
+                <td><p>UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullChargingStatus</td>
+                <td><a href="#smartcore.traits.PullChargingStatusRequest">PullChargingStatusRequest</a></td>
+                <td><a href="#smartcore.traits.PullChargingStatusResponse">PullChargingStatusResponse</a> stream</td>
+                <td><p>PullChargingStatus subscribes to changes in charging status.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.EnergyStorageInfo">EnergyStorageInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeEnergyLevel</td>
+                <td><a href="#smartcore.traits.DescribeEnergyLevelRequest">DescribeEnergyLevelRequest</a></td>
+                <td><a href="#smartcore.traits.EnergyLevelSupport">EnergyLevelSupport</a></td>
+                <td><p>Get information about how a named device implements EnergyLevel features</p></td>
+              </tr>
+            
+              <tr>
+                <td>DescribeChargingStatus</td>
+                <td><a href="#smartcore.traits.DescribeChargingStatusRequest">DescribeChargingStatusRequest</a></td>
+                <td><a href="#smartcore.traits.ChargingStatusSupport">ChargingStatusSupport</a></td>
+                <td><p>Get information about how a named device implements ChargingStatus features</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
