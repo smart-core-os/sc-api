@@ -69,23 +69,31 @@ message EnergyLevel {
 
   // Remaining describes different unit quantities for how much energy is stored or available.
   message Remaining {
+    // How long until the energy in the device is empty.
     google.protobuf.Duration time = 1;
+    // How far can the device travel before it is empty.
     float distance_km = 2;
-    float percentage = 3; // [0, 100]
-    float energy_kwh = 4;
   }
   // Remaining describes different unit quantities for how much energy is stored or available.
   Remaining remaining = 2;
 
   // UntilFull describes how much is needed until the device is full.
   message UntilFull {
+    // How long until the energy in the device is full.
     google.protobuf.Duration time = 1;
-    float distance_km = 2; // you know, just in case
-    float percentage = 3; // [0, 100]
-    float energy_kwh = 4;
+    // How far can the device travel before it is full.
+    float distance_km = 2;
   }
   // UntilFull describes how much is needed until the device is full.
   UntilFull until_full = 3;
+
+  // Quantity describes an absolute energy level using different units.
+  message Quantity {
+    float percentage = 1; // [0, 100]
+    float energy_kwh = 2;
+  }
+  // Quantity describes an absolute energy level using different units.
+  Quantity quantity = 4;
 }
 
 // ChargingStatus describes whether a device is being charged or not.
