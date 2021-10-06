@@ -22,32 +22,40 @@ service EnergyStorageApi {
   // PullEnergyLevel subscribes to changes in energy level.
   rpc PullEnergyLevel(PullEnergyLevelRequest) returns (stream PullEnergyLevelResponse);
 
-  // GetChargingStatus retrieves the current charging status for the device.
-  rpc GetChargingStatus(GetChargingStatusRequest) returns (ChargingStatus);
-  // UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.
-  rpc UpdateChargingStatus(UpdateChargingStatusRequest) returns (ChargingStatus);
-  // PullChargingStatus subscribes to changes in charging status.
-  rpc PullChargingStatus(PullChargingStatusRequest) returns (stream PullChargingStatusResponse);
+  // Charge starts or stops the device charging.
+  // If the device is not plugged in then this will return a FAILED_PRECONDITION error.
+  // Devices may start or stop charging on their own.
+  rpc Charge(ChargeRequest) returns (ChargeResponse);
 }
 
 // Describes the capabilities of a specific named device with respect to this trait.
 service EnergyStorageInfo {
   // Get information about how a named device implements EnergyLevel features
   rpc DescribeEnergyLevel (DescribeEnergyLevelRequest) returns (EnergyLevelSupport);
-  // Get information about how a named device implements ChargingStatus features
-  rpc DescribeChargingStatus (DescribeChargingStatusRequest) returns (ChargingStatusSupport);
 }
 
 // EnergyLevelSupport describes the capabilities of devices implementing this trait.
 message EnergyLevelSupport {
   // How a named device supports read/write/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
-}
+  // A true value indicates that the device can be recharged.
+  // A rechargeable device should report charging and until_full where appropriate.
+  bool rechargeable = 2;
 
-// ChargingStatusSupport describes the capabilities of devices implementing this trait.
-message ChargingStatusSupport {
-  // How a named device supports read/write/pull apis
-  smartcore.types.ResourceSupport resource_support = 1;
+  enum ChargeControl {
+    CHARGE_CONTROL_UNSPECIFIED = 0;
+    // Charge status cannot change.
+    // Typically this is because the device is not rechargeable.
+    NONE = 1;
+    // The device may change the charge status, calling Charge will not affect it and will return an error.
+    DEVICE = 2;
+    // Calling Charge can change the charge status. The device will not change it on its own.
+    EXTERNAL = 3;
+    // Both the device and calling Charge can change the charge status.
+    ALL = 4;
+  }
+  // A description of how the charge status of the device can be changed.
+  ChargeControl charge_control = 3;
 }
 
 // EnergyLevel describes properties related to the current and potential charge levels of the device.
@@ -67,12 +75,28 @@ message EnergyLevel {
   // Numeric values will be preferred if provided.
   Threshold descriptive_threshold = 1;
 
+  // Speed defines descriptive relative energy transfer speeds for a device.
+  // Larger enum values will always be faster than smaller enum values.
+  //
+  // Comparing two devices speeds is not defined, one device that is FAST and another that is SLOW does not
+  // guarantee that either device will transfer energy quicker than the other.
+  enum Speed {
+    SPEED_UNSPECIFIED = 0;
+    EXTRA_SLOW = 1;
+    SLOW = 2;
+    NORMAL = 3;
+    FAST = 4;
+    EXTRA_FAST = 5;
+  }
+
   // Remaining describes different unit quantities for how much energy is stored or available.
   message Remaining {
     // How long until the energy in the device is empty.
     google.protobuf.Duration time = 1;
     // How far can the device travel before it is empty.
     float distance_km = 2;
+    // Speed describes relative discharge speed for the device.
+    Speed speed = 3;
   }
   // Remaining describes different unit quantities for how much energy is stored or available.
   Remaining remaining = 2;
@@ -83,6 +107,8 @@ message EnergyLevel {
     google.protobuf.Duration time = 1;
     // How far can the device travel before it is full.
     float distance_km = 2;
+    // Speed describes relative charging speed for the device.
+    Speed speed = 3;
   }
   // UntilFull describes how much is needed until the device is full.
   UntilFull until_full = 3;
@@ -94,16 +120,11 @@ message EnergyLevel {
   }
   // Quantity describes an absolute energy level using different units.
   Quantity quantity = 4;
-}
 
-// ChargingStatus describes whether a device is being charged or not.
-message ChargingStatus {
   // Is the device actively charging.
-  bool charging = 1;
+  bool charging = 5;
   // Is the device plugged in.
-  bool plugged_in = 2;
-
-  // todo: information about the other end of the connection
+  bool plugged_in = 6;
 }
 
 
@@ -135,49 +156,17 @@ message PullEnergyLevelResponse {
   }
 }
 
-message GetChargingStatusRequest {
-  // Name of the device to fetch the state for
+message ChargeRequest {
+  // Name of the device
   string name = 1;
-  // Fields to fetch relative to the ChargingStatus type
-  google.protobuf.FieldMask fields = 2;
+  // True to begin charging, false to stop.
+  bool charge = 2;
 }
 
-message UpdateChargingStatusRequest {
-  // Name of the device to update the state for
-  string name = 1;
-  // The updated charging status
-  ChargingStatus charging_status = 2;
-  // The fields we intend to update relative to the ChargingStatus type.
-  google.protobuf.FieldMask update_mask = 3;
-}
-
-message PullChargingStatusRequest {
-  // Name of the device to fetch the state for
-  string name = 1;
-  // Fields to fetch relative to the ChargingStatus type
-  google.protobuf.FieldMask fields = 2;
-}
-
-message PullChargingStatusResponse {
-  // Changes since the last message
-  repeated Change changes = 1;
-
-  message Change {
-    // name for the device that issued the change
-    string name = 1;
-    // when the change occurred
-    google.protobuf.Timestamp change_time = 2;
-    // The new value for the charging status
-    ChargingStatus charging_status = 3;
-  }
+message ChargeResponse {
 }
 
 message DescribeEnergyLevelRequest {
-  // The name of the device
-  string name = 1;
-}
-
-message DescribeChargingStatusRequest {
   // The name of the device
   string name = 1;
 }
