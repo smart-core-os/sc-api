@@ -14,7 +14,8 @@ import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 
-// Trait for devices that can store power or charge another device.
+// Trait for devices that can store energy or charge another device.
+// Typically applied devices with batteries or chargers of those devices.
 service EnergyStorageApi {
   // GetEnergyLevel retrieves the current charge level and potential charge level for the device.
   rpc GetEnergyLevel(GetEnergyLevelRequest) returns (EnergyLevel);
