@@ -14,5 +14,11 @@
   },
   "publishConfig": {
     "registry": "https://nexus.vanti.co.uk/repository/npm-releases/"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./info/*": "./info/*",
+    "./traits/*": "./traits/*",
+    "./types/*": "./types/*"
   }
 }
