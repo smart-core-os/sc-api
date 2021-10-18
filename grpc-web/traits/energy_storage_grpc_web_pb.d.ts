@@ -20,24 +20,12 @@ export class EnergyStorageApiClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.PullEnergyLevelResponse>;
 
-  getChargingStatus(
-    request: traits_energy_storage_pb.GetChargingStatusRequest,
+  charge(
+    request: traits_energy_storage_pb.ChargeRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: traits_energy_storage_pb.ChargingStatus) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.ChargingStatus>;
-
-  updateChargingStatus(
-    request: traits_energy_storage_pb.UpdateChargingStatusRequest,
-    metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
-               response: traits_energy_storage_pb.ChargingStatus) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.ChargingStatus>;
-
-  pullChargingStatus(
-    request: traits_energy_storage_pb.PullChargingStatusRequest,
-    metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.PullChargingStatusResponse>;
+               response: traits_energy_storage_pb.ChargeResponse) => void
+  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.ChargeResponse>;
 
 }
 
@@ -52,13 +40,6 @@ export class EnergyStorageInfoClient {
     callback: (err: grpcWeb.Error,
                response: traits_energy_storage_pb.EnergyLevelSupport) => void
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.EnergyLevelSupport>;
-
-  describeChargingStatus(
-    request: traits_energy_storage_pb.DescribeChargingStatusRequest,
-    metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
-               response: traits_energy_storage_pb.ChargingStatusSupport) => void
-  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.ChargingStatusSupport>;
 
 }
 
@@ -77,20 +58,10 @@ export class EnergyStorageApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.PullEnergyLevelResponse>;
 
-  getChargingStatus(
-    request: traits_energy_storage_pb.GetChargingStatusRequest,
+  charge(
+    request: traits_energy_storage_pb.ChargeRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_storage_pb.ChargingStatus>;
-
-  updateChargingStatus(
-    request: traits_energy_storage_pb.UpdateChargingStatusRequest,
-    metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_storage_pb.ChargingStatus>;
-
-  pullChargingStatus(
-    request: traits_energy_storage_pb.PullChargingStatusRequest,
-    metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.PullChargingStatusResponse>;
+  ): Promise<traits_energy_storage_pb.ChargeResponse>;
 
 }
 
@@ -103,11 +74,6 @@ export class EnergyStorageInfoPromiseClient {
     request: traits_energy_storage_pb.DescribeEnergyLevelRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<traits_energy_storage_pb.EnergyLevelSupport>;
-
-  describeChargingStatus(
-    request: traits_energy_storage_pb.DescribeChargingStatusRequest,
-    metadata?: grpcWeb.Metadata
-  ): Promise<traits_energy_storage_pb.ChargingStatusSupport>;
 
 }
 

@@ -179,15 +179,11 @@
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.ChargingStatus"><span class="badge">M</span>ChargingStatus</a>
+                  <a href="#smartcore.traits.ChargeRequest"><span class="badge">M</span>ChargeRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.ChargingStatusSupport"><span class="badge">M</span>ChargingStatusSupport</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.DescribeChargingStatusRequest"><span class="badge">M</span>DescribeChargingStatusRequest</a>
+                  <a href="#smartcore.traits.ChargeResponse"><span class="badge">M</span>ChargeResponse</a>
                 </li>
               
                 <li>
@@ -196,6 +192,10 @@
               
                 <li>
                   <a href="#smartcore.traits.EnergyLevel"><span class="badge">M</span>EnergyLevel</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel.Quantity"><span class="badge">M</span>EnergyLevel.Quantity</a>
                 </li>
               
                 <li>
@@ -211,23 +211,7 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetChargingStatusRequest"><span class="badge">M</span>GetChargingStatusRequest</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetEnergyLevelRequest"><span class="badge">M</span>GetEnergyLevelRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullChargingStatusRequest"><span class="badge">M</span>PullChargingStatusRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullChargingStatusResponse"><span class="badge">M</span>PullChargingStatusResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullChargingStatusResponse.Change"><span class="badge">M</span>PullChargingStatusResponse.Change</a>
                 </li>
               
                 <li>
@@ -242,13 +226,17 @@
                   <a href="#smartcore.traits.PullEnergyLevelResponse.Change"><span class="badge">M</span>PullEnergyLevelResponse.Change</a>
                 </li>
               
-                <li>
-                  <a href="#smartcore.traits.UpdateChargingStatusRequest"><span class="badge">M</span>UpdateChargingStatusRequest</a>
-                </li>
               
+                <li>
+                  <a href="#smartcore.traits.EnergyLevel.Speed"><span class="badge">E</span>EnergyLevel.Speed</a>
+                </li>
               
                 <li>
                   <a href="#smartcore.traits.EnergyLevel.Threshold"><span class="badge">E</span>EnergyLevel.Threshold</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.EnergyLevelSupport.ChargeControl"><span class="badge">E</span>EnergyLevelSupport.ChargeControl</a>
                 </li>
               
               
@@ -276,62 +264,7 @@
       <p></p>
 
       
-        <h3 id="smartcore.traits.ChargingStatus">ChargingStatus</h3>
-        <p>ChargingStatus describes whether a device is being charged or not.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>charging</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Is the device actively charging. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>plugged_in</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Is the device plugged in. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.ChargingStatusSupport">ChargingStatusSupport</h3>
-        <p>ChargingStatusSupport describes the capabilities of devices implementing this trait.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>resource_support</td>
-                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
-                  <td></td>
-                  <td><p>How a named device supports read/write/pull apis </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.DescribeChargingStatusRequest">DescribeChargingStatusRequest</h3>
+        <h3 id="smartcore.traits.ChargeRequest">ChargeRequest</h3>
         <p></p>
 
         
@@ -345,13 +278,27 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>The name of the device </p></td>
+                  <td><p>Name of the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>charge</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>True to begin charging, false to stop. </p></td>
                 </tr>
               
             </tbody>
           </table>
 
           
+
+        
+      
+        <h3 id="smartcore.traits.ChargeResponse">ChargeResponse</h3>
+        <p></p>
+
+        
 
         
       
@@ -411,6 +358,58 @@ Numeric values will be preferred if provided. </p></td>
                   <td><p>UntilFull describes how much is needed until the device is full. </p></td>
                 </tr>
               
+                <tr>
+                  <td>quantity</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Quantity">EnergyLevel.Quantity</a></td>
+                  <td></td>
+                  <td><p>Quantity describes an absolute energy level using different units. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>charging</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Is the device actively charging. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plugged_in</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Is the device plugged in. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevel.Quantity">EnergyLevel.Quantity</h3>
+        <p>Quantity describes an absolute energy level using different units.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>percentage</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>[0, 100] </p></td>
+                </tr>
+              
+                <tr>
+                  <td>energy_kwh</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -432,28 +431,21 @@ Numeric values will be preferred if provided. </p></td>
                   <td>time</td>
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>How long until the energy in the device is empty. </p></td>
                 </tr>
               
                 <tr>
                   <td>distance_km</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>How far can the device travel before it is empty. </p></td>
                 </tr>
               
                 <tr>
-                  <td>percentage</td>
-                  <td><a href="#float">float</a></td>
+                  <td>speed</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</a></td>
                   <td></td>
-                  <td><p>[0, 100] </p></td>
-                </tr>
-              
-                <tr>
-                  <td>energy_kwh</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><p>Speed describes relative discharge speed for the device. </p></td>
                 </tr>
               
             </tbody>
@@ -477,28 +469,21 @@ Numeric values will be preferred if provided. </p></td>
                   <td>time</td>
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>How long until the energy in the device is full. </p></td>
                 </tr>
               
                 <tr>
                   <td>distance_km</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>you know, just in case </p></td>
+                  <td><p>How far can the device travel before it is full. </p></td>
                 </tr>
               
                 <tr>
-                  <td>percentage</td>
-                  <td><a href="#float">float</a></td>
+                  <td>speed</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</a></td>
                   <td></td>
-                  <td><p>[0, 100] </p></td>
-                </tr>
-              
-                <tr>
-                  <td>energy_kwh</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><p>Speed describes relative charging speed for the device. </p></td>
                 </tr>
               
             </tbody>
@@ -525,35 +510,19 @@ Numeric values will be preferred if provided. </p></td>
                   <td><p>How a named device supports read/write/pull apis </p></td>
                 </tr>
               
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.GetChargingStatusRequest">GetChargingStatusRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
                 <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
+                  <td>rechargeable</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Name of the device to fetch the state for </p></td>
+                  <td><p>A true value indicates that the device can be recharged.
+A rechargeable device should report charging and until_full where appropriate. </p></td>
                 </tr>
               
                 <tr>
-                  <td>fields</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td>charge_control</td>
+                  <td><a href="#smartcore.traits.EnergyLevelSupport.ChargeControl">EnergyLevelSupport.ChargeControl</a></td>
                   <td></td>
-                  <td><p>Fields to fetch relative to the ChargingStatus type </p></td>
+                  <td><p>A description of how the charge status of the device can be changed. </p></td>
                 </tr>
               
             </tbody>
@@ -585,99 +554,6 @@ Numeric values will be preferred if provided. </p></td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
                   <td><p>Fields to fetch relative to the EnergyLevel type </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullChargingStatusRequest">PullChargingStatusRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the device to fetch the state for </p></td>
-                </tr>
-              
-                <tr>
-                  <td>fields</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>Fields to fetch relative to the ChargingStatus type </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullChargingStatusResponse">PullChargingStatusResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>changes</td>
-                  <td><a href="#smartcore.traits.PullChargingStatusResponse.Change">PullChargingStatusResponse.Change</a></td>
-                  <td>repeated</td>
-                  <td><p>Changes since the last message </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullChargingStatusResponse.Change">PullChargingStatusResponse.Change</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>name for the device that issued the change </p></td>
-                </tr>
-              
-                <tr>
-                  <td>change_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>when the change occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>charging_status</td>
-                  <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
-                  <td></td>
-                  <td><p>The new value for the charging status </p></td>
                 </tr>
               
             </tbody>
@@ -780,45 +656,54 @@ Numeric values will be preferred if provided. </p></td>
 
         
       
-        <h3 id="smartcore.traits.UpdateChargingStatusRequest">UpdateChargingStatusRequest</h3>
-        <p></p>
 
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the device to update the state for </p></td>
-                </tr>
-              
-                <tr>
-                  <td>charging_status</td>
-                  <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
-                  <td></td>
-                  <td><p>The updated charging status </p></td>
-                </tr>
-              
-                <tr>
-                  <td>update_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The fields we intend to update relative to the ChargingStatus type. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
       
-
+        <h3 id="smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</h3>
+        <p>Speed defines descriptive relative energy transfer speeds for a device.</p><p>Larger enum values will always be faster than smaller enum values.</p><p>Comparing two devices speeds is not defined, one device that is FAST and another that is SLOW does not</p><p>guarantee that either device will transfer energy quicker than the other.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SPEED_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EXTRA_SLOW</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SLOW</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>NORMAL</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FAST</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EXTRA_FAST</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
         <h3 id="smartcore.traits.EnergyLevel.Threshold">EnergyLevel.Threshold</h3>
         <p>Threshold defines preset descriptive quantities for the energy level of the device.</p><p>Numeric values will be preferred if provided.</p>
@@ -873,12 +758,54 @@ Numeric values will be preferred if provided. </p></td>
           </tbody>
         </table>
       
+        <h3 id="smartcore.traits.EnergyLevelSupport.ChargeControl">EnergyLevelSupport.ChargeControl</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CHARGE_CONTROL_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>NONE</td>
+                <td>1</td>
+                <td><p>Charge status cannot change.
+Typically this is because the device is not rechargeable.</p></td>
+              </tr>
+            
+              <tr>
+                <td>DEVICE</td>
+                <td>2</td>
+                <td><p>The device may change the charge status, calling Charge will not affect it and will return an error.</p></td>
+              </tr>
+            
+              <tr>
+                <td>EXTERNAL</td>
+                <td>3</td>
+                <td><p>Calling Charge can change the charge status. The device will not change it on its own.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ALL</td>
+                <td>4</td>
+                <td><p>Both the device and calling Charge can change the charge status.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
 
       
 
       
         <h3 id="smartcore.traits.EnergyStorageApi">EnergyStorageApi</h3>
-        <p>Trait for devices that can store power or charge another device.</p>
+        <p>Trait for devices that can store energy or charge another device.</p><p>Typically applied devices with batteries or chargers of those devices.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -900,24 +827,12 @@ Numeric values will be preferred if provided. </p></td>
               </tr>
             
               <tr>
-                <td>GetChargingStatus</td>
-                <td><a href="#smartcore.traits.GetChargingStatusRequest">GetChargingStatusRequest</a></td>
-                <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
-                <td><p>GetChargingStatus retrieves the current charging status for the device.</p></td>
-              </tr>
-            
-              <tr>
-                <td>UpdateChargingStatus</td>
-                <td><a href="#smartcore.traits.UpdateChargingStatusRequest">UpdateChargingStatusRequest</a></td>
-                <td><a href="#smartcore.traits.ChargingStatus">ChargingStatus</a></td>
-                <td><p>UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.</p></td>
-              </tr>
-            
-              <tr>
-                <td>PullChargingStatus</td>
-                <td><a href="#smartcore.traits.PullChargingStatusRequest">PullChargingStatusRequest</a></td>
-                <td><a href="#smartcore.traits.PullChargingStatusResponse">PullChargingStatusResponse</a> stream</td>
-                <td><p>PullChargingStatus subscribes to changes in charging status.</p></td>
+                <td>Charge</td>
+                <td><a href="#smartcore.traits.ChargeRequest">ChargeRequest</a></td>
+                <td><a href="#smartcore.traits.ChargeResponse">ChargeResponse</a></td>
+                <td><p>Charge starts or stops the device charging.
+If the device is not plugged in then this will return a FAILED_PRECONDITION error.
+Devices may start or stop charging on their own.</p></td>
               </tr>
             
           </tbody>
@@ -937,13 +852,6 @@ Numeric values will be preferred if provided. </p></td>
                 <td><a href="#smartcore.traits.DescribeEnergyLevelRequest">DescribeEnergyLevelRequest</a></td>
                 <td><a href="#smartcore.traits.EnergyLevelSupport">EnergyLevelSupport</a></td>
                 <td><p>Get information about how a named device implements EnergyLevel features</p></td>
-              </tr>
-            
-              <tr>
-                <td>DescribeChargingStatus</td>
-                <td><a href="#smartcore.traits.DescribeChargingStatusRequest">DescribeChargingStatusRequest</a></td>
-                <td><a href="#smartcore.traits.ChargingStatusSupport">ChargingStatusSupport</a></td>
-                <td><p>Get information about how a named device implements ChargingStatus features</p></td>
               </tr>
             
           </tbody>

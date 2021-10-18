@@ -22,12 +22,10 @@ type EnergyStorageApiClient interface {
 	GetEnergyLevel(ctx context.Context, in *GetEnergyLevelRequest, opts ...grpc.CallOption) (*EnergyLevel, error)
 	// PullEnergyLevel subscribes to changes in energy level.
 	PullEnergyLevel(ctx context.Context, in *PullEnergyLevelRequest, opts ...grpc.CallOption) (EnergyStorageApi_PullEnergyLevelClient, error)
-	// GetChargingStatus retrieves the current charging status for the device.
-	GetChargingStatus(ctx context.Context, in *GetChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatus, error)
-	// UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.
-	UpdateChargingStatus(ctx context.Context, in *UpdateChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatus, error)
-	// PullChargingStatus subscribes to changes in charging status.
-	PullChargingStatus(ctx context.Context, in *PullChargingStatusRequest, opts ...grpc.CallOption) (EnergyStorageApi_PullChargingStatusClient, error)
+	// Charge starts or stops the device charging.
+	// If the device is not plugged in then this will return a FAILED_PRECONDITION error.
+	// Devices may start or stop charging on their own.
+	Charge(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*ChargeResponse, error)
 }
 
 type energyStorageApiClient struct {
@@ -79,54 +77,13 @@ func (x *energyStorageApiPullEnergyLevelClient) Recv() (*PullEnergyLevelResponse
 	return m, nil
 }
 
-func (c *energyStorageApiClient) GetChargingStatus(ctx context.Context, in *GetChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatus, error) {
-	out := new(ChargingStatus)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.EnergyStorageApi/GetChargingStatus", in, out, opts...)
+func (c *energyStorageApiClient) Charge(ctx context.Context, in *ChargeRequest, opts ...grpc.CallOption) (*ChargeResponse, error) {
+	out := new(ChargeResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.EnergyStorageApi/Charge", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
-}
-
-func (c *energyStorageApiClient) UpdateChargingStatus(ctx context.Context, in *UpdateChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatus, error) {
-	out := new(ChargingStatus)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.EnergyStorageApi/UpdateChargingStatus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *energyStorageApiClient) PullChargingStatus(ctx context.Context, in *PullChargingStatusRequest, opts ...grpc.CallOption) (EnergyStorageApi_PullChargingStatusClient, error) {
-	stream, err := c.cc.NewStream(ctx, &EnergyStorageApi_ServiceDesc.Streams[1], "/smartcore.traits.EnergyStorageApi/PullChargingStatus", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &energyStorageApiPullChargingStatusClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type EnergyStorageApi_PullChargingStatusClient interface {
-	Recv() (*PullChargingStatusResponse, error)
-	grpc.ClientStream
-}
-
-type energyStorageApiPullChargingStatusClient struct {
-	grpc.ClientStream
-}
-
-func (x *energyStorageApiPullChargingStatusClient) Recv() (*PullChargingStatusResponse, error) {
-	m := new(PullChargingStatusResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
 }
 
 // EnergyStorageApiServer is the server API for EnergyStorageApi service.
@@ -137,12 +94,10 @@ type EnergyStorageApiServer interface {
 	GetEnergyLevel(context.Context, *GetEnergyLevelRequest) (*EnergyLevel, error)
 	// PullEnergyLevel subscribes to changes in energy level.
 	PullEnergyLevel(*PullEnergyLevelRequest, EnergyStorageApi_PullEnergyLevelServer) error
-	// GetChargingStatus retrieves the current charging status for the device.
-	GetChargingStatus(context.Context, *GetChargingStatusRequest) (*ChargingStatus, error)
-	// UpdateChargingStatus optionally allows a caller to start or stop the charging of a device.
-	UpdateChargingStatus(context.Context, *UpdateChargingStatusRequest) (*ChargingStatus, error)
-	// PullChargingStatus subscribes to changes in charging status.
-	PullChargingStatus(*PullChargingStatusRequest, EnergyStorageApi_PullChargingStatusServer) error
+	// Charge starts or stops the device charging.
+	// If the device is not plugged in then this will return a FAILED_PRECONDITION error.
+	// Devices may start or stop charging on their own.
+	Charge(context.Context, *ChargeRequest) (*ChargeResponse, error)
 	mustEmbedUnimplementedEnergyStorageApiServer()
 }
 
@@ -156,14 +111,8 @@ func (UnimplementedEnergyStorageApiServer) GetEnergyLevel(context.Context, *GetE
 func (UnimplementedEnergyStorageApiServer) PullEnergyLevel(*PullEnergyLevelRequest, EnergyStorageApi_PullEnergyLevelServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullEnergyLevel not implemented")
 }
-func (UnimplementedEnergyStorageApiServer) GetChargingStatus(context.Context, *GetChargingStatusRequest) (*ChargingStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetChargingStatus not implemented")
-}
-func (UnimplementedEnergyStorageApiServer) UpdateChargingStatus(context.Context, *UpdateChargingStatusRequest) (*ChargingStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateChargingStatus not implemented")
-}
-func (UnimplementedEnergyStorageApiServer) PullChargingStatus(*PullChargingStatusRequest, EnergyStorageApi_PullChargingStatusServer) error {
-	return status.Errorf(codes.Unimplemented, "method PullChargingStatus not implemented")
+func (UnimplementedEnergyStorageApiServer) Charge(context.Context, *ChargeRequest) (*ChargeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Charge not implemented")
 }
 func (UnimplementedEnergyStorageApiServer) mustEmbedUnimplementedEnergyStorageApiServer() {}
 
@@ -217,61 +166,22 @@ func (x *energyStorageApiPullEnergyLevelServer) Send(m *PullEnergyLevelResponse)
 	return x.ServerStream.SendMsg(m)
 }
 
-func _EnergyStorageApi_GetChargingStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetChargingStatusRequest)
+func _EnergyStorageApi_Charge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChargeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(EnergyStorageApiServer).GetChargingStatus(ctx, in)
+		return srv.(EnergyStorageApiServer).Charge(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/smartcore.traits.EnergyStorageApi/GetChargingStatus",
+		FullMethod: "/smartcore.traits.EnergyStorageApi/Charge",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EnergyStorageApiServer).GetChargingStatus(ctx, req.(*GetChargingStatusRequest))
+		return srv.(EnergyStorageApiServer).Charge(ctx, req.(*ChargeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
-}
-
-func _EnergyStorageApi_UpdateChargingStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateChargingStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EnergyStorageApiServer).UpdateChargingStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.EnergyStorageApi/UpdateChargingStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EnergyStorageApiServer).UpdateChargingStatus(ctx, req.(*UpdateChargingStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _EnergyStorageApi_PullChargingStatus_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PullChargingStatusRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(EnergyStorageApiServer).PullChargingStatus(m, &energyStorageApiPullChargingStatusServer{stream})
-}
-
-type EnergyStorageApi_PullChargingStatusServer interface {
-	Send(*PullChargingStatusResponse) error
-	grpc.ServerStream
-}
-
-type energyStorageApiPullChargingStatusServer struct {
-	grpc.ServerStream
-}
-
-func (x *energyStorageApiPullChargingStatusServer) Send(m *PullChargingStatusResponse) error {
-	return x.ServerStream.SendMsg(m)
 }
 
 // EnergyStorageApi_ServiceDesc is the grpc.ServiceDesc for EnergyStorageApi service.
@@ -286,23 +196,14 @@ var EnergyStorageApi_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _EnergyStorageApi_GetEnergyLevel_Handler,
 		},
 		{
-			MethodName: "GetChargingStatus",
-			Handler:    _EnergyStorageApi_GetChargingStatus_Handler,
-		},
-		{
-			MethodName: "UpdateChargingStatus",
-			Handler:    _EnergyStorageApi_UpdateChargingStatus_Handler,
+			MethodName: "Charge",
+			Handler:    _EnergyStorageApi_Charge_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullEnergyLevel",
 			Handler:       _EnergyStorageApi_PullEnergyLevel_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "PullChargingStatus",
-			Handler:       _EnergyStorageApi_PullChargingStatus_Handler,
 			ServerStreams: true,
 		},
 	},
@@ -315,8 +216,6 @@ var EnergyStorageApi_ServiceDesc = grpc.ServiceDesc{
 type EnergyStorageInfoClient interface {
 	// Get information about how a named device implements EnergyLevel features
 	DescribeEnergyLevel(ctx context.Context, in *DescribeEnergyLevelRequest, opts ...grpc.CallOption) (*EnergyLevelSupport, error)
-	// Get information about how a named device implements ChargingStatus features
-	DescribeChargingStatus(ctx context.Context, in *DescribeChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatusSupport, error)
 }
 
 type energyStorageInfoClient struct {
@@ -336,23 +235,12 @@ func (c *energyStorageInfoClient) DescribeEnergyLevel(ctx context.Context, in *D
 	return out, nil
 }
 
-func (c *energyStorageInfoClient) DescribeChargingStatus(ctx context.Context, in *DescribeChargingStatusRequest, opts ...grpc.CallOption) (*ChargingStatusSupport, error) {
-	out := new(ChargingStatusSupport)
-	err := c.cc.Invoke(ctx, "/smartcore.traits.EnergyStorageInfo/DescribeChargingStatus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // EnergyStorageInfoServer is the server API for EnergyStorageInfo service.
 // All implementations must embed UnimplementedEnergyStorageInfoServer
 // for forward compatibility
 type EnergyStorageInfoServer interface {
 	// Get information about how a named device implements EnergyLevel features
 	DescribeEnergyLevel(context.Context, *DescribeEnergyLevelRequest) (*EnergyLevelSupport, error)
-	// Get information about how a named device implements ChargingStatus features
-	DescribeChargingStatus(context.Context, *DescribeChargingStatusRequest) (*ChargingStatusSupport, error)
 	mustEmbedUnimplementedEnergyStorageInfoServer()
 }
 
@@ -362,9 +250,6 @@ type UnimplementedEnergyStorageInfoServer struct {
 
 func (UnimplementedEnergyStorageInfoServer) DescribeEnergyLevel(context.Context, *DescribeEnergyLevelRequest) (*EnergyLevelSupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribeEnergyLevel not implemented")
-}
-func (UnimplementedEnergyStorageInfoServer) DescribeChargingStatus(context.Context, *DescribeChargingStatusRequest) (*ChargingStatusSupport, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DescribeChargingStatus not implemented")
 }
 func (UnimplementedEnergyStorageInfoServer) mustEmbedUnimplementedEnergyStorageInfoServer() {}
 
@@ -397,24 +282,6 @@ func _EnergyStorageInfo_DescribeEnergyLevel_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _EnergyStorageInfo_DescribeChargingStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DescribeChargingStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EnergyStorageInfoServer).DescribeChargingStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/smartcore.traits.EnergyStorageInfo/DescribeChargingStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EnergyStorageInfoServer).DescribeChargingStatus(ctx, req.(*DescribeChargingStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // EnergyStorageInfo_ServiceDesc is the grpc.ServiceDesc for EnergyStorageInfo service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -425,10 +292,6 @@ var EnergyStorageInfo_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DescribeEnergyLevel",
 			Handler:    _EnergyStorageInfo_DescribeEnergyLevel_Handler,
-		},
-		{
-			MethodName: "DescribeChargingStatus",
-			Handler:    _EnergyStorageInfo_DescribeChargingStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -237,235 +237,80 @@ proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.pullEnergyLevel =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatus>}
+ *   !proto.smartcore.traits.ChargeRequest,
+ *   !proto.smartcore.traits.ChargeResponse>}
  */
-const methodDescriptor_EnergyStorageApi_GetChargingStatus = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.EnergyStorageApi/GetChargingStatus',
+const methodDescriptor_EnergyStorageApi_Charge = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.EnergyStorageApi/Charge',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetChargingStatusRequest,
-  proto.smartcore.traits.ChargingStatus,
+  proto.smartcore.traits.ChargeRequest,
+  proto.smartcore.traits.ChargeResponse,
   /**
-   * @param {!proto.smartcore.traits.GetChargingStatusRequest} request
+   * @param {!proto.smartcore.traits.ChargeRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.ChargingStatus.deserializeBinary
+  proto.smartcore.traits.ChargeResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatus>}
+ *   !proto.smartcore.traits.ChargeRequest,
+ *   !proto.smartcore.traits.ChargeResponse>}
  */
-const methodInfo_EnergyStorageApi_GetChargingStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ChargingStatus,
+const methodInfo_EnergyStorageApi_Charge = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.ChargeResponse,
   /**
-   * @param {!proto.smartcore.traits.GetChargingStatusRequest} request
+   * @param {!proto.smartcore.traits.ChargeRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.ChargingStatus.deserializeBinary
+  proto.smartcore.traits.ChargeResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetChargingStatusRequest} request The
+ * @param {!proto.smartcore.traits.ChargeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChargingStatus)}
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChargeResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChargingStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChargeResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.EnergyStorageApiClient.prototype.getChargingStatus =
+proto.smartcore.traits.EnergyStorageApiClient.prototype.charge =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/GetChargingStatus',
+      '/smartcore.traits.EnergyStorageApi/Charge',
       request,
       metadata || {},
-      methodDescriptor_EnergyStorageApi_GetChargingStatus,
+      methodDescriptor_EnergyStorageApi_Charge,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.GetChargingStatusRequest} request The
+ * @param {!proto.smartcore.traits.ChargeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.ChargingStatus>}
+ * @return {!Promise<!proto.smartcore.traits.ChargeResponse>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.getChargingStatus =
+proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.charge =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/GetChargingStatus',
+      '/smartcore.traits.EnergyStorageApi/Charge',
       request,
       metadata || {},
-      methodDescriptor_EnergyStorageApi_GetChargingStatus);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.UpdateChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatus>}
- */
-const methodDescriptor_EnergyStorageApi_UpdateChargingStatus = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.EnergyStorageApi/UpdateChargingStatus',
-  grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.UpdateChargingStatusRequest,
-  proto.smartcore.traits.ChargingStatus,
-  /**
-   * @param {!proto.smartcore.traits.UpdateChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChargingStatus.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatus>}
- */
-const methodInfo_EnergyStorageApi_UpdateChargingStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ChargingStatus,
-  /**
-   * @param {!proto.smartcore.traits.UpdateChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChargingStatus.deserializeBinary
-);
-
-
-/**
- * @param {!proto.smartcore.traits.UpdateChargingStatusRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChargingStatus)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChargingStatus>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.smartcore.traits.EnergyStorageApiClient.prototype.updateChargingStatus =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/UpdateChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageApi_UpdateChargingStatus,
-      callback);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.UpdateChargingStatusRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.smartcore.traits.ChargingStatus>}
- *     Promise that resolves to the response
- */
-proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.updateChargingStatus =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/UpdateChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageApi_UpdateChargingStatus);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullChargingStatusRequest,
- *   !proto.smartcore.traits.PullChargingStatusResponse>}
- */
-const methodDescriptor_EnergyStorageApi_PullChargingStatus = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.EnergyStorageApi/PullChargingStatus',
-  grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullChargingStatusRequest,
-  proto.smartcore.traits.PullChargingStatusResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullChargingStatusResponse.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullChargingStatusRequest,
- *   !proto.smartcore.traits.PullChargingStatusResponse>}
- */
-const methodInfo_EnergyStorageApi_PullChargingStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullChargingStatusResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullChargingStatusResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.smartcore.traits.PullChargingStatusRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChargingStatusResponse>}
- *     The XHR Node Readable Stream
- */
-proto.smartcore.traits.EnergyStorageApiClient.prototype.pullChargingStatus =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/PullChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageApi_PullChargingStatus);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.PullChargingStatusRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChargingStatusResponse>}
- *     The XHR Node Readable Stream
- */
-proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.pullChargingStatus =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.EnergyStorageApi/PullChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageApi_PullChargingStatus);
+      methodDescriptor_EnergyStorageApi_Charge);
 };
 
 
@@ -598,86 +443,6 @@ proto.smartcore.traits.EnergyStorageInfoPromiseClient.prototype.describeEnergyLe
       request,
       metadata || {},
       methodDescriptor_EnergyStorageInfo_DescribeEnergyLevel);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.DescribeChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatusSupport>}
- */
-const methodDescriptor_EnergyStorageInfo_DescribeChargingStatus = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.EnergyStorageInfo/DescribeChargingStatus',
-  grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.DescribeChargingStatusRequest,
-  proto.smartcore.traits.ChargingStatusSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChargingStatusSupport.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeChargingStatusRequest,
- *   !proto.smartcore.traits.ChargingStatusSupport>}
- */
-const methodInfo_EnergyStorageInfo_DescribeChargingStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ChargingStatusSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeChargingStatusRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChargingStatusSupport.deserializeBinary
-);
-
-
-/**
- * @param {!proto.smartcore.traits.DescribeChargingStatusRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChargingStatusSupport)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChargingStatusSupport>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.smartcore.traits.EnergyStorageInfoClient.prototype.describeChargingStatus =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageInfo/DescribeChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageInfo_DescribeChargingStatus,
-      callback);
-};
-
-
-/**
- * @param {!proto.smartcore.traits.DescribeChargingStatusRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.smartcore.traits.ChargingStatusSupport>}
- *     Promise that resolves to the response
- */
-proto.smartcore.traits.EnergyStorageInfoPromiseClient.prototype.describeChargingStatus =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.EnergyStorageInfo/DescribeChargingStatus',
-      request,
-      metadata || {},
-      methodDescriptor_EnergyStorageInfo_DescribeChargingStatus);
 };
 
 

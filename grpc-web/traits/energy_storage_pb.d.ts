@@ -12,6 +12,12 @@ export class EnergyLevelSupport extends jspb.Message {
   hasResourceSupport(): boolean;
   clearResourceSupport(): EnergyLevelSupport;
 
+  getRechargeable(): boolean;
+  setRechargeable(value: boolean): EnergyLevelSupport;
+
+  getChargeControl(): EnergyLevelSupport.ChargeControl;
+  setChargeControl(value: EnergyLevelSupport.ChargeControl): EnergyLevelSupport;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EnergyLevelSupport.AsObject;
   static toObject(includeInstance: boolean, msg: EnergyLevelSupport): EnergyLevelSupport.AsObject;
@@ -23,26 +29,16 @@ export class EnergyLevelSupport extends jspb.Message {
 export namespace EnergyLevelSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    rechargeable: boolean,
+    chargeControl: EnergyLevelSupport.ChargeControl,
   }
-}
 
-export class ChargingStatusSupport extends jspb.Message {
-  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
-  setResourceSupport(value?: types_info_pb.ResourceSupport): ChargingStatusSupport;
-  hasResourceSupport(): boolean;
-  clearResourceSupport(): ChargingStatusSupport;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChargingStatusSupport.AsObject;
-  static toObject(includeInstance: boolean, msg: ChargingStatusSupport): ChargingStatusSupport.AsObject;
-  static serializeBinaryToWriter(message: ChargingStatusSupport, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChargingStatusSupport;
-  static deserializeBinaryFromReader(message: ChargingStatusSupport, reader: jspb.BinaryReader): ChargingStatusSupport;
-}
-
-export namespace ChargingStatusSupport {
-  export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+  export enum ChargeControl { 
+    CHARGE_CONTROL_UNSPECIFIED = 0,
+    NONE = 1,
+    DEVICE = 2,
+    EXTERNAL = 3,
+    ALL = 4,
   }
 }
 
@@ -60,6 +56,17 @@ export class EnergyLevel extends jspb.Message {
   hasUntilFull(): boolean;
   clearUntilFull(): EnergyLevel;
 
+  getQuantity(): EnergyLevel.Quantity | undefined;
+  setQuantity(value?: EnergyLevel.Quantity): EnergyLevel;
+  hasQuantity(): boolean;
+  clearQuantity(): EnergyLevel;
+
+  getCharging(): boolean;
+  setCharging(value: boolean): EnergyLevel;
+
+  getPluggedIn(): boolean;
+  setPluggedIn(value: boolean): EnergyLevel;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EnergyLevel.AsObject;
   static toObject(includeInstance: boolean, msg: EnergyLevel): EnergyLevel.AsObject;
@@ -73,6 +80,9 @@ export namespace EnergyLevel {
     descriptiveThreshold: EnergyLevel.Threshold,
     remaining?: EnergyLevel.Remaining.AsObject,
     untilFull?: EnergyLevel.UntilFull.AsObject,
+    quantity?: EnergyLevel.Quantity.AsObject,
+    charging: boolean,
+    pluggedIn: boolean,
   }
 
   export class Remaining extends jspb.Message {
@@ -84,11 +94,8 @@ export namespace EnergyLevel {
     getDistanceKm(): number;
     setDistanceKm(value: number): Remaining;
 
-    getPercentage(): number;
-    setPercentage(value: number): Remaining;
-
-    getEnergyKwh(): number;
-    setEnergyKwh(value: number): Remaining;
+    getSpeed(): EnergyLevel.Speed;
+    setSpeed(value: EnergyLevel.Speed): Remaining;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Remaining.AsObject;
@@ -102,8 +109,7 @@ export namespace EnergyLevel {
     export type AsObject = {
       time?: google_protobuf_duration_pb.Duration.AsObject,
       distanceKm: number,
-      percentage: number,
-      energyKwh: number,
+      speed: EnergyLevel.Speed,
     }
   }
 
@@ -117,11 +123,8 @@ export namespace EnergyLevel {
     getDistanceKm(): number;
     setDistanceKm(value: number): UntilFull;
 
-    getPercentage(): number;
-    setPercentage(value: number): UntilFull;
-
-    getEnergyKwh(): number;
-    setEnergyKwh(value: number): UntilFull;
+    getSpeed(): EnergyLevel.Speed;
+    setSpeed(value: EnergyLevel.Speed): UntilFull;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UntilFull.AsObject;
@@ -135,6 +138,28 @@ export namespace EnergyLevel {
     export type AsObject = {
       time?: google_protobuf_duration_pb.Duration.AsObject,
       distanceKm: number,
+      speed: EnergyLevel.Speed,
+    }
+  }
+
+
+  export class Quantity extends jspb.Message {
+    getPercentage(): number;
+    setPercentage(value: number): Quantity;
+
+    getEnergyKwh(): number;
+    setEnergyKwh(value: number): Quantity;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Quantity.AsObject;
+    static toObject(includeInstance: boolean, msg: Quantity): Quantity.AsObject;
+    static serializeBinaryToWriter(message: Quantity, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Quantity;
+    static deserializeBinaryFromReader(message: Quantity, reader: jspb.BinaryReader): Quantity;
+  }
+
+  export namespace Quantity {
+    export type AsObject = {
       percentage: number,
       energyKwh: number,
     }
@@ -150,27 +175,14 @@ export namespace EnergyLevel {
     FULL = 6,
     CRITICALLY_HIGH = 7,
   }
-}
 
-export class ChargingStatus extends jspb.Message {
-  getCharging(): boolean;
-  setCharging(value: boolean): ChargingStatus;
-
-  getPluggedIn(): boolean;
-  setPluggedIn(value: boolean): ChargingStatus;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ChargingStatus.AsObject;
-  static toObject(includeInstance: boolean, msg: ChargingStatus): ChargingStatus.AsObject;
-  static serializeBinaryToWriter(message: ChargingStatus, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ChargingStatus;
-  static deserializeBinaryFromReader(message: ChargingStatus, reader: jspb.BinaryReader): ChargingStatus;
-}
-
-export namespace ChargingStatus {
-  export type AsObject = {
-    charging: boolean,
-    pluggedIn: boolean,
+  export enum Speed { 
+    SPEED_UNSPECIFIED = 0,
+    EXTRA_SLOW = 1,
+    SLOW = 2,
+    NORMAL = 3,
+    FAST = 4,
+    EXTRA_FAST = 5,
   }
 }
 
@@ -273,133 +285,40 @@ export namespace PullEnergyLevelResponse {
 
 }
 
-export class GetChargingStatusRequest extends jspb.Message {
+export class ChargeRequest extends jspb.Message {
   getName(): string;
-  setName(value: string): GetChargingStatusRequest;
+  setName(value: string): ChargeRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetChargingStatusRequest;
-  hasFields(): boolean;
-  clearFields(): GetChargingStatusRequest;
+  getCharge(): boolean;
+  setCharge(value: boolean): ChargeRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): GetChargingStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: GetChargingStatusRequest): GetChargingStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: GetChargingStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): GetChargingStatusRequest;
-  static deserializeBinaryFromReader(message: GetChargingStatusRequest, reader: jspb.BinaryReader): GetChargingStatusRequest;
+  toObject(includeInstance?: boolean): ChargeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ChargeRequest): ChargeRequest.AsObject;
+  static serializeBinaryToWriter(message: ChargeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChargeRequest;
+  static deserializeBinaryFromReader(message: ChargeRequest, reader: jspb.BinaryReader): ChargeRequest;
 }
 
-export namespace GetChargingStatusRequest {
+export namespace ChargeRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    charge: boolean,
   }
 }
 
-export class UpdateChargingStatusRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): UpdateChargingStatusRequest;
-
-  getChargingStatus(): ChargingStatus | undefined;
-  setChargingStatus(value?: ChargingStatus): UpdateChargingStatusRequest;
-  hasChargingStatus(): boolean;
-  clearChargingStatus(): UpdateChargingStatusRequest;
-
-  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateChargingStatusRequest;
-  hasUpdateMask(): boolean;
-  clearUpdateMask(): UpdateChargingStatusRequest;
-
+export class ChargeResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): UpdateChargingStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: UpdateChargingStatusRequest): UpdateChargingStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: UpdateChargingStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): UpdateChargingStatusRequest;
-  static deserializeBinaryFromReader(message: UpdateChargingStatusRequest, reader: jspb.BinaryReader): UpdateChargingStatusRequest;
+  toObject(includeInstance?: boolean): ChargeResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ChargeResponse): ChargeResponse.AsObject;
+  static serializeBinaryToWriter(message: ChargeResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChargeResponse;
+  static deserializeBinaryFromReader(message: ChargeResponse, reader: jspb.BinaryReader): ChargeResponse;
 }
 
-export namespace UpdateChargingStatusRequest {
+export namespace ChargeResponse {
   export type AsObject = {
-    name: string,
-    chargingStatus?: ChargingStatus.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
-}
-
-export class PullChargingStatusRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): PullChargingStatusRequest;
-
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): PullChargingStatusRequest;
-  hasFields(): boolean;
-  clearFields(): PullChargingStatusRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullChargingStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: PullChargingStatusRequest): PullChargingStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: PullChargingStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullChargingStatusRequest;
-  static deserializeBinaryFromReader(message: PullChargingStatusRequest, reader: jspb.BinaryReader): PullChargingStatusRequest;
-}
-
-export namespace PullChargingStatusRequest {
-  export type AsObject = {
-    name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
-}
-
-export class PullChargingStatusResponse extends jspb.Message {
-  getChangesList(): Array<PullChargingStatusResponse.Change>;
-  setChangesList(value: Array<PullChargingStatusResponse.Change>): PullChargingStatusResponse;
-  clearChangesList(): PullChargingStatusResponse;
-  addChanges(value?: PullChargingStatusResponse.Change, index?: number): PullChargingStatusResponse.Change;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): PullChargingStatusResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: PullChargingStatusResponse): PullChargingStatusResponse.AsObject;
-  static serializeBinaryToWriter(message: PullChargingStatusResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): PullChargingStatusResponse;
-  static deserializeBinaryFromReader(message: PullChargingStatusResponse, reader: jspb.BinaryReader): PullChargingStatusResponse;
-}
-
-export namespace PullChargingStatusResponse {
-  export type AsObject = {
-    changesList: Array<PullChargingStatusResponse.Change.AsObject>,
-  }
-
-  export class Change extends jspb.Message {
-    getName(): string;
-    setName(value: string): Change;
-
-    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
-    hasChangeTime(): boolean;
-    clearChangeTime(): Change;
-
-    getChargingStatus(): ChargingStatus | undefined;
-    setChargingStatus(value?: ChargingStatus): Change;
-    hasChargingStatus(): boolean;
-    clearChargingStatus(): Change;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Change.AsObject;
-    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
-    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Change;
-    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
-  }
-
-  export namespace Change {
-    export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      chargingStatus?: ChargingStatus.AsObject,
-    }
-  }
-
 }
 
 export class DescribeEnergyLevelRequest extends jspb.Message {
@@ -415,24 +334,6 @@ export class DescribeEnergyLevelRequest extends jspb.Message {
 }
 
 export namespace DescribeEnergyLevelRequest {
-  export type AsObject = {
-    name: string,
-  }
-}
-
-export class DescribeChargingStatusRequest extends jspb.Message {
-  getName(): string;
-  setName(value: string): DescribeChargingStatusRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): DescribeChargingStatusRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: DescribeChargingStatusRequest): DescribeChargingStatusRequest.AsObject;
-  static serializeBinaryToWriter(message: DescribeChargingStatusRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): DescribeChargingStatusRequest;
-  static deserializeBinaryFromReader(message: DescribeChargingStatusRequest, reader: jspb.BinaryReader): DescribeChargingStatusRequest;
-}
-
-export namespace DescribeChargingStatusRequest {
   export type AsObject = {
     name: string,
   }
