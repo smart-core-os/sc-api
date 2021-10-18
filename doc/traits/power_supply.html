@@ -199,11 +199,31 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.ListDrawNotificationsRequest"><span class="badge">M</span>ListDrawNotificationsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListDrawNotificationsResponse"><span class="badge">M</span>ListDrawNotificationsResponse</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.PowerCapacity"><span class="badge">M</span>PowerCapacity</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.traits.PowerCapacitySupport"><span class="badge">M</span>PowerCapacitySupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDrawNotificationsRequest"><span class="badge">M</span>PullDrawNotificationsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDrawNotificationsResponse"><span class="badge">M</span>PullDrawNotificationsResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDrawNotificationsResponse.Change"><span class="badge">M</span>PullDrawNotificationsResponse.Change</a>
                 </li>
               
                 <li>
@@ -303,6 +323,14 @@
                   <td><p>Id of the draw notification returned during the CreateDrawNotification call. </p></td>
                 </tr>
               
+                <tr>
+                  <td>allow_missing</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If set to true, and no draw notification with the given id exists, the request will succeed but no action will
+be taken. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -369,7 +397,10 @@ During read, or as part of a write response, this is the maximum draw the supply
 The device is free to forget draw notifications after this duration has elapsed as it is expected
 the caller is actually drawing the current so it is not available anymore.
 If absent or outside the devices supported range during write, the device is free to choose a value.
-The chosen value will be returned in responses to the write. </p></td>
+The chosen value will be returned in responses to the write.
+
+The value should be considered relative to the notification_time field.
+Writing to this field will reset notification_time to the current time. </p></td>
                 </tr>
               
                 <tr>
@@ -382,6 +413,15 @@ During write, a non-zero value is an indication to the device that it may choose
 somewhere between the min_draw and max_draw, typically based on free and unallocated current.
 The max_draw of the response will inform the caller which value has been chosen.
 See message docs for more details. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>notification_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>The time for which ramp_duration is relative to.
+Output only.
+Will be updated to the current time each time the ramp_duration is written to. </p></td>
                 </tr>
               
             </tbody>
@@ -413,6 +453,88 @@ See message docs for more details. </p></td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
                   <td><p>Fields to fetch relative to the PowerCapacity type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListDrawNotificationsRequest">ListDrawNotificationsRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The maximum number of draw notifications to return.
+The service may return fewer than this value.
+If unspecified, at most 50 items will be returned.
+The maximum value is 1000; values above 1000 will be coerced to 1000. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A page token, received from a previous `ListDrawNotifications` call.
+Provide this to retrieve the subsequent page. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListDrawNotificationsResponse">ListDrawNotificationsResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>draw_notifications</td>
+                  <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token, which can be sent as `page_token` to retrieve the next page.
+If this field is omitted, there are no subsequent pages. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>If non-zero this is the total number of draw notifications.
+This may be an estimate, see the PowerCapacitySupport.draw_notifications_total_size_estimated. </p></td>
                 </tr>
               
             </tbody>
@@ -517,6 +639,113 @@ See DrawNotification. </p></td>
                   <td></td>
                   <td><p>Attributes associated with the available capacity property of the supply.
 This applies to the rating, load, capacity, and free properties of PowerCapacity. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>draw_notifications_total_size_estimated</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDrawNotificationsRequest">PullDrawNotificationsRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDrawNotificationsResponse">PullDrawNotificationsResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullDrawNotificationsResponse.Change">PullDrawNotificationsResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>the list of changes which have occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDrawNotificationsResponse.Change">PullDrawNotificationsResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the name of the device that emitted this change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#smartcore.types.ChangeType">smartcore.types.ChangeType</a></td>
+                  <td></td>
+                  <td><p>the type of change (e.g. ADD, UPDATE, etc...) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_value</td>
+                  <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
+                  <td></td>
+                  <td><p>the new value to use for ADD|UPDATE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>old_value</td>
+                  <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
+                  <td></td>
+                  <td><p>the old value to use for UPDATE|REMOVE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
                 </tr>
               
             </tbody>
@@ -680,6 +909,13 @@ The available capacity shouldn&#39;t include any draw made on this device direct
               </tr>
             
               <tr>
+                <td>ListDrawNotifications</td>
+                <td><a href="#smartcore.traits.ListDrawNotificationsRequest">ListDrawNotificationsRequest</a></td>
+                <td><a href="#smartcore.traits.ListDrawNotificationsResponse">ListDrawNotificationsResponse</a></td>
+                <td><p>ListDrawNotifications returns the list of active draw notifications.</p></td>
+              </tr>
+            
+              <tr>
                 <td>CreateDrawNotification</td>
                 <td><a href="#smartcore.traits.CreateDrawNotificationRequest">CreateDrawNotificationRequest</a></td>
                 <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
@@ -702,8 +938,17 @@ If no such draw notification exists, will return an error.</p></td>
                 <td><p>DeleteDrawNotification allows the caller to remove their notification of draw.
 Typically used if the situation has changed and the expected draw will no longer happen.
 If the expected draw level has changed consider using UpdateDrawNotification.
-If no such draw notification exists, does nothing.
+If no such draw notification exists, returns NOT_FOUND unless allow_missing is true.
 There is no need to remove notifications after their ramp_duration has expired.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullDrawNotifications</td>
+                <td><a href="#smartcore.traits.PullDrawNotificationsRequest">PullDrawNotificationsRequest</a></td>
+                <td><a href="#smartcore.traits.PullDrawNotificationsResponse">PullDrawNotificationsResponse</a> stream</td>
+                <td><p>PullDrawNotifications returns a stream of list changes for active draw notifications.
+No guarantee is made for if or when a Draw Notification might be removed after it&#39;s notification period has
+expired. Only client initiated events are guaranteed to be published via the returned stream.</p></td>
               </tr>
             
           </tbody>

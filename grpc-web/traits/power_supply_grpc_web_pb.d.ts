@@ -21,6 +21,13 @@ export class PowerSupplyApiClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullPowerCapacityResponse>;
 
+  listDrawNotifications(
+    request: traits_power_supply_pb.ListDrawNotificationsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_power_supply_pb.ListDrawNotificationsResponse) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.ListDrawNotificationsResponse>;
+
   createDrawNotification(
     request: traits_power_supply_pb.CreateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
@@ -41,6 +48,11 @@ export class PowerSupplyApiClient {
     callback: (err: grpcWeb.Error,
                response: google_protobuf_empty_pb.Empty) => void
   ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  pullDrawNotifications(
+    request: traits_power_supply_pb.PullDrawNotificationsRequest,
+    metadata?: grpcWeb.Metadata
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullDrawNotificationsResponse>;
 
 }
 
@@ -73,6 +85,11 @@ export class PowerSupplyApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullPowerCapacityResponse>;
 
+  listDrawNotifications(
+    request: traits_power_supply_pb.ListDrawNotificationsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_power_supply_pb.ListDrawNotificationsResponse>;
+
   createDrawNotification(
     request: traits_power_supply_pb.CreateDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
@@ -87,6 +104,11 @@ export class PowerSupplyApiPromiseClient {
     request: traits_power_supply_pb.DeleteDrawNotificationRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
+
+  pullDrawNotifications(
+    request: traits_power_supply_pb.PullDrawNotificationsRequest,
+    metadata?: grpcWeb.Metadata
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PullDrawNotificationsResponse>;
 
 }
 

@@ -24,6 +24,8 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 
+var types_change_pb = require('../types/change_pb.js')
+
 var types_info_pb = require('../types/info_pb.js')
 
 var types_number_pb = require('../types/number_pb.js')
@@ -235,6 +237,86 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.pullPowerCapacity =
       request,
       metadata || {},
       methodDescriptor_PowerSupplyApi_PullPowerCapacity);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.ListDrawNotificationsRequest,
+ *   !proto.smartcore.traits.ListDrawNotificationsResponse>}
+ */
+const methodDescriptor_PowerSupplyApi_ListDrawNotifications = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PowerSupplyApi/ListDrawNotifications',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.ListDrawNotificationsRequest,
+  proto.smartcore.traits.ListDrawNotificationsResponse,
+  /**
+   * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ListDrawNotificationsResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.ListDrawNotificationsRequest,
+ *   !proto.smartcore.traits.ListDrawNotificationsResponse>}
+ */
+const methodInfo_PowerSupplyApi_ListDrawNotifications = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.ListDrawNotificationsResponse,
+  /**
+   * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ListDrawNotificationsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ListDrawNotificationsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListDrawNotificationsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.PowerSupplyApiClient.prototype.listDrawNotifications =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.PowerSupplyApi/ListDrawNotifications',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyApi_ListDrawNotifications,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ListDrawNotificationsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.listDrawNotifications =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.PowerSupplyApi/ListDrawNotifications',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyApi_ListDrawNotifications);
 };
 
 
@@ -475,6 +557,81 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.deleteDrawNotificat
       request,
       metadata || {},
       methodDescriptor_PowerSupplyApi_DeleteDrawNotification);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.PullDrawNotificationsRequest,
+ *   !proto.smartcore.traits.PullDrawNotificationsResponse>}
+ */
+const methodDescriptor_PowerSupplyApi_PullDrawNotifications = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PowerSupplyApi/PullDrawNotifications',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.smartcore.traits.PullDrawNotificationsRequest,
+  proto.smartcore.traits.PullDrawNotificationsResponse,
+  /**
+   * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.PullDrawNotificationsResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.PullDrawNotificationsRequest,
+ *   !proto.smartcore.traits.PullDrawNotificationsResponse>}
+ */
+const methodInfo_PowerSupplyApi_PullDrawNotifications = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.PullDrawNotificationsResponse,
+  /**
+   * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.PullDrawNotificationsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDrawNotificationsResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.PowerSupplyApiClient.prototype.pullDrawNotifications =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/smartcore.traits.PowerSupplyApi/PullDrawNotifications',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyApi_PullDrawNotifications);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDrawNotificationsResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.pullDrawNotifications =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/smartcore.traits.PowerSupplyApi/PullDrawNotifications',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyApi_PullDrawNotifications);
 };
 
 

@@ -13,6 +13,7 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
+import "types/change.proto";
 import "types/info.proto";
 import "types/number.proto";
 
@@ -24,6 +25,8 @@ service PowerSupplyApi {
   // Be notified of changes to the available capacity.
   rpc PullPowerCapacity (PullPowerCapacityRequest) returns (stream PullPowerCapacityResponse);
 
+  // ListDrawNotifications returns the list of active draw notifications.
+  rpc ListDrawNotifications (ListDrawNotificationsRequest) returns (ListDrawNotificationsResponse);
   // CreateDrawNotification indicates that the caller intends to draw the given capacity from this power supply.
   // This device may respond to say that the requested draw is not available at this time.
   rpc CreateDrawNotification (CreateDrawNotificationRequest) returns (DrawNotification);
@@ -33,9 +36,13 @@ service PowerSupplyApi {
   // DeleteDrawNotification allows the caller to remove their notification of draw.
   // Typically used if the situation has changed and the expected draw will no longer happen.
   // If the expected draw level has changed consider using UpdateDrawNotification.
-  // If no such draw notification exists, does nothing.
+  // If no such draw notification exists, returns NOT_FOUND unless allow_missing is true.
   // There is no need to remove notifications after their ramp_duration has expired.
   rpc DeleteDrawNotification (DeleteDrawNotificationRequest) returns (google.protobuf.Empty);
+  // PullDrawNotifications returns a stream of list changes for active draw notifications.
+  // No guarantee is made for if or when a Draw Notification might be removed after it's notification period has
+  // expired. Only client initiated events are guaranteed to be published via the returned stream.
+  rpc PullDrawNotifications (PullDrawNotificationsRequest) returns (stream PullDrawNotificationsResponse);
 }
 
 // Describes the capabilities of a specific named device with respect to this trait.
@@ -51,6 +58,8 @@ message PowerCapacitySupport {
   // Attributes associated with the available capacity property of the supply.
   // This applies to the rating, load, capacity, and free properties of PowerCapacity.
   smartcore.types.FloatAttributes available_attributes = 2;
+  // If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value.
+  bool draw_notifications_total_size_estimated = 3;
 }
 
 // PowerCapacity describes how much power is available to be supplied by a device.
@@ -116,6 +125,9 @@ message DrawNotification {
   // the caller is actually drawing the current so it is not available anymore.
   // If absent or outside the devices supported range during write, the device is free to choose a value.
   // The chosen value will be returned in responses to the write.
+  //
+  // The value should be considered relative to the notification_time field.
+  // Writing to this field will reset notification_time to the current time.
   google.protobuf.Duration ramp_duration = 3;
   // The minimum draw that the caller will accept.
   // A zero value indicates that the caller only draws using max_draw and no less.
@@ -124,6 +136,11 @@ message DrawNotification {
   // The max_draw of the response will inform the caller which value has been chosen.
   // See message docs for more details.
   float min_draw = 4;
+
+  // The time for which ramp_duration is relative to.
+  // Output only.
+  // Will be updated to the current time each time the ramp_duration is written to.
+  google.protobuf.Timestamp notification_time = 5;
 }
 
 message GetPowerCapacityRequest {
@@ -159,6 +176,31 @@ message DescribePowerCapacityRequest {
   string name = 1;
 }
 
+message ListDrawNotificationsRequest {
+  // The name of the device
+  string name = 1;
+
+  // The maximum number of draw notifications to return.
+  // The service may return fewer than this value.
+  // If unspecified, at most 50 items will be returned.
+  // The maximum value is 1000; values above 1000 will be coerced to 1000.
+  int32 page_size = 2;
+  // A page token, received from a previous `ListDrawNotifications` call.
+  // Provide this to retrieve the subsequent page.
+  string page_token = 3;
+}
+
+message ListDrawNotificationsResponse {
+  repeated DrawNotification draw_notifications = 1;
+
+  // A token, which can be sent as `page_token` to retrieve the next page.
+  // If this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
+  // If non-zero this is the total number of draw notifications.
+  // This may be an estimate, see the PowerCapacitySupport.draw_notifications_total_size_estimated.
+  int32 total_size = 3;
+}
+
 message CreateDrawNotificationRequest {
   // Name of the device
   string name = 1;
@@ -176,4 +218,30 @@ message DeleteDrawNotificationRequest {
   string name = 1;
   // Id of the draw notification returned during the CreateDrawNotification call.
   string id = 2;
+  // If set to true, and no draw notification with the given id exists, the request will succeed but no action will
+  // be taken.
+  bool allow_missing = 3;
+}
+
+message PullDrawNotificationsRequest {
+  // Name of the device
+  string name = 1;
+}
+
+message PullDrawNotificationsResponse {
+  // the list of changes which have occurred
+  repeated Change changes = 1;
+
+  message Change {
+    // the name of the device that emitted this change
+    string name = 1;
+    // the type of change (e.g. ADD, UPDATE, etc...)
+    smartcore.types.ChangeType type = 2;
+    // the new value to use for ADD|UPDATE changes
+    DrawNotification new_value = 3;
+    // the old value to use for UPDATE|REMOVE changes
+    DrawNotification old_value = 4;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 5;
+  }
 }

@@ -4,6 +4,7 @@ import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/du
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as types_change_pb from '../types/change_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
@@ -19,6 +20,9 @@ export class PowerCapacitySupport extends jspb.Message {
   hasAvailableAttributes(): boolean;
   clearAvailableAttributes(): PowerCapacitySupport;
 
+  getDrawNotificationsTotalSizeEstimated(): boolean;
+  setDrawNotificationsTotalSizeEstimated(value: boolean): PowerCapacitySupport;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PowerCapacitySupport.AsObject;
   static toObject(includeInstance: boolean, msg: PowerCapacitySupport): PowerCapacitySupport.AsObject;
@@ -31,6 +35,7 @@ export namespace PowerCapacitySupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     availableAttributes?: types_number_pb.FloatAttributes.AsObject,
+    drawNotificationsTotalSizeEstimated: boolean,
   }
 }
 
@@ -101,6 +106,11 @@ export class DrawNotification extends jspb.Message {
   getMinDraw(): number;
   setMinDraw(value: number): DrawNotification;
 
+  getNotificationTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setNotificationTime(value?: google_protobuf_timestamp_pb.Timestamp): DrawNotification;
+  hasNotificationTime(): boolean;
+  clearNotificationTime(): DrawNotification;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DrawNotification.AsObject;
   static toObject(includeInstance: boolean, msg: DrawNotification): DrawNotification.AsObject;
@@ -115,6 +125,7 @@ export namespace DrawNotification {
     maxDraw: number,
     rampDuration?: google_protobuf_duration_pb.Duration.AsObject,
     minDraw: number,
+    notificationTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
@@ -235,6 +246,60 @@ export namespace DescribePowerCapacityRequest {
   }
 }
 
+export class ListDrawNotificationsRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): ListDrawNotificationsRequest;
+
+  getPageSize(): number;
+  setPageSize(value: number): ListDrawNotificationsRequest;
+
+  getPageToken(): string;
+  setPageToken(value: string): ListDrawNotificationsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListDrawNotificationsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListDrawNotificationsRequest): ListDrawNotificationsRequest.AsObject;
+  static serializeBinaryToWriter(message: ListDrawNotificationsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListDrawNotificationsRequest;
+  static deserializeBinaryFromReader(message: ListDrawNotificationsRequest, reader: jspb.BinaryReader): ListDrawNotificationsRequest;
+}
+
+export namespace ListDrawNotificationsRequest {
+  export type AsObject = {
+    name: string,
+    pageSize: number,
+    pageToken: string,
+  }
+}
+
+export class ListDrawNotificationsResponse extends jspb.Message {
+  getDrawNotificationsList(): Array<DrawNotification>;
+  setDrawNotificationsList(value: Array<DrawNotification>): ListDrawNotificationsResponse;
+  clearDrawNotificationsList(): ListDrawNotificationsResponse;
+  addDrawNotifications(value?: DrawNotification, index?: number): DrawNotification;
+
+  getNextPageToken(): string;
+  setNextPageToken(value: string): ListDrawNotificationsResponse;
+
+  getTotalSize(): number;
+  setTotalSize(value: number): ListDrawNotificationsResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListDrawNotificationsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListDrawNotificationsResponse): ListDrawNotificationsResponse.AsObject;
+  static serializeBinaryToWriter(message: ListDrawNotificationsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListDrawNotificationsResponse;
+  static deserializeBinaryFromReader(message: ListDrawNotificationsResponse, reader: jspb.BinaryReader): ListDrawNotificationsResponse;
+}
+
+export namespace ListDrawNotificationsResponse {
+  export type AsObject = {
+    drawNotificationsList: Array<DrawNotification.AsObject>,
+    nextPageToken: string,
+    totalSize: number,
+  }
+}
+
 export class CreateDrawNotificationRequest extends jspb.Message {
   getName(): string;
   setName(value: string): CreateDrawNotificationRequest;
@@ -290,6 +355,9 @@ export class DeleteDrawNotificationRequest extends jspb.Message {
   getId(): string;
   setId(value: string): DeleteDrawNotificationRequest;
 
+  getAllowMissing(): boolean;
+  setAllowMissing(value: boolean): DeleteDrawNotificationRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteDrawNotificationRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteDrawNotificationRequest): DeleteDrawNotificationRequest.AsObject;
@@ -302,6 +370,86 @@ export namespace DeleteDrawNotificationRequest {
   export type AsObject = {
     name: string,
     id: string,
+    allowMissing: boolean,
   }
+}
+
+export class PullDrawNotificationsRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): PullDrawNotificationsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PullDrawNotificationsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PullDrawNotificationsRequest): PullDrawNotificationsRequest.AsObject;
+  static serializeBinaryToWriter(message: PullDrawNotificationsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullDrawNotificationsRequest;
+  static deserializeBinaryFromReader(message: PullDrawNotificationsRequest, reader: jspb.BinaryReader): PullDrawNotificationsRequest;
+}
+
+export namespace PullDrawNotificationsRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
+export class PullDrawNotificationsResponse extends jspb.Message {
+  getChangesList(): Array<PullDrawNotificationsResponse.Change>;
+  setChangesList(value: Array<PullDrawNotificationsResponse.Change>): PullDrawNotificationsResponse;
+  clearChangesList(): PullDrawNotificationsResponse;
+  addChanges(value?: PullDrawNotificationsResponse.Change, index?: number): PullDrawNotificationsResponse.Change;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PullDrawNotificationsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: PullDrawNotificationsResponse): PullDrawNotificationsResponse.AsObject;
+  static serializeBinaryToWriter(message: PullDrawNotificationsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PullDrawNotificationsResponse;
+  static deserializeBinaryFromReader(message: PullDrawNotificationsResponse, reader: jspb.BinaryReader): PullDrawNotificationsResponse;
+}
+
+export namespace PullDrawNotificationsResponse {
+  export type AsObject = {
+    changesList: Array<PullDrawNotificationsResponse.Change.AsObject>,
+  }
+
+  export class Change extends jspb.Message {
+    getName(): string;
+    setName(value: string): Change;
+
+    getType(): types_change_pb.ChangeType;
+    setType(value: types_change_pb.ChangeType): Change;
+
+    getNewValue(): DrawNotification | undefined;
+    setNewValue(value?: DrawNotification): Change;
+    hasNewValue(): boolean;
+    clearNewValue(): Change;
+
+    getOldValue(): DrawNotification | undefined;
+    setOldValue(value?: DrawNotification): Change;
+    hasOldValue(): boolean;
+    clearOldValue(): Change;
+
+    getChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): Change;
+    hasChangeTime(): boolean;
+    clearChangeTime(): Change;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Change.AsObject;
+    static toObject(includeInstance: boolean, msg: Change): Change.AsObject;
+    static serializeBinaryToWriter(message: Change, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Change;
+    static deserializeBinaryFromReader(message: Change, reader: jspb.BinaryReader): Change;
+  }
+
+  export namespace Change {
+    export type AsObject = {
+      name: string,
+      type: types_change_pb.ChangeType,
+      newValue?: DrawNotification.AsObject,
+      oldValue?: DrawNotification.AsObject,
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+  }
+
 }
 
