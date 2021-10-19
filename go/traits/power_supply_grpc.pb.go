@@ -408,8 +408,10 @@ var PowerSupplyApi_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PowerSupplyInfoClient interface {
-	// Get information about how a named device implements Gain features
+	// Get information about how a named device implements PowerCapacity features
 	DescribePowerCapacity(ctx context.Context, in *DescribePowerCapacityRequest, opts ...grpc.CallOption) (*PowerCapacitySupport, error)
+	// Get information about how a named device implements DrawNotification features
+	DescribeDrawNotification(ctx context.Context, in *DescribeDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotificationSupport, error)
 }
 
 type powerSupplyInfoClient struct {
@@ -429,12 +431,23 @@ func (c *powerSupplyInfoClient) DescribePowerCapacity(ctx context.Context, in *D
 	return out, nil
 }
 
+func (c *powerSupplyInfoClient) DescribeDrawNotification(ctx context.Context, in *DescribeDrawNotificationRequest, opts ...grpc.CallOption) (*DrawNotificationSupport, error) {
+	out := new(DrawNotificationSupport)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.PowerSupplyInfo/DescribeDrawNotification", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PowerSupplyInfoServer is the server API for PowerSupplyInfo service.
 // All implementations must embed UnimplementedPowerSupplyInfoServer
 // for forward compatibility
 type PowerSupplyInfoServer interface {
-	// Get information about how a named device implements Gain features
+	// Get information about how a named device implements PowerCapacity features
 	DescribePowerCapacity(context.Context, *DescribePowerCapacityRequest) (*PowerCapacitySupport, error)
+	// Get information about how a named device implements DrawNotification features
+	DescribeDrawNotification(context.Context, *DescribeDrawNotificationRequest) (*DrawNotificationSupport, error)
 	mustEmbedUnimplementedPowerSupplyInfoServer()
 }
 
@@ -444,6 +457,9 @@ type UnimplementedPowerSupplyInfoServer struct {
 
 func (UnimplementedPowerSupplyInfoServer) DescribePowerCapacity(context.Context, *DescribePowerCapacityRequest) (*PowerCapacitySupport, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DescribePowerCapacity not implemented")
+}
+func (UnimplementedPowerSupplyInfoServer) DescribeDrawNotification(context.Context, *DescribeDrawNotificationRequest) (*DrawNotificationSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeDrawNotification not implemented")
 }
 func (UnimplementedPowerSupplyInfoServer) mustEmbedUnimplementedPowerSupplyInfoServer() {}
 
@@ -476,6 +492,24 @@ func _PowerSupplyInfo_DescribePowerCapacity_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PowerSupplyInfo_DescribeDrawNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeDrawNotificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PowerSupplyInfoServer).DescribeDrawNotification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.PowerSupplyInfo/DescribeDrawNotification",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PowerSupplyInfoServer).DescribeDrawNotification(ctx, req.(*DescribeDrawNotificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PowerSupplyInfo_ServiceDesc is the grpc.ServiceDesc for PowerSupplyInfo service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -486,6 +520,10 @@ var PowerSupplyInfo_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DescribePowerCapacity",
 			Handler:    _PowerSupplyInfo_DescribePowerCapacity_Handler,
+		},
+		{
+			MethodName: "DescribeDrawNotification",
+			Handler:    _PowerSupplyInfo_DescribeDrawNotification_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

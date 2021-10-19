@@ -68,6 +68,13 @@ export class PowerSupplyInfoClient {
                response: traits_power_supply_pb.PowerCapacitySupport) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PowerCapacitySupport>;
 
+  describeDrawNotification(
+    request: traits_power_supply_pb.DescribeDrawNotificationRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: traits_power_supply_pb.DrawNotificationSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotificationSupport>;
+
 }
 
 export class PowerSupplyApiPromiseClient {
@@ -121,6 +128,11 @@ export class PowerSupplyInfoPromiseClient {
     request: traits_power_supply_pb.DescribePowerCapacityRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<traits_power_supply_pb.PowerCapacitySupport>;
+
+  describeDrawNotification(
+    request: traits_power_supply_pb.DescribeDrawNotificationRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_power_supply_pb.DrawNotificationSupport>;
 
 }
 

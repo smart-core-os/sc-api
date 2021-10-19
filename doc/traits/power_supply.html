@@ -187,11 +187,19 @@
                 </li>
               
                 <li>
+                  <a href="#smartcore.traits.DescribeDrawNotificationRequest"><span class="badge">M</span>DescribeDrawNotificationRequest</a>
+                </li>
+              
+                <li>
                   <a href="#smartcore.traits.DescribePowerCapacityRequest"><span class="badge">M</span>DescribePowerCapacityRequest</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.traits.DrawNotification"><span class="badge">M</span>DrawNotification</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DrawNotificationSupport"><span class="badge">M</span>DrawNotificationSupport</a>
                 </li>
               
                 <li>
@@ -338,6 +346,30 @@ be taken. </p></td>
 
         
       
+        <h3 id="smartcore.traits.DescribeDrawNotificationRequest">DescribeDrawNotificationRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="smartcore.traits.DescribePowerCapacityRequest">DescribePowerCapacityRequest</h3>
         <p></p>
 
@@ -422,6 +454,37 @@ See message docs for more details. </p></td>
                   <td><p>The time for which ramp_duration is relative to.
 Output only.
 Will be updated to the current time each time the ramp_duration is written to. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DrawNotificationSupport">DrawNotificationSupport</h3>
+        <p>DrawNotificationSupport describes the capabilities of devices implementing this trait.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>resource_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>draw_notifications_total_size_estimated</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value. </p></td>
                 </tr>
               
             </tbody>
@@ -639,13 +702,6 @@ See DrawNotification. </p></td>
                   <td></td>
                   <td><p>Attributes associated with the available capacity property of the supply.
 This applies to the rating, load, capacity, and free properties of PowerCapacity. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>draw_notifications_total_size_estimated</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value. </p></td>
                 </tr>
               
             </tbody>
@@ -967,7 +1023,14 @@ expired. Only client initiated events are guaranteed to be published via the ret
                 <td>DescribePowerCapacity</td>
                 <td><a href="#smartcore.traits.DescribePowerCapacityRequest">DescribePowerCapacityRequest</a></td>
                 <td><a href="#smartcore.traits.PowerCapacitySupport">PowerCapacitySupport</a></td>
-                <td><p>Get information about how a named device implements Gain features</p></td>
+                <td><p>Get information about how a named device implements PowerCapacity features</p></td>
+              </tr>
+            
+              <tr>
+                <td>DescribeDrawNotification</td>
+                <td><a href="#smartcore.traits.DescribeDrawNotificationRequest">DescribeDrawNotificationRequest</a></td>
+                <td><a href="#smartcore.traits.DrawNotificationSupport">DrawNotificationSupport</a></td>
+                <td><p>Get information about how a named device implements DrawNotification features</p></td>
               </tr>
             
           </tbody>

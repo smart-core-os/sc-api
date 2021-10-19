@@ -767,5 +767,85 @@ proto.smartcore.traits.PowerSupplyInfoPromiseClient.prototype.describePowerCapac
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.DescribeDrawNotificationRequest,
+ *   !proto.smartcore.traits.DrawNotificationSupport>}
+ */
+const methodDescriptor_PowerSupplyInfo_DescribeDrawNotification = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PowerSupplyInfo/DescribeDrawNotification',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.DescribeDrawNotificationRequest,
+  proto.smartcore.traits.DrawNotificationSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.DrawNotificationSupport.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.smartcore.traits.DescribeDrawNotificationRequest,
+ *   !proto.smartcore.traits.DrawNotificationSupport>}
+ */
+const methodInfo_PowerSupplyInfo_DescribeDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.smartcore.traits.DrawNotificationSupport,
+  /**
+   * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.DrawNotificationSupport.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.smartcore.traits.DrawNotificationSupport)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.DrawNotificationSupport>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.PowerSupplyInfoClient.prototype.describeDrawNotification =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.PowerSupplyInfo/DescribeDrawNotification',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyInfo_DescribeDrawNotification,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.DrawNotificationSupport>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.PowerSupplyInfoPromiseClient.prototype.describeDrawNotification =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.PowerSupplyInfo/DescribeDrawNotification',
+      request,
+      metadata || {},
+      methodDescriptor_PowerSupplyInfo_DescribeDrawNotification);
+};
+
+
 module.exports = proto.smartcore.traits;
 

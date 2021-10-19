@@ -47,8 +47,10 @@ service PowerSupplyApi {
 
 // Describes the capabilities of a specific named device with respect to this trait.
 service PowerSupplyInfo {
-  // Get information about how a named device implements Gain features
+  // Get information about how a named device implements PowerCapacity features
   rpc DescribePowerCapacity (DescribePowerCapacityRequest) returns (PowerCapacitySupport);
+  // Get information about how a named device implements DrawNotification features
+  rpc DescribeDrawNotification (DescribeDrawNotificationRequest) returns (DrawNotificationSupport);
 }
 
 // PowerCapacitySupport describes the capabilities of devices implementing this trait.
@@ -58,8 +60,13 @@ message PowerCapacitySupport {
   // Attributes associated with the available capacity property of the supply.
   // This applies to the rating, load, capacity, and free properties of PowerCapacity.
   smartcore.types.FloatAttributes available_attributes = 2;
+}
+// DrawNotificationSupport describes the capabilities of devices implementing this trait.
+message DrawNotificationSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
   // If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value.
-  bool draw_notifications_total_size_estimated = 3;
+  bool draw_notifications_total_size_estimated = 2;
 }
 
 // PowerCapacity describes how much power is available to be supplied by a device.
@@ -172,6 +179,11 @@ message PullPowerCapacityResponse {
 }
 
 message DescribePowerCapacityRequest {
+  // The name of the device
+  string name = 1;
+}
+
+message DescribeDrawNotificationRequest {
   // The name of the device
   string name = 1;
 }

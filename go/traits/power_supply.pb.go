@@ -36,8 +36,6 @@ type PowerCapacitySupport struct {
 	// Attributes associated with the available capacity property of the supply.
 	// This applies to the rating, load, capacity, and free properties of PowerCapacity.
 	AvailableAttributes *types.FloatAttributes `protobuf:"bytes,2,opt,name=available_attributes,json=availableAttributes,proto3" json:"available_attributes,omitempty"`
-	// If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value.
-	DrawNotificationsTotalSizeEstimated bool `protobuf:"varint,3,opt,name=draw_notifications_total_size_estimated,json=drawNotificationsTotalSizeEstimated,proto3" json:"draw_notifications_total_size_estimated,omitempty"`
 }
 
 func (x *PowerCapacitySupport) Reset() {
@@ -86,7 +84,58 @@ func (x *PowerCapacitySupport) GetAvailableAttributes() *types.FloatAttributes {
 	return nil
 }
 
-func (x *PowerCapacitySupport) GetDrawNotificationsTotalSizeEstimated() bool {
+// DrawNotificationSupport describes the capabilities of devices implementing this trait.
+type DrawNotificationSupport struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// How a named device supports read/write/pull apis
+	ResourceSupport *types.ResourceSupport `protobuf:"bytes,1,opt,name=resource_support,json=resourceSupport,proto3" json:"resource_support,omitempty"`
+	// If true, the ListDrawNotificationsResponse.total_size property is an estimate, not an exact value.
+	DrawNotificationsTotalSizeEstimated bool `protobuf:"varint,2,opt,name=draw_notifications_total_size_estimated,json=drawNotificationsTotalSizeEstimated,proto3" json:"draw_notifications_total_size_estimated,omitempty"`
+}
+
+func (x *DrawNotificationSupport) Reset() {
+	*x = DrawNotificationSupport{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_power_supply_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DrawNotificationSupport) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DrawNotificationSupport) ProtoMessage() {}
+
+func (x *DrawNotificationSupport) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_power_supply_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DrawNotificationSupport.ProtoReflect.Descriptor instead.
+func (*DrawNotificationSupport) Descriptor() ([]byte, []int) {
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *DrawNotificationSupport) GetResourceSupport() *types.ResourceSupport {
+	if x != nil {
+		return x.ResourceSupport
+	}
+	return nil
+}
+
+func (x *DrawNotificationSupport) GetDrawNotificationsTotalSizeEstimated() bool {
 	if x != nil {
 		return x.DrawNotificationsTotalSizeEstimated
 	}
@@ -138,7 +187,7 @@ type PowerCapacity struct {
 func (x *PowerCapacity) Reset() {
 	*x = PowerCapacity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[1]
+		mi := &file_traits_power_supply_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -151,7 +200,7 @@ func (x *PowerCapacity) String() string {
 func (*PowerCapacity) ProtoMessage() {}
 
 func (x *PowerCapacity) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[1]
+	mi := &file_traits_power_supply_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -164,7 +213,7 @@ func (x *PowerCapacity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PowerCapacity.ProtoReflect.Descriptor instead.
 func (*PowerCapacity) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{1}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *PowerCapacity) GetRating() float32 {
@@ -258,7 +307,7 @@ type DrawNotification struct {
 func (x *DrawNotification) Reset() {
 	*x = DrawNotification{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[2]
+		mi := &file_traits_power_supply_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -271,7 +320,7 @@ func (x *DrawNotification) String() string {
 func (*DrawNotification) ProtoMessage() {}
 
 func (x *DrawNotification) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[2]
+	mi := &file_traits_power_supply_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -284,7 +333,7 @@ func (x *DrawNotification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DrawNotification.ProtoReflect.Descriptor instead.
 func (*DrawNotification) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{2}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DrawNotification) GetId() string {
@@ -336,7 +385,7 @@ type GetPowerCapacityRequest struct {
 func (x *GetPowerCapacityRequest) Reset() {
 	*x = GetPowerCapacityRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[3]
+		mi := &file_traits_power_supply_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -349,7 +398,7 @@ func (x *GetPowerCapacityRequest) String() string {
 func (*GetPowerCapacityRequest) ProtoMessage() {}
 
 func (x *GetPowerCapacityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[3]
+	mi := &file_traits_power_supply_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -362,7 +411,7 @@ func (x *GetPowerCapacityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPowerCapacityRequest.ProtoReflect.Descriptor instead.
 func (*GetPowerCapacityRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{3}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetPowerCapacityRequest) GetName() string {
@@ -393,7 +442,7 @@ type PullPowerCapacityRequest struct {
 func (x *PullPowerCapacityRequest) Reset() {
 	*x = PullPowerCapacityRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[4]
+		mi := &file_traits_power_supply_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -406,7 +455,7 @@ func (x *PullPowerCapacityRequest) String() string {
 func (*PullPowerCapacityRequest) ProtoMessage() {}
 
 func (x *PullPowerCapacityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[4]
+	mi := &file_traits_power_supply_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -419,7 +468,7 @@ func (x *PullPowerCapacityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullPowerCapacityRequest.ProtoReflect.Descriptor instead.
 func (*PullPowerCapacityRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{4}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PullPowerCapacityRequest) GetName() string {
@@ -448,7 +497,7 @@ type PullPowerCapacityResponse struct {
 func (x *PullPowerCapacityResponse) Reset() {
 	*x = PullPowerCapacityResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[5]
+		mi := &file_traits_power_supply_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -461,7 +510,7 @@ func (x *PullPowerCapacityResponse) String() string {
 func (*PullPowerCapacityResponse) ProtoMessage() {}
 
 func (x *PullPowerCapacityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[5]
+	mi := &file_traits_power_supply_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,7 +523,7 @@ func (x *PullPowerCapacityResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullPowerCapacityResponse.ProtoReflect.Descriptor instead.
 func (*PullPowerCapacityResponse) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{5}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PullPowerCapacityResponse) GetChanges() []*PullPowerCapacityResponse_Change {
@@ -496,7 +545,7 @@ type DescribePowerCapacityRequest struct {
 func (x *DescribePowerCapacityRequest) Reset() {
 	*x = DescribePowerCapacityRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[6]
+		mi := &file_traits_power_supply_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -509,7 +558,7 @@ func (x *DescribePowerCapacityRequest) String() string {
 func (*DescribePowerCapacityRequest) ProtoMessage() {}
 
 func (x *DescribePowerCapacityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[6]
+	mi := &file_traits_power_supply_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -522,10 +571,58 @@ func (x *DescribePowerCapacityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DescribePowerCapacityRequest.ProtoReflect.Descriptor instead.
 func (*DescribePowerCapacityRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{6}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DescribePowerCapacityRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type DescribeDrawNotificationRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The name of the device
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *DescribeDrawNotificationRequest) Reset() {
+	*x = DescribeDrawNotificationRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_traits_power_supply_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DescribeDrawNotificationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DescribeDrawNotificationRequest) ProtoMessage() {}
+
+func (x *DescribeDrawNotificationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_power_supply_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DescribeDrawNotificationRequest.ProtoReflect.Descriptor instead.
+func (*DescribeDrawNotificationRequest) Descriptor() ([]byte, []int) {
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DescribeDrawNotificationRequest) GetName() string {
 	if x != nil {
 		return x.Name
 	}
@@ -552,7 +649,7 @@ type ListDrawNotificationsRequest struct {
 func (x *ListDrawNotificationsRequest) Reset() {
 	*x = ListDrawNotificationsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[7]
+		mi := &file_traits_power_supply_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -565,7 +662,7 @@ func (x *ListDrawNotificationsRequest) String() string {
 func (*ListDrawNotificationsRequest) ProtoMessage() {}
 
 func (x *ListDrawNotificationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[7]
+	mi := &file_traits_power_supply_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +675,7 @@ func (x *ListDrawNotificationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDrawNotificationsRequest.ProtoReflect.Descriptor instead.
 func (*ListDrawNotificationsRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{7}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListDrawNotificationsRequest) GetName() string {
@@ -619,7 +716,7 @@ type ListDrawNotificationsResponse struct {
 func (x *ListDrawNotificationsResponse) Reset() {
 	*x = ListDrawNotificationsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[8]
+		mi := &file_traits_power_supply_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -632,7 +729,7 @@ func (x *ListDrawNotificationsResponse) String() string {
 func (*ListDrawNotificationsResponse) ProtoMessage() {}
 
 func (x *ListDrawNotificationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[8]
+	mi := &file_traits_power_supply_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -645,7 +742,7 @@ func (x *ListDrawNotificationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDrawNotificationsResponse.ProtoReflect.Descriptor instead.
 func (*ListDrawNotificationsResponse) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{8}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListDrawNotificationsResponse) GetDrawNotifications() []*DrawNotification {
@@ -682,7 +779,7 @@ type CreateDrawNotificationRequest struct {
 func (x *CreateDrawNotificationRequest) Reset() {
 	*x = CreateDrawNotificationRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[9]
+		mi := &file_traits_power_supply_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -695,7 +792,7 @@ func (x *CreateDrawNotificationRequest) String() string {
 func (*CreateDrawNotificationRequest) ProtoMessage() {}
 
 func (x *CreateDrawNotificationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[9]
+	mi := &file_traits_power_supply_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -708,7 +805,7 @@ func (x *CreateDrawNotificationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDrawNotificationRequest.ProtoReflect.Descriptor instead.
 func (*CreateDrawNotificationRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{9}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateDrawNotificationRequest) GetName() string {
@@ -738,7 +835,7 @@ type UpdateDrawNotificationRequest struct {
 func (x *UpdateDrawNotificationRequest) Reset() {
 	*x = UpdateDrawNotificationRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[10]
+		mi := &file_traits_power_supply_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -751,7 +848,7 @@ func (x *UpdateDrawNotificationRequest) String() string {
 func (*UpdateDrawNotificationRequest) ProtoMessage() {}
 
 func (x *UpdateDrawNotificationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[10]
+	mi := &file_traits_power_supply_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +861,7 @@ func (x *UpdateDrawNotificationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDrawNotificationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDrawNotificationRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{10}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateDrawNotificationRequest) GetName() string {
@@ -798,7 +895,7 @@ type DeleteDrawNotificationRequest struct {
 func (x *DeleteDrawNotificationRequest) Reset() {
 	*x = DeleteDrawNotificationRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[11]
+		mi := &file_traits_power_supply_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -811,7 +908,7 @@ func (x *DeleteDrawNotificationRequest) String() string {
 func (*DeleteDrawNotificationRequest) ProtoMessage() {}
 
 func (x *DeleteDrawNotificationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[11]
+	mi := &file_traits_power_supply_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -824,7 +921,7 @@ func (x *DeleteDrawNotificationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDrawNotificationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDrawNotificationRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{11}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteDrawNotificationRequest) GetName() string {
@@ -860,7 +957,7 @@ type PullDrawNotificationsRequest struct {
 func (x *PullDrawNotificationsRequest) Reset() {
 	*x = PullDrawNotificationsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[12]
+		mi := &file_traits_power_supply_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -873,7 +970,7 @@ func (x *PullDrawNotificationsRequest) String() string {
 func (*PullDrawNotificationsRequest) ProtoMessage() {}
 
 func (x *PullDrawNotificationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[12]
+	mi := &file_traits_power_supply_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -886,7 +983,7 @@ func (x *PullDrawNotificationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullDrawNotificationsRequest.ProtoReflect.Descriptor instead.
 func (*PullDrawNotificationsRequest) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{12}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *PullDrawNotificationsRequest) GetName() string {
@@ -908,7 +1005,7 @@ type PullDrawNotificationsResponse struct {
 func (x *PullDrawNotificationsResponse) Reset() {
 	*x = PullDrawNotificationsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[13]
+		mi := &file_traits_power_supply_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -921,7 +1018,7 @@ func (x *PullDrawNotificationsResponse) String() string {
 func (*PullDrawNotificationsResponse) ProtoMessage() {}
 
 func (x *PullDrawNotificationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[13]
+	mi := &file_traits_power_supply_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -934,7 +1031,7 @@ func (x *PullDrawNotificationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullDrawNotificationsResponse.ProtoReflect.Descriptor instead.
 func (*PullDrawNotificationsResponse) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{13}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *PullDrawNotificationsResponse) GetChanges() []*PullDrawNotificationsResponse_Change {
@@ -960,7 +1057,7 @@ type PullPowerCapacityResponse_Change struct {
 func (x *PullPowerCapacityResponse_Change) Reset() {
 	*x = PullPowerCapacityResponse_Change{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[14]
+		mi := &file_traits_power_supply_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -973,7 +1070,7 @@ func (x *PullPowerCapacityResponse_Change) String() string {
 func (*PullPowerCapacityResponse_Change) ProtoMessage() {}
 
 func (x *PullPowerCapacityResponse_Change) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[14]
+	mi := &file_traits_power_supply_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -986,7 +1083,7 @@ func (x *PullPowerCapacityResponse_Change) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullPowerCapacityResponse_Change.ProtoReflect.Descriptor instead.
 func (*PullPowerCapacityResponse_Change) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{5, 0}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{6, 0}
 }
 
 func (x *PullPowerCapacityResponse_Change) GetName() string {
@@ -1030,7 +1127,7 @@ type PullDrawNotificationsResponse_Change struct {
 func (x *PullDrawNotificationsResponse_Change) Reset() {
 	*x = PullDrawNotificationsResponse_Change{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_traits_power_supply_proto_msgTypes[15]
+		mi := &file_traits_power_supply_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1043,7 +1140,7 @@ func (x *PullDrawNotificationsResponse_Change) String() string {
 func (*PullDrawNotificationsResponse_Change) ProtoMessage() {}
 
 func (x *PullDrawNotificationsResponse_Change) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_power_supply_proto_msgTypes[15]
+	mi := &file_traits_power_supply_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1056,7 +1153,7 @@ func (x *PullDrawNotificationsResponse_Change) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use PullDrawNotificationsResponse_Change.ProtoReflect.Descriptor instead.
 func (*PullDrawNotificationsResponse_Change) Descriptor() ([]byte, []int) {
-	return file_traits_power_supply_proto_rawDescGZIP(), []int{13, 0}
+	return file_traits_power_supply_proto_rawDescGZIP(), []int{15, 0}
 }
 
 func (x *PullDrawNotificationsResponse_Change) GetName() string {
@@ -1111,7 +1208,7 @@ var file_traits_power_supply_proto_rawDesc = []byte{
 	0x79, 0x70, 0x65, 0x73, 0x2f, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x1a, 0x10, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x69, 0x6e, 0x66, 0x6f, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x1a, 0x12, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x6e, 0x75, 0x6d, 0x62, 0x65,
-	0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x8e, 0x02, 0x0a, 0x14, 0x50, 0x6f, 0x77, 0x65,
+	0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xb8, 0x01, 0x0a, 0x14, 0x50, 0x6f, 0x77, 0x65,
 	0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74,
 	0x12, 0x4b, 0x0a, 0x10, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x73, 0x75, 0x70,
 	0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61,
@@ -1123,70 +1220,80 @@ var file_traits_power_supply_proto_rawDesc = []byte{
 	0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x46, 0x6c,
 	0x6f, 0x61, 0x74, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x52, 0x13, 0x61,
 	0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74,
-	0x65, 0x73, 0x12, 0x54, 0x0a, 0x27, 0x64, 0x72, 0x61, 0x77, 0x5f, 0x6e, 0x6f, 0x74, 0x69, 0x66,
-	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x73,
-	0x69, 0x7a, 0x65, 0x5f, 0x65, 0x73, 0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x64, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x08, 0x52, 0x23, 0x64, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x54, 0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x45,
-	0x73, 0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x64, 0x22, 0xc1, 0x01, 0x0a, 0x0d, 0x50, 0x6f, 0x77,
-	0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x61,
-	0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x06, 0x72, 0x61, 0x74, 0x69,
-	0x6e, 0x67, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x6f, 0x6c, 0x74, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x02, 0x52, 0x07, 0x76, 0x6f, 0x6c, 0x74, 0x61, 0x67, 0x65, 0x12, 0x17, 0x0a, 0x04,
-	0x6c, 0x6f, 0x61, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x02, 0x48, 0x00, 0x52, 0x04, 0x6c, 0x6f,
-	0x61, 0x64, 0x88, 0x01, 0x01, 0x12, 0x1f, 0x0a, 0x08, 0x63, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74,
-	0x79, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x48, 0x01, 0x52, 0x08, 0x63, 0x61, 0x70, 0x61, 0x63,
-	0x69, 0x74, 0x79, 0x88, 0x01, 0x01, 0x12, 0x12, 0x0a, 0x04, 0x66, 0x72, 0x65, 0x65, 0x18, 0x05,
-	0x20, 0x01, 0x28, 0x02, 0x52, 0x04, 0x66, 0x72, 0x65, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x6f,
-	0x74, 0x69, 0x66, 0x69, 0x65, 0x64, 0x18, 0x06, 0x20, 0x01, 0x28, 0x02, 0x52, 0x08, 0x6e, 0x6f,
-	0x74, 0x69, 0x66, 0x69, 0x65, 0x64, 0x42, 0x07, 0x0a, 0x05, 0x5f, 0x6c, 0x6f, 0x61, 0x64, 0x42,
-	0x0b, 0x0a, 0x09, 0x5f, 0x63, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x22, 0xe1, 0x01, 0x0a,
-	0x10, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69,
-	0x64, 0x12, 0x19, 0x0a, 0x08, 0x6d, 0x61, 0x78, 0x5f, 0x64, 0x72, 0x61, 0x77, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x02, 0x52, 0x07, 0x6d, 0x61, 0x78, 0x44, 0x72, 0x61, 0x77, 0x12, 0x3e, 0x0a, 0x0d,
-	0x72, 0x61, 0x6d, 0x70, 0x5f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0c,
-	0x72, 0x61, 0x6d, 0x70, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x19, 0x0a, 0x08,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x72, 0x61, 0x77, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52, 0x07,
-	0x6d, 0x69, 0x6e, 0x44, 0x72, 0x61, 0x77, 0x12, 0x47, 0x0a, 0x11, 0x6e, 0x6f, 0x74, 0x69, 0x66,
-	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x10,
-	0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65,
-	0x22, 0x61, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61,
-	0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
-	0x32, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
-	0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x4d, 0x61, 0x73, 0x6b, 0x52, 0x06, 0x66, 0x69, 0x65,
-	0x6c, 0x64, 0x73, 0x22, 0x62, 0x0a, 0x18, 0x50, 0x75, 0x6c, 0x6c, 0x50, 0x6f, 0x77, 0x65, 0x72,
-	0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x12, 0x32, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x4d, 0x61, 0x73, 0x6b, 0x52,
-	0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x22, 0x95, 0x02, 0x0a, 0x19, 0x50, 0x75, 0x6c, 0x6c,
-	0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4c, 0x0a, 0x07, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x73,
-	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f,
-	0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x50, 0x75, 0x6c, 0x6c, 0x50, 0x6f,
-	0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x2e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x52, 0x07, 0x63, 0x68, 0x61, 0x6e,
-	0x67, 0x65, 0x73, 0x1a, 0xa9, 0x01, 0x0a, 0x06, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x12,
-	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x12, 0x3b, 0x0a, 0x0b, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x5f, 0x74, 0x69, 0x6d,
-	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
-	0x61, 0x6d, 0x70, 0x52, 0x0a, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x12,
-	0x4e, 0x0a, 0x12, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x63, 0x61, 0x70,
-	0x61, 0x63, 0x69, 0x74, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x6d,
-	0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x50,
-	0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x11, 0x61, 0x76,
-	0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x22,
-	0x32, 0x0a, 0x1c, 0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x50, 0x6f, 0x77, 0x65, 0x72,
-	0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x65, 0x73, 0x22, 0xbc, 0x01, 0x0a, 0x17, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x4b,
+	0x0a, 0x10, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x73, 0x75, 0x70, 0x70, 0x6f,
+	0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74,
+	0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x75,
+	0x72, 0x63, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x0f, 0x72, 0x65, 0x73, 0x6f,
+	0x75, 0x72, 0x63, 0x65, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x54, 0x0a, 0x27, 0x64,
+	0x72, 0x61, 0x77, 0x5f, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x5f, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x5f, 0x65, 0x73, 0x74,
+	0x69, 0x6d, 0x61, 0x74, 0x65, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x23, 0x64, 0x72,
+	0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x54,
+	0x6f, 0x74, 0x61, 0x6c, 0x53, 0x69, 0x7a, 0x65, 0x45, 0x73, 0x74, 0x69, 0x6d, 0x61, 0x74, 0x65,
+	0x64, 0x22, 0xc1, 0x01, 0x0a, 0x0d, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63,
+	0x69, 0x74, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x02, 0x52, 0x06, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x12, 0x18, 0x0a, 0x07, 0x76,
+	0x6f, 0x6c, 0x74, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x07, 0x76, 0x6f,
+	0x6c, 0x74, 0x61, 0x67, 0x65, 0x12, 0x17, 0x0a, 0x04, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x02, 0x48, 0x00, 0x52, 0x04, 0x6c, 0x6f, 0x61, 0x64, 0x88, 0x01, 0x01, 0x12, 0x1f,
+	0x0a, 0x08, 0x63, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02,
+	0x48, 0x01, 0x52, 0x08, 0x63, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x88, 0x01, 0x01, 0x12,
+	0x12, 0x0a, 0x04, 0x66, 0x72, 0x65, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x02, 0x52, 0x04, 0x66,
+	0x72, 0x65, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x65, 0x64, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x02, 0x52, 0x08, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x65, 0x64, 0x42,
+	0x07, 0x0a, 0x05, 0x5f, 0x6c, 0x6f, 0x61, 0x64, 0x42, 0x0b, 0x0a, 0x09, 0x5f, 0x63, 0x61, 0x70,
+	0x61, 0x63, 0x69, 0x74, 0x79, 0x22, 0xe1, 0x01, 0x0a, 0x10, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f,
+	0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x6d, 0x61,
+	0x78, 0x5f, 0x64, 0x72, 0x61, 0x77, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x07, 0x6d, 0x61,
+	0x78, 0x44, 0x72, 0x61, 0x77, 0x12, 0x3e, 0x0a, 0x0d, 0x72, 0x61, 0x6d, 0x70, 0x5f, 0x64, 0x75,
+	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44,
+	0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0c, 0x72, 0x61, 0x6d, 0x70, 0x44, 0x75, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x19, 0x0a, 0x08, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x72, 0x61,
+	0x77, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52, 0x07, 0x6d, 0x69, 0x6e, 0x44, 0x72, 0x61, 0x77,
+	0x12, 0x47, 0x0a, 0x11, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x10, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x61, 0x0a, 0x17, 0x47, 0x65, 0x74,
+	0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x32, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c,
+	0x64, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64,
+	0x4d, 0x61, 0x73, 0x6b, 0x52, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x22, 0x62, 0x0a, 0x18,
+	0x50, 0x75, 0x6c, 0x6c, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74,
+	0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x32, 0x0a, 0x06,
+	0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46,
+	0x69, 0x65, 0x6c, 0x64, 0x4d, 0x61, 0x73, 0x6b, 0x52, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73,
+	0x22, 0x95, 0x02, 0x0a, 0x19, 0x50, 0x75, 0x6c, 0x6c, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61,
+	0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4c,
+	0x0a, 0x07, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x32, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69,
+	0x74, 0x73, 0x2e, 0x50, 0x75, 0x6c, 0x6c, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61,
+	0x63, 0x69, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x43, 0x68, 0x61,
+	0x6e, 0x67, 0x65, 0x52, 0x07, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x73, 0x1a, 0xa9, 0x01, 0x0a,
+	0x06, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x3b, 0x0a, 0x0b, 0x63,
+	0x68, 0x61, 0x6e, 0x67, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0a, 0x63, 0x68,
+	0x61, 0x6e, 0x67, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x4e, 0x0a, 0x12, 0x61, 0x76, 0x61, 0x69,
+	0x6c, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x63, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65,
+	0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70,
+	0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x11, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65,
+	0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x22, 0x32, 0x0a, 0x1c, 0x44, 0x65, 0x73, 0x63,
+	0x72, 0x69, 0x62, 0x65, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74,
+	0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x35, 0x0a, 0x1f,
+	0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69,
+	0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
 	0x61, 0x6d, 0x65, 0x22, 0x6e, 0x0a, 0x1c, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x72, 0x61, 0x77, 0x4e,
 	0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75,
@@ -1307,7 +1414,7 @@ var file_traits_power_supply_proto_rawDesc = []byte{
 	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72,
 	0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x50, 0x75, 0x6c, 0x6c, 0x44, 0x72, 0x61,
 	0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x32, 0x82, 0x01, 0x0a, 0x0f, 0x50, 0x6f, 0x77,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x32, 0xfc, 0x01, 0x0a, 0x0f, 0x50, 0x6f, 0x77,
 	0x65, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x6f, 0x0a, 0x15,
 	0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70,
 	0x61, 0x63, 0x69, 0x74, 0x79, 0x12, 0x2e, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72,
@@ -1315,16 +1422,23 @@ var file_traits_power_supply_proto_rawDesc = []byte{
 	0x65, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61, 0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x52, 0x65,
 	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72,
 	0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x43, 0x61,
-	0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x42, 0x7b, 0x0a,
-	0x14, 0x64, 0x65, 0x76, 0x2e, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74,
-	0x72, 0x61, 0x69, 0x74, 0x73, 0x42, 0x10, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x53, 0x75, 0x70, 0x70,
-	0x6c, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6d, 0x61, 0x72, 0x74, 0x2d, 0x63, 0x6f, 0x72, 0x65,
-	0x2d, 0x6f, 0x73, 0x2f, 0x73, 0x63, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x72,
-	0x61, 0x69, 0x74, 0x73, 0xaa, 0x02, 0x10, 0x53, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65,
-	0x2e, 0x54, 0x72, 0x61, 0x69, 0x74, 0x73, 0xca, 0x02, 0x10, 0x53, 0x6d, 0x61, 0x72, 0x74, 0x63,
-	0x6f, 0x72, 0x65, 0x5c, 0x54, 0x72, 0x61, 0x69, 0x74, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x70, 0x61, 0x63, 0x69, 0x74, 0x79, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x78, 0x0a,
+	0x18, 0x44, 0x65, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74,
+	0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x31, 0x2e, 0x73, 0x6d, 0x61, 0x72,
+	0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e, 0x44, 0x65, 0x73,
+	0x63, 0x72, 0x69, 0x62, 0x65, 0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x73,
+	0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x2e,
+	0x44, 0x72, 0x61, 0x77, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x42, 0x7b, 0x0a, 0x14, 0x64, 0x65, 0x76, 0x2e, 0x73,
+	0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x42,
+	0x10, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x50, 0x72, 0x6f, 0x74,
+	0x6f, 0x50, 0x01, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x73, 0x6d, 0x61, 0x72, 0x74, 0x2d, 0x63, 0x6f, 0x72, 0x65, 0x2d, 0x6f, 0x73, 0x2f, 0x73, 0x63,
+	0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0xaa, 0x02,
+	0x10, 0x53, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x54, 0x72, 0x61, 0x69, 0x74,
+	0x73, 0xca, 0x02, 0x10, 0x53, 0x6d, 0x61, 0x72, 0x74, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x54, 0x72,
+	0x61, 0x69, 0x74, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1339,71 +1453,76 @@ func file_traits_power_supply_proto_rawDescGZIP() []byte {
 	return file_traits_power_supply_proto_rawDescData
 }
 
-var file_traits_power_supply_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_traits_power_supply_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_traits_power_supply_proto_goTypes = []interface{}{
 	(*PowerCapacitySupport)(nil),                 // 0: smartcore.traits.PowerCapacitySupport
-	(*PowerCapacity)(nil),                        // 1: smartcore.traits.PowerCapacity
-	(*DrawNotification)(nil),                     // 2: smartcore.traits.DrawNotification
-	(*GetPowerCapacityRequest)(nil),              // 3: smartcore.traits.GetPowerCapacityRequest
-	(*PullPowerCapacityRequest)(nil),             // 4: smartcore.traits.PullPowerCapacityRequest
-	(*PullPowerCapacityResponse)(nil),            // 5: smartcore.traits.PullPowerCapacityResponse
-	(*DescribePowerCapacityRequest)(nil),         // 6: smartcore.traits.DescribePowerCapacityRequest
-	(*ListDrawNotificationsRequest)(nil),         // 7: smartcore.traits.ListDrawNotificationsRequest
-	(*ListDrawNotificationsResponse)(nil),        // 8: smartcore.traits.ListDrawNotificationsResponse
-	(*CreateDrawNotificationRequest)(nil),        // 9: smartcore.traits.CreateDrawNotificationRequest
-	(*UpdateDrawNotificationRequest)(nil),        // 10: smartcore.traits.UpdateDrawNotificationRequest
-	(*DeleteDrawNotificationRequest)(nil),        // 11: smartcore.traits.DeleteDrawNotificationRequest
-	(*PullDrawNotificationsRequest)(nil),         // 12: smartcore.traits.PullDrawNotificationsRequest
-	(*PullDrawNotificationsResponse)(nil),        // 13: smartcore.traits.PullDrawNotificationsResponse
-	(*PullPowerCapacityResponse_Change)(nil),     // 14: smartcore.traits.PullPowerCapacityResponse.Change
-	(*PullDrawNotificationsResponse_Change)(nil), // 15: smartcore.traits.PullDrawNotificationsResponse.Change
-	(*types.ResourceSupport)(nil),                // 16: smartcore.types.ResourceSupport
-	(*types.FloatAttributes)(nil),                // 17: smartcore.types.FloatAttributes
-	(*durationpb.Duration)(nil),                  // 18: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),                // 19: google.protobuf.Timestamp
-	(*fieldmaskpb.FieldMask)(nil),                // 20: google.protobuf.FieldMask
-	(types.ChangeType)(0),                        // 21: smartcore.types.ChangeType
-	(*emptypb.Empty)(nil),                        // 22: google.protobuf.Empty
+	(*DrawNotificationSupport)(nil),              // 1: smartcore.traits.DrawNotificationSupport
+	(*PowerCapacity)(nil),                        // 2: smartcore.traits.PowerCapacity
+	(*DrawNotification)(nil),                     // 3: smartcore.traits.DrawNotification
+	(*GetPowerCapacityRequest)(nil),              // 4: smartcore.traits.GetPowerCapacityRequest
+	(*PullPowerCapacityRequest)(nil),             // 5: smartcore.traits.PullPowerCapacityRequest
+	(*PullPowerCapacityResponse)(nil),            // 6: smartcore.traits.PullPowerCapacityResponse
+	(*DescribePowerCapacityRequest)(nil),         // 7: smartcore.traits.DescribePowerCapacityRequest
+	(*DescribeDrawNotificationRequest)(nil),      // 8: smartcore.traits.DescribeDrawNotificationRequest
+	(*ListDrawNotificationsRequest)(nil),         // 9: smartcore.traits.ListDrawNotificationsRequest
+	(*ListDrawNotificationsResponse)(nil),        // 10: smartcore.traits.ListDrawNotificationsResponse
+	(*CreateDrawNotificationRequest)(nil),        // 11: smartcore.traits.CreateDrawNotificationRequest
+	(*UpdateDrawNotificationRequest)(nil),        // 12: smartcore.traits.UpdateDrawNotificationRequest
+	(*DeleteDrawNotificationRequest)(nil),        // 13: smartcore.traits.DeleteDrawNotificationRequest
+	(*PullDrawNotificationsRequest)(nil),         // 14: smartcore.traits.PullDrawNotificationsRequest
+	(*PullDrawNotificationsResponse)(nil),        // 15: smartcore.traits.PullDrawNotificationsResponse
+	(*PullPowerCapacityResponse_Change)(nil),     // 16: smartcore.traits.PullPowerCapacityResponse.Change
+	(*PullDrawNotificationsResponse_Change)(nil), // 17: smartcore.traits.PullDrawNotificationsResponse.Change
+	(*types.ResourceSupport)(nil),                // 18: smartcore.types.ResourceSupport
+	(*types.FloatAttributes)(nil),                // 19: smartcore.types.FloatAttributes
+	(*durationpb.Duration)(nil),                  // 20: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),                // 21: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                // 22: google.protobuf.FieldMask
+	(types.ChangeType)(0),                        // 23: smartcore.types.ChangeType
+	(*emptypb.Empty)(nil),                        // 24: google.protobuf.Empty
 }
 var file_traits_power_supply_proto_depIdxs = []int32{
-	16, // 0: smartcore.traits.PowerCapacitySupport.resource_support:type_name -> smartcore.types.ResourceSupport
-	17, // 1: smartcore.traits.PowerCapacitySupport.available_attributes:type_name -> smartcore.types.FloatAttributes
-	18, // 2: smartcore.traits.DrawNotification.ramp_duration:type_name -> google.protobuf.Duration
-	19, // 3: smartcore.traits.DrawNotification.notification_time:type_name -> google.protobuf.Timestamp
-	20, // 4: smartcore.traits.GetPowerCapacityRequest.fields:type_name -> google.protobuf.FieldMask
-	20, // 5: smartcore.traits.PullPowerCapacityRequest.fields:type_name -> google.protobuf.FieldMask
-	14, // 6: smartcore.traits.PullPowerCapacityResponse.changes:type_name -> smartcore.traits.PullPowerCapacityResponse.Change
-	2,  // 7: smartcore.traits.ListDrawNotificationsResponse.draw_notifications:type_name -> smartcore.traits.DrawNotification
-	2,  // 8: smartcore.traits.CreateDrawNotificationRequest.draw_notification:type_name -> smartcore.traits.DrawNotification
-	2,  // 9: smartcore.traits.UpdateDrawNotificationRequest.draw_notification:type_name -> smartcore.traits.DrawNotification
-	15, // 10: smartcore.traits.PullDrawNotificationsResponse.changes:type_name -> smartcore.traits.PullDrawNotificationsResponse.Change
-	19, // 11: smartcore.traits.PullPowerCapacityResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	1,  // 12: smartcore.traits.PullPowerCapacityResponse.Change.available_capacity:type_name -> smartcore.traits.PowerCapacity
-	21, // 13: smartcore.traits.PullDrawNotificationsResponse.Change.type:type_name -> smartcore.types.ChangeType
-	2,  // 14: smartcore.traits.PullDrawNotificationsResponse.Change.new_value:type_name -> smartcore.traits.DrawNotification
-	2,  // 15: smartcore.traits.PullDrawNotificationsResponse.Change.old_value:type_name -> smartcore.traits.DrawNotification
-	19, // 16: smartcore.traits.PullDrawNotificationsResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	3,  // 17: smartcore.traits.PowerSupplyApi.GetPowerCapacity:input_type -> smartcore.traits.GetPowerCapacityRequest
-	4,  // 18: smartcore.traits.PowerSupplyApi.PullPowerCapacity:input_type -> smartcore.traits.PullPowerCapacityRequest
-	7,  // 19: smartcore.traits.PowerSupplyApi.ListDrawNotifications:input_type -> smartcore.traits.ListDrawNotificationsRequest
-	9,  // 20: smartcore.traits.PowerSupplyApi.CreateDrawNotification:input_type -> smartcore.traits.CreateDrawNotificationRequest
-	10, // 21: smartcore.traits.PowerSupplyApi.UpdateDrawNotification:input_type -> smartcore.traits.UpdateDrawNotificationRequest
-	11, // 22: smartcore.traits.PowerSupplyApi.DeleteDrawNotification:input_type -> smartcore.traits.DeleteDrawNotificationRequest
-	12, // 23: smartcore.traits.PowerSupplyApi.PullDrawNotifications:input_type -> smartcore.traits.PullDrawNotificationsRequest
-	6,  // 24: smartcore.traits.PowerSupplyInfo.DescribePowerCapacity:input_type -> smartcore.traits.DescribePowerCapacityRequest
-	1,  // 25: smartcore.traits.PowerSupplyApi.GetPowerCapacity:output_type -> smartcore.traits.PowerCapacity
-	5,  // 26: smartcore.traits.PowerSupplyApi.PullPowerCapacity:output_type -> smartcore.traits.PullPowerCapacityResponse
-	8,  // 27: smartcore.traits.PowerSupplyApi.ListDrawNotifications:output_type -> smartcore.traits.ListDrawNotificationsResponse
-	2,  // 28: smartcore.traits.PowerSupplyApi.CreateDrawNotification:output_type -> smartcore.traits.DrawNotification
-	2,  // 29: smartcore.traits.PowerSupplyApi.UpdateDrawNotification:output_type -> smartcore.traits.DrawNotification
-	22, // 30: smartcore.traits.PowerSupplyApi.DeleteDrawNotification:output_type -> google.protobuf.Empty
-	13, // 31: smartcore.traits.PowerSupplyApi.PullDrawNotifications:output_type -> smartcore.traits.PullDrawNotificationsResponse
-	0,  // 32: smartcore.traits.PowerSupplyInfo.DescribePowerCapacity:output_type -> smartcore.traits.PowerCapacitySupport
-	25, // [25:33] is the sub-list for method output_type
-	17, // [17:25] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	18, // 0: smartcore.traits.PowerCapacitySupport.resource_support:type_name -> smartcore.types.ResourceSupport
+	19, // 1: smartcore.traits.PowerCapacitySupport.available_attributes:type_name -> smartcore.types.FloatAttributes
+	18, // 2: smartcore.traits.DrawNotificationSupport.resource_support:type_name -> smartcore.types.ResourceSupport
+	20, // 3: smartcore.traits.DrawNotification.ramp_duration:type_name -> google.protobuf.Duration
+	21, // 4: smartcore.traits.DrawNotification.notification_time:type_name -> google.protobuf.Timestamp
+	22, // 5: smartcore.traits.GetPowerCapacityRequest.fields:type_name -> google.protobuf.FieldMask
+	22, // 6: smartcore.traits.PullPowerCapacityRequest.fields:type_name -> google.protobuf.FieldMask
+	16, // 7: smartcore.traits.PullPowerCapacityResponse.changes:type_name -> smartcore.traits.PullPowerCapacityResponse.Change
+	3,  // 8: smartcore.traits.ListDrawNotificationsResponse.draw_notifications:type_name -> smartcore.traits.DrawNotification
+	3,  // 9: smartcore.traits.CreateDrawNotificationRequest.draw_notification:type_name -> smartcore.traits.DrawNotification
+	3,  // 10: smartcore.traits.UpdateDrawNotificationRequest.draw_notification:type_name -> smartcore.traits.DrawNotification
+	17, // 11: smartcore.traits.PullDrawNotificationsResponse.changes:type_name -> smartcore.traits.PullDrawNotificationsResponse.Change
+	21, // 12: smartcore.traits.PullPowerCapacityResponse.Change.change_time:type_name -> google.protobuf.Timestamp
+	2,  // 13: smartcore.traits.PullPowerCapacityResponse.Change.available_capacity:type_name -> smartcore.traits.PowerCapacity
+	23, // 14: smartcore.traits.PullDrawNotificationsResponse.Change.type:type_name -> smartcore.types.ChangeType
+	3,  // 15: smartcore.traits.PullDrawNotificationsResponse.Change.new_value:type_name -> smartcore.traits.DrawNotification
+	3,  // 16: smartcore.traits.PullDrawNotificationsResponse.Change.old_value:type_name -> smartcore.traits.DrawNotification
+	21, // 17: smartcore.traits.PullDrawNotificationsResponse.Change.change_time:type_name -> google.protobuf.Timestamp
+	4,  // 18: smartcore.traits.PowerSupplyApi.GetPowerCapacity:input_type -> smartcore.traits.GetPowerCapacityRequest
+	5,  // 19: smartcore.traits.PowerSupplyApi.PullPowerCapacity:input_type -> smartcore.traits.PullPowerCapacityRequest
+	9,  // 20: smartcore.traits.PowerSupplyApi.ListDrawNotifications:input_type -> smartcore.traits.ListDrawNotificationsRequest
+	11, // 21: smartcore.traits.PowerSupplyApi.CreateDrawNotification:input_type -> smartcore.traits.CreateDrawNotificationRequest
+	12, // 22: smartcore.traits.PowerSupplyApi.UpdateDrawNotification:input_type -> smartcore.traits.UpdateDrawNotificationRequest
+	13, // 23: smartcore.traits.PowerSupplyApi.DeleteDrawNotification:input_type -> smartcore.traits.DeleteDrawNotificationRequest
+	14, // 24: smartcore.traits.PowerSupplyApi.PullDrawNotifications:input_type -> smartcore.traits.PullDrawNotificationsRequest
+	7,  // 25: smartcore.traits.PowerSupplyInfo.DescribePowerCapacity:input_type -> smartcore.traits.DescribePowerCapacityRequest
+	8,  // 26: smartcore.traits.PowerSupplyInfo.DescribeDrawNotification:input_type -> smartcore.traits.DescribeDrawNotificationRequest
+	2,  // 27: smartcore.traits.PowerSupplyApi.GetPowerCapacity:output_type -> smartcore.traits.PowerCapacity
+	6,  // 28: smartcore.traits.PowerSupplyApi.PullPowerCapacity:output_type -> smartcore.traits.PullPowerCapacityResponse
+	10, // 29: smartcore.traits.PowerSupplyApi.ListDrawNotifications:output_type -> smartcore.traits.ListDrawNotificationsResponse
+	3,  // 30: smartcore.traits.PowerSupplyApi.CreateDrawNotification:output_type -> smartcore.traits.DrawNotification
+	3,  // 31: smartcore.traits.PowerSupplyApi.UpdateDrawNotification:output_type -> smartcore.traits.DrawNotification
+	24, // 32: smartcore.traits.PowerSupplyApi.DeleteDrawNotification:output_type -> google.protobuf.Empty
+	15, // 33: smartcore.traits.PowerSupplyApi.PullDrawNotifications:output_type -> smartcore.traits.PullDrawNotificationsResponse
+	0,  // 34: smartcore.traits.PowerSupplyInfo.DescribePowerCapacity:output_type -> smartcore.traits.PowerCapacitySupport
+	1,  // 35: smartcore.traits.PowerSupplyInfo.DescribeDrawNotification:output_type -> smartcore.traits.DrawNotificationSupport
+	27, // [27:36] is the sub-list for method output_type
+	18, // [18:27] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_traits_power_supply_proto_init() }
@@ -1425,7 +1544,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PowerCapacity); i {
+			switch v := v.(*DrawNotificationSupport); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1437,7 +1556,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DrawNotification); i {
+			switch v := v.(*PowerCapacity); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1449,7 +1568,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPowerCapacityRequest); i {
+			switch v := v.(*DrawNotification); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1461,7 +1580,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullPowerCapacityRequest); i {
+			switch v := v.(*GetPowerCapacityRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1473,7 +1592,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullPowerCapacityResponse); i {
+			switch v := v.(*PullPowerCapacityRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1485,7 +1604,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DescribePowerCapacityRequest); i {
+			switch v := v.(*PullPowerCapacityResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1497,7 +1616,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListDrawNotificationsRequest); i {
+			switch v := v.(*DescribePowerCapacityRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1509,7 +1628,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListDrawNotificationsResponse); i {
+			switch v := v.(*DescribeDrawNotificationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1521,7 +1640,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateDrawNotificationRequest); i {
+			switch v := v.(*ListDrawNotificationsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1533,7 +1652,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateDrawNotificationRequest); i {
+			switch v := v.(*ListDrawNotificationsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1545,7 +1664,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteDrawNotificationRequest); i {
+			switch v := v.(*CreateDrawNotificationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1557,7 +1676,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullDrawNotificationsRequest); i {
+			switch v := v.(*UpdateDrawNotificationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1569,7 +1688,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullDrawNotificationsResponse); i {
+			switch v := v.(*DeleteDrawNotificationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1581,7 +1700,7 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PullPowerCapacityResponse_Change); i {
+			switch v := v.(*PullDrawNotificationsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1593,6 +1712,30 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 		file_traits_power_supply_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PullDrawNotificationsResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_power_supply_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PullPowerCapacityResponse_Change); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_traits_power_supply_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PullDrawNotificationsResponse_Change); i {
 			case 0:
 				return &v.state
@@ -1605,14 +1748,14 @@ func file_traits_power_supply_proto_init() {
 			}
 		}
 	}
-	file_traits_power_supply_proto_msgTypes[1].OneofWrappers = []interface{}{}
+	file_traits_power_supply_proto_msgTypes[2].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_traits_power_supply_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

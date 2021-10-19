@@ -20,9 +20,6 @@ export class PowerCapacitySupport extends jspb.Message {
   hasAvailableAttributes(): boolean;
   clearAvailableAttributes(): PowerCapacitySupport;
 
-  getDrawNotificationsTotalSizeEstimated(): boolean;
-  setDrawNotificationsTotalSizeEstimated(value: boolean): PowerCapacitySupport;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PowerCapacitySupport.AsObject;
   static toObject(includeInstance: boolean, msg: PowerCapacitySupport): PowerCapacitySupport.AsObject;
@@ -35,6 +32,29 @@ export namespace PowerCapacitySupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     availableAttributes?: types_number_pb.FloatAttributes.AsObject,
+  }
+}
+
+export class DrawNotificationSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): DrawNotificationSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): DrawNotificationSupport;
+
+  getDrawNotificationsTotalSizeEstimated(): boolean;
+  setDrawNotificationsTotalSizeEstimated(value: boolean): DrawNotificationSupport;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DrawNotificationSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: DrawNotificationSupport): DrawNotificationSupport.AsObject;
+  static serializeBinaryToWriter(message: DrawNotificationSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DrawNotificationSupport;
+  static deserializeBinaryFromReader(message: DrawNotificationSupport, reader: jspb.BinaryReader): DrawNotificationSupport;
+}
+
+export namespace DrawNotificationSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     drawNotificationsTotalSizeEstimated: boolean,
   }
 }
@@ -241,6 +261,24 @@ export class DescribePowerCapacityRequest extends jspb.Message {
 }
 
 export namespace DescribePowerCapacityRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
+export class DescribeDrawNotificationRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeDrawNotificationRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeDrawNotificationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeDrawNotificationRequest): DescribeDrawNotificationRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeDrawNotificationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeDrawNotificationRequest;
+  static deserializeBinaryFromReader(message: DescribeDrawNotificationRequest, reader: jspb.BinaryReader): DescribeDrawNotificationRequest;
+}
+
+export namespace DescribeDrawNotificationRequest {
   export type AsObject = {
     name: string,
   }
