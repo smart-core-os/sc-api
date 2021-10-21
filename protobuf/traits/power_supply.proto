@@ -111,6 +111,10 @@ message PowerCapacity {
 // Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting
 // their draw at the same time.
 //
+// A draw notification is free to be removed at any time by the caller or the device.
+// It is recommended that the notification is removed once all durations have elapsed in order to manage device
+// resources.
+//
 // Min Draw Example
 //
 // Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.
@@ -133,8 +137,8 @@ message DrawNotification {
   // If absent or outside the devices supported range during write, the device is free to choose a value.
   // The chosen value will be returned in responses to the write.
   //
-  // The value should be considered relative to the notification_time field.
-  // Writing to this field will reset notification_time to the current time.
+  // On output the value will be relative to notification time.
+  // On input the value should be relative to the current time.
   google.protobuf.Duration ramp_duration = 3;
   // The minimum draw that the caller will accept.
   // A zero value indicates that the caller only draws using max_draw and no less.
@@ -144,10 +148,18 @@ message DrawNotification {
   // See message docs for more details.
   float min_draw = 4;
 
-  // The time for which ramp_duration is relative to.
+  // The time for which durations are relative to.
   // Output only.
-  // Will be updated to the current time each time the ramp_duration is written to.
+  // May change if durations are written to.
   google.protobuf.Timestamp notification_time = 5;
+
+  // If true, any checks used by the device to limit the addition of this notification will be loosened.
+  // As an example, a device with 10 unallocated amps should still allow and record a notification of 30 A if force is
+  // true.
+  //
+  // Warning, forcing the acceptance of a notification will likely cause future notifications to fail, even if more
+  // free capacity becomes available as this notification has pre-reserved it.
+  bool force = 6;
 }
 
 message GetPowerCapacityRequest {

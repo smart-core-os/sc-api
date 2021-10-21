@@ -1160,7 +1160,8 @@ proto.smartcore.traits.DrawNotification.toObject = function(includeInstance, msg
     maxDraw: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
     rampDuration: (f = msg.getRampDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     minDraw: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    notificationTime: (f = msg.getNotificationTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    notificationTime: (f = msg.getNotificationTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    force: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -1218,6 +1219,10 @@ proto.smartcore.traits.DrawNotification.deserializeBinaryFromReader = function(m
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setNotificationTime(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setForce(value);
       break;
     default:
       reader.skipField();
@@ -1283,6 +1288,13 @@ proto.smartcore.traits.DrawNotification.serializeBinaryToWriter = function(messa
       5,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getForce();
+  if (f) {
+    writer.writeBool(
+      6,
+      f
     );
   }
 };
@@ -1413,6 +1425,24 @@ proto.smartcore.traits.DrawNotification.prototype.clearNotificationTime = functi
  */
 proto.smartcore.traits.DrawNotification.prototype.hasNotificationTime = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional bool force = 6;
+ * @return {boolean}
+ */
+proto.smartcore.traits.DrawNotification.prototype.getForce = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.DrawNotification} returns this
+ */
+proto.smartcore.traits.DrawNotification.prototype.setForce = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 

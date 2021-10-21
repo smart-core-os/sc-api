@@ -395,7 +395,7 @@ be taken. </p></td>
         
       
         <h3 id="smartcore.traits.DrawNotification">DrawNotification</h3>
-        <p>DrawNotification represents a consuming device informing a supply device that it intends to draw current.</p><p>Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting</p><p>their draw at the same time.</p><p>Min Draw Example</p><p>Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.</p><p>The device may decide to respond as if the notification was for exactly 30A,</p><p>as 30A is within the [10,50] amp range specified in the request.</p><p>If no min_draw was specified the device may have responded with an error indicating that</p><p>the value of max_draw:50A isn't available.</p>
+        <p>DrawNotification represents a consuming device informing a supply device that it intends to draw current.</p><p>Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting</p><p>their draw at the same time.</p><p>A draw notification is free to be removed at any time by the caller or the device.</p><p>It is recommended that the notification is removed once all durations have elapsed in order to manage device</p><p>resources.</p><p>Min Draw Example</p><p>Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.</p><p>The device may decide to respond as if the notification was for exactly 30A,</p><p>as 30A is within the [10,50] amp range specified in the request.</p><p>If no min_draw was specified the device may have responded with an error indicating that</p><p>the value of max_draw:50A isn't available.</p>
 
         
           <table class="field-table">
@@ -431,8 +431,8 @@ the caller is actually drawing the current so it is not available anymore.
 If absent or outside the devices supported range during write, the device is free to choose a value.
 The chosen value will be returned in responses to the write.
 
-The value should be considered relative to the notification_time field.
-Writing to this field will reset notification_time to the current time. </p></td>
+On output the value will be relative to notification time.
+On input the value should be relative to the current time. </p></td>
                 </tr>
               
                 <tr>
@@ -451,9 +451,21 @@ See message docs for more details. </p></td>
                   <td>notification_time</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>The time for which ramp_duration is relative to.
+                  <td><p>The time for which durations are relative to.
 Output only.
-Will be updated to the current time each time the ramp_duration is written to. </p></td>
+May change if durations are written to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>force</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, any checks used by the device to limit the addition of this notification will be loosened.
+As an example, a device with 10 unallocated amps should still allow and record a notification of 30 A if force is
+true.
+
+Warning, forcing the acceptance of a notification will likely cause future notifications to fail, even if more
+free capacity becomes available as this notification has pre-reserved it. </p></td>
                 </tr>
               
             </tbody>

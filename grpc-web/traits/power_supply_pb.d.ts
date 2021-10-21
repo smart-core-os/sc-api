@@ -131,6 +131,9 @@ export class DrawNotification extends jspb.Message {
   hasNotificationTime(): boolean;
   clearNotificationTime(): DrawNotification;
 
+  getForce(): boolean;
+  setForce(value: boolean): DrawNotification;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DrawNotification.AsObject;
   static toObject(includeInstance: boolean, msg: DrawNotification): DrawNotification.AsObject;
@@ -146,6 +149,7 @@ export namespace DrawNotification {
     rampDuration?: google_protobuf_duration_pb.Duration.AsObject,
     minDraw: number,
     notificationTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    force: boolean,
   }
 }
 
