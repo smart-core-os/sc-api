@@ -29,13 +29,14 @@
 Responsibilities, goals, conflicts for each of these
 
 1. Charger/vehicle/high power demand thing
-   1. responsible for actual power draw levels
-   2. should contribute information to the PMS to help with decision making
-   3. responsible for safety of this system, circuit, vehicle, occupant
+   1. goal: see [vehicle requirements](#vehicle-requirements)
+   2. responsible for actual power draw levels
+   3. should contribute information to the PMS to help with decision making
+   4. responsible for safety of this system, circuit, vehicle, occupant
 2. Power supply sensor
-   1. responsible for reporting accurate (for some definition) sensor readings
+   1. responsible for reporting accurate (for some definition) and timely sensor readings
 3. Power management system (brain)
-   1. goal is to make sure all devices have the power they need while maintaining operational limits
+   1. goal: make sure all devices have the power they need while maintaining operational limits
    2. responsible for what the optimal power profile should be
    3. responsible for communicating with devices what is wanted from it wrt power profiles
    4. responsible for collecting power predictions from devices (either via pull or push)
