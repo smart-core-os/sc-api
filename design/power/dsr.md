@@ -184,3 +184,41 @@ Real power vs apparent power
    1. Should allow more devices to implement it
    2. Shouldn't be focused on supply or demand, just on values
 
+
+### End result first
+
+The end result is that the BMS delays turning on the coolers, the lights switch to 75%, etc.
+This reduces power used by these systems making it available for use by a higher priority consumer.
+Eventually the high priority consumer goes away or the BMS can't delay the coolers anymore and things return to normal.
+
+How does the BMS know to reduce power, and by how much?
+Does the high priority consumer need to know how much will be available before it is?
+
+#### Option 1: everybody reacts
+
+The high priority consumer just starts to use power, maybe it ramps up, maybe it takes everything available when it becomes available.
+The other devices (BMS, etc) notice the high load and reduce their power use, monitoring the status and adjusting consumption as needed.
+
+This is very similar to frequency based DSR and could be implemented using a Smart Core trait for reporting load that all parties subscribe to.
+
+1. The API for this is very simple, just exposing the current state of power use
+2. This has issues with conflicts
+   - what if multiple high priority consumers start consuming at the same time
+   - what if there just isn't the power available
+3. This solution might exclude dumber devices from releasing power even if they could without impacting UX.
+4. UX might be more affected than needed
+   - consuming devices have no way to know if they need to shed load and by how much and for how long
+   - high priority devices have no way of knowing how much power they can use
+5. No mechanism to plan ahead - store up some energy in advance of a known high demand use later
+
+
+#### Option 2: dictatorship
+
+All power consumers must get permission from a central system _before_ they consume power.
+The central system is responsible for fair use, safe use, and for managing general power use.
+Consuming devices are all treated the same, and must act within the bounds set out by the central system.
+The consuming devices ask the central system for permission to use X power and the central system responds with a yes, no, or maybe a _use this instead_.
+There needs to be a way for the central system to change its mind on who can have what power.
+
+This feels similar to the USB power spec.
+The draw notification spec is also like this, but without the requirement that the consuming device honour the response.
