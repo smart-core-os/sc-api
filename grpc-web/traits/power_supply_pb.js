@@ -845,7 +845,8 @@ proto.smartcore.traits.PowerCapacity.toObject = function(includeInstance, msg) {
     load: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     capacity: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
     free: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-    notified: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
+    notified: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+    pending: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0)
   };
 
   if (includeInstance) {
@@ -905,6 +906,10 @@ proto.smartcore.traits.PowerCapacity.deserializeBinaryFromReader = function(msg,
     case 6:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setNotified(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPending(value);
       break;
     default:
       reader.skipField();
@@ -974,6 +979,13 @@ proto.smartcore.traits.PowerCapacity.serializeBinaryToWriter = function(message,
   if (f !== 0.0) {
     writer.writeFloat(
       6,
+      f
+    );
+  }
+  f = message.getPending();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
       f
     );
   }
@@ -1124,6 +1136,24 @@ proto.smartcore.traits.PowerCapacity.prototype.setNotified = function(value) {
 };
 
 
+/**
+ * optional float pending = 7;
+ * @return {number}
+ */
+proto.smartcore.traits.PowerCapacity.prototype.getPending = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.PowerCapacity} returns this
+ */
+proto.smartcore.traits.PowerCapacity.prototype.setPending = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
+};
+
+
 
 
 
@@ -1161,7 +1191,8 @@ proto.smartcore.traits.DrawNotification.toObject = function(includeInstance, msg
     rampDuration: (f = msg.getRampDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     minDraw: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
     notificationTime: (f = msg.getNotificationTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    force: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+    force: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
+    pending: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -1223,6 +1254,10 @@ proto.smartcore.traits.DrawNotification.deserializeBinaryFromReader = function(m
     case 6:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setForce(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setPending(value);
       break;
     default:
       reader.skipField();
@@ -1294,6 +1329,13 @@ proto.smartcore.traits.DrawNotification.serializeBinaryToWriter = function(messa
   if (f) {
     writer.writeBool(
       6,
+      f
+    );
+  }
+  f = message.getPending();
+  if (f) {
+    writer.writeBool(
+      7,
       f
     );
   }
@@ -1443,6 +1485,24 @@ proto.smartcore.traits.DrawNotification.prototype.getForce = function() {
  */
 proto.smartcore.traits.DrawNotification.prototype.setForce = function(value) {
   return jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+/**
+ * optional bool pending = 7;
+ * @return {boolean}
+ */
+proto.smartcore.traits.DrawNotification.prototype.getPending = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.DrawNotification} returns this
+ */
+proto.smartcore.traits.DrawNotification.prototype.setPending = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
@@ -3084,7 +3144,8 @@ proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.toObject = functi
 proto.smartcore.traits.UpdateDrawNotificationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    drawNotification: (f = msg.getDrawNotification()) && proto.smartcore.traits.DrawNotification.toObject(includeInstance, f)
+    drawNotification: (f = msg.getDrawNotification()) && proto.smartcore.traits.DrawNotification.toObject(includeInstance, f),
+    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3130,6 +3191,11 @@ proto.smartcore.traits.UpdateDrawNotificationRequest.deserializeBinaryFromReader
       reader.readMessage(value,proto.smartcore.traits.DrawNotification.deserializeBinaryFromReader);
       msg.setDrawNotification(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFields(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3172,6 +3238,14 @@ proto.smartcore.traits.UpdateDrawNotificationRequest.serializeBinaryToWriter = f
       2,
       f,
       proto.smartcore.traits.DrawNotification.serializeBinaryToWriter
+    );
+  }
+  f = message.getFields();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -3229,6 +3303,43 @@ proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.clearDrawNotifica
  */
 proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.hasDrawNotification = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask fields = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.getFields = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.UpdateDrawNotificationRequest} returns this
+*/
+proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.setFields = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.UpdateDrawNotificationRequest} returns this
+ */
+proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.clearFields = function() {
+  return this.setFields(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.UpdateDrawNotificationRequest.prototype.hasFields = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -3454,7 +3565,8 @@ proto.smartcore.traits.PullDrawNotificationsRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.PullDrawNotificationsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    id: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -3495,6 +3607,10 @@ proto.smartcore.traits.PullDrawNotificationsRequest.deserializeBinaryFromReader 
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3531,6 +3647,13 @@ proto.smartcore.traits.PullDrawNotificationsRequest.serializeBinaryToWriter = fu
       f
     );
   }
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -3549,6 +3672,24 @@ proto.smartcore.traits.PullDrawNotificationsRequest.prototype.getName = function
  */
 proto.smartcore.traits.PullDrawNotificationsRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string id = 2;
+ * @return {string}
+ */
+proto.smartcore.traits.PullDrawNotificationsRequest.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.PullDrawNotificationsRequest} returns this
+ */
+proto.smartcore.traits.PullDrawNotificationsRequest.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

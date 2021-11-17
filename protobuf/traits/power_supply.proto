@@ -105,11 +105,18 @@ message PowerCapacity {
   // A total for how much current (in amps) consumers of this supply have notified they will be drawing.
   // See DrawNotification.
   float notified = 6;
+  // The total notified power draw on this supply by notifications that are pending. Note that pending notifications
+  // are also included in the notified total.
+  float pending = 7;
 }
 
 // DrawNotification represents a consuming device informing a supply device that it intends to draw current.
 // Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting
 // their draw at the same time.
+//
+// A draw notification should be created when a device intends to begin (or increase) drawing power from the power
+// supply. Once it has begun drawing the power and has reached a steady state, it should delete the draw notification
+// to prevent double-counting of the power draw.
 //
 // A draw notification is free to be removed at any time by the caller or the device.
 // It is recommended that the notification is removed once all durations have elapsed in order to manage device
@@ -160,6 +167,21 @@ message DrawNotification {
   // Warning, forcing the acceptance of a notification will likely cause future notifications to fail, even if more
   // free capacity becomes available as this notification has pre-reserved it.
   bool force = 6;
+
+  // If true, the draw notification is inactive, and the caller must not yet begin drawing power.
+  // When creating or updating a notification, setting pending to true indicates that the caller is willing to wait
+  // for the power to become available. If it is false, the notification will be accepted immediately or not at all.
+  // It is an error to create/update a notification with both force=true and pending=true.
+  //
+  // When reading the notification, pending will be false if the draw amount has been reserved and is available for the
+  // caller to start using now. It will be true if the power has not been allocated.
+  //
+  // A power management system may use the presence of pending draw notifications as a signal to begin load shedding.
+  // Once sufficient power is available, it may signal to the caller that it is permitted to begin drawing power by
+  // updating the notification with pending=false. The order in which a power management system fulfils pending draw
+  // notifications is implementation-defined. The caller can use PullDrawNotifications to detect when this happens.
+  bool pending = 7;
+
 }
 
 message GetPowerCapacityRequest {
@@ -235,6 +257,8 @@ message UpdateDrawNotificationRequest {
   // Name of the device
   string name = 1;
   DrawNotification draw_notification = 2;
+  // The fields to modify in the draw notification. If absent, all writeable fields will be updated.
+  google.protobuf.FieldMask fields = 3;
 }
 
 message DeleteDrawNotificationRequest {
@@ -250,6 +274,10 @@ message DeleteDrawNotificationRequest {
 message PullDrawNotificationsRequest {
   // Name of the device
   string name = 1;
+  // ID of the notification to receive updates for. If absent, updates for all notifications on the specified device
+  // will be returned. If the specified draw notification is deleted, the stream should be closed after the deletion
+  // change is sent.
+  string id = 2;
 }
 
 message PullDrawNotificationsResponse {

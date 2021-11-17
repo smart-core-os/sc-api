@@ -78,6 +78,9 @@ export class PowerCapacity extends jspb.Message {
   getNotified(): number;
   setNotified(value: number): PowerCapacity;
 
+  getPending(): number;
+  setPending(value: number): PowerCapacity;
+
   getLoadCase(): PowerCapacity.LoadCase;
 
   getCapacityCase(): PowerCapacity.CapacityCase;
@@ -98,6 +101,7 @@ export namespace PowerCapacity {
     capacity: number,
     free: number,
     notified: number,
+    pending: number,
   }
 
   export enum LoadCase { 
@@ -134,6 +138,9 @@ export class DrawNotification extends jspb.Message {
   getForce(): boolean;
   setForce(value: boolean): DrawNotification;
 
+  getPending(): boolean;
+  setPending(value: boolean): DrawNotification;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DrawNotification.AsObject;
   static toObject(includeInstance: boolean, msg: DrawNotification): DrawNotification.AsObject;
@@ -150,6 +157,7 @@ export namespace DrawNotification {
     minDraw: number,
     notificationTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     force: boolean,
+    pending: boolean,
   }
 }
 
@@ -375,6 +383,11 @@ export class UpdateDrawNotificationRequest extends jspb.Message {
   hasDrawNotification(): boolean;
   clearDrawNotification(): UpdateDrawNotificationRequest;
 
+  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setFields(value?: google_protobuf_field_mask_pb.FieldMask): UpdateDrawNotificationRequest;
+  hasFields(): boolean;
+  clearFields(): UpdateDrawNotificationRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateDrawNotificationRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateDrawNotificationRequest): UpdateDrawNotificationRequest.AsObject;
@@ -387,6 +400,7 @@ export namespace UpdateDrawNotificationRequest {
   export type AsObject = {
     name: string,
     drawNotification?: DrawNotification.AsObject,
+    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -420,6 +434,9 @@ export class PullDrawNotificationsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullDrawNotificationsRequest;
 
+  getId(): string;
+  setId(value: string): PullDrawNotificationsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullDrawNotificationsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullDrawNotificationsRequest): PullDrawNotificationsRequest.AsObject;
@@ -431,6 +448,7 @@ export class PullDrawNotificationsRequest extends jspb.Message {
 export namespace PullDrawNotificationsRequest {
   export type AsObject = {
     name: string,
+    id: string,
   }
 }
 

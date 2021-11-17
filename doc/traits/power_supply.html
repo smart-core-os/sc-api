@@ -395,7 +395,7 @@ be taken. </p></td>
         
       
         <h3 id="smartcore.traits.DrawNotification">DrawNotification</h3>
-        <p>DrawNotification represents a consuming device informing a supply device that it intends to draw current.</p><p>Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting</p><p>their draw at the same time.</p><p>A draw notification is free to be removed at any time by the caller or the device.</p><p>It is recommended that the notification is removed once all durations have elapsed in order to manage device</p><p>resources.</p><p>Min Draw Example</p><p>Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.</p><p>The device may decide to respond as if the notification was for exactly 30A,</p><p>as 30A is within the [10,50] amp range specified in the request.</p><p>If no min_draw was specified the device may have responded with an error indicating that</p><p>the value of max_draw:50A isn't available.</p>
+        <p>DrawNotification represents a consuming device informing a supply device that it intends to draw current.</p><p>Callers can use this to help make a power supply more resilient to multiple consumers that might be adjusting</p><p>their draw at the same time.</p><p>A draw notification should be created when a device intends to begin (or increase) drawing power from the power</p><p>supply. Once it has begun drawing the power and has reached a steady state, it should delete the draw notification</p><p>to prevent double-counting of the power draw.</p><p>A draw notification is free to be removed at any time by the caller or the device.</p><p>It is recommended that the notification is removed once all durations have elapsed in order to manage device</p><p>resources.</p><p>Min Draw Example</p><p>Given a notification of {max_draw: 50A, min_draw: 10A} applied to a device with only 30A free.</p><p>The device may decide to respond as if the notification was for exactly 30A,</p><p>as 30A is within the [10,50] amp range specified in the request.</p><p>If no min_draw was specified the device may have responded with an error indicating that</p><p>the value of max_draw:50A isn't available.</p>
 
         
           <table class="field-table">
@@ -466,6 +466,24 @@ true.
 
 Warning, forcing the acceptance of a notification will likely cause future notifications to fail, even if more
 free capacity becomes available as this notification has pre-reserved it. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pending</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, the draw notification is inactive, and the caller must not yet begin drawing power.
+When creating or updating a notification, setting pending to true indicates that the caller is willing to wait
+for the power to become available. If it is false, the notification will be accepted immediately or not at all.
+It is an error to create/update a notification with both force=true and pending=true.
+
+When reading the notification, pending will be false if the draw amount has been reserved and is available for the
+caller to start using now. It will be true if the power has not been allocated.
+
+A power management system may use the presence of pending draw notifications as a signal to begin load shedding.
+Once sufficient power is available, it may signal to the caller that it is permitted to begin drawing power by
+updating the notification with pending=false. The order in which a power management system fulfils pending draw
+notifications is implementation-defined. The caller can use PullDrawNotifications to detect when this happens. </p></td>
                 </tr>
               
             </tbody>
@@ -684,6 +702,14 @@ For example a 100A rating with 30A load with a 10A configured safety margin is l
 See DrawNotification. </p></td>
                 </tr>
               
+                <tr>
+                  <td>pending</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The total notified power draw on this supply by notifications that are pending. Note that pending notifications
+are also included in the notified total. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -738,6 +764,15 @@ This applies to the rating, load, capacity, and free properties of PowerCapacity
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Name of the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the notification to receive updates for. If absent, updates for all notifications on the specified device
+will be returned. If the specified draw notification is deleted, the stream should be closed after the deletion
+change is sent. </p></td>
                 </tr>
               
             </tbody>
@@ -938,6 +973,13 @@ This applies to the rating, load, capacity, and free properties of PowerCapacity
                   <td><a href="#smartcore.traits.DrawNotification">DrawNotification</a></td>
                   <td></td>
                   <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fields</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The fields to modify in the draw notification. If absent, all writeable fields will be updated. </p></td>
                 </tr>
               
             </tbody>
