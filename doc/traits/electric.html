@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#traits%2felectric.proto">traits/electric.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#smartcore.traits.ClearActiveModeRequest"><span class="badge">M</span>ClearActiveModeRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ElectricDemand"><span class="badge">M</span>ElectricDemand</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ElectricMode"><span class="badge">M</span>ElectricMode</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ElectricMode.Segment"><span class="badge">M</span>ElectricMode.Segment</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetActiveModeRequest"><span class="badge">M</span>GetActiveModeRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetDemandRequest"><span class="badge">M</span>GetDemandRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListModesRequest"><span class="badge">M</span>ListModesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListModesResponse"><span class="badge">M</span>ListModesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullActiveModeRequest"><span class="badge">M</span>PullActiveModeRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullActiveModeResponse"><span class="badge">M</span>PullActiveModeResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullActiveModeResponse.Change"><span class="badge">M</span>PullActiveModeResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDemandRequest"><span class="badge">M</span>PullDemandRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDemandResponse"><span class="badge">M</span>PullDemandResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullDemandResponse.Change"><span class="badge">M</span>PullDemandResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModesRequest"><span class="badge">M</span>PullModesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModesResponse"><span class="badge">M</span>PullModesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModesResponse.Change"><span class="badge">M</span>PullModesResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.UpdateActiveModeRequest"><span class="badge">M</span>UpdateActiveModeRequest</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#smartcore.traits.ElectricApi"><span class="badge">S</span>ElectricApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ElectricInfo"><span class="badge">S</span>ElectricInfo</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="traits/electric.proto">traits/electric.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="smartcore.traits.ClearActiveModeRequest">ClearActiveModeRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ElectricDemand">ElectricDemand</h3>
+        <p>ElectricDemand describes how much power is being used by the device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>current</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>A measure of how much electric current is currently being used.
+In amps. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>voltage</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The voltage level of the device.
+In volts.
+Zero means absent, not 0 volts. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rating</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The maximum current that the device can handle under normal operation.
+In amps.
+Zero means absent, not 0 amps. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ElectricMode">ElectricMode</h3>
+        <p>An ElectricMode represents one possible electrical mode of operation for the device.</p><p>A device can potentially have multiple electrical modes, for example a TV might have Normal and Eco modes.</p><p>The electric mode of the device gives details on how the device expects its electricity usage to be affected when</p><p>in these modes.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID uniquely identifies this mode in a device. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>title</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A human readable name for this mode.
+Output only.
+Examples might include &#34;Eco Mode&#34;, or &#34;Smart Standby&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A human readable description for this mode. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>voltage</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The voltage level of this mode.
+In volts.
+Zero means absent, not 0 volts. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>The time the modes information is relative to in server time.
+When a client receives a mode with an absent start time it should use its own clock to create one, though this
+may introduce skew depending on the difference between the server and client clocks. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>segments</td>
+                  <td><a href="#smartcore.traits.ElectricMode.Segment">ElectricMode.Segment</a></td>
+                  <td>repeated</td>
+                  <td><p>An ordered, continuous, list of segments representing the power draw for this mode.
+The first segment is relative to start_time, the second is relevant to the end of the first and so on. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>normal</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>When true this indicates that this mode is the normal / default operation mode for the device.
+A device should have only one default mode. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ElectricMode.Segment">ElectricMode.Segment</h3>
+        <p>A Segment describes electrical properties for a slice of time.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>length</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>The length of this mode segment.
+An absent length means this segment lasts forever.
+Only the last segment of a mode can have an absent length. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>magnitude</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The maximum current that will be drawn by the device in this segment.
+In amps. Required.
+See the shape properties to determine a more accurate shape for the electrical demand. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fixed</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Fixed represents a constant consumption for the length of this segment.
+In amps. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetActiveModeRequest">GetActiveModeRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricMode type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetDemandRequest">GetDemandRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricDemand type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListModesRequest">ListModesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricMode type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The maximum number of modes to return.
+The service may return fewer than this value.
+If unspecified, at most 50 items will be returned.
+The maximum value is 1000; values above 1000 will be coerced to 1000. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A page token, received from a previous `ListModesResponse` call.
+Provide this to retrieve the subsequent page. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListModesResponse">ListModesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>modes</td>
+                  <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token, which can be sent as `page_token` to retrieve the next page.
+If this field is omitted, there are no subsequent pages. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>If non-zero this is the total number of draw notifications.
+This may be an estimate. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullActiveModeRequest">PullActiveModeRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricMode type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullActiveModeResponse">PullActiveModeResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullActiveModeResponse.Change">PullActiveModeResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes since the last message </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullActiveModeResponse.Change">PullActiveModeResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>active_mode</td>
+                  <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                  <td></td>
+                  <td><p>The new value for the active mode </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDemandRequest">PullDemandRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricDemand type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDemandResponse">PullDemandResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullDemandResponse.Change">PullDemandResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes since the last message. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullDemandResponse.Change">PullDemandResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device that issued the change. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>demand</td>
+                  <td><a href="#smartcore.traits.ElectricDemand">ElectricDemand</a></td>
+                  <td></td>
+                  <td><p>The new value for the current demand. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModesRequest">PullModesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ElectricMode type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModesResponse">PullModesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullModesResponse.Change">PullModesResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>The list of changes which have occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModesResponse.Change">PullModesResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device that emitted this change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#smartcore.types.ChangeType">smartcore.types.ChangeType</a></td>
+                  <td></td>
+                  <td><p>The type of change (e.g. ADD, UPDATE, etc...) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_value</td>
+                  <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                  <td></td>
+                  <td><p>The new value to use for ADD|UPDATE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>old_value</td>
+                  <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                  <td></td>
+                  <td><p>The old value to use for UPDATE|REMOVE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateActiveModeRequest">UpdateActiveModeRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>active_mode</td>
+                  <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                  <td></td>
+                  <td><p>The active mode to select.
+The id field should be specified to select an existing mode. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to update relative to the ElectricMode type. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="smartcore.traits.ElectricApi">ElectricApi</h3>
+        <p>Trait for devices that are electrically powered.</p><p>Can apply to both the end device or an intermediary, for example a TV or an extension cord.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetDemand</td>
+                <td><a href="#smartcore.traits.GetDemandRequest">GetDemandRequest</a></td>
+                <td><a href="#smartcore.traits.ElectricDemand">ElectricDemand</a></td>
+                <td><p>GetDemand returns the current electricity demand for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullDemand</td>
+                <td><a href="#smartcore.traits.PullDemandRequest">PullDemandRequest</a></td>
+                <td><a href="#smartcore.traits.PullDemandResponse">PullDemandResponse</a> stream</td>
+                <td><p>PullDemand returns a stream of changes to the current electricity demand for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetActiveMode</td>
+                <td><a href="#smartcore.traits.GetActiveModeRequest">GetActiveModeRequest</a></td>
+                <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateActiveMode</td>
+                <td><a href="#smartcore.traits.UpdateActiveModeRequest">UpdateActiveModeRequest</a></td>
+                <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                <td><p>Configure the device to use the given mode.
+The id of the given mode should match a known mode for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ClearActiveMode</td>
+                <td><a href="#smartcore.traits.ClearActiveModeRequest">ClearActiveModeRequest</a></td>
+                <td><a href="#smartcore.traits.ElectricMode">ElectricMode</a></td>
+                <td><p>ClearActiveMode instructs the device to discard any external mode selection, typically by applying the normal
+operation mode for the device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullActiveMode</td>
+                <td><a href="#smartcore.traits.PullActiveModeRequest">PullActiveModeRequest</a></td>
+                <td><a href="#smartcore.traits.PullActiveModeResponse">PullActiveModeResponse</a> stream</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ListModes</td>
+                <td><a href="#smartcore.traits.ListModesRequest">ListModesRequest</a></td>
+                <td><a href="#smartcore.traits.ListModesResponse">ListModesResponse</a></td>
+                <td><p>ListModes lists all electric modes for a device</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullModes</td>
+                <td><a href="#smartcore.traits.PullModesRequest">PullModesRequest</a></td>
+                <td><a href="#smartcore.traits.PullModesResponse">PullModesResponse</a> stream</td>
+                <td><p>PullModes returns a stream of changes to the list of supported modes for the device.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.ElectricInfo">ElectricInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p><p>todo: ElectricInfo service</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
