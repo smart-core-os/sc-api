@@ -1,5 +1,12 @@
 # Introduction
 
+::: danger Early Access
+The Smart Core API, source code, this guide, and all associated resources and tools are currently in Early Access.
+What this means is that unless you are granted access you won't be able to run through this guide yourself.
+
+If you're reading this then you already know who to contact to request access.
+:::
+
 ## What is Smart Core
 
 Smart Core is an open platform that connects technology systems in the built environment, enabling a consistent approach to systems integration.
