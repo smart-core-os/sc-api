@@ -120,7 +120,7 @@ type ElectricMode struct {
 	// When a client receives a mode with an absent start time it should use its own clock to create one, though this
 	// may introduce skew depending on the difference between the server and client clocks.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	// An ordered, continuous, list of segments representing the power draw for this mode.
+	// An ordered, continuous, non-empty, list of segments representing the power draw for this mode.
 	// The first segment is relative to start_time, the second is relevant to the end of the first and so on.
 	Segments []*ElectricMode_Segment `protobuf:"bytes,6,rep,name=segments,proto3" json:"segments,omitempty"`
 	// When true this indicates that this mode is the normal / default operation mode for the device.
