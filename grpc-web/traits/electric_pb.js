@@ -539,8 +539,8 @@ proto.smartcore.traits.ElectricDemand.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getVoltage();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeFloat(
       2,
       f
@@ -588,7 +588,25 @@ proto.smartcore.traits.ElectricDemand.prototype.getVoltage = function() {
  * @return {!proto.smartcore.traits.ElectricDemand} returns this
  */
 proto.smartcore.traits.ElectricDemand.prototype.setVoltage = function(value) {
-  return jspb.Message.setProto3FloatField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.clearVoltage = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.hasVoltage = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

@@ -16,6 +16,8 @@ export class ElectricDemand extends jspb.Message {
   getRating(): number;
   setRating(value: number): ElectricDemand;
 
+  getVoltageCase(): ElectricDemand.VoltageCase;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ElectricDemand.AsObject;
   static toObject(includeInstance: boolean, msg: ElectricDemand): ElectricDemand.AsObject;
@@ -29,6 +31,11 @@ export namespace ElectricDemand {
     current: number,
     voltage: number,
     rating: number,
+  }
+
+  export enum VoltageCase { 
+    _VOLTAGE_NOT_SET = 0,
+    VOLTAGE = 2,
   }
 }
 
