@@ -49,8 +49,7 @@ message ElectricDemand {
   float current = 1;
   // The voltage level of the device.
   // In volts.
-  // Zero means absent, not 0 volts.
-  float voltage = 2;
+  optional float voltage = 2;
 
   // The maximum current that the device can handle under normal operation.
   // In amps.
