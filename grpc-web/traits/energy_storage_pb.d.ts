@@ -43,29 +43,30 @@ export namespace EnergyLevelSupport {
 }
 
 export class EnergyLevel extends jspb.Message {
-  getDescriptiveThreshold(): EnergyLevel.Threshold;
-  setDescriptiveThreshold(value: EnergyLevel.Threshold): EnergyLevel;
+  getDischarge(): EnergyLevel.Transfer | undefined;
+  setDischarge(value?: EnergyLevel.Transfer): EnergyLevel;
+  hasDischarge(): boolean;
+  clearDischarge(): EnergyLevel;
 
-  getRemaining(): EnergyLevel.Remaining | undefined;
-  setRemaining(value?: EnergyLevel.Remaining): EnergyLevel;
-  hasRemaining(): boolean;
-  clearRemaining(): EnergyLevel;
+  getCharge(): EnergyLevel.Transfer | undefined;
+  setCharge(value?: EnergyLevel.Transfer): EnergyLevel;
+  hasCharge(): boolean;
+  clearCharge(): EnergyLevel;
 
-  getUntilFull(): EnergyLevel.UntilFull | undefined;
-  setUntilFull(value?: EnergyLevel.UntilFull): EnergyLevel;
-  hasUntilFull(): boolean;
-  clearUntilFull(): EnergyLevel;
+  getIdle(): EnergyLevel.Steady | undefined;
+  setIdle(value?: EnergyLevel.Steady): EnergyLevel;
+  hasIdle(): boolean;
+  clearIdle(): EnergyLevel;
 
   getQuantity(): EnergyLevel.Quantity | undefined;
   setQuantity(value?: EnergyLevel.Quantity): EnergyLevel;
   hasQuantity(): boolean;
   clearQuantity(): EnergyLevel;
 
-  getCharging(): boolean;
-  setCharging(value: boolean): EnergyLevel;
-
   getPluggedIn(): boolean;
   setPluggedIn(value: boolean): EnergyLevel;
+
+  getFlowCase(): EnergyLevel.FlowCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EnergyLevel.AsObject;
@@ -77,68 +78,80 @@ export class EnergyLevel extends jspb.Message {
 
 export namespace EnergyLevel {
   export type AsObject = {
-    descriptiveThreshold: EnergyLevel.Threshold,
-    remaining?: EnergyLevel.Remaining.AsObject,
-    untilFull?: EnergyLevel.UntilFull.AsObject,
+    discharge?: EnergyLevel.Transfer.AsObject,
+    charge?: EnergyLevel.Transfer.AsObject,
+    idle?: EnergyLevel.Steady.AsObject,
     quantity?: EnergyLevel.Quantity.AsObject,
-    charging: boolean,
     pluggedIn: boolean,
   }
 
-  export class Remaining extends jspb.Message {
+  export class Transfer extends jspb.Message {
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): Transfer;
+    hasStartTime(): boolean;
+    clearStartTime(): Transfer;
+
     getTime(): google_protobuf_duration_pb.Duration | undefined;
-    setTime(value?: google_protobuf_duration_pb.Duration): Remaining;
+    setTime(value?: google_protobuf_duration_pb.Duration): Transfer;
     hasTime(): boolean;
-    clearTime(): Remaining;
+    clearTime(): Transfer;
 
     getDistanceKm(): number;
-    setDistanceKm(value: number): Remaining;
+    setDistanceKm(value: number): Transfer;
 
-    getSpeed(): EnergyLevel.Speed;
-    setSpeed(value: EnergyLevel.Speed): Remaining;
+    getSpeed(): EnergyLevel.Transfer.Speed;
+    setSpeed(value: EnergyLevel.Transfer.Speed): Transfer;
+
+    getTarget(): EnergyLevel.Quantity | undefined;
+    setTarget(value?: EnergyLevel.Quantity): Transfer;
+    hasTarget(): boolean;
+    clearTarget(): Transfer;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Remaining.AsObject;
-    static toObject(includeInstance: boolean, msg: Remaining): Remaining.AsObject;
-    static serializeBinaryToWriter(message: Remaining, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Remaining;
-    static deserializeBinaryFromReader(message: Remaining, reader: jspb.BinaryReader): Remaining;
+    toObject(includeInstance?: boolean): Transfer.AsObject;
+    static toObject(includeInstance: boolean, msg: Transfer): Transfer.AsObject;
+    static serializeBinaryToWriter(message: Transfer, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Transfer;
+    static deserializeBinaryFromReader(message: Transfer, reader: jspb.BinaryReader): Transfer;
   }
 
-  export namespace Remaining {
+  export namespace Transfer {
     export type AsObject = {
+      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
       time?: google_protobuf_duration_pb.Duration.AsObject,
       distanceKm: number,
-      speed: EnergyLevel.Speed,
+      speed: EnergyLevel.Transfer.Speed,
+      target?: EnergyLevel.Quantity.AsObject,
+    }
+
+    export enum Speed { 
+      SPEED_UNSPECIFIED = 0,
+      EXTRA_SLOW = 1,
+      SLOW = 2,
+      NORMAL = 3,
+      FAST = 4,
+      EXTRA_FAST = 5,
     }
   }
 
 
-  export class UntilFull extends jspb.Message {
-    getTime(): google_protobuf_duration_pb.Duration | undefined;
-    setTime(value?: google_protobuf_duration_pb.Duration): UntilFull;
-    hasTime(): boolean;
-    clearTime(): UntilFull;
-
-    getDistanceKm(): number;
-    setDistanceKm(value: number): UntilFull;
-
-    getSpeed(): EnergyLevel.Speed;
-    setSpeed(value: EnergyLevel.Speed): UntilFull;
+  export class Steady extends jspb.Message {
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): Steady;
+    hasStartTime(): boolean;
+    clearStartTime(): Steady;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): UntilFull.AsObject;
-    static toObject(includeInstance: boolean, msg: UntilFull): UntilFull.AsObject;
-    static serializeBinaryToWriter(message: UntilFull, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): UntilFull;
-    static deserializeBinaryFromReader(message: UntilFull, reader: jspb.BinaryReader): UntilFull;
+    toObject(includeInstance?: boolean): Steady.AsObject;
+    static toObject(includeInstance: boolean, msg: Steady): Steady.AsObject;
+    static serializeBinaryToWriter(message: Steady, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Steady;
+    static deserializeBinaryFromReader(message: Steady, reader: jspb.BinaryReader): Steady;
   }
 
-  export namespace UntilFull {
+  export namespace Steady {
     export type AsObject = {
-      time?: google_protobuf_duration_pb.Duration.AsObject,
-      distanceKm: number,
-      speed: EnergyLevel.Speed,
+      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
   }
 
@@ -149,6 +162,12 @@ export namespace EnergyLevel {
 
     getEnergyKwh(): number;
     setEnergyKwh(value: number): Quantity;
+
+    getDescriptive(): EnergyLevel.Quantity.Threshold;
+    setDescriptive(value: EnergyLevel.Quantity.Threshold): Quantity;
+
+    getDistanceKm(): number;
+    setDistanceKm(value: number): Quantity;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Quantity.AsObject;
@@ -162,27 +181,28 @@ export namespace EnergyLevel {
     export type AsObject = {
       percentage: number,
       energyKwh: number,
+      descriptive: EnergyLevel.Quantity.Threshold,
+      distanceKm: number,
+    }
+
+    export enum Threshold { 
+      THRESHOLD_UNKNOWN = 0,
+      CRITICALLY_LOW = 1,
+      EMPTY = 2,
+      LOW = 3,
+      MEDIUM = 4,
+      HIGH = 5,
+      FULL = 7,
+      CRITICALLY_HIGH = 8,
     }
   }
 
 
-  export enum Threshold { 
-    THRESHOLD_UNKNOWN = 0,
-    CRITICALLY_LOW = 1,
-    LOW = 2,
-    MEDIUM = 3,
-    HIGH = 4,
-    FULL = 6,
-    CRITICALLY_HIGH = 7,
-  }
-
-  export enum Speed { 
-    SPEED_UNSPECIFIED = 0,
-    EXTRA_SLOW = 1,
-    SLOW = 2,
-    NORMAL = 3,
-    FAST = 4,
-    EXTRA_FAST = 5,
+  export enum FlowCase { 
+    FLOW_NOT_SET = 0,
+    DISCHARGE = 2,
+    CHARGE = 3,
+    IDLE = 4,
   }
 }
 

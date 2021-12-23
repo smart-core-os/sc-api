@@ -199,11 +199,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.EnergyLevel.Remaining"><span class="badge">M</span>EnergyLevel.Remaining</a>
+                  <a href="#smartcore.traits.EnergyLevel.Steady"><span class="badge">M</span>EnergyLevel.Steady</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.EnergyLevel.UntilFull"><span class="badge">M</span>EnergyLevel.UntilFull</a>
+                  <a href="#smartcore.traits.EnergyLevel.Transfer"><span class="badge">M</span>EnergyLevel.Transfer</a>
                 </li>
               
                 <li>
@@ -228,11 +228,11 @@
               
               
                 <li>
-                  <a href="#smartcore.traits.EnergyLevel.Speed"><span class="badge">E</span>EnergyLevel.Speed</a>
+                  <a href="#smartcore.traits.EnergyLevel.Quantity.Threshold"><span class="badge">E</span>EnergyLevel.Quantity.Threshold</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.EnergyLevel.Threshold"><span class="badge">E</span>EnergyLevel.Threshold</a>
+                  <a href="#smartcore.traits.EnergyLevel.Transfer.Speed"><span class="badge">E</span>EnergyLevel.Transfer.Speed</a>
                 </li>
               
                 <li>
@@ -337,25 +337,26 @@
             <tbody>
               
                 <tr>
-                  <td>descriptive_threshold</td>
-                  <td><a href="#smartcore.traits.EnergyLevel.Threshold">EnergyLevel.Threshold</a></td>
+                  <td>discharge</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Transfer">EnergyLevel.Transfer</a></td>
                   <td></td>
-                  <td><p>Threshold defines preset descriptive quantities for the energy level of the device.
-Numeric values will be preferred if provided. </p></td>
+                  <td><p>Discharge denotes that the device is currently decreasing its energy level.
+An empty transfer object is valid and says: this device is discharging. </p></td>
                 </tr>
               
                 <tr>
-                  <td>remaining</td>
-                  <td><a href="#smartcore.traits.EnergyLevel.Remaining">EnergyLevel.Remaining</a></td>
+                  <td>charge</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Transfer">EnergyLevel.Transfer</a></td>
                   <td></td>
-                  <td><p>Remaining describes different unit quantities for how much energy is stored or available. </p></td>
+                  <td><p>Charge denotes that the device is currently increasing its energy level.
+An empty transfer object is valid and says: this device is charging. </p></td>
                 </tr>
               
                 <tr>
-                  <td>until_full</td>
-                  <td><a href="#smartcore.traits.EnergyLevel.UntilFull">EnergyLevel.UntilFull</a></td>
+                  <td>idle</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Steady">EnergyLevel.Steady</a></td>
                   <td></td>
-                  <td><p>UntilFull describes how much is needed until the device is full. </p></td>
+                  <td><p>Idle denotes that the device is neither increasing or decreasing its energy level. </p></td>
                 </tr>
               
                 <tr>
@@ -363,13 +364,6 @@ Numeric values will be preferred if provided. </p></td>
                   <td><a href="#smartcore.traits.EnergyLevel.Quantity">EnergyLevel.Quantity</a></td>
                   <td></td>
                   <td><p>Quantity describes an absolute energy level using different units. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>charging</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Is the device actively charging. </p></td>
                 </tr>
               
                 <tr>
@@ -410,42 +404,19 @@ Numeric values will be preferred if provided. </p></td>
                   <td><p> </p></td>
                 </tr>
               
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.EnergyLevel.Remaining">EnergyLevel.Remaining</h3>
-        <p>Remaining describes different unit quantities for how much energy is stored or available.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
                 <tr>
-                  <td>time</td>
-                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td>descriptive</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Quantity.Threshold">EnergyLevel.Quantity.Threshold</a></td>
                   <td></td>
-                  <td><p>How long until the energy in the device is empty. </p></td>
+                  <td><p>descriptive defines preset descriptive quantities for the energy level of the device.
+Numeric values should be preferred if provided. </p></td>
                 </tr>
               
                 <tr>
                   <td>distance_km</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>How far can the device travel before it is empty. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>speed</td>
-                  <td><a href="#smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</a></td>
-                  <td></td>
-                  <td><p>Speed describes relative discharge speed for the device. </p></td>
+                  <td><p>A measure of how far the device can travel with its current energy level. </p></td>
                 </tr>
               
             </tbody>
@@ -455,8 +426,8 @@ Numeric values will be preferred if provided. </p></td>
 
         
       
-        <h3 id="smartcore.traits.EnergyLevel.UntilFull">EnergyLevel.UntilFull</h3>
-        <p>UntilFull describes how much is needed until the device is full.</p>
+        <h3 id="smartcore.traits.EnergyLevel.Steady">EnergyLevel.Steady</h3>
+        <p>Steady describes a non-changing energy level.</p>
 
         
           <table class="field-table">
@@ -466,24 +437,66 @@ Numeric values will be preferred if provided. </p></td>
             <tbody>
               
                 <tr>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.EnergyLevel.Transfer">EnergyLevel.Transfer</h3>
+        <p>Transfer describes how energy is being transferred, either into or out of the device.</p><p>See discharge and charge for information on the direction of the transfer.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Start time describes when this transfer started </p></td>
+                </tr>
+              
+                <tr>
                   <td>time</td>
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p>How long until the energy in the device is full. </p></td>
+                  <td><p>How long until the transfer is complete.
+Measured relative to the current time according to the devices clock. </p></td>
                 </tr>
               
                 <tr>
                   <td>distance_km</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>How far can the device travel before it is full. </p></td>
+                  <td><p>How many more kilometers need to be travelled before the transfer is complete.
+For example when discharging, this might represent kilometers until the battery is empty. </p></td>
                 </tr>
               
                 <tr>
                   <td>speed</td>
-                  <td><a href="#smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</a></td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Transfer.Speed">EnergyLevel.Transfer.Speed</a></td>
                   <td></td>
-                  <td><p>Speed describes relative charging speed for the device. </p></td>
+                  <td><p>Speed describes relative transfer speed for the device. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target</td>
+                  <td><a href="#smartcore.traits.EnergyLevel.Quantity">EnergyLevel.Quantity</a></td>
+                  <td></td>
+                  <td><p>The planned end values for the transfer.
+There is no guarantee that the transfer will reach these values, but they are useful for informational and
+planning purposes. </p></td>
                 </tr>
               
             </tbody>
@@ -658,7 +671,66 @@ A rechargeable device should report charging and until_full where appropriate. <
       
 
       
-        <h3 id="smartcore.traits.EnergyLevel.Speed">EnergyLevel.Speed</h3>
+        <h3 id="smartcore.traits.EnergyLevel.Quantity.Threshold">EnergyLevel.Quantity.Threshold</h3>
+        <p>Threshold defines preset descriptive quantities for the energy level of the device.</p><p>Numeric values will be preferred if provided.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>THRESHOLD_UNKNOWN</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CRITICALLY_LOW</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EMPTY</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LOW</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>MEDIUM</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>HIGH</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FULL</td>
+                <td>7</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CRITICALLY_HIGH</td>
+                <td>8</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="smartcore.traits.EnergyLevel.Transfer.Speed">EnergyLevel.Transfer.Speed</h3>
         <p>Speed defines descriptive relative energy transfer speeds for a device.</p><p>Larger enum values will always be faster than smaller enum values.</p><p>Comparing two devices speeds is not defined, one device that is FAST and another that is SLOW does not</p><p>guarantee that either device will transfer energy quicker than the other.</p>
         <table class="enum-table">
           <thead>
@@ -699,59 +771,6 @@ A rechargeable device should report charging and until_full where appropriate. <
               <tr>
                 <td>EXTRA_FAST</td>
                 <td>5</td>
-                <td><p></p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
-        <h3 id="smartcore.traits.EnergyLevel.Threshold">EnergyLevel.Threshold</h3>
-        <p>Threshold defines preset descriptive quantities for the energy level of the device.</p><p>Numeric values will be preferred if provided.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>THRESHOLD_UNKNOWN</td>
-                <td>0</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>CRITICALLY_LOW</td>
-                <td>1</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>LOW</td>
-                <td>2</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>MEDIUM</td>
-                <td>3</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>HIGH</td>
-                <td>4</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>FULL</td>
-                <td>6</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>CRITICALLY_HIGH</td>
-                <td>7</td>
                 <td><p></p></td>
               </tr>
             
