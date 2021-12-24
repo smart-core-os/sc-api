@@ -4,7 +4,7 @@
 The Smart Core API, source code, this guide, and all associated resources and tools are currently in Early Access.
 What this means is that unless you are granted access you won't be able to run through this guide yourself.
 
-If you're reading this then you already know who to contact to request access.
+To request access, please [contact the Smart Core team](https://smart-core.tech/#get-involved).
 :::
 
 ## What is Smart Core
