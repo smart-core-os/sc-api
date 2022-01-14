@@ -25,6 +25,7 @@ service ParentInfo {
   // todo: define ParentInfo
 }
 
+// Child is a member of a parent.
 message Child {
   // Name is the Smart Core name for this child device.
   string name = 1;
