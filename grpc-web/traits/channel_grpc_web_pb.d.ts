@@ -11,28 +11,28 @@ export class ChannelApiClient {
   getChosenChannel(
     request: traits_channel_pb.GetChosenChannelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_channel_pb.Channel) => void
   ): grpcWeb.ClientReadableStream<traits_channel_pb.Channel>;
 
   chooseChannel(
     request: traits_channel_pb.ChooseChannelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_channel_pb.Channel) => void
   ): grpcWeb.ClientReadableStream<traits_channel_pb.Channel>;
 
   adjustChannel(
     request: traits_channel_pb.AdjustChannelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_channel_pb.Channel) => void
   ): grpcWeb.ClientReadableStream<traits_channel_pb.Channel>;
 
   returnChannel(
     request: traits_channel_pb.ReturnChannelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_channel_pb.Channel) => void
   ): grpcWeb.ClientReadableStream<traits_channel_pb.Channel>;
 
@@ -51,7 +51,7 @@ export class ChannelInfoClient {
   describeChosenChannel(
     request: traits_channel_pb.DescribeChosenChannelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_channel_pb.ChosenChannelSupport) => void
   ): grpcWeb.ClientReadableStream<traits_channel_pb.ChosenChannelSupport>;
 

@@ -23,6 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Child is a member of a parent.
 type Child struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -96,7 +97,7 @@ type Trait struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The qualified name of the trait.
-	// For example smartcore.trait.Parent
+	// For example smartcore.traits.Parent
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 

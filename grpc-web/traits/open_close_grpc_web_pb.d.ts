@@ -11,21 +11,21 @@ export class OpenCloseApiClient {
   getPositions(
     request: traits_open_close_pb.GetOpenClosePositionsRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_open_close_pb.OpenClosePositions) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
   updatePositions(
     request: traits_open_close_pb.UpdateOpenClosePositionsRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_open_close_pb.OpenClosePositions) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
   stop(
     request: traits_open_close_pb.StopOpenCloseRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_open_close_pb.OpenClosePositions) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.OpenClosePositions>;
 
@@ -44,7 +44,7 @@ export class OpenCloseInfoClient {
   describePositions(
     request: traits_open_close_pb.DescribePositionsRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_open_close_pb.PositionsSupport) => void
   ): grpcWeb.ClientReadableStream<traits_open_close_pb.PositionsSupport>;
 

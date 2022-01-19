@@ -26,7 +26,7 @@ proto.smartcore.traits = require('./occupancy_sensor_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -34,7 +34,7 @@ proto.smartcore.traits = require('./occupancy_sensor_pb.js');
 proto.smartcore.traits.OccupancySensorApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -52,7 +52,7 @@ proto.smartcore.traits.OccupancySensorApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -60,7 +60,7 @@ proto.smartcore.traits.OccupancySensorApiClient =
 proto.smartcore.traits.OccupancySensorApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -98,30 +98,11 @@ const methodDescriptor_OccupancySensorApi_GetOccupancy = new grpc.web.MethodDesc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetOccupancyRequest,
- *   !proto.smartcore.traits.Occupancy>}
- */
-const methodInfo_OccupancySensorApi_GetOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Occupancy,
-  /**
-   * @param {!proto.smartcore.traits.GetOccupancyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Occupancy.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetOccupancyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Occupancy)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Occupancy)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Occupancy>|undefined}
  *     The XHR Node Readable Stream
@@ -140,7 +121,7 @@ proto.smartcore.traits.OccupancySensorApiClient.prototype.getOccupancy =
 /**
  * @param {!proto.smartcore.traits.GetOccupancyRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Occupancy>}
  *     Promise that resolves to the response
@@ -178,27 +159,8 @@ const methodDescriptor_OccupancySensorApi_PullOccupancy = new grpc.web.MethodDes
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullOccupancyRequest,
- *   !proto.smartcore.traits.PullOccupancyResponse>}
- */
-const methodInfo_OccupancySensorApi_PullOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullOccupancyResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullOccupancyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullOccupancyResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullOccupancyRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOccupancyResponse>}
  *     The XHR Node Readable Stream
@@ -215,7 +177,7 @@ proto.smartcore.traits.OccupancySensorApiClient.prototype.pullOccupancy =
 
 /**
  * @param {!proto.smartcore.traits.PullOccupancyRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOccupancyResponse>}
  *     The XHR Node Readable Stream
@@ -233,7 +195,7 @@ proto.smartcore.traits.OccupancySensorApiPromiseClient.prototype.pullOccupancy =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -241,7 +203,7 @@ proto.smartcore.traits.OccupancySensorApiPromiseClient.prototype.pullOccupancy =
 proto.smartcore.traits.OccupancySensorInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -259,7 +221,7 @@ proto.smartcore.traits.OccupancySensorInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -267,7 +229,7 @@ proto.smartcore.traits.OccupancySensorInfoClient =
 proto.smartcore.traits.OccupancySensorInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -305,30 +267,11 @@ const methodDescriptor_OccupancySensorInfo_DescribeOccupancy = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeOccupancyRequest,
- *   !proto.smartcore.traits.OccupancySupport>}
- */
-const methodInfo_OccupancySensorInfo_DescribeOccupancy = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OccupancySupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeOccupancyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.OccupancySupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeOccupancyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OccupancySupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.OccupancySupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OccupancySupport>|undefined}
  *     The XHR Node Readable Stream
@@ -347,7 +290,7 @@ proto.smartcore.traits.OccupancySensorInfoClient.prototype.describeOccupancy =
 /**
  * @param {!proto.smartcore.traits.DescribeOccupancyRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.OccupancySupport>}
  *     Promise that resolves to the response

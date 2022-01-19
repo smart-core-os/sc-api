@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./speaker_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./speaker_pb.js');
 proto.smartcore.traits.SpeakerApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.SpeakerApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.SpeakerApiClient =
 proto.smartcore.traits.SpeakerApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_SpeakerApi_GetVolume = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetSpeakerVolumeRequest,
- *   !proto.smartcore.types.AudioLevel>}
- */
-const methodInfo_SpeakerApi_GetVolume = new grpc.web.AbstractClientBase.MethodInfo(
-  types_unit_pb.AudioLevel,
-  /**
-   * @param {!proto.smartcore.traits.GetSpeakerVolumeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  types_unit_pb.AudioLevel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetSpeakerVolumeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.types.AudioLevel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.types.AudioLevel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.types.AudioLevel>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.SpeakerApiClient.prototype.getVolume =
 /**
  * @param {!proto.smartcore.traits.GetSpeakerVolumeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.types.AudioLevel>}
  *     Promise that resolves to the response
@@ -182,30 +163,11 @@ const methodDescriptor_SpeakerApi_UpdateVolume = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateSpeakerVolumeRequest,
- *   !proto.smartcore.types.AudioLevel>}
- */
-const methodInfo_SpeakerApi_UpdateVolume = new grpc.web.AbstractClientBase.MethodInfo(
-  types_unit_pb.AudioLevel,
-  /**
-   * @param {!proto.smartcore.traits.UpdateSpeakerVolumeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  types_unit_pb.AudioLevel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateSpeakerVolumeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.types.AudioLevel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.types.AudioLevel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.types.AudioLevel>|undefined}
  *     The XHR Node Readable Stream
@@ -224,7 +186,7 @@ proto.smartcore.traits.SpeakerApiClient.prototype.updateVolume =
 /**
  * @param {!proto.smartcore.traits.UpdateSpeakerVolumeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.types.AudioLevel>}
  *     Promise that resolves to the response
@@ -262,27 +224,8 @@ const methodDescriptor_SpeakerApi_PullVolume = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullSpeakerVolumeRequest,
- *   !proto.smartcore.traits.PullSpeakerVolumeResponse>}
- */
-const methodInfo_SpeakerApi_PullVolume = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullSpeakerVolumeResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullSpeakerVolumeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullSpeakerVolumeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullSpeakerVolumeRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSpeakerVolumeResponse>}
  *     The XHR Node Readable Stream
@@ -299,7 +242,7 @@ proto.smartcore.traits.SpeakerApiClient.prototype.pullVolume =
 
 /**
  * @param {!proto.smartcore.traits.PullSpeakerVolumeRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullSpeakerVolumeResponse>}
  *     The XHR Node Readable Stream
@@ -317,7 +260,7 @@ proto.smartcore.traits.SpeakerApiPromiseClient.prototype.pullVolume =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -325,7 +268,7 @@ proto.smartcore.traits.SpeakerApiPromiseClient.prototype.pullVolume =
 proto.smartcore.traits.SpeakerInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -343,7 +286,7 @@ proto.smartcore.traits.SpeakerInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -351,7 +294,7 @@ proto.smartcore.traits.SpeakerInfoClient =
 proto.smartcore.traits.SpeakerInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -389,30 +332,11 @@ const methodDescriptor_SpeakerInfo_DescribeVolume = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeVolumeRequest,
- *   !proto.smartcore.traits.VolumeSupport>}
- */
-const methodInfo_SpeakerInfo_DescribeVolume = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.VolumeSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeVolumeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.VolumeSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeVolumeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.VolumeSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.VolumeSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.VolumeSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -431,7 +355,7 @@ proto.smartcore.traits.SpeakerInfoClient.prototype.describeVolume =
 /**
  * @param {!proto.smartcore.traits.DescribeVolumeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.VolumeSupport>}
  *     Promise that resolves to the response

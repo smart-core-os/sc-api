@@ -28,7 +28,7 @@ proto.smartcore.traits = require('./parent_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./parent_pb.js');
 proto.smartcore.traits.ParentApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -54,7 +54,7 @@ proto.smartcore.traits.ParentApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -62,7 +62,7 @@ proto.smartcore.traits.ParentApiClient =
 proto.smartcore.traits.ParentApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -100,30 +100,11 @@ const methodDescriptor_ParentApi_ListChildren = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ListChildrenRequest,
- *   !proto.smartcore.traits.ListChildrenResponse>}
- */
-const methodInfo_ParentApi_ListChildren = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ListChildrenResponse,
-  /**
-   * @param {!proto.smartcore.traits.ListChildrenRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ListChildrenResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ListChildrenRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ListChildrenResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListChildrenResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListChildrenResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -142,7 +123,7 @@ proto.smartcore.traits.ParentApiClient.prototype.listChildren =
 /**
  * @param {!proto.smartcore.traits.ListChildrenRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ListChildrenResponse>}
  *     Promise that resolves to the response
@@ -180,27 +161,8 @@ const methodDescriptor_ParentApi_PullChildren = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullChildrenRequest,
- *   !proto.smartcore.traits.PullChildrenResponse>}
- */
-const methodInfo_ParentApi_PullChildren = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullChildrenResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullChildrenRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullChildrenResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullChildrenRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChildrenResponse>}
  *     The XHR Node Readable Stream
@@ -217,7 +179,7 @@ proto.smartcore.traits.ParentApiClient.prototype.pullChildren =
 
 /**
  * @param {!proto.smartcore.traits.PullChildrenRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChildrenResponse>}
  *     The XHR Node Readable Stream
@@ -235,7 +197,7 @@ proto.smartcore.traits.ParentApiPromiseClient.prototype.pullChildren =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -243,7 +205,7 @@ proto.smartcore.traits.ParentApiPromiseClient.prototype.pullChildren =
 proto.smartcore.traits.ParentInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -261,7 +223,7 @@ proto.smartcore.traits.ParentInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -269,7 +231,7 @@ proto.smartcore.traits.ParentInfoClient =
 proto.smartcore.traits.ParentInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

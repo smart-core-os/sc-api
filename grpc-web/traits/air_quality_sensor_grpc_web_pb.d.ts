@@ -11,7 +11,7 @@ export class AirQualitySensorApiClient {
   getAirQuality(
     request: traits_air_quality_sensor_pb.GetAirQualityRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_air_quality_sensor_pb.AirQuality) => void
   ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.AirQuality>;
 
@@ -30,7 +30,7 @@ export class AirQualitySensorInfoClient {
   describeAirQuality(
     request: traits_air_quality_sensor_pb.DescribeAirQualityRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_air_quality_sensor_pb.AirQualitySupport) => void
   ): grpcWeb.ClientReadableStream<traits_air_quality_sensor_pb.AirQualitySupport>;
 

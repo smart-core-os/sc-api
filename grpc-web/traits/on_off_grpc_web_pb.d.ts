@@ -11,14 +11,14 @@ export class OnOffApiClient {
   getOnOff(
     request: traits_on_off_pb.GetOnOffRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_on_off_pb.OnOff) => void
   ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOff>;
 
   updateOnOff(
     request: traits_on_off_pb.UpdateOnOffRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_on_off_pb.OnOff) => void
   ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOff>;
 
@@ -37,7 +37,7 @@ export class OnOffInfoClient {
   describeOnOff(
     request: traits_on_off_pb.DescribeOnOffRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_on_off_pb.OnOffSupport) => void
   ): grpcWeb.ClientReadableStream<traits_on_off_pb.OnOffSupport>;
 

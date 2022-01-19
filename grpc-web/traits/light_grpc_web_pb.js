@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./light_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./light_pb.js');
 proto.smartcore.traits.LightApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.LightApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.LightApiClient =
 proto.smartcore.traits.LightApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_LightApi_UpdateBrightness = new grpc.web.MethodDescriptor
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateBrightnessRequest,
- *   !proto.smartcore.traits.Brightness>}
- */
-const methodInfo_LightApi_UpdateBrightness = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Brightness,
-  /**
-   * @param {!proto.smartcore.traits.UpdateBrightnessRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Brightness.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateBrightnessRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Brightness)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Brightness)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Brightness>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.LightApiClient.prototype.updateBrightness =
 /**
  * @param {!proto.smartcore.traits.UpdateBrightnessRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Brightness>}
  *     Promise that resolves to the response
@@ -182,30 +163,11 @@ const methodDescriptor_LightApi_GetBrightness = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetBrightnessRequest,
- *   !proto.smartcore.traits.Brightness>}
- */
-const methodInfo_LightApi_GetBrightness = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Brightness,
-  /**
-   * @param {!proto.smartcore.traits.GetBrightnessRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Brightness.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetBrightnessRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Brightness)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Brightness)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Brightness>|undefined}
  *     The XHR Node Readable Stream
@@ -224,7 +186,7 @@ proto.smartcore.traits.LightApiClient.prototype.getBrightness =
 /**
  * @param {!proto.smartcore.traits.GetBrightnessRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Brightness>}
  *     Promise that resolves to the response
@@ -262,27 +224,8 @@ const methodDescriptor_LightApi_PullBrightness = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullBrightnessRequest,
- *   !proto.smartcore.traits.PullBrightnessResponse>}
- */
-const methodInfo_LightApi_PullBrightness = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullBrightnessResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullBrightnessRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullBrightnessResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullBrightnessRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBrightnessResponse>}
  *     The XHR Node Readable Stream
@@ -299,7 +242,7 @@ proto.smartcore.traits.LightApiClient.prototype.pullBrightness =
 
 /**
  * @param {!proto.smartcore.traits.PullBrightnessRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBrightnessResponse>}
  *     The XHR Node Readable Stream
@@ -317,7 +260,7 @@ proto.smartcore.traits.LightApiPromiseClient.prototype.pullBrightness =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -325,7 +268,7 @@ proto.smartcore.traits.LightApiPromiseClient.prototype.pullBrightness =
 proto.smartcore.traits.LightInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -343,7 +286,7 @@ proto.smartcore.traits.LightInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -351,7 +294,7 @@ proto.smartcore.traits.LightInfoClient =
 proto.smartcore.traits.LightInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -389,30 +332,11 @@ const methodDescriptor_LightInfo_DescribeBrightness = new grpc.web.MethodDescrip
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeBrightnessRequest,
- *   !proto.smartcore.traits.BrightnessSupport>}
- */
-const methodInfo_LightInfo_DescribeBrightness = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.BrightnessSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.BrightnessSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.BrightnessSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.BrightnessSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.BrightnessSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -431,7 +355,7 @@ proto.smartcore.traits.LightInfoClient.prototype.describeBrightness =
 /**
  * @param {!proto.smartcore.traits.DescribeBrightnessRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.BrightnessSupport>}
  *     Promise that resolves to the response

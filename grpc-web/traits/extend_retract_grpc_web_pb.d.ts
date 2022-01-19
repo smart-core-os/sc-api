@@ -11,28 +11,28 @@ export class ExtendRetractApiClient {
   getExtension(
     request: traits_extend_retract_pb.GetExtensionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_extend_retract_pb.Extension) => void
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.Extension>;
 
   updateExtension(
     request: traits_extend_retract_pb.UpdateExtensionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_extend_retract_pb.Extension) => void
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.Extension>;
 
   stop(
     request: traits_extend_retract_pb.ExtendRetractStopRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_extend_retract_pb.Extension) => void
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.Extension>;
 
   createExtensionPreset(
     request: traits_extend_retract_pb.CreateExtensionPresetRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_extend_retract_pb.ExtensionPreset) => void
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.ExtensionPreset>;
 
@@ -51,7 +51,7 @@ export class ExtendRetractInfoClient {
   describeExtension(
     request: traits_extend_retract_pb.DescribeExtensionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_extend_retract_pb.ExtensionSupport) => void
   ): grpcWeb.ClientReadableStream<traits_extend_retract_pb.ExtensionSupport>;
 

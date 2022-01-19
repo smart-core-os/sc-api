@@ -34,7 +34,7 @@ proto.smartcore.traits = require('./booking_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -42,7 +42,7 @@ proto.smartcore.traits = require('./booking_pb.js');
 proto.smartcore.traits.BookingApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -60,7 +60,7 @@ proto.smartcore.traits.BookingApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -68,7 +68,7 @@ proto.smartcore.traits.BookingApiClient =
 proto.smartcore.traits.BookingApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -106,30 +106,11 @@ const methodDescriptor_BookingApi_ListBookings = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ListBookingsRequest,
- *   !proto.smartcore.traits.ListBookingsResponse>}
- */
-const methodInfo_BookingApi_ListBookings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ListBookingsResponse,
-  /**
-   * @param {!proto.smartcore.traits.ListBookingsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ListBookingsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ListBookingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ListBookingsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListBookingsResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListBookingsResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -148,7 +129,7 @@ proto.smartcore.traits.BookingApiClient.prototype.listBookings =
 /**
  * @param {!proto.smartcore.traits.ListBookingsRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ListBookingsResponse>}
  *     Promise that resolves to the response
@@ -186,30 +167,11 @@ const methodDescriptor_BookingApi_CheckInBooking = new grpc.web.MethodDescriptor
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CheckInBookingRequest,
- *   !proto.smartcore.traits.CheckInBookingResponse>}
- */
-const methodInfo_BookingApi_CheckInBooking = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.CheckInBookingResponse,
-  /**
-   * @param {!proto.smartcore.traits.CheckInBookingRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.CheckInBookingResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CheckInBookingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.CheckInBookingResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.CheckInBookingResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.CheckInBookingResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -228,7 +190,7 @@ proto.smartcore.traits.BookingApiClient.prototype.checkInBooking =
 /**
  * @param {!proto.smartcore.traits.CheckInBookingRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.CheckInBookingResponse>}
  *     Promise that resolves to the response
@@ -266,30 +228,11 @@ const methodDescriptor_BookingApi_CheckOutBooking = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CheckOutBookingRequest,
- *   !proto.smartcore.traits.CheckOutBookingResponse>}
- */
-const methodInfo_BookingApi_CheckOutBooking = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.CheckOutBookingResponse,
-  /**
-   * @param {!proto.smartcore.traits.CheckOutBookingRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.CheckOutBookingResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CheckOutBookingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.CheckOutBookingResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.CheckOutBookingResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.CheckOutBookingResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -308,7 +251,7 @@ proto.smartcore.traits.BookingApiClient.prototype.checkOutBooking =
 /**
  * @param {!proto.smartcore.traits.CheckOutBookingRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.CheckOutBookingResponse>}
  *     Promise that resolves to the response
@@ -346,30 +289,11 @@ const methodDescriptor_BookingApi_CreateBooking = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CreateBookingRequest,
- *   !proto.smartcore.traits.CreateBookingResponse>}
- */
-const methodInfo_BookingApi_CreateBooking = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.CreateBookingResponse,
-  /**
-   * @param {!proto.smartcore.traits.CreateBookingRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.CreateBookingResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CreateBookingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.CreateBookingResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.CreateBookingResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.CreateBookingResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -388,7 +312,7 @@ proto.smartcore.traits.BookingApiClient.prototype.createBooking =
 /**
  * @param {!proto.smartcore.traits.CreateBookingRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.CreateBookingResponse>}
  *     Promise that resolves to the response
@@ -426,30 +350,11 @@ const methodDescriptor_BookingApi_UpdateBooking = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateBookingRequest,
- *   !proto.smartcore.traits.UpdateBookingResponse>}
- */
-const methodInfo_BookingApi_UpdateBooking = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.UpdateBookingResponse,
-  /**
-   * @param {!proto.smartcore.traits.UpdateBookingRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.UpdateBookingResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateBookingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.UpdateBookingResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.UpdateBookingResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.UpdateBookingResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -468,7 +373,7 @@ proto.smartcore.traits.BookingApiClient.prototype.updateBooking =
 /**
  * @param {!proto.smartcore.traits.UpdateBookingRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.UpdateBookingResponse>}
  *     Promise that resolves to the response
@@ -506,27 +411,8 @@ const methodDescriptor_BookingApi_PullBookings = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ListBookingsRequest,
- *   !proto.smartcore.traits.PullBookingsResponse>}
- */
-const methodInfo_BookingApi_PullBookings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullBookingsResponse,
-  /**
-   * @param {!proto.smartcore.traits.ListBookingsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullBookingsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ListBookingsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBookingsResponse>}
  *     The XHR Node Readable Stream
@@ -543,7 +429,7 @@ proto.smartcore.traits.BookingApiClient.prototype.pullBookings =
 
 /**
  * @param {!proto.smartcore.traits.ListBookingsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullBookingsResponse>}
  *     The XHR Node Readable Stream
@@ -561,7 +447,7 @@ proto.smartcore.traits.BookingApiPromiseClient.prototype.pullBookings =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -569,7 +455,7 @@ proto.smartcore.traits.BookingApiPromiseClient.prototype.pullBookings =
 proto.smartcore.traits.BookingInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -587,7 +473,7 @@ proto.smartcore.traits.BookingInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -595,7 +481,7 @@ proto.smartcore.traits.BookingInfoClient =
 proto.smartcore.traits.BookingInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -633,30 +519,11 @@ const methodDescriptor_BookingInfo_DescribeBooking = new grpc.web.MethodDescript
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeBookingRequest,
- *   !proto.smartcore.traits.BookingSupport>}
- */
-const methodInfo_BookingInfo_DescribeBooking = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.BookingSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeBookingRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.BookingSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeBookingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.BookingSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.BookingSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.BookingSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -675,7 +542,7 @@ proto.smartcore.traits.BookingInfoClient.prototype.describeBooking =
 /**
  * @param {!proto.smartcore.traits.DescribeBookingRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.BookingSupport>}
  *     Promise that resolves to the response

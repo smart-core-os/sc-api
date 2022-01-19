@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./electric_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./electric_pb.js');
 proto.smartcore.traits.ElectricApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.ElectricApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.ElectricApiClient =
 proto.smartcore.traits.ElectricApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_ElectricApi_GetDemand = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetDemandRequest,
- *   !proto.smartcore.traits.ElectricDemand>}
- */
-const methodInfo_ElectricApi_GetDemand = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ElectricDemand,
-  /**
-   * @param {!proto.smartcore.traits.GetDemandRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ElectricDemand.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetDemandRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ElectricDemand)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ElectricDemand)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ElectricDemand>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.getDemand =
 /**
  * @param {!proto.smartcore.traits.GetDemandRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ElectricDemand>}
  *     Promise that resolves to the response
@@ -182,27 +163,8 @@ const methodDescriptor_ElectricApi_PullDemand = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullDemandRequest,
- *   !proto.smartcore.traits.PullDemandResponse>}
- */
-const methodInfo_ElectricApi_PullDemand = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullDemandResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullDemandRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullDemandResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullDemandRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDemandResponse>}
  *     The XHR Node Readable Stream
@@ -219,7 +181,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.pullDemand =
 
 /**
  * @param {!proto.smartcore.traits.PullDemandRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDemandResponse>}
  *     The XHR Node Readable Stream
@@ -257,30 +219,11 @@ const methodDescriptor_ElectricApi_GetActiveMode = new grpc.web.MethodDescriptor
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetActiveModeRequest,
- *   !proto.smartcore.traits.ElectricMode>}
- */
-const methodInfo_ElectricApi_GetActiveMode = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ElectricMode,
-  /**
-   * @param {!proto.smartcore.traits.GetActiveModeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ElectricMode.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetActiveModeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ElectricMode)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ElectricMode)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ElectricMode>|undefined}
  *     The XHR Node Readable Stream
@@ -299,7 +242,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.getActiveMode =
 /**
  * @param {!proto.smartcore.traits.GetActiveModeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ElectricMode>}
  *     Promise that resolves to the response
@@ -337,30 +280,11 @@ const methodDescriptor_ElectricApi_UpdateActiveMode = new grpc.web.MethodDescrip
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateActiveModeRequest,
- *   !proto.smartcore.traits.ElectricMode>}
- */
-const methodInfo_ElectricApi_UpdateActiveMode = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ElectricMode,
-  /**
-   * @param {!proto.smartcore.traits.UpdateActiveModeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ElectricMode.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateActiveModeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ElectricMode)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ElectricMode)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ElectricMode>|undefined}
  *     The XHR Node Readable Stream
@@ -379,7 +303,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.updateActiveMode =
 /**
  * @param {!proto.smartcore.traits.UpdateActiveModeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ElectricMode>}
  *     Promise that resolves to the response
@@ -417,30 +341,11 @@ const methodDescriptor_ElectricApi_ClearActiveMode = new grpc.web.MethodDescript
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ClearActiveModeRequest,
- *   !proto.smartcore.traits.ElectricMode>}
- */
-const methodInfo_ElectricApi_ClearActiveMode = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ElectricMode,
-  /**
-   * @param {!proto.smartcore.traits.ClearActiveModeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ElectricMode.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ClearActiveModeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ElectricMode)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ElectricMode)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ElectricMode>|undefined}
  *     The XHR Node Readable Stream
@@ -459,7 +364,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.clearActiveMode =
 /**
  * @param {!proto.smartcore.traits.ClearActiveModeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ElectricMode>}
  *     Promise that resolves to the response
@@ -497,27 +402,8 @@ const methodDescriptor_ElectricApi_PullActiveMode = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullActiveModeRequest,
- *   !proto.smartcore.traits.PullActiveModeResponse>}
- */
-const methodInfo_ElectricApi_PullActiveMode = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullActiveModeResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullActiveModeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullActiveModeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullActiveModeRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullActiveModeResponse>}
  *     The XHR Node Readable Stream
@@ -534,7 +420,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.pullActiveMode =
 
 /**
  * @param {!proto.smartcore.traits.PullActiveModeRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullActiveModeResponse>}
  *     The XHR Node Readable Stream
@@ -572,30 +458,11 @@ const methodDescriptor_ElectricApi_ListModes = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ListModesRequest,
- *   !proto.smartcore.traits.ListModesResponse>}
- */
-const methodInfo_ElectricApi_ListModes = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ListModesResponse,
-  /**
-   * @param {!proto.smartcore.traits.ListModesRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ListModesResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ListModesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ListModesResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListModesResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListModesResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -614,7 +481,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.listModes =
 /**
  * @param {!proto.smartcore.traits.ListModesRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ListModesResponse>}
  *     Promise that resolves to the response
@@ -652,27 +519,8 @@ const methodDescriptor_ElectricApi_PullModes = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullModesRequest,
- *   !proto.smartcore.traits.PullModesResponse>}
- */
-const methodInfo_ElectricApi_PullModes = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullModesResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullModesRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullModesResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullModesRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullModesResponse>}
  *     The XHR Node Readable Stream
@@ -689,7 +537,7 @@ proto.smartcore.traits.ElectricApiClient.prototype.pullModes =
 
 /**
  * @param {!proto.smartcore.traits.PullModesRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullModesResponse>}
  *     The XHR Node Readable Stream
@@ -707,7 +555,7 @@ proto.smartcore.traits.ElectricApiPromiseClient.prototype.pullModes =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -715,7 +563,7 @@ proto.smartcore.traits.ElectricApiPromiseClient.prototype.pullModes =
 proto.smartcore.traits.ElectricInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -733,7 +581,7 @@ proto.smartcore.traits.ElectricInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -741,7 +589,7 @@ proto.smartcore.traits.ElectricInfoClient =
 proto.smartcore.traits.ElectricInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

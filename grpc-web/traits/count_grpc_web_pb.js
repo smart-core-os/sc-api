@@ -28,7 +28,7 @@ proto.smartcore.traits = require('./count_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./count_pb.js');
 proto.smartcore.traits.CountApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -54,7 +54,7 @@ proto.smartcore.traits.CountApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -62,7 +62,7 @@ proto.smartcore.traits.CountApiClient =
 proto.smartcore.traits.CountApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -100,30 +100,11 @@ const methodDescriptor_CountApi_GetCount = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetCountRequest,
- *   !proto.smartcore.traits.Count>}
- */
-const methodInfo_CountApi_GetCount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Count,
-  /**
-   * @param {!proto.smartcore.traits.GetCountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Count.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetCountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Count)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Count)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Count>|undefined}
  *     The XHR Node Readable Stream
@@ -142,7 +123,7 @@ proto.smartcore.traits.CountApiClient.prototype.getCount =
 /**
  * @param {!proto.smartcore.traits.GetCountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Count>}
  *     Promise that resolves to the response
@@ -180,30 +161,11 @@ const methodDescriptor_CountApi_ResetCount = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ResetCountRequest,
- *   !proto.smartcore.traits.Count>}
- */
-const methodInfo_CountApi_ResetCount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Count,
-  /**
-   * @param {!proto.smartcore.traits.ResetCountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Count.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ResetCountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Count)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Count)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Count>|undefined}
  *     The XHR Node Readable Stream
@@ -222,7 +184,7 @@ proto.smartcore.traits.CountApiClient.prototype.resetCount =
 /**
  * @param {!proto.smartcore.traits.ResetCountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Count>}
  *     Promise that resolves to the response
@@ -260,30 +222,11 @@ const methodDescriptor_CountApi_UpdateCount = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateCountRequest,
- *   !proto.smartcore.traits.Count>}
- */
-const methodInfo_CountApi_UpdateCount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Count,
-  /**
-   * @param {!proto.smartcore.traits.UpdateCountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Count.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateCountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Count)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Count)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Count>|undefined}
  *     The XHR Node Readable Stream
@@ -302,7 +245,7 @@ proto.smartcore.traits.CountApiClient.prototype.updateCount =
 /**
  * @param {!proto.smartcore.traits.UpdateCountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Count>}
  *     Promise that resolves to the response
@@ -340,27 +283,8 @@ const methodDescriptor_CountApi_PullCounts = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullCountsRequest,
- *   !proto.smartcore.traits.PullCountsResponse>}
- */
-const methodInfo_CountApi_PullCounts = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullCountsResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullCountsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullCountsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullCountsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullCountsResponse>}
  *     The XHR Node Readable Stream
@@ -377,7 +301,7 @@ proto.smartcore.traits.CountApiClient.prototype.pullCounts =
 
 /**
  * @param {!proto.smartcore.traits.PullCountsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullCountsResponse>}
  *     The XHR Node Readable Stream
@@ -395,7 +319,7 @@ proto.smartcore.traits.CountApiPromiseClient.prototype.pullCounts =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -403,7 +327,7 @@ proto.smartcore.traits.CountApiPromiseClient.prototype.pullCounts =
 proto.smartcore.traits.CountInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -421,7 +345,7 @@ proto.smartcore.traits.CountInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -429,7 +353,7 @@ proto.smartcore.traits.CountInfoClient =
 proto.smartcore.traits.CountInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -467,30 +391,11 @@ const methodDescriptor_CountInfo_DescribeCount = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeCountRequest,
- *   !proto.smartcore.traits.CountSupport>}
- */
-const methodInfo_CountInfo_DescribeCount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.CountSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeCountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.CountSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeCountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.CountSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.CountSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.CountSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -509,7 +414,7 @@ proto.smartcore.traits.CountInfoClient.prototype.describeCount =
 /**
  * @param {!proto.smartcore.traits.DescribeCountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.CountSupport>}
  *     Promise that resolves to the response

@@ -26,7 +26,7 @@ proto.smartcore.traits = require('./channel_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -34,7 +34,7 @@ proto.smartcore.traits = require('./channel_pb.js');
 proto.smartcore.traits.ChannelApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -52,7 +52,7 @@ proto.smartcore.traits.ChannelApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -60,7 +60,7 @@ proto.smartcore.traits.ChannelApiClient =
 proto.smartcore.traits.ChannelApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -98,30 +98,11 @@ const methodDescriptor_ChannelApi_GetChosenChannel = new grpc.web.MethodDescript
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetChosenChannelRequest,
- *   !proto.smartcore.traits.Channel>}
- */
-const methodInfo_ChannelApi_GetChosenChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Channel,
-  /**
-   * @param {!proto.smartcore.traits.GetChosenChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Channel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetChosenChannelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Channel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Channel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Channel>|undefined}
  *     The XHR Node Readable Stream
@@ -140,7 +121,7 @@ proto.smartcore.traits.ChannelApiClient.prototype.getChosenChannel =
 /**
  * @param {!proto.smartcore.traits.GetChosenChannelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Channel>}
  *     Promise that resolves to the response
@@ -178,30 +159,11 @@ const methodDescriptor_ChannelApi_ChooseChannel = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ChooseChannelRequest,
- *   !proto.smartcore.traits.Channel>}
- */
-const methodInfo_ChannelApi_ChooseChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Channel,
-  /**
-   * @param {!proto.smartcore.traits.ChooseChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Channel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ChooseChannelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Channel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Channel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Channel>|undefined}
  *     The XHR Node Readable Stream
@@ -220,7 +182,7 @@ proto.smartcore.traits.ChannelApiClient.prototype.chooseChannel =
 /**
  * @param {!proto.smartcore.traits.ChooseChannelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Channel>}
  *     Promise that resolves to the response
@@ -258,30 +220,11 @@ const methodDescriptor_ChannelApi_AdjustChannel = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.AdjustChannelRequest,
- *   !proto.smartcore.traits.Channel>}
- */
-const methodInfo_ChannelApi_AdjustChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Channel,
-  /**
-   * @param {!proto.smartcore.traits.AdjustChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Channel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.AdjustChannelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Channel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Channel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Channel>|undefined}
  *     The XHR Node Readable Stream
@@ -300,7 +243,7 @@ proto.smartcore.traits.ChannelApiClient.prototype.adjustChannel =
 /**
  * @param {!proto.smartcore.traits.AdjustChannelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Channel>}
  *     Promise that resolves to the response
@@ -338,30 +281,11 @@ const methodDescriptor_ChannelApi_ReturnChannel = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ReturnChannelRequest,
- *   !proto.smartcore.traits.Channel>}
- */
-const methodInfo_ChannelApi_ReturnChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Channel,
-  /**
-   * @param {!proto.smartcore.traits.ReturnChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Channel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ReturnChannelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Channel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Channel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Channel>|undefined}
  *     The XHR Node Readable Stream
@@ -380,7 +304,7 @@ proto.smartcore.traits.ChannelApiClient.prototype.returnChannel =
 /**
  * @param {!proto.smartcore.traits.ReturnChannelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Channel>}
  *     Promise that resolves to the response
@@ -418,27 +342,8 @@ const methodDescriptor_ChannelApi_PullChosenChannel = new grpc.web.MethodDescrip
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullChosenChannelRequest,
- *   !proto.smartcore.traits.PullChosenChannelResponse>}
- */
-const methodInfo_ChannelApi_PullChosenChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullChosenChannelResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullChosenChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullChosenChannelResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullChosenChannelRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChosenChannelResponse>}
  *     The XHR Node Readable Stream
@@ -455,7 +360,7 @@ proto.smartcore.traits.ChannelApiClient.prototype.pullChosenChannel =
 
 /**
  * @param {!proto.smartcore.traits.PullChosenChannelRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullChosenChannelResponse>}
  *     The XHR Node Readable Stream
@@ -473,7 +378,7 @@ proto.smartcore.traits.ChannelApiPromiseClient.prototype.pullChosenChannel =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -481,7 +386,7 @@ proto.smartcore.traits.ChannelApiPromiseClient.prototype.pullChosenChannel =
 proto.smartcore.traits.ChannelInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -499,7 +404,7 @@ proto.smartcore.traits.ChannelInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -507,7 +412,7 @@ proto.smartcore.traits.ChannelInfoClient =
 proto.smartcore.traits.ChannelInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -545,30 +450,11 @@ const methodDescriptor_ChannelInfo_DescribeChosenChannel = new grpc.web.MethodDe
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeChosenChannelRequest,
- *   !proto.smartcore.traits.ChosenChannelSupport>}
- */
-const methodInfo_ChannelInfo_DescribeChosenChannel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ChosenChannelSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChosenChannelSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChosenChannelSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ChosenChannelSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChosenChannelSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -587,7 +473,7 @@ proto.smartcore.traits.ChannelInfoClient.prototype.describeChosenChannel =
 /**
  * @param {!proto.smartcore.traits.DescribeChosenChannelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ChosenChannelSupport>}
  *     Promise that resolves to the response

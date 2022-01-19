@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./energy_storage_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./energy_storage_pb.js');
 proto.smartcore.traits.EnergyStorageApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.EnergyStorageApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.EnergyStorageApiClient =
 proto.smartcore.traits.EnergyStorageApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_EnergyStorageApi_GetEnergyLevel = new grpc.web.MethodDesc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetEnergyLevelRequest,
- *   !proto.smartcore.traits.EnergyLevel>}
- */
-const methodInfo_EnergyStorageApi_GetEnergyLevel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.EnergyLevel,
-  /**
-   * @param {!proto.smartcore.traits.GetEnergyLevelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.EnergyLevel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetEnergyLevelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.EnergyLevel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.EnergyLevel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.EnergyLevel>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.EnergyStorageApiClient.prototype.getEnergyLevel =
 /**
  * @param {!proto.smartcore.traits.GetEnergyLevelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.EnergyLevel>}
  *     Promise that resolves to the response
@@ -182,27 +163,8 @@ const methodDescriptor_EnergyStorageApi_PullEnergyLevel = new grpc.web.MethodDes
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullEnergyLevelRequest,
- *   !proto.smartcore.traits.PullEnergyLevelResponse>}
- */
-const methodInfo_EnergyStorageApi_PullEnergyLevel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullEnergyLevelResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullEnergyLevelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullEnergyLevelResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullEnergyLevelRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullEnergyLevelResponse>}
  *     The XHR Node Readable Stream
@@ -219,7 +181,7 @@ proto.smartcore.traits.EnergyStorageApiClient.prototype.pullEnergyLevel =
 
 /**
  * @param {!proto.smartcore.traits.PullEnergyLevelRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullEnergyLevelResponse>}
  *     The XHR Node Readable Stream
@@ -257,30 +219,11 @@ const methodDescriptor_EnergyStorageApi_Charge = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ChargeRequest,
- *   !proto.smartcore.traits.ChargeResponse>}
- */
-const methodInfo_EnergyStorageApi_Charge = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ChargeResponse,
-  /**
-   * @param {!proto.smartcore.traits.ChargeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ChargeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ChargeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ChargeResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ChargeResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ChargeResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -299,7 +242,7 @@ proto.smartcore.traits.EnergyStorageApiClient.prototype.charge =
 /**
  * @param {!proto.smartcore.traits.ChargeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ChargeResponse>}
  *     Promise that resolves to the response
@@ -317,7 +260,7 @@ proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.charge =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -325,7 +268,7 @@ proto.smartcore.traits.EnergyStorageApiPromiseClient.prototype.charge =
 proto.smartcore.traits.EnergyStorageInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -343,7 +286,7 @@ proto.smartcore.traits.EnergyStorageInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -351,7 +294,7 @@ proto.smartcore.traits.EnergyStorageInfoClient =
 proto.smartcore.traits.EnergyStorageInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -389,30 +332,11 @@ const methodDescriptor_EnergyStorageInfo_DescribeEnergyLevel = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeEnergyLevelRequest,
- *   !proto.smartcore.traits.EnergyLevelSupport>}
- */
-const methodInfo_EnergyStorageInfo_DescribeEnergyLevel = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.EnergyLevelSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeEnergyLevelRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.EnergyLevelSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeEnergyLevelRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.EnergyLevelSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.EnergyLevelSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.EnergyLevelSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -431,7 +355,7 @@ proto.smartcore.traits.EnergyStorageInfoClient.prototype.describeEnergyLevel =
 /**
  * @param {!proto.smartcore.traits.DescribeEnergyLevelRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.EnergyLevelSupport>}
  *     Promise that resolves to the response

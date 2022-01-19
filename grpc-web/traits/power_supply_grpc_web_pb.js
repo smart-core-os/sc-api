@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./power_supply_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -44,7 +44,7 @@ proto.smartcore.traits = require('./power_supply_pb.js');
 proto.smartcore.traits.PowerSupplyApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -62,7 +62,7 @@ proto.smartcore.traits.PowerSupplyApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -70,7 +70,7 @@ proto.smartcore.traits.PowerSupplyApiClient =
 proto.smartcore.traits.PowerSupplyApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -108,30 +108,11 @@ const methodDescriptor_PowerSupplyApi_GetPowerCapacity = new grpc.web.MethodDesc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetPowerCapacityRequest,
- *   !proto.smartcore.traits.PowerCapacity>}
- */
-const methodInfo_PowerSupplyApi_GetPowerCapacity = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PowerCapacity,
-  /**
-   * @param {!proto.smartcore.traits.GetPowerCapacityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PowerCapacity.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetPowerCapacityRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PowerCapacity)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PowerCapacity)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PowerCapacity>|undefined}
  *     The XHR Node Readable Stream
@@ -150,7 +131,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.getPowerCapacity =
 /**
  * @param {!proto.smartcore.traits.GetPowerCapacityRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.PowerCapacity>}
  *     Promise that resolves to the response
@@ -188,27 +169,8 @@ const methodDescriptor_PowerSupplyApi_PullPowerCapacity = new grpc.web.MethodDes
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullPowerCapacityRequest,
- *   !proto.smartcore.traits.PullPowerCapacityResponse>}
- */
-const methodInfo_PowerSupplyApi_PullPowerCapacity = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullPowerCapacityResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullPowerCapacityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullPowerCapacityResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullPowerCapacityRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPowerCapacityResponse>}
  *     The XHR Node Readable Stream
@@ -225,7 +187,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.pullPowerCapacity =
 
 /**
  * @param {!proto.smartcore.traits.PullPowerCapacityRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPowerCapacityResponse>}
  *     The XHR Node Readable Stream
@@ -263,30 +225,11 @@ const methodDescriptor_PowerSupplyApi_ListDrawNotifications = new grpc.web.Metho
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ListDrawNotificationsRequest,
- *   !proto.smartcore.traits.ListDrawNotificationsResponse>}
- */
-const methodInfo_PowerSupplyApi_ListDrawNotifications = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ListDrawNotificationsResponse,
-  /**
-   * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ListDrawNotificationsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ListDrawNotificationsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListDrawNotificationsResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListDrawNotificationsResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -305,7 +248,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.listDrawNotifications =
 /**
  * @param {!proto.smartcore.traits.ListDrawNotificationsRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ListDrawNotificationsResponse>}
  *     Promise that resolves to the response
@@ -343,30 +286,11 @@ const methodDescriptor_PowerSupplyApi_CreateDrawNotification = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CreateDrawNotificationRequest,
- *   !proto.smartcore.traits.DrawNotification>}
- */
-const methodInfo_PowerSupplyApi_CreateDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.DrawNotification,
-  /**
-   * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.DrawNotification.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.DrawNotification)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.DrawNotification)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.DrawNotification>|undefined}
  *     The XHR Node Readable Stream
@@ -385,7 +309,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.createDrawNotification =
 /**
  * @param {!proto.smartcore.traits.CreateDrawNotificationRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.DrawNotification>}
  *     Promise that resolves to the response
@@ -423,30 +347,11 @@ const methodDescriptor_PowerSupplyApi_UpdateDrawNotification = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateDrawNotificationRequest,
- *   !proto.smartcore.traits.DrawNotification>}
- */
-const methodInfo_PowerSupplyApi_UpdateDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.DrawNotification,
-  /**
-   * @param {!proto.smartcore.traits.UpdateDrawNotificationRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.DrawNotification.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.DrawNotification)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.DrawNotification)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.DrawNotification>|undefined}
  *     The XHR Node Readable Stream
@@ -465,7 +370,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.updateDrawNotification =
 /**
  * @param {!proto.smartcore.traits.UpdateDrawNotificationRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.DrawNotification>}
  *     Promise that resolves to the response
@@ -503,30 +408,11 @@ const methodDescriptor_PowerSupplyApi_DeleteDrawNotification = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DeleteDrawNotificationRequest,
- *   !proto.google.protobuf.Empty>}
- */
-const methodInfo_PowerSupplyApi_DeleteDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
-  google_protobuf_empty_pb.Empty,
-  /**
-   * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  google_protobuf_empty_pb.Empty.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.google.protobuf.Empty)}
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
@@ -545,7 +431,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.deleteDrawNotification =
 /**
  * @param {!proto.smartcore.traits.DeleteDrawNotificationRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
@@ -583,27 +469,8 @@ const methodDescriptor_PowerSupplyApi_PullDrawNotifications = new grpc.web.Metho
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullDrawNotificationsRequest,
- *   !proto.smartcore.traits.PullDrawNotificationsResponse>}
- */
-const methodInfo_PowerSupplyApi_PullDrawNotifications = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullDrawNotificationsResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullDrawNotificationsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDrawNotificationsResponse>}
  *     The XHR Node Readable Stream
@@ -620,7 +487,7 @@ proto.smartcore.traits.PowerSupplyApiClient.prototype.pullDrawNotifications =
 
 /**
  * @param {!proto.smartcore.traits.PullDrawNotificationsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullDrawNotificationsResponse>}
  *     The XHR Node Readable Stream
@@ -638,7 +505,7 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.pullDrawNotificatio
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -646,7 +513,7 @@ proto.smartcore.traits.PowerSupplyApiPromiseClient.prototype.pullDrawNotificatio
 proto.smartcore.traits.PowerSupplyInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -664,7 +531,7 @@ proto.smartcore.traits.PowerSupplyInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -672,7 +539,7 @@ proto.smartcore.traits.PowerSupplyInfoClient =
 proto.smartcore.traits.PowerSupplyInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -710,30 +577,11 @@ const methodDescriptor_PowerSupplyInfo_DescribePowerCapacity = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribePowerCapacityRequest,
- *   !proto.smartcore.traits.PowerCapacitySupport>}
- */
-const methodInfo_PowerSupplyInfo_DescribePowerCapacity = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PowerCapacitySupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribePowerCapacityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PowerCapacitySupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribePowerCapacityRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PowerCapacitySupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PowerCapacitySupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PowerCapacitySupport>|undefined}
  *     The XHR Node Readable Stream
@@ -752,7 +600,7 @@ proto.smartcore.traits.PowerSupplyInfoClient.prototype.describePowerCapacity =
 /**
  * @param {!proto.smartcore.traits.DescribePowerCapacityRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.PowerCapacitySupport>}
  *     Promise that resolves to the response
@@ -790,30 +638,11 @@ const methodDescriptor_PowerSupplyInfo_DescribeDrawNotification = new grpc.web.M
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeDrawNotificationRequest,
- *   !proto.smartcore.traits.DrawNotificationSupport>}
- */
-const methodInfo_PowerSupplyInfo_DescribeDrawNotification = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.DrawNotificationSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.DrawNotificationSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.DrawNotificationSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.DrawNotificationSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.DrawNotificationSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -832,7 +661,7 @@ proto.smartcore.traits.PowerSupplyInfoClient.prototype.describeDrawNotification 
 /**
  * @param {!proto.smartcore.traits.DescribeDrawNotificationRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.DrawNotificationSupport>}
  *     Promise that resolves to the response

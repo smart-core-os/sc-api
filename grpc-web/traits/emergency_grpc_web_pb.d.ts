@@ -11,14 +11,14 @@ export class EmergencyApiClient {
   getEmergency(
     request: traits_emergency_pb.GetEmergencyRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_emergency_pb.Emergency) => void
   ): grpcWeb.ClientReadableStream<traits_emergency_pb.Emergency>;
 
   updateEmergency(
     request: traits_emergency_pb.UpdateEmergencyRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_emergency_pb.Emergency) => void
   ): grpcWeb.ClientReadableStream<traits_emergency_pb.Emergency>;
 
@@ -37,7 +37,7 @@ export class EmergencyInfoClient {
   describeEmergency(
     request: traits_emergency_pb.DescribeEmergencyRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_emergency_pb.EmergencySupport) => void
   ): grpcWeb.ClientReadableStream<traits_emergency_pb.EmergencySupport>;
 

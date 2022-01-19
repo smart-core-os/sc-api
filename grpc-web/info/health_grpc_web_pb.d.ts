@@ -11,7 +11,7 @@ export class HealthClient {
   getHealthState(
     request: info_health_pb.GetHealthStateRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: info_health_pb.HealthState) => void
   ): grpcWeb.ClientReadableStream<info_health_pb.HealthState>;
 

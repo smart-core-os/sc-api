@@ -11,7 +11,7 @@ export class MotionSensorApiClient {
   getMotionDetection(
     request: traits_motion_sensor_pb.GetMotionDetectionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_motion_sensor_pb.MotionDetection) => void
   ): grpcWeb.ClientReadableStream<traits_motion_sensor_pb.MotionDetection>;
 
@@ -30,7 +30,7 @@ export class MotionSensorSensorInfoClient {
   describeMotionDetection(
     request: traits_motion_sensor_pb.DescribeMotionDetectionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_motion_sensor_pb.MotionDetectionSupport) => void
   ): grpcWeb.ClientReadableStream<traits_motion_sensor_pb.MotionDetectionSupport>;
 

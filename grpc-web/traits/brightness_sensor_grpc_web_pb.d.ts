@@ -11,7 +11,7 @@ export class BrightnessSensorApiClient {
   getAmbientBrightness(
     request: traits_brightness_sensor_pb.GetAmbientBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_brightness_sensor_pb.AmbientBrightness) => void
   ): grpcWeb.ClientReadableStream<traits_brightness_sensor_pb.AmbientBrightness>;
 
@@ -30,7 +30,7 @@ export class BrightnessSensorInfoClient {
   describeAmbientBrightness(
     request: traits_brightness_sensor_pb.DescribeAmbientBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_brightness_sensor_pb.AmbientBrightnessSupport) => void
   ): grpcWeb.ClientReadableStream<traits_brightness_sensor_pb.AmbientBrightnessSupport>;
 

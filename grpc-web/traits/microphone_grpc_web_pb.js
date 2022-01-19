@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./microphone_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./microphone_pb.js');
 proto.smartcore.traits.MicrophoneApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.MicrophoneApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.MicrophoneApiClient =
 proto.smartcore.traits.MicrophoneApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_MicrophoneApi_GetGain = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetMicrophoneGainRequest,
- *   !proto.smartcore.types.AudioLevel>}
- */
-const methodInfo_MicrophoneApi_GetGain = new grpc.web.AbstractClientBase.MethodInfo(
-  types_unit_pb.AudioLevel,
-  /**
-   * @param {!proto.smartcore.traits.GetMicrophoneGainRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  types_unit_pb.AudioLevel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetMicrophoneGainRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.types.AudioLevel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.types.AudioLevel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.types.AudioLevel>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.MicrophoneApiClient.prototype.getGain =
 /**
  * @param {!proto.smartcore.traits.GetMicrophoneGainRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.types.AudioLevel>}
  *     Promise that resolves to the response
@@ -182,30 +163,11 @@ const methodDescriptor_MicrophoneApi_UpdateGain = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateMicrophoneGainRequest,
- *   !proto.smartcore.types.AudioLevel>}
- */
-const methodInfo_MicrophoneApi_UpdateGain = new grpc.web.AbstractClientBase.MethodInfo(
-  types_unit_pb.AudioLevel,
-  /**
-   * @param {!proto.smartcore.traits.UpdateMicrophoneGainRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  types_unit_pb.AudioLevel.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateMicrophoneGainRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.types.AudioLevel)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.types.AudioLevel)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.types.AudioLevel>|undefined}
  *     The XHR Node Readable Stream
@@ -224,7 +186,7 @@ proto.smartcore.traits.MicrophoneApiClient.prototype.updateGain =
 /**
  * @param {!proto.smartcore.traits.UpdateMicrophoneGainRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.types.AudioLevel>}
  *     Promise that resolves to the response
@@ -262,27 +224,8 @@ const methodDescriptor_MicrophoneApi_PullGain = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullMicrophoneGainRequest,
- *   !proto.smartcore.traits.PullMicrophoneGainResponse>}
- */
-const methodInfo_MicrophoneApi_PullGain = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullMicrophoneGainResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullMicrophoneGainRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullMicrophoneGainResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullMicrophoneGainRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMicrophoneGainResponse>}
  *     The XHR Node Readable Stream
@@ -299,7 +242,7 @@ proto.smartcore.traits.MicrophoneApiClient.prototype.pullGain =
 
 /**
  * @param {!proto.smartcore.traits.PullMicrophoneGainRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMicrophoneGainResponse>}
  *     The XHR Node Readable Stream
@@ -317,7 +260,7 @@ proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.pullGain =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -325,7 +268,7 @@ proto.smartcore.traits.MicrophoneApiPromiseClient.prototype.pullGain =
 proto.smartcore.traits.MicrophoneInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -343,7 +286,7 @@ proto.smartcore.traits.MicrophoneInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -351,7 +294,7 @@ proto.smartcore.traits.MicrophoneInfoClient =
 proto.smartcore.traits.MicrophoneInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -389,30 +332,11 @@ const methodDescriptor_MicrophoneInfo_DescribeGain = new grpc.web.MethodDescript
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeGainRequest,
- *   !proto.smartcore.traits.GainSupport>}
- */
-const methodInfo_MicrophoneInfo_DescribeGain = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.GainSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeGainRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.GainSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeGainRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.GainSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.GainSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.GainSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -431,7 +355,7 @@ proto.smartcore.traits.MicrophoneInfoClient.prototype.describeGain =
 /**
  * @param {!proto.smartcore.traits.DescribeGainRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.GainSupport>}
  *     Promise that resolves to the response

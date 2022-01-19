@@ -11,7 +11,7 @@ export class ElectricApiClient {
   getDemand(
     request: traits_electric_pb.GetDemandRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_electric_pb.ElectricDemand) => void
   ): grpcWeb.ClientReadableStream<traits_electric_pb.ElectricDemand>;
 
@@ -23,21 +23,21 @@ export class ElectricApiClient {
   getActiveMode(
     request: traits_electric_pb.GetActiveModeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_electric_pb.ElectricMode) => void
   ): grpcWeb.ClientReadableStream<traits_electric_pb.ElectricMode>;
 
   updateActiveMode(
     request: traits_electric_pb.UpdateActiveModeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_electric_pb.ElectricMode) => void
   ): grpcWeb.ClientReadableStream<traits_electric_pb.ElectricMode>;
 
   clearActiveMode(
     request: traits_electric_pb.ClearActiveModeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_electric_pb.ElectricMode) => void
   ): grpcWeb.ClientReadableStream<traits_electric_pb.ElectricMode>;
 
@@ -49,7 +49,7 @@ export class ElectricApiClient {
   listModes(
     request: traits_electric_pb.ListModesRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_electric_pb.ListModesResponse) => void
   ): grpcWeb.ClientReadableStream<traits_electric_pb.ListModesResponse>;
 

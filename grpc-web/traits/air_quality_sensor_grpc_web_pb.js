@@ -32,7 +32,7 @@ proto.smartcore.traits = require('./air_quality_sensor_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -40,7 +40,7 @@ proto.smartcore.traits = require('./air_quality_sensor_pb.js');
 proto.smartcore.traits.AirQualitySensorApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -58,7 +58,7 @@ proto.smartcore.traits.AirQualitySensorApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -66,7 +66,7 @@ proto.smartcore.traits.AirQualitySensorApiClient =
 proto.smartcore.traits.AirQualitySensorApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -104,30 +104,11 @@ const methodDescriptor_AirQualitySensorApi_GetAirQuality = new grpc.web.MethodDe
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetAirQualityRequest,
- *   !proto.smartcore.traits.AirQuality>}
- */
-const methodInfo_AirQualitySensorApi_GetAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirQuality,
-  /**
-   * @param {!proto.smartcore.traits.GetAirQualityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.AirQuality.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetAirQualityRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirQuality)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.AirQuality)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirQuality>|undefined}
  *     The XHR Node Readable Stream
@@ -146,7 +127,7 @@ proto.smartcore.traits.AirQualitySensorApiClient.prototype.getAirQuality =
 /**
  * @param {!proto.smartcore.traits.GetAirQualityRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.AirQuality>}
  *     Promise that resolves to the response
@@ -184,27 +165,8 @@ const methodDescriptor_AirQualitySensorApi_PullAirQuality = new grpc.web.MethodD
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullAirQualityRequest,
- *   !proto.smartcore.traits.PullAirQualityResponse>}
- */
-const methodInfo_AirQualitySensorApi_PullAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullAirQualityResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullAirQualityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullAirQualityResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullAirQualityRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityResponse>}
  *     The XHR Node Readable Stream
@@ -221,7 +183,7 @@ proto.smartcore.traits.AirQualitySensorApiClient.prototype.pullAirQuality =
 
 /**
  * @param {!proto.smartcore.traits.PullAirQualityRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirQualityResponse>}
  *     The XHR Node Readable Stream
@@ -239,7 +201,7 @@ proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.pullAirQuality
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -247,7 +209,7 @@ proto.smartcore.traits.AirQualitySensorApiPromiseClient.prototype.pullAirQuality
 proto.smartcore.traits.AirQualitySensorInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -265,7 +227,7 @@ proto.smartcore.traits.AirQualitySensorInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -273,7 +235,7 @@ proto.smartcore.traits.AirQualitySensorInfoClient =
 proto.smartcore.traits.AirQualitySensorInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -311,30 +273,11 @@ const methodDescriptor_AirQualitySensorInfo_DescribeAirQuality = new grpc.web.Me
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeAirQualityRequest,
- *   !proto.smartcore.traits.AirQualitySupport>}
- */
-const methodInfo_AirQualitySensorInfo_DescribeAirQuality = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirQualitySupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.AirQualitySupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirQualitySupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.AirQualitySupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirQualitySupport>|undefined}
  *     The XHR Node Readable Stream
@@ -353,7 +296,7 @@ proto.smartcore.traits.AirQualitySensorInfoClient.prototype.describeAirQuality =
 /**
  * @param {!proto.smartcore.traits.DescribeAirQualityRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.AirQualitySupport>}
  *     Promise that resolves to the response

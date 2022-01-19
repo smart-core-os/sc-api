@@ -11,14 +11,14 @@ export class AirTemperatureApiClient {
   getAirTemperature(
     request: traits_air_temperature_pb.GetAirTemperatureRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_air_temperature_pb.AirTemperature) => void
   ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperature>;
 
   updateAirTemperature(
     request: traits_air_temperature_pb.UpdateAirTemperatureRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_air_temperature_pb.AirTemperature) => void
   ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperature>;
 
@@ -37,7 +37,7 @@ export class AirTemperatureInfoClient {
   describeAirTemperature(
     request: traits_air_temperature_pb.DescribeAirTemperatureRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_air_temperature_pb.AirTemperatureSupport) => void
   ): grpcWeb.ClientReadableStream<traits_air_temperature_pb.AirTemperatureSupport>;
 

@@ -32,7 +32,7 @@ proto.smartcore.traits = require('./extend_retract_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -40,7 +40,7 @@ proto.smartcore.traits = require('./extend_retract_pb.js');
 proto.smartcore.traits.ExtendRetractApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -58,7 +58,7 @@ proto.smartcore.traits.ExtendRetractApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -66,7 +66,7 @@ proto.smartcore.traits.ExtendRetractApiClient =
 proto.smartcore.traits.ExtendRetractApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -104,30 +104,11 @@ const methodDescriptor_ExtendRetractApi_GetExtension = new grpc.web.MethodDescri
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetExtensionRequest,
- *   !proto.smartcore.traits.Extension>}
- */
-const methodInfo_ExtendRetractApi_GetExtension = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Extension,
-  /**
-   * @param {!proto.smartcore.traits.GetExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Extension.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Extension)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Extension)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
@@ -146,7 +127,7 @@ proto.smartcore.traits.ExtendRetractApiClient.prototype.getExtension =
 /**
  * @param {!proto.smartcore.traits.GetExtensionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
@@ -184,30 +165,11 @@ const methodDescriptor_ExtendRetractApi_UpdateExtension = new grpc.web.MethodDes
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateExtensionRequest,
- *   !proto.smartcore.traits.Extension>}
- */
-const methodInfo_ExtendRetractApi_UpdateExtension = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Extension,
-  /**
-   * @param {!proto.smartcore.traits.UpdateExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Extension.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Extension)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Extension)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
@@ -226,7 +188,7 @@ proto.smartcore.traits.ExtendRetractApiClient.prototype.updateExtension =
 /**
  * @param {!proto.smartcore.traits.UpdateExtensionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
@@ -264,30 +226,11 @@ const methodDescriptor_ExtendRetractApi_Stop = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.ExtendRetractStopRequest,
- *   !proto.smartcore.traits.Extension>}
- */
-const methodInfo_ExtendRetractApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Extension,
-  /**
-   * @param {!proto.smartcore.traits.ExtendRetractStopRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Extension.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.ExtendRetractStopRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Extension)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Extension)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Extension>|undefined}
  *     The XHR Node Readable Stream
@@ -306,7 +249,7 @@ proto.smartcore.traits.ExtendRetractApiClient.prototype.stop =
 /**
  * @param {!proto.smartcore.traits.ExtendRetractStopRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Extension>}
  *     Promise that resolves to the response
@@ -344,30 +287,11 @@ const methodDescriptor_ExtendRetractApi_CreateExtensionPreset = new grpc.web.Met
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CreateExtensionPresetRequest,
- *   !proto.smartcore.traits.ExtensionPreset>}
- */
-const methodInfo_ExtendRetractApi_CreateExtensionPreset = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ExtensionPreset,
-  /**
-   * @param {!proto.smartcore.traits.CreateExtensionPresetRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ExtensionPreset.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CreateExtensionPresetRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ExtensionPreset)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ExtensionPreset)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ExtensionPreset>|undefined}
  *     The XHR Node Readable Stream
@@ -386,7 +310,7 @@ proto.smartcore.traits.ExtendRetractApiClient.prototype.createExtensionPreset =
 /**
  * @param {!proto.smartcore.traits.CreateExtensionPresetRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ExtensionPreset>}
  *     Promise that resolves to the response
@@ -424,27 +348,8 @@ const methodDescriptor_ExtendRetractApi_PullExtensions = new grpc.web.MethodDesc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullExtensionsRequest,
- *   !proto.smartcore.traits.PullExtensionsResponse>}
- */
-const methodInfo_ExtendRetractApi_PullExtensions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullExtensionsResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullExtensionsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullExtensionsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullExtensionsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullExtensionsResponse>}
  *     The XHR Node Readable Stream
@@ -461,7 +366,7 @@ proto.smartcore.traits.ExtendRetractApiClient.prototype.pullExtensions =
 
 /**
  * @param {!proto.smartcore.traits.PullExtensionsRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullExtensionsResponse>}
  *     The XHR Node Readable Stream
@@ -479,7 +384,7 @@ proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.pullExtensions =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -487,7 +392,7 @@ proto.smartcore.traits.ExtendRetractApiPromiseClient.prototype.pullExtensions =
 proto.smartcore.traits.ExtendRetractInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -505,7 +410,7 @@ proto.smartcore.traits.ExtendRetractInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -513,7 +418,7 @@ proto.smartcore.traits.ExtendRetractInfoClient =
 proto.smartcore.traits.ExtendRetractInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -551,30 +456,11 @@ const methodDescriptor_ExtendRetractInfo_DescribeExtension = new grpc.web.Method
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeExtensionRequest,
- *   !proto.smartcore.traits.ExtensionSupport>}
- */
-const methodInfo_ExtendRetractInfo_DescribeExtension = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.ExtensionSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.ExtensionSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.ExtensionSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ExtensionSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ExtensionSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -593,7 +479,7 @@ proto.smartcore.traits.ExtendRetractInfoClient.prototype.describeExtension =
 /**
  * @param {!proto.smartcore.traits.DescribeExtensionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.ExtensionSupport>}
  *     Promise that resolves to the response

@@ -32,7 +32,7 @@ proto.smartcore.traits = require('./air_temperature_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -40,7 +40,7 @@ proto.smartcore.traits = require('./air_temperature_pb.js');
 proto.smartcore.traits.AirTemperatureApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -58,7 +58,7 @@ proto.smartcore.traits.AirTemperatureApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -66,7 +66,7 @@ proto.smartcore.traits.AirTemperatureApiClient =
 proto.smartcore.traits.AirTemperatureApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -104,30 +104,11 @@ const methodDescriptor_AirTemperatureApi_GetAirTemperature = new grpc.web.Method
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetAirTemperatureRequest,
- *   !proto.smartcore.traits.AirTemperature>}
- */
-const methodInfo_AirTemperatureApi_GetAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirTemperature,
-  /**
-   * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.AirTemperature.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperature)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.AirTemperature)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
@@ -146,7 +127,7 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.getAirTemperature =
 /**
  * @param {!proto.smartcore.traits.GetAirTemperatureRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
@@ -184,30 +165,11 @@ const methodDescriptor_AirTemperatureApi_UpdateAirTemperature = new grpc.web.Met
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateAirTemperatureRequest,
- *   !proto.smartcore.traits.AirTemperature>}
- */
-const methodInfo_AirTemperatureApi_UpdateAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirTemperature,
-  /**
-   * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.AirTemperature.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperature)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.AirTemperature)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperature>|undefined}
  *     The XHR Node Readable Stream
@@ -226,7 +188,7 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.updateAirTemperature =
 /**
  * @param {!proto.smartcore.traits.UpdateAirTemperatureRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.AirTemperature>}
  *     Promise that resolves to the response
@@ -264,27 +226,8 @@ const methodDescriptor_AirTemperatureApi_PullAirTemperature = new grpc.web.Metho
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullAirTemperatureRequest,
- *   !proto.smartcore.traits.PullAirTemperatureResponse>}
- */
-const methodInfo_AirTemperatureApi_PullAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullAirTemperatureResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullAirTemperatureResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
@@ -301,7 +244,7 @@ proto.smartcore.traits.AirTemperatureApiClient.prototype.pullAirTemperature =
 
 /**
  * @param {!proto.smartcore.traits.PullAirTemperatureRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullAirTemperatureResponse>}
  *     The XHR Node Readable Stream
@@ -319,7 +262,7 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullAirTemperatu
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -327,7 +270,7 @@ proto.smartcore.traits.AirTemperatureApiPromiseClient.prototype.pullAirTemperatu
 proto.smartcore.traits.AirTemperatureInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -345,7 +288,7 @@ proto.smartcore.traits.AirTemperatureInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -353,7 +296,7 @@ proto.smartcore.traits.AirTemperatureInfoClient =
 proto.smartcore.traits.AirTemperatureInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -391,30 +334,11 @@ const methodDescriptor_AirTemperatureInfo_DescribeAirTemperature = new grpc.web.
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeAirTemperatureRequest,
- *   !proto.smartcore.traits.AirTemperatureSupport>}
- */
-const methodInfo_AirTemperatureInfo_DescribeAirTemperature = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.AirTemperatureSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.AirTemperatureSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.AirTemperatureSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.AirTemperatureSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.AirTemperatureSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -433,7 +357,7 @@ proto.smartcore.traits.AirTemperatureInfoClient.prototype.describeAirTemperature
 /**
  * @param {!proto.smartcore.traits.DescribeAirTemperatureRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.AirTemperatureSupport>}
  *     Promise that resolves to the response

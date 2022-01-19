@@ -26,7 +26,7 @@ proto.smartcore.info = require('./auth_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -34,7 +34,7 @@ proto.smartcore.info = require('./auth_pb.js');
 proto.smartcore.info.AuthProviderClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -52,7 +52,7 @@ proto.smartcore.info.AuthProviderClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -60,7 +60,7 @@ proto.smartcore.info.AuthProviderClient =
 proto.smartcore.info.AuthProviderPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -98,30 +98,11 @@ const methodDescriptor_AuthProvider_AddAccount = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.AddAccountRequest,
- *   !proto.smartcore.info.AddAccountResponse>}
- */
-const methodInfo_AuthProvider_AddAccount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.AddAccountResponse,
-  /**
-   * @param {!proto.smartcore.info.AddAccountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.AddAccountResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.AddAccountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.info.AddAccountResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.info.AddAccountResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.AddAccountResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -140,7 +121,7 @@ proto.smartcore.info.AuthProviderClient.prototype.addAccount =
 /**
  * @param {!proto.smartcore.info.AddAccountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.info.AddAccountResponse>}
  *     Promise that resolves to the response
@@ -178,30 +159,11 @@ const methodDescriptor_AuthProvider_RemoveAccount = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.RemoveAccountRequest,
- *   !proto.smartcore.info.RemoveAccountResponse>}
- */
-const methodInfo_AuthProvider_RemoveAccount = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.RemoveAccountResponse,
-  /**
-   * @param {!proto.smartcore.info.RemoveAccountRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.RemoveAccountResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.RemoveAccountRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.info.RemoveAccountResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.info.RemoveAccountResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.RemoveAccountResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -220,7 +182,7 @@ proto.smartcore.info.AuthProviderClient.prototype.removeAccount =
 /**
  * @param {!proto.smartcore.info.RemoveAccountRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.info.RemoveAccountResponse>}
  *     Promise that resolves to the response
@@ -258,30 +220,11 @@ const methodDescriptor_AuthProvider_UpdateAccountPermissions = new grpc.web.Meth
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.UpdateAccountPermissionsRequest,
- *   !proto.smartcore.info.UpdateAccountPermissionsResponse>}
- */
-const methodInfo_AuthProvider_UpdateAccountPermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.UpdateAccountPermissionsResponse,
-  /**
-   * @param {!proto.smartcore.info.UpdateAccountPermissionsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.UpdateAccountPermissionsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.UpdateAccountPermissionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.info.UpdateAccountPermissionsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.info.UpdateAccountPermissionsResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.UpdateAccountPermissionsResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -300,7 +243,7 @@ proto.smartcore.info.AuthProviderClient.prototype.updateAccountPermissions =
 /**
  * @param {!proto.smartcore.info.UpdateAccountPermissionsRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.info.UpdateAccountPermissionsResponse>}
  *     Promise that resolves to the response
@@ -338,30 +281,11 @@ const methodDescriptor_AuthProvider_GenerateToken = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.GenerateTokenRequest,
- *   !proto.smartcore.info.GenerateTokenResponse>}
- */
-const methodInfo_AuthProvider_GenerateToken = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.GenerateTokenResponse,
-  /**
-   * @param {!proto.smartcore.info.GenerateTokenRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.GenerateTokenResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.GenerateTokenRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.info.GenerateTokenResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.info.GenerateTokenResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.GenerateTokenResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -380,7 +304,7 @@ proto.smartcore.info.AuthProviderClient.prototype.generateToken =
 /**
  * @param {!proto.smartcore.info.GenerateTokenRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.info.GenerateTokenResponse>}
  *     Promise that resolves to the response

@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as types_unit_pb from '../types/unit_pb';
 import * as traits_speaker_pb from '../traits/speaker_pb';
+import * as types_unit_pb from '../types/unit_pb';
 
 
 export class SpeakerApiClient {
@@ -12,14 +12,14 @@ export class SpeakerApiClient {
   getVolume(
     request: traits_speaker_pb.GetSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   updateVolume(
     request: traits_speaker_pb.UpdateSpeakerVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
@@ -38,7 +38,7 @@ export class SpeakerInfoClient {
   describeVolume(
     request: traits_speaker_pb.DescribeVolumeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_speaker_pb.VolumeSupport) => void
   ): grpcWeb.ClientReadableStream<traits_speaker_pb.VolumeSupport>;
 

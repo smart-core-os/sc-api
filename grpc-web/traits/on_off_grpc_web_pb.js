@@ -26,7 +26,7 @@ proto.smartcore.traits = require('./on_off_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -34,7 +34,7 @@ proto.smartcore.traits = require('./on_off_pb.js');
 proto.smartcore.traits.OnOffApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -52,7 +52,7 @@ proto.smartcore.traits.OnOffApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -60,7 +60,7 @@ proto.smartcore.traits.OnOffApiClient =
 proto.smartcore.traits.OnOffApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -98,30 +98,11 @@ const methodDescriptor_OnOffApi_GetOnOff = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetOnOffRequest,
- *   !proto.smartcore.traits.OnOff>}
- */
-const methodInfo_OnOffApi_GetOnOff = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OnOff,
-  /**
-   * @param {!proto.smartcore.traits.GetOnOffRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.OnOff.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnOff)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.OnOff)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOff>|undefined}
  *     The XHR Node Readable Stream
@@ -140,7 +121,7 @@ proto.smartcore.traits.OnOffApiClient.prototype.getOnOff =
 /**
  * @param {!proto.smartcore.traits.GetOnOffRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.OnOff>}
  *     Promise that resolves to the response
@@ -178,30 +159,11 @@ const methodDescriptor_OnOffApi_UpdateOnOff = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateOnOffRequest,
- *   !proto.smartcore.traits.OnOff>}
- */
-const methodInfo_OnOffApi_UpdateOnOff = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OnOff,
-  /**
-   * @param {!proto.smartcore.traits.UpdateOnOffRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.OnOff.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnOff)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.OnOff)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOff>|undefined}
  *     The XHR Node Readable Stream
@@ -220,7 +182,7 @@ proto.smartcore.traits.OnOffApiClient.prototype.updateOnOff =
 /**
  * @param {!proto.smartcore.traits.UpdateOnOffRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.OnOff>}
  *     Promise that resolves to the response
@@ -258,27 +220,8 @@ const methodDescriptor_OnOffApi_PullOnOff = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullOnOffRequest,
- *   !proto.smartcore.traits.PullOnOffResponse>}
- */
-const methodInfo_OnOffApi_PullOnOff = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullOnOffResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullOnOffRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullOnOffResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullOnOffRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOnOffResponse>}
  *     The XHR Node Readable Stream
@@ -295,7 +238,7 @@ proto.smartcore.traits.OnOffApiClient.prototype.pullOnOff =
 
 /**
  * @param {!proto.smartcore.traits.PullOnOffRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullOnOffResponse>}
  *     The XHR Node Readable Stream
@@ -313,7 +256,7 @@ proto.smartcore.traits.OnOffApiPromiseClient.prototype.pullOnOff =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -321,7 +264,7 @@ proto.smartcore.traits.OnOffApiPromiseClient.prototype.pullOnOff =
 proto.smartcore.traits.OnOffInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -339,7 +282,7 @@ proto.smartcore.traits.OnOffInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -347,7 +290,7 @@ proto.smartcore.traits.OnOffInfoClient =
 proto.smartcore.traits.OnOffInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -385,30 +328,11 @@ const methodDescriptor_OnOffInfo_DescribeOnOff = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeOnOffRequest,
- *   !proto.smartcore.traits.OnOffSupport>}
- */
-const methodInfo_OnOffInfo_DescribeOnOff = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.OnOffSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeOnOffRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.OnOffSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeOnOffRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.OnOffSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.OnOffSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.OnOffSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -427,7 +351,7 @@ proto.smartcore.traits.OnOffInfoClient.prototype.describeOnOff =
 /**
  * @param {!proto.smartcore.traits.DescribeOnOffRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.OnOffSupport>}
  *     Promise that resolves to the response

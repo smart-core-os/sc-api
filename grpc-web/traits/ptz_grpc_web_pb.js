@@ -30,7 +30,7 @@ proto.smartcore.traits = require('./ptz_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -38,7 +38,7 @@ proto.smartcore.traits = require('./ptz_pb.js');
 proto.smartcore.traits.PtzApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -56,7 +56,7 @@ proto.smartcore.traits.PtzApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -64,7 +64,7 @@ proto.smartcore.traits.PtzApiClient =
 proto.smartcore.traits.PtzApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -102,30 +102,11 @@ const methodDescriptor_PtzApi_GetPtz = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetPtzRequest,
- *   !proto.smartcore.traits.Ptz>}
- */
-const methodInfo_PtzApi_GetPtz = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Ptz,
-  /**
-   * @param {!proto.smartcore.traits.GetPtzRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Ptz.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetPtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
@@ -144,7 +125,7 @@ proto.smartcore.traits.PtzApiClient.prototype.getPtz =
 /**
  * @param {!proto.smartcore.traits.GetPtzRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
@@ -182,30 +163,11 @@ const methodDescriptor_PtzApi_UpdatePtz = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdatePtzRequest,
- *   !proto.smartcore.traits.Ptz>}
- */
-const methodInfo_PtzApi_UpdatePtz = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Ptz,
-  /**
-   * @param {!proto.smartcore.traits.UpdatePtzRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Ptz.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdatePtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
@@ -224,7 +186,7 @@ proto.smartcore.traits.PtzApiClient.prototype.updatePtz =
 /**
  * @param {!proto.smartcore.traits.UpdatePtzRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
@@ -262,30 +224,11 @@ const methodDescriptor_PtzApi_Stop = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.StopPtzRequest,
- *   !proto.smartcore.traits.Ptz>}
- */
-const methodInfo_PtzApi_Stop = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Ptz,
-  /**
-   * @param {!proto.smartcore.traits.StopPtzRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Ptz.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.StopPtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Ptz)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Ptz)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Ptz>|undefined}
  *     The XHR Node Readable Stream
@@ -304,7 +247,7 @@ proto.smartcore.traits.PtzApiClient.prototype.stop =
 /**
  * @param {!proto.smartcore.traits.StopPtzRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Ptz>}
  *     Promise that resolves to the response
@@ -342,30 +285,11 @@ const methodDescriptor_PtzApi_CreatePreset = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.CreatePtzPresetRequest,
- *   !proto.smartcore.traits.PtzPreset>}
- */
-const methodInfo_PtzApi_CreatePreset = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PtzPreset,
-  /**
-   * @param {!proto.smartcore.traits.CreatePtzPresetRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PtzPreset.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.CreatePtzPresetRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PtzPreset)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PtzPreset)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzPreset>|undefined}
  *     The XHR Node Readable Stream
@@ -384,7 +308,7 @@ proto.smartcore.traits.PtzApiClient.prototype.createPreset =
 /**
  * @param {!proto.smartcore.traits.CreatePtzPresetRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.PtzPreset>}
  *     Promise that resolves to the response
@@ -422,27 +346,8 @@ const methodDescriptor_PtzApi_PullPtz = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullPtzRequest,
- *   !proto.smartcore.traits.PullPtzResponse>}
- */
-const methodInfo_PtzApi_PullPtz = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullPtzResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullPtzRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullPtzResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullPtzRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzResponse>}
  *     The XHR Node Readable Stream
@@ -459,7 +364,7 @@ proto.smartcore.traits.PtzApiClient.prototype.pullPtz =
 
 /**
  * @param {!proto.smartcore.traits.PullPtzRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPtzResponse>}
  *     The XHR Node Readable Stream
@@ -477,7 +382,7 @@ proto.smartcore.traits.PtzApiPromiseClient.prototype.pullPtz =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -485,7 +390,7 @@ proto.smartcore.traits.PtzApiPromiseClient.prototype.pullPtz =
 proto.smartcore.traits.PtzInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -503,7 +408,7 @@ proto.smartcore.traits.PtzInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -511,7 +416,7 @@ proto.smartcore.traits.PtzInfoClient =
 proto.smartcore.traits.PtzInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -549,30 +454,11 @@ const methodDescriptor_PtzInfo_DescribePtz = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribePtzRequest,
- *   !proto.smartcore.traits.PtzSupport>}
- */
-const methodInfo_PtzInfo_DescribePtz = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PtzSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribePtzRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PtzSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribePtzRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.PtzSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PtzSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PtzSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -591,7 +477,7 @@ proto.smartcore.traits.PtzInfoClient.prototype.describePtz =
 /**
  * @param {!proto.smartcore.traits.DescribePtzRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.PtzSupport>}
  *     Promise that resolves to the response

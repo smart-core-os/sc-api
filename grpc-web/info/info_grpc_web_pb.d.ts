@@ -11,7 +11,7 @@ export class InfoClient {
   listDevices(
     request: info_info_pb.ListDevicesRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: info_info_pb.ListDevicesResponse) => void
   ): grpcWeb.ClientReadableStream<info_info_pb.ListDevicesResponse>;
 

@@ -11,14 +11,14 @@ export class LightApiClient {
   updateBrightness(
     request: traits_light_pb.UpdateBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_light_pb.Brightness) => void
   ): grpcWeb.ClientReadableStream<traits_light_pb.Brightness>;
 
   getBrightness(
     request: traits_light_pb.GetBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_light_pb.Brightness) => void
   ): grpcWeb.ClientReadableStream<traits_light_pb.Brightness>;
 
@@ -37,7 +37,7 @@ export class LightInfoClient {
   describeBrightness(
     request: traits_light_pb.DescribeBrightnessRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_light_pb.BrightnessSupport) => void
   ): grpcWeb.ClientReadableStream<traits_light_pb.BrightnessSupport>;
 

@@ -11,7 +11,7 @@ export class OccupancySensorApiClient {
   getOccupancy(
     request: traits_occupancy_sensor_pb.GetOccupancyRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_occupancy_sensor_pb.Occupancy) => void
   ): grpcWeb.ClientReadableStream<traits_occupancy_sensor_pb.Occupancy>;
 
@@ -30,7 +30,7 @@ export class OccupancySensorInfoClient {
   describeOccupancy(
     request: traits_occupancy_sensor_pb.DescribeOccupancyRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_occupancy_sensor_pb.OccupancySupport) => void
   ): grpcWeb.ClientReadableStream<traits_occupancy_sensor_pb.OccupancySupport>;
 

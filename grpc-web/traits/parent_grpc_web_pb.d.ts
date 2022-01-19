@@ -11,7 +11,7 @@ export class ParentApiClient {
   listChildren(
     request: traits_parent_pb.ListChildrenRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_parent_pb.ListChildrenResponse) => void
   ): grpcWeb.ClientReadableStream<traits_parent_pb.ListChildrenResponse>;
 

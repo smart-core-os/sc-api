@@ -11,14 +11,14 @@ export class InputSelectApiClient {
   updateInput(
     request: traits_input_select_pb.UpdateInputRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_input_select_pb.Input) => void
   ): grpcWeb.ClientReadableStream<traits_input_select_pb.Input>;
 
   getInput(
     request: traits_input_select_pb.GetInputRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_input_select_pb.Input) => void
   ): grpcWeb.ClientReadableStream<traits_input_select_pb.Input>;
 
@@ -37,7 +37,7 @@ export class InputSelectInfoClient {
   describeInput(
     request: traits_input_select_pb.DescribeInputRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_input_select_pb.InputSupport) => void
   ): grpcWeb.ClientReadableStream<traits_input_select_pb.InputSupport>;
 

@@ -28,7 +28,7 @@ proto.smartcore.traits = require('./input_select_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./input_select_pb.js');
 proto.smartcore.traits.InputSelectApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -54,7 +54,7 @@ proto.smartcore.traits.InputSelectApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -62,7 +62,7 @@ proto.smartcore.traits.InputSelectApiClient =
 proto.smartcore.traits.InputSelectApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -100,30 +100,11 @@ const methodDescriptor_InputSelectApi_UpdateInput = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateInputRequest,
- *   !proto.smartcore.traits.Input>}
- */
-const methodInfo_InputSelectApi_UpdateInput = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Input,
-  /**
-   * @param {!proto.smartcore.traits.UpdateInputRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Input.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateInputRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Input)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Input)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Input>|undefined}
  *     The XHR Node Readable Stream
@@ -142,7 +123,7 @@ proto.smartcore.traits.InputSelectApiClient.prototype.updateInput =
 /**
  * @param {!proto.smartcore.traits.UpdateInputRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Input>}
  *     Promise that resolves to the response
@@ -180,30 +161,11 @@ const methodDescriptor_InputSelectApi_GetInput = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetInputRequest,
- *   !proto.smartcore.traits.Input>}
- */
-const methodInfo_InputSelectApi_GetInput = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Input,
-  /**
-   * @param {!proto.smartcore.traits.GetInputRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Input.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetInputRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Input)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Input)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Input>|undefined}
  *     The XHR Node Readable Stream
@@ -222,7 +184,7 @@ proto.smartcore.traits.InputSelectApiClient.prototype.getInput =
 /**
  * @param {!proto.smartcore.traits.GetInputRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Input>}
  *     Promise that resolves to the response
@@ -260,27 +222,8 @@ const methodDescriptor_InputSelectApi_PullInput = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullInputRequest,
- *   !proto.smartcore.traits.PullInputResponse>}
- */
-const methodInfo_InputSelectApi_PullInput = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullInputResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullInputRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullInputResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullInputRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullInputResponse>}
  *     The XHR Node Readable Stream
@@ -297,7 +240,7 @@ proto.smartcore.traits.InputSelectApiClient.prototype.pullInput =
 
 /**
  * @param {!proto.smartcore.traits.PullInputRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullInputResponse>}
  *     The XHR Node Readable Stream
@@ -315,7 +258,7 @@ proto.smartcore.traits.InputSelectApiPromiseClient.prototype.pullInput =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -323,7 +266,7 @@ proto.smartcore.traits.InputSelectApiPromiseClient.prototype.pullInput =
 proto.smartcore.traits.InputSelectInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -341,7 +284,7 @@ proto.smartcore.traits.InputSelectInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -349,7 +292,7 @@ proto.smartcore.traits.InputSelectInfoClient =
 proto.smartcore.traits.InputSelectInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -387,30 +330,11 @@ const methodDescriptor_InputSelectInfo_DescribeInput = new grpc.web.MethodDescri
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeInputRequest,
- *   !proto.smartcore.traits.InputSupport>}
- */
-const methodInfo_InputSelectInfo_DescribeInput = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.InputSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeInputRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.InputSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeInputRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.InputSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.InputSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.InputSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -429,7 +353,7 @@ proto.smartcore.traits.InputSelectInfoClient.prototype.describeInput =
 /**
  * @param {!proto.smartcore.traits.DescribeInputRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.InputSupport>}
  *     Promise that resolves to the response

@@ -11,28 +11,28 @@ export class PtzApiClient {
   getPtz(
     request: traits_ptz_pb.GetPtzRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_ptz_pb.Ptz) => void
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.Ptz>;
 
   updatePtz(
     request: traits_ptz_pb.UpdatePtzRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_ptz_pb.Ptz) => void
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.Ptz>;
 
   stop(
     request: traits_ptz_pb.StopPtzRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_ptz_pb.Ptz) => void
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.Ptz>;
 
   createPreset(
     request: traits_ptz_pb.CreatePtzPresetRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_ptz_pb.PtzPreset) => void
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.PtzPreset>;
 
@@ -51,7 +51,7 @@ export class PtzInfoClient {
   describePtz(
     request: traits_ptz_pb.DescribePtzRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_ptz_pb.PtzSupport) => void
   ): grpcWeb.ClientReadableStream<traits_ptz_pb.PtzSupport>;
 

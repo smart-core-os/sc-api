@@ -12,7 +12,7 @@ export class PowerSupplyApiClient {
   getPowerCapacity(
     request: traits_power_supply_pb.GetPowerCapacityRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.PowerCapacity) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PowerCapacity>;
 
@@ -24,28 +24,28 @@ export class PowerSupplyApiClient {
   listDrawNotifications(
     request: traits_power_supply_pb.ListDrawNotificationsRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.ListDrawNotificationsResponse) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.ListDrawNotificationsResponse>;
 
   createDrawNotification(
     request: traits_power_supply_pb.CreateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.DrawNotification) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotification>;
 
   updateDrawNotification(
     request: traits_power_supply_pb.UpdateDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.DrawNotification) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotification>;
 
   deleteDrawNotification(
     request: traits_power_supply_pb.DeleteDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void
   ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
@@ -64,14 +64,14 @@ export class PowerSupplyInfoClient {
   describePowerCapacity(
     request: traits_power_supply_pb.DescribePowerCapacityRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.PowerCapacitySupport) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.PowerCapacitySupport>;
 
   describeDrawNotification(
     request: traits_power_supply_pb.DescribeDrawNotificationRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_power_supply_pb.DrawNotificationSupport) => void
   ): grpcWeb.ClientReadableStream<traits_power_supply_pb.DrawNotificationSupport>;
 

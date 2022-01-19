@@ -11,7 +11,7 @@ export class EnergyStorageApiClient {
   getEnergyLevel(
     request: traits_energy_storage_pb.GetEnergyLevelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_energy_storage_pb.EnergyLevel) => void
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.EnergyLevel>;
 
@@ -23,7 +23,7 @@ export class EnergyStorageApiClient {
   charge(
     request: traits_energy_storage_pb.ChargeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_energy_storage_pb.ChargeResponse) => void
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.ChargeResponse>;
 
@@ -37,7 +37,7 @@ export class EnergyStorageInfoClient {
   describeEnergyLevel(
     request: traits_energy_storage_pb.DescribeEnergyLevelRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_energy_storage_pb.EnergyLevelSupport) => void
   ): grpcWeb.ClientReadableStream<traits_energy_storage_pb.EnergyLevelSupport>;
 

@@ -28,7 +28,7 @@ proto.smartcore.traits = require('./emergency_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./emergency_pb.js');
 proto.smartcore.traits.EmergencyApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -54,7 +54,7 @@ proto.smartcore.traits.EmergencyApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -62,7 +62,7 @@ proto.smartcore.traits.EmergencyApiClient =
 proto.smartcore.traits.EmergencyApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -100,30 +100,11 @@ const methodDescriptor_EmergencyApi_GetEmergency = new grpc.web.MethodDescriptor
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetEmergencyRequest,
- *   !proto.smartcore.traits.Emergency>}
- */
-const methodInfo_EmergencyApi_GetEmergency = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Emergency,
-  /**
-   * @param {!proto.smartcore.traits.GetEmergencyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Emergency.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetEmergencyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Emergency)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Emergency)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Emergency>|undefined}
  *     The XHR Node Readable Stream
@@ -142,7 +123,7 @@ proto.smartcore.traits.EmergencyApiClient.prototype.getEmergency =
 /**
  * @param {!proto.smartcore.traits.GetEmergencyRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Emergency>}
  *     Promise that resolves to the response
@@ -180,30 +161,11 @@ const methodDescriptor_EmergencyApi_UpdateEmergency = new grpc.web.MethodDescrip
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.UpdateEmergencyRequest,
- *   !proto.smartcore.traits.Emergency>}
- */
-const methodInfo_EmergencyApi_UpdateEmergency = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.Emergency,
-  /**
-   * @param {!proto.smartcore.traits.UpdateEmergencyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.Emergency.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.UpdateEmergencyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.Emergency)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.Emergency)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.Emergency>|undefined}
  *     The XHR Node Readable Stream
@@ -222,7 +184,7 @@ proto.smartcore.traits.EmergencyApiClient.prototype.updateEmergency =
 /**
  * @param {!proto.smartcore.traits.UpdateEmergencyRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.Emergency>}
  *     Promise that resolves to the response
@@ -260,27 +222,8 @@ const methodDescriptor_EmergencyApi_PullEmergency = new grpc.web.MethodDescripto
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullEmergencyRequest,
- *   !proto.smartcore.traits.PullEmergencyResponse>}
- */
-const methodInfo_EmergencyApi_PullEmergency = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullEmergencyResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullEmergencyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullEmergencyResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullEmergencyRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullEmergencyResponse>}
  *     The XHR Node Readable Stream
@@ -297,7 +240,7 @@ proto.smartcore.traits.EmergencyApiClient.prototype.pullEmergency =
 
 /**
  * @param {!proto.smartcore.traits.PullEmergencyRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullEmergencyResponse>}
  *     The XHR Node Readable Stream
@@ -315,7 +258,7 @@ proto.smartcore.traits.EmergencyApiPromiseClient.prototype.pullEmergency =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -323,7 +266,7 @@ proto.smartcore.traits.EmergencyApiPromiseClient.prototype.pullEmergency =
 proto.smartcore.traits.EmergencyInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -341,7 +284,7 @@ proto.smartcore.traits.EmergencyInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -349,7 +292,7 @@ proto.smartcore.traits.EmergencyInfoClient =
 proto.smartcore.traits.EmergencyInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -387,30 +330,11 @@ const methodDescriptor_EmergencyInfo_DescribeEmergency = new grpc.web.MethodDesc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeEmergencyRequest,
- *   !proto.smartcore.traits.EmergencySupport>}
- */
-const methodInfo_EmergencyInfo_DescribeEmergency = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.EmergencySupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeEmergencyRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.EmergencySupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeEmergencyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.EmergencySupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.EmergencySupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.EmergencySupport>|undefined}
  *     The XHR Node Readable Stream
@@ -429,7 +353,7 @@ proto.smartcore.traits.EmergencyInfoClient.prototype.describeEmergency =
 /**
  * @param {!proto.smartcore.traits.DescribeEmergencyRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.EmergencySupport>}
  *     Promise that resolves to the response

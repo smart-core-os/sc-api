@@ -24,7 +24,7 @@ proto.smartcore.info = require('./info_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -32,7 +32,7 @@ proto.smartcore.info = require('./info_pb.js');
 proto.smartcore.info.InfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -50,7 +50,7 @@ proto.smartcore.info.InfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -58,7 +58,7 @@ proto.smartcore.info.InfoClient =
 proto.smartcore.info.InfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -96,30 +96,11 @@ const methodDescriptor_Info_ListDevices = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.ListDevicesRequest,
- *   !proto.smartcore.info.ListDevicesResponse>}
- */
-const methodInfo_Info_ListDevices = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.ListDevicesResponse,
-  /**
-   * @param {!proto.smartcore.info.ListDevicesRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.ListDevicesResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.ListDevicesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.info.ListDevicesResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.info.ListDevicesResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.ListDevicesResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -138,7 +119,7 @@ proto.smartcore.info.InfoClient.prototype.listDevices =
 /**
  * @param {!proto.smartcore.info.ListDevicesRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.info.ListDevicesResponse>}
  *     Promise that resolves to the response
@@ -176,27 +157,8 @@ const methodDescriptor_Info_PullDevices = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.info.PullDevicesRequest,
- *   !proto.smartcore.info.PullDevicesResponse>}
- */
-const methodInfo_Info_PullDevices = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.info.PullDevicesResponse,
-  /**
-   * @param {!proto.smartcore.info.PullDevicesRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.info.PullDevicesResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.info.PullDevicesRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.PullDevicesResponse>}
  *     The XHR Node Readable Stream
@@ -213,7 +175,7 @@ proto.smartcore.info.InfoClient.prototype.pullDevices =
 
 /**
  * @param {!proto.smartcore.info.PullDevicesRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.info.PullDevicesResponse>}
  *     The XHR Node Readable Stream

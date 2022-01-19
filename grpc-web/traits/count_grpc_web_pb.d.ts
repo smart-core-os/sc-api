@@ -11,21 +11,21 @@ export class CountApiClient {
   getCount(
     request: traits_count_pb.GetCountRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_count_pb.Count) => void
   ): grpcWeb.ClientReadableStream<traits_count_pb.Count>;
 
   resetCount(
     request: traits_count_pb.ResetCountRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_count_pb.Count) => void
   ): grpcWeb.ClientReadableStream<traits_count_pb.Count>;
 
   updateCount(
     request: traits_count_pb.UpdateCountRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_count_pb.Count) => void
   ): grpcWeb.ClientReadableStream<traits_count_pb.Count>;
 
@@ -44,7 +44,7 @@ export class CountInfoClient {
   describeCount(
     request: traits_count_pb.DescribeCountRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_count_pb.CountSupport) => void
   ): grpcWeb.ClientReadableStream<traits_count_pb.CountSupport>;
 

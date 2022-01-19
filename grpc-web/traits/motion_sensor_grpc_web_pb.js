@@ -28,7 +28,7 @@ proto.smartcore.traits = require('./motion_sensor_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -36,7 +36,7 @@ proto.smartcore.traits = require('./motion_sensor_pb.js');
 proto.smartcore.traits.MotionSensorApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -54,7 +54,7 @@ proto.smartcore.traits.MotionSensorApiClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -62,7 +62,7 @@ proto.smartcore.traits.MotionSensorApiClient =
 proto.smartcore.traits.MotionSensorApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -100,30 +100,11 @@ const methodDescriptor_MotionSensorApi_GetMotionDetection = new grpc.web.MethodD
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.GetMotionDetectionRequest,
- *   !proto.smartcore.traits.MotionDetection>}
- */
-const methodInfo_MotionSensorApi_GetMotionDetection = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.MotionDetection,
-  /**
-   * @param {!proto.smartcore.traits.GetMotionDetectionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.MotionDetection.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.GetMotionDetectionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.MotionDetection)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.MotionDetection)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.MotionDetection>|undefined}
  *     The XHR Node Readable Stream
@@ -142,7 +123,7 @@ proto.smartcore.traits.MotionSensorApiClient.prototype.getMotionDetection =
 /**
  * @param {!proto.smartcore.traits.GetMotionDetectionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.MotionDetection>}
  *     Promise that resolves to the response
@@ -180,27 +161,8 @@ const methodDescriptor_MotionSensorApi_PullMotionDetections = new grpc.web.Metho
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.PullMotionDetectionRequest,
- *   !proto.smartcore.traits.PullMotionDetectionResponse>}
- */
-const methodInfo_MotionSensorApi_PullMotionDetections = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.PullMotionDetectionResponse,
-  /**
-   * @param {!proto.smartcore.traits.PullMotionDetectionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.PullMotionDetectionResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.PullMotionDetectionRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMotionDetectionResponse>}
  *     The XHR Node Readable Stream
@@ -217,7 +179,7 @@ proto.smartcore.traits.MotionSensorApiClient.prototype.pullMotionDetections =
 
 /**
  * @param {!proto.smartcore.traits.PullMotionDetectionRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullMotionDetectionResponse>}
  *     The XHR Node Readable Stream
@@ -235,7 +197,7 @@ proto.smartcore.traits.MotionSensorApiPromiseClient.prototype.pullMotionDetectio
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -243,7 +205,7 @@ proto.smartcore.traits.MotionSensorApiPromiseClient.prototype.pullMotionDetectio
 proto.smartcore.traits.MotionSensorSensorInfoClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -261,7 +223,7 @@ proto.smartcore.traits.MotionSensorSensorInfoClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -269,7 +231,7 @@ proto.smartcore.traits.MotionSensorSensorInfoClient =
 proto.smartcore.traits.MotionSensorSensorInfoPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -307,30 +269,11 @@ const methodDescriptor_MotionSensorSensorInfo_DescribeMotionDetection = new grpc
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.smartcore.traits.DescribeMotionDetectionRequest,
- *   !proto.smartcore.traits.MotionDetectionSupport>}
- */
-const methodInfo_MotionSensorSensorInfo_DescribeMotionDetection = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.smartcore.traits.MotionDetectionSupport,
-  /**
-   * @param {!proto.smartcore.traits.DescribeMotionDetectionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.smartcore.traits.MotionDetectionSupport.deserializeBinary
-);
-
-
-/**
  * @param {!proto.smartcore.traits.DescribeMotionDetectionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.smartcore.traits.MotionDetectionSupport)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.MotionDetectionSupport)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.MotionDetectionSupport>|undefined}
  *     The XHR Node Readable Stream
@@ -349,7 +292,7 @@ proto.smartcore.traits.MotionSensorSensorInfoClient.prototype.describeMotionDete
 /**
  * @param {!proto.smartcore.traits.DescribeMotionDetectionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.smartcore.traits.MotionDetectionSupport>}
  *     Promise that resolves to the response

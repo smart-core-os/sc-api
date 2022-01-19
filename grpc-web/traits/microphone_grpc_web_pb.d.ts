@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as types_unit_pb from '../types/unit_pb';
 import * as traits_microphone_pb from '../traits/microphone_pb';
+import * as types_unit_pb from '../types/unit_pb';
 
 
 export class MicrophoneApiClient {
@@ -12,14 +12,14 @@ export class MicrophoneApiClient {
   getGain(
     request: traits_microphone_pb.GetMicrophoneGainRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
   updateGain(
     request: traits_microphone_pb.UpdateMicrophoneGainRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
@@ -38,7 +38,7 @@ export class MicrophoneInfoClient {
   describeGain(
     request: traits_microphone_pb.DescribeGainRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: traits_microphone_pb.GainSupport) => void
   ): grpcWeb.ClientReadableStream<traits_microphone_pb.GainSupport>;
 
