@@ -58,6 +58,9 @@ message Booking {
   // If check_in.start_time is absent, no check in has happened
   // If check_in.end_time is absent, no check out has happened
   smartcore.types.time.Period check_in = 6;
+  // If true, the booking does not require a check-in and one should not be expected.
+  // Defaults to false; check-in is required.
+  bool check_in_not_required = 7;
 }
 
 // BookingSupport describes the capabilities of devices implementing this trait
