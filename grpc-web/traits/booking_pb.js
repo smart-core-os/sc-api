@@ -395,7 +395,8 @@ proto.smartcore.traits.Booking.toObject = function(includeInstance, msg) {
     title: jspb.Message.getFieldWithDefault(msg, 3, ""),
     ownerName: jspb.Message.getFieldWithDefault(msg, 4, ""),
     booked: (f = msg.getBooked()) && types_time_period_pb.Period.toObject(includeInstance, f),
-    checkIn: (f = msg.getCheckIn()) && types_time_period_pb.Period.toObject(includeInstance, f)
+    checkIn: (f = msg.getCheckIn()) && types_time_period_pb.Period.toObject(includeInstance, f),
+    checkInNotRequired: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -457,6 +458,10 @@ proto.smartcore.traits.Booking.deserializeBinaryFromReader = function(msg, reade
       var value = new types_time_period_pb.Period;
       reader.readMessage(value,types_time_period_pb.Period.deserializeBinaryFromReader);
       msg.setCheckIn(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setCheckInNotRequired(value);
       break;
     default:
       reader.skipField();
@@ -529,6 +534,13 @@ proto.smartcore.traits.Booking.serializeBinaryToWriter = function(message, write
       6,
       f,
       types_time_period_pb.Period.serializeBinaryToWriter
+    );
+  }
+  f = message.getCheckInNotRequired();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
     );
   }
 };
@@ -677,6 +689,24 @@ proto.smartcore.traits.Booking.prototype.clearCheckIn = function() {
  */
 proto.smartcore.traits.Booking.prototype.hasCheckIn = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional bool check_in_not_required = 7;
+ * @return {boolean}
+ */
+proto.smartcore.traits.Booking.prototype.getCheckInNotRequired = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.Booking} returns this
+ */
+proto.smartcore.traits.Booking.prototype.setCheckInNotRequired = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 

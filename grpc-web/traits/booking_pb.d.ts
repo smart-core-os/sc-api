@@ -31,6 +31,9 @@ export class Booking extends jspb.Message {
   hasCheckIn(): boolean;
   clearCheckIn(): Booking;
 
+  getCheckInNotRequired(): boolean;
+  setCheckInNotRequired(value: boolean): Booking;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Booking.AsObject;
   static toObject(includeInstance: boolean, msg: Booking): Booking.AsObject;
@@ -47,6 +50,7 @@ export namespace Booking {
     ownerName: string,
     booked?: types_time_period_pb.Period.AsObject,
     checkIn?: types_time_period_pb.Period.AsObject,
+    checkInNotRequired: boolean,
   }
 }
 
