@@ -340,7 +340,7 @@
         
       
         <h3 id="smartcore.traits.Metadata">Metadata</h3>
-        <p></p>
+        <p>Metadata holds information about a device.</p><p>The information properties are grouped based on the aspect of the device they relate to.</p><p>The metadata object and each group may hold arbitrary data via the more property.</p>
 
         
           <table class="field-table">
@@ -448,14 +448,18 @@ Properties in Revision take president over fields in product. </p></td>
                   <td>title</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Title holds the official name for the device.
+For example &#34;Reception Printer&#34; or &#34;MR1 AC Unit&#34; </p></td>
                 </tr>
               
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>other options; add when requested/needed
+                  <td><p>Description holds additional detail about this device.
+For example &#34;The printer for floor 3&#34;.
+
+other options; add when requested/needed
 string color; // a representative color
 string icon;
 string image; // in different resolutions? </p></td>
@@ -686,21 +690,25 @@ string image; // in different resolutions? </p></td>
                   <td>title</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Title holds the official name for the location.
+For example &#34;Meeting Room 1&#34; </p></td>
                 </tr>
               
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Description holds additional detail about the location.
+For example &#34;North-east project room&#34;. </p></td>
                 </tr>
               
                 <tr>
                   <td>architecture_reference</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>other options, add when requested/needed
+                  <td><p>Architectural reference holds the reference for the location in architectural drawings.
+
+other options, add when requested/needed
 string floor;
 string site;
 string country; // country name/code?
@@ -766,14 +774,16 @@ string alignment; // left, centre, right, top, bottom-left, etc </p></td>
                   <td>group</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Group holds a group name shared between this device and others.
+This can be useful for displaying this device on interfaces. </p></td>
                 </tr>
               
                 <tr>
                   <td>subsystem</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Subsystem records which larger system this device is part of.
+For example &#34;BMS&#34; or &#34;Lighting&#34; </p></td>
                 </tr>
               
                 <tr>

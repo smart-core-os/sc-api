@@ -24,14 +24,20 @@ service MetadataInfo {
   // todo: define MetadataInfo
 }
 
+// Metadata holds information about a device.
+// The information properties are grouped based on the aspect of the device they relate to.
+// The metadata object and each group may hold arbitrary data via the more property.
 message Metadata {
   // The canonical name for this device.
   string name = 1;
   repeated TraitMetadata traits = 2;
 
-
   message Appearance {
+    // Title holds the official name for the device.
+    // For example "Reception Printer" or "MR1 AC Unit"
     string title = 1;
+    // Description holds additional detail about this device.
+    // For example "The printer for floor 3".
     string description = 2;
     // other options; add when requested/needed
     // string color; // a representative color
@@ -44,8 +50,13 @@ message Metadata {
   Appearance appearance = 3;
 
   message Location {
+    // Title holds the official name for the location.
+    // For example "Meeting Room 1"
     string title = 1;
+    // Description holds additional detail about the location.
+    // For example "North-east project room".
     string description = 2;
+    // Architectural reference holds the reference for the location in architectural drawings.
     string architecture_reference = 3;
     // other options, add when requested/needed
     // string floor;
@@ -147,7 +158,11 @@ message Metadata {
   repeated NIC nics = 9;
 
   message Membership {
+    // Group holds a group name shared between this device and others.
+    // This can be useful for displaying this device on interfaces.
     string group = 1;
+    // Subsystem records which larger system this device is part of.
+    // For example "BMS" or "Lighting"
     string subsystem = 2;
 
     map<string, string> more = 100;

@@ -71,6 +71,9 @@ func (Metadata_NIC_Assignment) EnumDescriptor() ([]byte, []int) {
 	return file_traits_metadata_proto_rawDescGZIP(), []int{0, 6, 0}
 }
 
+// Metadata holds information about a device.
+// The information properties are grouped based on the aspect of the device they relate to.
+// The metadata object and each group may hold arbitrary data via the more property.
 type Metadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -432,7 +435,11 @@ type Metadata_Appearance struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Title       string            `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	// Title holds the official name for the device.
+	// For example "Reception Printer" or "MR1 AC Unit"
+	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	// Description holds additional detail about this device.
+	// For example "The printer for floor 3".
 	Description string            `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	More        map[string]string `protobuf:"bytes,100,rep,name=more,proto3" json:"more,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
@@ -495,8 +502,13 @@ type Metadata_Location struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Title                 string            `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	Description           string            `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	// Title holds the official name for the location.
+	// For example "Meeting Room 1"
+	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	// Description holds additional detail about the location.
+	// For example "North-east project room".
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	// Architectural reference holds the reference for the location in architectural drawings.
 	ArchitectureReference string            `protobuf:"bytes,3,opt,name=architecture_reference,json=architectureReference,proto3" json:"architecture_reference,omitempty"`
 	More                  map[string]string `protobuf:"bytes,100,rep,name=more,proto3" json:"more,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
@@ -1045,7 +1057,11 @@ type Metadata_Membership struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Group     string            `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+	// Group holds a group name shared between this device and others.
+	// This can be useful for displaying this device on interfaces.
+	Group string `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+	// Subsystem records which larger system this device is part of.
+	// For example "BMS" or "Lighting"
 	Subsystem string            `protobuf:"bytes,2,opt,name=subsystem,proto3" json:"subsystem,omitempty"`
 	More      map[string]string `protobuf:"bytes,100,rep,name=more,proto3" json:"more,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
