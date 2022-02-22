@@ -68,19 +68,19 @@ export class PowerCapacity extends jspb.Message {
 
   getLoad(): number;
   setLoad(value: number): PowerCapacity;
+  hasLoad(): boolean;
+  clearLoad(): PowerCapacity;
 
   getCapacity(): number;
   setCapacity(value: number): PowerCapacity;
+  hasCapacity(): boolean;
+  clearCapacity(): PowerCapacity;
 
   getFree(): number;
   setFree(value: number): PowerCapacity;
 
   getNotified(): number;
   setNotified(value: number): PowerCapacity;
-
-  getLoadCase(): PowerCapacity.LoadCase;
-
-  getCapacityCase(): PowerCapacity.CapacityCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PowerCapacity.AsObject;
@@ -94,8 +94,8 @@ export namespace PowerCapacity {
   export type AsObject = {
     rating: number,
     voltage: number,
-    load: number,
-    capacity: number,
+    load?: number,
+    capacity?: number,
     free: number,
     notified: number,
   }

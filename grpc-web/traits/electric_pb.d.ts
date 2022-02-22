@@ -12,11 +12,11 @@ export class ElectricDemand extends jspb.Message {
 
   getVoltage(): number;
   setVoltage(value: number): ElectricDemand;
+  hasVoltage(): boolean;
+  clearVoltage(): ElectricDemand;
 
   getRating(): number;
   setRating(value: number): ElectricDemand;
-
-  getVoltageCase(): ElectricDemand.VoltageCase;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ElectricDemand.AsObject;
@@ -29,7 +29,7 @@ export class ElectricDemand extends jspb.Message {
 export namespace ElectricDemand {
   export type AsObject = {
     current: number,
-    voltage: number,
+    voltage?: number,
     rating: number,
   }
 
