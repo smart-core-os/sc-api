@@ -12,6 +12,8 @@ option php_namespace = "Smartcore\\Info";
 import "types/change.proto";
 
 // Allow exposing information about an endpoint related to devices.
+//
+// Deprecated: use the Parent trait for listing devices, use Metadata trait for display name.
 service Info {
   // Get devices that this service knows about
   rpc ListDevices (ListDevicesRequest) returns (ListDevicesResponse);
