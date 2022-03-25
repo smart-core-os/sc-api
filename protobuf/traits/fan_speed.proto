@@ -38,14 +38,14 @@ message FanSpeed {
   // Percentage describes the fan speed relative to it's minimum and maximum fan speed.
   // In the range [0,100].
   float percentage = 1;
-  // Setting describes the fan speed in terms of qualitative values, low, high, etc.
-  // Available values are reported via FanSpeedSupport.settings.
-  string setting = 2;
-  // Setting index is the index in FanSpeedSupport.settings of the currently selected setting.
+  // Preset describes the fan speed in terms of qualitative values, low, high, etc.
+  // Available values are reported via FanSpeedSupport.presets.
+  string preset = 2;
+  // Preset index is the index in FanSpeedSupport.presets of the currently selected preset.
   // This field is primarily used for relative speed adjustment, a value of 1 when the update is relative, adds 1
-  // to the active setting, increasing the fan speed by one adjustment. Negative values would decrease the fan speed
+  // to the active preset, increasing the fan speed by one adjustment. Negative values would decrease the fan speed
   // by an equivalent number of steps.
-  int32 setting_index = 3;
+  int32 preset_index = 3;
 
   enum Direction {
     DIRECTION_UNKNOWN = 0;
@@ -61,8 +61,8 @@ message FanSpeed {
 message FanSpeedSupport {
   // How a named device supports read/write/pull apis
   smartcore.types.ResourceSupport resource_support = 1;
-  // Settings is the list of supported fan speed settings, in ascending fan speed order - i.e. index 0 is the slowest.
-  repeated string settings = 2;
+  // Presets is the list of supported fan speed presets, in ascending fan speed order - i.e. index 0 is the slowest.
+  repeated string presets = 2;
 }
 
 message GetFanSpeedRequest {
@@ -80,7 +80,7 @@ message UpdateFanSpeedRequest {
   // Fields to fetch relative to the FanSpeed type
   google.protobuf.FieldMask update_mask = 3;
   // Values in fan_speed are relative to their current values.
-  // Setting FanSpeed.setting makes no sense when relative is true, use setting_index instead.
+  // FanSpeed.preset cannot be directly set relatively, use preset_index instead to adjust the selected preset index.
   bool relative = 4;
 }
 
