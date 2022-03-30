@@ -27,16 +27,16 @@ export namespace OpenClosePositions {
 }
 
 export class OpenClosePosition extends jspb.Message {
-  getPositionPercent(): number;
-  setPositionPercent(value: number): OpenClosePosition;
+  getOpenPercent(): number;
+  setOpenPercent(value: number): OpenClosePosition;
 
-  getPositionPercentTween(): types_tween_pb.Tween | undefined;
-  setPositionPercentTween(value?: types_tween_pb.Tween): OpenClosePosition;
-  hasPositionPercentTween(): boolean;
-  clearPositionPercentTween(): OpenClosePosition;
+  getOpenPercentTween(): types_tween_pb.Tween | undefined;
+  setOpenPercentTween(value?: types_tween_pb.Tween): OpenClosePosition;
+  hasOpenPercentTween(): boolean;
+  clearOpenPercentTween(): OpenClosePosition;
 
-  getTargetPositionPercent(): number;
-  setTargetPositionPercent(value: number): OpenClosePosition;
+  getTargetOpenPercent(): number;
+  setTargetOpenPercent(value: number): OpenClosePosition;
 
   getDirection(): OpenClosePosition.Direction;
   setDirection(value: OpenClosePosition.Direction): OpenClosePosition;
@@ -51,9 +51,9 @@ export class OpenClosePosition extends jspb.Message {
 
 export namespace OpenClosePosition {
   export type AsObject = {
-    positionPercent: number,
-    positionPercentTween?: types_tween_pb.Tween.AsObject,
-    targetPositionPercent: number,
+    openPercent: number,
+    openPercentTween?: types_tween_pb.Tween.AsObject,
+    targetOpenPercent: number,
     direction: OpenClosePosition.Direction,
   }
 
@@ -74,10 +74,10 @@ export class PositionsSupport extends jspb.Message {
   hasResourceSupport(): boolean;
   clearResourceSupport(): PositionsSupport;
 
-  getPositionAttributes(): types_number_pb.FloatAttributes | undefined;
-  setPositionAttributes(value?: types_number_pb.FloatAttributes): PositionsSupport;
-  hasPositionAttributes(): boolean;
-  clearPositionAttributes(): PositionsSupport;
+  getOpenPercentAttributes(): types_number_pb.FloatAttributes | undefined;
+  setOpenPercentAttributes(value?: types_number_pb.FloatAttributes): PositionsSupport;
+  hasOpenPercentAttributes(): boolean;
+  clearOpenPercentAttributes(): PositionsSupport;
 
   getDirectionsList(): Array<OpenClosePosition.Direction>;
   setDirectionsList(value: Array<OpenClosePosition.Direction>): PositionsSupport;
@@ -98,7 +98,7 @@ export class PositionsSupport extends jspb.Message {
 export namespace PositionsSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    positionAttributes?: types_number_pb.FloatAttributes.AsObject,
+    openPercentAttributes?: types_number_pb.FloatAttributes.AsObject,
     directionsList: Array<OpenClosePosition.Direction>,
     supportsStop: boolean,
   }

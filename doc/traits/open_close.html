@@ -307,24 +307,25 @@
             <tbody>
               
                 <tr>
-                  <td>position_percent</td>
+                  <td>open_percent</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>0-100, the current value for the open close position of the device in this direction </p></td>
+                  <td><p>Open percent describes how open the device is in the specified direction.
+[0-100] where 0 is fully closed and 100 is fully open. </p></td>
                 </tr>
               
                 <tr>
-                  <td>position_percent_tween</td>
+                  <td>open_percent_tween</td>
                   <td><a href="#smartcore.types.Tween">smartcore.types.Tween</a></td>
                   <td></td>
-                  <td><p>How the position changes or should change over time. On write only duration should be set. </p></td>
+                  <td><p>How the open percent changes or should change over time. On write, only duration should be set. </p></td>
                 </tr>
               
                 <tr>
-                  <td>target_position_percent</td>
+                  <td>target_open_percent</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>Read-only, the target position_percent after a transition </p></td>
+                  <td><p>Read-only, the target open_percent after a transition </p></td>
                 </tr>
               
                 <tr>
@@ -384,11 +385,12 @@ only be opened from a single direction. </p></td>
                 </tr>
               
                 <tr>
-                  <td>position_attributes</td>
+                  <td>open_percent_attributes</td>
                   <td><a href="#smartcore.types.FloatAttributes">smartcore.types.FloatAttributes</a></td>
                   <td></td>
-                  <td><p>Define how the value for positions behave. The bounds for these attributes will be absent and always in the range
-0-100 to represent a percentage </p></td>
+                  <td><p>Define how the value for open percent behave. The bounds for these attributes will be absent and always in the range
+[0-100] to represent a percentage.
+Discreet devices, those that only support fully closed or fully open (i.e. a contact closure) should report a step of 100. </p></td>
                 </tr>
               
                 <tr>
