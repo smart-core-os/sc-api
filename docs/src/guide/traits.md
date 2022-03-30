@@ -74,7 +74,7 @@ Words and symbols in Smart Core use the common American English spelling for wor
 
 ![Rulers in metric or imperial](./william-warby-WahfNoqbYnM-unsplash.jpg)
 
-Every Smart Core trait defines _what_ it does via its `Api` service, _how_ it implements that API is exposed via its **Trait Info** service. Think of trait info as fine tuning knobs for describing how a device implements a trait.
+Every Smart Core trait defines _what_ it does via its `Api` service; _how_ it implements that API is exposed via its **Trait Info** service. Think of trait info as fine tuning knobs for describing how a device implements a trait.
 
 The trait info service describes all the ways an implementer of a trait can vary, from describing support for the different resource verbs, native units, value bounds, and so on. Maybe the device natively displays height in inches, maybe it can only sense up to 900 LUX, maybe it doesn't support the `Pull` verb, the trait info service allows you to discover this variance.
 
