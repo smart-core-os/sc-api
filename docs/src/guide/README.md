@@ -114,11 +114,10 @@ class OnOffClient {
     try {
       // turn on my-device
       OnOff res = onOffClient.UpdateOnOff(UpdateOnOffRequest.newBuilder()
-              .setName("my-device")
-              .setOnOff(OnOff.newBuilder()
-                .setState(OnOff.State.ON)
-          )
-          .build());
+        .setName("my-device")
+        .setOnOff(OnOff.newBuilder()
+          .setState(OnOff.State.ON)
+        ).build());
       System.out.println("my-device is now " + res.getState());
       // > my-device is now ON
     } catch (StatusRuntimeException e) {
