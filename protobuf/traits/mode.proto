@@ -33,7 +33,7 @@ service ModeApi {
 }
 
 // Describes the capabilities of a specific named device with respect to this trait.
-service ModesInfo {
+service ModeInfo {
   // Get information about how a named device implements Modes features
   rpc DescribeModes (DescribeModesRequest) returns (ModesSupport);
 }
