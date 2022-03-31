@@ -74,7 +74,7 @@ Words and symbols in Smart Core use the common American English spelling for wor
 
 ![Rulers in metric or imperial](./william-warby-WahfNoqbYnM-unsplash.jpg)
 
-Every Smart Core trait defines _what_ it does via its `Api` service, _how_ it implements that API is exposed via its **Trait Info** service. Think of trait info as fine tuning knobs for describing how a device implements a trait.
+Every Smart Core trait defines _what_ it does via its `Api` service; _how_ it implements that API is exposed via its **Trait Info** service. Think of trait info as fine tuning knobs for describing how a device implements a trait.
 
 The trait info service describes all the ways an implementer of a trait can vary, from describing support for the different resource verbs, native units, value bounds, and so on. Maybe the device natively displays height in inches, maybe it can only sense up to 900 LUX, maybe it doesn't support the `Pull` verb, the trait info service allows you to discover this variance.
 
@@ -86,7 +86,7 @@ service AirQualitySensorInfo {
 }
 ```
 
-You'll notice we've introduced a new verb `Describe`. For each resource the trait exposes, it will have it's own describe method, just like it would have it's own get or update methods as part of the control API. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
+You'll notice we've introduced a new verb `Describe`. For each resource the trait exposes, it will have its own describe method, just like it would have its own get or update methods as part of the control API. The response from this method is a **support message** that describes how this device differs from the default behavior expected by devices implementing this trait.
 
 Support messages have a standard name `{Resource}Support`, and follow a common pattern. The support message for the `AirQuality` resource would look like
 
@@ -104,7 +104,7 @@ message AirQualitySupport {
 
 For each resource in a trait there is a basic set of actions that can be performed - the verbs we mentioned earlier - highlighted in the snippet above. Some implementors of the trait might not support all of these verbs, or their implementation might be limited. This variation in the trait is encoded into the `ResourceSupport` type, which describes support for reading, writing, and observing the resource.
 
-In addition to the common verbs, each resource can also describe specific variations relative to it's own information. In the `AirQualitySupport` example above you can see this with these lines
+In addition to the common verbs, each resource can also describe specific variations relative to its own information. In the `AirQualitySupport` example above you can see this with these lines
 
 ```protobuf
 smartcore.types.FloatBounds carbon_dioxide_level = 2;
