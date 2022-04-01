@@ -92,6 +92,8 @@ message ListBookingsRequest {
   // Specify the time period to return bookings for
   // bookings are returned if they intersect this time period
   smartcore.types.time.Period booking_intersects = 2;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 3;
 }
 
 message ListBookingsResponse {

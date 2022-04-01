@@ -58,6 +58,8 @@ message CountSupport {
 
 message GetCountRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message ResetCountRequest {
@@ -76,6 +78,8 @@ message UpdateCountRequest {
 
 message PullCountsRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullCountsResponse {

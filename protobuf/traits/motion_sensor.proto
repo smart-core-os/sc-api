@@ -10,6 +10,7 @@ option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/duration.proto";
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 
@@ -57,12 +58,16 @@ message MotionDetectionSupport {
 message GetMotionDetectionRequest {
   // the name for the device to get the detection state for
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // request to be notified of changes to the state of the device
 message PullMotionDetectionRequest {
   // the name for the device to subscribe to
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // response containing motion state changes

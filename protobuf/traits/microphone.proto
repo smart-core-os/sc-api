@@ -50,7 +50,7 @@ message GetMicrophoneGainRequest {
   // Name of the device to fetch the state for
   string name = 1;
   // fields to fetch relative the the AudioLevel type
-  google.protobuf.FieldMask fields = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdateMicrophoneGainRequest {
@@ -68,7 +68,7 @@ message PullMicrophoneGainRequest {
   // Name of the device to fetch the state for
   string name = 1;
   // fields to fetch relative the the AudioLevel type
-  google.protobuf.FieldMask fields = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullMicrophoneGainResponse {

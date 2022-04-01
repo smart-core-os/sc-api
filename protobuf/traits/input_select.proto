@@ -105,12 +105,16 @@ message GetInputRequest {
   string name = 1;
   // Required if the device has multiple outputs. The name of the output to get the input for.
   string output = 2;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 3;
 }
 
 // Request to begin a subscription for selected input changes
 message PullInputRequest {
   // The name of the device we want events from
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // A response as part of the stream of changes to the selected input

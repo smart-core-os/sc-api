@@ -83,6 +83,8 @@ message ExtensionSupport {
 message GetExtensionRequest {
   // the name of the device to fetch the information for
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdateExtensionRequest {
@@ -109,6 +111,8 @@ message CreateExtensionPresetRequest {
 message PullExtensionsRequest {
   // name of the device to subscribe to
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 // Response to a Pull request for extension changes
 message PullExtensionsResponse {

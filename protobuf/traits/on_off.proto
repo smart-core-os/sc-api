@@ -9,6 +9,7 @@ option java_outer_classname = "OnOffProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 
@@ -48,16 +49,22 @@ message OnOffSupport {
 
 message GetOnOffRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdateOnOffRequest {
   string name = 1;
   OnOff on_off = 2;
+  // The state fields to update
+  google.protobuf.FieldMask update_mask = 3;
 }
 
 // A request to monitor the state of a device
 message PullOnOffRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // Response to a Pull request for OnOffState changes

@@ -9,6 +9,7 @@ option java_outer_classname = "LightProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 import "types/number.proto";
@@ -81,12 +82,16 @@ message UpdateBrightnessRequest {
   Brightness brightness = 2;
   // if true, then the values in the brightness represent deltas from the current value and not absolute values
   bool delta = 3;
+  // The state fields to update
+  google.protobuf.FieldMask update_mask = 4;
 }
 
 // A request to get the current value of a brightness
 message GetBrightnessRequest {
   // The name of the device to get the value for
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // Request to begin a subscription for brightness values
@@ -96,6 +101,8 @@ message PullBrightnessRequest {
   // Indicate whether we want to be notified of values while ramping or not. The device may ignore this depending on
   // capabilities
   bool exclude_ramping = 2;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 3;
 }
 
 // A response as part of the stream of changes to the brightness value

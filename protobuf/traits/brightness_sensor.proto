@@ -9,6 +9,7 @@ option java_outer_classname = "BrightnessSensorProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 import "types/number.proto";
@@ -44,11 +45,15 @@ message AmbientBrightnessSupport {
 message GetAmbientBrightnessRequest {
   // The name for the device.
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullAmbientBrightnessRequest {
   // The name for the device.
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullAmbientBrightnessResponse {

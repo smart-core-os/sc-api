@@ -65,6 +65,8 @@ message EmergencySupport {
 
 message GetEmergencyRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdateEmergencyRequest {
@@ -76,6 +78,8 @@ message UpdateEmergencyRequest {
 
 message PullEmergencyRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullEmergencyResponse {

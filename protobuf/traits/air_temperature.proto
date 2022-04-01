@@ -114,6 +114,8 @@ message AirTemperatureSupport {
 // Request message for fetching device state
 message GetAirTemperatureRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // Request message for updating the device state
@@ -127,6 +129,8 @@ message UpdateAirTemperatureRequest {
 // Request message for subscribing to changes in the devices state
 message PullAirTemperatureRequest {
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 // Response message enclosing device state changes

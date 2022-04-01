@@ -9,6 +9,7 @@ option java_outer_classname = "OpenCloseProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/info.proto";
 import "types/number.proto";
@@ -81,6 +82,8 @@ message PositionsSupport {
 message GetOpenClosePositionsRequest {
   // Name of the device to get the state for
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdateOpenClosePositionsRequest {
@@ -91,6 +94,8 @@ message UpdateOpenClosePositionsRequest {
   OpenClosePositions states = 2;
   // indicate whether the state change is a delta or absolute value
   bool delta = 3;
+  // The state fields to update
+  google.protobuf.FieldMask update_mask = 4;
 }
 
 message StopOpenCloseRequest {
@@ -105,6 +110,8 @@ message PullOpenClosePositionsRequest {
   // Indicate whether we want to be notified of values while tweening or not. The device may ignore this depending on
   // capabilities
   bool exclude_tweening = 2;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 3;
 }
 
 // A response as part of the stream of changes to the range value
