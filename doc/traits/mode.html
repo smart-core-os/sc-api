@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#traits%2fmode.proto">traits/mode.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#smartcore.traits.DescribeModesRequest"><span class="badge">M</span>DescribeModesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetModeValuesRequest"><span class="badge">M</span>GetModeValuesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModeValues"><span class="badge">M</span>ModeValues</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModeValues.ValuesEntry"><span class="badge">M</span>ModeValues.ValuesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModeValuesRelative"><span class="badge">M</span>ModeValuesRelative</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModeValuesRelative.ValuesEntry"><span class="badge">M</span>ModeValuesRelative.ValuesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Modes"><span class="badge">M</span>Modes</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Modes.Mode"><span class="badge">M</span>Modes.Mode</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Modes.Value"><span class="badge">M</span>Modes.Value</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModesSupport"><span class="badge">M</span>ModesSupport</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModeValuesRequest"><span class="badge">M</span>PullModeValuesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModeValuesResponse"><span class="badge">M</span>PullModeValuesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullModeValuesResponse.Change"><span class="badge">M</span>PullModeValuesResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.UpdateModeValuesRequest"><span class="badge">M</span>UpdateModeValuesRequest</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#smartcore.traits.ModeApi"><span class="badge">S</span>ModeApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ModeInfo"><span class="badge">S</span>ModeInfo</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="traits/mode.proto">traits/mode.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="smartcore.traits.DescribeModesRequest">DescribeModesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetModeValuesRequest">GetModeValuesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ModeValues type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ModeValues">ModeValues</h3>
+        <p>ModeValues describes the current value for each available mode on a device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>values</td>
+                  <td><a href="#smartcore.traits.ModeValues.ValuesEntry">ModeValues.ValuesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Values, keyed by the mode name, reports the current mode value name active on the device.
+For example {&#34;temperature&#34;: &#34;cool&#34;} </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ModeValues.ValuesEntry">ModeValues.ValuesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ModeValuesRelative">ModeValuesRelative</h3>
+        <p>ModeValuesRelative describes how a mode should change relative to its current value.</p><p>For example {"temperature": -1} might adjust the "temperature" mode from "warm" to "cool".</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>values</td>
+                  <td><a href="#smartcore.traits.ModeValuesRelative.ValuesEntry">ModeValuesRelative.ValuesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ModeValuesRelative.ValuesEntry">ModeValuesRelative.ValuesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Modes">Modes</h3>
+        <p>Modes describes the modes available on a device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>modes</td>
+                  <td><a href="#smartcore.traits.Modes.Mode">Modes.Mode</a></td>
+                  <td>repeated</td>
+                  <td><p>Modes holds the list of supported modes for a device. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Modes.Mode">Modes.Mode</h3>
+        <p>Mode describes a controllable aspect of the device.</p><p>For example "spin_speed" or "divisible_state".</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name is use to refer to this mode in ModeValues or ModeAdjustments. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>values</td>
+                  <td><a href="#smartcore.traits.Modes.Value">Modes.Value</a></td>
+                  <td>repeated</td>
+                  <td><p>Values is the list of available values this mode supports. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ordered</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, the values this mode support can be considered ordered.
+For example [&#34;fast&#34;, &#34;normal&#34;, &#34;slow&#34;] are ordered, [&#34;joined&#34;, &#34;split&#34;] are not. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Modes.Value">Modes.Value</h3>
+        <p>Value describes a specific setting for a mode.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name is used to refer to this value in ModeValues. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ModesSupport">ModesSupport</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>mode_values_support</td>
+                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
+                  <td></td>
+                  <td><p>How a named device supports read/write/pull apis for mode values </p></td>
+                </tr>
+              
+                <tr>
+                  <td>available_modes</td>
+                  <td><a href="#smartcore.traits.Modes">Modes</a></td>
+                  <td></td>
+                  <td><p>AvailableModes holds the list of modes the device supports. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModeValuesRequest">PullModeValuesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the ModeValues type </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModeValuesResponse">PullModeValuesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullModeValuesResponse.Change">PullModeValuesResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes since the last message. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullModeValuesResponse.Change">PullModeValuesResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device that issued the change. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mode_values</td>
+                  <td><a href="#smartcore.traits.ModeValues">ModeValues</a></td>
+                  <td></td>
+                  <td><p>The new value for each mode. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateModeValuesRequest">UpdateModeValuesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mode_values</td>
+                  <td><a href="#smartcore.traits.ModeValues">ModeValues</a></td>
+                  <td></td>
+                  <td><p>The new mode values. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>relative</td>
+                  <td><a href="#smartcore.traits.ModeValuesRelative">ModeValuesRelative</a></td>
+                  <td></td>
+                  <td><p>Relative changes to the current mode values.
+If a mode name is specified in both mode_values and relative, and the adjustment in relative is non-zero, relative adjustments win. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to update relative to the ModeValues and ModeAdjustments type. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="smartcore.traits.ModeApi">ModeApi</h3>
+        <p>Trait for devices that present one or more distinct modes.</p><p>For example a washing machine might have a "temperature" mode with available values ["delicate", "auto", "whites"].</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetModeValues</td>
+                <td><a href="#smartcore.traits.GetModeValuesRequest">GetModeValuesRequest</a></td>
+                <td><a href="#smartcore.traits.ModeValues">ModeValues</a></td>
+                <td><p>GetModeValues returns the current state for all modes for a device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateModeValues</td>
+                <td><a href="#smartcore.traits.UpdateModeValuesRequest">UpdateModeValuesRequest</a></td>
+                <td><a href="#smartcore.traits.ModeValues">ModeValues</a></td>
+                <td><p>UpdateModeValues sets the current mode for the device.
+Multiple modes may be set at the same time.
+The device may error if setting a mode that is not supported, in any case the returned ModeValues contains the
+state after the update.
+Relative updates to the mode may either cap or wrap the mode value if adjusting the value relatively would either
+underflow or overflow the available modes.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullModeValues</td>
+                <td><a href="#smartcore.traits.PullModeValuesRequest">PullModeValuesRequest</a></td>
+                <td><a href="#smartcore.traits.PullModeValuesResponse">PullModeValuesResponse</a> stream</td>
+                <td><p>PullModeValues returns a stream of updates to the modes set on the device.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.ModeInfo">ModeInfo</h3>
+        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DescribeModes</td>
+                <td><a href="#smartcore.traits.DescribeModesRequest">DescribeModesRequest</a></td>
+                <td><a href="#smartcore.traits.ModesSupport">ModesSupport</a></td>
+                <td><p>Get information about how a named device implements Modes features</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
