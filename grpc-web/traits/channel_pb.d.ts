@@ -152,6 +152,9 @@ export class PullChosenChannelRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullChosenChannelRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullChosenChannelRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullChosenChannelRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullChosenChannelRequest): PullChosenChannelRequest.AsObject;
@@ -164,6 +167,7 @@ export namespace PullChosenChannelRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

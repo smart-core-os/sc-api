@@ -131,6 +131,9 @@ export class PullEmergencyRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullEmergencyRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullEmergencyRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEmergencyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullEmergencyRequest): PullEmergencyRequest.AsObject;
@@ -143,6 +146,7 @@ export namespace PullEmergencyRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

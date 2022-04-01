@@ -103,6 +103,9 @@ export class PullSpeakerVolumeRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullSpeakerVolumeRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullSpeakerVolumeRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullSpeakerVolumeRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullSpeakerVolumeRequest): PullSpeakerVolumeRequest.AsObject;
@@ -115,6 +118,7 @@ export namespace PullSpeakerVolumeRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

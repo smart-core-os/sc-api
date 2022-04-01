@@ -152,6 +152,9 @@ export class PullFanSpeedRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullFanSpeedRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullFanSpeedRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullFanSpeedRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullFanSpeedRequest): PullFanSpeedRequest.AsObject;
@@ -164,6 +167,7 @@ export namespace PullFanSpeedRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

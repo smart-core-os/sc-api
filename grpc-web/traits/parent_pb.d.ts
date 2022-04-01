@@ -120,6 +120,9 @@ export class PullChildrenRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullChildrenRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullChildrenRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullChildrenRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullChildrenRequest): PullChildrenRequest.AsObject;
@@ -132,6 +135,7 @@ export namespace PullChildrenRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

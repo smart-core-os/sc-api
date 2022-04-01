@@ -204,6 +204,9 @@ export class PullModeValuesRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullModeValuesRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullModeValuesRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullModeValuesRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullModeValuesRequest): PullModeValuesRequest.AsObject;
@@ -216,6 +219,7 @@ export namespace PullModeValuesRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

@@ -1001,7 +1001,8 @@ proto.smartcore.traits.ListBookingsRequest.toObject = function(includeInstance, 
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     bookingIntersects: (f = msg.getBookingIntersects()) && types_time_period_pb.Period.toObject(includeInstance, f),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1051,6 +1052,10 @@ proto.smartcore.traits.ListBookingsRequest.deserializeBinaryFromReader = functio
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setReadMask(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setUpdatesOnly(value);
       break;
     default:
       reader.skipField();
@@ -1102,6 +1107,13 @@ proto.smartcore.traits.ListBookingsRequest.serializeBinaryToWriter = function(me
       3,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getUpdatesOnly();
+  if (f) {
+    writer.writeBool(
+      4,
+      f
     );
   }
 };
@@ -1196,6 +1208,24 @@ proto.smartcore.traits.ListBookingsRequest.prototype.clearReadMask = function() 
  */
 proto.smartcore.traits.ListBookingsRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional bool updates_only = 4;
+ * @return {boolean}
+ */
+proto.smartcore.traits.ListBookingsRequest.prototype.getUpdatesOnly = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.ListBookingsRequest} returns this
+ */
+proto.smartcore.traits.ListBookingsRequest.prototype.setUpdatesOnly = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 

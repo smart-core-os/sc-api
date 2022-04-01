@@ -1666,7 +1666,8 @@ proto.smartcore.traits.PullPowerCapacityRequest.prototype.toObject = function(op
 proto.smartcore.traits.PullPowerCapacityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1712,6 +1713,10 @@ proto.smartcore.traits.PullPowerCapacityRequest.deserializeBinaryFromReader = fu
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setFields(value);
       break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setUpdatesOnly(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1754,6 +1759,13 @@ proto.smartcore.traits.PullPowerCapacityRequest.serializeBinaryToWriter = functi
       2,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getUpdatesOnly();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
     );
   }
 };
@@ -1811,6 +1823,24 @@ proto.smartcore.traits.PullPowerCapacityRequest.prototype.clearFields = function
  */
 proto.smartcore.traits.PullPowerCapacityRequest.prototype.hasFields = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional bool updates_only = 3;
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullPowerCapacityRequest.prototype.getUpdatesOnly = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.PullPowerCapacityRequest} returns this
+ */
+proto.smartcore.traits.PullPowerCapacityRequest.prototype.setUpdatesOnly = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 

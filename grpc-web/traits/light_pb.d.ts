@@ -171,6 +171,9 @@ export class PullBrightnessRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullBrightnessRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullBrightnessRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullBrightnessRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullBrightnessRequest): PullBrightnessRequest.AsObject;
@@ -184,6 +187,7 @@ export namespace PullBrightnessRequest {
     name: string,
     excludeRamping: boolean,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

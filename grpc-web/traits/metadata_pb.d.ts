@@ -472,6 +472,9 @@ export class PullMetadataRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullMetadataRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullMetadataRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMetadataRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullMetadataRequest): PullMetadataRequest.AsObject;
@@ -484,6 +487,7 @@ export namespace PullMetadataRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

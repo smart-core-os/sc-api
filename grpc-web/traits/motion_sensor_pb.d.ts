@@ -94,6 +94,9 @@ export class PullMotionDetectionRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullMotionDetectionRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullMotionDetectionRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMotionDetectionRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullMotionDetectionRequest): PullMotionDetectionRequest.AsObject;
@@ -106,6 +109,7 @@ export namespace PullMotionDetectionRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

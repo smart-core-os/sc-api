@@ -1441,7 +1441,8 @@ proto.smartcore.traits.PullBrightnessRequest.toObject = function(includeInstance
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     excludeRamping: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1490,6 +1491,10 @@ proto.smartcore.traits.PullBrightnessRequest.deserializeBinaryFromReader = funct
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setReadMask(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setUpdatesOnly(value);
       break;
     default:
       reader.skipField();
@@ -1540,6 +1545,13 @@ proto.smartcore.traits.PullBrightnessRequest.serializeBinaryToWriter = function(
       3,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getUpdatesOnly();
+  if (f) {
+    writer.writeBool(
+      4,
+      f
     );
   }
 };
@@ -1615,6 +1627,24 @@ proto.smartcore.traits.PullBrightnessRequest.prototype.clearReadMask = function(
  */
 proto.smartcore.traits.PullBrightnessRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional bool updates_only = 4;
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullBrightnessRequest.prototype.getUpdatesOnly = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.smartcore.traits.PullBrightnessRequest} returns this
+ */
+proto.smartcore.traits.PullBrightnessRequest.prototype.setUpdatesOnly = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 

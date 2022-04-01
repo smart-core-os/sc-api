@@ -186,6 +186,9 @@ export class PullPowerCapacityRequest extends jspb.Message {
   hasFields(): boolean;
   clearFields(): PullPowerCapacityRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullPowerCapacityRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullPowerCapacityRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullPowerCapacityRequest): PullPowerCapacityRequest.AsObject;
@@ -198,6 +201,7 @@ export namespace PullPowerCapacityRequest {
   export type AsObject = {
     name: string,
     fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

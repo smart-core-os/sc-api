@@ -214,6 +214,9 @@ export class PullAirTemperatureRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullAirTemperatureRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullAirTemperatureRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirTemperatureRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullAirTemperatureRequest): PullAirTemperatureRequest.AsObject;
@@ -226,6 +229,7 @@ export namespace PullAirTemperatureRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

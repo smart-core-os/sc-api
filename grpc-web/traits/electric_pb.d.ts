@@ -154,6 +154,9 @@ export class PullDemandRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullDemandRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullDemandRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullDemandRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullDemandRequest): PullDemandRequest.AsObject;
@@ -166,6 +169,7 @@ export namespace PullDemandRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 
@@ -301,6 +305,9 @@ export class PullActiveModeRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullActiveModeRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullActiveModeRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullActiveModeRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullActiveModeRequest): PullActiveModeRequest.AsObject;
@@ -313,6 +320,7 @@ export namespace PullActiveModeRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 
@@ -436,6 +444,9 @@ export class PullModesRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullModesRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullModesRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullModesRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullModesRequest): PullModesRequest.AsObject;
@@ -448,6 +459,7 @@ export namespace PullModesRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

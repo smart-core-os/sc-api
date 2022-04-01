@@ -112,6 +112,9 @@ export class PullOnOffRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullOnOffRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullOnOffRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOnOffRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullOnOffRequest): PullOnOffRequest.AsObject;
@@ -124,6 +127,7 @@ export namespace PullOnOffRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

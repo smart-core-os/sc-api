@@ -126,6 +126,9 @@ export class PullAirQualityRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullAirQualityRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullAirQualityRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirQualityRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullAirQualityRequest): PullAirQualityRequest.AsObject;
@@ -138,6 +141,7 @@ export namespace PullAirQualityRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

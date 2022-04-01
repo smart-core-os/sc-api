@@ -193,6 +193,9 @@ export class PullOpenClosePositionsRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullOpenClosePositionsRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullOpenClosePositionsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOpenClosePositionsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullOpenClosePositionsRequest): PullOpenClosePositionsRequest.AsObject;
@@ -206,6 +209,7 @@ export namespace PullOpenClosePositionsRequest {
     name: string,
     excludeTweening: boolean,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

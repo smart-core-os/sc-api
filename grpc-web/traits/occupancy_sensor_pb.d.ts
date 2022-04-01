@@ -107,6 +107,9 @@ export class PullOccupancyRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullOccupancyRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullOccupancyRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOccupancyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullOccupancyRequest): PullOccupancyRequest.AsObject;
@@ -119,6 +122,7 @@ export namespace PullOccupancyRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

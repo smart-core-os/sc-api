@@ -156,6 +156,9 @@ export class PullCountsRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullCountsRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullCountsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullCountsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullCountsRequest): PullCountsRequest.AsObject;
@@ -168,6 +171,7 @@ export namespace PullCountsRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

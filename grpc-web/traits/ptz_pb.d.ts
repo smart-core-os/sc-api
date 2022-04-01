@@ -337,6 +337,9 @@ export class PullPtzRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullPtzRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullPtzRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullPtzRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullPtzRequest): PullPtzRequest.AsObject;
@@ -349,6 +352,7 @@ export namespace PullPtzRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

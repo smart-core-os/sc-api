@@ -239,6 +239,9 @@ export class PullEnergyLevelRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullEnergyLevelRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullEnergyLevelRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEnergyLevelRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullEnergyLevelRequest): PullEnergyLevelRequest.AsObject;
@@ -251,6 +254,7 @@ export namespace PullEnergyLevelRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

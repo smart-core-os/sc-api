@@ -107,6 +107,9 @@ export class ListBookingsRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): ListBookingsRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): ListBookingsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListBookingsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListBookingsRequest): ListBookingsRequest.AsObject;
@@ -120,6 +123,7 @@ export namespace ListBookingsRequest {
     name: string,
     bookingIntersects?: types_time_period_pb.Period.AsObject,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 

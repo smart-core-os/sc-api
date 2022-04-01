@@ -103,6 +103,9 @@ export class PullMicrophoneGainRequest extends jspb.Message {
   hasReadMask(): boolean;
   clearReadMask(): PullMicrophoneGainRequest;
 
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullMicrophoneGainRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMicrophoneGainRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullMicrophoneGainRequest): PullMicrophoneGainRequest.AsObject;
@@ -115,6 +118,7 @@ export namespace PullMicrophoneGainRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 
