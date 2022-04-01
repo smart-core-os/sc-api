@@ -71,14 +71,14 @@ message GetAirQualityRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to fetch
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullAirQualityRequest {
   // The name of the device to request state from
   string name = 1;
   // The state fields to pull
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullAirQualityResponse {

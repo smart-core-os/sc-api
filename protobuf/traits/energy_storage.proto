@@ -148,14 +148,14 @@ message GetEnergyLevelRequest {
   // Name of the device to fetch the state for
   string name = 1;
   // Fields to fetch relative to the EnergyLevel type
-  google.protobuf.FieldMask fields = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullEnergyLevelRequest {
   // Name of the device to fetch the state for
   string name = 1;
   // Fields to fetch relative to the EnergyLevel type
-  google.protobuf.FieldMask fields = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullEnergyLevelResponse {

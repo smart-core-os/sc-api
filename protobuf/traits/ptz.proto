@@ -128,7 +128,7 @@ message GetPtzRequest {
   // The name of the device to request state from
   string name = 1;
   // which fields do we want to fetch
-  google.protobuf.FieldMask fields = 2;
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message UpdatePtzRequest {
@@ -155,6 +155,8 @@ message CreatePtzPresetRequest {
 message PullPtzRequest {
   // The device we want to subscribe to
   string name = 1;
+  // The state fields to fetch
+  google.protobuf.FieldMask read_mask = 2;
 }
 
 message PullPtzResponse {
