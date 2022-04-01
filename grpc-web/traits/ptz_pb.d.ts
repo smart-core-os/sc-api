@@ -236,10 +236,10 @@ export class GetPtzRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetPtzRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetPtzRequest;
-  hasFields(): boolean;
-  clearFields(): GetPtzRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetPtzRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetPtzRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetPtzRequest.AsObject;
@@ -252,7 +252,7 @@ export class GetPtzRequest extends jspb.Message {
 export namespace GetPtzRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -332,6 +332,11 @@ export class PullPtzRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullPtzRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullPtzRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullPtzRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullPtzRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullPtzRequest): PullPtzRequest.AsObject;
@@ -343,6 +348,7 @@ export class PullPtzRequest extends jspb.Message {
 export namespace PullPtzRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

@@ -21,6 +21,8 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
+goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_info_pb = require('../types/info_pb.js');
@@ -545,7 +547,8 @@ proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.toObject = function
  */
 proto.smartcore.traits.GetAmbientBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -586,6 +589,11 @@ proto.smartcore.traits.GetAmbientBrightnessRequest.deserializeBinaryFromReader =
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -622,6 +630,14 @@ proto.smartcore.traits.GetAmbientBrightnessRequest.serializeBinaryToWriter = fun
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -640,6 +656,43 @@ proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.getName = function(
  */
 proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.GetAmbientBrightnessRequest} returns this
+*/
+proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.GetAmbientBrightnessRequest} returns this
+ */
+proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -675,7 +728,8 @@ proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.PullAmbientBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -716,6 +770,11 @@ proto.smartcore.traits.PullAmbientBrightnessRequest.deserializeBinaryFromReader 
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -752,6 +811,14 @@ proto.smartcore.traits.PullAmbientBrightnessRequest.serializeBinaryToWriter = fu
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -770,6 +837,43 @@ proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.getName = function
  */
 proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.PullAmbientBrightnessRequest} returns this
+*/
+proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullAmbientBrightnessRequest} returns this
+ */
+proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 
@@ -58,6 +59,11 @@ export class GetChosenChannelRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetChosenChannelRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetChosenChannelRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetChosenChannelRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetChosenChannelRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetChosenChannelRequest): GetChosenChannelRequest.AsObject;
@@ -69,6 +75,7 @@ export class GetChosenChannelRequest extends jspb.Message {
 export namespace GetChosenChannelRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -140,6 +147,11 @@ export class PullChosenChannelRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullChosenChannelRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullChosenChannelRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullChosenChannelRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullChosenChannelRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullChosenChannelRequest): PullChosenChannelRequest.AsObject;
@@ -151,6 +163,7 @@ export class PullChosenChannelRequest extends jspb.Message {
 export namespace PullChosenChannelRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

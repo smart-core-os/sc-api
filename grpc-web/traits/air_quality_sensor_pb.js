@@ -873,7 +873,7 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.toObject = function(opt_in
 proto.smartcore.traits.GetAirQualityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -917,7 +917,7 @@ proto.smartcore.traits.GetAirQualityRequest.deserializeBinaryFromReader = functi
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setUpdateMask(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -955,7 +955,7 @@ proto.smartcore.traits.GetAirQualityRequest.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getUpdateMask();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -985,10 +985,10 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.setName = function(value) 
 
 
 /**
- * optional google.protobuf.FieldMask update_mask = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.GetAirQualityRequest.prototype.getUpdateMask = function() {
+proto.smartcore.traits.GetAirQualityRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -998,7 +998,7 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.getUpdateMask = function()
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.GetAirQualityRequest} returns this
 */
-proto.smartcore.traits.GetAirQualityRequest.prototype.setUpdateMask = function(value) {
+proto.smartcore.traits.GetAirQualityRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1007,8 +1007,8 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.setUpdateMask = function(v
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.GetAirQualityRequest} returns this
  */
-proto.smartcore.traits.GetAirQualityRequest.prototype.clearUpdateMask = function() {
-  return this.setUpdateMask(undefined);
+proto.smartcore.traits.GetAirQualityRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -1016,7 +1016,7 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.clearUpdateMask = function
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.GetAirQualityRequest.prototype.hasUpdateMask = function() {
+proto.smartcore.traits.GetAirQualityRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -1054,7 +1054,7 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.toObject = function(opt_i
 proto.smartcore.traits.PullAirQualityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1098,7 +1098,7 @@ proto.smartcore.traits.PullAirQualityRequest.deserializeBinaryFromReader = funct
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setUpdateMask(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -1136,7 +1136,7 @@ proto.smartcore.traits.PullAirQualityRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getUpdateMask();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1166,10 +1166,10 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.setName = function(value)
 
 
 /**
- * optional google.protobuf.FieldMask update_mask = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.PullAirQualityRequest.prototype.getUpdateMask = function() {
+proto.smartcore.traits.PullAirQualityRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -1179,7 +1179,7 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.getUpdateMask = function(
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.PullAirQualityRequest} returns this
 */
-proto.smartcore.traits.PullAirQualityRequest.prototype.setUpdateMask = function(value) {
+proto.smartcore.traits.PullAirQualityRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1188,8 +1188,8 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.setUpdateMask = function(
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullAirQualityRequest} returns this
  */
-proto.smartcore.traits.PullAirQualityRequest.prototype.clearUpdateMask = function() {
-  return this.setUpdateMask(undefined);
+proto.smartcore.traits.PullAirQualityRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -1197,7 +1197,7 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.clearUpdateMask = functio
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullAirQualityRequest.prototype.hasUpdateMask = function() {
+proto.smartcore.traits.PullAirQualityRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

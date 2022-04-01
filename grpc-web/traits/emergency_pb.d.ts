@@ -72,6 +72,11 @@ export class GetEmergencyRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetEmergencyRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetEmergencyRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetEmergencyRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetEmergencyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetEmergencyRequest): GetEmergencyRequest.AsObject;
@@ -83,6 +88,7 @@ export class GetEmergencyRequest extends jspb.Message {
 export namespace GetEmergencyRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -120,6 +126,11 @@ export class PullEmergencyRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullEmergencyRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullEmergencyRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullEmergencyRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEmergencyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullEmergencyRequest): PullEmergencyRequest.AsObject;
@@ -131,6 +142,7 @@ export class PullEmergencyRequest extends jspb.Message {
 export namespace PullEmergencyRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

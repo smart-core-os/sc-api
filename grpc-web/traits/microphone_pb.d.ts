@@ -40,10 +40,10 @@ export class GetMicrophoneGainRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetMicrophoneGainRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetMicrophoneGainRequest;
-  hasFields(): boolean;
-  clearFields(): GetMicrophoneGainRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetMicrophoneGainRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetMicrophoneGainRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetMicrophoneGainRequest.AsObject;
@@ -56,7 +56,7 @@ export class GetMicrophoneGainRequest extends jspb.Message {
 export namespace GetMicrophoneGainRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -98,10 +98,10 @@ export class PullMicrophoneGainRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullMicrophoneGainRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): PullMicrophoneGainRequest;
-  hasFields(): boolean;
-  clearFields(): PullMicrophoneGainRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullMicrophoneGainRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullMicrophoneGainRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMicrophoneGainRequest.AsObject;
@@ -114,7 +114,7 @@ export class PullMicrophoneGainRequest extends jspb.Message {
 export namespace PullMicrophoneGainRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

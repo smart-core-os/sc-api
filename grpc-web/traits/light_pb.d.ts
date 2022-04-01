@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
@@ -112,6 +113,11 @@ export class UpdateBrightnessRequest extends jspb.Message {
   getDelta(): boolean;
   setDelta(value: boolean): UpdateBrightnessRequest;
 
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateBrightnessRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateBrightnessRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateBrightnessRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateBrightnessRequest): UpdateBrightnessRequest.AsObject;
@@ -125,12 +131,18 @@ export namespace UpdateBrightnessRequest {
     name: string,
     brightness?: Brightness.AsObject,
     delta: boolean,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class GetBrightnessRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetBrightnessRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetBrightnessRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetBrightnessRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetBrightnessRequest.AsObject;
@@ -143,6 +155,7 @@ export class GetBrightnessRequest extends jspb.Message {
 export namespace GetBrightnessRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -152,6 +165,11 @@ export class PullBrightnessRequest extends jspb.Message {
 
   getExcludeRamping(): boolean;
   setExcludeRamping(value: boolean): PullBrightnessRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullBrightnessRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullBrightnessRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullBrightnessRequest.AsObject;
@@ -165,6 +183,7 @@ export namespace PullBrightnessRequest {
   export type AsObject = {
     name: string,
     excludeRamping: boolean,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

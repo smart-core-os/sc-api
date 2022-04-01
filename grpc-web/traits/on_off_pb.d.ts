@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 
@@ -52,6 +53,11 @@ export class GetOnOffRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetOnOffRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetOnOffRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetOnOffRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetOnOffRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetOnOffRequest): GetOnOffRequest.AsObject;
@@ -63,6 +69,7 @@ export class GetOnOffRequest extends jspb.Message {
 export namespace GetOnOffRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -74,6 +81,11 @@ export class UpdateOnOffRequest extends jspb.Message {
   setOnOff(value?: OnOff): UpdateOnOffRequest;
   hasOnOff(): boolean;
   clearOnOff(): UpdateOnOffRequest;
+
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateOnOffRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateOnOffRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateOnOffRequest.AsObject;
@@ -87,12 +99,18 @@ export namespace UpdateOnOffRequest {
   export type AsObject = {
     name: string,
     onOff?: OnOff.AsObject,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class PullOnOffRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullOnOffRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullOnOffRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullOnOffRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOnOffRequest.AsObject;
@@ -105,6 +123,7 @@ export class PullOnOffRequest extends jspb.Message {
 export namespace PullOnOffRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

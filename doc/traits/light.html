@@ -373,6 +373,13 @@ On write only one of level_percent or preset should be set. </p></td>
                   <td><p>The name of the device to get the value for </p></td>
                 </tr>
               
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields to fetch </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -434,6 +441,13 @@ On write only one of level_percent or preset should be set. </p></td>
                   <td></td>
                   <td><p>Indicate whether we want to be notified of values while ramping or not. The device may ignore this depending on
 capabilities </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields to fetch </p></td>
                 </tr>
               
             </tbody>
@@ -534,6 +548,13 @@ capabilities </p></td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
                   <td><p>if true, then the values in the brightness represent deltas from the current value and not absolute values </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>The state fields to update </p></td>
                 </tr>
               
             </tbody>

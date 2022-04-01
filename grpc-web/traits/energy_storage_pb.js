@@ -1623,7 +1623,7 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.toObject = function(opt_i
 proto.smartcore.traits.GetEnergyLevelRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1667,7 +1667,7 @@ proto.smartcore.traits.GetEnergyLevelRequest.deserializeBinaryFromReader = funct
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setFields(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -1705,7 +1705,7 @@ proto.smartcore.traits.GetEnergyLevelRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getFields();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1735,10 +1735,10 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.setName = function(value)
 
 
 /**
- * optional google.protobuf.FieldMask fields = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.GetEnergyLevelRequest.prototype.getFields = function() {
+proto.smartcore.traits.GetEnergyLevelRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -1748,7 +1748,7 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.getFields = function() {
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.GetEnergyLevelRequest} returns this
 */
-proto.smartcore.traits.GetEnergyLevelRequest.prototype.setFields = function(value) {
+proto.smartcore.traits.GetEnergyLevelRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1757,8 +1757,8 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.setFields = function(valu
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.GetEnergyLevelRequest} returns this
  */
-proto.smartcore.traits.GetEnergyLevelRequest.prototype.clearFields = function() {
-  return this.setFields(undefined);
+proto.smartcore.traits.GetEnergyLevelRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -1766,7 +1766,7 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.clearFields = function() 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.GetEnergyLevelRequest.prototype.hasFields = function() {
+proto.smartcore.traits.GetEnergyLevelRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -1804,7 +1804,7 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.toObject = function(opt_
 proto.smartcore.traits.PullEnergyLevelRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1848,7 +1848,7 @@ proto.smartcore.traits.PullEnergyLevelRequest.deserializeBinaryFromReader = func
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setFields(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -1886,7 +1886,7 @@ proto.smartcore.traits.PullEnergyLevelRequest.serializeBinaryToWriter = function
       f
     );
   }
-  f = message.getFields();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -1916,10 +1916,10 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.setName = function(value
 
 
 /**
- * optional google.protobuf.FieldMask fields = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.PullEnergyLevelRequest.prototype.getFields = function() {
+proto.smartcore.traits.PullEnergyLevelRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -1929,7 +1929,7 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.getFields = function() {
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.PullEnergyLevelRequest} returns this
 */
-proto.smartcore.traits.PullEnergyLevelRequest.prototype.setFields = function(value) {
+proto.smartcore.traits.PullEnergyLevelRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1938,8 +1938,8 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.setFields = function(val
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullEnergyLevelRequest} returns this
  */
-proto.smartcore.traits.PullEnergyLevelRequest.prototype.clearFields = function() {
-  return this.setFields(undefined);
+proto.smartcore.traits.PullEnergyLevelRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -1947,7 +1947,7 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.clearFields = function()
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullEnergyLevelRequest.prototype.hasFields = function() {
+proto.smartcore.traits.PullEnergyLevelRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

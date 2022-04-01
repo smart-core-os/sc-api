@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
@@ -53,6 +54,11 @@ export class GetAmbientBrightnessRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetAmbientBrightnessRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAmbientBrightnessRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetAmbientBrightnessRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetAmbientBrightnessRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetAmbientBrightnessRequest): GetAmbientBrightnessRequest.AsObject;
@@ -64,12 +70,18 @@ export class GetAmbientBrightnessRequest extends jspb.Message {
 export namespace GetAmbientBrightnessRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class PullAmbientBrightnessRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullAmbientBrightnessRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAmbientBrightnessRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullAmbientBrightnessRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAmbientBrightnessRequest.AsObject;
@@ -82,6 +94,7 @@ export class PullAmbientBrightnessRequest extends jspb.Message {
 export namespace PullAmbientBrightnessRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

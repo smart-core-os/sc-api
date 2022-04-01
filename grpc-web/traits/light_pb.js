@@ -21,6 +21,8 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
+goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_info_pb = require('../types/info_pb.js');
@@ -996,7 +998,8 @@ proto.smartcore.traits.UpdateBrightnessRequest.toObject = function(includeInstan
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     brightness: (f = msg.getBrightness()) && proto.smartcore.traits.Brightness.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1045,6 +1048,11 @@ proto.smartcore.traits.UpdateBrightnessRequest.deserializeBinaryFromReader = fun
     case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setDelta(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setUpdateMask(value);
       break;
     default:
       reader.skipField();
@@ -1095,6 +1103,14 @@ proto.smartcore.traits.UpdateBrightnessRequest.serializeBinaryToWriter = functio
     writer.writeBool(
       3,
       f
+    );
+  }
+  f = message.getUpdateMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -1173,6 +1189,43 @@ proto.smartcore.traits.UpdateBrightnessRequest.prototype.setDelta = function(val
 };
 
 
+/**
+ * optional google.protobuf.FieldMask update_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.UpdateBrightnessRequest.prototype.getUpdateMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.UpdateBrightnessRequest} returns this
+*/
+proto.smartcore.traits.UpdateBrightnessRequest.prototype.setUpdateMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.UpdateBrightnessRequest} returns this
+ */
+proto.smartcore.traits.UpdateBrightnessRequest.prototype.clearUpdateMask = function() {
+  return this.setUpdateMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.UpdateBrightnessRequest.prototype.hasUpdateMask = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
 
 
 
@@ -1205,7 +1258,8 @@ proto.smartcore.traits.GetBrightnessRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.GetBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1246,6 +1300,11 @@ proto.smartcore.traits.GetBrightnessRequest.deserializeBinaryFromReader = functi
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1282,6 +1341,14 @@ proto.smartcore.traits.GetBrightnessRequest.serializeBinaryToWriter = function(m
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -1300,6 +1367,43 @@ proto.smartcore.traits.GetBrightnessRequest.prototype.getName = function() {
  */
 proto.smartcore.traits.GetBrightnessRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.GetBrightnessRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.GetBrightnessRequest} returns this
+*/
+proto.smartcore.traits.GetBrightnessRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.GetBrightnessRequest} returns this
+ */
+proto.smartcore.traits.GetBrightnessRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.GetBrightnessRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1336,7 +1440,8 @@ proto.smartcore.traits.PullBrightnessRequest.prototype.toObject = function(opt_i
 proto.smartcore.traits.PullBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    excludeRamping: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+    excludeRamping: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1381,6 +1486,11 @@ proto.smartcore.traits.PullBrightnessRequest.deserializeBinaryFromReader = funct
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setExcludeRamping(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1424,6 +1534,14 @@ proto.smartcore.traits.PullBrightnessRequest.serializeBinaryToWriter = function(
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -1460,6 +1578,43 @@ proto.smartcore.traits.PullBrightnessRequest.prototype.getExcludeRamping = funct
  */
 proto.smartcore.traits.PullBrightnessRequest.prototype.setExcludeRamping = function(value) {
   return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.PullBrightnessRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.PullBrightnessRequest} returns this
+*/
+proto.smartcore.traits.PullBrightnessRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullBrightnessRequest} returns this
+ */
+proto.smartcore.traits.PullBrightnessRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullBrightnessRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

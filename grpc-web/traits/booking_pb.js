@@ -1000,7 +1000,8 @@ proto.smartcore.traits.ListBookingsRequest.prototype.toObject = function(opt_inc
 proto.smartcore.traits.ListBookingsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingIntersects: (f = msg.getBookingIntersects()) && types_time_period_pb.Period.toObject(includeInstance, f)
+    bookingIntersects: (f = msg.getBookingIntersects()) && types_time_period_pb.Period.toObject(includeInstance, f),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1046,6 +1047,11 @@ proto.smartcore.traits.ListBookingsRequest.deserializeBinaryFromReader = functio
       reader.readMessage(value,types_time_period_pb.Period.deserializeBinaryFromReader);
       msg.setBookingIntersects(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1088,6 +1094,14 @@ proto.smartcore.traits.ListBookingsRequest.serializeBinaryToWriter = function(me
       2,
       f,
       types_time_period_pb.Period.serializeBinaryToWriter
+    );
+  }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -1145,6 +1159,43 @@ proto.smartcore.traits.ListBookingsRequest.prototype.clearBookingIntersects = fu
  */
 proto.smartcore.traits.ListBookingsRequest.prototype.hasBookingIntersects = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.ListBookingsRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.ListBookingsRequest} returns this
+*/
+proto.smartcore.traits.ListBookingsRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.ListBookingsRequest} returns this
+ */
+proto.smartcore.traits.ListBookingsRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ListBookingsRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

@@ -145,6 +145,11 @@ export class GetInputRequest extends jspb.Message {
   getOutput(): string;
   setOutput(value: string): GetInputRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetInputRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetInputRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetInputRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetInputRequest): GetInputRequest.AsObject;
@@ -157,12 +162,18 @@ export namespace GetInputRequest {
   export type AsObject = {
     name: string,
     output: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class PullInputRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullInputRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullInputRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullInputRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullInputRequest.AsObject;
@@ -175,6 +186,7 @@ export class PullInputRequest extends jspb.Message {
 export namespace PullInputRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

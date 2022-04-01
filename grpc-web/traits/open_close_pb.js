@@ -21,6 +21,8 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
+goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_info_pb = require('../types/info_pb.js');
@@ -986,7 +988,8 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.GetOpenClosePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1027,6 +1030,11 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.deserializeBinaryFromReader 
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1063,6 +1071,14 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.serializeBinaryToWriter = fu
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -1081,6 +1097,43 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.getName = function
  */
 proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.GetOpenClosePositionsRequest} returns this
+*/
+proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.GetOpenClosePositionsRequest} returns this
+ */
+proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1118,7 +1171,8 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.toObject = function(inclu
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     states: (f = msg.getStates()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1167,6 +1221,11 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.deserializeBinaryFromRead
     case 3:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setDelta(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setUpdateMask(value);
       break;
     default:
       reader.skipField();
@@ -1217,6 +1276,14 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.serializeBinaryToWriter =
     writer.writeBool(
       3,
       f
+    );
+  }
+  f = message.getUpdateMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -1292,6 +1359,43 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.getDelta = func
  */
 proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.setDelta = function(value) {
   return jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask update_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.getUpdateMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} returns this
+*/
+proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.setUpdateMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.UpdateOpenClosePositionsRequest} returns this
+ */
+proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.clearUpdateMask = function() {
+  return this.setUpdateMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.hasUpdateMask = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -1458,7 +1562,8 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.toObject = functi
 proto.smartcore.traits.PullOpenClosePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    excludeTweening: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+    excludeTweening: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1503,6 +1608,11 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.deserializeBinaryFromReader
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setExcludeTweening(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1546,6 +1656,14 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.serializeBinaryToWriter = f
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -1582,6 +1700,43 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.getExcludeTweenin
  */
 proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.setExcludeTweening = function(value) {
   return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.PullOpenClosePositionsRequest} returns this
+*/
+proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullOpenClosePositionsRequest} returns this
+ */
+proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

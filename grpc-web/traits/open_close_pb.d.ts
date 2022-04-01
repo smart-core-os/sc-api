@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
@@ -108,6 +109,11 @@ export class GetOpenClosePositionsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetOpenClosePositionsRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetOpenClosePositionsRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetOpenClosePositionsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetOpenClosePositionsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetOpenClosePositionsRequest): GetOpenClosePositionsRequest.AsObject;
@@ -119,6 +125,7 @@ export class GetOpenClosePositionsRequest extends jspb.Message {
 export namespace GetOpenClosePositionsRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -134,6 +141,11 @@ export class UpdateOpenClosePositionsRequest extends jspb.Message {
   getDelta(): boolean;
   setDelta(value: boolean): UpdateOpenClosePositionsRequest;
 
+  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateOpenClosePositionsRequest;
+  hasUpdateMask(): boolean;
+  clearUpdateMask(): UpdateOpenClosePositionsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateOpenClosePositionsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateOpenClosePositionsRequest): UpdateOpenClosePositionsRequest.AsObject;
@@ -147,6 +159,7 @@ export namespace UpdateOpenClosePositionsRequest {
     name: string,
     states?: OpenClosePositions.AsObject,
     delta: boolean,
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -175,6 +188,11 @@ export class PullOpenClosePositionsRequest extends jspb.Message {
   getExcludeTweening(): boolean;
   setExcludeTweening(value: boolean): PullOpenClosePositionsRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullOpenClosePositionsRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullOpenClosePositionsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOpenClosePositionsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullOpenClosePositionsRequest): PullOpenClosePositionsRequest.AsObject;
@@ -187,6 +205,7 @@ export namespace PullOpenClosePositionsRequest {
   export type AsObject = {
     name: string,
     excludeTweening: boolean,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

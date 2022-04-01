@@ -97,10 +97,10 @@ export class GetAirQualityRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetAirQualityRequest;
 
-  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAirQualityRequest;
-  hasUpdateMask(): boolean;
-  clearUpdateMask(): GetAirQualityRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAirQualityRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetAirQualityRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetAirQualityRequest.AsObject;
@@ -113,7 +113,7 @@ export class GetAirQualityRequest extends jspb.Message {
 export namespace GetAirQualityRequest {
   export type AsObject = {
     name: string,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -121,10 +121,10 @@ export class PullAirQualityRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullAirQualityRequest;
 
-  getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAirQualityRequest;
-  hasUpdateMask(): boolean;
-  clearUpdateMask(): PullAirQualityRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAirQualityRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullAirQualityRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirQualityRequest.AsObject;
@@ -137,7 +137,7 @@ export class PullAirQualityRequest extends jspb.Message {
 export namespace PullAirQualityRequest {
   export type AsObject = {
     name: string,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

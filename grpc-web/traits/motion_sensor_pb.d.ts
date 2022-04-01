@@ -1,6 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 
@@ -64,6 +65,11 @@ export class GetMotionDetectionRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetMotionDetectionRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetMotionDetectionRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetMotionDetectionRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetMotionDetectionRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetMotionDetectionRequest): GetMotionDetectionRequest.AsObject;
@@ -75,12 +81,18 @@ export class GetMotionDetectionRequest extends jspb.Message {
 export namespace GetMotionDetectionRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class PullMotionDetectionRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullMotionDetectionRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullMotionDetectionRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullMotionDetectionRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullMotionDetectionRequest.AsObject;
@@ -93,6 +105,7 @@ export class PullMotionDetectionRequest extends jspb.Message {
 export namespace PullMotionDetectionRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

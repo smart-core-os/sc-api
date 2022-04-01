@@ -426,7 +426,7 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.toObject = function(opt
 proto.smartcore.traits.GetSpeakerVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -470,7 +470,7 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.deserializeBinaryFromReader = fun
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setFields(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -508,7 +508,7 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.serializeBinaryToWriter = functio
       f
     );
   }
-  f = message.getFields();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -538,10 +538,10 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.setName = function(valu
 
 
 /**
- * optional google.protobuf.FieldMask fields = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.getFields = function() {
+proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -551,7 +551,7 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.getFields = function() 
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.GetSpeakerVolumeRequest} returns this
 */
-proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.setFields = function(value) {
+proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -560,8 +560,8 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.setFields = function(va
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.GetSpeakerVolumeRequest} returns this
  */
-proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.clearFields = function() {
-  return this.setFields(undefined);
+proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -569,7 +569,7 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.clearFields = function(
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.hasFields = function() {
+proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -869,7 +869,7 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.toObject = function(op
 proto.smartcore.traits.PullSpeakerVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -913,7 +913,7 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.deserializeBinaryFromReader = fu
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setFields(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -951,7 +951,7 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getFields();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -981,10 +981,10 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.setName = function(val
 
 
 /**
- * optional google.protobuf.FieldMask fields = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.getFields = function() {
+proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -994,7 +994,7 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.getFields = function()
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.PullSpeakerVolumeRequest} returns this
 */
-proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.setFields = function(value) {
+proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -1003,8 +1003,8 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.setFields = function(v
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullSpeakerVolumeRequest} returns this
  */
-proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.clearFields = function() {
-  return this.setFields(undefined);
+proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -1012,7 +1012,7 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.clearFields = function
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.hasFields = function() {
+proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

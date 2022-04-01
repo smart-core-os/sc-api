@@ -155,6 +155,11 @@ export class GetAirTemperatureRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetAirTemperatureRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAirTemperatureRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetAirTemperatureRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetAirTemperatureRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetAirTemperatureRequest): GetAirTemperatureRequest.AsObject;
@@ -166,6 +171,7 @@ export class GetAirTemperatureRequest extends jspb.Message {
 export namespace GetAirTemperatureRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -203,6 +209,11 @@ export class PullAirTemperatureRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullAirTemperatureRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullAirTemperatureRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullAirTemperatureRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullAirTemperatureRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullAirTemperatureRequest): PullAirTemperatureRequest.AsObject;
@@ -214,6 +225,7 @@ export class PullAirTemperatureRequest extends jspb.Message {
 export namespace PullAirTemperatureRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

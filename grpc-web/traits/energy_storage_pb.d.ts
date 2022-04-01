@@ -210,10 +210,10 @@ export class GetEnergyLevelRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetEnergyLevelRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetEnergyLevelRequest;
-  hasFields(): boolean;
-  clearFields(): GetEnergyLevelRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetEnergyLevelRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetEnergyLevelRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetEnergyLevelRequest.AsObject;
@@ -226,7 +226,7 @@ export class GetEnergyLevelRequest extends jspb.Message {
 export namespace GetEnergyLevelRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -234,10 +234,10 @@ export class PullEnergyLevelRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullEnergyLevelRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): PullEnergyLevelRequest;
-  hasFields(): boolean;
-  clearFields(): PullEnergyLevelRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullEnergyLevelRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullEnergyLevelRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEnergyLevelRequest.AsObject;
@@ -250,7 +250,7 @@ export class PullEnergyLevelRequest extends jspb.Message {
 export namespace PullEnergyLevelRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

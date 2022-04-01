@@ -1,5 +1,6 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as types_info_pb from '../types/info_pb';
 
@@ -77,6 +78,11 @@ export class GetOccupancyRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetOccupancyRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetOccupancyRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetOccupancyRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetOccupancyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetOccupancyRequest): GetOccupancyRequest.AsObject;
@@ -88,12 +94,18 @@ export class GetOccupancyRequest extends jspb.Message {
 export namespace GetOccupancyRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
 export class PullOccupancyRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullOccupancyRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullOccupancyRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullOccupancyRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullOccupancyRequest.AsObject;
@@ -106,6 +118,7 @@ export class PullOccupancyRequest extends jspb.Message {
 export namespace PullOccupancyRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

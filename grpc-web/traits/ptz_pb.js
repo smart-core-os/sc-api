@@ -2133,7 +2133,7 @@ proto.smartcore.traits.GetPtzRequest.prototype.toObject = function(opt_includeIn
 proto.smartcore.traits.GetPtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fields: (f = msg.getFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2177,7 +2177,7 @@ proto.smartcore.traits.GetPtzRequest.deserializeBinaryFromReader = function(msg,
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
-      msg.setFields(value);
+      msg.setReadMask(value);
       break;
     default:
       reader.skipField();
@@ -2215,7 +2215,7 @@ proto.smartcore.traits.GetPtzRequest.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getFields();
+  f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
       2,
@@ -2245,10 +2245,10 @@ proto.smartcore.traits.GetPtzRequest.prototype.setName = function(value) {
 
 
 /**
- * optional google.protobuf.FieldMask fields = 2;
+ * optional google.protobuf.FieldMask read_mask = 2;
  * @return {?proto.google.protobuf.FieldMask}
  */
-proto.smartcore.traits.GetPtzRequest.prototype.getFields = function() {
+proto.smartcore.traits.GetPtzRequest.prototype.getReadMask = function() {
   return /** @type{?proto.google.protobuf.FieldMask} */ (
     jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
 };
@@ -2258,7 +2258,7 @@ proto.smartcore.traits.GetPtzRequest.prototype.getFields = function() {
  * @param {?proto.google.protobuf.FieldMask|undefined} value
  * @return {!proto.smartcore.traits.GetPtzRequest} returns this
 */
-proto.smartcore.traits.GetPtzRequest.prototype.setFields = function(value) {
+proto.smartcore.traits.GetPtzRequest.prototype.setReadMask = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
 };
 
@@ -2267,8 +2267,8 @@ proto.smartcore.traits.GetPtzRequest.prototype.setFields = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.GetPtzRequest} returns this
  */
-proto.smartcore.traits.GetPtzRequest.prototype.clearFields = function() {
-  return this.setFields(undefined);
+proto.smartcore.traits.GetPtzRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
 };
 
 
@@ -2276,7 +2276,7 @@ proto.smartcore.traits.GetPtzRequest.prototype.clearFields = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.GetPtzRequest.prototype.hasFields = function() {
+proto.smartcore.traits.GetPtzRequest.prototype.hasReadMask = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
@@ -2856,7 +2856,8 @@ proto.smartcore.traits.PullPtzRequest.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.PullPtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2897,6 +2898,11 @@ proto.smartcore.traits.PullPtzRequest.deserializeBinaryFromReader = function(msg
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setReadMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2933,6 +2939,14 @@ proto.smartcore.traits.PullPtzRequest.serializeBinaryToWriter = function(message
       f
     );
   }
+  f = message.getReadMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -2951,6 +2965,43 @@ proto.smartcore.traits.PullPtzRequest.prototype.getName = function() {
  */
 proto.smartcore.traits.PullPtzRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask read_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.smartcore.traits.PullPtzRequest.prototype.getReadMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.smartcore.traits.PullPtzRequest} returns this
+*/
+proto.smartcore.traits.PullPtzRequest.prototype.setReadMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.PullPtzRequest} returns this
+ */
+proto.smartcore.traits.PullPtzRequest.prototype.clearReadMask = function() {
+  return this.setReadMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.PullPtzRequest.prototype.hasReadMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

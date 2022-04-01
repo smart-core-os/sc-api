@@ -113,6 +113,11 @@ export class GetExtensionRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetExtensionRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetExtensionRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetExtensionRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetExtensionRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetExtensionRequest): GetExtensionRequest.AsObject;
@@ -124,6 +129,7 @@ export class GetExtensionRequest extends jspb.Message {
 export namespace GetExtensionRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -203,6 +209,11 @@ export class PullExtensionsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullExtensionsRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullExtensionsRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullExtensionsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullExtensionsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullExtensionsRequest): PullExtensionsRequest.AsObject;
@@ -214,6 +225,7 @@ export class PullExtensionsRequest extends jspb.Message {
 export namespace PullExtensionsRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

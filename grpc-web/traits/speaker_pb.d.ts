@@ -40,10 +40,10 @@ export class GetSpeakerVolumeRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetSpeakerVolumeRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): GetSpeakerVolumeRequest;
-  hasFields(): boolean;
-  clearFields(): GetSpeakerVolumeRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetSpeakerVolumeRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetSpeakerVolumeRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetSpeakerVolumeRequest.AsObject;
@@ -56,7 +56,7 @@ export class GetSpeakerVolumeRequest extends jspb.Message {
 export namespace GetSpeakerVolumeRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -98,10 +98,10 @@ export class PullSpeakerVolumeRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullSpeakerVolumeRequest;
 
-  getFields(): google_protobuf_field_mask_pb.FieldMask | undefined;
-  setFields(value?: google_protobuf_field_mask_pb.FieldMask): PullSpeakerVolumeRequest;
-  hasFields(): boolean;
-  clearFields(): PullSpeakerVolumeRequest;
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullSpeakerVolumeRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullSpeakerVolumeRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullSpeakerVolumeRequest.AsObject;
@@ -114,7 +114,7 @@ export class PullSpeakerVolumeRequest extends jspb.Message {
 export namespace PullSpeakerVolumeRequest {
   export type AsObject = {
     name: string,
-    fields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 

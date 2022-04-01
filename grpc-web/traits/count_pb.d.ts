@@ -69,6 +69,11 @@ export class GetCountRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetCountRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCountRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetCountRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetCountRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetCountRequest): GetCountRequest.AsObject;
@@ -80,6 +85,7 @@ export class GetCountRequest extends jspb.Message {
 export namespace GetCountRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
@@ -145,6 +151,11 @@ export class PullCountsRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullCountsRequest;
 
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullCountsRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): PullCountsRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullCountsRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PullCountsRequest): PullCountsRequest.AsObject;
@@ -156,6 +167,7 @@ export class PullCountsRequest extends jspb.Message {
 export namespace PullCountsRequest {
   export type AsObject = {
     name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
 
