@@ -78,6 +78,9 @@ message PullChildrenRequest {
   string name = 1;
   // Fields to fetch relative to the ElectricMode type
   google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
 
   // todo: int32 depth = 3; // Ask children about their children up to this many descendants
 }

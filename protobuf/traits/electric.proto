@@ -121,6 +121,9 @@ message PullDemandRequest {
   string name = 1;
   // Fields to fetch relative to the ElectricDemand type
   google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
 }
 
 message PullDemandResponse {
@@ -161,6 +164,9 @@ message PullActiveModeRequest {
   string name = 1;
   // Fields to fetch relative to the ElectricMode type
   google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
 }
 message PullActiveModeResponse {
   // Changes since the last message
@@ -206,6 +212,9 @@ message PullModesRequest {
   string name = 1;
   // Fields to fetch relative to the ElectricMode type
   google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
 }
 message PullModesResponse {
   // The list of changes which have occurred

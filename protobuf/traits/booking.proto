@@ -94,6 +94,9 @@ message ListBookingsRequest {
   smartcore.types.time.Period booking_intersects = 2;
   // The state fields to fetch
   google.protobuf.FieldMask read_mask = 3;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 4;
 }
 
 message ListBookingsResponse {

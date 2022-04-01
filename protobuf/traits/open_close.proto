@@ -112,6 +112,9 @@ message PullOpenClosePositionsRequest {
   bool exclude_tweening = 2;
   // The state fields to fetch
   google.protobuf.FieldMask read_mask = 3;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 4;
 }
 
 // A response as part of the stream of changes to the range value
