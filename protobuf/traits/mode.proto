@@ -23,11 +23,9 @@ service ModeApi {
   // Multiple modes may be set at the same time.
   // The device may error if setting a mode that is not supported, in any case the returned ModeValues contains the
   // state after the update.
+  // Relative updates to the mode may either cap or wrap the mode value if adjusting the value relatively would either
+  // underflow or overflow the available modes.
   rpc UpdateModeValues(UpdateModeValuesRequest) returns (ModeValues);
-  // UpdateModeValuesRelative adjusts the mode based on its current value.
-  // Note that only ordered modes are guaranteed to maintain the order of available modes.
-  // A device may either cap or wrap the mode value if asked to adjust past the start or end of the available modes.
-  rpc UpdateModeValuesRelative(UpdateModeValuesRelativeRequest) returns (ModeValues);
   // PullModeValues returns a stream of updates to the modes set on the device.
   rpc PullModeValues(PullModeValuesRequest) returns (stream PullModeValuesResponse);
 }
@@ -45,10 +43,15 @@ message ModeValues {
   map<string, string> values = 1;
 }
 
-// ModeAdjustments describes how a mode should change relative to its current value.
+// ModeValuesRelative describes how a mode should change relative to its current value.
 // For example {"temperature": -1} might adjust the "temperature" mode from "warm" to "cool".
-message ModeAdjustments {
-  map<string, int32> adjustments = 1;
+message ModeValuesRelative {
+  map<string, int32> values = 1;
+
+  // Note: The properties of this type are guaranteed to be a subset of the properties of ModeValues,
+  // specifically the subset of properties that need a different structure/type to support relative adjustment.
+  // Using the same property names means any FieldMask continues to work for both this Relative type and the core
+  // resource type.
 }
 
 // Modes describes the modes available on a device.
@@ -95,19 +98,12 @@ message UpdateModeValuesRequest {
   string name = 1;
   // The new mode values.
   ModeValues mode_values = 2;
-  // Fields to update relative to the ModeValues type.
-  google.protobuf.FieldMask update_mask = 3;
+  // Relative changes to the current mode values.
+  // If a mode name is specified in both mode_values and relative, and the adjustment in relative is non-zero, relative adjustments win.
+  ModeValuesRelative relative = 3;
+  // Fields to update relative to the ModeValues and ModeAdjustments type.
+  google.protobuf.FieldMask update_mask = 4;
 }
-
-message UpdateModeValuesRelativeRequest {
-  // Name of the device to fetch the state for
-  string name = 1;
-  // The relative mode adjustments.
-  ModeAdjustments mode_values_relative = 2;
-  // Fields to update relative to the ModeAdjustment type.
-  google.protobuf.FieldMask update_mask = 3;
-}
-
 
 message PullModeValuesRequest {
   // Name of the device to fetch the state for
