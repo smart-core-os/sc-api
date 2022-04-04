@@ -129,7 +129,7 @@ message PullOpenClosePositionsResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The new value for the state
-    OpenClosePositions state = 3;
+    OpenClosePositions open_close_position = 3;
   }
 }
 

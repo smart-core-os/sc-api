@@ -107,7 +107,7 @@ message PullChosenChannelResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The new chosen channel
-    Channel channel = 3;
+    Channel chosen_channel = 3;
   }
 }
 

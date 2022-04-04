@@ -171,7 +171,7 @@ message PullPtzResponse {
     // when the change occurred
     google.protobuf.Timestamp change_time = 2;
     // The updated state, should be merged with any known state
-    Ptz state = 3;
+    Ptz ptz = 3;
   }
 }
 

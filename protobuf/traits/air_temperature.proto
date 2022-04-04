@@ -147,7 +147,7 @@ message PullAirTemperatureResponse {
     google.protobuf.Timestamp change_time = 2;
     // The new value for the device state. Only changed fields will be set, should be merged with GetState full
     // response as required.
-    AirTemperature state = 3;
+    AirTemperature air_temperature = 3;
   }
 }
 
