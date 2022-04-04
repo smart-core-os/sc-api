@@ -53,7 +53,7 @@ message Occupancy {
   // Possible states for occupancy
   enum State {
     // There are no signals to suggest either an occupied or unoccupied space
-    NO_SIGNALS = 0;
+    STATE_UNSPECIFIED = 0;
     // The space is occupied
     OCCUPIED = 1;
     // The space is unoccupied

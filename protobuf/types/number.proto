@@ -14,7 +14,7 @@ import "types/tween.proto";
 // Possible behaviours for values that are not allowed by the number
 enum InvalidNumberBehaviour {
   // A default behaviour will be applied, typically RESTRICT
-  UNSPECIFIED = 0;
+  INVALID_NUMBER_BEHAVIOUR_UNSPECIFIED = 0;
   // The value will be restricted to the most appropriate value, typically the closest
   RESTRICT = 1;
   // An error will be raised to alert to the invalid value

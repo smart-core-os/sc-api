@@ -61,7 +61,7 @@ message AirTemperature {
   enum Mode {
     // The mode is unknown during a query. If used during a write then no change will be made, if part of a
     // read then the mode is unknown. This makes no sense as part of an attribute.
-    UNKNOWN = 0;
+    MODE_UNSPECIFIED = 0;
     // Write-only. If the device is OFF restore it to it's previous state
     ON = 1;
     // Attr, read, write. The device supports, is, or should be disabled

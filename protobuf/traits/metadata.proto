@@ -146,7 +146,7 @@ message Metadata {
     repeated string dns = 6;
 
     enum Assignment {
-      ASSIGNMENT_UNKNOWN = 0;
+      ASSIGNMENT_UNSPECIFIED = 0;
       DHCP = 1;
       STATIC = 2;
     }

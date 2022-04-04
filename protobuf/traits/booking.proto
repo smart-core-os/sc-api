@@ -76,7 +76,7 @@ message BookingSupport {
 
   enum CheckInSupport {
     // check in support is unknown
-    UNKNOWN = 0;
+    CHECK_IN_SUPPORT_UNSPECIFIED = 0;
     // check in is not supported
     NO_SUPPORT = 1;
     // check in is supported as a state, without an associated time
