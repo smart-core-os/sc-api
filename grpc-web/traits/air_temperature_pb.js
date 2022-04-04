@@ -2014,7 +2014,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.toObject = function(inc
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    state: (f = msg.getState()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f)
+    airTemperature: (f = msg.getAirTemperature()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2063,7 +2063,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.deserializeBinaryFromRe
     case 3:
       var value = new proto.smartcore.traits.AirTemperature;
       reader.readMessage(value,proto.smartcore.traits.AirTemperature.deserializeBinaryFromReader);
-      msg.setState(value);
+      msg.setAirTemperature(value);
       break;
     default:
       reader.skipField();
@@ -2109,7 +2109,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.serializeBinaryToWriter
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getState();
+  f = message.getAirTemperature();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -2176,10 +2176,10 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.hasChangeTime
 
 
 /**
- * optional AirTemperature state = 3;
+ * optional AirTemperature air_temperature = 3;
  * @return {?proto.smartcore.traits.AirTemperature}
  */
-proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.getState = function() {
+proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.getAirTemperature = function() {
   return /** @type{?proto.smartcore.traits.AirTemperature} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.AirTemperature, 3));
 };
@@ -2189,7 +2189,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.getState = fu
  * @param {?proto.smartcore.traits.AirTemperature|undefined} value
  * @return {!proto.smartcore.traits.PullAirTemperatureResponse.Change} returns this
 */
-proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.setState = function(value) {
+proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.setAirTemperature = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -2198,8 +2198,8 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.setState = fu
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullAirTemperatureResponse.Change} returns this
  */
-proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.clearState = function() {
-  return this.setState(undefined);
+proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.clearAirTemperature = function() {
+  return this.setAirTemperature(undefined);
 };
 
 
@@ -2207,7 +2207,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.clearState = 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.hasState = function() {
+proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.hasAirTemperature = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 

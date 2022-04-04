@@ -199,10 +199,10 @@ export namespace PullChosenChannelResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getChannel(): Channel | undefined;
-    setChannel(value?: Channel): Change;
-    hasChannel(): boolean;
-    clearChannel(): Change;
+    getChosenChannel(): Channel | undefined;
+    setChosenChannel(value?: Channel): Change;
+    hasChosenChannel(): boolean;
+    clearChosenChannel(): Change;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
@@ -216,7 +216,7 @@ export namespace PullChosenChannelResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      channel?: Channel.AsObject,
+      chosenChannel?: Channel.AsObject,
     }
   }
 

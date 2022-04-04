@@ -1637,7 +1637,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.toObject = function(incl
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    channel: (f = msg.getChannel()) && proto.smartcore.traits.Channel.toObject(includeInstance, f)
+    chosenChannel: (f = msg.getChosenChannel()) && proto.smartcore.traits.Channel.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1686,7 +1686,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.deserializeBinaryFromRea
     case 3:
       var value = new proto.smartcore.traits.Channel;
       reader.readMessage(value,proto.smartcore.traits.Channel.deserializeBinaryFromReader);
-      msg.setChannel(value);
+      msg.setChosenChannel(value);
       break;
     default:
       reader.skipField();
@@ -1732,7 +1732,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.serializeBinaryToWriter 
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getChannel();
+  f = message.getChosenChannel();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -1799,10 +1799,10 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.hasChangeTime 
 
 
 /**
- * optional Channel channel = 3;
+ * optional Channel chosen_channel = 3;
  * @return {?proto.smartcore.traits.Channel}
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getChannel = function() {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getChosenChannel = function() {
   return /** @type{?proto.smartcore.traits.Channel} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.Channel, 3));
 };
@@ -1812,7 +1812,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.getChannel = f
  * @param {?proto.smartcore.traits.Channel|undefined} value
  * @return {!proto.smartcore.traits.PullChosenChannelResponse.Change} returns this
 */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setChannel = function(value) {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setChosenChannel = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -1821,8 +1821,8 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.setChannel = f
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullChosenChannelResponse.Change} returns this
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearChannel = function() {
-  return this.setChannel(undefined);
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearChosenChannel = function() {
+  return this.setChosenChannel(undefined);
 };
 
 
@@ -1830,7 +1830,7 @@ proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.clearChannel =
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.hasChannel = function() {
+proto.smartcore.traits.PullChosenChannelResponse.Change.prototype.hasChosenChannel = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 

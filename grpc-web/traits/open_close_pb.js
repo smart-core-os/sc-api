@@ -1926,7 +1926,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.toObject = function
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    state: (f = msg.getState()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f)
+    openClosePosition: (f = msg.getOpenClosePosition()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1975,7 +1975,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.deserializeBinaryFr
     case 3:
       var value = new proto.smartcore.traits.OpenClosePositions;
       reader.readMessage(value,proto.smartcore.traits.OpenClosePositions.deserializeBinaryFromReader);
-      msg.setState(value);
+      msg.setOpenClosePosition(value);
       break;
     default:
       reader.skipField();
@@ -2021,7 +2021,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.serializeBinaryToWr
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getState();
+  f = message.getOpenClosePosition();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -2088,10 +2088,10 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.hasChange
 
 
 /**
- * optional OpenClosePositions state = 3;
+ * optional OpenClosePositions open_close_position = 3;
  * @return {?proto.smartcore.traits.OpenClosePositions}
  */
-proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.getState = function() {
+proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.getOpenClosePosition = function() {
   return /** @type{?proto.smartcore.traits.OpenClosePositions} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.OpenClosePositions, 3));
 };
@@ -2101,7 +2101,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.getState 
  * @param {?proto.smartcore.traits.OpenClosePositions|undefined} value
  * @return {!proto.smartcore.traits.PullOpenClosePositionsResponse.Change} returns this
 */
-proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.setState = function(value) {
+proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.setOpenClosePosition = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -2110,8 +2110,8 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.setState 
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullOpenClosePositionsResponse.Change} returns this
  */
-proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.clearState = function() {
-  return this.setState(undefined);
+proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.clearOpenClosePosition = function() {
+  return this.setOpenClosePosition(undefined);
 };
 
 
@@ -2119,7 +2119,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.clearStat
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.hasState = function() {
+proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.hasOpenClosePosition = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 

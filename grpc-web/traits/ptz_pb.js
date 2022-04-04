@@ -3191,7 +3191,7 @@ proto.smartcore.traits.PullPtzResponse.Change.toObject = function(includeInstanc
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    state: (f = msg.getState()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f)
+    ptz: (f = msg.getPtz()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3240,7 +3240,7 @@ proto.smartcore.traits.PullPtzResponse.Change.deserializeBinaryFromReader = func
     case 3:
       var value = new proto.smartcore.traits.Ptz;
       reader.readMessage(value,proto.smartcore.traits.Ptz.deserializeBinaryFromReader);
-      msg.setState(value);
+      msg.setPtz(value);
       break;
     default:
       reader.skipField();
@@ -3286,7 +3286,7 @@ proto.smartcore.traits.PullPtzResponse.Change.serializeBinaryToWriter = function
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getState();
+  f = message.getPtz();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -3353,10 +3353,10 @@ proto.smartcore.traits.PullPtzResponse.Change.prototype.hasChangeTime = function
 
 
 /**
- * optional Ptz state = 3;
+ * optional Ptz ptz = 3;
  * @return {?proto.smartcore.traits.Ptz}
  */
-proto.smartcore.traits.PullPtzResponse.Change.prototype.getState = function() {
+proto.smartcore.traits.PullPtzResponse.Change.prototype.getPtz = function() {
   return /** @type{?proto.smartcore.traits.Ptz} */ (
     jspb.Message.getWrapperField(this, proto.smartcore.traits.Ptz, 3));
 };
@@ -3366,7 +3366,7 @@ proto.smartcore.traits.PullPtzResponse.Change.prototype.getState = function() {
  * @param {?proto.smartcore.traits.Ptz|undefined} value
  * @return {!proto.smartcore.traits.PullPtzResponse.Change} returns this
 */
-proto.smartcore.traits.PullPtzResponse.Change.prototype.setState = function(value) {
+proto.smartcore.traits.PullPtzResponse.Change.prototype.setPtz = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
 };
 
@@ -3375,8 +3375,8 @@ proto.smartcore.traits.PullPtzResponse.Change.prototype.setState = function(valu
  * Clears the message field making it undefined.
  * @return {!proto.smartcore.traits.PullPtzResponse.Change} returns this
  */
-proto.smartcore.traits.PullPtzResponse.Change.prototype.clearState = function() {
-  return this.setState(undefined);
+proto.smartcore.traits.PullPtzResponse.Change.prototype.clearPtz = function() {
+  return this.setPtz(undefined);
 };
 
 
@@ -3384,7 +3384,7 @@ proto.smartcore.traits.PullPtzResponse.Change.prototype.clearState = function() 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.smartcore.traits.PullPtzResponse.Change.prototype.hasState = function() {
+proto.smartcore.traits.PullPtzResponse.Change.prototype.hasPtz = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 

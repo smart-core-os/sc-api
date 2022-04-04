@@ -384,10 +384,10 @@ export namespace PullPtzResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): Ptz | undefined;
-    setState(value?: Ptz): Change;
-    hasState(): boolean;
-    clearState(): Change;
+    getPtz(): Ptz | undefined;
+    setPtz(value?: Ptz): Change;
+    hasPtz(): boolean;
+    clearPtz(): Change;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
@@ -401,7 +401,7 @@ export namespace PullPtzResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: Ptz.AsObject,
+      ptz?: Ptz.AsObject,
     }
   }
 

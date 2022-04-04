@@ -261,10 +261,10 @@ export namespace PullAirTemperatureResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): AirTemperature | undefined;
-    setState(value?: AirTemperature): Change;
-    hasState(): boolean;
-    clearState(): Change;
+    getAirTemperature(): AirTemperature | undefined;
+    setAirTemperature(value?: AirTemperature): Change;
+    hasAirTemperature(): boolean;
+    clearAirTemperature(): Change;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
@@ -278,7 +278,7 @@ export namespace PullAirTemperatureResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: AirTemperature.AsObject,
+      airTemperature?: AirTemperature.AsObject,
     }
   }
 

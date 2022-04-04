@@ -241,10 +241,10 @@ export namespace PullOpenClosePositionsResponse {
     hasChangeTime(): boolean;
     clearChangeTime(): Change;
 
-    getState(): OpenClosePositions | undefined;
-    setState(value?: OpenClosePositions): Change;
-    hasState(): boolean;
-    clearState(): Change;
+    getOpenClosePosition(): OpenClosePositions | undefined;
+    setOpenClosePosition(value?: OpenClosePositions): Change;
+    hasOpenClosePosition(): boolean;
+    clearOpenClosePosition(): Change;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
@@ -258,7 +258,7 @@ export namespace PullOpenClosePositionsResponse {
     export type AsObject = {
       name: string,
       changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      state?: OpenClosePositions.AsObject,
+      openClosePosition?: OpenClosePositions.AsObject,
     }
   }
 
