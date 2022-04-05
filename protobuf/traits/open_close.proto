@@ -63,6 +63,26 @@ message OpenClosePosition {
     IN = 5;
     OUT = 6;
   }
+
+  // Resistance reports if there is any resistance preventing the position from being fully achieved.
+  // For example if a door is being held open, or a window is jammed closed.
+  //
+  // If more than one resistance applies choose the resistance value with the smaller ordinal, for example choose
+  // REDUCED_MOTION over SLOW if both apply.
+  Resistance resistance = 5;
+
+  // Resistance defines types of resistance an OpenClose device may encounter.
+  enum Resistance {
+    // Resistance is unspecified.
+    RESISTANCE_UNSPECIFIED = 0;
+    // The device is being held in position.
+    // For example if someone is holding open a door, or a window is jammed shut.
+    HELD = 1;
+    // The devices motion is reduced. For example if a garage door can't open fully due to a blockage.
+    REDUCED_MOTION = 2;
+    // The device is being slow to respond to changes in opening. For example if a window has a rusty hinge.
+    SLOW = 3;
+  }
 }
 
 // PositionsSupport describes the capabilities of devices implementing this trait
