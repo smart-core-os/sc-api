@@ -8,7 +8,6 @@ option java_multiple_files = true;
 option java_outer_classname = "NumberProto";
 option java_package = "dev.smartcore.types";
 
-import "google/protobuf/wrappers.proto";
 import "types/tween.proto";
 
 // Possible behaviours for values that are not allowed by the number
@@ -41,9 +40,9 @@ message NumberCapping {
 // htmls input type=range.
 message Int32Bounds {
   // the minimum value (inclusive). If absent then there is no minimum, though this is typically Int32.Min
-  google.protobuf.Int32Value min = 1;
+  optional int32 min = 1;
   // the maximum value (inclusive). If absent then there is no maximum, though this is typically Int32.Max
-  google.protobuf.Int32Value max = 2;
+  optional int32 max = 2;
 }
 
 // Describes features and restrictions applied to a number that is typically used as part of an apis value
@@ -68,9 +67,9 @@ message Int32Attributes {
 // htmls input type=range.
 message FloatBounds {
   // the minimum value (inclusive). If absent then there is no minimum, though this is typically Float.Min
-  google.protobuf.FloatValue min = 1;
+  optional float min = 1;
   // the maximum value (inclusive). If absent then there is no maximum, though this is typically Float.Max
-  google.protobuf.FloatValue max = 2;
+  optional float max = 2;
 }
 
 // Describes features and restrictions applied to a number that is typically used as part of an apis value

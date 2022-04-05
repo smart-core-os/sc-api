@@ -11,7 +11,6 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 import "types/info.proto";
 import "types/number.proto";
 
@@ -32,11 +31,11 @@ service AirQualitySensorInfo {
 // AirQuality holds the value of all supported sensors.
 message AirQuality {
   // The CO2 level in parts per million
-  google.protobuf.FloatValue carbon_dioxide_level = 1;
+  optional float carbon_dioxide_level = 1;
   // The VOC level in parts per million
-  google.protobuf.FloatValue volatile_organic_compounds = 2;
+  optional float volatile_organic_compounds = 2;
   // The air pressure in hPa
-  google.protobuf.FloatValue air_pressure = 3;
+  optional float air_pressure = 3;
   // General comfort of the area
   Comfort comfort = 4;
 

@@ -11,7 +11,6 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 import "types/info.proto";
 import "types/tween.proto";
 
@@ -59,7 +58,7 @@ message ExtensionPreset {
   // Required. The name of the preset, to be used for recall.
   string name = 1;
   // Optional 0 to 100, extension percentage that the preset would extend the device by.
-  google.protobuf.FloatValue extend_percent = 2;
+  optional float extend_percent = 2;
   // Can this preset be stored via the api
   bool writable = 3;
 }

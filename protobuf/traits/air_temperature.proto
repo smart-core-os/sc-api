@@ -11,7 +11,6 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 import "types/info.proto";
 import "types/unit.proto";
 
@@ -52,7 +51,7 @@ message AirTemperature {
   // Optional, read-only. The ambient temperature as read by the device
   smartcore.types.Temperature ambient_temperature = 5;
   // Optional, read-only. The ambient humidity as read by the device
-  google.protobuf.FloatValue ambient_humidity = 6;
+  optional float ambient_humidity = 6;
   // Optional, read-only. The dew-point as read by the device
   smartcore.types.Temperature dew_point = 7;
 
