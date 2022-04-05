@@ -187,19 +187,11 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.types.FloatVar"><span class="badge">M</span>FloatVar</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.types.Int32Attributes"><span class="badge">M</span>Int32Attributes</a>
                 </li>
               
                 <li>
                   <a href="#smartcore.types.Int32Bounds"><span class="badge">M</span>Int32Bounds</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.types.Int32Var"><span class="badge">M</span>Int32Var</a>
                 </li>
               
                 <li>
@@ -312,45 +304,6 @@ continuous step, i.e. all possible float values are supported </p></td>
 
         
       
-        <h3 id="smartcore.types.FloatVar">FloatVar</h3>
-        <p>Describes a numerical value. Can describe the current value or be used for updates.</p><p>When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then</p><p>this will be treated as a transition between value and target_value. If no value is present in this case then the</p><p>current value of the number will be used creating a transition from current to target_value.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>The numbers current value if known. Typically one of value or target_value will be set </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ramp</td>
-                  <td><a href="#smartcore.types.Tween">Tween</a></td>
-                  <td></td>
-                  <td><p>Optional. Indicates the current progress through a transition. If present then target_value may be set. When
-writing a value this denotes the intended tween duration. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>target_value</td>
-                  <td><a href="#google.protobuf.FloatValue">google.protobuf.FloatValue</a></td>
-                  <td></td>
-                  <td><p>If ramping, then defines the value that we are ramping towards </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="smartcore.types.Int32Attributes">Int32Attributes</h3>
         <p>Describes features and restrictions applied to a number that is typically used as part of an apis value</p>
 
@@ -426,45 +379,6 @@ continuous step, i.e. step=1 </p></td>
                   <td><a href="#google.protobuf.Int32Value">google.protobuf.Int32Value</a></td>
                   <td></td>
                   <td><p>the maximum value (inclusive). If absent then there is no maximum, though this is typically Int32.Max </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.types.Int32Var">Int32Var</h3>
-        <p>Describes a numerical value. Can describe the current value or be used for updates.</p><p>When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then</p><p>this will be treated as a transition between value and target_value. If no value is present in this case then the</p><p>current value of the number will be used creating a transition from current to target_value.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#google.protobuf.Int32Value">google.protobuf.Int32Value</a></td>
-                  <td></td>
-                  <td><p>The numbers current value if known. Typically one of value or target_value will be set </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ramp</td>
-                  <td><a href="#smartcore.types.Tween">Tween</a></td>
-                  <td></td>
-                  <td><p>Optional. Indicates the current progress through a transition. If present then target_value may be set. When
-writing a value this denotes the intended tween duration. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>target_value</td>
-                  <td><a href="#google.protobuf.Int32Value">google.protobuf.Int32Value</a></td>
-                  <td></td>
-                  <td><p>If ramping, then defines the value that we are ramping towards </p></td>
                 </tr>
               
             </tbody>

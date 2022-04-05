@@ -56,38 +56,6 @@ export namespace Int32Bounds {
   }
 }
 
-export class Int32Var extends jspb.Message {
-  getValue(): google_protobuf_wrappers_pb.Int32Value | undefined;
-  setValue(value?: google_protobuf_wrappers_pb.Int32Value): Int32Var;
-  hasValue(): boolean;
-  clearValue(): Int32Var;
-
-  getRamp(): types_tween_pb.Tween | undefined;
-  setRamp(value?: types_tween_pb.Tween): Int32Var;
-  hasRamp(): boolean;
-  clearRamp(): Int32Var;
-
-  getTargetValue(): google_protobuf_wrappers_pb.Int32Value | undefined;
-  setTargetValue(value?: google_protobuf_wrappers_pb.Int32Value): Int32Var;
-  hasTargetValue(): boolean;
-  clearTargetValue(): Int32Var;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Int32Var.AsObject;
-  static toObject(includeInstance: boolean, msg: Int32Var): Int32Var.AsObject;
-  static serializeBinaryToWriter(message: Int32Var, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Int32Var;
-  static deserializeBinaryFromReader(message: Int32Var, reader: jspb.BinaryReader): Int32Var;
-}
-
-export namespace Int32Var {
-  export type AsObject = {
-    value?: google_protobuf_wrappers_pb.Int32Value.AsObject,
-    ramp?: types_tween_pb.Tween.AsObject,
-    targetValue?: google_protobuf_wrappers_pb.Int32Value.AsObject,
-  }
-}
-
 export class Int32Attributes extends jspb.Message {
   getBounds(): Int32Bounds | undefined;
   setBounds(value?: Int32Bounds): Int32Attributes;
@@ -149,38 +117,6 @@ export namespace FloatBounds {
   export type AsObject = {
     min?: google_protobuf_wrappers_pb.FloatValue.AsObject,
     max?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-  }
-}
-
-export class FloatVar extends jspb.Message {
-  getValue(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setValue(value?: google_protobuf_wrappers_pb.FloatValue): FloatVar;
-  hasValue(): boolean;
-  clearValue(): FloatVar;
-
-  getRamp(): types_tween_pb.Tween | undefined;
-  setRamp(value?: types_tween_pb.Tween): FloatVar;
-  hasRamp(): boolean;
-  clearRamp(): FloatVar;
-
-  getTargetValue(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setTargetValue(value?: google_protobuf_wrappers_pb.FloatValue): FloatVar;
-  hasTargetValue(): boolean;
-  clearTargetValue(): FloatVar;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): FloatVar.AsObject;
-  static toObject(includeInstance: boolean, msg: FloatVar): FloatVar.AsObject;
-  static serializeBinaryToWriter(message: FloatVar, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): FloatVar;
-  static deserializeBinaryFromReader(message: FloatVar, reader: jspb.BinaryReader): FloatVar;
-}
-
-export namespace FloatVar {
-  export type AsObject = {
-    value?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    ramp?: types_tween_pb.Tween.AsObject,
-    targetValue?: google_protobuf_wrappers_pb.FloatValue.AsObject,
   }
 }
 
