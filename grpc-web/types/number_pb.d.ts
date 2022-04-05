@@ -1,6 +1,5 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
 
@@ -31,13 +30,13 @@ export namespace NumberCapping {
 }
 
 export class Int32Bounds extends jspb.Message {
-  getMin(): google_protobuf_wrappers_pb.Int32Value | undefined;
-  setMin(value?: google_protobuf_wrappers_pb.Int32Value): Int32Bounds;
+  getMin(): number;
+  setMin(value: number): Int32Bounds;
   hasMin(): boolean;
   clearMin(): Int32Bounds;
 
-  getMax(): google_protobuf_wrappers_pb.Int32Value | undefined;
-  setMax(value?: google_protobuf_wrappers_pb.Int32Value): Int32Bounds;
+  getMax(): number;
+  setMax(value: number): Int32Bounds;
   hasMax(): boolean;
   clearMax(): Int32Bounds;
 
@@ -51,8 +50,18 @@ export class Int32Bounds extends jspb.Message {
 
 export namespace Int32Bounds {
   export type AsObject = {
-    min?: google_protobuf_wrappers_pb.Int32Value.AsObject,
-    max?: google_protobuf_wrappers_pb.Int32Value.AsObject,
+    min?: number,
+    max?: number,
+  }
+
+  export enum MinCase { 
+    _MIN_NOT_SET = 0,
+    MIN = 1,
+  }
+
+  export enum MaxCase { 
+    _MAX_NOT_SET = 0,
+    MAX = 2,
   }
 }
 
@@ -95,13 +104,13 @@ export namespace Int32Attributes {
 }
 
 export class FloatBounds extends jspb.Message {
-  getMin(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setMin(value?: google_protobuf_wrappers_pb.FloatValue): FloatBounds;
+  getMin(): number;
+  setMin(value: number): FloatBounds;
   hasMin(): boolean;
   clearMin(): FloatBounds;
 
-  getMax(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setMax(value?: google_protobuf_wrappers_pb.FloatValue): FloatBounds;
+  getMax(): number;
+  setMax(value: number): FloatBounds;
   hasMax(): boolean;
   clearMax(): FloatBounds;
 
@@ -115,8 +124,18 @@ export class FloatBounds extends jspb.Message {
 
 export namespace FloatBounds {
   export type AsObject = {
-    min?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    max?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    min?: number,
+    max?: number,
+  }
+
+  export enum MinCase { 
+    _MIN_NOT_SET = 0,
+    MIN = 1,
+  }
+
+  export enum MaxCase { 
+    _MAX_NOT_SET = 0,
+    MAX = 2,
   }
 }
 

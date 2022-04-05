@@ -2,7 +2,6 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_unit_pb from '../types/unit_pb';
 
@@ -31,8 +30,8 @@ export class AirTemperature extends jspb.Message {
   hasAmbientTemperature(): boolean;
   clearAmbientTemperature(): AirTemperature;
 
-  getAmbientHumidity(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAmbientHumidity(value?: google_protobuf_wrappers_pb.FloatValue): AirTemperature;
+  getAmbientHumidity(): number;
+  setAmbientHumidity(value: number): AirTemperature;
   hasAmbientHumidity(): boolean;
   clearAmbientHumidity(): AirTemperature;
 
@@ -58,7 +57,7 @@ export namespace AirTemperature {
     temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject,
     temperatureRange?: TemperatureRange.AsObject,
     ambientTemperature?: types_unit_pb.Temperature.AsObject,
-    ambientHumidity?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    ambientHumidity?: number,
     dewPoint?: types_unit_pb.Temperature.AsObject,
   }
 
@@ -82,6 +81,11 @@ export namespace AirTemperature {
     TEMPERATURE_SET_POINT = 2,
     TEMPERATURE_SET_POINT_DELTA = 3,
     TEMPERATURE_RANGE = 4,
+  }
+
+  export enum AmbientHumidityCase { 
+    _AMBIENT_HUMIDITY_NOT_SET = 0,
+    AMBIENT_HUMIDITY = 6,
   }
 }
 

@@ -25,8 +25,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 var types_info_pb = require('../types/info_pb.js');
 goog.object.extend(proto, types_info_pb);
 var types_unit_pb = require('../types/unit_pb.js');
@@ -295,7 +293,7 @@ proto.smartcore.traits.AirTemperature.toObject = function(includeInstance, msg) 
     temperatureSetPointDelta: (f = msg.getTemperatureSetPointDelta()) && types_unit_pb.Temperature.toObject(includeInstance, f),
     temperatureRange: (f = msg.getTemperatureRange()) && proto.smartcore.traits.TemperatureRange.toObject(includeInstance, f),
     ambientTemperature: (f = msg.getAmbientTemperature()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    ambientHumidity: (f = msg.getAmbientHumidity()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    ambientHumidity: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
     dewPoint: (f = msg.getDewPoint()) && types_unit_pb.Temperature.toObject(includeInstance, f)
   };
 
@@ -358,8 +356,7 @@ proto.smartcore.traits.AirTemperature.deserializeBinaryFromReader = function(msg
       msg.setAmbientTemperature(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setAmbientHumidity(value);
       break;
     case 7:
@@ -435,12 +432,11 @@ proto.smartcore.traits.AirTemperature.serializeBinaryToWriter = function(message
       types_unit_pb.Temperature.serializeBinaryToWriter
     );
   }
-  f = message.getAmbientHumidity();
+  f = /** @type {number} */ (jspb.Message.getField(message, 6));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       6,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getDewPoint();
@@ -639,30 +635,29 @@ proto.smartcore.traits.AirTemperature.prototype.hasAmbientTemperature = function
 
 
 /**
- * optional google.protobuf.FloatValue ambient_humidity = 6;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float ambient_humidity = 6;
+ * @return {number}
  */
 proto.smartcore.traits.AirTemperature.prototype.getAmbientHumidity = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 6));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.AirTemperature} returns this
-*/
+ */
 proto.smartcore.traits.AirTemperature.prototype.setAmbientHumidity = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.AirTemperature} returns this
  */
 proto.smartcore.traits.AirTemperature.prototype.clearAmbientHumidity = function() {
-  return this.setAmbientHumidity(undefined);
+  return jspb.Message.setField(this, 6, undefined);
 };
 
 

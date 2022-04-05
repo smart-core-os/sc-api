@@ -2,24 +2,23 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_number_pb from '../types/number_pb';
 
 
 export class AirQuality extends jspb.Message {
-  getCarbonDioxideLevel(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setCarbonDioxideLevel(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  getCarbonDioxideLevel(): number;
+  setCarbonDioxideLevel(value: number): AirQuality;
   hasCarbonDioxideLevel(): boolean;
   clearCarbonDioxideLevel(): AirQuality;
 
-  getVolatileOrganicCompounds(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setVolatileOrganicCompounds(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  getVolatileOrganicCompounds(): number;
+  setVolatileOrganicCompounds(value: number): AirQuality;
   hasVolatileOrganicCompounds(): boolean;
   clearVolatileOrganicCompounds(): AirQuality;
 
-  getAirPressure(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setAirPressure(value?: google_protobuf_wrappers_pb.FloatValue): AirQuality;
+  getAirPressure(): number;
+  setAirPressure(value: number): AirQuality;
   hasAirPressure(): boolean;
   clearAirPressure(): AirQuality;
 
@@ -36,9 +35,9 @@ export class AirQuality extends jspb.Message {
 
 export namespace AirQuality {
   export type AsObject = {
-    carbonDioxideLevel?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    volatileOrganicCompounds?: google_protobuf_wrappers_pb.FloatValue.AsObject,
-    airPressure?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    carbonDioxideLevel?: number,
+    volatileOrganicCompounds?: number,
+    airPressure?: number,
     comfort: AirQuality.Comfort,
   }
 
@@ -46,6 +45,21 @@ export namespace AirQuality {
     UNKNOWN = 0,
     COMFORTABLE = 1,
     UNCOMFORTABLE = 2,
+  }
+
+  export enum CarbonDioxideLevelCase { 
+    _CARBON_DIOXIDE_LEVEL_NOT_SET = 0,
+    CARBON_DIOXIDE_LEVEL = 1,
+  }
+
+  export enum VolatileOrganicCompoundsCase { 
+    _VOLATILE_ORGANIC_COMPOUNDS_NOT_SET = 0,
+    VOLATILE_ORGANIC_COMPOUNDS = 2,
+  }
+
+  export enum AirPressureCase { 
+    _AIR_PRESSURE_NOT_SET = 0,
+    AIR_PRESSURE = 3,
   }
 }
 

@@ -25,8 +25,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 var types_info_pb = require('../types/info_pb.js');
 goog.object.extend(proto, types_info_pb);
 var types_number_pb = require('../types/number_pb.js');
@@ -218,9 +216,9 @@ proto.smartcore.traits.AirQuality.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.AirQuality.toObject = function(includeInstance, msg) {
   var f, obj = {
-    carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
-    volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
-    airPressure: (f = msg.getAirPressure()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    carbonDioxideLevel: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+    volatileOrganicCompounds: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+    airPressure: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     comfort: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
@@ -259,18 +257,15 @@ proto.smartcore.traits.AirQuality.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setCarbonDioxideLevel(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setVolatileOrganicCompounds(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setAirPressure(value);
       break;
     case 4:
@@ -306,28 +301,25 @@ proto.smartcore.traits.AirQuality.prototype.serializeBinary = function() {
  */
 proto.smartcore.traits.AirQuality.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCarbonDioxideLevel();
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       1,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getVolatileOrganicCompounds();
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       2,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getAirPressure();
+  f = /** @type {number} */ (jspb.Message.getField(message, 3));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       3,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getComfort();
@@ -350,30 +342,29 @@ proto.smartcore.traits.AirQuality.Comfort = {
 };
 
 /**
- * optional google.protobuf.FloatValue carbon_dioxide_level = 1;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float carbon_dioxide_level = 1;
+ * @return {number}
  */
 proto.smartcore.traits.AirQuality.prototype.getCarbonDioxideLevel = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 1));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.AirQuality} returns this
-*/
+ */
 proto.smartcore.traits.AirQuality.prototype.setCarbonDioxideLevel = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.AirQuality} returns this
  */
 proto.smartcore.traits.AirQuality.prototype.clearCarbonDioxideLevel = function() {
-  return this.setCarbonDioxideLevel(undefined);
+  return jspb.Message.setField(this, 1, undefined);
 };
 
 
@@ -387,30 +378,29 @@ proto.smartcore.traits.AirQuality.prototype.hasCarbonDioxideLevel = function() {
 
 
 /**
- * optional google.protobuf.FloatValue volatile_organic_compounds = 2;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float volatile_organic_compounds = 2;
+ * @return {number}
  */
 proto.smartcore.traits.AirQuality.prototype.getVolatileOrganicCompounds = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 2));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.AirQuality} returns this
-*/
+ */
 proto.smartcore.traits.AirQuality.prototype.setVolatileOrganicCompounds = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.AirQuality} returns this
  */
 proto.smartcore.traits.AirQuality.prototype.clearVolatileOrganicCompounds = function() {
-  return this.setVolatileOrganicCompounds(undefined);
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
@@ -424,30 +414,29 @@ proto.smartcore.traits.AirQuality.prototype.hasVolatileOrganicCompounds = functi
 
 
 /**
- * optional google.protobuf.FloatValue air_pressure = 3;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float air_pressure = 3;
+ * @return {number}
  */
 proto.smartcore.traits.AirQuality.prototype.getAirPressure = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 3));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.AirQuality} returns this
-*/
+ */
 proto.smartcore.traits.AirQuality.prototype.setAirPressure = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.AirQuality} returns this
  */
 proto.smartcore.traits.AirQuality.prototype.clearAirPressure = function() {
-  return this.setAirPressure(undefined);
+  return jspb.Message.setField(this, 3, undefined);
 };
 
 

@@ -25,8 +25,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 var types_info_pb = require('../types/info_pb.js');
 goog.object.extend(proto, types_info_pb);
 var types_tween_pb = require('../types/tween_pb.js');
@@ -577,7 +575,7 @@ proto.smartcore.traits.ExtensionPreset.prototype.toObject = function(opt_include
 proto.smartcore.traits.ExtensionPreset.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extendPercent: (f = msg.getExtendPercent()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    extendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
     writable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
@@ -620,8 +618,7 @@ proto.smartcore.traits.ExtensionPreset.deserializeBinaryFromReader = function(ms
       msg.setName(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setExtendPercent(value);
       break;
     case 3:
@@ -664,12 +661,11 @@ proto.smartcore.traits.ExtensionPreset.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getExtendPercent();
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       2,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getWritable();
@@ -701,30 +697,29 @@ proto.smartcore.traits.ExtensionPreset.prototype.setName = function(value) {
 
 
 /**
- * optional google.protobuf.FloatValue extend_percent = 2;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float extend_percent = 2;
+ * @return {number}
  */
 proto.smartcore.traits.ExtensionPreset.prototype.getExtendPercent = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 2));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.traits.ExtensionPreset} returns this
-*/
+ */
 proto.smartcore.traits.ExtensionPreset.prototype.setExtendPercent = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.traits.ExtensionPreset} returns this
  */
 proto.smartcore.traits.ExtensionPreset.prototype.clearExtendPercent = function() {
-  return this.setExtendPercent(undefined);
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 

@@ -2,7 +2,6 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as google_protobuf_wrappers_pb from 'google-protobuf/google/protobuf/wrappers_pb';
 import * as types_info_pb from '../types/info_pb';
 import * as types_tween_pb from '../types/tween_pb';
 
@@ -47,8 +46,8 @@ export class ExtensionPreset extends jspb.Message {
   getName(): string;
   setName(value: string): ExtensionPreset;
 
-  getExtendPercent(): google_protobuf_wrappers_pb.FloatValue | undefined;
-  setExtendPercent(value?: google_protobuf_wrappers_pb.FloatValue): ExtensionPreset;
+  getExtendPercent(): number;
+  setExtendPercent(value: number): ExtensionPreset;
   hasExtendPercent(): boolean;
   clearExtendPercent(): ExtensionPreset;
 
@@ -66,8 +65,13 @@ export class ExtensionPreset extends jspb.Message {
 export namespace ExtensionPreset {
   export type AsObject = {
     name: string,
-    extendPercent?: google_protobuf_wrappers_pb.FloatValue.AsObject,
+    extendPercent?: number,
     writable: boolean,
+  }
+
+  export enum ExtendPercentCase { 
+    _EXTEND_PERCENT_NOT_SET = 0,
+    EXTEND_PERCENT = 2,
   }
 }
 

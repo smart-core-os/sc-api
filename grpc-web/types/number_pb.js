@@ -21,8 +21,6 @@ var global = (function() {
   return Function('return this')();
 }.call(null));
 
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 var types_tween_pb = require('../types/tween_pb.js');
 goog.object.extend(proto, types_tween_pb);
 goog.exportSymbol('proto.smartcore.types.FloatAttributes', null, global);
@@ -358,8 +356,8 @@ proto.smartcore.types.Int32Bounds.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.types.Int32Bounds.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: (f = msg.getMin()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f),
-    max: (f = msg.getMax()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f)
+    min: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    max: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -397,13 +395,11 @@ proto.smartcore.types.Int32Bounds.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.Int32Value;
-      reader.readMessage(value,google_protobuf_wrappers_pb.Int32Value.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setMin(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.Int32Value;
-      reader.readMessage(value,google_protobuf_wrappers_pb.Int32Value.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setMax(value);
       break;
     default:
@@ -435,50 +431,47 @@ proto.smartcore.types.Int32Bounds.prototype.serializeBinary = function() {
  */
 proto.smartcore.types.Int32Bounds.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getMin();
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeInt32(
       1,
-      f,
-      google_protobuf_wrappers_pb.Int32Value.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getMax();
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeInt32(
       2,
-      f,
-      google_protobuf_wrappers_pb.Int32Value.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.Int32Value min = 1;
- * @return {?proto.google.protobuf.Int32Value}
+ * optional int32 min = 1;
+ * @return {number}
  */
 proto.smartcore.types.Int32Bounds.prototype.getMin = function() {
-  return /** @type{?proto.google.protobuf.Int32Value} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.Int32Value, 1));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Int32Value|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.types.Int32Bounds} returns this
-*/
+ */
 proto.smartcore.types.Int32Bounds.prototype.setMin = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.types.Int32Bounds} returns this
  */
 proto.smartcore.types.Int32Bounds.prototype.clearMin = function() {
-  return this.setMin(undefined);
+  return jspb.Message.setField(this, 1, undefined);
 };
 
 
@@ -492,30 +485,29 @@ proto.smartcore.types.Int32Bounds.prototype.hasMin = function() {
 
 
 /**
- * optional google.protobuf.Int32Value max = 2;
- * @return {?proto.google.protobuf.Int32Value}
+ * optional int32 max = 2;
+ * @return {number}
  */
 proto.smartcore.types.Int32Bounds.prototype.getMax = function() {
-  return /** @type{?proto.google.protobuf.Int32Value} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.Int32Value, 2));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Int32Value|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.types.Int32Bounds} returns this
-*/
+ */
 proto.smartcore.types.Int32Bounds.prototype.setMax = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.types.Int32Bounds} returns this
  */
 proto.smartcore.types.Int32Bounds.prototype.clearMax = function() {
-  return this.setMax(undefined);
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
@@ -852,8 +844,8 @@ proto.smartcore.types.FloatBounds.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.types.FloatBounds.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: (f = msg.getMin()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
-    max: (f = msg.getMax()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f)
+    min: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+    max: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0)
   };
 
   if (includeInstance) {
@@ -891,13 +883,11 @@ proto.smartcore.types.FloatBounds.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setMin(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.FloatValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setMax(value);
       break;
     default:
@@ -929,50 +919,47 @@ proto.smartcore.types.FloatBounds.prototype.serializeBinary = function() {
  */
 proto.smartcore.types.FloatBounds.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getMin();
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       1,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getMax();
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeFloat(
       2,
-      f,
-      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.FloatValue min = 1;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float min = 1;
+ * @return {number}
  */
 proto.smartcore.types.FloatBounds.prototype.getMin = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 1));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.types.FloatBounds} returns this
-*/
+ */
 proto.smartcore.types.FloatBounds.prototype.setMin = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.types.FloatBounds} returns this
  */
 proto.smartcore.types.FloatBounds.prototype.clearMin = function() {
-  return this.setMin(undefined);
+  return jspb.Message.setField(this, 1, undefined);
 };
 
 
@@ -986,30 +973,29 @@ proto.smartcore.types.FloatBounds.prototype.hasMin = function() {
 
 
 /**
- * optional google.protobuf.FloatValue max = 2;
- * @return {?proto.google.protobuf.FloatValue}
+ * optional float max = 2;
+ * @return {number}
  */
 proto.smartcore.types.FloatBounds.prototype.getMax = function() {
-  return /** @type{?proto.google.protobuf.FloatValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 2));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @param {number} value
  * @return {!proto.smartcore.types.FloatBounds} returns this
-*/
+ */
 proto.smartcore.types.FloatBounds.prototype.setMax = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.smartcore.types.FloatBounds} returns this
  */
 proto.smartcore.types.FloatBounds.prototype.clearMax = function() {
-  return this.setMax(undefined);
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
