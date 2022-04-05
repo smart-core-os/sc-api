@@ -46,21 +46,6 @@ message Int32Bounds {
   google.protobuf.Int32Value max = 2;
 }
 
-// Describes a numerical value. Can describe the current value or be used for updates.
-//
-// When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then
-// this will be treated as a transition between value and target_value. If no value is present in this case then the
-// current value of the number will be used creating a transition from current to target_value.
-message Int32Var {
-  // The numbers current value if known. Typically one of value or target_value will be set
-  google.protobuf.Int32Value value = 1;
-  // Optional. Indicates the current progress through a transition. If present then target_value may be set. When
-  // writing a value this denotes the intended tween duration.
-  smartcore.types.Tween ramp = 2;
-  // If ramping, then defines the value that we are ramping towards
-  google.protobuf.Int32Value target_value = 3;
-}
-
 // Describes features and restrictions applied to a number that is typically used as part of an apis value
 message Int32Attributes {
   smartcore.types.Int32Bounds bounds = 1;
@@ -86,21 +71,6 @@ message FloatBounds {
   google.protobuf.FloatValue min = 1;
   // the maximum value (inclusive). If absent then there is no maximum, though this is typically Float.Max
   google.protobuf.FloatValue max = 2;
-}
-
-// Describes a numerical value. Can describe the current value or be used for updates.
-//
-// When ramp is provided, the target_value is used as the end goal of the transition, if value is also provided then
-// this will be treated as a transition between value and target_value. If no value is present in this case then the
-// current value of the number will be used creating a transition from current to target_value.
-message FloatVar {
-  // The numbers current value if known. Typically one of value or target_value will be set
-  google.protobuf.FloatValue value = 1;
-  // Optional. Indicates the current progress through a transition. If present then target_value may be set. When
-  // writing a value this denotes the intended tween duration.
-  smartcore.types.Tween ramp = 2;
-  // If ramping, then defines the value that we are ramping towards
-  google.protobuf.FloatValue target_value = 3;
 }
 
 // Describes features and restrictions applied to a number that is typically used as part of an apis value
