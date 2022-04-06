@@ -1,0 +1,302 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "VendingProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "types/change.proto";
+import "types/image.proto";
+import "types/info.proto";
+import "types/number.proto";
+
+// VendingApi describes devices that hold an inventory and can dispense their consumables on command.
+// Applies to devices like vending machines, water taps, coffee machines, and pet food dispensers.
+//
+// The VendingApi encodes two different resources, the consumables and the inventory.
+// Consumables represent information about the products that are available from this device.
+// Inventory is a measure of how many/much of the consumables are currently available.
+// Quantities are non-specific, they could be discreet items like apples, or continuous like water.
+// Some consumables are both discreet and continuous, you can have 0.3L or 1 cup of water.
+service VendingApi {
+  // fixme: Need to make a decision on whether Consumables belongs as a resource here or in VendingInfo
+
+  // List the consumables available from this device.
+  // This has no information on inventory quantity, only descriptive information about the physical item.
+  rpc ListConsumables(ListConsumablesRequest) returns (ListConsumablesResponse);
+  // Subscribe to change in consumables available from this device.
+  rpc PullConsumables(PullConsumablesRequest) returns (stream PullConsumablesResponse);
+
+  // List the quantity of each consumable in the device.
+  // The device should return inventory items for consumables that are out-of-stock.
+  rpc ListInventory(ListInventoryRequest) returns (ListInventoryResponse);
+  // Update the quantity of each consumable in the device.
+  // Devices should return only inventory items that are mentioned in the update request.
+  //
+  // This is unlikely to actually create physical consumables out of thin air, but is useful if the device doesn't have
+  // internal sensors monitoring the physical quantity of its consumables. For example to let a cookie dispenser know
+  // that it was refilled with 100 new tasty cookies.
+  rpc UpdateInventory(UpdateInventoryRequest) returns (Inventory);
+  // Subscribe to changes in inventory.
+  rpc PullInventory(PullInventoryRequest) returns (stream PullInventoryResponse);
+
+  // Trigger the dispensing of some quantity of consumables.
+  // Devices should return only inventory items that are mentioned in the request.
+  rpc Dispense(DispenseRequest) returns (Inventory);
+  // Stop the dispensing of the mentioned consumables.
+  // Devices should return only inventory items that are mentioned in the request.
+  rpc StopDispense(StopDispenseRequest) returns (Inventory);
+}
+
+service VendingInfo {
+  // todo: implement VendingInfo
+}
+
+// Consumable describes some item that can be dispensed from a vending device.
+// Noticeable variations, so far as someone might want to choose between two consumables, should be modelled as
+// separate consumable instances. For example red or green apples, large or regular drinks.
+message Consumable {
+  // A name that can be used to uniquely refer to this consumable in the device.
+  string name = 1;
+
+  // Portion describes a possible consumption for this consumable.
+  message Portion {
+    // The unit the portion is measured in.
+    Inventory.Unit unit = 1;
+    // Upper and lower bounds for the portion quantity.
+    smartcore.types.FloatBounds bounds = 2;
+    // The minimal increment for the portion quantity.
+    float step = 3;
+  }
+  // The available portions that this consumable can be dispensed in.
+  repeated Portion available_portions = 2;
+  // The portion that will be dispensed if not specified as part of the request.
+  Inventory.Quantity default_portion = 3;
+
+  // An official title for this item.
+  string title = 10;
+  // A recognisable display name for this item.
+  string display_name = 11;
+  // A picture of the item.
+  smartcore.types.Image picture = 12;
+  // A url that resolves to more information on this item.
+  string url = 13;
+
+  // IDs holds external consumable ids.
+  // For example this might hold an id representing an Amazon Dash button product code.
+  map<string, string> ids = 100;
+  // Additional properties associated with the consumable.
+  // Typically displayed to a user to help them to distinguish between similar consumables.
+  map<string, string> more = 101;
+}
+
+// Inventory describes a collection of items and their quantity.
+message Inventory {
+  // Unit defines different quantity units.
+  enum Unit {
+    UNIT_UNSPECIFIED = 0;
+    // There is no unit for this quantity, typically a count.
+    NO_UNIT = 1;
+    // The quantity is a length, in meters.
+    METER = 2;
+    // The quantity is a volume, in liters
+    LITER = 3;
+    // The quantity is a volume, in cubic meters.
+    CUBIC_METER = 4;
+    // The quantity is a portion, sized to fill a cup.
+    CUP = 5;
+
+    // Additional units may be added over time. We should avoid adding units that are simple conversions of existing
+    // units (i.e. meter + centimeter) unless they are typically used in distinct domains.
+  }
+
+  // Quantity combines an amount and a unit.
+  message Quantity {
+    float amount = 2;
+    Unit unit = 3;
+  }
+
+  // Item describes how much of a specific consumable is available.
+  message Item {
+    // The name of a consumable supported by this device.
+    string consumable = 1;
+    // How many/much of the consumable is remaining.
+    // Optional.
+    // If the consumable is currently dispensing, this should report how much is remaining after dispensing finishes.
+    Quantity remaining = 2;
+    // How many/much of the consumable has been used since the counter was last reset.
+    // Optional.
+    // Devices may reset the counter when the inventory is filled, or may count for longer.
+    // If the consumable is currently dispensing, this should report how much will be used after dispensing finishes.
+    Quantity used = 3;
+    // How many/much of the consumable was most recently dispensed.
+    // If the consumable is currently dispensing, this should report the quantity it dispensed prior to the current
+    // session.
+    // Optional.
+    Quantity last_dispensed = 4;
+    // True if the consumable is currently being dispensed.
+    bool dispensing = 5;
+  }
+
+  // A list of inventory items, each representing some quantity of a consumable.
+  repeated Item items = 1;
+}
+
+message ListConsumablesRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the Consumable type
+  google.protobuf.FieldMask read_mask = 2;
+
+  // The maximum number of items to return.
+  // The service may return fewer than this value.
+  // If unspecified, at most 50 items will be returned.
+  // The maximum value is 1000; values above 1000 will be coerced to 1000.
+  int32 page_size = 3;
+  // A page token, received from a previous `ListConsumablesRequest` call.
+  // Provide this to retrieve the subsequent page.
+  string page_token = 4;
+  // todo: enable filtering
+  // Filter allows for customisation of the items returned by this request.
+  // See https://google.aip.dev/160 for details.
+  // Individual devices should document if and how filter is supported by that device.
+  // string filter = 5;
+}
+message ListConsumablesResponse {
+  repeated Consumable consumables = 1;
+
+  // A token, which can be sent as `page_token` to retrieve the next page.
+  // If this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
+  // If non-zero this is the total number of consumables.
+  // This may be an estimate.
+  int32 total_size = 3;
+}
+message PullConsumablesRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the Consumable type
+  google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
+  // todo: enable filtering
+  // Filter allows for customisation of the items returned by this request.
+  // See https://google.aip.dev/160 for details.
+  // Individual devices should document if and how filter is supported by that device.
+  // string filter = 4;
+}
+message PullConsumablesResponse {
+  // The list of changes which have occurred
+  repeated Change changes = 1;
+
+  message Change {
+    // The name of the device that emitted this change
+    string name = 1;
+    // The type of change (e.g. ADD, UPDATE, etc...)
+    smartcore.types.ChangeType type = 2;
+    // The new value to use for ADD|UPDATE changes
+    Consumable new_value = 3;
+    // The old value to use for UPDATE|REMOVE changes
+    Consumable old_value = 4;
+    // When the change occurred
+    google.protobuf.Timestamp change_time = 5;
+  }
+}
+
+message ListInventoryRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the Inventory.Item type
+  google.protobuf.FieldMask read_mask = 2;
+
+  // The maximum number of items to return.
+  // The service may return fewer than this value.
+  // If unspecified, at most 50 items will be returned.
+  // The maximum value is 1000; values above 1000 will be coerced to 1000.
+  int32 page_size = 3;
+  // A page token, received from a previous `ListInventoryRequest` call.
+  // Provide this to retrieve the subsequent page.
+  string page_token = 4;
+
+  // todo: enable filtering
+  // Filter allows for customisation of the items returned by this request.
+  // See https://google.aip.dev/160 for details.
+  // Individual devices should document if and how filter is supported by that device.
+  // string filter = 5;
+}
+message ListInventoryResponse {
+  // The items requested.
+  repeated Inventory.Item inventory = 1;
+
+  // A token, which can be sent as `page_token` to retrieve the next page.
+  // If this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
+  // If non-zero this is the total number of consumables.
+  // This may be an estimate.
+  int32 total_size = 3;
+}
+
+message UpdateInventoryRequest {
+  // Name of the device to update the state for
+  string name = 1;
+  Inventory inventory = 2;
+  // Fields to update relative to the Inventory type.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message PullInventoryRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the Consumable type
+  google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
+  // todo: enable filtering
+  // Filter allows for customisation of the items returned by this request.
+  // See https://google.aip.dev/160 for details.
+  // Individual devices should document if and how filter is supported by that device.
+  // string filter = 4;
+}
+message PullInventoryResponse {
+  // The list of changes which have occurred
+  repeated Change changes = 1;
+
+  message Change {
+    // The name of the device that emitted this change
+    string name = 1;
+    // The type of change (e.g. ADD, UPDATE, etc...)
+    smartcore.types.ChangeType type = 2;
+    // The new value to use for ADD|UPDATE changes
+    Inventory.Item new_value = 3;
+    // The old value to use for UPDATE|REMOVE changes
+    Inventory.Item old_value = 4;
+    // When the change occurred
+    google.protobuf.Timestamp change_time = 5;
+  }
+}
+
+message DispenseRequest {
+  // Name of the device to invoke the action on
+  string name = 1;
+  // The quantity of each consumable to dispense.
+  // The map is keyed by the consumable name, the quantity should be in a unit supported by that consumable.
+  map<string, Inventory.Quantity> quantity = 2;
+  // Fields to update relative to the quantity property.
+  google.protobuf.FieldMask update_mask = 3;
+}
+message StopDispenseRequest {
+  // Name of the device to invoke the action on
+  string name = 1;
+  // The list of consumables that should stop dispensing.
+  repeated string consumables = 2;
+
+  // todo: do we need something like: bool ignore_stopped // don't error if the consumable is already stopped
+}
