@@ -175,66 +175,46 @@
         
           
           <li>
-            <a href="#traits%2fopen_close.proto">traits/open_close.proto</a>
+            <a href="#traits%2flock_unlock.proto">traits/lock_unlock.proto</a>
             <ul>
               
                 <li>
-                  <a href="#smartcore.traits.DescribePositionsRequest"><span class="badge">M</span>DescribePositionsRequest</a>
+                  <a href="#smartcore.traits.GetLockUnlockRequest"><span class="badge">M</span>GetLockUnlockRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.GetOpenClosePositionsRequest"><span class="badge">M</span>GetOpenClosePositionsRequest</a>
+                  <a href="#smartcore.traits.LockUnlock"><span class="badge">M</span>LockUnlock</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenClosePosition"><span class="badge">M</span>OpenClosePosition</a>
+                  <a href="#smartcore.traits.PullLockUnlockRequest"><span class="badge">M</span>PullLockUnlockRequest</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenClosePositions"><span class="badge">M</span>OpenClosePositions</a>
+                  <a href="#smartcore.traits.PullLockUnlockResponse"><span class="badge">M</span>PullLockUnlockResponse</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PositionsSupport"><span class="badge">M</span>PositionsSupport</a>
+                  <a href="#smartcore.traits.PullLockUnlockResponse.Change"><span class="badge">M</span>PullLockUnlockResponse.Change</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.PullOpenClosePositionsRequest"><span class="badge">M</span>PullOpenClosePositionsRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullOpenClosePositionsResponse"><span class="badge">M</span>PullOpenClosePositionsResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.PullOpenClosePositionsResponse.Change"><span class="badge">M</span>PullOpenClosePositionsResponse.Change</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.StopOpenCloseRequest"><span class="badge">M</span>StopOpenCloseRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.UpdateOpenClosePositionsRequest"><span class="badge">M</span>UpdateOpenClosePositionsRequest</a>
+                  <a href="#smartcore.traits.UpdateLockUnlockRequest"><span class="badge">M</span>UpdateLockUnlockRequest</a>
                 </li>
               
               
                 <li>
-                  <a href="#smartcore.traits.OpenClosePosition.Direction"><span class="badge">E</span>OpenClosePosition.Direction</a>
-                </li>
-              
-                <li>
-                  <a href="#smartcore.traits.OpenClosePosition.Resistance"><span class="badge">E</span>OpenClosePosition.Resistance</a>
+                  <a href="#smartcore.traits.LockUnlock.Position"><span class="badge">E</span>LockUnlock.Position</a>
                 </li>
               
               
               
                 <li>
-                  <a href="#smartcore.traits.OpenCloseApi"><span class="badge">S</span>OpenCloseApi</a>
+                  <a href="#smartcore.traits.LockUnlockApi"><span class="badge">S</span>LockUnlockApi</a>
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.OpenCloseInfo"><span class="badge">S</span>OpenCloseInfo</a>
+                  <a href="#smartcore.traits.LockUnlockInfo"><span class="badge">S</span>LockUnlockInfo</a>
                 </li>
               
             </ul>
@@ -247,12 +227,12 @@
     
       
       <div class="file-heading">
-        <h2 id="traits/open_close.proto">traits/open_close.proto</h2><a href="#title">Top</a>
+        <h2 id="traits/lock_unlock.proto">traits/lock_unlock.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="smartcore.traits.DescribePositionsRequest">DescribePositionsRequest</h3>
+        <h3 id="smartcore.traits.GetLockUnlockRequest">GetLockUnlockRequest</h3>
         <p></p>
 
         
@@ -266,7 +246,14 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>The name of the device </p></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the LockUnlock type </p></td>
                 </tr>
               
             </tbody>
@@ -276,7 +263,39 @@
 
         
       
-        <h3 id="smartcore.traits.GetOpenClosePositionsRequest">GetOpenClosePositionsRequest</h3>
+        <h3 id="smartcore.traits.LockUnlock">LockUnlock</h3>
+        <p>LockUnlock models the possible states of a lockable device.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>position</td>
+                  <td><a href="#smartcore.traits.LockUnlock.Position">LockUnlock.Position</a></td>
+                  <td></td>
+                  <td><p>Position reports whether the device is locked or unlocked, or transitioning. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>jammed</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Jammed reports whether the lock has jammed and is unable to reach it&#39;s position.
+Output only. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullLockUnlockRequest">PullLockUnlockRequest</h3>
         <p></p>
 
         
@@ -290,182 +309,14 @@
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Name of the device to get the state for </p></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
                 </tr>
               
                 <tr>
                   <td>read_mask</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The state fields to fetch </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OpenClosePosition">OpenClosePosition</h3>
-        <p>Defines the position of one open close element for the device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>open_percent</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p>Open percent describes how open the device is in the specified direction.
-[0-100] where 0 is fully closed and 100 is fully open. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>open_percent_tween</td>
-                  <td><a href="#smartcore.types.Tween">smartcore.types.Tween</a></td>
-                  <td></td>
-                  <td><p>How the open percent changes or should change over time. On write, only duration should be set. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>target_open_percent</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p>Read-only, the target open_percent after a transition </p></td>
-                </tr>
-              
-                <tr>
-                  <td>direction</td>
-                  <td><a href="#smartcore.traits.OpenClosePosition.Direction">OpenClosePosition.Direction</a></td>
-                  <td></td>
-                  <td><p>Optional direction for devices that support multiple open/close directions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>resistance</td>
-                  <td><a href="#smartcore.traits.OpenClosePosition.Resistance">OpenClosePosition.Resistance</a></td>
-                  <td></td>
-                  <td><p>Resistance reports if there is any resistance preventing the position from being fully achieved.
-For example if a door is being held open, or a window is jammed closed.
-
-If more than one resistance applies choose the resistance value with the smaller ordinal, for example choose
-REDUCED_MOTION over SLOW if both apply. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.OpenClosePositions">OpenClosePositions</h3>
-        <p>All open/closable elements for the device</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>states</td>
-                  <td><a href="#smartcore.traits.OpenClosePosition">OpenClosePosition</a></td>
-                  <td>repeated</td>
-                  <td><p>The state of each of the devices open-able elements. Most devices will only have a single value here as they can
-only be opened from a single direction. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PositionsSupport">PositionsSupport</h3>
-        <p>PositionsSupport describes the capabilities of devices implementing this trait</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>resource_support</td>
-                  <td><a href="#smartcore.types.ResourceSupport">smartcore.types.ResourceSupport</a></td>
-                  <td></td>
-                  <td><p>How a named device supports read/write/pull apis </p></td>
-                </tr>
-              
-                <tr>
-                  <td>open_percent_attributes</td>
-                  <td><a href="#smartcore.types.FloatAttributes">smartcore.types.FloatAttributes</a></td>
-                  <td></td>
-                  <td><p>Define how the value for open percent behave. The bounds for these attributes will be absent and always in the range
-[0-100] to represent a percentage.
-Discreet devices, those that only support fully closed or fully open (i.e. a contact closure) should report a step of 100. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>directions</td>
-                  <td><a href="#smartcore.traits.OpenClosePosition.Direction">OpenClosePosition.Direction</a></td>
-                  <td>repeated</td>
-                  <td><p>The supported directions for the device. If none then assume only a single direction is supported </p></td>
-                </tr>
-              
-                <tr>
-                  <td>supports_stop</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Does the device support the Stop method </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.PullOpenClosePositionsRequest">PullOpenClosePositionsRequest</h3>
-        <p>Request to begin a subscription for open close state changes</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The name of the device we want events from </p></td>
-                </tr>
-              
-                <tr>
-                  <td>exclude_tweening</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Indicate whether we want to be notified of values while tweening or not. The device may ignore this depending on
-capabilities </p></td>
-                </tr>
-              
-                <tr>
-                  <td>read_mask</td>
-                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
-                  <td></td>
-                  <td><p>The state fields to fetch </p></td>
+                  <td><p>Fields to fetch relative to the LockUnlock type </p></td>
                 </tr>
               
                 <tr>
@@ -483,8 +334,8 @@ The default behaviour is to send the current value immediately followed by any u
 
         
       
-        <h3 id="smartcore.traits.PullOpenClosePositionsResponse">PullOpenClosePositionsResponse</h3>
-        <p>A response as part of the stream of changes to the range value</p>
+        <h3 id="smartcore.traits.PullLockUnlockResponse">PullLockUnlockResponse</h3>
+        <p></p>
 
         
           <table class="field-table">
@@ -495,9 +346,9 @@ The default behaviour is to send the current value immediately followed by any u
               
                 <tr>
                   <td>changes</td>
-                  <td><a href="#smartcore.traits.PullOpenClosePositionsResponse.Change">PullOpenClosePositionsResponse.Change</a></td>
+                  <td><a href="#smartcore.traits.PullLockUnlockResponse.Change">PullLockUnlockResponse.Change</a></td>
                   <td>repeated</td>
-                  <td><p>The list of changes </p></td>
+                  <td><p>Changes since the last message. </p></td>
                 </tr>
               
             </tbody>
@@ -507,8 +358,8 @@ The default behaviour is to send the current value immediately followed by any u
 
         
       
-        <h3 id="smartcore.traits.PullOpenClosePositionsResponse.Change">PullOpenClosePositionsResponse.Change</h3>
-        <p>A change to a single devices open close state value</p>
+        <h3 id="smartcore.traits.PullLockUnlockResponse.Change">PullLockUnlockResponse.Change</h3>
+        <p></p>
 
         
           <table class="field-table">
@@ -521,21 +372,21 @@ The default behaviour is to send the current value immediately followed by any u
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>name for the device that issued the change </p></td>
+                  <td><p>Name of the device that issued the change. </p></td>
                 </tr>
               
                 <tr>
                   <td>change_time</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>when the change occurred </p></td>
+                  <td><p>When the change occurred </p></td>
                 </tr>
               
                 <tr>
-                  <td>open_close_position</td>
-                  <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
+                  <td>lock_unlock</td>
+                  <td><a href="#smartcore.traits.LockUnlock">LockUnlock</a></td>
                   <td></td>
-                  <td><p>The new value for the state </p></td>
+                  <td><p>The new value for the lock. </p></td>
                 </tr>
               
             </tbody>
@@ -545,7 +396,7 @@ The default behaviour is to send the current value immediately followed by any u
 
         
       
-        <h3 id="smartcore.traits.StopOpenCloseRequest">StopOpenCloseRequest</h3>
+        <h3 id="smartcore.traits.UpdateLockUnlockRequest">UpdateLockUnlockRequest</h3>
         <p></p>
 
         
@@ -559,53 +410,21 @@ The default behaviour is to send the current value immediately followed by any u
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>the name of the device to stop </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.UpdateOpenClosePositionsRequest">UpdateOpenClosePositionsRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the name of the device to update the states for </p></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
                 </tr>
               
                 <tr>
-                  <td>states</td>
-                  <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
+                  <td>lock_unlock</td>
+                  <td><a href="#smartcore.traits.LockUnlock">LockUnlock</a></td>
                   <td></td>
-                  <td><p>target states for each directional element of the device. If you don&#39;t want to change an open direction don&#39;t
-include it in the states list. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>delta</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>indicate whether the state change is a delta or absolute value </p></td>
+                  <td><p>The new value </p></td>
                 </tr>
               
                 <tr>
                   <td>update_mask</td>
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
-                  <td><p>The state fields to update </p></td>
+                  <td><p>Fields to fetch relative to the LockUnlock type </p></td>
                 </tr>
               
             </tbody>
@@ -617,8 +436,8 @@ include it in the states list. </p></td>
       
 
       
-        <h3 id="smartcore.traits.OpenClosePosition.Direction">OpenClosePosition.Direction</h3>
-        <p>Possible directions the device can open/close</p>
+        <h3 id="smartcore.traits.LockUnlock.Position">LockUnlock.Position</h3>
+        <p>Position defines the possible lock positions.</p><p>Note that only LOCKED and UNLOCKED can be used during a write.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -626,81 +445,35 @@ include it in the states list. </p></td>
           <tbody>
             
               <tr>
-                <td>UNSPECIFIED</td>
+                <td>POSITION_UNSPECIFIED</td>
                 <td>0</td>
-                <td><p></p></td>
+                <td><p>The lock position is unspecified.</p></td>
               </tr>
             
               <tr>
-                <td>UP</td>
+                <td>LOCKED</td>
                 <td>1</td>
-                <td><p></p></td>
+                <td><p>The device is locked.</p></td>
               </tr>
             
               <tr>
-                <td>DOWN</td>
+                <td>UNLOCKED</td>
                 <td>2</td>
-                <td><p></p></td>
+                <td><p>The device is unlocked.</p></td>
               </tr>
             
               <tr>
-                <td>LEFT</td>
+                <td>LOCKING</td>
                 <td>3</td>
-                <td><p></p></td>
+                <td><p>The device is in the process of locking.
+Optional. Output only.</p></td>
               </tr>
             
               <tr>
-                <td>RIGHT</td>
+                <td>UNLOCKING</td>
                 <td>4</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>IN</td>
-                <td>5</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>OUT</td>
-                <td>6</td>
-                <td><p></p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
-        <h3 id="smartcore.traits.OpenClosePosition.Resistance">OpenClosePosition.Resistance</h3>
-        <p>Resistance defines types of resistance an OpenClose device may encounter.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>RESISTANCE_UNSPECIFIED</td>
-                <td>0</td>
-                <td><p>Resistance is unspecified.</p></td>
-              </tr>
-            
-              <tr>
-                <td>HELD</td>
-                <td>1</td>
-                <td><p>The device is being held in position.
-For example if someone is holding open a door, or a window is jammed shut.</p></td>
-              </tr>
-            
-              <tr>
-                <td>REDUCED_MOTION</td>
-                <td>2</td>
-                <td><p>The devices motion is reduced. For example if a garage door can&#39;t open fully due to a blockage.</p></td>
-              </tr>
-            
-              <tr>
-                <td>SLOW</td>
-                <td>3</td>
-                <td><p>The device is being slow to respond to changes in opening. For example if a window has a rusty hinge.</p></td>
+                <td><p>The device is in the process of unlocking.
+Optional. Output only.</p></td>
               </tr>
             
           </tbody>
@@ -710,8 +483,8 @@ For example if someone is holding open a door, or a window is jammed shut.</p></
       
 
       
-        <h3 id="smartcore.traits.OpenCloseApi">OpenCloseApi</h3>
-        <p>Applicable to devices that can open or close. Think window contact closure, window blind, or garage door.</p>
+        <h3 id="smartcore.traits.LockUnlockApi">LockUnlockApi</h3>
+        <p>LockUnlockApi describes devices that can be locked and unlocked, and/or report a locked state.</p><p>The concept is encoded in the LockUnlock.position, a device may be locked, unlocked, or transitioning into one of</p><p>these positions.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -719,51 +492,37 @@ For example if someone is holding open a door, or a window is jammed shut.</p></
           <tbody>
             
               <tr>
-                <td>GetPositions</td>
-                <td><a href="#smartcore.traits.GetOpenClosePositionsRequest">GetOpenClosePositionsRequest</a></td>
-                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
-                <td><p></p></td>
+                <td>GetLockUnlock</td>
+                <td><a href="#smartcore.traits.GetLockUnlockRequest">GetLockUnlockRequest</a></td>
+                <td><a href="#smartcore.traits.LockUnlock">LockUnlock</a></td>
+                <td><p>Get the current lock position for the device.</p></td>
               </tr>
             
               <tr>
-                <td>UpdatePositions</td>
-                <td><a href="#smartcore.traits.UpdateOpenClosePositionsRequest">UpdateOpenClosePositionsRequest</a></td>
-                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
-                <td><p></p></td>
+                <td>UpdateLockUnlock</td>
+                <td><a href="#smartcore.traits.UpdateLockUnlockRequest">UpdateLockUnlockRequest</a></td>
+                <td><a href="#smartcore.traits.LockUnlock">LockUnlock</a></td>
+                <td><p>Update the lock position of the device.</p></td>
               </tr>
             
               <tr>
-                <td>Stop</td>
-                <td><a href="#smartcore.traits.StopOpenCloseRequest">StopOpenCloseRequest</a></td>
-                <td><a href="#smartcore.traits.OpenClosePositions">OpenClosePositions</a></td>
-                <td><p>Stop causes any changes being performed by the underlying device to stop. Will return the current state.</p></td>
-              </tr>
-            
-              <tr>
-                <td>PullPositions</td>
-                <td><a href="#smartcore.traits.PullOpenClosePositionsRequest">PullOpenClosePositionsRequest</a></td>
-                <td><a href="#smartcore.traits.PullOpenClosePositionsResponse">PullOpenClosePositionsResponse</a> stream</td>
-                <td><p>Get notified of changes to the OpenCloseState of a device</p></td>
+                <td>PullLockUnlock</td>
+                <td><a href="#smartcore.traits.PullLockUnlockRequest">PullLockUnlockRequest</a></td>
+                <td><a href="#smartcore.traits.PullLockUnlockResponse">PullLockUnlockResponse</a> stream</td>
+                <td><p>Subscribe to changes in the lock position for the device.</p></td>
               </tr>
             
           </tbody>
         </table>
 
         
-        <h3 id="smartcore.traits.OpenCloseInfo">OpenCloseInfo</h3>
-        <p>Describes the capabilities of a specific named device with respect to this trait.</p>
+        <h3 id="smartcore.traits.LockUnlockInfo">LockUnlockInfo</h3>
+        <p>todo: define LockUnlockInfo</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
-            
-              <tr>
-                <td>DescribePositions</td>
-                <td><a href="#smartcore.traits.DescribePositionsRequest">DescribePositionsRequest</a></td>
-                <td><a href="#smartcore.traits.PositionsSupport">PositionsSupport</a></td>
-                <td><p>Get information about how a named device implements Positions features</p></td>
-              </tr>
             
           </tbody>
         </table>

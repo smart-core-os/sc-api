@@ -35,6 +35,7 @@ goog.exportSymbol('proto.smartcore.traits.DescribePositionsRequest', null, globa
 goog.exportSymbol('proto.smartcore.traits.GetOpenClosePositionsRequest', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePosition', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePosition.Direction', null, global);
+goog.exportSymbol('proto.smartcore.traits.OpenClosePosition.Resistance', null, global);
 goog.exportSymbol('proto.smartcore.traits.OpenClosePositions', null, global);
 goog.exportSymbol('proto.smartcore.traits.PositionsSupport', null, global);
 goog.exportSymbol('proto.smartcore.traits.PullOpenClosePositionsRequest', null, global);
@@ -447,7 +448,8 @@ proto.smartcore.traits.OpenClosePosition.toObject = function(includeInstance, ms
     openPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
     openPercentTween: (f = msg.getOpenPercentTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
     targetOpenPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    direction: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    direction: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    resistance: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -500,6 +502,10 @@ proto.smartcore.traits.OpenClosePosition.deserializeBinaryFromReader = function(
     case 4:
       var value = /** @type {!proto.smartcore.traits.OpenClosePosition.Direction} */ (reader.readEnum());
       msg.setDirection(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.smartcore.traits.OpenClosePosition.Resistance} */ (reader.readEnum());
+      msg.setResistance(value);
       break;
     default:
       reader.skipField();
@@ -559,6 +565,13 @@ proto.smartcore.traits.OpenClosePosition.serializeBinaryToWriter = function(mess
       f
     );
   }
+  f = message.getResistance();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      5,
+      f
+    );
+  }
 };
 
 
@@ -573,6 +586,16 @@ proto.smartcore.traits.OpenClosePosition.Direction = {
   RIGHT: 4,
   IN: 5,
   OUT: 6
+};
+
+/**
+ * @enum {number}
+ */
+proto.smartcore.traits.OpenClosePosition.Resistance = {
+  RESISTANCE_UNSPECIFIED: 0,
+  HELD: 1,
+  REDUCED_MOTION: 2,
+  SLOW: 3
 };
 
 /**
@@ -663,6 +686,24 @@ proto.smartcore.traits.OpenClosePosition.prototype.getDirection = function() {
  */
 proto.smartcore.traits.OpenClosePosition.prototype.setDirection = function(value) {
   return jspb.Message.setProto3EnumField(this, 4, value);
+};
+
+
+/**
+ * optional Resistance resistance = 5;
+ * @return {!proto.smartcore.traits.OpenClosePosition.Resistance}
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.getResistance = function() {
+  return /** @type {!proto.smartcore.traits.OpenClosePosition.Resistance} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.OpenClosePosition.Resistance} value
+ * @return {!proto.smartcore.traits.OpenClosePosition} returns this
+ */
+proto.smartcore.traits.OpenClosePosition.prototype.setResistance = function(value) {
+  return jspb.Message.setProto3EnumField(this, 5, value);
 };
 
 

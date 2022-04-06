@@ -42,6 +42,9 @@ export class OpenClosePosition extends jspb.Message {
   getDirection(): OpenClosePosition.Direction;
   setDirection(value: OpenClosePosition.Direction): OpenClosePosition;
 
+  getResistance(): OpenClosePosition.Resistance;
+  setResistance(value: OpenClosePosition.Resistance): OpenClosePosition;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenClosePosition.AsObject;
   static toObject(includeInstance: boolean, msg: OpenClosePosition): OpenClosePosition.AsObject;
@@ -56,6 +59,7 @@ export namespace OpenClosePosition {
     openPercentTween?: types_tween_pb.Tween.AsObject,
     targetOpenPercent: number,
     direction: OpenClosePosition.Direction,
+    resistance: OpenClosePosition.Resistance,
   }
 
   export enum Direction { 
@@ -66,6 +70,13 @@ export namespace OpenClosePosition {
     RIGHT = 4,
     IN = 5,
     OUT = 6,
+  }
+
+  export enum Resistance { 
+    RESISTANCE_UNSPECIFIED = 0,
+    HELD = 1,
+    REDUCED_MOTION = 2,
+    SLOW = 3,
   }
 }
 
