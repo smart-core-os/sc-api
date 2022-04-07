@@ -66,6 +66,10 @@ message Consumable {
   string name = 1;
 
   // Portion describes a possible consumption for this consumable.
+  // Portions are potential units to be dispensed, a device might support dispensing individual cups of water, in which
+  // case it would use `{unit:CUP, bounds:[1,1]}`. Alternatively a device might dispense sweets in chunks of 50g, and
+  // would describe this using `{unit:GRAM, step:50}`. If the device had a safety feature to limit the sweets dispensed
+  // at one time it might also specify `bounds:[50, 500]`.
   message Portion {
     // The unit the portion is measured in.
     Inventory.Unit unit = 1;
