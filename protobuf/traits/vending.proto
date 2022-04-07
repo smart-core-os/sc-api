@@ -113,6 +113,8 @@ message Inventory {
     CUBIC_METER = 4;
     // The quantity is a portion, sized to fill a cup.
     CUP = 5;
+    // The quantity is a mass, in grams.
+    GRAM = 6;
 
     // Additional units may be added over time. We should avoid adding units that are simple conversions of existing
     // units (i.e. meter + centimeter) unless they are typically used in distinct domains.
