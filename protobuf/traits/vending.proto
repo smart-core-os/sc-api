@@ -90,6 +90,8 @@ message Consumable {
 
   // IDs holds external consumable ids.
   // For example this might hold an id representing an Amazon Dash button product code.
+  // The map key should uniquely represent the domain for the id, for example "amazon.com/dash", the use of uris is not
+  // required, values should be the id of this consumable in that domain, for example "sma81r6t1c5o3r58e1-3r8u16l1es".
   map<string, string> ids = 100;
   // Additional properties associated with the consumable.
   // Typically displayed to a user to help them to distinguish between similar consumables.
