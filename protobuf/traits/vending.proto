@@ -254,9 +254,12 @@ message ListInventoryResponse {
 message UpdateInventoryRequest {
   // Name of the device to update the state for
   string name = 1;
+  // New quantities for each inventory item.
   Inventory inventory = 2;
   // Fields to update relative to the Inventory type.
   google.protobuf.FieldMask update_mask = 3;
+  // If true, inventory adjustments are relative to their current values.
+  bool relative = 4;
 }
 
 message PullInventoryRequest {
