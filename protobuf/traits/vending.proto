@@ -22,8 +22,8 @@ import "types/number.proto";
 // The VendingApi encodes two different resources, the consumables and the inventory.
 // Consumables represent information about the products that are available from this device.
 // Inventory is a measure of how many/much of the consumables are currently available.
-// Quantities are non-specific, they could be discreet items like apples, or continuous like water.
-// Some consumables are both discreet and continuous, you can have 0.3L or 1 cup of water.
+// Quantities are non-specific, they could be discrete items like apples, or continuous like water.
+// Some consumables are both discrete and continuous, you can have 0.3L or 1 cup of water.
 service VendingApi {
   // fixme: Need to make a decision on whether Consumables belongs as a resource here or in VendingInfo
 
