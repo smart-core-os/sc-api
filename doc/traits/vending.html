@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#traits%2fvending.proto">traits/vending.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable"><span class="badge">M</span>Consumable</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.IdsEntry"><span class="badge">M</span>Consumable.IdsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.MoreEntry"><span class="badge">M</span>Consumable.MoreEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.Portion"><span class="badge">M</span>Consumable.Portion</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.Quantity"><span class="badge">M</span>Consumable.Quantity</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.Stock"><span class="badge">M</span>Consumable.Stock</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DispenseRequest"><span class="badge">M</span>DispenseRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.DispenseRequest.QuantityEntry"><span class="badge">M</span>DispenseRequest.QuantityEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.GetStockRequest"><span class="badge">M</span>GetStockRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListConsumablesRequest"><span class="badge">M</span>ListConsumablesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListConsumablesResponse"><span class="badge">M</span>ListConsumablesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListInventoryRequest"><span class="badge">M</span>ListInventoryRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.ListInventoryResponse"><span class="badge">M</span>ListInventoryResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullConsumablesRequest"><span class="badge">M</span>PullConsumablesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullConsumablesResponse"><span class="badge">M</span>PullConsumablesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullConsumablesResponse.Change"><span class="badge">M</span>PullConsumablesResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullInventoryRequest"><span class="badge">M</span>PullInventoryRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullInventoryResponse"><span class="badge">M</span>PullInventoryResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullInventoryResponse.Change"><span class="badge">M</span>PullInventoryResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullStockRequest"><span class="badge">M</span>PullStockRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullStockResponse"><span class="badge">M</span>PullStockResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.PullStockResponse.Change"><span class="badge">M</span>PullStockResponse.Change</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.StopDispenseRequest"><span class="badge">M</span>StopDispenseRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.UpdateStockRequest"><span class="badge">M</span>UpdateStockRequest</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#smartcore.traits.Consumable.Unit"><span class="badge">E</span>Consumable.Unit</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#smartcore.traits.VendingApi"><span class="badge">S</span>VendingApi</a>
+                </li>
+              
+                <li>
+                  <a href="#smartcore.traits.VendingInfo"><span class="badge">S</span>VendingInfo</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="traits/vending.proto">traits/vending.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="smartcore.traits.Consumable">Consumable</h3>
+        <p>Consumable describes some item that can be dispensed from a vending device.</p><p>Noticeable variations, so far as someone might want to choose between two consumables, should be modelled as</p><p>separate consumable instances. For example red or green apples, large or regular drinks.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A name that can be used to uniquely refer to this consumable in the device. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>available_portions</td>
+                  <td><a href="#smartcore.traits.Consumable.Portion">Consumable.Portion</a></td>
+                  <td>repeated</td>
+                  <td><p>The available portions that this consumable can be dispensed in. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>default_portion</td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p>The portion that will be dispensed if not specified as part of the request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>title</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>An official title for this item. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>display_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A recognisable display name for this item. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>picture</td>
+                  <td><a href="#smartcore.types.Image">smartcore.types.Image</a></td>
+                  <td></td>
+                  <td><p>A picture of the item. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A url that resolves to more information on this item. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ids</td>
+                  <td><a href="#smartcore.traits.Consumable.IdsEntry">Consumable.IdsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>IDs holds external consumable ids.
+For example this might hold an id representing an Amazon Dash button product code.
+The map key should uniquely represent the domain for the id, for example &#34;amazon.com/dash&#34;, the use of uris is not
+required, values should be the id of this consumable in that domain, for example &#34;sma81r6t1c5o3r58e1-3r8u16l1es&#34;. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>more</td>
+                  <td><a href="#smartcore.traits.Consumable.MoreEntry">Consumable.MoreEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Additional properties associated with the consumable.
+Typically displayed to a user to help them to distinguish between similar consumables. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Consumable.IdsEntry">Consumable.IdsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Consumable.MoreEntry">Consumable.MoreEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Consumable.Portion">Consumable.Portion</h3>
+        <p>Portion describes a possible consumption for this consumable.</p><p>Portions are potential units to be dispensed, a device might support dispensing individual cups of water, in which</p><p>case it would use `{unit:CUP, bounds:[1,1]}`. Alternatively a device might dispense sweets in chunks of 50g, and</p><p>would describe this using `{unit:KILOGRAM, step:0.05}`. If the device had a safety feature to limit the sweets dispensed</p><p>at one time it might also specify `bounds:[0.05, 5]`.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>unit</td>
+                  <td><a href="#smartcore.traits.Consumable.Unit">Consumable.Unit</a></td>
+                  <td></td>
+                  <td><p>The unit the portion is measured in. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bounds</td>
+                  <td><a href="#smartcore.types.FloatBounds">smartcore.types.FloatBounds</a></td>
+                  <td></td>
+                  <td><p>Upper and lower bounds for the portion quantity. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>step</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The minimal increment for the portion quantity. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Consumable.Quantity">Consumable.Quantity</h3>
+        <p>Quantity combines an amount and a unit.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>amount</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>unit</td>
+                  <td><a href="#smartcore.traits.Consumable.Unit">Consumable.Unit</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.Consumable.Stock">Consumable.Stock</h3>
+        <p>Stock describes how much of a consumable is available.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>consumable</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of a consumable supported by this device. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>remaining</td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p>How many/much of the consumable is remaining.
+Optional.
+If the consumable is currently dispensing, this should report how much is remaining after dispensing finishes. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>used</td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p>How many/much of the consumable has been used since the counter was last reset.
+Optional.
+Devices may reset the counter when the stock is filled, or may count for longer.
+If the consumable is currently dispensing, this should report how much will be used after dispensing finishes. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_dispensed</td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p>How many/much of the consumable was most recently dispensed.
+If the consumable is currently dispensing, this should report the quantity it dispensed prior to the current
+session.
+Optional. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dispensing</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>True if the consumable is currently being dispensed. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DispenseRequest">DispenseRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to invoke the action on </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quantity</td>
+                  <td><a href="#smartcore.traits.DispenseRequest.QuantityEntry">DispenseRequest.QuantityEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>The quantity of each consumable to dispense.
+The map is keyed by the consumable name, the quantity should be in a unit supported by that consumable. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to update relative to the quantity property. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.DispenseRequest.QuantityEntry">DispenseRequest.QuantityEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.GetStockRequest">GetStockRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to update the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to read relative to the Consumable.Stock type. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListConsumablesRequest">ListConsumablesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the Consumable type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The maximum number of items to return.
+The service may return fewer than this value.
+If unspecified, at most 50 items will be returned.
+The maximum value is 1000; values above 1000 will be coerced to 1000. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A page token, received from a previous `ListConsumablesRequest` call.
+Provide this to retrieve the subsequent page.
+
+todo: enable filtering
+Filter allows for customisation of the items returned by this request.
+See https://google.aip.dev/160 for details.
+Individual devices should document if and how filter is supported by that device.
+string filter = 5; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListConsumablesResponse">ListConsumablesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>consumables</td>
+                  <td><a href="#smartcore.traits.Consumable">Consumable</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token, which can be sent as `page_token` to retrieve the next page.
+If this field is omitted, there are no subsequent pages. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>If non-zero this is the total number of consumables.
+This may be an estimate. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListInventoryRequest">ListInventoryRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the Consumable.Stock type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The maximum number of items to return.
+The service may return fewer than this value.
+If unspecified, at most 50 items will be returned.
+The maximum value is 1000; values above 1000 will be coerced to 1000. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A page token, received from a previous `ListInventoryRequest` call.
+Provide this to retrieve the subsequent page. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.ListInventoryResponse">ListInventoryResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>inventory</td>
+                  <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                  <td>repeated</td>
+                  <td><p>The stock requested. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token, which can be sent as `page_token` to retrieve the next page.
+If this field is omitted, there are no subsequent pages. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total_size</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>If non-zero this is the total number of stocked consumables.
+This may be an estimate. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullConsumablesRequest">PullConsumablesRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the Consumable type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updates_only</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>When true the device will only send changes to the resource value.
+The default behaviour is to send the current value immediately followed by any updates as they happen.
+
+todo: enable filtering
+Filter allows for customisation of the items returned by this request.
+See https://google.aip.dev/160 for details.
+Individual devices should document if and how filter is supported by that device.
+string filter = 4; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullConsumablesResponse">PullConsumablesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullConsumablesResponse.Change">PullConsumablesResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>The list of changes which have occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullConsumablesResponse.Change">PullConsumablesResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device that emitted this change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#smartcore.types.ChangeType">smartcore.types.ChangeType</a></td>
+                  <td></td>
+                  <td><p>The type of change (e.g. ADD, UPDATE, etc...) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_value</td>
+                  <td><a href="#smartcore.traits.Consumable">Consumable</a></td>
+                  <td></td>
+                  <td><p>The new value to use for ADD|UPDATE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>old_value</td>
+                  <td><a href="#smartcore.traits.Consumable">Consumable</a></td>
+                  <td></td>
+                  <td><p>The old value to use for UPDATE|REMOVE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullInventoryRequest">PullInventoryRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the Consumable.Stock type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updates_only</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>When true the device will only send changes to the resource value.
+The default behaviour is to send the current value immediately followed by any updates as they happen.
+
+todo: enable filtering
+Filter allows for customisation of the items returned by this request.
+See https://google.aip.dev/160 for details.
+Individual devices should document if and how filter is supported by that device.
+string filter = 4; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullInventoryResponse">PullInventoryResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullInventoryResponse.Change">PullInventoryResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>The list of changes which have occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullInventoryResponse.Change">PullInventoryResponse.Change</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the device that emitted this change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#smartcore.types.ChangeType">smartcore.types.ChangeType</a></td>
+                  <td></td>
+                  <td><p>The type of change (e.g. ADD, UPDATE, etc...) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_value</td>
+                  <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                  <td></td>
+                  <td><p>The new value to use for ADD|UPDATE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>old_value</td>
+                  <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                  <td></td>
+                  <td><p>The old value to use for UPDATE|REMOVE changes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>When the change occurred </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullStockRequest">PullStockRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to fetch the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>read_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to fetch relative to the Consumable.Stock type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updates_only</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>When true the device will only send changes to the resource value.
+The default behaviour is to send the current value immediately followed by any updates as they happen. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullStockResponse">PullStockResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>changes</td>
+                  <td><a href="#smartcore.traits.PullStockResponse.Change">PullStockResponse.Change</a></td>
+                  <td>repeated</td>
+                  <td><p>Changes that have occurred since the last event </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.PullStockResponse.Change">PullStockResponse.Change</h3>
+        <p>A change to the state</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name for the device that issued the change </p></td>
+                </tr>
+              
+                <tr>
+                  <td>change_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>when the change occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stock</td>
+                  <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                  <td></td>
+                  <td><p>the new state for the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.StopDispenseRequest">StopDispenseRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to invoke the action on </p></td>
+                </tr>
+              
+                <tr>
+                  <td>consumables</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>The list of consumables that should stop dispensing. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="smartcore.traits.UpdateStockRequest">UpdateStockRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the device to update the state for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stock</td>
+                  <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                  <td></td>
+                  <td><p>New quantities for the consumable stock. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_mask</td>
+                  <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
+                  <td></td>
+                  <td><p>Fields to update relative to the Consumable.Stock type. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>relative</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>If true, stock adjustments are relative to their current values. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="smartcore.traits.Consumable.Unit">Consumable.Unit</h3>
+        <p>Unit defines different consumable units.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>UNIT_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>NO_UNIT</td>
+                <td>1</td>
+                <td><p>There is no unit for this quantity, typically a count.</p></td>
+              </tr>
+            
+              <tr>
+                <td>METER</td>
+                <td>2</td>
+                <td><p>The quantity is a length, in meters.</p></td>
+              </tr>
+            
+              <tr>
+                <td>LITER</td>
+                <td>3</td>
+                <td><p>The quantity is a volume, in liters</p></td>
+              </tr>
+            
+              <tr>
+                <td>CUBIC_METER</td>
+                <td>4</td>
+                <td><p>The quantity is a volume, in cubic meters.</p></td>
+              </tr>
+            
+              <tr>
+                <td>CUP</td>
+                <td>5</td>
+                <td><p>The quantity is a portion, sized to fill a cup.</p></td>
+              </tr>
+            
+              <tr>
+                <td>KILOGRAM</td>
+                <td>6</td>
+                <td><p>The quantity is a mass, in kilograms.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="smartcore.traits.VendingApi">VendingApi</h3>
+        <p>VendingApi describes devices that hold a stock and can dispense their consumables on command.</p><p>Applies to devices like vending machines, water taps, coffee machines, and pet food dispensers.</p><p>The VendingApi encodes two different resources, the consumables and the stock.</p><p>Consumables represent information about the products that are available from this device.</p><p>Stock is a measure of how many/much of a consumables is currently available.</p><p>When referring to the stock of all consumables, this trait uses the term inventory.</p><p>Quantities, both available and dispensed, can be either discrete items like apples, or continuous like water.</p><p>Some consumables are both discrete and continuous, you can have 0.3L or 1 cup of water.</p><p>fixme: Need to make a decision on whether Consumables belongs as a resource here or in VendingInfo</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ListConsumables</td>
+                <td><a href="#smartcore.traits.ListConsumablesRequest">ListConsumablesRequest</a></td>
+                <td><a href="#smartcore.traits.ListConsumablesResponse">ListConsumablesResponse</a></td>
+                <td><p>List the consumables available from this device.
+This has no information on stock, only descriptive information about the physical item.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullConsumables</td>
+                <td><a href="#smartcore.traits.PullConsumablesRequest">PullConsumablesRequest</a></td>
+                <td><a href="#smartcore.traits.PullConsumablesResponse">PullConsumablesResponse</a> stream</td>
+                <td><p>Subscribe to change in consumables available from this device.</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetStock</td>
+                <td><a href="#smartcore.traits.GetStockRequest">GetStockRequest</a></td>
+                <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                <td><p>Get the current stock levels for a consumable.
+If the consumable is unknown will return NotFound.
+If the consumable is out of stock, returns a Stock with a zero remaining quantity.</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateStock</td>
+                <td><a href="#smartcore.traits.UpdateStockRequest">UpdateStockRequest</a></td>
+                <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                <td><p>Update the quantity of a consumable in the device.
+
+This is unlikely to actually create physical consumables out of thin air, but is useful if the device doesn&#39;t have
+internal sensors monitoring the physical quantity of its consumables. For example to let a cookie dispenser know
+that it was refilled with 100 new tasty cookies.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullStock</td>
+                <td><a href="#smartcore.traits.PullStockRequest">PullStockRequest</a></td>
+                <td><a href="#smartcore.traits.PullStockResponse">PullStockResponse</a> stream</td>
+                <td><p>Subscribe to changes in the stock levels for a consumable.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListInventory</td>
+                <td><a href="#smartcore.traits.ListInventoryRequest">ListInventoryRequest</a></td>
+                <td><a href="#smartcore.traits.ListInventoryResponse">ListInventoryResponse</a></td>
+                <td><p>List the stock for each consumable in the device.
+The device should return zero-quantity stock for consumables that are out-of-stock.</p></td>
+              </tr>
+            
+              <tr>
+                <td>PullInventory</td>
+                <td><a href="#smartcore.traits.PullInventoryRequest">PullInventoryRequest</a></td>
+                <td><a href="#smartcore.traits.PullInventoryResponse">PullInventoryResponse</a> stream</td>
+                <td><p>Subscribe to changes in consumable stock.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Dispense</td>
+                <td><a href="#smartcore.traits.DispenseRequest">DispenseRequest</a></td>
+                <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                <td><p>Trigger the dispensing of some quantity of consumables.
+Devices should return only stock items that are mentioned in the request.</p></td>
+              </tr>
+            
+              <tr>
+                <td>StopDispense</td>
+                <td><a href="#smartcore.traits.StopDispenseRequest">StopDispenseRequest</a></td>
+                <td><a href="#smartcore.traits.Consumable.Stock">Consumable.Stock</a></td>
+                <td><p>Stop the dispensing of the mentioned consumables.
+Devices should return only stock items that are mentioned in the request.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+        <h3 id="smartcore.traits.VendingInfo">VendingInfo</h3>
+        <p>todo: implement VendingInfo</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
