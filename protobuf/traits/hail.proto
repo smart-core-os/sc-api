@@ -102,6 +102,10 @@ message Hail {
     DEPARTED = 3;
     // The transport is at the destination.
     // This concludes this hail.
+    // The device may remove this hail once it has arrived.
+    // It is recommended that the device keep arrived hails for a short period of time (minutes) to aid clients who are
+    // checking or polling hail states to check for arrival.
+    // It is good practice, but not required, for a client to delete a hail once the information is no longer needed.
     ARRIVED = 4;
   }
 
