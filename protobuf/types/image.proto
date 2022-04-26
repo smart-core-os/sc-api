@@ -21,6 +21,7 @@ message Image {
   // Content describes the location of the image data.
   message Content {
     // A media type for the image, e.g. "image/jpeg".
+    // See https://www.iana.org/assignments/media-types/media-types.xhtml#image
     string type = 1;
 
     // Content describes the possible choices for where the image bytes come from.

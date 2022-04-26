@@ -6,7 +6,7 @@
 2. Coffee machine - "One flat white please", "there are 7 pods remaining", "the machine has used 47 pods to date"
 3. Tap - "fill one cup of water", "the tap is not running"
 4. Fridge - "6 apples remaining"
-5. Vacuum - "the filter has been running for 4 months", "please replace the filter"
+5. Vacuum - "the filter has been running for 4 months", "please replace the filter" (unlikely to be factored in)
 
 
 ## Common themes
@@ -15,7 +15,7 @@
 
 A list of supported consumables the device is aware of, monitors, can dispense.
 
-1. Dust filter
+1. Dust filter (unlikely)
 2. Coffee cup
 3. Coffee pod
 4. Water
