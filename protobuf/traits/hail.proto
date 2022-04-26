@@ -46,7 +46,7 @@ service HailApi {
 }
 
 service HailInfo {
-  // todo: define HailInfo
+  // todo: define HailInfo, including listing available locations.
 }
 
 // A hail is a request from a caller to bring transport to the callers location.
