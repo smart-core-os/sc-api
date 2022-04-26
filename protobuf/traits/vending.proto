@@ -13,45 +13,52 @@ import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/change.proto";
 import "types/image.proto";
-import "types/info.proto";
 import "types/number.proto";
 
-// VendingApi describes devices that hold an inventory and can dispense their consumables on command.
+// VendingApi describes devices that hold a stock and can dispense their consumables on command.
 // Applies to devices like vending machines, water taps, coffee machines, and pet food dispensers.
 //
-// The VendingApi encodes two different resources, the consumables and the inventory.
+// The VendingApi encodes two different resources, the consumables and the stock.
 // Consumables represent information about the products that are available from this device.
-// Inventory is a measure of how many/much of the consumables are currently available.
-// Quantities are non-specific, they could be discrete items like apples, or continuous like water.
+// Stock is a measure of how many/much of a consumables is currently available.
+// When referring to the stock of all consumables, this trait uses the term inventory.
+//
+// Quantities, both available and dispensed, can be either discrete items like apples, or continuous like water.
 // Some consumables are both discrete and continuous, you can have 0.3L or 1 cup of water.
 service VendingApi {
   // fixme: Need to make a decision on whether Consumables belongs as a resource here or in VendingInfo
 
   // List the consumables available from this device.
-  // This has no information on inventory quantity, only descriptive information about the physical item.
+  // This has no information on stock, only descriptive information about the physical item.
   rpc ListConsumables(ListConsumablesRequest) returns (ListConsumablesResponse);
   // Subscribe to change in consumables available from this device.
   rpc PullConsumables(PullConsumablesRequest) returns (stream PullConsumablesResponse);
 
-  // List the quantity of each consumable in the device.
-  // The device should return inventory items for consumables that are out-of-stock.
-  rpc ListInventory(ListInventoryRequest) returns (ListInventoryResponse);
-  // Update the quantity of each consumable in the device.
-  // Devices should return only inventory items that are mentioned in the update request.
+  // Get the current stock levels for a consumable.
+  // If the consumable is unknown will return NotFound.
+  // If the consumable is out of stock, returns a Stock with a zero remaining quantity.
+  rpc GetStock(GetStockRequest) returns (Consumable.Stock);
+  // Update the quantity of a consumable in the device.
   //
   // This is unlikely to actually create physical consumables out of thin air, but is useful if the device doesn't have
   // internal sensors monitoring the physical quantity of its consumables. For example to let a cookie dispenser know
   // that it was refilled with 100 new tasty cookies.
-  rpc UpdateInventory(UpdateInventoryRequest) returns (Inventory);
-  // Subscribe to changes in inventory.
+  rpc UpdateStock(UpdateStockRequest) returns (Consumable.Stock);
+  // Subscribe to changes in the stock levels for a consumable.
+  rpc PullStock(PullStockRequest) returns (stream PullStockResponse);
+
+  // List the stock for each consumable in the device.
+  // The device should return zero-quantity stock for consumables that are out-of-stock.
+  rpc ListInventory(ListInventoryRequest) returns (ListInventoryResponse);
+  // Subscribe to changes in consumable stock.
   rpc PullInventory(PullInventoryRequest) returns (stream PullInventoryResponse);
 
   // Trigger the dispensing of some quantity of consumables.
-  // Devices should return only inventory items that are mentioned in the request.
-  rpc Dispense(DispenseRequest) returns (Inventory);
+  // Devices should return only stock items that are mentioned in the request.
+  rpc Dispense(DispenseRequest) returns (Consumable.Stock);
   // Stop the dispensing of the mentioned consumables.
-  // Devices should return only inventory items that are mentioned in the request.
-  rpc StopDispense(StopDispenseRequest) returns (Inventory);
+  // Devices should return only stock items that are mentioned in the request.
+  rpc StopDispense(StopDispenseRequest) returns (Consumable.Stock);
 }
 
 service VendingInfo {
@@ -100,8 +107,14 @@ message Consumable {
   }
   // The available portions that this consumable can be dispensed in.
   repeated Portion available_portions = 2;
+
+  // Quantity combines an amount and a unit.
+  message Quantity {
+    float amount = 2;
+    Unit unit = 3;
+  }
   // The portion that will be dispensed if not specified as part of the request.
-  Inventory.Quantity default_portion = 3;
+  Quantity default_portion = 3;
 
   // An official title for this item.
   string title = 10;
@@ -120,18 +133,9 @@ message Consumable {
   // Additional properties associated with the consumable.
   // Typically displayed to a user to help them to distinguish between similar consumables.
   map<string, string> more = 101;
-}
 
-// Inventory describes a collection of items and their quantity.
-message Inventory {
-  // Quantity combines an amount and a unit.
-  message Quantity {
-    float amount = 2;
-    Consumable.Unit unit = 3;
-  }
-
-  // Item describes how much of a specific consumable is available.
-  message Item {
+  // Stock describes how much of a consumable is available.
+  message Stock {
     // The name of a consumable supported by this device.
     string consumable = 1;
     // How many/much of the consumable is remaining.
@@ -140,7 +144,7 @@ message Inventory {
     Quantity remaining = 2;
     // How many/much of the consumable has been used since the counter was last reset.
     // Optional.
-    // Devices may reset the counter when the inventory is filled, or may count for longer.
+    // Devices may reset the counter when the stock is filled, or may count for longer.
     // If the consumable is currently dispensing, this should report how much will be used after dispensing finishes.
     Quantity used = 3;
     // How many/much of the consumable was most recently dispensed.
@@ -151,9 +155,6 @@ message Inventory {
     // True if the consumable is currently being dispensed.
     bool dispensing = 5;
   }
-
-  // A list of inventory items, each representing some quantity of a consumable.
-  repeated Item items = 1;
 }
 
 message ListConsumablesRequest {
@@ -218,10 +219,51 @@ message PullConsumablesResponse {
   }
 }
 
+message GetStockRequest {
+  // Name of the device to update the state for
+  string name = 1;
+  // Fields to read relative to the Consumable.Stock type.
+  google.protobuf.FieldMask read_mask = 2;
+}
+message UpdateStockRequest {
+  // Name of the device to update the state for
+  string name = 1;
+  // New quantities for the consumable stock.
+  Consumable.Stock stock = 2;
+  // Fields to update relative to the Consumable.Stock type.
+  google.protobuf.FieldMask update_mask = 3;
+  // If true, stock adjustments are relative to their current values.
+  bool relative = 4;
+}
+message PullStockRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the Consumable.Stock type
+  google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
+}
+message PullStockResponse {
+  // Changes that have occurred since the last event
+  repeated Change changes = 1;
+
+  // A change to the state
+  message Change {
+    // name for the device that issued the change
+    string name = 1;
+    // when the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // the new state for the device
+    Consumable.Stock stock = 3;
+  }
+}
+
+
 message ListInventoryRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // Fields to fetch relative to the Inventory.Item type
+  // Fields to fetch relative to the Consumable.Stock type
   google.protobuf.FieldMask read_mask = 2;
 
   // The maximum number of items to return.
@@ -240,32 +282,21 @@ message ListInventoryRequest {
   // string filter = 5;
 }
 message ListInventoryResponse {
-  // The items requested.
-  repeated Inventory.Item inventory = 1;
+  // The stock requested.
+  repeated Consumable.Stock inventory = 1;
 
   // A token, which can be sent as `page_token` to retrieve the next page.
   // If this field is omitted, there are no subsequent pages.
   string next_page_token = 2;
-  // If non-zero this is the total number of consumables.
+  // If non-zero this is the total number of stocked consumables.
   // This may be an estimate.
   int32 total_size = 3;
-}
-
-message UpdateInventoryRequest {
-  // Name of the device to update the state for
-  string name = 1;
-  // New quantities for each inventory item.
-  Inventory inventory = 2;
-  // Fields to update relative to the Inventory type.
-  google.protobuf.FieldMask update_mask = 3;
-  // If true, inventory adjustments are relative to their current values.
-  bool relative = 4;
 }
 
 message PullInventoryRequest {
   // Name of the device to fetch the state for
   string name = 1;
-  // Fields to fetch relative to the Consumable type
+  // Fields to fetch relative to the Consumable.Stock type
   google.protobuf.FieldMask read_mask = 2;
   // When true the device will only send changes to the resource value.
   // The default behaviour is to send the current value immediately followed by any updates as they happen.
@@ -286,9 +317,9 @@ message PullInventoryResponse {
     // The type of change (e.g. ADD, UPDATE, etc...)
     smartcore.types.ChangeType type = 2;
     // The new value to use for ADD|UPDATE changes
-    Inventory.Item new_value = 3;
+    Consumable.Stock new_value = 3;
     // The old value to use for UPDATE|REMOVE changes
-    Inventory.Item old_value = 4;
+    Consumable.Stock old_value = 4;
     // When the change occurred
     google.protobuf.Timestamp change_time = 5;
   }
@@ -299,7 +330,7 @@ message DispenseRequest {
   string name = 1;
   // The quantity of each consumable to dispense.
   // The map is keyed by the consumable name, the quantity should be in a unit supported by that consumable.
-  map<string, Inventory.Quantity> quantity = 2;
+  map<string, Consumable.Quantity> quantity = 2;
   // Fields to update relative to the quantity property.
   google.protobuf.FieldMask update_mask = 3;
 }
