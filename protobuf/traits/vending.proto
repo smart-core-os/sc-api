@@ -65,14 +65,34 @@ message Consumable {
   // A name that can be used to uniquely refer to this consumable in the device.
   string name = 1;
 
+  // Unit defines different consumable units.
+  enum Unit {
+    UNIT_UNSPECIFIED = 0;
+    // There is no unit for this quantity, typically a count.
+    NO_UNIT = 1;
+    // The quantity is a length, in meters.
+    METER = 2;
+    // The quantity is a volume, in liters
+    LITER = 3;
+    // The quantity is a volume, in cubic meters.
+    CUBIC_METER = 4;
+    // The quantity is a portion, sized to fill a cup.
+    CUP = 5;
+    // The quantity is a mass, in kilograms.
+    KILOGRAM = 6;
+
+    // Additional units may be added over time. We should avoid adding units that are simple conversions of existing
+    // units (i.e. meter + centimeter) unless they are typically used in distinct domains.
+  }
+
   // Portion describes a possible consumption for this consumable.
   // Portions are potential units to be dispensed, a device might support dispensing individual cups of water, in which
   // case it would use `{unit:CUP, bounds:[1,1]}`. Alternatively a device might dispense sweets in chunks of 50g, and
-  // would describe this using `{unit:GRAM, step:50}`. If the device had a safety feature to limit the sweets dispensed
-  // at one time it might also specify `bounds:[50, 500]`.
+  // would describe this using `{unit:KILOGRAM, step:0.05}`. If the device had a safety feature to limit the sweets dispensed
+  // at one time it might also specify `bounds:[0.05, 5]`.
   message Portion {
     // The unit the portion is measured in.
-    Inventory.Unit unit = 1;
+    Unit unit = 1;
     // Upper and lower bounds for the portion quantity.
     smartcore.types.FloatBounds bounds = 2;
     // The minimal increment for the portion quantity.
@@ -104,30 +124,10 @@ message Consumable {
 
 // Inventory describes a collection of items and their quantity.
 message Inventory {
-  // Unit defines different quantity units.
-  enum Unit {
-    UNIT_UNSPECIFIED = 0;
-    // There is no unit for this quantity, typically a count.
-    NO_UNIT = 1;
-    // The quantity is a length, in meters.
-    METER = 2;
-    // The quantity is a volume, in liters
-    LITER = 3;
-    // The quantity is a volume, in cubic meters.
-    CUBIC_METER = 4;
-    // The quantity is a portion, sized to fill a cup.
-    CUP = 5;
-    // The quantity is a mass, in grams.
-    GRAM = 6;
-
-    // Additional units may be added over time. We should avoid adding units that are simple conversions of existing
-    // units (i.e. meter + centimeter) unless they are typically used in distinct domains.
-  }
-
   // Quantity combines an amount and a unit.
   message Quantity {
     float amount = 2;
-    Unit unit = 3;
+    Consumable.Unit unit = 3;
   }
 
   // Item describes how much of a specific consumable is available.
