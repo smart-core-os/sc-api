@@ -12,7 +12,6 @@ option php_namespace = "Smartcore\\Traits";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/image.proto";
-import "types/info.proto";
 
 // EnterLeaveSensor applies to devices that can track objects entering or leaving.
 // It could apply to footfall counters, turn styles, or car park entry barriers.
