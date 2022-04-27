@@ -35,7 +35,7 @@ message OnOff {
 
   // Possible states for an On-Off device
   enum State {
-    UNKNOWN = 0;
+    STATE_UNSPECIFIED = 0;
     ON = 1;
     OFF = 2;
   }

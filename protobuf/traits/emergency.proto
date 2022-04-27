@@ -46,7 +46,7 @@ message Emergency {
   // Levels of emergency
   enum Level {
     // The level is unknown, applications may choose to be cautious or care-free with this lack of information.
-    UNKNOWN = 0;
+    LEVEL_UNSPECIFIED = 0;
     // There is no emergency.
     OK = 1;
     // There is a chance of an emergency soon. This might be reported by a smoke detector that has detected some particles

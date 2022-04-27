@@ -65,15 +65,17 @@ message InputSupport {
 
   // possible modes an input select device can
   enum Feature {
+    // The feature is not specified
+    FEATURE_UNSPECIFIED = 0;
     // both audio and video are treated as one. independent_av should be considered false in this mode
-    AV = 0;
+    AV = 1;
     // Only audio inputs are supported
-    AUDIO_ONLY = 1;
+    AUDIO_ONLY = 2;
     // Only video inputs are supported
-    VIDEO_ONLY = 2;
+    VIDEO_ONLY = 3;
     // Audio and video are both supported and can be selected independently if desired. The independent_av property can
     // be true in this mode only
-    INDEPENDENT = 3;
+    INDEPENDENT = 4;
   }
 }
 

@@ -119,7 +119,7 @@ message EnergyLevel {
     // Threshold defines preset descriptive quantities for the energy level of the device.
     // Numeric values will be preferred if provided.
     enum Threshold {
-      THRESHOLD_UNKNOWN = 0;
+      THRESHOLD_UNSPECIFIED = 0;
       CRITICALLY_LOW = 1;
       EMPTY = 2;
       LOW = 3;

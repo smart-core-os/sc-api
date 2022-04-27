@@ -39,7 +39,7 @@ message ResourceSupport {
 // PullSupport describes how Pull methods are implemented by the server
 enum PullSupport {
   // How subscriptions are implemented is not known.
-  PULL_SUPPORT_UNKNOWN = 0;
+  PULL_SUPPORT_UNSPECIFIED = 0;
   // Subscribing is supported natively by the underlying system.
   PULL_SUPPORT_NATIVE = 1;
   // Subscribing is supported in the driver, rather than natively.

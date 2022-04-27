@@ -42,7 +42,7 @@ message AirQuality {
   // Comfort encodes levels of comfort for an area.
   enum Comfort {
     // The comfort level is unknown
-    UNKNOWN = 0;
+    COMFORT_UNSPECIFIED = 0;
     // The area should be comfortable for occupants
     COMFORTABLE = 1;
     // The area might be uncomfortable for occupants
