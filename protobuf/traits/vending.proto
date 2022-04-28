@@ -332,17 +332,18 @@ message PullInventoryResponse {
 message DispenseRequest {
   // Name of the device to invoke the action on
   string name = 1;
-  // The quantity of each consumable to dispense.
-  // The map is keyed by the consumable name, the quantity should be in a unit supported by that consumable.
-  map<string, Consumable.Quantity> quantity = 2;
+  // The name of the consumable to dispense the stock for.
+  string consumable = 4;
+  // The quantity of the consumable to dispense.
+  Consumable.Quantity quantity = 2;
   // Fields to update relative to the quantity property.
   google.protobuf.FieldMask update_mask = 3;
 }
 message StopDispenseRequest {
   // Name of the device to invoke the action on
   string name = 1;
-  // The list of consumables that should stop dispensing.
-  repeated string consumables = 2;
+  // The consumable that should stop dispensing.
+  string consumables = 2;
 
   // todo: do we need something like: bool ignore_stopped // don't error if the consumable is already stopped
 }
