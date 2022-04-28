@@ -222,6 +222,8 @@ message PullConsumablesResponse {
 message GetStockRequest {
   // Name of the device to update the state for
   string name = 1;
+  // The name of the consumable to get the stock for.
+  string consumable = 3;
   // Fields to read relative to the Consumable.Stock type.
   google.protobuf.FieldMask read_mask = 2;
 }
@@ -238,6 +240,8 @@ message UpdateStockRequest {
 message PullStockRequest {
   // Name of the device to fetch the state for
   string name = 1;
+  // The name of the consumable to get the stock for.
+  string consumable = 4;
   // Fields to fetch relative to the Consumable.Stock type
   google.protobuf.FieldMask read_mask = 2;
   // When true the device will only send changes to the resource value.
