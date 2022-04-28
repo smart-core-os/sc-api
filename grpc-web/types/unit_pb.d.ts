@@ -85,11 +85,13 @@ export namespace AudioLevelChange {
 }
 
 export enum TemperatureUnit { 
-  CELSIUS = 0,
-  FAHRENHEIT = 1,
-  KELVIN = 2,
+  TEMPERATURE_UNIT_UNSPECIFIED = 0,
+  CELSIUS = 1,
+  FAHRENHEIT = 2,
+  KELVIN = 3,
 }
 export enum MuteSupport { 
-  MUTE_NATIVE = 0,
-  MUTE_EMULATED = 1,
+  MUTE_SUPPORT_UNSPECIFIED = 0,
+  MUTE_NATIVE = 1,
+  MUTE_EMULATED = 2,
 }

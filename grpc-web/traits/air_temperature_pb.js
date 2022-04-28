@@ -454,7 +454,7 @@ proto.smartcore.traits.AirTemperature.serializeBinaryToWriter = function(message
  * @enum {number}
  */
 proto.smartcore.traits.AirTemperature.Mode = {
-  UNKNOWN: 0,
+  MODE_UNSPECIFIED: 0,
   ON: 1,
   OFF: 2,
   HEAT: 3,

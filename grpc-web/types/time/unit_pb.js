@@ -26,16 +26,17 @@ goog.exportSymbol('proto.smartcore.types.time.Unit', null, global);
  * @enum {number}
  */
 proto.smartcore.types.time.Unit = {
-  UNIT_SECONDS: 0,
-  UNIT_MICROSECONDS: 1,
-  UNIT_MILLISECONDS: 2,
-  UNIT_NANOSECONDS: 3,
-  UNIT_YEARS: 4,
-  UNIT_MONTHS: 5,
-  UNIT_WEEKS: 6,
-  UNIT_DAYS: 7,
-  UNIT_HOURS: 8,
-  UNIT_MINUTES: 9
+  UNIT_UNSPECIFIED: 0,
+  UNIT_SECONDS: 1,
+  UNIT_MICROSECONDS: 2,
+  UNIT_MILLISECONDS: 3,
+  UNIT_NANOSECONDS: 4,
+  UNIT_YEARS: 5,
+  UNIT_MONTHS: 6,
+  UNIT_WEEKS: 7,
+  UNIT_DAYS: 8,
+  UNIT_HOURS: 9,
+  UNIT_MINUTES: 10
 };
 
 goog.object.extend(exports, proto.smartcore.types.time);

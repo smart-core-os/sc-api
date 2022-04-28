@@ -23,7 +23,7 @@ export namespace OnOff {
   }
 
   export enum State { 
-    UNKNOWN = 0,
+    STATE_UNSPECIFIED = 0,
     ON = 1,
     OFF = 2,
   }

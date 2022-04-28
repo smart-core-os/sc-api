@@ -186,7 +186,7 @@ export namespace EnergyLevel {
     }
 
     export enum Threshold { 
-      THRESHOLD_UNKNOWN = 0,
+      THRESHOLD_UNSPECIFIED = 0,
       CRITICALLY_LOW = 1,
       EMPTY = 2,
       LOW = 3,

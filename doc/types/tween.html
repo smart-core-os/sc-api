@@ -246,27 +246,33 @@
           <tbody>
             
               <tr>
-                <td>NO_SUPPORT</td>
+                <td>TWEEN_SUPPORT_UNSPECIFIED</td>
                 <td>0</td>
+                <td><p>Tween support is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>NO_SUPPORT</td>
+                <td>1</td>
                 <td><p>The device does not support tweening</p></td>
               </tr>
             
               <tr>
                 <td>NATIVE</td>
-                <td>1</td>
+                <td>2</td>
                 <td><p>The device natively supports tweening. Natively typically means with minimal performance impact (i.e. no network)</p></td>
               </tr>
             
               <tr>
                 <td>EMULATED</td>
-                <td>2</td>
+                <td>3</td>
                 <td><p>The device supports tweening via emulation. Typically tweening is implemented by the Smart Core driver or a
 supervisor node and not the device itself.</p></td>
               </tr>
             
               <tr>
                 <td>FIXED</td>
-                <td>3</td>
+                <td>4</td>
                 <td><p>The device tweens values, but the duration or rate is fixed and cannot be adjusted. For example a motor might only
 have one speed when operating an adjustable desk</p></td>
               </tr>

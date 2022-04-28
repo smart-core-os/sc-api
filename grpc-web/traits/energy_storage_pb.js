@@ -1342,7 +1342,7 @@ proto.smartcore.traits.EnergyLevel.Quantity.serializeBinaryToWriter = function(m
  * @enum {number}
  */
 proto.smartcore.traits.EnergyLevel.Quantity.Threshold = {
-  THRESHOLD_UNKNOWN: 0,
+  THRESHOLD_UNSPECIFIED: 0,
   CRITICALLY_LOW: 1,
   EMPTY: 2,
   LOW: 3,

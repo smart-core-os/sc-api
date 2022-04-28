@@ -2693,7 +2693,7 @@ proto.smartcore.traits.Metadata.NIC.serializeBinaryToWriter = function(message, 
  * @enum {number}
  */
 proto.smartcore.traits.Metadata.NIC.Assignment = {
-  ASSIGNMENT_UNKNOWN: 0,
+  ASSIGNMENT_UNSPECIFIED: 0,
   DHCP: 1,
   STATIC: 2
 };

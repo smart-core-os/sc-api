@@ -231,10 +231,11 @@ proto.smartcore.types.Tween.prototype.hasTotalDuration = function() {
  * @enum {number}
  */
 proto.smartcore.types.TweenSupport = {
-  NO_SUPPORT: 0,
-  NATIVE: 1,
-  EMULATED: 2,
-  FIXED: 3
+  TWEEN_SUPPORT_UNSPECIFIED: 0,
+  NO_SUPPORT: 1,
+  NATIVE: 2,
+  EMULATED: 3,
+  FIXED: 4
 };
 
 goog.object.extend(exports, proto.smartcore.types);

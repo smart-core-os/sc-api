@@ -30,8 +30,9 @@ export namespace MotionDetection {
   }
 
   export enum State { 
-    NOT_DETECTED = 0,
-    DETECTED = 1,
+    STATE_UNSPECIFIED = 0,
+    NOT_DETECTED = 1,
+    DETECTED = 2,
   }
 }
 

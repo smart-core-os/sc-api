@@ -62,7 +62,7 @@ export namespace AirTemperature {
   }
 
   export enum Mode { 
-    UNKNOWN = 0,
+    MODE_UNSPECIFIED = 0,
     ON = 1,
     OFF = 2,
     HEAT = 3,

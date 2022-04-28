@@ -26,7 +26,7 @@ goog.exportSymbol('proto.smartcore.types.ChangeType', null, global);
  * @enum {number}
  */
 proto.smartcore.types.ChangeType = {
-  NONE: 0,
+  CHANGE_TYPE_UNSPECIFIED: 0,
   ADD: 1,
   UPDATE: 2,
   REMOVE: 3,

@@ -178,7 +178,7 @@ export namespace FloatAttributes {
 }
 
 export enum InvalidNumberBehaviour { 
-  UNSPECIFIED = 0,
+  INVALID_NUMBER_BEHAVIOUR_UNSPECIFIED = 0,
   RESTRICT = 1,
   ERROR = 2,
   ALLOW = 3,

@@ -336,7 +336,7 @@ proto.smartcore.traits.AirQuality.serializeBinaryToWriter = function(message, wr
  * @enum {number}
  */
 proto.smartcore.traits.AirQuality.Comfort = {
-  UNKNOWN: 0,
+  COMFORT_UNSPECIFIED: 0,
   COMFORTABLE: 1,
   UNCOMFORTABLE: 2
 };

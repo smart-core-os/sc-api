@@ -42,7 +42,7 @@ export namespace AirQuality {
   }
 
   export enum Comfort { 
-    UNKNOWN = 0,
+    COMFORT_UNSPECIFIED = 0,
     COMFORTABLE = 1,
     UNCOMFORTABLE = 2,
   }

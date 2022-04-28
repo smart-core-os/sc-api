@@ -382,7 +382,7 @@ export namespace Metadata {
     }
 
     export enum Assignment { 
-      ASSIGNMENT_UNKNOWN = 0,
+      ASSIGNMENT_UNSPECIFIED = 0,
       DHCP = 1,
       STATIC = 2,
     }

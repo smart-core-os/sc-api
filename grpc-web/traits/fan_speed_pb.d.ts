@@ -35,7 +35,7 @@ export namespace FanSpeed {
   }
 
   export enum Direction { 
-    DIRECTION_UNKNOWN = 0,
+    DIRECTION_UNSPECIFIED = 0,
     FORWARD = 1,
     BACKWARD = 2,
   }

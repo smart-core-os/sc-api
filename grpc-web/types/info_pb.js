@@ -374,7 +374,7 @@ proto.smartcore.types.ResourceSupport.prototype.hasPullPoll = function() {
  * @enum {number}
  */
 proto.smartcore.types.PullSupport = {
-  PULL_SUPPORT_UNKNOWN: 0,
+  PULL_SUPPORT_UNSPECIFIED: 0,
   PULL_SUPPORT_NATIVE: 1,
   PULL_SUPPORT_EMULATED: 2
 };

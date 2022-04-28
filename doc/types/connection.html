@@ -215,7 +215,7 @@
           <tbody>
             
               <tr>
-                <td>COMM_UNKNOWN</td>
+                <td>COMM_STATUS_UNSPECIFIED</td>
                 <td>0</td>
                 <td><p>the status of the line is unknown or unknowable</p></td>
               </tr>
@@ -244,20 +244,26 @@
           <tbody>
             
               <tr>
-                <td>NOT_APPLICABLE</td>
+                <td>CONNECTIVITY_UNSPECIFIED</td>
                 <td>0</td>
+                <td><p>The connection state has not been provided.</p></td>
+              </tr>
+            
+              <tr>
+                <td>NOT_APPLICABLE</td>
+                <td>1</td>
                 <td><p>The concept of a connection makes no sense for this device</p></td>
               </tr>
             
               <tr>
                 <td>DISCONNECTED</td>
-                <td>1</td>
+                <td>2</td>
                 <td><p>There is no active connection</p></td>
               </tr>
             
               <tr>
                 <td>CONNECTED</td>
-                <td>2</td>
+                <td>3</td>
                 <td><p>There is an open connection to the device</p></td>
               </tr>
             

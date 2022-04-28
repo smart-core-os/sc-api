@@ -71,10 +71,11 @@ export namespace InputSupport {
   }
 
   export enum Feature { 
-    AV = 0,
-    AUDIO_ONLY = 1,
-    VIDEO_ONLY = 2,
-    INDEPENDENT = 3,
+    FEATURE_UNSPECIFIED = 0,
+    AV = 1,
+    AUDIO_ONLY = 2,
+    VIDEO_ONLY = 3,
+    INDEPENDENT = 4,
   }
 }
 

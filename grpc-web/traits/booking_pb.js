@@ -870,7 +870,7 @@ proto.smartcore.traits.BookingSupport.serializeBinaryToWriter = function(message
  * @enum {number}
  */
 proto.smartcore.traits.BookingSupport.CheckInSupport = {
-  UNKNOWN: 0,
+  CHECK_IN_SUPPORT_UNSPECIFIED: 0,
   NO_SUPPORT: 1,
   STATE: 2,
   TIME: 3

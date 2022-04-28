@@ -41,7 +41,7 @@ export namespace Emergency {
   }
 
   export enum Level { 
-    UNKNOWN = 0,
+    LEVEL_UNSPECIFIED = 0,
     OK = 1,
     WARNING = 2,
     EMERGENCY = 3,

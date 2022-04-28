@@ -314,8 +314,9 @@ proto.smartcore.traits.MotionDetection.serializeBinaryToWriter = function(messag
  * @enum {number}
  */
 proto.smartcore.traits.MotionDetection.State = {
-  NOT_DETECTED: 0,
-  DETECTED: 1
+  STATE_UNSPECIFIED: 0,
+  NOT_DETECTED: 1,
+  DETECTED: 2
 };
 
 /**

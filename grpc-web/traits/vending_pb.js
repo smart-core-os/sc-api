@@ -2817,6 +2817,7 @@ proto.smartcore.traits.GetStockRequest.prototype.toObject = function(opt_include
 proto.smartcore.traits.GetStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    consumable: jspb.Message.getFieldWithDefault(msg, 3, ""),
     readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
@@ -2857,6 +2858,10 @@ proto.smartcore.traits.GetStockRequest.deserializeBinaryFromReader = function(ms
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConsumable(value);
       break;
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
@@ -2899,6 +2904,13 @@ proto.smartcore.traits.GetStockRequest.serializeBinaryToWriter = function(messag
       f
     );
   }
+  f = message.getConsumable();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
   f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
@@ -2925,6 +2937,24 @@ proto.smartcore.traits.GetStockRequest.prototype.getName = function() {
  */
 proto.smartcore.traits.GetStockRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string consumable = 3;
+ * @return {string}
+ */
+proto.smartcore.traits.GetStockRequest.prototype.getConsumable = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.GetStockRequest} returns this
+ */
+proto.smartcore.traits.GetStockRequest.prototype.setConsumable = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3260,6 +3290,7 @@ proto.smartcore.traits.PullStockRequest.prototype.toObject = function(opt_includ
 proto.smartcore.traits.PullStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
     readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
     updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
@@ -3301,6 +3332,10 @@ proto.smartcore.traits.PullStockRequest.deserializeBinaryFromReader = function(m
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConsumable(value);
       break;
     case 2:
       var value = new google_protobuf_field_mask_pb.FieldMask;
@@ -3347,6 +3382,13 @@ proto.smartcore.traits.PullStockRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
+  f = message.getConsumable();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
   f = message.getReadMask();
   if (f != null) {
     writer.writeMessage(
@@ -3380,6 +3422,24 @@ proto.smartcore.traits.PullStockRequest.prototype.getName = function() {
  */
 proto.smartcore.traits.PullStockRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string consumable = 4;
+ * @return {string}
+ */
+proto.smartcore.traits.PullStockRequest.prototype.getConsumable = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.PullStockRequest} returns this
+ */
+proto.smartcore.traits.PullStockRequest.prototype.setConsumable = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

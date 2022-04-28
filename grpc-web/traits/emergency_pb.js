@@ -370,7 +370,7 @@ proto.smartcore.traits.Emergency.serializeBinaryToWriter = function(message, wri
  * @enum {number}
  */
 proto.smartcore.traits.Emergency.Level = {
-  UNKNOWN: 0,
+  LEVEL_UNSPECIFIED: 0,
   OK: 1,
   WARNING: 2,
   EMERGENCY: 3

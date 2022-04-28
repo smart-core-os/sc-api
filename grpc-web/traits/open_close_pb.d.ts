@@ -63,7 +63,7 @@ export namespace OpenClosePosition {
   }
 
   export enum Direction { 
-    UNSPECIFIED = 0,
+    DIRECTION_UNSPECIFIED = 0,
     UP = 1,
     DOWN = 2,
     LEFT = 3,

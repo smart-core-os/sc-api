@@ -320,7 +320,7 @@ proto.smartcore.traits.OnOff.serializeBinaryToWriter = function(message, writer)
  * @enum {number}
  */
 proto.smartcore.traits.OnOff.State = {
-  UNKNOWN: 0,
+  STATE_UNSPECIFIED: 0,
   ON: 1,
   OFF: 2
 };

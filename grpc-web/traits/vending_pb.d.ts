@@ -319,6 +319,9 @@ export class GetStockRequest extends jspb.Message {
   getName(): string;
   setName(value: string): GetStockRequest;
 
+  getConsumable(): string;
+  setConsumable(value: string): GetStockRequest;
+
   getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
   setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetStockRequest;
   hasReadMask(): boolean;
@@ -335,6 +338,7 @@ export class GetStockRequest extends jspb.Message {
 export namespace GetStockRequest {
   export type AsObject = {
     name: string,
+    consumable: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
@@ -377,6 +381,9 @@ export class PullStockRequest extends jspb.Message {
   getName(): string;
   setName(value: string): PullStockRequest;
 
+  getConsumable(): string;
+  setConsumable(value: string): PullStockRequest;
+
   getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
   setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullStockRequest;
   hasReadMask(): boolean;
@@ -396,6 +403,7 @@ export class PullStockRequest extends jspb.Message {
 export namespace PullStockRequest {
   export type AsObject = {
     name: string,
+    consumable: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     updatesOnly: boolean,
   }

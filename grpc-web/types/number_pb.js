@@ -1304,7 +1304,7 @@ proto.smartcore.types.FloatAttributes.prototype.hasDefaultCapping = function() {
  * @enum {number}
  */
 proto.smartcore.types.InvalidNumberBehaviour = {
-  UNSPECIFIED: 0,
+  INVALID_NUMBER_BEHAVIOUR_UNSPECIFIED: 0,
   RESTRICT: 1,
   ERROR: 2,
   ALLOW: 3

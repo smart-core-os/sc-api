@@ -378,7 +378,7 @@ proto.smartcore.traits.FanSpeed.serializeBinaryToWriter = function(message, writ
  * @enum {number}
  */
 proto.smartcore.traits.FanSpeed.Direction = {
-  DIRECTION_UNKNOWN: 0,
+  DIRECTION_UNSPECIFIED: 0,
   FORWARD: 1,
   BACKWARD: 2
 };

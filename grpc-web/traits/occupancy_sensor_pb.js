@@ -355,7 +355,7 @@ proto.smartcore.traits.Occupancy.serializeBinaryToWriter = function(message, wri
  * @enum {number}
  */
 proto.smartcore.traits.Occupancy.State = {
-  NO_SIGNALS: 0,
+  STATE_UNSPECIFIED: 0,
   OCCUPIED: 1,
   UNOCCUPIED: 2,
   IDLE: 3
