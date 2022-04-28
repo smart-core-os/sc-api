@@ -343,7 +343,7 @@ message StopDispenseRequest {
   // Name of the device to invoke the action on
   string name = 1;
   // The consumable that should stop dispensing.
-  string consumables = 2;
+  string consumable = 2;
 
   // todo: do we need something like: bool ignore_stopped // don't error if the consumable is already stopped
 }
