@@ -5330,7 +5330,7 @@ proto.smartcore.traits.StopDispenseRequest.prototype.toObject = function(opt_inc
 proto.smartcore.traits.StopDispenseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumables: jspb.Message.getFieldWithDefault(msg, 2, "")
+    consumable: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -5373,7 +5373,7 @@ proto.smartcore.traits.StopDispenseRequest.deserializeBinaryFromReader = functio
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setConsumables(value);
+      msg.setConsumable(value);
       break;
     default:
       reader.skipField();
@@ -5411,7 +5411,7 @@ proto.smartcore.traits.StopDispenseRequest.serializeBinaryToWriter = function(me
       f
     );
   }
-  f = message.getConsumables();
+  f = message.getConsumable();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -5440,10 +5440,10 @@ proto.smartcore.traits.StopDispenseRequest.prototype.setName = function(value) {
 
 
 /**
- * optional string consumables = 2;
+ * optional string consumable = 2;
  * @return {string}
  */
-proto.smartcore.traits.StopDispenseRequest.prototype.getConsumables = function() {
+proto.smartcore.traits.StopDispenseRequest.prototype.getConsumable = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -5452,7 +5452,7 @@ proto.smartcore.traits.StopDispenseRequest.prototype.getConsumables = function()
  * @param {string} value
  * @return {!proto.smartcore.traits.StopDispenseRequest} returns this
  */
-proto.smartcore.traits.StopDispenseRequest.prototype.setConsumables = function(value) {
+proto.smartcore.traits.StopDispenseRequest.prototype.setConsumable = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 

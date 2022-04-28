@@ -647,8 +647,8 @@ export class StopDispenseRequest extends jspb.Message {
   getName(): string;
   setName(value: string): StopDispenseRequest;
 
-  getConsumables(): string;
-  setConsumables(value: string): StopDispenseRequest;
+  getConsumable(): string;
+  setConsumable(value: string): StopDispenseRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopDispenseRequest.AsObject;
@@ -661,7 +661,7 @@ export class StopDispenseRequest extends jspb.Message {
 export namespace StopDispenseRequest {
   export type AsObject = {
     name: string,
-    consumables: string,
+    consumable: string,
   }
 }
 
