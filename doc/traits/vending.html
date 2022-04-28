@@ -207,10 +207,6 @@
                 </li>
               
                 <li>
-                  <a href="#smartcore.traits.DispenseRequest.QuantityEntry"><span class="badge">M</span>DispenseRequest.QuantityEntry</a>
-                </li>
-              
-                <li>
                   <a href="#smartcore.traits.GetStockRequest"><span class="badge">M</span>GetStockRequest</a>
                 </li>
               
@@ -597,11 +593,17 @@ Optional. </p></td>
                 </tr>
               
                 <tr>
+                  <td>consumable</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The name of the consumable to dispense the stock for. </p></td>
+                </tr>
+              
+                <tr>
                   <td>quantity</td>
-                  <td><a href="#smartcore.traits.DispenseRequest.QuantityEntry">DispenseRequest.QuantityEntry</a></td>
-                  <td>repeated</td>
-                  <td><p>The quantity of each consumable to dispense.
-The map is keyed by the consumable name, the quantity should be in a unit supported by that consumable. </p></td>
+                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
+                  <td></td>
+                  <td><p>The quantity of the consumable to dispense. </p></td>
                 </tr>
               
                 <tr>
@@ -609,37 +611,6 @@ The map is keyed by the consumable name, the quantity should be in a unit suppor
                   <td><a href="#google.protobuf.FieldMask">google.protobuf.FieldMask</a></td>
                   <td></td>
                   <td><p>Fields to update relative to the quantity property. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="smartcore.traits.DispenseRequest.QuantityEntry">DispenseRequest.QuantityEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#smartcore.traits.Consumable.Quantity">Consumable.Quantity</a></td>
-                  <td></td>
-                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -1241,8 +1212,8 @@ The default behaviour is to send the current value immediately followed by any u
                 <tr>
                   <td>consumables</td>
                   <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>The list of consumables that should stop dispensing. </p></td>
+                  <td></td>
+                  <td><p>The consumable that should stop dispensing. </p></td>
                 </tr>
               
             </tbody>

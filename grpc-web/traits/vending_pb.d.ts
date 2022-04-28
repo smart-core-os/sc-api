@@ -613,8 +613,13 @@ export class DispenseRequest extends jspb.Message {
   getName(): string;
   setName(value: string): DispenseRequest;
 
-  getQuantityMap(): jspb.Map<string, Consumable.Quantity>;
-  clearQuantityMap(): DispenseRequest;
+  getConsumable(): string;
+  setConsumable(value: string): DispenseRequest;
+
+  getQuantity(): Consumable.Quantity | undefined;
+  setQuantity(value?: Consumable.Quantity): DispenseRequest;
+  hasQuantity(): boolean;
+  clearQuantity(): DispenseRequest;
 
   getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
   setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): DispenseRequest;
@@ -632,7 +637,8 @@ export class DispenseRequest extends jspb.Message {
 export namespace DispenseRequest {
   export type AsObject = {
     name: string,
-    quantityMap: Array<[string, Consumable.Quantity.AsObject]>,
+    consumable: string,
+    quantity?: Consumable.Quantity.AsObject,
     updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
   }
 }
@@ -641,10 +647,8 @@ export class StopDispenseRequest extends jspb.Message {
   getName(): string;
   setName(value: string): StopDispenseRequest;
 
-  getConsumablesList(): Array<string>;
-  setConsumablesList(value: Array<string>): StopDispenseRequest;
-  clearConsumablesList(): StopDispenseRequest;
-  addConsumables(value: string, index?: number): StopDispenseRequest;
+  getConsumables(): string;
+  setConsumables(value: string): StopDispenseRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StopDispenseRequest.AsObject;
@@ -657,7 +661,7 @@ export class StopDispenseRequest extends jspb.Message {
 export namespace StopDispenseRequest {
   export type AsObject = {
     name: string,
-    consumablesList: Array<string>,
+    consumables: string,
   }
 }
 

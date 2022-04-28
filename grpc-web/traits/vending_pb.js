@@ -484,7 +484,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.smartcore.traits.StopDispenseRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.smartcore.traits.StopDispenseRequest.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.smartcore.traits.StopDispenseRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -5068,7 +5068,8 @@ proto.smartcore.traits.DispenseRequest.prototype.toObject = function(opt_include
 proto.smartcore.traits.DispenseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    quantityMap: (f = msg.getQuantityMap()) ? f.toObject(includeInstance, proto.smartcore.traits.Consumable.Quantity.toObject) : [],
+    consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    quantity: (f = msg.getQuantity()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
     updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
@@ -5110,11 +5111,14 @@ proto.smartcore.traits.DispenseRequest.deserializeBinaryFromReader = function(ms
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConsumable(value);
+      break;
     case 2:
-      var value = msg.getQuantityMap();
-      reader.readMessage(value, function(message, reader) {
-        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.smartcore.traits.Consumable.Quantity.deserializeBinaryFromReader, "", new proto.smartcore.traits.Consumable.Quantity());
-         });
+      var value = new proto.smartcore.traits.Consumable.Quantity;
+      reader.readMessage(value,proto.smartcore.traits.Consumable.Quantity.deserializeBinaryFromReader);
+      msg.setQuantity(value);
       break;
     case 3:
       var value = new google_protobuf_field_mask_pb.FieldMask;
@@ -5157,9 +5161,20 @@ proto.smartcore.traits.DispenseRequest.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getQuantityMap(true);
-  if (f && f.getLength() > 0) {
-    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.smartcore.traits.Consumable.Quantity.serializeBinaryToWriter);
+  f = message.getConsumable();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getQuantity();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.smartcore.traits.Consumable.Quantity.serializeBinaryToWriter
+    );
   }
   f = message.getUpdateMask();
   if (f != null) {
@@ -5191,25 +5206,58 @@ proto.smartcore.traits.DispenseRequest.prototype.setName = function(value) {
 
 
 /**
- * map<string, Consumable.Quantity> quantity = 2;
- * @param {boolean=} opt_noLazyCreate Do not create the map if
- * empty, instead returning `undefined`
- * @return {!jspb.Map<string,!proto.smartcore.traits.Consumable.Quantity>}
+ * optional string consumable = 4;
+ * @return {string}
  */
-proto.smartcore.traits.DispenseRequest.prototype.getQuantityMap = function(opt_noLazyCreate) {
-  return /** @type {!jspb.Map<string,!proto.smartcore.traits.Consumable.Quantity>} */ (
-      jspb.Message.getMapField(this, 2, opt_noLazyCreate,
-      proto.smartcore.traits.Consumable.Quantity));
+proto.smartcore.traits.DispenseRequest.prototype.getConsumable = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * Clears values from the map. The map will be non-null.
+ * @param {string} value
  * @return {!proto.smartcore.traits.DispenseRequest} returns this
  */
-proto.smartcore.traits.DispenseRequest.prototype.clearQuantityMap = function() {
-  this.getQuantityMap().clear();
-  return this;};
+proto.smartcore.traits.DispenseRequest.prototype.setConsumable = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional Consumable.Quantity quantity = 2;
+ * @return {?proto.smartcore.traits.Consumable.Quantity}
+ */
+proto.smartcore.traits.DispenseRequest.prototype.getQuantity = function() {
+  return /** @type{?proto.smartcore.traits.Consumable.Quantity} */ (
+    jspb.Message.getWrapperField(this, proto.smartcore.traits.Consumable.Quantity, 2));
+};
+
+
+/**
+ * @param {?proto.smartcore.traits.Consumable.Quantity|undefined} value
+ * @return {!proto.smartcore.traits.DispenseRequest} returns this
+*/
+proto.smartcore.traits.DispenseRequest.prototype.setQuantity = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.DispenseRequest} returns this
+ */
+proto.smartcore.traits.DispenseRequest.prototype.clearQuantity = function() {
+  return this.setQuantity(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.DispenseRequest.prototype.hasQuantity = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
 
 
 /**
@@ -5250,13 +5298,6 @@ proto.smartcore.traits.DispenseRequest.prototype.hasUpdateMask = function() {
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.smartcore.traits.StopDispenseRequest.repeatedFields_ = [2];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -5289,7 +5330,7 @@ proto.smartcore.traits.StopDispenseRequest.prototype.toObject = function(opt_inc
 proto.smartcore.traits.StopDispenseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumablesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+    consumables: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -5332,7 +5373,7 @@ proto.smartcore.traits.StopDispenseRequest.deserializeBinaryFromReader = functio
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.addConsumables(value);
+      msg.setConsumables(value);
       break;
     default:
       reader.skipField();
@@ -5370,9 +5411,9 @@ proto.smartcore.traits.StopDispenseRequest.serializeBinaryToWriter = function(me
       f
     );
   }
-  f = message.getConsumablesList();
+  f = message.getConsumables();
   if (f.length > 0) {
-    writer.writeRepeatedString(
+    writer.writeString(
       2,
       f
     );
@@ -5399,39 +5440,20 @@ proto.smartcore.traits.StopDispenseRequest.prototype.setName = function(value) {
 
 
 /**
- * repeated string consumables = 2;
- * @return {!Array<string>}
+ * optional string consumables = 2;
+ * @return {string}
  */
-proto.smartcore.traits.StopDispenseRequest.prototype.getConsumablesList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
-};
-
-
-/**
- * @param {!Array<string>} value
- * @return {!proto.smartcore.traits.StopDispenseRequest} returns this
- */
-proto.smartcore.traits.StopDispenseRequest.prototype.setConsumablesList = function(value) {
-  return jspb.Message.setField(this, 2, value || []);
+proto.smartcore.traits.StopDispenseRequest.prototype.getConsumables = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @param {number=} opt_index
  * @return {!proto.smartcore.traits.StopDispenseRequest} returns this
  */
-proto.smartcore.traits.StopDispenseRequest.prototype.addConsumables = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.smartcore.traits.StopDispenseRequest} returns this
- */
-proto.smartcore.traits.StopDispenseRequest.prototype.clearConsumablesList = function() {
-  return this.setConsumablesList([]);
+proto.smartcore.traits.StopDispenseRequest.prototype.setConsumables = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
