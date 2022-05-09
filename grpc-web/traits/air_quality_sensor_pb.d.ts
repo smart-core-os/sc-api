@@ -25,6 +25,11 @@ export class AirQuality extends jspb.Message {
   getComfort(): AirQuality.Comfort;
   setComfort(value: AirQuality.Comfort): AirQuality;
 
+  getInfectionRisk(): number;
+  setInfectionRisk(value: number): AirQuality;
+  hasInfectionRisk(): boolean;
+  clearInfectionRisk(): AirQuality;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQuality.AsObject;
   static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
@@ -39,6 +44,7 @@ export namespace AirQuality {
     volatileOrganicCompounds?: number,
     airPressure?: number,
     comfort: AirQuality.Comfort,
+    infectionRisk?: number,
   }
 
   export enum Comfort { 
@@ -60,6 +66,11 @@ export namespace AirQuality {
   export enum AirPressureCase { 
     _AIR_PRESSURE_NOT_SET = 0,
     AIR_PRESSURE = 3,
+  }
+
+  export enum InfectionRiskCase { 
+    _INFECTION_RISK_NOT_SET = 0,
+    INFECTION_RISK = 5,
   }
 }
 
