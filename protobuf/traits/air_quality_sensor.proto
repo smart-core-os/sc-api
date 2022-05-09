@@ -38,6 +38,9 @@ message AirQuality {
   optional float air_pressure = 3;
   // General comfort of the area
   Comfort comfort = 4;
+  // A percentage [0,100] reading for how infectious the air is.
+  // Typically a combination of other sensor readings, the combination algorithm is undefined.
+  optional float infection_risk = 5;
 
   // Comfort encodes levels of comfort for an area.
   enum Comfort {
