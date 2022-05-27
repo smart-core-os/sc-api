@@ -8,3 +8,8 @@ if [ $1 = "prepare" ]; then
   git add pom.xml
 fi
 
+if [ $1 = "perform" ]; then
+  echo "mvn deploy"
+  mvn deploy
+fi
+
