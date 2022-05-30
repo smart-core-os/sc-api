@@ -26,8 +26,8 @@ jobs:
 
       # run generate script
       - name: Generate docs 🔧
-        run: cd docs/
-      - run: bash ./generate.sh
+        working-directory: ./docs
+        run: bash ./generate.sh
 
       # push to docs repo
       - name: Deploy 🚀
