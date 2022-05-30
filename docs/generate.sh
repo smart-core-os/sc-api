@@ -4,9 +4,9 @@ set -e
 
 function gen_folder() {
   for file in ../protobuf/$1/*.proto; do
-    mkdir -p ./src/api/$1
+    mkdir -p ./api/$1
     [ -f "$file" ] || continue
-    protoc -I ../protobuf/ --doc_out ./src/api/$1 --doc_opt=./markdown.tmpl,$(basename "$file" .proto).md $file
+    protoc -I ../protobuf/ --doc_out ./api/$1 --doc_opt=./markdown.tmpl,$(basename "$file" .proto).md $file
   done
 }
 

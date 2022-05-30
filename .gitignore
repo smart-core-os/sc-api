@@ -7,7 +7,6 @@
 /out/
 .idea_modules/
 
-
 ### Java
 *.class
 
@@ -114,6 +113,8 @@ typings/
 .env
 .env.test
 
-
 # firebase
 .firebase
+
+# (auto-generated) api docs
+docs/api/
