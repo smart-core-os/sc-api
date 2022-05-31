@@ -19,7 +19,7 @@ pub_perform() {
   popd
 }
 
-pub_prepare "doc" "$1"
+pub_prepare "docs" "$1"
 pub_prepare "go" "$1"
 pub_prepare "grpc-web" "$1"
 pub_prepare "java" "$1"
@@ -27,7 +27,7 @@ pub_prepare "node" "$1"
 
 git commit -m "chore: publish v$1" --no-status
 
-pub_perform "doc" "$1"
+pub_perform "docs" "$1"
 pub_perform "go" "$1"
 pub_perform "grpc-web" "$1"
 pub_perform "java" "$1"

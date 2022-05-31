@@ -9,6 +9,7 @@ function gen_folder() {
   popd
 }
 
+gen_folder "docs"
 gen_folder "go"
 gen_folder "grpc-web"
 gen_folder "java"
