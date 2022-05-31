@@ -47,6 +47,8 @@ service PublicationApi {
   // todo: methods for listing publication history, reverting to a previous version, etc
 }
 
+// todo: service PublicationInfo
+
 // Publication describes some data that can be published.
 // While the content of the data is undefined, the metadata about data is described.
 // A publication can be intended for a specific audience, either a device or some other concept.
