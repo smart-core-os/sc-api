@@ -30,6 +30,10 @@ service PublicationApi {
   // If the request has a version then the device will compare it with its known version and fail to update if
   // they differ enabling multiple concurrent uses of this API.
   rpc UpdatePublication(UpdatePublicationRequest) returns (Publication);
+  // Delete a publication by id.
+  // If the request has a version then the device will compare it with its known version and fail to delete if
+  // they differ enabling multiple concurrent uses of this API.
+  rpc DeletePublication(DeletePublicationRequest) returns (Publication);
   // Subscribe to changes for a single publication.
   rpc PullPublication(PullPublicationRequest) returns (stream PullPublicationResponse);
 
@@ -139,6 +143,20 @@ message UpdatePublicationRequest {
   // Populate with the latest known version on the client to avoid concurrent updates overriding each other
   // transparently.
   string version = 4;
+}
+
+message DeletePublicationRequest {
+  // The name of the device
+  string name = 1;
+  // The publication id.
+  string id = 2;
+  // If present, the delete will fail if the version on the server does not match this version.
+  // Populate with the latest known version on the client to avoid concurrent updates overriding each other
+  // transparently.
+  string version = 3;
+  // If set to true, and no publication with the given id exists, the request will succeed but no action will
+  // be taken.
+  bool allow_missing = 4;
 }
 
 message PullPublicationRequest {
