@@ -35,6 +35,7 @@ service PublicationApi {
   // they differ enabling multiple concurrent uses of this API.
   rpc DeletePublication(DeletePublicationRequest) returns (Publication);
   // Subscribe to changes for a single publication.
+  // The stream is closed if the publication is deleted.
   rpc PullPublication(PullPublicationRequest) returns (stream PullPublicationResponse);
 
   // List all publications available on the device.
