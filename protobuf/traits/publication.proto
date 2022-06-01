@@ -26,8 +26,8 @@ service PublicationApi {
   // If version is not provided, this returns the newest version.
   rpc GetPublication(GetPublicationRequest) returns (Publication);
   // Update a publication by id.
-  // The returned Publication will have a new version.
-  // If the request has a version then the device will compare it with the latest known version and fail to update if
+  // The updated Publication will have a new version, publish time, and reset receipt properties.
+  // If the request has a version then the device will compare it with its known version and fail to update if
   // they differ enabling multiple concurrent uses of this API.
   rpc UpdatePublication(UpdatePublicationRequest) returns (Publication);
   // Subscribe to changes for a single publication.
