@@ -135,8 +135,9 @@ message UpdatePublicationRequest {
   Publication publication = 2;
   // Fields to update relative to the Publication type
   google.protobuf.FieldMask update_mask = 3;
-  // If absent, the update applies to the latest version.
-  // If present, the update will fail if the latest version does not match this version.
+  // If present, the update will fail if the version on the server does not match this version.
+  // Populate with the latest known version on the client to avoid concurrent updates overriding each other
+  // transparently.
   string version = 4;
 }
 
