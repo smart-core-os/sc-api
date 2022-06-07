@@ -8,6 +8,8 @@ if [ $1 = "prepare" ]; then
   echo "- Preparing"
   echo "    git clone git@github.com:smart-core-os/smart-core-os.github.io.git ./target"
   git clone git@github.com:smart-core-os/smart-core-os.github.io.git ./target
+  echo "    deleting old doc files"
+  rm -rf ./target/src/api/traits/* ./target/src/api/types/* ./target/src/api/info/*
   echo "    copying docs files"
   cp -R ./api/* ./target/src/api
   echo "    committing generated docs to repo"
