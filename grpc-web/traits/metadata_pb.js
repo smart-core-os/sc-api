@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
@@ -842,6 +836,8 @@ proto.smartcore.traits.Metadata.Location.toObject = function(includeInstance, ms
     title: jspb.Message.getFieldWithDefault(msg, 1, ""),
     description: jspb.Message.getFieldWithDefault(msg, 2, ""),
     architectureReference: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    floor: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    zone: jspb.Message.getFieldWithDefault(msg, 5, ""),
     moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
@@ -890,6 +886,14 @@ proto.smartcore.traits.Metadata.Location.deserializeBinaryFromReader = function(
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setArchitectureReference(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFloor(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setZone(value);
       break;
     case 100:
       var value = msg.getMoreMap();
@@ -944,6 +948,20 @@ proto.smartcore.traits.Metadata.Location.serializeBinaryToWriter = function(mess
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getFloor();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getZone();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1005,6 +1023,42 @@ proto.smartcore.traits.Metadata.Location.prototype.getArchitectureReference = fu
  */
 proto.smartcore.traits.Metadata.Location.prototype.setArchitectureReference = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string floor = 4;
+ * @return {string}
+ */
+proto.smartcore.traits.Metadata.Location.prototype.getFloor = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.Metadata.Location} returns this
+ */
+proto.smartcore.traits.Metadata.Location.prototype.setFloor = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string zone = 5;
+ * @return {string}
+ */
+proto.smartcore.traits.Metadata.Location.prototype.getZone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.Metadata.Location} returns this
+ */
+proto.smartcore.traits.Metadata.Location.prototype.setZone = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

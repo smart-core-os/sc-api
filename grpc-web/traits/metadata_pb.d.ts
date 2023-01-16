@@ -116,6 +116,12 @@ export namespace Metadata {
     getArchitectureReference(): string;
     setArchitectureReference(value: string): Location;
 
+    getFloor(): string;
+    setFloor(value: string): Location;
+
+    getZone(): string;
+    setZone(value: string): Location;
+
     getMoreMap(): jspb.Map<string, string>;
     clearMoreMap(): Location;
 
@@ -132,6 +138,8 @@ export namespace Metadata {
       title: string,
       description: string,
       architectureReference: string,
+      floor: string,
+      zone: string,
       moreMap: Array<[string, string]>,
     }
   }
