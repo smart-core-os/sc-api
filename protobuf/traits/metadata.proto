@@ -58,8 +58,14 @@ message Metadata {
     string description = 2;
     // Architectural reference holds the reference for the location in architectural drawings.
     string architecture_reference = 3;
+    // The common name for the floor the device is located on.
+    string floor = 4;
+    // A user defined zone withing the building where the device is located.
+    // Different buildings organise their spaces differently into groups or zones,
+    // for example some buildings group by compass points: North and South, some by quarters.
+    string zone = 5;
     // other options, add when requested/needed
-    // string floor;
+    // string room;
     // string site;
     // string country; // country name/code?
     // string alignment; // left, centre, right, top, bottom-left, etc
