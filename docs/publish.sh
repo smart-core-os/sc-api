@@ -15,7 +15,7 @@ if [ $1 = "prepare" ]; then
   echo "    committing generated docs to repo"
   pushd target
   git add src/api --force
-  git commit -m "chore: generated API docs v$2"
+  git commit -m "chore: generated API docs v$2" || echo "Done"
   popd
 fi
 
