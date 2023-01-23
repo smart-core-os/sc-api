@@ -1,6 +1,6 @@
 {
   "name": "@smart-core-os/sc-api",
-  "version": "1.0.0-beta.39",
+  "version": "1.0.0-beta.40",
   "description": "Node.JS smart core server implementation",
   "license": "AGPL-3.0",
   "scripts": {
