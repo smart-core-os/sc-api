@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
@@ -798,7 +804,8 @@ proto.smartcore.traits.Metadata.Appearance.prototype.getMoreMap = function(opt_n
  */
 proto.smartcore.traits.Metadata.Appearance.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -1081,7 +1088,8 @@ proto.smartcore.traits.Metadata.Location.prototype.getMoreMap = function(opt_noL
  */
 proto.smartcore.traits.Metadata.Location.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -1304,7 +1312,8 @@ proto.smartcore.traits.Metadata.ID.prototype.getMoreMap = function(opt_noLazyCre
  */
 proto.smartcore.traits.Metadata.ID.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -1828,7 +1837,8 @@ proto.smartcore.traits.Metadata.Product.prototype.getMoreMap = function(opt_noLa
  */
 proto.smartcore.traits.Metadata.Product.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -2192,7 +2202,8 @@ proto.smartcore.traits.Metadata.Revision.prototype.getMoreMap = function(opt_noL
  */
 proto.smartcore.traits.Metadata.Revision.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -2538,7 +2549,8 @@ proto.smartcore.traits.Metadata.Installation.prototype.getMoreMap = function(opt
  */
 proto.smartcore.traits.Metadata.Installation.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -2916,7 +2928,8 @@ proto.smartcore.traits.Metadata.NIC.prototype.getMoreMap = function(opt_noLazyCr
  */
 proto.smartcore.traits.Metadata.NIC.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -3109,7 +3122,8 @@ proto.smartcore.traits.Metadata.Membership.prototype.getMoreMap = function(opt_n
  */
 proto.smartcore.traits.Metadata.Membership.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -3484,7 +3498,8 @@ proto.smartcore.traits.Metadata.prototype.getMoreMap = function(opt_noLazyCreate
  */
 proto.smartcore.traits.Metadata.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 
@@ -3647,7 +3662,8 @@ proto.smartcore.traits.TraitMetadata.prototype.getMoreMap = function(opt_noLazyC
  */
 proto.smartcore.traits.TraitMetadata.prototype.clearMoreMap = function() {
   this.getMoreMap().clear();
-  return this;};
+  return this;
+};
 
 
 

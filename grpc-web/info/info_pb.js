@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var types_change_pb = require('../types/change_pb.js');
 goog.object.extend(proto, types_change_pb);
@@ -1567,7 +1573,8 @@ proto.smartcore.info.Device.prototype.getLabelsMap = function(opt_noLazyCreate) 
  */
 proto.smartcore.info.Device.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
-  return this;};
+  return this;
+};
 
 
 
