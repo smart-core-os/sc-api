@@ -24,6 +24,11 @@ const _ = grpc.SupportPackageIsVersion7
 type EnterLeaveSensorApiClient interface {
 	// Subscribe to new enter or leave events.
 	PullEnterLeaveEvents(ctx context.Context, in *PullEnterLeaveEventsRequest, opts ...grpc.CallOption) (EnterLeaveSensorApi_PullEnterLeaveEventsClient, error)
+	// Get information about the enter leave state.
+	// The response will not contain a direction or occupant, but may include totals.
+	GetEnterLeaveEvent(ctx context.Context, in *GetEnterLeaveEventRequest, opts ...grpc.CallOption) (*EnterLeaveEvent, error)
+	// Reset the enter and leave totals.
+	ResetEnterLeaveTotals(ctx context.Context, in *ResetEnterLeaveTotalsRequest, opts ...grpc.CallOption) (*ResetEnterLeaveTotalsResponse, error)
 }
 
 type enterLeaveSensorApiClient struct {
@@ -66,12 +71,35 @@ func (x *enterLeaveSensorApiPullEnterLeaveEventsClient) Recv() (*PullEnterLeaveE
 	return m, nil
 }
 
+func (c *enterLeaveSensorApiClient) GetEnterLeaveEvent(ctx context.Context, in *GetEnterLeaveEventRequest, opts ...grpc.CallOption) (*EnterLeaveEvent, error) {
+	out := new(EnterLeaveEvent)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.EnterLeaveSensorApi/GetEnterLeaveEvent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *enterLeaveSensorApiClient) ResetEnterLeaveTotals(ctx context.Context, in *ResetEnterLeaveTotalsRequest, opts ...grpc.CallOption) (*ResetEnterLeaveTotalsResponse, error) {
+	out := new(ResetEnterLeaveTotalsResponse)
+	err := c.cc.Invoke(ctx, "/smartcore.traits.EnterLeaveSensorApi/ResetEnterLeaveTotals", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EnterLeaveSensorApiServer is the server API for EnterLeaveSensorApi service.
 // All implementations must embed UnimplementedEnterLeaveSensorApiServer
 // for forward compatibility
 type EnterLeaveSensorApiServer interface {
 	// Subscribe to new enter or leave events.
 	PullEnterLeaveEvents(*PullEnterLeaveEventsRequest, EnterLeaveSensorApi_PullEnterLeaveEventsServer) error
+	// Get information about the enter leave state.
+	// The response will not contain a direction or occupant, but may include totals.
+	GetEnterLeaveEvent(context.Context, *GetEnterLeaveEventRequest) (*EnterLeaveEvent, error)
+	// Reset the enter and leave totals.
+	ResetEnterLeaveTotals(context.Context, *ResetEnterLeaveTotalsRequest) (*ResetEnterLeaveTotalsResponse, error)
 	mustEmbedUnimplementedEnterLeaveSensorApiServer()
 }
 
@@ -81,6 +109,12 @@ type UnimplementedEnterLeaveSensorApiServer struct {
 
 func (UnimplementedEnterLeaveSensorApiServer) PullEnterLeaveEvents(*PullEnterLeaveEventsRequest, EnterLeaveSensorApi_PullEnterLeaveEventsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PullEnterLeaveEvents not implemented")
+}
+func (UnimplementedEnterLeaveSensorApiServer) GetEnterLeaveEvent(context.Context, *GetEnterLeaveEventRequest) (*EnterLeaveEvent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEnterLeaveEvent not implemented")
+}
+func (UnimplementedEnterLeaveSensorApiServer) ResetEnterLeaveTotals(context.Context, *ResetEnterLeaveTotalsRequest) (*ResetEnterLeaveTotalsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetEnterLeaveTotals not implemented")
 }
 func (UnimplementedEnterLeaveSensorApiServer) mustEmbedUnimplementedEnterLeaveSensorApiServer() {}
 
@@ -116,13 +150,58 @@ func (x *enterLeaveSensorApiPullEnterLeaveEventsServer) Send(m *PullEnterLeaveEv
 	return x.ServerStream.SendMsg(m)
 }
 
+func _EnterLeaveSensorApi_GetEnterLeaveEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEnterLeaveEventRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EnterLeaveSensorApiServer).GetEnterLeaveEvent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.EnterLeaveSensorApi/GetEnterLeaveEvent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EnterLeaveSensorApiServer).GetEnterLeaveEvent(ctx, req.(*GetEnterLeaveEventRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EnterLeaveSensorApi_ResetEnterLeaveTotals_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetEnterLeaveTotalsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EnterLeaveSensorApiServer).ResetEnterLeaveTotals(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/smartcore.traits.EnterLeaveSensorApi/ResetEnterLeaveTotals",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EnterLeaveSensorApiServer).ResetEnterLeaveTotals(ctx, req.(*ResetEnterLeaveTotalsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // EnterLeaveSensorApi_ServiceDesc is the grpc.ServiceDesc for EnterLeaveSensorApi service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var EnterLeaveSensorApi_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "smartcore.traits.EnterLeaveSensorApi",
 	HandlerType: (*EnterLeaveSensorApiServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetEnterLeaveEvent",
+			Handler:    _EnterLeaveSensorApi_GetEnterLeaveEvent_Handler,
+		},
+		{
+			MethodName: "ResetEnterLeaveTotals",
+			Handler:    _EnterLeaveSensorApi_ResetEnterLeaveTotals_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "PullEnterLeaveEvents",

@@ -13,6 +13,20 @@ export class EnterLeaveSensorApiClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_enter_leave_sensor_pb.PullEnterLeaveEventsResponse>;
 
+  getEnterLeaveEvent(
+    request: traits_enter_leave_sensor_pb.GetEnterLeaveEventRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: traits_enter_leave_sensor_pb.EnterLeaveEvent) => void
+  ): grpcWeb.ClientReadableStream<traits_enter_leave_sensor_pb.EnterLeaveEvent>;
+
+  resetEnterLeaveTotals(
+    request: traits_enter_leave_sensor_pb.ResetEnterLeaveTotalsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: traits_enter_leave_sensor_pb.ResetEnterLeaveTotalsResponse) => void
+  ): grpcWeb.ClientReadableStream<traits_enter_leave_sensor_pb.ResetEnterLeaveTotalsResponse>;
+
 }
 
 export class EnterLeaveSensorInfoClient {
@@ -31,6 +45,16 @@ export class EnterLeaveSensorApiPromiseClient {
     request: traits_enter_leave_sensor_pb.PullEnterLeaveEventsRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_enter_leave_sensor_pb.PullEnterLeaveEventsResponse>;
+
+  getEnterLeaveEvent(
+    request: traits_enter_leave_sensor_pb.GetEnterLeaveEventRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_enter_leave_sensor_pb.EnterLeaveEvent>;
+
+  resetEnterLeaveTotals(
+    request: traits_enter_leave_sensor_pb.ResetEnterLeaveTotalsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_enter_leave_sensor_pb.ResetEnterLeaveTotalsResponse>;
 
 }
 

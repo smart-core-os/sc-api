@@ -138,6 +138,128 @@ proto.smartcore.traits.EnterLeaveSensorApiPromiseClient.prototype.pullEnterLeave
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.GetEnterLeaveEventRequest,
+ *   !proto.smartcore.traits.EnterLeaveEvent>}
+ */
+const methodDescriptor_EnterLeaveSensorApi_GetEnterLeaveEvent = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.EnterLeaveSensorApi/GetEnterLeaveEvent',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.GetEnterLeaveEventRequest,
+  proto.smartcore.traits.EnterLeaveEvent,
+  /**
+   * @param {!proto.smartcore.traits.GetEnterLeaveEventRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.EnterLeaveEvent.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.GetEnterLeaveEventRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.EnterLeaveEvent)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.EnterLeaveEvent>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.EnterLeaveSensorApiClient.prototype.getEnterLeaveEvent =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.EnterLeaveSensorApi/GetEnterLeaveEvent',
+      request,
+      metadata || {},
+      methodDescriptor_EnterLeaveSensorApi_GetEnterLeaveEvent,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.GetEnterLeaveEventRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.EnterLeaveEvent>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.EnterLeaveSensorApiPromiseClient.prototype.getEnterLeaveEvent =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.EnterLeaveSensorApi/GetEnterLeaveEvent',
+      request,
+      metadata || {},
+      methodDescriptor_EnterLeaveSensorApi_GetEnterLeaveEvent);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.ResetEnterLeaveTotalsRequest,
+ *   !proto.smartcore.traits.ResetEnterLeaveTotalsResponse>}
+ */
+const methodDescriptor_EnterLeaveSensorApi_ResetEnterLeaveTotals = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.EnterLeaveSensorApi/ResetEnterLeaveTotals',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.ResetEnterLeaveTotalsRequest,
+  proto.smartcore.traits.ResetEnterLeaveTotalsResponse,
+  /**
+   * @param {!proto.smartcore.traits.ResetEnterLeaveTotalsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ResetEnterLeaveTotalsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.ResetEnterLeaveTotalsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ResetEnterLeaveTotalsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ResetEnterLeaveTotalsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.EnterLeaveSensorApiClient.prototype.resetEnterLeaveTotals =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.EnterLeaveSensorApi/ResetEnterLeaveTotals',
+      request,
+      metadata || {},
+      methodDescriptor_EnterLeaveSensorApi_ResetEnterLeaveTotals,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.ResetEnterLeaveTotalsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ResetEnterLeaveTotalsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.EnterLeaveSensorApiPromiseClient.prototype.resetEnterLeaveTotals =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.EnterLeaveSensorApi/ResetEnterLeaveTotals',
+      request,
+      metadata || {},
+      methodDescriptor_EnterLeaveSensorApi_ResetEnterLeaveTotals);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?grpc.web.ClientOptions} options

@@ -14,6 +14,16 @@ export class EnterLeaveEvent extends jspb.Message {
   hasOccupant(): boolean;
   clearOccupant(): EnterLeaveEvent;
 
+  getEnterTotal(): number;
+  setEnterTotal(value: number): EnterLeaveEvent;
+  hasEnterTotal(): boolean;
+  clearEnterTotal(): EnterLeaveEvent;
+
+  getLeaveTotal(): number;
+  setLeaveTotal(value: number): EnterLeaveEvent;
+  hasLeaveTotal(): boolean;
+  clearLeaveTotal(): EnterLeaveEvent;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EnterLeaveEvent.AsObject;
   static toObject(includeInstance: boolean, msg: EnterLeaveEvent): EnterLeaveEvent.AsObject;
@@ -26,6 +36,8 @@ export namespace EnterLeaveEvent {
   export type AsObject = {
     direction: EnterLeaveEvent.Direction,
     occupant?: EnterLeaveEvent.Occupant.AsObject,
+    enterTotal?: number,
+    leaveTotal?: number,
   }
 
   export class Occupant extends jspb.Message {
@@ -82,6 +94,16 @@ export namespace EnterLeaveEvent {
     ENTER = 1,
     LEAVE = 2,
   }
+
+  export enum EnterTotalCase { 
+    _ENTER_TOTAL_NOT_SET = 0,
+    ENTER_TOTAL = 3,
+  }
+
+  export enum LeaveTotalCase { 
+    _LEAVE_TOTAL_NOT_SET = 0,
+    LEAVE_TOTAL = 4,
+  }
 }
 
 export class PullEnterLeaveEventsRequest extends jspb.Message {
@@ -92,6 +114,9 @@ export class PullEnterLeaveEventsRequest extends jspb.Message {
   setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): PullEnterLeaveEventsRequest;
   hasReadMask(): boolean;
   clearReadMask(): PullEnterLeaveEventsRequest;
+
+  getUpdatesOnly(): boolean;
+  setUpdatesOnly(value: boolean): PullEnterLeaveEventsRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PullEnterLeaveEventsRequest.AsObject;
@@ -105,6 +130,7 @@ export namespace PullEnterLeaveEventsRequest {
   export type AsObject = {
     name: string,
     readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    updatesOnly: boolean,
   }
 }
 
@@ -157,5 +183,61 @@ export namespace PullEnterLeaveEventsResponse {
     }
   }
 
+}
+
+export class GetEnterLeaveEventRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): GetEnterLeaveEventRequest;
+
+  getReadMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+  setReadMask(value?: google_protobuf_field_mask_pb.FieldMask): GetEnterLeaveEventRequest;
+  hasReadMask(): boolean;
+  clearReadMask(): GetEnterLeaveEventRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetEnterLeaveEventRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetEnterLeaveEventRequest): GetEnterLeaveEventRequest.AsObject;
+  static serializeBinaryToWriter(message: GetEnterLeaveEventRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetEnterLeaveEventRequest;
+  static deserializeBinaryFromReader(message: GetEnterLeaveEventRequest, reader: jspb.BinaryReader): GetEnterLeaveEventRequest;
+}
+
+export namespace GetEnterLeaveEventRequest {
+  export type AsObject = {
+    name: string,
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+  }
+}
+
+export class ResetEnterLeaveTotalsRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): ResetEnterLeaveTotalsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResetEnterLeaveTotalsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ResetEnterLeaveTotalsRequest): ResetEnterLeaveTotalsRequest.AsObject;
+  static serializeBinaryToWriter(message: ResetEnterLeaveTotalsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResetEnterLeaveTotalsRequest;
+  static deserializeBinaryFromReader(message: ResetEnterLeaveTotalsRequest, reader: jspb.BinaryReader): ResetEnterLeaveTotalsRequest;
+}
+
+export namespace ResetEnterLeaveTotalsRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
+export class ResetEnterLeaveTotalsResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResetEnterLeaveTotalsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ResetEnterLeaveTotalsResponse): ResetEnterLeaveTotalsResponse.AsObject;
+  static serializeBinaryToWriter(message: ResetEnterLeaveTotalsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResetEnterLeaveTotalsResponse;
+  static deserializeBinaryFromReader(message: ResetEnterLeaveTotalsResponse, reader: jspb.BinaryReader): ResetEnterLeaveTotalsResponse;
+}
+
+export namespace ResetEnterLeaveTotalsResponse {
+  export type AsObject = {
+  }
 }
 
