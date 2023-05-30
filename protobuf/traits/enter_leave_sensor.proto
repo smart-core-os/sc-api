@@ -18,6 +18,11 @@ import "types/image.proto";
 service EnterLeaveSensorApi {
   // Subscribe to new enter or leave events.
   rpc PullEnterLeaveEvents(PullEnterLeaveEventsRequest) returns (stream PullEnterLeaveEventsResponse);
+  // Get information about the enter leave state.
+  // The response will not contain a direction or occupant, but may include totals.
+  rpc GetEnterLeaveEvent(GetEnterLeaveEventRequest) returns (EnterLeaveEvent);
+  // Reset the enter and leave totals.
+  rpc ResetEnterLeaveTotals(ResetEnterLeaveTotalsRequest) returns (ResetEnterLeaveTotalsResponse);
 }
 
 service EnterLeaveSensorInfo {
@@ -67,14 +72,21 @@ message EnterLeaveEvent {
   // Occupant describes the entity either entering or leaving.
   // Optional.
   Occupant occupant = 2;
+
+  // Enter total, if present, indicates how many ENTER events have been recognised by the device.
+  optional int32 enter_total = 3;
+  // Leave total, if present, indicates how many LEAVE events have been recognised by the device.
+  optional int32 leave_total = 4;
 }
+
 message PullEnterLeaveEventsRequest {
   // Name of the device to fetch the state for
   string name = 1;
   // Fields to fetch relative to the EnterLeaveEvent type
   google.protobuf.FieldMask read_mask = 2;
-  // There's no updates_only, because events are always updates_only. There is no state.
-  // bool updates_only = 3;
+  // If true, only updates to the state will be returned.
+  // The first event sent when false will be equivalent to GetEnterLeaveEvent, direction will be unspecified.
+  bool updates_only = 3;
 
   // todo: enable filtering
   // Filter allows for customisation of the items returned by this request.
@@ -96,3 +108,17 @@ message PullEnterLeaveEventsResponse {
     EnterLeaveEvent enter_leave_event = 3;
   }
 }
+
+message GetEnterLeaveEventRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+  // Fields to fetch relative to the EnterLeaveEvent type
+  google.protobuf.FieldMask read_mask = 2;
+}
+
+message ResetEnterLeaveTotalsRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+}
+
+message ResetEnterLeaveTotalsResponse {}
