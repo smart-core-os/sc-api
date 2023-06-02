@@ -55,6 +55,21 @@ message ElectricDemand {
   // In amps.
   // Zero means absent, not 0 amps.
   float rating = 3;
+
+  // The power factor of the device.
+  // Use this to convert VA (apparent power) to W (real power).
+  optional float power_factor = 4;
+  // The real power of the device.
+  // In watts.
+  // The product of current * voltage * power_factor, though might be different depending on measured values.
+  optional float real_power = 5;
+  // The apparent power of the device.
+  // In volt-amps.
+  // The product of current * voltage, though might be different depending on measured values.
+  optional float apparent_power = 6;
+  // The reactive power of the device.
+  // In volt-amps reactive.
+  optional float reactive_power = 7;
 }
 
 // An ElectricMode represents one possible electrical mode of operation for the device.
