@@ -18,6 +18,26 @@ export class ElectricDemand extends jspb.Message {
   getRating(): number;
   setRating(value: number): ElectricDemand;
 
+  getPowerFactor(): number;
+  setPowerFactor(value: number): ElectricDemand;
+  hasPowerFactor(): boolean;
+  clearPowerFactor(): ElectricDemand;
+
+  getRealPower(): number;
+  setRealPower(value: number): ElectricDemand;
+  hasRealPower(): boolean;
+  clearRealPower(): ElectricDemand;
+
+  getApparentPower(): number;
+  setApparentPower(value: number): ElectricDemand;
+  hasApparentPower(): boolean;
+  clearApparentPower(): ElectricDemand;
+
+  getReactivePower(): number;
+  setReactivePower(value: number): ElectricDemand;
+  hasReactivePower(): boolean;
+  clearReactivePower(): ElectricDemand;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ElectricDemand.AsObject;
   static toObject(includeInstance: boolean, msg: ElectricDemand): ElectricDemand.AsObject;
@@ -31,11 +51,35 @@ export namespace ElectricDemand {
     current: number,
     voltage?: number,
     rating: number,
+    powerFactor?: number,
+    realPower?: number,
+    apparentPower?: number,
+    reactivePower?: number,
   }
 
   export enum VoltageCase { 
     _VOLTAGE_NOT_SET = 0,
     VOLTAGE = 2,
+  }
+
+  export enum PowerFactorCase { 
+    _POWER_FACTOR_NOT_SET = 0,
+    POWER_FACTOR = 4,
+  }
+
+  export enum RealPowerCase { 
+    _REAL_POWER_NOT_SET = 0,
+    REAL_POWER = 5,
+  }
+
+  export enum ApparentPowerCase { 
+    _APPARENT_POWER_NOT_SET = 0,
+    APPARENT_POWER = 6,
+  }
+
+  export enum ReactivePowerCase { 
+    _REACTIVE_POWER_NOT_SET = 0,
+    REACTIVE_POWER = 7,
   }
 }
 

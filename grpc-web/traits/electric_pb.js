@@ -460,7 +460,11 @@ proto.smartcore.traits.ElectricDemand.toObject = function(includeInstance, msg) 
   var f, obj = {
     current: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
     voltage: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    rating: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+    rating: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+    powerFactor: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+    realPower: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+    apparentPower: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+    reactivePower: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0)
   };
 
   if (includeInstance) {
@@ -509,6 +513,22 @@ proto.smartcore.traits.ElectricDemand.deserializeBinaryFromReader = function(msg
       var value = /** @type {number} */ (reader.readFloat());
       msg.setRating(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPowerFactor(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setRealPower(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setApparentPower(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setReactivePower(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -556,6 +576,34 @@ proto.smartcore.traits.ElectricDemand.serializeBinaryToWriter = function(message
   if (f !== 0.0) {
     writer.writeFloat(
       3,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeFloat(
+      4,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeFloat(
+      5,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeFloat(
+      6,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeFloat(
+      7,
       f
     );
   }
@@ -631,6 +679,150 @@ proto.smartcore.traits.ElectricDemand.prototype.getRating = function() {
  */
 proto.smartcore.traits.ElectricDemand.prototype.setRating = function(value) {
   return jspb.Message.setProto3FloatField(this, 3, value);
+};
+
+
+/**
+ * optional float power_factor = 4;
+ * @return {number}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.getPowerFactor = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.setPowerFactor = function(value) {
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.clearPowerFactor = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.hasPowerFactor = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional float real_power = 5;
+ * @return {number}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.getRealPower = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.setRealPower = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.clearRealPower = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.hasRealPower = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional float apparent_power = 6;
+ * @return {number}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.getApparentPower = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.setApparentPower = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.clearApparentPower = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.hasApparentPower = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional float reactive_power = 7;
+ * @return {number}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.getReactivePower = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.setReactivePower = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.ElectricDemand} returns this
+ */
+proto.smartcore.traits.ElectricDemand.prototype.clearReactivePower = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.ElectricDemand.prototype.hasReactivePower = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
