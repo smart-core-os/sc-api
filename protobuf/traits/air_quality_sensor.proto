@@ -41,6 +41,8 @@ message AirQuality {
   // A percentage [0,100] reading for how infectious the air is.
   // Typically a combination of other sensor readings, the combination algorithm is undefined.
   optional float infection_risk = 5;
+  // An air quality score for the area mapped to a percentage [0,100], with 100 being the best quality.
+  optional float score = 6;
 
   // Comfort encodes levels of comfort for an area.
   enum Comfort {
