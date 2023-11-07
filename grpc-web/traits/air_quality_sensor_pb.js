@@ -220,7 +220,8 @@ proto.smartcore.traits.AirQuality.toObject = function(includeInstance, msg) {
     volatileOrganicCompounds: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
     airPressure: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     comfort: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    infectionRisk: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
+    infectionRisk: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+    score: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
   };
 
   if (includeInstance) {
@@ -276,6 +277,10 @@ proto.smartcore.traits.AirQuality.deserializeBinaryFromReader = function(msg, re
     case 5:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setInfectionRisk(value);
+      break;
+      case 6:
+        var value = /** @type {number} */ (reader.readFloat());
+        msg.setScore(value);
       break;
     default:
       reader.skipField();
@@ -338,6 +343,13 @@ proto.smartcore.traits.AirQuality.serializeBinaryToWriter = function(message, wr
   if (f != null) {
     writer.writeFloat(
       5,
+        f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeFloat(
+        6,
       f
     );
   }
@@ -512,6 +524,42 @@ proto.smartcore.traits.AirQuality.prototype.clearInfectionRisk = function() {
  */
 proto.smartcore.traits.AirQuality.prototype.hasInfectionRisk = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional float score = 6;
+ * @return {number}
+ */
+proto.smartcore.traits.AirQuality.prototype.getScore = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.setScore = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.clearScore = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQuality.prototype.hasScore = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
