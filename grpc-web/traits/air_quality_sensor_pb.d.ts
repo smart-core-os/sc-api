@@ -30,6 +30,14 @@ export class AirQuality extends jspb.Message {
   hasInfectionRisk(): boolean;
   clearInfectionRisk(): AirQuality;
 
+  getScore(): number;
+
+  setScore(value: number): AirQuality;
+
+  hasScore(): boolean;
+
+  clearScore(): AirQuality;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQuality.AsObject;
   static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
@@ -45,32 +53,38 @@ export namespace AirQuality {
     airPressure?: number,
     comfort: AirQuality.Comfort,
     infectionRisk?: number,
+    score?: number,
   }
 
-  export enum Comfort { 
+  export enum Comfort {
     COMFORT_UNSPECIFIED = 0,
     COMFORTABLE = 1,
     UNCOMFORTABLE = 2,
   }
 
-  export enum CarbonDioxideLevelCase { 
+  export enum CarbonDioxideLevelCase {
     _CARBON_DIOXIDE_LEVEL_NOT_SET = 0,
     CARBON_DIOXIDE_LEVEL = 1,
   }
 
-  export enum VolatileOrganicCompoundsCase { 
+  export enum VolatileOrganicCompoundsCase {
     _VOLATILE_ORGANIC_COMPOUNDS_NOT_SET = 0,
     VOLATILE_ORGANIC_COMPOUNDS = 2,
   }
 
-  export enum AirPressureCase { 
+  export enum AirPressureCase {
     _AIR_PRESSURE_NOT_SET = 0,
     AIR_PRESSURE = 3,
   }
 
-  export enum InfectionRiskCase { 
+  export enum InfectionRiskCase {
     _INFECTION_RISK_NOT_SET = 0,
     INFECTION_RISK = 5,
+  }
+
+  export enum ScoreCase {
+    _SCORE_NOT_SET = 0,
+    SCORE = 6,
   }
 }
 
