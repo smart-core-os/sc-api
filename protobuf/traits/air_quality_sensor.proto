@@ -43,6 +43,14 @@ message AirQuality {
   optional float infection_risk = 5;
   // An air quality score for the area mapped to a percentage [0,100], with 100 being the best quality.
   optional float score = 6;
+  // A measure of particles in the air measuring 1 micron or less in size, in micrograms per cubic meter.
+  optional float particulate_matter_1 = 7;
+  // A measure of particles in the air measuring 2.5 microns or less in size, in micrograms per cubic meter.
+  optional float particulate_matter_25 = 8;
+  // A measure of particles in the air measuring 10 microns or less in size, in micrograms per cubic meter.
+  optional float particulate_matter_10 = 9;
+  // The number of times per hour the air in the area is replaced.
+  optional float air_change_per_hour = 10;
 
   // Comfort encodes levels of comfort for an area.
   enum Comfort {
@@ -69,6 +77,18 @@ message AirQualitySupport {
   // If non-empty then the sensor supports reporting a general comfort reading of any of the provided types.
   // Unknown should be assumed to be present if supported.
   repeated AirQuality.Comfort comfort = 5;
+  // If present then the sensor supports reporting infection risk, as a percentage [0,100].
+  smartcore.types.FloatBounds infection_risk = 6;
+  // If present then the sensor supports reporting an air quality score, as a percentage [0,100].
+  smartcore.types.FloatBounds score = 7;
+  // If present then the sensor supports reporting particulate matter 1, in micrograms per cubic meter.
+  smartcore.types.FloatBounds particulate_matter_1 = 8;
+  // If present then the sensor supports reporting particulate matter 2.5, in micrograms per cubic meter.
+  smartcore.types.FloatBounds particulate_matter_25 = 9;
+  // If present then the sensor supports reporting particulate matter 10, in micrograms per cubic meter.
+  smartcore.types.FloatBounds particulate_matter_10 = 10;
+  // If present then the sensor supports reporting air changes per hour.
+  smartcore.types.FloatBounds air_change_per_hour = 11;
 }
 
 message GetAirQualityRequest {
