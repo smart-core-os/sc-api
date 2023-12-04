@@ -35,6 +35,26 @@ export class AirQuality extends jspb.Message {
   hasScore(): boolean;
   clearScore(): AirQuality;
 
+  getParticulateMatter1(): number;
+  setParticulateMatter1(value: number): AirQuality;
+  hasParticulateMatter1(): boolean;
+  clearParticulateMatter1(): AirQuality;
+
+  getParticulateMatter25(): number;
+  setParticulateMatter25(value: number): AirQuality;
+  hasParticulateMatter25(): boolean;
+  clearParticulateMatter25(): AirQuality;
+
+  getParticulateMatter10(): number;
+  setParticulateMatter10(value: number): AirQuality;
+  hasParticulateMatter10(): boolean;
+  clearParticulateMatter10(): AirQuality;
+
+  getAirChangePerHour(): number;
+  setAirChangePerHour(value: number): AirQuality;
+  hasAirChangePerHour(): boolean;
+  clearAirChangePerHour(): AirQuality;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQuality.AsObject;
   static toObject(includeInstance: boolean, msg: AirQuality): AirQuality.AsObject;
@@ -51,6 +71,10 @@ export namespace AirQuality {
     comfort: AirQuality.Comfort,
     infectionRisk?: number,
     score?: number,
+    particulateMatter1?: number,
+    particulateMatter25?: number,
+    particulateMatter10?: number,
+    airChangePerHour?: number,
   }
 
   export enum Comfort { 
@@ -83,6 +107,26 @@ export namespace AirQuality {
     _SCORE_NOT_SET = 0,
     SCORE = 6,
   }
+
+  export enum ParticulateMatter1Case { 
+    _PARTICULATE_MATTER_1_NOT_SET = 0,
+    PARTICULATE_MATTER_1 = 7,
+  }
+
+  export enum ParticulateMatter25Case { 
+    _PARTICULATE_MATTER_25_NOT_SET = 0,
+    PARTICULATE_MATTER_25 = 8,
+  }
+
+  export enum ParticulateMatter10Case { 
+    _PARTICULATE_MATTER_10_NOT_SET = 0,
+    PARTICULATE_MATTER_10 = 9,
+  }
+
+  export enum AirChangePerHourCase { 
+    _AIR_CHANGE_PER_HOUR_NOT_SET = 0,
+    AIR_CHANGE_PER_HOUR = 10,
+  }
 }
 
 export class AirQualitySupport extends jspb.Message {
@@ -111,6 +155,36 @@ export class AirQualitySupport extends jspb.Message {
   clearComfortList(): AirQualitySupport;
   addComfort(value: AirQuality.Comfort, index?: number): AirQualitySupport;
 
+  getInfectionRisk(): types_number_pb.FloatBounds | undefined;
+  setInfectionRisk(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasInfectionRisk(): boolean;
+  clearInfectionRisk(): AirQualitySupport;
+
+  getScore(): types_number_pb.FloatBounds | undefined;
+  setScore(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasScore(): boolean;
+  clearScore(): AirQualitySupport;
+
+  getParticulateMatter1(): types_number_pb.FloatBounds | undefined;
+  setParticulateMatter1(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasParticulateMatter1(): boolean;
+  clearParticulateMatter1(): AirQualitySupport;
+
+  getParticulateMatter25(): types_number_pb.FloatBounds | undefined;
+  setParticulateMatter25(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasParticulateMatter25(): boolean;
+  clearParticulateMatter25(): AirQualitySupport;
+
+  getParticulateMatter10(): types_number_pb.FloatBounds | undefined;
+  setParticulateMatter10(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasParticulateMatter10(): boolean;
+  clearParticulateMatter10(): AirQualitySupport;
+
+  getAirChangePerHour(): types_number_pb.FloatBounds | undefined;
+  setAirChangePerHour(value?: types_number_pb.FloatBounds): AirQualitySupport;
+  hasAirChangePerHour(): boolean;
+  clearAirChangePerHour(): AirQualitySupport;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AirQualitySupport.AsObject;
   static toObject(includeInstance: boolean, msg: AirQualitySupport): AirQualitySupport.AsObject;
@@ -126,6 +200,12 @@ export namespace AirQualitySupport {
     volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
     airPressure?: types_number_pb.FloatBounds.AsObject,
     comfortList: Array<AirQuality.Comfort>,
+    infectionRisk?: types_number_pb.FloatBounds.AsObject,
+    score?: types_number_pb.FloatBounds.AsObject,
+    particulateMatter1?: types_number_pb.FloatBounds.AsObject,
+    particulateMatter25?: types_number_pb.FloatBounds.AsObject,
+    particulateMatter10?: types_number_pb.FloatBounds.AsObject,
+    airChangePerHour?: types_number_pb.FloatBounds.AsObject,
   }
 }
 

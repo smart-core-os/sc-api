@@ -221,7 +221,11 @@ proto.smartcore.traits.AirQuality.toObject = function(includeInstance, msg) {
     airPressure: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     comfort: jspb.Message.getFieldWithDefault(msg, 4, 0),
     infectionRisk: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-    score: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
+    score: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+    particulateMatter1: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
+    particulateMatter25: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
+    particulateMatter10: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
+    airChangePerHour: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0)
   };
 
   if (includeInstance) {
@@ -278,9 +282,25 @@ proto.smartcore.traits.AirQuality.deserializeBinaryFromReader = function(msg, re
       var value = /** @type {number} */ (reader.readFloat());
       msg.setInfectionRisk(value);
       break;
-      case 6:
-        var value = /** @type {number} */ (reader.readFloat());
-        msg.setScore(value);
+    case 6:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setScore(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setParticulateMatter1(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setParticulateMatter25(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setParticulateMatter10(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAirChangePerHour(value);
       break;
     default:
       reader.skipField();
@@ -343,13 +363,41 @@ proto.smartcore.traits.AirQuality.serializeBinaryToWriter = function(message, wr
   if (f != null) {
     writer.writeFloat(
       5,
-        f
+      f
     );
   }
   f = /** @type {number} */ (jspb.Message.getField(message, 6));
   if (f != null) {
     writer.writeFloat(
-        6,
+      6,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeFloat(
+      7,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeFloat(
+      8,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 9));
+  if (f != null) {
+    writer.writeFloat(
+      9,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
+    writer.writeFloat(
+      10,
       f
     );
   }
@@ -563,6 +611,150 @@ proto.smartcore.traits.AirQuality.prototype.hasScore = function() {
 };
 
 
+/**
+ * optional float particulate_matter_1 = 7;
+ * @return {number}
+ */
+proto.smartcore.traits.AirQuality.prototype.getParticulateMatter1 = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.setParticulateMatter1 = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.clearParticulateMatter1 = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQuality.prototype.hasParticulateMatter1 = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional float particulate_matter_25 = 8;
+ * @return {number}
+ */
+proto.smartcore.traits.AirQuality.prototype.getParticulateMatter25 = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.setParticulateMatter25 = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.clearParticulateMatter25 = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQuality.prototype.hasParticulateMatter25 = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional float particulate_matter_10 = 9;
+ * @return {number}
+ */
+proto.smartcore.traits.AirQuality.prototype.getParticulateMatter10 = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.setParticulateMatter10 = function(value) {
+  return jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.clearParticulateMatter10 = function() {
+  return jspb.Message.setField(this, 9, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQuality.prototype.hasParticulateMatter10 = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional float air_change_per_hour = 10;
+ * @return {number}
+ */
+proto.smartcore.traits.AirQuality.prototype.getAirChangePerHour = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.setAirChangePerHour = function(value) {
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.AirQuality} returns this
+ */
+proto.smartcore.traits.AirQuality.prototype.clearAirChangePerHour = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQuality.prototype.hasAirChangePerHour = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -606,7 +798,13 @@ proto.smartcore.traits.AirQualitySupport.toObject = function(includeInstance, ms
     carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
     airPressure: (f = msg.getAirPressure()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    comfortList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
+    comfortList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+    infectionRisk: (f = msg.getInfectionRisk()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+    score: (f = msg.getScore()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+    particulateMatter1: (f = msg.getParticulateMatter1()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+    particulateMatter25: (f = msg.getParticulateMatter25()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+    particulateMatter10: (f = msg.getParticulateMatter10()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+    airChangePerHour: (f = msg.getAirChangePerHour()) && types_number_pb.FloatBounds.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -668,6 +866,36 @@ proto.smartcore.traits.AirQualitySupport.deserializeBinaryFromReader = function(
       for (var i = 0; i < values.length; i++) {
         msg.addComfort(values[i]);
       }
+      break;
+    case 6:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setInfectionRisk(value);
+      break;
+    case 7:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setScore(value);
+      break;
+    case 8:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setParticulateMatter1(value);
+      break;
+    case 9:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setParticulateMatter25(value);
+      break;
+    case 10:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setParticulateMatter10(value);
+      break;
+    case 11:
+      var value = new types_number_pb.FloatBounds;
+      reader.readMessage(value,types_number_pb.FloatBounds.deserializeBinaryFromReader);
+      msg.setAirChangePerHour(value);
       break;
     default:
       reader.skipField();
@@ -735,6 +963,54 @@ proto.smartcore.traits.AirQualitySupport.serializeBinaryToWriter = function(mess
     writer.writePackedEnum(
       5,
       f
+    );
+  }
+  f = message.getInfectionRisk();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
+    );
+  }
+  f = message.getScore();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
+    );
+  }
+  f = message.getParticulateMatter1();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
+    );
+  }
+  f = message.getParticulateMatter25();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
+    );
+  }
+  f = message.getParticulateMatter10();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
+    );
+  }
+  f = message.getAirChangePerHour();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      types_number_pb.FloatBounds.serializeBinaryToWriter
     );
   }
 };
@@ -922,6 +1198,228 @@ proto.smartcore.traits.AirQualitySupport.prototype.addComfort = function(value, 
  */
 proto.smartcore.traits.AirQualitySupport.prototype.clearComfortList = function() {
   return this.setComfortList([]);
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds infection_risk = 6;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getInfectionRisk = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 6));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setInfectionRisk = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearInfectionRisk = function() {
+  return this.setInfectionRisk(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasInfectionRisk = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds score = 7;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getScore = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 7));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setScore = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearScore = function() {
+  return this.setScore(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasScore = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds particulate_matter_1 = 8;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getParticulateMatter1 = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 8));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setParticulateMatter1 = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearParticulateMatter1 = function() {
+  return this.setParticulateMatter1(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasParticulateMatter1 = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds particulate_matter_25 = 9;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getParticulateMatter25 = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 9));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setParticulateMatter25 = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearParticulateMatter25 = function() {
+  return this.setParticulateMatter25(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasParticulateMatter25 = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds particulate_matter_10 = 10;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getParticulateMatter10 = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 10));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setParticulateMatter10 = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearParticulateMatter10 = function() {
+  return this.setParticulateMatter10(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasParticulateMatter10 = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional smartcore.types.FloatBounds air_change_per_hour = 11;
+ * @return {?proto.smartcore.types.FloatBounds}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.getAirChangePerHour = function() {
+  return /** @type{?proto.smartcore.types.FloatBounds} */ (
+    jspb.Message.getWrapperField(this, types_number_pb.FloatBounds, 11));
+};
+
+
+/**
+ * @param {?proto.smartcore.types.FloatBounds|undefined} value
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+*/
+proto.smartcore.traits.AirQualitySupport.prototype.setAirChangePerHour = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.smartcore.traits.AirQualitySupport} returns this
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.clearAirChangePerHour = function() {
+  return this.setAirChangePerHour(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.AirQualitySupport.prototype.hasAirChangePerHour = function() {
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
