@@ -2,7 +2,7 @@
   "name": "@smart-core-os/sc-api-grpc-web",
   "version": "1.0.0-beta.44",
   "description": "grpc-web client library",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "dependencies": {
     "google-protobuf": "^3.21.2",
     "grpc-web": "^1.4.2"
