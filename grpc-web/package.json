@@ -17,6 +17,7 @@
   },
   "exports": {
     ".": "./index.js",
+    "./package.json": "./package.json",
     "./info/*": "./info/*",
     "./traits/*": "./traits/*",
     "./types/*": "./types/*"
