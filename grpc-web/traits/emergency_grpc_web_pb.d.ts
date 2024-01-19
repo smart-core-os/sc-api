@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_emergency_pb from '../traits/emergency_pb';
+import * as traits_emergency_pb from '../traits/emergency_pb'; // proto import: "traits/emergency.proto"
 
 
 export class EmergencyApiClient {

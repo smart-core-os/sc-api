@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_energy_storage_pb from '../traits/energy_storage_pb';
+import * as traits_energy_storage_pb from '../traits/energy_storage_pb'; // proto import: "traits/energy_storage.proto"
 
 
 export class EnergyStorageApiClient {

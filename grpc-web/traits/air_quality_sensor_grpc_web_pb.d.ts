@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_air_quality_sensor_pb from '../traits/air_quality_sensor_pb';
+import * as traits_air_quality_sensor_pb from '../traits/air_quality_sensor_pb'; // proto import: "traits/air_quality_sensor.proto"
 
 
 export class AirQualitySensorApiClient {

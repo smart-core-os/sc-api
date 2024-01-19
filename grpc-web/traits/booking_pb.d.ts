@@ -1,11 +1,11 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as types_change_pb from '../types/change_pb';
-import * as types_info_pb from '../types/info_pb';
-import * as types_time_period_pb from '../types/time/period_pb';
-import * as types_time_unit_pb from '../types/time/unit_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
+import * as types_change_pb from '../types/change_pb'; // proto import: "types/change.proto"
+import * as types_info_pb from '../types/info_pb'; // proto import: "types/info.proto"
+import * as types_time_period_pb from '../types/time/period_pb'; // proto import: "types/time/period.proto"
+import * as types_time_unit_pb from '../types/time/unit_pb'; // proto import: "types/time/unit.proto"
 
 
 export class Booking extends jspb.Message {

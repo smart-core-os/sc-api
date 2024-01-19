@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as info_auth_pb from '../info/auth_pb';
+import * as info_auth_pb from '../info/auth_pb'; // proto import: "info/auth.proto"
 
 
 export class AuthProviderClient {

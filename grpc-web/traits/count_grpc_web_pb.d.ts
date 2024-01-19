@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_count_pb from '../traits/count_pb';
+import * as traits_count_pb from '../traits/count_pb'; // proto import: "traits/count.proto"
 
 
 export class CountApiClient {

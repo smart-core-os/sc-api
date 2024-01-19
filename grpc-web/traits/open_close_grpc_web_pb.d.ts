@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_open_close_pb from '../traits/open_close_pb';
+import * as traits_open_close_pb from '../traits/open_close_pb'; // proto import: "traits/open_close.proto"
 
 
 export class OpenCloseApiClient {

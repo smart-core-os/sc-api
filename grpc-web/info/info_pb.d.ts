@@ -1,6 +1,6 @@
 import * as jspb from 'google-protobuf'
 
-import * as types_change_pb from '../types/change_pb';
+import * as types_change_pb from '../types/change_pb'; // proto import: "types/change.proto"
 
 
 export class ListDevicesRequest extends jspb.Message {

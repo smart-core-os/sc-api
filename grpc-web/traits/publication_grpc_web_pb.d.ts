@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_publication_pb from '../traits/publication_pb';
+import * as traits_publication_pb from '../traits/publication_pb'; // proto import: "traits/publication.proto"
 
 
 export class PublicationApiClient {

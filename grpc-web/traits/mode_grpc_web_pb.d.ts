@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_mode_pb from '../traits/mode_pb';
+import * as traits_mode_pb from '../traits/mode_pb'; // proto import: "traits/mode.proto"
 
 
 export class ModeApiClient {

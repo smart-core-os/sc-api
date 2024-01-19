@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_fan_speed_pb from '../traits/fan_speed_pb';
+import * as traits_fan_speed_pb from '../traits/fan_speed_pb'; // proto import: "traits/fan_speed.proto"
 
 
 export class FanSpeedApiClient {

@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_vending_pb from '../traits/vending_pb';
+import * as traits_vending_pb from '../traits/vending_pb'; // proto import: "traits/vending.proto"
 
 
 export class VendingApiClient {

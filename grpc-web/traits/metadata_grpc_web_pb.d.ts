@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_metadata_pb from '../traits/metadata_pb';
+import * as traits_metadata_pb from '../traits/metadata_pb'; // proto import: "traits/metadata.proto"
 
 
 export class MetadataApiClient {

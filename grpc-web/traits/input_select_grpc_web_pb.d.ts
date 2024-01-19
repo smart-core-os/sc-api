@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_input_select_pb from '../traits/input_select_pb';
+import * as traits_input_select_pb from '../traits/input_select_pb'; // proto import: "traits/input_select.proto"
 
 
 export class InputSelectApiClient {

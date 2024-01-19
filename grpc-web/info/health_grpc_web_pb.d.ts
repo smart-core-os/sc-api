@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as info_health_pb from '../info/health_pb';
+import * as info_health_pb from '../info/health_pb'; // proto import: "info/health.proto"
 
 
 export class HealthClient {

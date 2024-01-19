@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_electric_pb from '../traits/electric_pb';
+import * as traits_electric_pb from '../traits/electric_pb'; // proto import: "traits/electric.proto"
 
 
 export class ElectricApiClient {

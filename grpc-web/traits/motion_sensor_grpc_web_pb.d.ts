@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_motion_sensor_pb from '../traits/motion_sensor_pb';
+import * as traits_motion_sensor_pb from '../traits/motion_sensor_pb'; // proto import: "traits/motion_sensor.proto"
 
 
 export class MotionSensorApiClient {

@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_microphone_pb from '../traits/microphone_pb';
-import * as types_unit_pb from '../types/unit_pb';
+import * as traits_microphone_pb from '../traits/microphone_pb'; // proto import: "traits/microphone.proto"
+import * as types_unit_pb from '../types/unit_pb'; // proto import: "types/unit.proto"
 
 
 export class MicrophoneApiClient {

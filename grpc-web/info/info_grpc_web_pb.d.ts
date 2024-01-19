@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as info_info_pb from '../info/info_pb';
+import * as info_info_pb from '../info/info_pb'; // proto import: "info/info.proto"
 
 
 export class InfoClient {

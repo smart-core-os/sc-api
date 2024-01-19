@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_extend_retract_pb from '../traits/extend_retract_pb';
+import * as traits_extend_retract_pb from '../traits/extend_retract_pb'; // proto import: "traits/extend_retract.proto"
 
 
 export class ExtendRetractApiClient {

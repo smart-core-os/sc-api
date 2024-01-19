@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_ptz_pb from '../traits/ptz_pb';
+import * as traits_ptz_pb from '../traits/ptz_pb'; // proto import: "traits/ptz.proto"
 
 
 export class PtzApiClient {

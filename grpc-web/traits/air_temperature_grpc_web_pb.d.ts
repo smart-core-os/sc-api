@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_air_temperature_pb from '../traits/air_temperature_pb';
+import * as traits_air_temperature_pb from '../traits/air_temperature_pb'; // proto import: "traits/air_temperature.proto"
 
 
 export class AirTemperatureApiClient {

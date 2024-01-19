@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_booking_pb from '../traits/booking_pb';
+import * as traits_booking_pb from '../traits/booking_pb'; // proto import: "traits/booking.proto"
 
 
 export class BookingApiClient {

@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_enter_leave_sensor_pb from '../traits/enter_leave_sensor_pb';
+import * as traits_enter_leave_sensor_pb from '../traits/enter_leave_sensor_pb'; // proto import: "traits/enter_leave_sensor.proto"
 
 
 export class EnterLeaveSensorApiClient {

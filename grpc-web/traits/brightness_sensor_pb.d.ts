@@ -1,9 +1,9 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as types_info_pb from '../types/info_pb';
-import * as types_number_pb from '../types/number_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
+import * as types_info_pb from '../types/info_pb'; // proto import: "types/info.proto"
+import * as types_number_pb from '../types/number_pb'; // proto import: "types/number.proto"
 
 
 export class AmbientBrightness extends jspb.Message {

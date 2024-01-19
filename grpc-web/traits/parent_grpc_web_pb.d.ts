@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_parent_pb from '../traits/parent_pb';
+import * as traits_parent_pb from '../traits/parent_pb'; // proto import: "traits/parent.proto"
 
 
 export class ParentApiClient {

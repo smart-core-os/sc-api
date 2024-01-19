@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_light_pb from '../traits/light_pb';
+import * as traits_light_pb from '../traits/light_pb'; // proto import: "traits/light.proto"
 
 
 export class LightApiClient {

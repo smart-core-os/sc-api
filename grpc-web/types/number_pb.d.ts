@@ -1,6 +1,6 @@
 import * as jspb from 'google-protobuf'
 
-import * as types_tween_pb from '../types/tween_pb';
+import * as types_tween_pb from '../types/tween_pb'; // proto import: "types/tween.proto"
 
 
 export class NumberCapping extends jspb.Message {

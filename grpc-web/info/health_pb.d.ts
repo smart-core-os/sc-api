@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
-import * as types_connection_pb from '../types/connection_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
+import * as types_connection_pb from '../types/connection_pb'; // proto import: "types/connection.proto"
 
 
 export class HealthState extends jspb.Message {

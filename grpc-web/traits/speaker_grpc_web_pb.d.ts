@@ -1,7 +1,7 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_speaker_pb from '../traits/speaker_pb';
-import * as types_unit_pb from '../types/unit_pb';
+import * as traits_speaker_pb from '../traits/speaker_pb'; // proto import: "traits/speaker.proto"
+import * as types_unit_pb from '../types/unit_pb'; // proto import: "types/unit.proto"
 
 
 export class SpeakerApiClient {

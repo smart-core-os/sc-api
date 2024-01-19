@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_brightness_sensor_pb from '../traits/brightness_sensor_pb';
+import * as traits_brightness_sensor_pb from '../traits/brightness_sensor_pb'; // proto import: "traits/brightness_sensor.proto"
 
 
 export class BrightnessSensorApiClient {

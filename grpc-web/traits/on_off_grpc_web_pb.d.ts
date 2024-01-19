@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_on_off_pb from '../traits/on_off_pb';
+import * as traits_on_off_pb from '../traits/on_off_pb'; // proto import: "traits/on_off.proto"
 
 
 export class OnOffApiClient {

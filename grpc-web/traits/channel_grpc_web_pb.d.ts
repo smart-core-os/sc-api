@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_channel_pb from '../traits/channel_pb';
+import * as traits_channel_pb from '../traits/channel_pb'; // proto import: "traits/channel.proto"
 
 
 export class ChannelApiClient {

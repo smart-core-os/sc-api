@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_occupancy_sensor_pb from '../traits/occupancy_sensor_pb';
+import * as traits_occupancy_sensor_pb from '../traits/occupancy_sensor_pb'; // proto import: "traits/occupancy_sensor.proto"
 
 
 export class OccupancySensorApiClient {

@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_lock_unlock_pb from '../traits/lock_unlock_pb';
+import * as traits_lock_unlock_pb from '../traits/lock_unlock_pb'; // proto import: "traits/lock_unlock.proto"
 
 
 export class LockUnlockApiClient {

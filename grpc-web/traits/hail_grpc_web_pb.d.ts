@@ -1,6 +1,6 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as traits_hail_pb from '../traits/hail_pb';
+import * as traits_hail_pb from '../traits/hail_pb'; // proto import: "traits/hail.proto"
 
 
 export class HailApiClient {
