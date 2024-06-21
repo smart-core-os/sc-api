@@ -1,6 +1,6 @@
 {
   "name": "@smart-core-os/sc-api-grpc-web",
-  "version": "1.0.0-beta.45",
+  "version": "1.0.0-beta.46",
   "description": "grpc-web client library",
   "license": "MIT",
   "dependencies": {
@@ -13,7 +13,7 @@
     "directory": "grpc-web"
   },
   "publishConfig": {
-    "registry": "https://nexus.vanti.co.uk/repository/npm-releases/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "exports": {
     ".": "./index.js",
