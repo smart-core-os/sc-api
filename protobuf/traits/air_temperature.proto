@@ -50,7 +50,7 @@ message AirTemperature {
   }
   // Optional, read-only. The ambient temperature as read by the device
   smartcore.types.Temperature ambient_temperature = 5;
-  // Optional, read-only. The ambient humidity as read by the device
+  // Optional, read-only. The ambient relative humidity percentage, as read by the device
   optional float ambient_humidity = 6;
   // Optional, read-only. The dew-point as read by the device
   smartcore.types.Temperature dew_point = 7;
