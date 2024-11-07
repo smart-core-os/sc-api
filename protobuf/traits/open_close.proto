@@ -39,6 +39,20 @@ message OpenClosePositions {
   // The state of each of the devices open-able elements. Most devices will only have a single value here as they can
   // only be opened from a single direction.
   repeated OpenClosePosition states = 1;
+  // A preset set of positions (or mode) for the device.
+  // For example 'auto' or 'night mode'.
+  // During writes the preset takes precedence over the positions in states.
+  // During read the device may report either or both the preset and states values.
+  Preset preset = 2;
+
+  // A preset position for the device.
+  message Preset {
+    // The identifying name of the preset.
+    // Required.
+    string name = 1;
+    // A human readable title for the preset
+    string title = 2;
+  }
 }
 
 // Defines the position of one open close element for the device
@@ -97,6 +111,8 @@ message PositionsSupport {
   repeated OpenClosePosition.Direction directions = 3;
   // Does the device support the Stop method
   bool supports_stop = 4;
+  // A description of the supported presets, none means no presets
+  repeated OpenClosePositions.Preset presets = 5;
 }
 
 message GetOpenClosePositionsRequest {
