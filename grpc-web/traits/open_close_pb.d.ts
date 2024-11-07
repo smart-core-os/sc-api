@@ -13,6 +13,11 @@ export class OpenClosePositions extends jspb.Message {
   clearStatesList(): OpenClosePositions;
   addStates(value?: OpenClosePosition, index?: number): OpenClosePosition;
 
+  getPreset(): OpenClosePositions.Preset | undefined;
+  setPreset(value?: OpenClosePositions.Preset): OpenClosePositions;
+  hasPreset(): boolean;
+  clearPreset(): OpenClosePositions;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenClosePositions.AsObject;
   static toObject(includeInstance: boolean, msg: OpenClosePositions): OpenClosePositions.AsObject;
@@ -24,7 +29,31 @@ export class OpenClosePositions extends jspb.Message {
 export namespace OpenClosePositions {
   export type AsObject = {
     statesList: Array<OpenClosePosition.AsObject>,
+    preset?: OpenClosePositions.Preset.AsObject,
   }
+
+  export class Preset extends jspb.Message {
+    getName(): string;
+    setName(value: string): Preset;
+
+    getTitle(): string;
+    setTitle(value: string): Preset;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Preset.AsObject;
+    static toObject(includeInstance: boolean, msg: Preset): Preset.AsObject;
+    static serializeBinaryToWriter(message: Preset, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Preset;
+    static deserializeBinaryFromReader(message: Preset, reader: jspb.BinaryReader): Preset;
+  }
+
+  export namespace Preset {
+    export type AsObject = {
+      name: string,
+      title: string,
+    }
+  }
+
 }
 
 export class OpenClosePosition extends jspb.Message {
@@ -99,6 +128,11 @@ export class PositionsSupport extends jspb.Message {
   getSupportsStop(): boolean;
   setSupportsStop(value: boolean): PositionsSupport;
 
+  getPresetsList(): Array<OpenClosePositions.Preset>;
+  setPresetsList(value: Array<OpenClosePositions.Preset>): PositionsSupport;
+  clearPresetsList(): PositionsSupport;
+  addPresets(value?: OpenClosePositions.Preset, index?: number): OpenClosePositions.Preset;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PositionsSupport.AsObject;
   static toObject(includeInstance: boolean, msg: PositionsSupport): PositionsSupport.AsObject;
@@ -113,6 +147,7 @@ export namespace PositionsSupport {
     openPercentAttributes?: types_number_pb.FloatAttributes.AsObject,
     directionsList: Array<OpenClosePosition.Direction>,
     supportsStop: boolean,
+    presetsList: Array<OpenClosePositions.Preset.AsObject>,
   }
 }
 
