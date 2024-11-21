@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "LockUnlockProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// TODO: support static image and video calls
+// IntercomApi describes intercom devices that provide a report of the current intercom state.
+// The intercom describes its current state in the PullIntercomResponse, which includes
+// whether the call is incoming, outgoing, missed, a voicemail, completed somewhere else, or a doorbell ring.
+// We also support a gang of intercoms in this service.
+// Therefore, PullIntercomRequest and PullIntercomResponse may dictate the destination/origin intercom device, respectively.
+service IntercomApi {
+  // Subscribe to changes in the intercom devices specified.
+  // Changes to any call state will result in a new addition to the stream
+  rpc PullIntercom(PullIntercomRequest) returns (stream PullIntercomResponse);
+}
+
+service IntercomInfo {
+  // TODO: define info services
+}
+
+message PullIntercomRequest {
+  // devices The gang of devices to subscribe to
+  repeated IntercomDevice devices = 1;
+  // read_mask Fields to fetch relative to the call state
+  google.protobuf.FieldMask read_mask = 2;
+  // When true the device will only send changes to the resource value.
+  // The default behaviour is to send the current value immediately followed by any updates as they happen.
+  bool updates_only = 3;
+}
+
+message PullIntercomResponse {
+  // Support multiple intercoms being changed simultaneously
+  repeated Change changes = 1;
+
+  message Change {
+    // device which has changed
+    IntercomDevice device = 1;
+    // When the change occurred
+    google.protobuf.Timestamp change_time = 2;
+    // a single notification belonging to this change
+    Notification notification = 3;
+  }
+
+
+  message Notification {
+    enum type {
+      Unknown = 0; // support unknown for zero-values
+      // the intercom has received a button press or captured an audible or visible state
+      Incoming = 1;
+      // the intercom has issued an outgoing communication
+      Outgoing = 2;
+      // the intercom has received a communication that was unanswered (a deadline or timeout was reached)
+      Missed = 3;
+      // the intercom has received a communication that does not permit synchronous response
+      Voicemail = 4;
+      // the intercom has received a communication that was unanswered within the deadline, but was answered by an alternative intercom
+      CompletedElseWhere = 5;
+      // the intercom is currently receiving a live communication
+      Ring = 6;
+    }
+
+    // type of the notification
+    type notification_type = 1;
+    // initial time of the notification
+    google.protobuf.Timestamp initial_time = 2;
+    // duration of the notification
+    // applicable to voicemail; for instance
+    int64 duration = 3; // milliseconds
+    // end time of the notification
+    // applicable to missed notifications; for instance
+    google.protobuf.Timestamp end_time = 4;
+  }
+}
+
+message IntercomDevice {
+  // name of the intercom device native to the intercom device gang
+  string name = 1;
+  // address of the intercom device native to the intercom device gang (to support intercom proxies if applicable)
+  string address = 2;
+  // Support multiple intercom models within a gang
+  // This is to inform things like, enable video stream when an incoming call is received
+  string model = 3;
+}
