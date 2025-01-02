@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.5.0
 // 	protoc              v5.28.3
-// source: traits/button.proto
+// source: traits/press.proto
 
 
 /* eslint-disable */
@@ -25,7 +25,7 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
 proto.smartcore = {};
-proto.smartcore.traits = require('./button_pb.js');
+proto.smartcore.traits = require('./press_pb.js');
 
 /**
  * @param {string} hostname
@@ -35,7 +35,7 @@ proto.smartcore.traits = require('./button_pb.js');
  * @struct
  * @final
  */
-proto.smartcore.traits.ButtonApiClient =
+proto.smartcore.traits.PressApiClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -61,7 +61,7 @@ proto.smartcore.traits.ButtonApiClient =
  * @struct
  * @final
  */
-proto.smartcore.traits.ButtonApiPromiseClient =
+proto.smartcore.traits.PressApiPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -82,178 +82,178 @@ proto.smartcore.traits.ButtonApiPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.GetButtonStateRequest,
- *   !proto.smartcore.traits.ButtonState>}
+ *   !proto.smartcore.traits.GetPressedStateRequest,
+ *   !proto.smartcore.traits.PressedState>}
  */
-const methodDescriptor_ButtonApi_GetButtonState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ButtonApi/GetButtonState',
+const methodDescriptor_PressApi_GetPressedState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PressApi/GetPressedState',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.GetButtonStateRequest,
-  proto.smartcore.traits.ButtonState,
+  proto.smartcore.traits.GetPressedStateRequest,
+  proto.smartcore.traits.PressedState,
   /**
-   * @param {!proto.smartcore.traits.GetButtonStateRequest} request
+   * @param {!proto.smartcore.traits.GetPressedStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.ButtonState.deserializeBinary
+  proto.smartcore.traits.PressedState.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.GetButtonStateRequest} request The
+ * @param {!proto.smartcore.traits.GetPressedStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ButtonState)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PressedState)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ButtonState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PressedState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ButtonApiClient.prototype.getButtonState =
+proto.smartcore.traits.PressApiClient.prototype.getPressedState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ButtonApi/GetButtonState',
+      '/smartcore.traits.PressApi/GetPressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_GetButtonState,
+      methodDescriptor_PressApi_GetPressedState,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.GetButtonStateRequest} request The
+ * @param {!proto.smartcore.traits.GetPressedStateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.ButtonState>}
+ * @return {!Promise<!proto.smartcore.traits.PressedState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ButtonApiPromiseClient.prototype.getButtonState =
+proto.smartcore.traits.PressApiPromiseClient.prototype.getPressedState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ButtonApi/GetButtonState',
+      '/smartcore.traits.PressApi/GetPressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_GetButtonState);
+      methodDescriptor_PressApi_GetPressedState);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.PullButtonStateRequest,
- *   !proto.smartcore.traits.PullButtonStateResponse>}
+ *   !proto.smartcore.traits.PullPressedStateRequest,
+ *   !proto.smartcore.traits.PullPressedStateResponse>}
  */
-const methodDescriptor_ButtonApi_PullButtonState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ButtonApi/PullButtonState',
+const methodDescriptor_PressApi_PullPressedState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PressApi/PullPressedState',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.smartcore.traits.PullButtonStateRequest,
-  proto.smartcore.traits.PullButtonStateResponse,
+  proto.smartcore.traits.PullPressedStateRequest,
+  proto.smartcore.traits.PullPressedStateResponse,
   /**
-   * @param {!proto.smartcore.traits.PullButtonStateRequest} request
+   * @param {!proto.smartcore.traits.PullPressedStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.PullButtonStateResponse.deserializeBinary
+  proto.smartcore.traits.PullPressedStateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.PullButtonStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullPressedStateRequest} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullButtonStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPressedStateResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ButtonApiClient.prototype.pullButtonState =
+proto.smartcore.traits.PressApiClient.prototype.pullPressedState =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.ButtonApi/PullButtonState',
+      '/smartcore.traits.PressApi/PullPressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_PullButtonState);
+      methodDescriptor_PressApi_PullPressedState);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.PullButtonStateRequest} request The request proto
+ * @param {!proto.smartcore.traits.PullPressedStateRequest} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullButtonStateResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PullPressedStateResponse>}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ButtonApiPromiseClient.prototype.pullButtonState =
+proto.smartcore.traits.PressApiPromiseClient.prototype.pullPressedState =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/smartcore.traits.ButtonApi/PullButtonState',
+      '/smartcore.traits.PressApi/PullPressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_PullButtonState);
+      methodDescriptor_PressApi_PullPressedState);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.smartcore.traits.UpdateButtonStateRequest,
- *   !proto.smartcore.traits.ButtonState>}
+ *   !proto.smartcore.traits.UpdatePressedStateRequest,
+ *   !proto.smartcore.traits.PressedState>}
  */
-const methodDescriptor_ButtonApi_UpdateButtonState = new grpc.web.MethodDescriptor(
-  '/smartcore.traits.ButtonApi/UpdateButtonState',
+const methodDescriptor_PressApi_UpdatePressedState = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.PressApi/UpdatePressedState',
   grpc.web.MethodType.UNARY,
-  proto.smartcore.traits.UpdateButtonStateRequest,
-  proto.smartcore.traits.ButtonState,
+  proto.smartcore.traits.UpdatePressedStateRequest,
+  proto.smartcore.traits.PressedState,
   /**
-   * @param {!proto.smartcore.traits.UpdateButtonStateRequest} request
+   * @param {!proto.smartcore.traits.UpdatePressedStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.smartcore.traits.ButtonState.deserializeBinary
+  proto.smartcore.traits.PressedState.deserializeBinary
 );
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateButtonStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdatePressedStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ButtonState)}
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.PressedState)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ButtonState>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.PressedState>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.smartcore.traits.ButtonApiClient.prototype.updateButtonState =
+proto.smartcore.traits.PressApiClient.prototype.updatePressedState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/smartcore.traits.ButtonApi/UpdateButtonState',
+      '/smartcore.traits.PressApi/UpdatePressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_UpdateButtonState,
+      methodDescriptor_PressApi_UpdatePressedState,
       callback);
 };
 
 
 /**
- * @param {!proto.smartcore.traits.UpdateButtonStateRequest} request The
+ * @param {!proto.smartcore.traits.UpdatePressedStateRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.smartcore.traits.ButtonState>}
+ * @return {!Promise<!proto.smartcore.traits.PressedState>}
  *     Promise that resolves to the response
  */
-proto.smartcore.traits.ButtonApiPromiseClient.prototype.updateButtonState =
+proto.smartcore.traits.PressApiPromiseClient.prototype.updatePressedState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/smartcore.traits.ButtonApi/UpdateButtonState',
+      '/smartcore.traits.PressApi/UpdatePressedState',
       request,
       metadata || {},
-      methodDescriptor_ButtonApi_UpdateButtonState);
+      methodDescriptor_PressApi_UpdatePressedState);
 };
 
 

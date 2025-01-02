@@ -5,7 +5,7 @@ package smartcore.traits;
 option csharp_namespace = "Smartcore.Traits";
 option go_package = "github.com/smart-core-os/sc-api/go/traits";
 option java_multiple_files = true;
-option java_outer_classname = "ChannelProto";
+option java_outer_classname = "AccessProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
@@ -18,11 +18,11 @@ import "types/image.proto";
 service AccessApi {
   rpc GetLastAccessAttempt(GetLastAccessAttemptRequest) returns (AccessAttempt) {}
   rpc PullAccessAttempts(PullAccessAttemptsRequest) returns (stream PullAccessAttemptsResponse) {}
-
-  // todo: rpc CreateActor... to replace axiomxa service
-  // todo: rpc GrantAccess for manually granting access to an actor
 }
 
+// AccessAttempt describes an access attempt made at an access point.
+// At a minimum it should define the status of the access attempt, and the time it was made.
+// It may also include the actor attempting access, and the reason for the access attempt being granted or denied.
 message AccessAttempt {
   enum Grant {
     // The status of the access attempt is unknown.

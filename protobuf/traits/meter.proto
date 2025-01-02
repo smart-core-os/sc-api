@@ -5,7 +5,7 @@ package smartcore.traits;
 option csharp_namespace = "Smartcore.Traits";
 option go_package = "github.com/smart-core-os/sc-api/go/traits";
 option java_multiple_files = true;
-option java_outer_classname = "ChannelProto";
+option java_outer_classname = "MeterProto";
 option java_package = "dev.smartcore.traits";
 option php_namespace = "Smartcore\\Traits";
 
@@ -30,10 +30,10 @@ message MeterReading {
   // The unit is unspecified, use device documentation or MeterInfo to discover it.
   // This value is a total recorded between the start and end times.
   float usage = 1;
-  // The start period usage is recorded relative to. Typically the installation date, but not required to be.
+  // Optional. The start period usage is recorded relative to. Typically the installation date, but not required to be.
   // The start time can be reset and updated by the device if it is serviced or updated.
   google.protobuf.Timestamp start_time = 2;
-  // The end of the period usage is recorded relative to, i.e. the time the reading was taken.
+  // Optional. The end of the period usage is recorded relative to, i.e. the time the reading was taken.
   // This time might not be now if the device has a low resolution for taking readings.
   google.protobuf.Timestamp end_time = 3;
 }
