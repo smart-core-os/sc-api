@@ -1,0 +1,22 @@
+name: trigger-documentation.yml
+on:
+  push:
+    branches:
+      - feature/SC-477_pull-from-smart-core-os.github.io
+
+jobs:
+  trigger_documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger smart-core-os.github.io
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: 'smart-core-os'
+          repo: 'smart-core-os.github.io'
+          workflow_file_name: 'publish.yml'
+          ref: feature/SC-477_pull-from-smart-core-os.github.io
+          wait_interval: 10
+          propagate_failure: true
+          trigger_workflow: true
+          wait_workflow: true
