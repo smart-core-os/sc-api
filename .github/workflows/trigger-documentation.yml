@@ -2,7 +2,7 @@ name: trigger-documentation.yml
 on:
   push:
     branches:
-      - feature/SC-477_pull-from-smart-core-os.github.io
+      - main
 
 jobs:
   trigger_documentation:
@@ -15,7 +15,6 @@ jobs:
           owner: 'smart-core-os'
           repo: 'smart-core-os.github.io'
           workflow_file_name: 'publish.yml'
-          ref: feature/SC-477_pull-from-smart-core-os.github.io
           client_payload: >
             {
               "src": "${{ github.repository }}",
