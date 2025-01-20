@@ -2,12 +2,17 @@ name: trigger-documentation.yml
 on:
   push:
     branches:
-      - main
+      - feature/SC-477_pull-from-smart-core-os.github.io
 
 jobs:
   trigger_documentation:
     runs-on: ubuntu-latest
     steps:
+      - name: get timestamp of trigger
+        id: trigger-timestamp
+        uses: kaven-universe/github-action-current-date-time@v1.4.0
+        with:
+          format: 'YYYY-MM-DDTHH:mm:ss.SSSZ'
       - name: trigger smart-core-os.github.io
         uses: convictional/trigger-workflow-and-wait@v1.6.5
         with:
@@ -18,9 +23,11 @@ jobs:
           client_payload: >
             {
               "src": "${{ github.repository }}",
-              "commit": "${{ github.sha }}"
+              "commit": "${{ github.sha }}",
+              "commitTimestamp": "${{ steps.trigger-timestamp.outputs.time }}"
             }
           wait_interval: 10
           propagate_failure: true
           trigger_workflow: true
           wait_workflow: true
+          ref: feature/SC-477_pull-from-smart-core-os.github.io
