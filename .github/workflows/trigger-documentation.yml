@@ -2,7 +2,7 @@ name: trigger-documentation.yml
 on:
   push:
     branches:
-      - feature/SC-477_pull-from-smart-core-os.github.io
+      - main
 
 jobs:
   trigger_documentation:
@@ -30,4 +30,3 @@ jobs:
           propagate_failure: true
           trigger_workflow: true
           wait_workflow: true
-          ref: feature/SC-477_pull-from-smart-core-os.github.io
