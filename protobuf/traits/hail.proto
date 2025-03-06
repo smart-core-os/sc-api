@@ -12,6 +12,7 @@ option php_namespace = "Smartcore\\Traits";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "types/change.proto";
+import "types/info.proto";
 
 // HailApi describes devices that may be asked to transport passengers from one location to another.
 // To interact with these devices you create a hail, a description of the origin and destination for your journey.
@@ -46,7 +47,7 @@ service HailApi {
 }
 
 service HailInfo {
-  // todo: define HailInfo, including listing available locations.
+  rpc DescribeHail(DescribeHailRequest) returns (HailSupport);
 }
 
 // A hail is a request from a caller to bring transport to the callers location.
@@ -239,4 +240,16 @@ message PullHailsResponse {
     // When the change occurred
     google.protobuf.Timestamp change_time = 5;
   }
+}
+
+message DescribeHailRequest {
+  // The name of the device
+  string name = 1;
+}
+
+message HailSupport {
+  // How a named device supports read/write/pull apis
+  smartcore.types.ResourceSupport resource_support = 1;
+  // The list of Locations that the implementing device can be requested to transport the passenger to.
+  repeated Hail.Location supported_locations = 2;
 }
