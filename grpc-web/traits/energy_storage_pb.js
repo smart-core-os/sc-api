@@ -329,9 +329,9 @@ proto.smartcore.traits.EnergyLevelSupport.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.EnergyLevelSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    rechargeable: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    chargeControl: jspb.Message.getFieldWithDefault(msg, 3, 0)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+rechargeable: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+chargeControl: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -578,11 +578,11 @@ proto.smartcore.traits.EnergyLevel.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.EnergyLevel.toObject = function(includeInstance, msg) {
   var f, obj = {
-    discharge: (f = msg.getDischarge()) && proto.smartcore.traits.EnergyLevel.Transfer.toObject(includeInstance, f),
-    charge: (f = msg.getCharge()) && proto.smartcore.traits.EnergyLevel.Transfer.toObject(includeInstance, f),
-    idle: (f = msg.getIdle()) && proto.smartcore.traits.EnergyLevel.Steady.toObject(includeInstance, f),
-    quantity: (f = msg.getQuantity()) && proto.smartcore.traits.EnergyLevel.Quantity.toObject(includeInstance, f),
-    pluggedIn: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+discharge: (f = msg.getDischarge()) && proto.smartcore.traits.EnergyLevel.Transfer.toObject(includeInstance, f),
+charge: (f = msg.getCharge()) && proto.smartcore.traits.EnergyLevel.Transfer.toObject(includeInstance, f),
+idle: (f = msg.getIdle()) && proto.smartcore.traits.EnergyLevel.Steady.toObject(includeInstance, f),
+quantity: (f = msg.getQuantity()) && proto.smartcore.traits.EnergyLevel.Quantity.toObject(includeInstance, f),
+pluggedIn: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -746,11 +746,11 @@ proto.smartcore.traits.EnergyLevel.Transfer.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.EnergyLevel.Transfer.toObject = function(includeInstance, msg) {
   var f, obj = {
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    time: (f = msg.getTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    speed: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    target: (f = msg.getTarget()) && proto.smartcore.traits.EnergyLevel.Quantity.toObject(includeInstance, f)
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+time: (f = msg.getTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+speed: jspb.Message.getFieldWithDefault(msg, 4, 0),
+target: (f = msg.getTarget()) && proto.smartcore.traits.EnergyLevel.Quantity.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1071,7 +1071,7 @@ proto.smartcore.traits.EnergyLevel.Steady.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.EnergyLevel.Steady.toObject = function(includeInstance, msg) {
   var f, obj = {
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1222,10 +1222,10 @@ proto.smartcore.traits.EnergyLevel.Quantity.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.EnergyLevel.Quantity.toObject = function(includeInstance, msg) {
   var f, obj = {
-    percentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    energyKwh: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    descriptive: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+percentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+energyKwh: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+descriptive: jspb.Message.getFieldWithDefault(msg, 3, 0),
+distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
   };
 
   if (includeInstance) {
@@ -1622,8 +1622,8 @@ proto.smartcore.traits.GetEnergyLevelRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.GetEnergyLevelRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1803,9 +1803,9 @@ proto.smartcore.traits.PullEnergyLevelRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullEnergyLevelRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -2021,7 +2021,7 @@ proto.smartcore.traits.PullEnergyLevelResponse.prototype.toObject = function(opt
  */
 proto.smartcore.traits.PullEnergyLevelResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullEnergyLevelResponse.Change.toObject, includeInstance)
   };
 
@@ -2136,9 +2136,9 @@ proto.smartcore.traits.PullEnergyLevelResponse.Change.prototype.toObject = funct
  */
 proto.smartcore.traits.PullEnergyLevelResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    energyLevel: (f = msg.getEnergyLevel()) && proto.smartcore.traits.EnergyLevel.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+energyLevel: (f = msg.getEnergyLevel()) && proto.smartcore.traits.EnergyLevel.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2406,8 +2406,8 @@ proto.smartcore.traits.ChargeRequest.prototype.toObject = function(opt_includeIn
  */
 proto.smartcore.traits.ChargeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    charge: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+charge: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -2667,7 +2667,7 @@ proto.smartcore.traits.DescribeEnergyLevelRequest.prototype.toObject = function(
  */
 proto.smartcore.traits.DescribeEnergyLevelRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

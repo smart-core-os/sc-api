@@ -257,9 +257,9 @@ proto.smartcore.traits.Count.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.Count.toObject = function(includeInstance, msg) {
   var f, obj = {
-    added: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    removed: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    resetTime: (f = msg.getResetTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+added: jspb.Message.getFieldWithDefault(msg, 1, 0),
+removed: jspb.Message.getFieldWithDefault(msg, 2, 0),
+resetTime: (f = msg.getResetTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -468,10 +468,10 @@ proto.smartcore.traits.CountSupport.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.CountSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    twoWay: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    supportsReset: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+twoWay: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+supportsReset: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -709,8 +709,8 @@ proto.smartcore.traits.GetCountRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.GetCountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -890,8 +890,8 @@ proto.smartcore.traits.ResetCountRequest.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.ResetCountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    resetTime: (f = msg.getResetTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+resetTime: (f = msg.getResetTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1071,10 +1071,10 @@ proto.smartcore.traits.UpdateCountRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.UpdateCountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+delta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1333,9 +1333,9 @@ proto.smartcore.traits.PullCountsRequest.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullCountsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1551,7 +1551,7 @@ proto.smartcore.traits.PullCountsResponse.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.PullCountsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullCountsResponse.Change.toObject, includeInstance)
   };
 
@@ -1666,9 +1666,9 @@ proto.smartcore.traits.PullCountsResponse.Change.prototype.toObject = function(o
  */
 proto.smartcore.traits.PullCountsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+count: (f = msg.getCount()) && proto.smartcore.traits.Count.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1936,7 +1936,7 @@ proto.smartcore.traits.DescribeCountRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.DescribeCountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

@@ -258,10 +258,10 @@ proto.smartcore.traits.Input.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.Input.toObject = function(includeInstance, msg) {
   var f, obj = {
-    videoInput: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    audioInput: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    independentAv: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    output: jspb.Message.getFieldWithDefault(msg, 4, "")
+videoInput: jspb.Message.getFieldWithDefault(msg, 1, ""),
+audioInput: jspb.Message.getFieldWithDefault(msg, 2, ""),
+independentAv: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+output: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -485,11 +485,11 @@ proto.smartcore.traits.InputSupport.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.InputSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    inputsList: jspb.Message.toObjectList(msg.getInputsList(),
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+inputsList: jspb.Message.toObjectList(msg.getInputsList(),
     proto.smartcore.traits.AvPort.toObject, includeInstance),
-    supportedFeature: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    outputsList: jspb.Message.toObjectList(msg.getOutputsList(),
+supportedFeature: jspb.Message.getFieldWithDefault(msg, 3, 0),
+outputsList: jspb.Message.toObjectList(msg.getOutputsList(),
     proto.smartcore.traits.AvPort.toObject, includeInstance)
   };
 
@@ -783,10 +783,10 @@ proto.smartcore.traits.AvPort.prototype.toObject = function(opt_includeInstance)
  */
 proto.smartcore.traits.AvPort.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    supportedFeature: jspb.Message.getFieldWithDefault(msg, 4, 0)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, ""),
+description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+supportedFeature: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1003,9 +1003,9 @@ proto.smartcore.traits.UpdateInputRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.UpdateInputRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    input: (f = msg.getInput()) && proto.smartcore.traits.Input.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+input: (f = msg.getInput()) && proto.smartcore.traits.Input.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1235,9 +1235,9 @@ proto.smartcore.traits.GetInputRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.GetInputRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    output: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+output: jspb.Message.getFieldWithDefault(msg, 2, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1446,9 +1446,9 @@ proto.smartcore.traits.PullInputRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.PullInputRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1664,7 +1664,7 @@ proto.smartcore.traits.PullInputResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullInputResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullInputResponse.Change.toObject, includeInstance)
   };
 
@@ -1779,9 +1779,9 @@ proto.smartcore.traits.PullInputResponse.Change.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullInputResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    input: (f = msg.getInput()) && proto.smartcore.traits.Input.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+input: (f = msg.getInput()) && proto.smartcore.traits.Input.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2049,7 +2049,7 @@ proto.smartcore.traits.DescribeInputRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.DescribeInputRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

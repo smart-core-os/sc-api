@@ -258,10 +258,10 @@ proto.smartcore.traits.FanSpeed.prototype.toObject = function(opt_includeInstanc
  */
 proto.smartcore.traits.FanSpeed.toObject = function(includeInstance, msg) {
   var f, obj = {
-    percentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    preset: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    presetIndex: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    direction: jspb.Message.getFieldWithDefault(msg, 4, 0)
+percentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+preset: jspb.Message.getFieldWithDefault(msg, 2, ""),
+presetIndex: jspb.Message.getFieldWithDefault(msg, 3, 0),
+direction: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -494,8 +494,8 @@ proto.smartcore.traits.FanSpeedSupport.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.FanSpeedSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    presetsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+presetsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -694,8 +694,8 @@ proto.smartcore.traits.GetFanSpeedRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.GetFanSpeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -875,10 +875,10 @@ proto.smartcore.traits.UpdateFanSpeedRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.UpdateFanSpeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    fanSpeed: (f = msg.getFanSpeed()) && proto.smartcore.traits.FanSpeed.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    relative: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+fanSpeed: (f = msg.getFanSpeed()) && proto.smartcore.traits.FanSpeed.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+relative: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1137,7 +1137,7 @@ proto.smartcore.traits.ReverseFanSpeedDirectionRequest.prototype.toObject = func
  */
 proto.smartcore.traits.ReverseFanSpeedDirectionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1267,9 +1267,9 @@ proto.smartcore.traits.PullFanSpeedRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.PullFanSpeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1485,7 +1485,7 @@ proto.smartcore.traits.PullFanSpeedResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullFanSpeedResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullFanSpeedResponse.Change.toObject, includeInstance)
   };
 
@@ -1600,9 +1600,9 @@ proto.smartcore.traits.PullFanSpeedResponse.Change.prototype.toObject = function
  */
 proto.smartcore.traits.PullFanSpeedResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    fanSpeed: (f = msg.getFanSpeed()) && proto.smartcore.traits.FanSpeed.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+fanSpeed: (f = msg.getFanSpeed()) && proto.smartcore.traits.FanSpeed.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1870,7 +1870,7 @@ proto.smartcore.traits.DescribeFanSpeedRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.DescribeFanSpeedRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

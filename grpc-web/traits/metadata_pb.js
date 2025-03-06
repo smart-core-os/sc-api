@@ -395,19 +395,19 @@ proto.smartcore.traits.Metadata.prototype.toObject = function(opt_includeInstanc
  */
 proto.smartcore.traits.Metadata.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
     proto.smartcore.traits.TraitMetadata.toObject, includeInstance),
-    appearance: (f = msg.getAppearance()) && proto.smartcore.traits.Metadata.Appearance.toObject(includeInstance, f),
-    location: (f = msg.getLocation()) && proto.smartcore.traits.Metadata.Location.toObject(includeInstance, f),
-    id: (f = msg.getId()) && proto.smartcore.traits.Metadata.ID.toObject(includeInstance, f),
-    product: (f = msg.getProduct()) && proto.smartcore.traits.Metadata.Product.toObject(includeInstance, f),
-    revision: (f = msg.getRevision()) && proto.smartcore.traits.Metadata.Revision.toObject(includeInstance, f),
-    installation: (f = msg.getInstallation()) && proto.smartcore.traits.Metadata.Installation.toObject(includeInstance, f),
-    nicsList: jspb.Message.toObjectList(msg.getNicsList(),
+appearance: (f = msg.getAppearance()) && proto.smartcore.traits.Metadata.Appearance.toObject(includeInstance, f),
+location: (f = msg.getLocation()) && proto.smartcore.traits.Metadata.Location.toObject(includeInstance, f),
+id: (f = msg.getId()) && proto.smartcore.traits.Metadata.ID.toObject(includeInstance, f),
+product: (f = msg.getProduct()) && proto.smartcore.traits.Metadata.Product.toObject(includeInstance, f),
+revision: (f = msg.getRevision()) && proto.smartcore.traits.Metadata.Revision.toObject(includeInstance, f),
+installation: (f = msg.getInstallation()) && proto.smartcore.traits.Metadata.Installation.toObject(includeInstance, f),
+nicsList: jspb.Message.toObjectList(msg.getNicsList(),
     proto.smartcore.traits.Metadata.NIC.toObject, includeInstance),
-    membership: (f = msg.getMembership()) && proto.smartcore.traits.Metadata.Membership.toObject(includeInstance, f),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+membership: (f = msg.getMembership()) && proto.smartcore.traits.Metadata.Membership.toObject(includeInstance, f),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -646,9 +646,9 @@ proto.smartcore.traits.Metadata.Appearance.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.Metadata.Appearance.toObject = function(includeInstance, msg) {
   var f, obj = {
-    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -840,12 +840,12 @@ proto.smartcore.traits.Metadata.Location.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.Metadata.Location.toObject = function(includeInstance, msg) {
   var f, obj = {
-    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    architectureReference: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    floor: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    zone: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+description: jspb.Message.getFieldWithDefault(msg, 2, ""),
+architectureReference: jspb.Message.getFieldWithDefault(msg, 3, ""),
+floor: jspb.Message.getFieldWithDefault(msg, 4, ""),
+zone: jspb.Message.getFieldWithDefault(msg, 5, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1124,10 +1124,10 @@ proto.smartcore.traits.Metadata.ID.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.Metadata.ID.toObject = function(includeInstance, msg) {
   var f, obj = {
-    serialNumber: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bim: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    bacnet: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+serialNumber: jspb.Message.getFieldWithDefault(msg, 1, ""),
+bim: jspb.Message.getFieldWithDefault(msg, 2, ""),
+bacnet: jspb.Message.getFieldWithDefault(msg, 3, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1348,14 +1348,14 @@ proto.smartcore.traits.Metadata.Product.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.Metadata.Product.toObject = function(includeInstance, msg) {
   var f, obj = {
-    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    manufacturer: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    model: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    hardwareVersion: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    firmwareVersion: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    softwareVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    kind: (f = msg.getKind()) && proto.smartcore.traits.Metadata.Product.Kind.toObject(includeInstance, f),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+manufacturer: jspb.Message.getFieldWithDefault(msg, 2, ""),
+model: jspb.Message.getFieldWithDefault(msg, 3, ""),
+hardwareVersion: jspb.Message.getFieldWithDefault(msg, 4, ""),
+firmwareVersion: jspb.Message.getFieldWithDefault(msg, 5, ""),
+softwareVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
+kind: (f = msg.getKind()) && proto.smartcore.traits.Metadata.Product.Kind.toObject(includeInstance, f),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1545,8 +1545,8 @@ proto.smartcore.traits.Metadata.Product.Kind.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.Metadata.Product.Kind.toObject = function(includeInstance, msg) {
   var f, obj = {
-    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    code: jspb.Message.getFieldWithDefault(msg, 2, "")
+title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+code: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1873,14 +1873,14 @@ proto.smartcore.traits.Metadata.Revision.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.Metadata.Revision.toObject = function(includeInstance, msg) {
   var f, obj = {
-    title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    manufactureDate: (f = msg.getManufactureDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    model: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    hardwareVersion: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    firmwareVersion: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    softwareVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    batch: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+title: jspb.Message.getFieldWithDefault(msg, 1, ""),
+manufactureDate: (f = msg.getManufactureDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+model: jspb.Message.getFieldWithDefault(msg, 3, ""),
+hardwareVersion: jspb.Message.getFieldWithDefault(msg, 4, ""),
+firmwareVersion: jspb.Message.getFieldWithDefault(msg, 5, ""),
+softwareVersion: jspb.Message.getFieldWithDefault(msg, 6, ""),
+batch: jspb.Message.getFieldWithDefault(msg, 7, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -2238,12 +2238,12 @@ proto.smartcore.traits.Metadata.Installation.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.Metadata.Installation.toObject = function(includeInstance, msg) {
   var f, obj = {
-    installTime: (f = msg.getInstallTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    replaceTime: (f = msg.getReplaceTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    installer: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    labelled: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    labelTime: (f = msg.getLabelTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+installTime: (f = msg.getInstallTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+replaceTime: (f = msg.getReplaceTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+installer: jspb.Message.getFieldWithDefault(msg, 3, ""),
+labelled: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+labelTime: (f = msg.getLabelTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -2592,14 +2592,14 @@ proto.smartcore.traits.Metadata.NIC.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.Metadata.NIC.toObject = function(includeInstance, msg) {
   var f, obj = {
-    displayName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    macAddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    ip: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    network: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    gateway: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    dnsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
-    assignment: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+displayName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+macAddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
+ip: jspb.Message.getFieldWithDefault(msg, 3, ""),
+network: jspb.Message.getFieldWithDefault(msg, 4, ""),
+gateway: jspb.Message.getFieldWithDefault(msg, 5, ""),
+dnsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
+assignment: jspb.Message.getFieldWithDefault(msg, 10, 0),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -2964,9 +2964,9 @@ proto.smartcore.traits.Metadata.Membership.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.Metadata.Membership.toObject = function(includeInstance, msg) {
   var f, obj = {
-    group: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    subsystem: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+group: jspb.Message.getFieldWithDefault(msg, 1, ""),
+subsystem: jspb.Message.getFieldWithDefault(msg, 2, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -3534,8 +3534,8 @@ proto.smartcore.traits.TraitMetadata.prototype.toObject = function(opt_includeIn
  */
 proto.smartcore.traits.TraitMetadata.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -3698,8 +3698,8 @@ proto.smartcore.traits.GetMetadataRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.GetMetadataRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3879,9 +3879,9 @@ proto.smartcore.traits.PullMetadataRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.PullMetadataRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -4097,7 +4097,7 @@ proto.smartcore.traits.PullMetadataResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullMetadataResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullMetadataResponse.Change.toObject, includeInstance)
   };
 
@@ -4212,9 +4212,9 @@ proto.smartcore.traits.PullMetadataResponse.Change.prototype.toObject = function
  */
 proto.smartcore.traits.PullMetadataResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    metadata: (f = msg.getMetadata()) && proto.smartcore.traits.Metadata.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+metadata: (f = msg.getMetadata()) && proto.smartcore.traits.Metadata.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

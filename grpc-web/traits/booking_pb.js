@@ -396,13 +396,13 @@ proto.smartcore.traits.Booking.prototype.toObject = function(opt_includeInstance
  */
 proto.smartcore.traits.Booking.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookable: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ownerName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    booked: (f = msg.getBooked()) && types_time_period_pb.Period.toObject(includeInstance, f),
-    checkIn: (f = msg.getCheckIn()) && types_time_period_pb.Period.toObject(includeInstance, f),
-    checkInNotRequired: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+bookable: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+title: jspb.Message.getFieldWithDefault(msg, 3, ""),
+ownerName: jspb.Message.getFieldWithDefault(msg, 4, ""),
+booked: (f = msg.getBooked()) && types_time_period_pb.Period.toObject(includeInstance, f),
+checkIn: (f = msg.getCheckIn()) && types_time_period_pb.Period.toObject(includeInstance, f),
+checkInNotRequired: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -748,10 +748,10 @@ proto.smartcore.traits.BookingSupport.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.BookingSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    checkInSupport: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    checkOutSupport: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    timeResolution: jspb.Message.getFieldWithDefault(msg, 4, 0)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+checkInSupport: jspb.Message.getFieldWithDefault(msg, 2, 0),
+checkOutSupport: jspb.Message.getFieldWithDefault(msg, 3, 0),
+timeResolution: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -999,10 +999,10 @@ proto.smartcore.traits.ListBookingsRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.ListBookingsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingIntersects: (f = msg.getBookingIntersects()) && types_time_period_pb.Period.toObject(includeInstance, f),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+bookingIntersects: (f = msg.getBookingIntersects()) && types_time_period_pb.Period.toObject(includeInstance, f),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1268,7 +1268,7 @@ proto.smartcore.traits.ListBookingsResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.ListBookingsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookingsList: jspb.Message.toObjectList(msg.getBookingsList(),
+bookingsList: jspb.Message.toObjectList(msg.getBookingsList(),
     proto.smartcore.traits.Booking.toObject, includeInstance)
   };
 
@@ -1421,9 +1421,9 @@ proto.smartcore.traits.CheckInBookingRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.CheckInBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1733,9 +1733,9 @@ proto.smartcore.traits.CheckOutBookingRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.CheckOutBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+bookingId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2045,8 +2045,8 @@ proto.smartcore.traits.CreateBookingRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.CreateBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2226,7 +2226,7 @@ proto.smartcore.traits.CreateBookingResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.CreateBookingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookingId: jspb.Message.getFieldWithDefault(msg, 1, "")
+bookingId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2356,9 +2356,9 @@ proto.smartcore.traits.UpdateBookingRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.UpdateBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2588,7 +2588,7 @@ proto.smartcore.traits.UpdateBookingResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.UpdateBookingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
+booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2746,7 +2746,7 @@ proto.smartcore.traits.PullBookingsResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullBookingsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullBookingsResponse.Change.toObject, includeInstance)
   };
 
@@ -2861,11 +2861,11 @@ proto.smartcore.traits.PullBookingsResponse.Change.prototype.toObject = function
  */
 proto.smartcore.traits.PullBookingsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Booking.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3212,7 +3212,7 @@ proto.smartcore.traits.DescribeBookingRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.DescribeBookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

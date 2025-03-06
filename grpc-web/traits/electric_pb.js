@@ -458,13 +458,13 @@ proto.smartcore.traits.ElectricDemand.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.ElectricDemand.toObject = function(includeInstance, msg) {
   var f, obj = {
-    current: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    voltage: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    rating: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    powerFactor: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    realPower: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-    apparentPower: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
-    reactivePower: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0)
+current: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+voltage: (f = jspb.Message.getOptionalFloatingPointField(msg, 2)) == null ? undefined : f,
+rating: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+powerFactor: (f = jspb.Message.getOptionalFloatingPointField(msg, 4)) == null ? undefined : f,
+realPower: (f = jspb.Message.getOptionalFloatingPointField(msg, 5)) == null ? undefined : f,
+apparentPower: (f = jspb.Message.getOptionalFloatingPointField(msg, 6)) == null ? undefined : f,
+reactivePower: (f = jspb.Message.getOptionalFloatingPointField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -865,14 +865,14 @@ proto.smartcore.traits.ElectricMode.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.ElectricMode.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    voltage: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    segmentsList: jspb.Message.toObjectList(msg.getSegmentsList(),
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, ""),
+description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+voltage: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+segmentsList: jspb.Message.toObjectList(msg.getSegmentsList(),
     proto.smartcore.traits.ElectricMode.Segment.toObject, includeInstance),
-    normal: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+normal: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -1079,9 +1079,9 @@ proto.smartcore.traits.ElectricMode.Segment.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.ElectricMode.Segment.toObject = function(includeInstance, msg) {
   var f, obj = {
-    length: (f = msg.getLength()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    magnitude: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    fixed: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+length: (f = msg.getLength()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+magnitude: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+fixed: (f = jspb.Message.getOptionalFloatingPointField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1473,8 +1473,8 @@ proto.smartcore.traits.GetDemandRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.GetDemandRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1654,9 +1654,9 @@ proto.smartcore.traits.PullDemandRequest.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullDemandRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1872,7 +1872,7 @@ proto.smartcore.traits.PullDemandResponse.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.PullDemandResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullDemandResponse.Change.toObject, includeInstance)
   };
 
@@ -1987,9 +1987,9 @@ proto.smartcore.traits.PullDemandResponse.Change.prototype.toObject = function(o
  */
 proto.smartcore.traits.PullDemandResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    demand: (f = msg.getDemand()) && proto.smartcore.traits.ElectricDemand.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+demand: (f = msg.getDemand()) && proto.smartcore.traits.ElectricDemand.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2257,8 +2257,8 @@ proto.smartcore.traits.GetActiveModeRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.GetActiveModeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2438,9 +2438,9 @@ proto.smartcore.traits.UpdateActiveModeRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.UpdateActiveModeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    activeMode: (f = msg.getActiveMode()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+activeMode: (f = msg.getActiveMode()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2670,7 +2670,7 @@ proto.smartcore.traits.ClearActiveModeRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.ClearActiveModeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2800,9 +2800,9 @@ proto.smartcore.traits.PullActiveModeRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullActiveModeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -3018,7 +3018,7 @@ proto.smartcore.traits.PullActiveModeResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullActiveModeResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullActiveModeResponse.Change.toObject, includeInstance)
   };
 
@@ -3133,9 +3133,9 @@ proto.smartcore.traits.PullActiveModeResponse.Change.prototype.toObject = functi
  */
 proto.smartcore.traits.PullActiveModeResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    activeMode: (f = msg.getActiveMode()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+activeMode: (f = msg.getActiveMode()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3403,10 +3403,10 @@ proto.smartcore.traits.ListModesRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.ListModesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -3651,10 +3651,10 @@ proto.smartcore.traits.ListModesResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.ListModesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    modesList: jspb.Message.toObjectList(msg.getModesList(),
+modesList: jspb.Message.toObjectList(msg.getModesList(),
     proto.smartcore.traits.ElectricMode.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3864,9 +3864,9 @@ proto.smartcore.traits.PullModesRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.PullModesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -4082,7 +4082,7 @@ proto.smartcore.traits.PullModesResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullModesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullModesResponse.Change.toObject, includeInstance)
   };
 
@@ -4197,11 +4197,11 @@ proto.smartcore.traits.PullModesResponse.Change.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullModesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.ElectricMode.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

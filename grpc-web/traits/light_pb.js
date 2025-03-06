@@ -261,11 +261,11 @@ proto.smartcore.traits.Brightness.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Brightness.toObject = function(includeInstance, msg) {
   var f, obj = {
-    levelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f),
-    brightnessTween: (f = msg.getBrightnessTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetLevelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    targetPreset: (f = msg.getTargetPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
+levelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+preset: (f = msg.getPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f),
+brightnessTween: (f = msg.getBrightnessTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetLevelPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+targetPreset: (f = msg.getTargetPreset()) && proto.smartcore.traits.LightPreset.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -574,8 +574,8 @@ proto.smartcore.traits.LightPreset.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.LightPreset.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -741,9 +741,9 @@ proto.smartcore.traits.BrightnessSupport.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.BrightnessSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    brightnessAttributes: (f = msg.getBrightnessAttributes()) && types_number_pb.Int32Attributes.toObject(includeInstance, f),
-    presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+brightnessAttributes: (f = msg.getBrightnessAttributes()) && types_number_pb.Int32Attributes.toObject(includeInstance, f),
+presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
     proto.smartcore.traits.LightPreset.toObject, includeInstance)
   };
 
@@ -996,10 +996,10 @@ proto.smartcore.traits.UpdateBrightnessRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.UpdateBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    brightness: (f = msg.getBrightness()) && proto.smartcore.traits.Brightness.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+brightness: (f = msg.getBrightness()) && proto.smartcore.traits.Brightness.toObject(includeInstance, f),
+delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1258,8 +1258,8 @@ proto.smartcore.traits.GetBrightnessRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.GetBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1439,10 +1439,10 @@ proto.smartcore.traits.PullBrightnessRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    excludeRamping: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+excludeRamping: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1687,7 +1687,7 @@ proto.smartcore.traits.PullBrightnessResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullBrightnessResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullBrightnessResponse.Change.toObject, includeInstance)
   };
 
@@ -1802,9 +1802,9 @@ proto.smartcore.traits.PullBrightnessResponse.Change.prototype.toObject = functi
  */
 proto.smartcore.traits.PullBrightnessResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    brightness: (f = msg.getBrightness()) && proto.smartcore.traits.Brightness.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+brightness: (f = msg.getBrightness()) && proto.smartcore.traits.Brightness.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2072,7 +2072,7 @@ proto.smartcore.traits.DescribeBrightnessRequest.prototype.toObject = function(o
  */
 proto.smartcore.traits.DescribeBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

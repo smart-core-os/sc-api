@@ -220,10 +220,10 @@ proto.smartcore.traits.Child.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.Child.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
     proto.smartcore.traits.Trait.toObject, includeInstance),
-    parent: jspb.Message.getFieldWithDefault(msg, 3, "")
+parent: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -433,7 +433,7 @@ proto.smartcore.traits.Trait.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.Trait.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -563,10 +563,10 @@ proto.smartcore.traits.ListChildrenRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.ListChildrenRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -811,10 +811,10 @@ proto.smartcore.traits.ListChildrenResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.ListChildrenResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    childrenList: jspb.Message.toObjectList(msg.getChildrenList(),
+childrenList: jspb.Message.toObjectList(msg.getChildrenList(),
     proto.smartcore.traits.Child.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1024,9 +1024,9 @@ proto.smartcore.traits.PullChildrenRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.PullChildrenRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1242,7 +1242,7 @@ proto.smartcore.traits.PullChildrenResponse.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullChildrenResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullChildrenResponse.Change.toObject, includeInstance)
   };
 
@@ -1357,11 +1357,11 @@ proto.smartcore.traits.PullChildrenResponse.Change.prototype.toObject = function
  */
 proto.smartcore.traits.PullChildrenResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Child.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Child.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Child.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Child.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
