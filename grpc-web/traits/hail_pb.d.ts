@@ -3,6 +3,7 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb'; // proto import: "google/protobuf/field_mask.proto"
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as types_change_pb from '../types/change_pb'; // proto import: "types/change.proto"
+import * as types_info_pb from '../types/info_pb'; // proto import: "types/info.proto"
 
 
 export class Hail extends jspb.Message {
@@ -446,5 +447,49 @@ export namespace PullHailsResponse {
     }
   }
 
+}
+
+export class DescribeHailRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): DescribeHailRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DescribeHailRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DescribeHailRequest): DescribeHailRequest.AsObject;
+  static serializeBinaryToWriter(message: DescribeHailRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DescribeHailRequest;
+  static deserializeBinaryFromReader(message: DescribeHailRequest, reader: jspb.BinaryReader): DescribeHailRequest;
+}
+
+export namespace DescribeHailRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
+export class HailSupport extends jspb.Message {
+  getResourceSupport(): types_info_pb.ResourceSupport | undefined;
+  setResourceSupport(value?: types_info_pb.ResourceSupport): HailSupport;
+  hasResourceSupport(): boolean;
+  clearResourceSupport(): HailSupport;
+
+  getSupportedLocationsList(): Array<Hail.Location>;
+  setSupportedLocationsList(value: Array<Hail.Location>): HailSupport;
+  clearSupportedLocationsList(): HailSupport;
+  addSupportedLocations(value?: Hail.Location, index?: number): Hail.Location;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HailSupport.AsObject;
+  static toObject(includeInstance: boolean, msg: HailSupport): HailSupport.AsObject;
+  static serializeBinaryToWriter(message: HailSupport, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HailSupport;
+  static deserializeBinaryFromReader(message: HailSupport, reader: jspb.BinaryReader): HailSupport;
+}
+
+export namespace HailSupport {
+  export type AsObject = {
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
+    supportedLocationsList: Array<Hail.Location.AsObject>,
+  }
 }
 

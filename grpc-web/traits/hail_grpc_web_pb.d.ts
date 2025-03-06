@@ -60,6 +60,13 @@ export class HailInfoClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
+  describeHail(
+    request: traits_hail_pb.DescribeHailRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: traits_hail_pb.HailSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_hail_pb.HailSupport>;
+
 }
 
 export class HailApiPromiseClient {
@@ -108,6 +115,11 @@ export class HailInfoPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
+
+  describeHail(
+    request: traits_hail_pb.DescribeHailRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_hail_pb.HailSupport>;
 
 }
 
