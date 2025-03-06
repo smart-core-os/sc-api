@@ -391,10 +391,10 @@ proto.smartcore.traits.Ptz.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.traits.Ptz.toObject = function(includeInstance, msg) {
   var f, obj = {
-    position: (f = msg.getPosition()) && proto.smartcore.traits.PtzPosition.toObject(includeInstance, f),
-    movement: (f = msg.getMovement()) && proto.smartcore.traits.PtzMovement.toObject(includeInstance, f),
-    preset: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    presetSpeed: jspb.Message.getFieldWithDefault(msg, 4, 0)
+position: (f = msg.getPosition()) && proto.smartcore.traits.PtzPosition.toObject(includeInstance, f),
+movement: (f = msg.getMovement()) && proto.smartcore.traits.PtzMovement.toObject(includeInstance, f),
+preset: jspb.Message.getFieldWithDefault(msg, 3, ""),
+presetSpeed: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -653,9 +653,9 @@ proto.smartcore.traits.PtzVector.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.PtzVector.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pan: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    tilt: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    zoom: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+pan: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+tilt: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+zoom: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
   };
 
   if (includeInstance) {
@@ -843,8 +843,8 @@ proto.smartcore.traits.PtzBounds.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.PtzBounds.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: (f = msg.getMin()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
-    max: (f = msg.getMax()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f)
+min: (f = msg.getMin()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
+max: (f = msg.getMax()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1045,10 +1045,10 @@ proto.smartcore.traits.PtzMovement.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.PtzMovement.toObject = function(includeInstance, msg) {
   var f, obj = {
-    direction: (f = msg.getDirection()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
-    speed: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    speedTween: (f = msg.getSpeedTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetSpeed: jspb.Message.getFieldWithDefault(msg, 4, 0)
+direction: (f = msg.getDirection()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
+speed: jspb.Message.getFieldWithDefault(msg, 2, 0),
+speedTween: (f = msg.getSpeedTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetSpeed: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -1307,9 +1307,9 @@ proto.smartcore.traits.PtzPosition.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.PtzPosition.toObject = function(includeInstance, msg) {
   var f, obj = {
-    position: (f = msg.getPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
-    tween: (f = msg.getTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetPosition: (f = msg.getTargetPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f)
+position: (f = msg.getPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
+tween: (f = msg.getTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetPosition: (f = msg.getTargetPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1560,11 +1560,11 @@ proto.smartcore.traits.PtzPreset.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.PtzPreset.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    position: (f = msg.getPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
-    writable: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, ""),
+description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+position: (f = msg.getPosition()) && proto.smartcore.traits.PtzVector.toObject(includeInstance, f),
+writable: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -1838,12 +1838,12 @@ proto.smartcore.traits.PtzSupport.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.PtzSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    supportsPosition: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    supportsMovement: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+supportsPosition: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+supportsMovement: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
     proto.smartcore.traits.PtzPreset.toObject, includeInstance),
-    supportsCustomPresets: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+supportsCustomPresets: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -2132,8 +2132,8 @@ proto.smartcore.traits.GetPtzRequest.prototype.toObject = function(opt_includeIn
  */
 proto.smartcore.traits.GetPtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2313,9 +2313,9 @@ proto.smartcore.traits.UpdatePtzRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.UpdatePtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    state: (f = msg.getState()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+state: (f = msg.getState()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2545,7 +2545,7 @@ proto.smartcore.traits.StopPtzRequest.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.StopPtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2675,8 +2675,8 @@ proto.smartcore.traits.CreatePtzPresetRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.CreatePtzPresetRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    preset: (f = msg.getPreset()) && proto.smartcore.traits.PtzPreset.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+preset: (f = msg.getPreset()) && proto.smartcore.traits.PtzPreset.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2856,9 +2856,9 @@ proto.smartcore.traits.PullPtzRequest.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.PullPtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -3074,7 +3074,7 @@ proto.smartcore.traits.PullPtzResponse.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.PullPtzResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullPtzResponse.Change.toObject, includeInstance)
   };
 
@@ -3189,9 +3189,9 @@ proto.smartcore.traits.PullPtzResponse.Change.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullPtzResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    ptz: (f = msg.getPtz()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+ptz: (f = msg.getPtz()) && proto.smartcore.traits.Ptz.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3459,7 +3459,7 @@ proto.smartcore.traits.DescribePtzRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.DescribePtzRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

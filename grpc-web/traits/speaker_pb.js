@@ -193,9 +193,9 @@ proto.smartcore.traits.VolumeSupport.prototype.toObject = function(opt_includeIn
  */
 proto.smartcore.traits.VolumeSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    volumeAttributes: (f = msg.getVolumeAttributes()) && types_number_pb.FloatAttributes.toObject(includeInstance, f),
-    muteSupport: jspb.Message.getFieldWithDefault(msg, 3, 0)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+volumeAttributes: (f = msg.getVolumeAttributes()) && types_number_pb.FloatAttributes.toObject(includeInstance, f),
+muteSupport: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -425,8 +425,8 @@ proto.smartcore.traits.GetSpeakerVolumeRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.GetSpeakerVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -606,10 +606,10 @@ proto.smartcore.traits.UpdateSpeakerVolumeRequest.prototype.toObject = function(
  */
 proto.smartcore.traits.UpdateSpeakerVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    volume: (f = msg.getVolume()) && types_unit_pb.AudioLevel.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+volume: (f = msg.getVolume()) && types_unit_pb.AudioLevel.toObject(includeInstance, f),
+delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -868,9 +868,9 @@ proto.smartcore.traits.PullSpeakerVolumeRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullSpeakerVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1086,7 +1086,7 @@ proto.smartcore.traits.PullSpeakerVolumeResponse.prototype.toObject = function(o
  */
 proto.smartcore.traits.PullSpeakerVolumeResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     types_unit_pb.AudioLevelChange.toObject, includeInstance)
   };
 
@@ -1239,7 +1239,7 @@ proto.smartcore.traits.DescribeVolumeRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.DescribeVolumeRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

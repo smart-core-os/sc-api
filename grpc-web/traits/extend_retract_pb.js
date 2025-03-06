@@ -303,11 +303,11 @@ proto.smartcore.traits.Extension.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.Extension.toObject = function(includeInstance, msg) {
   var f, obj = {
-    extendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    extendPreset: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    extendTween: (f = msg.getExtendTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetExtendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    targetExtendPreset: jspb.Message.getFieldWithDefault(msg, 5, "")
+extendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+extendPreset: jspb.Message.getFieldWithDefault(msg, 2, ""),
+extendTween: (f = msg.getExtendTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetExtendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+targetExtendPreset: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -574,9 +574,9 @@ proto.smartcore.traits.ExtensionPreset.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.ExtensionPreset.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extendPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    writable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+extendPercent: (f = jspb.Message.getOptionalFloatingPointField(msg, 2)) == null ? undefined : f,
+writable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -789,12 +789,12 @@ proto.smartcore.traits.ExtensionSupport.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.ExtensionSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
     proto.smartcore.traits.ExtensionPreset.toObject, includeInstance),
-    step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    tweenSupport: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    supportsCustomPresets: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+tweenSupport: jspb.Message.getFieldWithDefault(msg, 4, 0),
+supportsCustomPresets: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -1083,8 +1083,8 @@ proto.smartcore.traits.GetExtensionRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.GetExtensionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1264,9 +1264,9 @@ proto.smartcore.traits.UpdateExtensionRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.UpdateExtensionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    extension: (f = msg.getExtension$()) && proto.smartcore.traits.Extension.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+extension: (f = msg.getExtension$()) && proto.smartcore.traits.Extension.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1496,7 +1496,7 @@ proto.smartcore.traits.ExtendRetractStopRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.ExtendRetractStopRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1626,8 +1626,8 @@ proto.smartcore.traits.CreateExtensionPresetRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.CreateExtensionPresetRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    preset: (f = msg.getPreset()) && proto.smartcore.traits.ExtensionPreset.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+preset: (f = msg.getPreset()) && proto.smartcore.traits.ExtensionPreset.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1807,9 +1807,9 @@ proto.smartcore.traits.PullExtensionsRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullExtensionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -2025,7 +2025,7 @@ proto.smartcore.traits.PullExtensionsResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullExtensionsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullExtensionsResponse.Change.toObject, includeInstance)
   };
 
@@ -2140,9 +2140,9 @@ proto.smartcore.traits.PullExtensionsResponse.Change.prototype.toObject = functi
  */
 proto.smartcore.traits.PullExtensionsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    extension: (f = msg.getExtension$()) && proto.smartcore.traits.Extension.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+extension: (f = msg.getExtension$()) && proto.smartcore.traits.Extension.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2410,7 +2410,7 @@ proto.smartcore.traits.DescribeExtensionRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.DescribeExtensionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

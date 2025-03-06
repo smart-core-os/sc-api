@@ -533,16 +533,16 @@ proto.smartcore.traits.Consumable.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Consumable.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    availablePortionsList: jspb.Message.toObjectList(msg.getAvailablePortionsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+availablePortionsList: jspb.Message.toObjectList(msg.getAvailablePortionsList(),
     proto.smartcore.traits.Consumable.Portion.toObject, includeInstance),
-    defaultPortion: (f = msg.getDefaultPortion()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
-    title: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    displayName: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    picture: (f = msg.getPicture()) && types_image_pb.Image.toObject(includeInstance, f),
-    url: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    idsMap: (f = msg.getIdsMap()) ? f.toObject(includeInstance, undefined) : [],
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+defaultPortion: (f = msg.getDefaultPortion()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
+title: jspb.Message.getFieldWithDefault(msg, 10, ""),
+displayName: jspb.Message.getFieldWithDefault(msg, 11, ""),
+picture: (f = msg.getPicture()) && types_image_pb.Image.toObject(includeInstance, f),
+url: jspb.Message.getFieldWithDefault(msg, 13, ""),
+idsMap: (f = msg.getIdsMap()) ? f.toObject(includeInstance, undefined) : [],
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -759,9 +759,9 @@ proto.smartcore.traits.Consumable.Portion.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.Consumable.Portion.toObject = function(includeInstance, msg) {
   var f, obj = {
-    unit: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    bounds: (f = msg.getBounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
+unit: jspb.Message.getFieldWithDefault(msg, 1, 0),
+bounds: (f = msg.getBounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0)
   };
 
   if (includeInstance) {
@@ -970,8 +970,8 @@ proto.smartcore.traits.Consumable.Quantity.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.Consumable.Quantity.toObject = function(includeInstance, msg) {
   var f, obj = {
-    amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    unit: jspb.Message.getFieldWithDefault(msg, 3, 0)
+amount: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
+unit: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1130,11 +1130,11 @@ proto.smartcore.traits.Consumable.Stock.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.Consumable.Stock.toObject = function(includeInstance, msg) {
   var f, obj = {
-    consumable: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    remaining: (f = msg.getRemaining()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
-    used: (f = msg.getUsed()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
-    lastDispensed: (f = msg.getLastDispensed()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
-    dispensing: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+consumable: jspb.Message.getFieldWithDefault(msg, 1, ""),
+remaining: (f = msg.getRemaining()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
+used: (f = msg.getUsed()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
+lastDispensed: (f = msg.getLastDispensed()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
+dispensing: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -1673,10 +1673,10 @@ proto.smartcore.traits.ListConsumablesRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.ListConsumablesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1921,10 +1921,10 @@ proto.smartcore.traits.ListConsumablesResponse.prototype.toObject = function(opt
  */
 proto.smartcore.traits.ListConsumablesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    consumablesList: jspb.Message.toObjectList(msg.getConsumablesList(),
+consumablesList: jspb.Message.toObjectList(msg.getConsumablesList(),
     proto.smartcore.traits.Consumable.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -2134,9 +2134,9 @@ proto.smartcore.traits.PullConsumablesRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullConsumablesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -2352,7 +2352,7 @@ proto.smartcore.traits.PullConsumablesResponse.prototype.toObject = function(opt
  */
 proto.smartcore.traits.PullConsumablesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullConsumablesResponse.Change.toObject, includeInstance)
   };
 
@@ -2467,11 +2467,11 @@ proto.smartcore.traits.PullConsumablesResponse.Change.prototype.toObject = funct
  */
 proto.smartcore.traits.PullConsumablesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Consumable.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Consumable.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Consumable.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Consumable.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2818,9 +2818,9 @@ proto.smartcore.traits.GetStockRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.GetStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumable: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+consumable: jspb.Message.getFieldWithDefault(msg, 3, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3029,10 +3029,10 @@ proto.smartcore.traits.UpdateStockRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.UpdateStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    stock: (f = msg.getStock()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    relative: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+stock: (f = msg.getStock()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+relative: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -3291,10 +3291,10 @@ proto.smartcore.traits.PullStockRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.PullStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -3539,7 +3539,7 @@ proto.smartcore.traits.PullStockResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullStockResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullStockResponse.Change.toObject, includeInstance)
   };
 
@@ -3654,9 +3654,9 @@ proto.smartcore.traits.PullStockResponse.Change.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullStockResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    stock: (f = msg.getStock()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+stock: (f = msg.getStock()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3924,10 +3924,10 @@ proto.smartcore.traits.ListInventoryRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.ListInventoryRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -4172,10 +4172,10 @@ proto.smartcore.traits.ListInventoryResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.ListInventoryResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    inventoryList: jspb.Message.toObjectList(msg.getInventoryList(),
+inventoryList: jspb.Message.toObjectList(msg.getInventoryList(),
     proto.smartcore.traits.Consumable.Stock.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -4385,9 +4385,9 @@ proto.smartcore.traits.PullInventoryRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullInventoryRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -4603,7 +4603,7 @@ proto.smartcore.traits.PullInventoryResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullInventoryResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullInventoryResponse.Change.toObject, includeInstance)
   };
 
@@ -4718,11 +4718,11 @@ proto.smartcore.traits.PullInventoryResponse.Change.prototype.toObject = functio
  */
 proto.smartcore.traits.PullInventoryResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Consumable.Stock.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5069,10 +5069,10 @@ proto.smartcore.traits.DispenseRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.DispenseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    quantity: (f = msg.getQuantity()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+consumable: jspb.Message.getFieldWithDefault(msg, 4, ""),
+quantity: (f = msg.getQuantity()) && proto.smartcore.traits.Consumable.Quantity.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5331,8 +5331,8 @@ proto.smartcore.traits.StopDispenseRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.StopDispenseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    consumable: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+consumable: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {

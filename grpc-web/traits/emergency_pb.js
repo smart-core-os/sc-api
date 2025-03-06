@@ -236,11 +236,11 @@ proto.smartcore.traits.Emergency.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.Emergency.toObject = function(includeInstance, msg) {
   var f, obj = {
-    level: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    reason: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    levelChangeTime: (f = msg.getLevelChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    silent: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    drill: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+level: jspb.Message.getFieldWithDefault(msg, 1, 0),
+reason: jspb.Message.getFieldWithDefault(msg, 2, ""),
+levelChangeTime: (f = msg.getLevelChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+silent: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+drill: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -517,7 +517,7 @@ proto.smartcore.traits.EmergencySupport.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.EmergencySupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -668,8 +668,8 @@ proto.smartcore.traits.GetEmergencyRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.GetEmergencyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -849,9 +849,9 @@ proto.smartcore.traits.UpdateEmergencyRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.UpdateEmergencyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    emergency: (f = msg.getEmergency()) && proto.smartcore.traits.Emergency.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+emergency: (f = msg.getEmergency()) && proto.smartcore.traits.Emergency.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1081,9 +1081,9 @@ proto.smartcore.traits.PullEmergencyRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullEmergencyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1299,7 +1299,7 @@ proto.smartcore.traits.PullEmergencyResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullEmergencyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullEmergencyResponse.Change.toObject, includeInstance)
   };
 
@@ -1414,9 +1414,9 @@ proto.smartcore.traits.PullEmergencyResponse.Change.prototype.toObject = functio
  */
 proto.smartcore.traits.PullEmergencyResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    emergency: (f = msg.getEmergency()) && proto.smartcore.traits.Emergency.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+emergency: (f = msg.getEmergency()) && proto.smartcore.traits.Emergency.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1684,7 +1684,7 @@ proto.smartcore.traits.DescribeEmergencyRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.DescribeEmergencyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

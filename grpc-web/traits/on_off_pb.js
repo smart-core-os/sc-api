@@ -236,7 +236,7 @@ proto.smartcore.traits.OnOff.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.OnOff.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0)
+state: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -375,7 +375,7 @@ proto.smartcore.traits.OnOffSupport.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.OnOffSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -526,8 +526,8 @@ proto.smartcore.traits.GetOnOffRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.GetOnOffRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -707,9 +707,9 @@ proto.smartcore.traits.UpdateOnOffRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.UpdateOnOffRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    onOff: (f = msg.getOnOff()) && proto.smartcore.traits.OnOff.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+onOff: (f = msg.getOnOff()) && proto.smartcore.traits.OnOff.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -939,9 +939,9 @@ proto.smartcore.traits.PullOnOffRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.PullOnOffRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1157,7 +1157,7 @@ proto.smartcore.traits.PullOnOffResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.PullOnOffResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullOnOffResponse.Change.toObject, includeInstance)
   };
 
@@ -1272,9 +1272,9 @@ proto.smartcore.traits.PullOnOffResponse.Change.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullOnOffResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    onOff: (f = msg.getOnOff()) && proto.smartcore.traits.OnOff.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+onOff: (f = msg.getOnOff()) && proto.smartcore.traits.OnOff.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1542,7 +1542,7 @@ proto.smartcore.traits.DescribeOnOffRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.DescribeOnOffRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

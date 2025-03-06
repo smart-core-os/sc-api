@@ -221,11 +221,11 @@ proto.smartcore.traits.Occupancy.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.traits.Occupancy.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    peopleCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    stateChangeTime: (f = msg.getStateChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    reasonsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
-    confidence: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
+state: jspb.Message.getFieldWithDefault(msg, 1, 0),
+peopleCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+stateChangeTime: (f = msg.getStateChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+reasonsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+confidence: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
   };
 
   if (includeInstance) {
@@ -521,8 +521,8 @@ proto.smartcore.traits.OccupancySupport.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.OccupancySupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    maxPeople: jspb.Message.getFieldWithDefault(msg, 2, 0)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+maxPeople: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -702,8 +702,8 @@ proto.smartcore.traits.GetOccupancyRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.traits.GetOccupancyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -883,9 +883,9 @@ proto.smartcore.traits.PullOccupancyRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.PullOccupancyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1101,7 +1101,7 @@ proto.smartcore.traits.PullOccupancyResponse.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullOccupancyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullOccupancyResponse.Change.toObject, includeInstance)
   };
 
@@ -1216,9 +1216,9 @@ proto.smartcore.traits.PullOccupancyResponse.Change.prototype.toObject = functio
  */
 proto.smartcore.traits.PullOccupancyResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    occupancy: (f = msg.getOccupancy()) && proto.smartcore.traits.Occupancy.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+occupancy: (f = msg.getOccupancy()) && proto.smartcore.traits.Occupancy.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1486,7 +1486,7 @@ proto.smartcore.traits.DescribeOccupancyRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.DescribeOccupancyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

@@ -323,7 +323,7 @@ proto.smartcore.traits.ModeValues.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.ModeValues.toObject = function(includeInstance, msg) {
   var f, obj = {
-    valuesMap: (f = msg.getValuesMap()) ? f.toObject(includeInstance, undefined) : []
+valuesMap: (f = msg.getValuesMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -457,7 +457,7 @@ proto.smartcore.traits.ModeValuesRelative.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.ModeValuesRelative.toObject = function(includeInstance, msg) {
   var f, obj = {
-    valuesMap: (f = msg.getValuesMap()) ? f.toObject(includeInstance, undefined) : []
+valuesMap: (f = msg.getValuesMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -598,7 +598,7 @@ proto.smartcore.traits.Modes.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.traits.Modes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    modesList: jspb.Message.toObjectList(msg.getModesList(),
+modesList: jspb.Message.toObjectList(msg.getModesList(),
     proto.smartcore.traits.Modes.Mode.toObject, includeInstance)
   };
 
@@ -713,7 +713,7 @@ proto.smartcore.traits.Modes.Value.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.Modes.Value.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -850,10 +850,10 @@ proto.smartcore.traits.Modes.Mode.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.Modes.Mode.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    valuesList: jspb.Message.toObjectList(msg.getValuesList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+valuesList: jspb.Message.toObjectList(msg.getValuesList(),
     proto.smartcore.traits.Modes.Value.toObject, includeInstance),
-    ordered: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+ordered: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1101,8 +1101,8 @@ proto.smartcore.traits.ModesSupport.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.traits.ModesSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    modeValuesSupport: (f = msg.getModeValuesSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    availableModes: (f = msg.getAvailableModes()) && proto.smartcore.traits.Modes.toObject(includeInstance, f)
+modeValuesSupport: (f = msg.getModeValuesSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+availableModes: (f = msg.getAvailableModes()) && proto.smartcore.traits.Modes.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1303,8 +1303,8 @@ proto.smartcore.traits.GetModeValuesRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.GetModeValuesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1484,10 +1484,10 @@ proto.smartcore.traits.UpdateModeValuesRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.UpdateModeValuesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    modeValues: (f = msg.getModeValues()) && proto.smartcore.traits.ModeValues.toObject(includeInstance, f),
-    relative: (f = msg.getRelative()) && proto.smartcore.traits.ModeValuesRelative.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+modeValues: (f = msg.getModeValues()) && proto.smartcore.traits.ModeValues.toObject(includeInstance, f),
+relative: (f = msg.getRelative()) && proto.smartcore.traits.ModeValuesRelative.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1767,9 +1767,9 @@ proto.smartcore.traits.PullModeValuesRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullModeValuesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1985,7 +1985,7 @@ proto.smartcore.traits.PullModeValuesResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullModeValuesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullModeValuesResponse.Change.toObject, includeInstance)
   };
 
@@ -2100,9 +2100,9 @@ proto.smartcore.traits.PullModeValuesResponse.Change.prototype.toObject = functi
  */
 proto.smartcore.traits.PullModeValuesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    modeValues: (f = msg.getModeValues()) && proto.smartcore.traits.ModeValues.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+modeValues: (f = msg.getModeValues()) && proto.smartcore.traits.ModeValues.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2370,7 +2370,7 @@ proto.smartcore.traits.DescribeModesRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.DescribeModesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

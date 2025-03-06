@@ -314,9 +314,9 @@ proto.smartcore.traits.OpenClosePositions.prototype.toObject = function(opt_incl
  */
 proto.smartcore.traits.OpenClosePositions.toObject = function(includeInstance, msg) {
   var f, obj = {
-    statesList: jspb.Message.toObjectList(msg.getStatesList(),
+statesList: jspb.Message.toObjectList(msg.getStatesList(),
     proto.smartcore.traits.OpenClosePosition.toObject, includeInstance),
-    preset: (f = msg.getPreset()) && proto.smartcore.traits.OpenClosePositions.Preset.toObject(includeInstance, f)
+preset: (f = msg.getPreset()) && proto.smartcore.traits.OpenClosePositions.Preset.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -443,8 +443,8 @@ proto.smartcore.traits.OpenClosePositions.Preset.prototype.toObject = function(o
  */
 proto.smartcore.traits.OpenClosePositions.Preset.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -678,11 +678,11 @@ proto.smartcore.traits.OpenClosePosition.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.OpenClosePosition.toObject = function(includeInstance, msg) {
   var f, obj = {
-    openPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    openPercentTween: (f = msg.getOpenPercentTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetOpenPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    direction: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    resistance: jspb.Message.getFieldWithDefault(msg, 5, 0)
+openPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+openPercentTween: (f = msg.getOpenPercentTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetOpenPercent: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+direction: jspb.Message.getFieldWithDefault(msg, 4, 0),
+resistance: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -979,11 +979,11 @@ proto.smartcore.traits.PositionsSupport.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.PositionsSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    openPercentAttributes: (f = msg.getOpenPercentAttributes()) && types_number_pb.FloatAttributes.toObject(includeInstance, f),
-    directionsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    supportsStop: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+openPercentAttributes: (f = msg.getOpenPercentAttributes()) && types_number_pb.FloatAttributes.toObject(includeInstance, f),
+directionsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+supportsStop: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
     proto.smartcore.traits.OpenClosePositions.Preset.toObject, includeInstance)
   };
 
@@ -1315,8 +1315,8 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.GetOpenClosePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1496,10 +1496,10 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.prototype.toObject = func
  */
 proto.smartcore.traits.UpdateOpenClosePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    states: (f = msg.getStates()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f),
-    delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+states: (f = msg.getStates()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f),
+delta: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1758,7 +1758,7 @@ proto.smartcore.traits.StopOpenCloseRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.StopOpenCloseRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1888,10 +1888,10 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.prototype.toObject = functi
  */
 proto.smartcore.traits.PullOpenClosePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    excludeTweening: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+excludeTweening: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -2136,7 +2136,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.prototype.toObject = funct
  */
 proto.smartcore.traits.PullOpenClosePositionsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullOpenClosePositionsResponse.Change.toObject, includeInstance)
   };
 
@@ -2251,9 +2251,9 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.prototype.toObject 
  */
 proto.smartcore.traits.PullOpenClosePositionsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    openClosePosition: (f = msg.getOpenClosePosition()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+openClosePosition: (f = msg.getOpenClosePosition()) && proto.smartcore.traits.OpenClosePositions.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2521,7 +2521,7 @@ proto.smartcore.traits.DescribePositionsRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.DescribePositionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
