@@ -216,8 +216,8 @@ proto.smartcore.traits.MotionDetection.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.MotionDetection.toObject = function(includeInstance, msg) {
   var f, obj = {
-    state: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    stateChangeTime: (f = msg.getStateChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+state: jspb.Message.getFieldWithDefault(msg, 1, 0),
+stateChangeTime: (f = msg.getStateChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -406,8 +406,8 @@ proto.smartcore.traits.MotionDetectionSupport.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.MotionDetectionSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    notDetectedDelay: (f = msg.getNotDetectedDelay()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+notDetectedDelay: (f = msg.getNotDetectedDelay()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -608,8 +608,8 @@ proto.smartcore.traits.GetMotionDetectionRequest.prototype.toObject = function(o
  */
 proto.smartcore.traits.GetMotionDetectionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -789,9 +789,9 @@ proto.smartcore.traits.PullMotionDetectionRequest.prototype.toObject = function(
  */
 proto.smartcore.traits.PullMotionDetectionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1007,7 +1007,7 @@ proto.smartcore.traits.PullMotionDetectionResponse.prototype.toObject = function
  */
 proto.smartcore.traits.PullMotionDetectionResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullMotionDetectionResponse.Change.toObject, includeInstance)
   };
 
@@ -1122,9 +1122,9 @@ proto.smartcore.traits.PullMotionDetectionResponse.Change.prototype.toObject = f
  */
 proto.smartcore.traits.PullMotionDetectionResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    motionDetection: (f = msg.getMotionDetection()) && proto.smartcore.traits.MotionDetection.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+motionDetection: (f = msg.getMotionDetection()) && proto.smartcore.traits.MotionDetection.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1392,7 +1392,7 @@ proto.smartcore.traits.DescribeMotionDetectionRequest.prototype.toObject = funct
  */
 proto.smartcore.traits.DescribeMotionDetectionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

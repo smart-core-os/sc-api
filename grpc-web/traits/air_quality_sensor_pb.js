@@ -216,16 +216,16 @@ proto.smartcore.traits.AirQuality.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.traits.AirQuality.toObject = function(includeInstance, msg) {
   var f, obj = {
-    carbonDioxideLevel: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    volatileOrganicCompounds: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    airPressure: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    comfort: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    infectionRisk: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-    score: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
-    particulateMatter1: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
-    particulateMatter25: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
-    particulateMatter10: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
-    airChangePerHour: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0)
+carbonDioxideLevel: (f = jspb.Message.getOptionalFloatingPointField(msg, 1)) == null ? undefined : f,
+volatileOrganicCompounds: (f = jspb.Message.getOptionalFloatingPointField(msg, 2)) == null ? undefined : f,
+airPressure: (f = jspb.Message.getOptionalFloatingPointField(msg, 3)) == null ? undefined : f,
+comfort: jspb.Message.getFieldWithDefault(msg, 4, 0),
+infectionRisk: (f = jspb.Message.getOptionalFloatingPointField(msg, 5)) == null ? undefined : f,
+score: (f = jspb.Message.getOptionalFloatingPointField(msg, 6)) == null ? undefined : f,
+particulateMatter1: (f = jspb.Message.getOptionalFloatingPointField(msg, 7)) == null ? undefined : f,
+particulateMatter25: (f = jspb.Message.getOptionalFloatingPointField(msg, 8)) == null ? undefined : f,
+particulateMatter10: (f = jspb.Message.getOptionalFloatingPointField(msg, 9)) == null ? undefined : f,
+airChangePerHour: (f = jspb.Message.getOptionalFloatingPointField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -794,17 +794,17 @@ proto.smartcore.traits.AirQualitySupport.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.AirQualitySupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    airPressure: (f = msg.getAirPressure()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    comfortList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
-    infectionRisk: (f = msg.getInfectionRisk()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    score: (f = msg.getScore()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    particulateMatter1: (f = msg.getParticulateMatter1()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    particulateMatter25: (f = msg.getParticulateMatter25()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    particulateMatter10: (f = msg.getParticulateMatter10()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
-    airChangePerHour: (f = msg.getAirChangePerHour()) && types_number_pb.FloatBounds.toObject(includeInstance, f)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+carbonDioxideLevel: (f = msg.getCarbonDioxideLevel()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+volatileOrganicCompounds: (f = msg.getVolatileOrganicCompounds()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+airPressure: (f = msg.getAirPressure()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+comfortList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+infectionRisk: (f = msg.getInfectionRisk()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+score: (f = msg.getScore()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+particulateMatter1: (f = msg.getParticulateMatter1()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+particulateMatter25: (f = msg.getParticulateMatter25()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+particulateMatter10: (f = msg.getParticulateMatter10()) && types_number_pb.FloatBounds.toObject(includeInstance, f),
+airChangePerHour: (f = msg.getAirChangePerHour()) && types_number_pb.FloatBounds.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1455,8 +1455,8 @@ proto.smartcore.traits.GetAirQualityRequest.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.GetAirQualityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1636,9 +1636,9 @@ proto.smartcore.traits.PullAirQualityRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.PullAirQualityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1854,7 +1854,7 @@ proto.smartcore.traits.PullAirQualityResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullAirQualityResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullAirQualityResponse.Change.toObject, includeInstance)
   };
 
@@ -1969,10 +1969,10 @@ proto.smartcore.traits.PullAirQualityResponse.Change.prototype.toObject = functi
  */
 proto.smartcore.traits.PullAirQualityResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    airQuality: (f = msg.getAirQuality()) && proto.smartcore.traits.AirQuality.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+airQuality: (f = msg.getAirQuality()) && proto.smartcore.traits.AirQuality.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2290,7 +2290,7 @@ proto.smartcore.traits.DescribeAirQualityRequest.prototype.toObject = function(o
  */
 proto.smartcore.traits.DescribeAirQualityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

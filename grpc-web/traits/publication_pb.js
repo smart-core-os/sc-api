@@ -390,12 +390,12 @@ proto.smartcore.traits.Publication.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.traits.Publication.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    version: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    body: msg.getBody_asB64(),
-    audience: (f = msg.getAudience()) && proto.smartcore.traits.Publication.Audience.toObject(includeInstance, f),
-    publishTime: (f = msg.getPublishTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    mediaType: jspb.Message.getFieldWithDefault(msg, 6, "")
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+version: jspb.Message.getFieldWithDefault(msg, 2, ""),
+body: msg.getBody_asB64(),
+audience: (f = msg.getAudience()) && proto.smartcore.traits.Publication.Audience.toObject(includeInstance, f),
+publishTime: (f = msg.getPublishTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+mediaType: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -566,10 +566,10 @@ proto.smartcore.traits.Publication.Audience.prototype.toObject = function(opt_in
  */
 proto.smartcore.traits.Publication.Audience.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    receipt: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    receiptRejectedReason: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    receiptTime: (f = msg.getReceiptTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+receipt: jspb.Message.getFieldWithDefault(msg, 2, 0),
+receiptRejectedReason: jspb.Message.getFieldWithDefault(msg, 3, ""),
+receiptTime: (f = msg.getReceiptTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -987,8 +987,8 @@ proto.smartcore.traits.CreatePublicationRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.CreatePublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1168,10 +1168,10 @@ proto.smartcore.traits.GetPublicationRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.GetPublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    version: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+version: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1409,10 +1409,10 @@ proto.smartcore.traits.UpdatePublicationRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.UpdatePublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    version: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+version: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1671,10 +1671,10 @@ proto.smartcore.traits.DeletePublicationRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.DeletePublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    version: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    allowMissing: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+version: jspb.Message.getFieldWithDefault(msg, 3, ""),
+allowMissing: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -1891,10 +1891,10 @@ proto.smartcore.traits.PullPublicationRequest.prototype.toObject = function(opt_
  */
 proto.smartcore.traits.PullPublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -2139,7 +2139,7 @@ proto.smartcore.traits.PullPublicationResponse.prototype.toObject = function(opt
  */
 proto.smartcore.traits.PullPublicationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullPublicationResponse.Change.toObject, includeInstance)
   };
 
@@ -2254,9 +2254,9 @@ proto.smartcore.traits.PullPublicationResponse.Change.prototype.toObject = funct
  */
 proto.smartcore.traits.PullPublicationResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+publication: (f = msg.getPublication()) && proto.smartcore.traits.Publication.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2524,10 +2524,10 @@ proto.smartcore.traits.ListPublicationsRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.ListPublicationsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -2772,10 +2772,10 @@ proto.smartcore.traits.ListPublicationsResponse.prototype.toObject = function(op
  */
 proto.smartcore.traits.ListPublicationsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    publicationsList: jspb.Message.toObjectList(msg.getPublicationsList(),
+publicationsList: jspb.Message.toObjectList(msg.getPublicationsList(),
     proto.smartcore.traits.Publication.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -2985,9 +2985,9 @@ proto.smartcore.traits.PullPublicationsRequest.prototype.toObject = function(opt
  */
 proto.smartcore.traits.PullPublicationsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -3203,7 +3203,7 @@ proto.smartcore.traits.PullPublicationsResponse.prototype.toObject = function(op
  */
 proto.smartcore.traits.PullPublicationsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullPublicationsResponse.Change.toObject, includeInstance)
   };
 
@@ -3318,11 +3318,11 @@ proto.smartcore.traits.PullPublicationsResponse.Change.prototype.toObject = func
  */
 proto.smartcore.traits.PullPublicationsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.traits.Publication.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3669,12 +3669,12 @@ proto.smartcore.traits.AcknowledgePublicationRequest.prototype.toObject = functi
  */
 proto.smartcore.traits.AcknowledgePublicationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    version: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    receipt: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    receiptRejectedReason: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    allowAcknowledged: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+version: jspb.Message.getFieldWithDefault(msg, 3, ""),
+receipt: jspb.Message.getFieldWithDefault(msg, 4, 0),
+receiptRejectedReason: jspb.Message.getFieldWithDefault(msg, 5, ""),
+allowAcknowledged: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {

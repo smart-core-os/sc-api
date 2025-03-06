@@ -236,10 +236,10 @@ proto.smartcore.traits.EnterLeaveEvent.prototype.toObject = function(opt_include
  */
 proto.smartcore.traits.EnterLeaveEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
-    direction: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    occupant: (f = msg.getOccupant()) && proto.smartcore.traits.EnterLeaveEvent.Occupant.toObject(includeInstance, f),
-    enterTotal: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    leaveTotal: jspb.Message.getFieldWithDefault(msg, 4, 0)
+direction: jspb.Message.getFieldWithDefault(msg, 1, 0),
+occupant: (f = msg.getOccupant()) && proto.smartcore.traits.EnterLeaveEvent.Occupant.toObject(includeInstance, f),
+enterTotal: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+leaveTotal: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -395,14 +395,14 @@ proto.smartcore.traits.EnterLeaveEvent.Occupant.prototype.toObject = function(op
  */
 proto.smartcore.traits.EnterLeaveEvent.Occupant.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    displayName: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    picture: (f = msg.getPicture()) && types_image_pb.Image.toObject(includeInstance, f),
-    url: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    email: jspb.Message.getFieldWithDefault(msg, 14, ""),
-    idsMap: (f = msg.getIdsMap()) ? f.toObject(includeInstance, undefined) : [],
-    moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 10, ""),
+displayName: jspb.Message.getFieldWithDefault(msg, 11, ""),
+picture: (f = msg.getPicture()) && types_image_pb.Image.toObject(includeInstance, f),
+url: jspb.Message.getFieldWithDefault(msg, 13, ""),
+email: jspb.Message.getFieldWithDefault(msg, 14, ""),
+idsMap: (f = msg.getIdsMap()) ? f.toObject(includeInstance, undefined) : [],
+moreMap: (f = msg.getMoreMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -891,9 +891,9 @@ proto.smartcore.traits.PullEnterLeaveEventsRequest.prototype.toObject = function
  */
 proto.smartcore.traits.PullEnterLeaveEventsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1109,7 +1109,7 @@ proto.smartcore.traits.PullEnterLeaveEventsResponse.prototype.toObject = functio
  */
 proto.smartcore.traits.PullEnterLeaveEventsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullEnterLeaveEventsResponse.Change.toObject, includeInstance)
   };
 
@@ -1224,9 +1224,9 @@ proto.smartcore.traits.PullEnterLeaveEventsResponse.Change.prototype.toObject = 
  */
 proto.smartcore.traits.PullEnterLeaveEventsResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    enterLeaveEvent: (f = msg.getEnterLeaveEvent()) && proto.smartcore.traits.EnterLeaveEvent.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+enterLeaveEvent: (f = msg.getEnterLeaveEvent()) && proto.smartcore.traits.EnterLeaveEvent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1494,8 +1494,8 @@ proto.smartcore.traits.GetEnterLeaveEventRequest.prototype.toObject = function(o
  */
 proto.smartcore.traits.GetEnterLeaveEventRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1675,7 +1675,7 @@ proto.smartcore.traits.ResetEnterLeaveTotalsRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.ResetEnterLeaveTotalsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

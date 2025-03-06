@@ -288,13 +288,13 @@ proto.smartcore.traits.AirTemperature.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.traits.AirTemperature.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mode: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    temperatureSetPoint: (f = msg.getTemperatureSetPoint()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    temperatureSetPointDelta: (f = msg.getTemperatureSetPointDelta()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    temperatureRange: (f = msg.getTemperatureRange()) && proto.smartcore.traits.TemperatureRange.toObject(includeInstance, f),
-    ambientTemperature: (f = msg.getAmbientTemperature()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    ambientHumidity: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
-    dewPoint: (f = msg.getDewPoint()) && types_unit_pb.Temperature.toObject(includeInstance, f)
+mode: jspb.Message.getFieldWithDefault(msg, 1, 0),
+temperatureSetPoint: (f = msg.getTemperatureSetPoint()) && types_unit_pb.Temperature.toObject(includeInstance, f),
+temperatureSetPointDelta: (f = msg.getTemperatureSetPointDelta()) && types_unit_pb.Temperature.toObject(includeInstance, f),
+temperatureRange: (f = msg.getTemperatureRange()) && proto.smartcore.traits.TemperatureRange.toObject(includeInstance, f),
+ambientTemperature: (f = msg.getAmbientTemperature()) && types_unit_pb.Temperature.toObject(includeInstance, f),
+ambientHumidity: (f = jspb.Message.getOptionalFloatingPointField(msg, 6)) == null ? undefined : f,
+dewPoint: (f = msg.getDewPoint()) && types_unit_pb.Temperature.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -739,9 +739,9 @@ proto.smartcore.traits.TemperatureRange.prototype.toObject = function(opt_includ
  */
 proto.smartcore.traits.TemperatureRange.toObject = function(includeInstance, msg) {
   var f, obj = {
-    low: (f = msg.getLow()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    high: (f = msg.getHigh()) && types_unit_pb.Temperature.toObject(includeInstance, f),
-    ideal: (f = msg.getIdeal()) && types_unit_pb.Temperature.toObject(includeInstance, f)
+low: (f = msg.getLow()) && types_unit_pb.Temperature.toObject(includeInstance, f),
+high: (f = msg.getHigh()) && types_unit_pb.Temperature.toObject(includeInstance, f),
+ideal: (f = msg.getIdeal()) && types_unit_pb.Temperature.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -999,10 +999,10 @@ proto.smartcore.traits.AirTemperatureSupport.prototype.toObject = function(opt_i
  */
 proto.smartcore.traits.AirTemperatureSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    nativeUnit: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    supportedModesList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
-    minRangeCelsius: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+nativeUnit: jspb.Message.getFieldWithDefault(msg, 2, 0),
+supportedModesList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+minRangeCelsius: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
   };
 
   if (includeInstance) {
@@ -1261,8 +1261,8 @@ proto.smartcore.traits.GetAirTemperatureRequest.prototype.toObject = function(op
  */
 proto.smartcore.traits.GetAirTemperatureRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1442,9 +1442,9 @@ proto.smartcore.traits.UpdateAirTemperatureRequest.prototype.toObject = function
  */
 proto.smartcore.traits.UpdateAirTemperatureRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    state: (f = msg.getState()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f),
-    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+state: (f = msg.getState()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f),
+updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1674,9 +1674,9 @@ proto.smartcore.traits.PullAirTemperatureRequest.prototype.toObject = function(o
  */
 proto.smartcore.traits.PullAirTemperatureRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1892,7 +1892,7 @@ proto.smartcore.traits.PullAirTemperatureResponse.prototype.toObject = function(
  */
 proto.smartcore.traits.PullAirTemperatureResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullAirTemperatureResponse.Change.toObject, includeInstance)
   };
 
@@ -2007,9 +2007,9 @@ proto.smartcore.traits.PullAirTemperatureResponse.Change.prototype.toObject = fu
  */
 proto.smartcore.traits.PullAirTemperatureResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    airTemperature: (f = msg.getAirTemperature()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+airTemperature: (f = msg.getAirTemperature()) && proto.smartcore.traits.AirTemperature.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2277,7 +2277,7 @@ proto.smartcore.traits.DescribeAirTemperatureRequest.prototype.toObject = functi
  */
 proto.smartcore.traits.DescribeAirTemperatureRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {

@@ -215,7 +215,7 @@ proto.smartcore.traits.AmbientBrightness.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.traits.AmbientBrightness.toObject = function(includeInstance, msg) {
   var f, obj = {
-    brightnessLux: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0)
+brightnessLux: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0)
   };
 
   if (includeInstance) {
@@ -345,8 +345,8 @@ proto.smartcore.traits.AmbientBrightnessSupport.prototype.toObject = function(op
  */
 proto.smartcore.traits.AmbientBrightnessSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-    brightnessLux: (f = msg.getBrightnessLux()) && types_number_pb.FloatBounds.toObject(includeInstance, f)
+resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
+brightnessLux: (f = msg.getBrightnessLux()) && types_number_pb.FloatBounds.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -547,8 +547,8 @@ proto.smartcore.traits.GetAmbientBrightnessRequest.prototype.toObject = function
  */
 proto.smartcore.traits.GetAmbientBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -728,9 +728,9 @@ proto.smartcore.traits.PullAmbientBrightnessRequest.prototype.toObject = functio
  */
 proto.smartcore.traits.PullAmbientBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -946,7 +946,7 @@ proto.smartcore.traits.PullAmbientBrightnessResponse.prototype.toObject = functi
  */
 proto.smartcore.traits.PullAmbientBrightnessResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.traits.PullAmbientBrightnessResponse.Change.toObject, includeInstance)
   };
 
@@ -1061,9 +1061,9 @@ proto.smartcore.traits.PullAmbientBrightnessResponse.Change.prototype.toObject =
  */
 proto.smartcore.traits.PullAmbientBrightnessResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    ambientBrightness: (f = msg.getAmbientBrightness()) && proto.smartcore.traits.AmbientBrightness.toObject(includeInstance, f),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+ambientBrightness: (f = msg.getAmbientBrightness()) && proto.smartcore.traits.AmbientBrightness.toObject(includeInstance, f),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1331,7 +1331,7 @@ proto.smartcore.traits.DescribeAmbientBrightnessRequest.prototype.toObject = fun
  */
 proto.smartcore.traits.DescribeAmbientBrightnessRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
