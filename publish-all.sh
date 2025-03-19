@@ -30,3 +30,7 @@ pub_perform "go" "$1"
 pub_perform "grpc-web" "$1"
 pub_perform "java" "$1"
 pub_perform "node" "$1"
+
+git tag "v$1"
+echo "sc-api $1 has been published"
+echo "Don't forget to git push --tags"
