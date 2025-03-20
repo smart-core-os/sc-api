@@ -128,9 +128,9 @@ proto.smartcore.types.Image.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.types.Image.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sourcesList: jspb.Message.toObjectList(msg.getSourcesList(),
+sourcesList: jspb.Message.toObjectList(msg.getSourcesList(),
     proto.smartcore.types.Image.Source.toObject, includeInstance),
-    description: jspb.Message.getFieldWithDefault(msg, 2, "")
+description: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -283,11 +283,11 @@ proto.smartcore.types.Image.Content.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.types.Image.Content.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    body: msg.getBody_asB64(),
-    url: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ref: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    path: jspb.Message.getFieldWithDefault(msg, 5, "")
+type: jspb.Message.getFieldWithDefault(msg, 1, ""),
+body: msg.getBody_asB64(),
+url: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+ref: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+path: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -636,11 +636,11 @@ proto.smartcore.types.Image.Source.prototype.toObject = function(opt_includeInst
  */
 proto.smartcore.types.Image.Source.toObject = function(includeInstance, msg) {
   var f, obj = {
-    srcList: jspb.Message.toObjectList(msg.getSrcList(),
+srcList: jspb.Message.toObjectList(msg.getSrcList(),
     proto.smartcore.types.Image.Content.toObject, includeInstance),
-    width: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    height: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    purpose: jspb.Message.getFieldWithDefault(msg, 4, 0)
+width: jspb.Message.getFieldWithDefault(msg, 2, 0),
+height: jspb.Message.getFieldWithDefault(msg, 3, 0),
+purpose: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {

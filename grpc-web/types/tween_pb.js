@@ -78,8 +78,8 @@ proto.smartcore.types.Tween.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.types.Tween.toObject = function(includeInstance, msg) {
   var f, obj = {
-    progress: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    totalDuration: (f = msg.getTotalDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+progress: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+totalDuration: (f = msg.getTotalDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

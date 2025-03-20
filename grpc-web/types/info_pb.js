@@ -80,12 +80,12 @@ proto.smartcore.types.ResourceSupport.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.types.ResourceSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
-    readable: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    writable: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    observable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    writableFields: (f = msg.getWritableFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    pullSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    pullPoll: (f = msg.getPullPoll()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
+readable: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+writable: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+observable: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+writableFields: (f = msg.getWritableFields()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+pullSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
+pullPoll: (f = msg.getPullPoll()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

@@ -166,9 +166,9 @@ proto.smartcore.types.NumberCapping.prototype.toObject = function(opt_includeIns
  */
 proto.smartcore.types.NumberCapping.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    step: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    max: jspb.Message.getFieldWithDefault(msg, 3, 0)
+min: jspb.Message.getFieldWithDefault(msg, 1, 0),
+step: jspb.Message.getFieldWithDefault(msg, 2, 0),
+max: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -356,8 +356,8 @@ proto.smartcore.types.Int32Bounds.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.types.Int32Bounds.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    max: jspb.Message.getFieldWithDefault(msg, 2, 0)
+min: (f = jspb.Message.getField(msg, 1)) == null ? undefined : f,
+max: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -552,11 +552,11 @@ proto.smartcore.types.Int32Attributes.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.types.Int32Attributes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bounds: (f = msg.getBounds()) && proto.smartcore.types.Int32Bounds.toObject(includeInstance, f),
-    step: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    rampSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    defaultCapping: (f = msg.getDefaultCapping()) && proto.smartcore.types.NumberCapping.toObject(includeInstance, f)
+bounds: (f = msg.getBounds()) && proto.smartcore.types.Int32Bounds.toObject(includeInstance, f),
+step: jspb.Message.getFieldWithDefault(msg, 3, 0),
+supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+rampSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
+defaultCapping: (f = msg.getDefaultCapping()) && proto.smartcore.types.NumberCapping.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -844,8 +844,8 @@ proto.smartcore.types.FloatBounds.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.types.FloatBounds.toObject = function(includeInstance, msg) {
   var f, obj = {
-    min: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    max: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0)
+min: (f = jspb.Message.getOptionalFloatingPointField(msg, 1)) == null ? undefined : f,
+max: (f = jspb.Message.getOptionalFloatingPointField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1040,11 +1040,11 @@ proto.smartcore.types.FloatAttributes.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.types.FloatAttributes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bounds: (f = msg.getBounds()) && proto.smartcore.types.FloatBounds.toObject(includeInstance, f),
-    step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    rampSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    defaultCapping: (f = msg.getDefaultCapping()) && proto.smartcore.types.NumberCapping.toObject(includeInstance, f)
+bounds: (f = msg.getBounds()) && proto.smartcore.types.FloatBounds.toObject(includeInstance, f),
+step: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+supportsDelta: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+rampSupport: jspb.Message.getFieldWithDefault(msg, 5, 0),
+defaultCapping: (f = msg.getDefaultCapping()) && proto.smartcore.types.NumberCapping.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

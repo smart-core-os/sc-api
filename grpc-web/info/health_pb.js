@@ -211,8 +211,8 @@ proto.smartcore.info.HealthState.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.info.HealthState.toObject = function(includeInstance, msg) {
   var f, obj = {
-    connection: (f = msg.getConnection()) && proto.smartcore.info.ConnectionHealth.toObject(includeInstance, f),
-    comm: (f = msg.getComm()) && proto.smartcore.info.CommHealth.toObject(includeInstance, f)
+connection: (f = msg.getConnection()) && proto.smartcore.info.ConnectionHealth.toObject(includeInstance, f),
+comm: (f = msg.getComm()) && proto.smartcore.info.CommHealth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -413,9 +413,9 @@ proto.smartcore.info.ConnectionHealth.prototype.toObject = function(opt_includeI
  */
 proto.smartcore.info.ConnectionHealth.toObject = function(includeInstance, msg) {
   var f, obj = {
-    status: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    connectTime: (f = msg.getConnectTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    disconnectTime: (f = msg.getDisconnectTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+status: jspb.Message.getFieldWithDefault(msg, 1, 0),
+connectTime: (f = msg.getConnectTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+disconnectTime: (f = msg.getDisconnectTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -645,9 +645,9 @@ proto.smartcore.info.CommHealth.prototype.toObject = function(opt_includeInstanc
  */
 proto.smartcore.info.CommHealth.toObject = function(includeInstance, msg) {
   var f, obj = {
-    status: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    failureTime: (f = msg.getFailureTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    successTime: (f = msg.getSuccessTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+status: jspb.Message.getFieldWithDefault(msg, 1, 0),
+failureTime: (f = msg.getFailureTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+successTime: (f = msg.getSuccessTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -877,7 +877,7 @@ proto.smartcore.info.GetHealthStateRequest.prototype.toObject = function(opt_inc
  */
 proto.smartcore.info.GetHealthStateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1007,7 +1007,7 @@ proto.smartcore.info.PullHealthStatesRequest.prototype.toObject = function(opt_i
  */
 proto.smartcore.info.PullHealthStatesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1144,7 +1144,7 @@ proto.smartcore.info.PullHealthStatesResponse.prototype.toObject = function(opt_
  */
 proto.smartcore.info.PullHealthStatesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.info.HealthStateChange.toObject, includeInstance)
   };
 
@@ -1297,9 +1297,9 @@ proto.smartcore.info.HealthStateChange.prototype.toObject = function(opt_include
  */
 proto.smartcore.info.HealthStateChange.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    health: (f = msg.getHealth()) && proto.smartcore.info.HealthState.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+health: (f = msg.getHealth()) && proto.smartcore.info.HealthState.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
