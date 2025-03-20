@@ -125,7 +125,7 @@ proto.smartcore.types.Temperature.prototype.toObject = function(opt_includeInsta
  */
 proto.smartcore.types.Temperature.toObject = function(includeInstance, msg) {
   var f, obj = {
-    valueCelsius: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0)
+valueCelsius: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0)
   };
 
   if (includeInstance) {
@@ -255,10 +255,10 @@ proto.smartcore.types.AudioLevel.prototype.toObject = function(opt_includeInstan
  */
 proto.smartcore.types.AudioLevel.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gain: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    gainTween: (f = msg.getGainTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
-    targetGain: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    muted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+gain: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+gainTween: (f = msg.getGainTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
+targetGain: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+muted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -496,9 +496,9 @@ proto.smartcore.types.AudioLevelChange.prototype.toObject = function(opt_include
  */
 proto.smartcore.types.AudioLevelChange.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    level: (f = msg.getLevel()) && proto.smartcore.types.AudioLevel.toObject(includeInstance, f)
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+level: (f = msg.getLevel()) && proto.smartcore.types.AudioLevel.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

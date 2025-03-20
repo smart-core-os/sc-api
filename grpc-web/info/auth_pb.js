@@ -306,10 +306,10 @@ proto.smartcore.info.Account.prototype.toObject = function(opt_includeInstance) 
  */
 proto.smartcore.info.Account.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    token: (f = msg.getToken()) && proto.smartcore.info.Token.toObject(includeInstance, f),
-    permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, ""),
+token: (f = msg.getToken()) && proto.smartcore.info.Token.toObject(includeInstance, f),
+permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
     proto.smartcore.info.Permission.toObject, includeInstance)
   };
 
@@ -570,8 +570,8 @@ proto.smartcore.info.Token.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.info.Token.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    expiresAt: (f = msg.getExpiresAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+expiresAt: (f = msg.getExpiresAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -751,11 +751,11 @@ proto.smartcore.info.Permission.prototype.toObject = function(opt_includeInstanc
  */
 proto.smartcore.info.Permission.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deviceName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    traitName: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    read: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
-    write: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    observe: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+deviceName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+traitName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+read: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+write: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+observe: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -1008,9 +1008,9 @@ proto.smartcore.info.AddAccountRequest.prototype.toObject = function(opt_include
  */
 proto.smartcore.info.AddAccountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+title: jspb.Message.getFieldWithDefault(msg, 2, ""),
+permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
     proto.smartcore.info.Permission.toObject, includeInstance)
   };
 
@@ -1221,7 +1221,7 @@ proto.smartcore.info.AddAccountResponse.prototype.toObject = function(opt_includ
  */
 proto.smartcore.info.AddAccountResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    account: (f = msg.getAccount()) && proto.smartcore.info.Account.toObject(includeInstance, f)
+account: (f = msg.getAccount()) && proto.smartcore.info.Account.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1372,7 +1372,7 @@ proto.smartcore.info.RemoveAccountRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.info.RemoveAccountRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1610,8 +1610,8 @@ proto.smartcore.info.UpdateAccountPermissionsRequest.prototype.toObject = functi
  */
 proto.smartcore.info.UpdateAccountPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changeType: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
+changeType: jspb.Message.getFieldWithDefault(msg, 1, 0),
+permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
     proto.smartcore.info.Permission.toObject, includeInstance)
   };
 
@@ -1894,7 +1894,7 @@ proto.smartcore.info.GenerateTokenRequest.prototype.toObject = function(opt_incl
  */
 proto.smartcore.info.GenerateTokenRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    accountName: jspb.Message.getFieldWithDefault(msg, 1, "")
+accountName: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2024,7 +2024,7 @@ proto.smartcore.info.GenerateTokenResponse.prototype.toObject = function(opt_inc
  */
 proto.smartcore.info.GenerateTokenResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: (f = msg.getToken()) && proto.smartcore.info.Token.toObject(includeInstance, f)
+token: (f = msg.getToken()) && proto.smartcore.info.Token.toObject(includeInstance, f)
   };
 
   if (includeInstance) {

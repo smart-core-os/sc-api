@@ -231,9 +231,9 @@ proto.smartcore.info.ListDevicesRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.info.ListDevicesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    depth: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 3, "")
+depth: jspb.Message.getFieldWithDefault(msg, 1, 0),
+pageSize: jspb.Message.getFieldWithDefault(msg, 2, 0),
+pageToken: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -428,10 +428,10 @@ proto.smartcore.info.ListDevicesResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.info.ListDevicesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    devicesList: jspb.Message.toObjectList(msg.getDevicesList(),
+devicesList: jspb.Message.toObjectList(msg.getDevicesList(),
     proto.smartcore.info.Device.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
+nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+totalSize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -641,8 +641,8 @@ proto.smartcore.info.PullDevicesRequest.prototype.toObject = function(opt_includ
  */
 proto.smartcore.info.PullDevicesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    depth: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    sync: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+depth: jspb.Message.getFieldWithDefault(msg, 1, 0),
+sync: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -808,7 +808,7 @@ proto.smartcore.info.PullDevicesResponse.prototype.toObject = function(opt_inclu
  */
 proto.smartcore.info.PullDevicesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    changesList: jspb.Message.toObjectList(msg.getChangesList(),
+changesList: jspb.Message.toObjectList(msg.getChangesList(),
     proto.smartcore.info.PullDevicesResponse.Change.toObject, includeInstance)
   };
 
@@ -923,9 +923,9 @@ proto.smartcore.info.PullDevicesResponse.Change.prototype.toObject = function(op
  */
 proto.smartcore.info.PullDevicesResponse.Change.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    newValue: (f = msg.getNewValue()) && proto.smartcore.info.Device.toObject(includeInstance, f),
-    oldValue: (f = msg.getOldValue()) && proto.smartcore.info.Device.toObject(includeInstance, f)
+type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+newValue: (f = msg.getNewValue()) && proto.smartcore.info.Device.toObject(includeInstance, f),
+oldValue: (f = msg.getOldValue()) && proto.smartcore.info.Device.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1200,15 +1200,15 @@ proto.smartcore.info.Device.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.info.Device.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+traitsList: jspb.Message.toObjectList(msg.getTraitsList(),
     proto.smartcore.info.Trait.toObject, includeInstance),
-    owner: (f = msg.getOwner()) && proto.smartcore.info.Device.toObject(includeInstance, f),
-    client: (f = msg.getClient()) && proto.smartcore.info.GrpcClientOptions.toObject(includeInstance, f),
-    title: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    displayName: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    labelsMap: (f = msg.getLabelsMap()) ? f.toObject(includeInstance, undefined) : []
+owner: (f = msg.getOwner()) && proto.smartcore.info.Device.toObject(includeInstance, f),
+client: (f = msg.getClient()) && proto.smartcore.info.GrpcClientOptions.toObject(includeInstance, f),
+title: jspb.Message.getFieldWithDefault(msg, 5, ""),
+displayName: jspb.Message.getFieldWithDefault(msg, 6, ""),
+description: jspb.Message.getFieldWithDefault(msg, 7, ""),
+labelsMap: (f = msg.getLabelsMap()) ? f.toObject(includeInstance, undefined) : []
   };
 
   if (includeInstance) {
@@ -1609,7 +1609,7 @@ proto.smartcore.info.Trait.prototype.toObject = function(opt_includeInstance) {
  */
 proto.smartcore.info.Trait.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1739,10 +1739,10 @@ proto.smartcore.info.GrpcClientOptions.prototype.toObject = function(opt_include
  */
 proto.smartcore.info.GrpcClientOptions.toObject = function(includeInstance, msg) {
   var f, obj = {
-    authority: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    clientcert: msg.getClientcert_asB64(),
-    clientkey: msg.getClientkey_asB64(),
-    clientca: msg.getClientca_asB64()
+authority: jspb.Message.getFieldWithDefault(msg, 1, ""),
+clientcert: msg.getClientcert_asB64(),
+clientkey: msg.getClientkey_asB64(),
+clientca: msg.getClientca_asB64()
   };
 
   if (includeInstance) {

@@ -102,8 +102,8 @@ proto.smartcore.types.PageToken.prototype.toObject = function(opt_includeInstanc
  */
 proto.smartcore.types.PageToken.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lastOffset: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    lastResourceName: jspb.Message.getFieldWithDefault(msg, 2, "")
+lastOffset: (f = jspb.Message.getField(msg, 1)) == null ? undefined : f,
+lastResourceName: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
