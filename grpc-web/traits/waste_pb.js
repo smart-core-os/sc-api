@@ -245,7 +245,10 @@ system: jspb.Message.getFieldWithDefault(msg, 4, ""),
 disposalMethod: jspb.Message.getFieldWithDefault(msg, 5, 0),
 area: jspb.Message.getFieldWithDefault(msg, 6, ""),
 wasteCreateTime: (f = msg.getWasteCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-stream: jspb.Message.getFieldWithDefault(msg, 8, "")
+stream: jspb.Message.getFieldWithDefault(msg, 8, ""),
+co2Saved: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
+landSaved: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
+treesSaved: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0)
   };
 
   if (includeInstance) {
@@ -315,6 +318,18 @@ proto.smartcore.traits.WasteRecord.deserializeBinaryFromReader = function(msg, r
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setStream(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setCo2Saved(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setLandSaved(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setTreesSaved(value);
       break;
     default:
       reader.skipField();
@@ -400,6 +415,27 @@ proto.smartcore.traits.WasteRecord.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       8,
+      f
+    );
+  }
+  f = message.getCo2Saved();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      9,
+      f
+    );
+  }
+  f = message.getLandSaved();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      10,
+      f
+    );
+  }
+  f = message.getTreesSaved();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      11,
       f
     );
   }
@@ -594,6 +630,60 @@ proto.smartcore.traits.WasteRecord.prototype.getStream = function() {
  */
 proto.smartcore.traits.WasteRecord.prototype.setStream = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional float co2_saved = 9;
+ * @return {number}
+ */
+proto.smartcore.traits.WasteRecord.prototype.getCo2Saved = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.WasteRecord} returns this
+ */
+proto.smartcore.traits.WasteRecord.prototype.setCo2Saved = function(value) {
+  return jspb.Message.setProto3FloatField(this, 9, value);
+};
+
+
+/**
+ * optional float land_saved = 10;
+ * @return {number}
+ */
+proto.smartcore.traits.WasteRecord.prototype.getLandSaved = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.WasteRecord} returns this
+ */
+proto.smartcore.traits.WasteRecord.prototype.setLandSaved = function(value) {
+  return jspb.Message.setProto3FloatField(this, 10, value);
+};
+
+
+/**
+ * optional float trees_saved = 11;
+ * @return {number}
+ */
+proto.smartcore.traits.WasteRecord.prototype.getTreesSaved = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.WasteRecord} returns this
+ */
+proto.smartcore.traits.WasteRecord.prototype.setTreesSaved = function(value) {
+  return jspb.Message.setProto3FloatField(this, 11, value);
 };
 
 
@@ -1905,7 +1995,9 @@ proto.smartcore.traits.WasteRecordSupport.prototype.toObject = function(opt_incl
 proto.smartcore.traits.WasteRecordSupport.toObject = function(includeInstance, msg) {
   var f, obj = {
 resourceSupport: (f = msg.getResourceSupport()) && types_info_pb.ResourceSupport.toObject(includeInstance, f),
-unit: jspb.Message.getFieldWithDefault(msg, 2, "")
+unit: jspb.Message.getFieldWithDefault(msg, 2, ""),
+co2SavedUnit: jspb.Message.getFieldWithDefault(msg, 3, ""),
+landSavedUnit: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1951,6 +2043,14 @@ proto.smartcore.traits.WasteRecordSupport.deserializeBinaryFromReader = function
       var value = /** @type {string} */ (reader.readString());
       msg.setUnit(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCo2SavedUnit(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLandSavedUnit(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1992,6 +2092,20 @@ proto.smartcore.traits.WasteRecordSupport.serializeBinaryToWriter = function(mes
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getCo2SavedUnit();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getLandSavedUnit();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -2050,6 +2164,42 @@ proto.smartcore.traits.WasteRecordSupport.prototype.getUnit = function() {
  */
 proto.smartcore.traits.WasteRecordSupport.prototype.setUnit = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string co2_saved_unit = 3;
+ * @return {string}
+ */
+proto.smartcore.traits.WasteRecordSupport.prototype.getCo2SavedUnit = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.WasteRecordSupport} returns this
+ */
+proto.smartcore.traits.WasteRecordSupport.prototype.setCo2SavedUnit = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string land_saved_unit = 4;
+ * @return {string}
+ */
+proto.smartcore.traits.WasteRecordSupport.prototype.getLandSavedUnit = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.smartcore.traits.WasteRecordSupport} returns this
+ */
+proto.smartcore.traits.WasteRecordSupport.prototype.setLandSavedUnit = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

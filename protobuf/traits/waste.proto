@@ -50,6 +50,12 @@ message WasteRecord {
   // The stream the waste was collected from. For example, general waste, mixed recycling etc.
   // Used for presentation not to identify the waste
   string stream = 8;
+  // The amount of co2 saved.
+  float co2_saved = 9;
+  // The amount of land saved.
+  float land_saved = 10;
+  // The amount of trees saved in number of trees. Can be a decimal number.
+  float trees_saved = 11;
 }
 
 message ListWasteRecordsResponse {
@@ -104,5 +110,9 @@ message WasteRecordSupport {
   smartcore.types.ResourceSupport resource_support = 1;
   // The unit associated with the weight value
   string unit = 2;
+  // The unit associated with the co2_saved value
+  string co2_saved_unit = 3;
+  // The unit associated with the land_saved value
+  string land_saved_unit = 4;
 }
 
