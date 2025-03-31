@@ -35,6 +35,15 @@ export class WasteRecord extends jspb.Message {
   getStream(): string;
   setStream(value: string): WasteRecord;
 
+  getCo2Saved(): number;
+  setCo2Saved(value: number): WasteRecord;
+
+  getLandSaved(): number;
+  setLandSaved(value: number): WasteRecord;
+
+  getTreesSaved(): number;
+  setTreesSaved(value: number): WasteRecord;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WasteRecord.AsObject;
   static toObject(includeInstance: boolean, msg: WasteRecord): WasteRecord.AsObject;
@@ -53,6 +62,9 @@ export namespace WasteRecord {
     area: string,
     wasteCreateTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     stream: string,
+    co2Saved: number,
+    landSaved: number,
+    treesSaved: number,
   }
 
   export enum DisposalMethod { 
@@ -238,6 +250,12 @@ export class WasteRecordSupport extends jspb.Message {
   getUnit(): string;
   setUnit(value: string): WasteRecordSupport;
 
+  getCo2SavedUnit(): string;
+  setCo2SavedUnit(value: string): WasteRecordSupport;
+
+  getLandSavedUnit(): string;
+  setLandSavedUnit(value: string): WasteRecordSupport;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WasteRecordSupport.AsObject;
   static toObject(includeInstance: boolean, msg: WasteRecordSupport): WasteRecordSupport.AsObject;
@@ -250,6 +268,8 @@ export namespace WasteRecordSupport {
   export type AsObject = {
     resourceSupport?: types_info_pb.ResourceSupport.AsObject,
     unit: string,
+    co2SavedUnit: string,
+    landSavedUnit: string,
   }
 }
 
