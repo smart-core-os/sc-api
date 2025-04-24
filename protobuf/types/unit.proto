@@ -37,6 +37,8 @@ message AudioLevel {
   float target_gain = 3;
   // If the audio level muted.
   bool muted = 4;
+  // The measured sound level in dBA or dB. Use Info service to check.
+  float sound_level = 5;
 }
 
 // A change to the audio level

@@ -20,9 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MicrophoneApi_GetGain_FullMethodName    = "/smartcore.traits.MicrophoneApi/GetGain"
-	MicrophoneApi_UpdateGain_FullMethodName = "/smartcore.traits.MicrophoneApi/UpdateGain"
-	MicrophoneApi_PullGain_FullMethodName   = "/smartcore.traits.MicrophoneApi/PullGain"
+	MicrophoneApi_GetAudioLevel_FullMethodName    = "/smartcore.traits.MicrophoneApi/GetAudioLevel"
+	MicrophoneApi_UpdateAudioLevel_FullMethodName = "/smartcore.traits.MicrophoneApi/UpdateAudioLevel"
+	MicrophoneApi_PullAudioLevel_FullMethodName   = "/smartcore.traits.MicrophoneApi/PullAudioLevel"
 )
 
 // MicrophoneApiClient is the client API for MicrophoneApi service.
@@ -34,11 +34,11 @@ const (
 //
 // For the sakes of this trait "gain" means the combination of a gain and a mute state.
 type MicrophoneApiClient interface {
-	// Get the current state of the gain for the device
-	GetGain(ctx context.Context, in *GetMicrophoneGainRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
-	// update the gain state for the device
-	UpdateGain(ctx context.Context, in *UpdateMicrophoneGainRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
-	PullGain(ctx context.Context, in *PullMicrophoneGainRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[PullMicrophoneGainResponse], error)
+	// Gets the audio information for the device
+	GetAudioLevel(ctx context.Context, in *GetAudioLevelRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
+	// update the audio level state for the device
+	UpdateAudioLevel(ctx context.Context, in *UpdateAudioLevelRequest, opts ...grpc.CallOption) (*types.AudioLevel, error)
+	PullAudioLevel(ctx context.Context, in *PullAudioLevelRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[PullAudioLevelResponse], error)
 }
 
 type microphoneApiClient struct {
@@ -49,33 +49,33 @@ func NewMicrophoneApiClient(cc grpc.ClientConnInterface) MicrophoneApiClient {
 	return &microphoneApiClient{cc}
 }
 
-func (c *microphoneApiClient) GetGain(ctx context.Context, in *GetMicrophoneGainRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
+func (c *microphoneApiClient) GetAudioLevel(ctx context.Context, in *GetAudioLevelRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(types.AudioLevel)
-	err := c.cc.Invoke(ctx, MicrophoneApi_GetGain_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MicrophoneApi_GetAudioLevel_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *microphoneApiClient) UpdateGain(ctx context.Context, in *UpdateMicrophoneGainRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
+func (c *microphoneApiClient) UpdateAudioLevel(ctx context.Context, in *UpdateAudioLevelRequest, opts ...grpc.CallOption) (*types.AudioLevel, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(types.AudioLevel)
-	err := c.cc.Invoke(ctx, MicrophoneApi_UpdateGain_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MicrophoneApi_UpdateAudioLevel_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *microphoneApiClient) PullGain(ctx context.Context, in *PullMicrophoneGainRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[PullMicrophoneGainResponse], error) {
+func (c *microphoneApiClient) PullAudioLevel(ctx context.Context, in *PullAudioLevelRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[PullAudioLevelResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &MicrophoneApi_ServiceDesc.Streams[0], MicrophoneApi_PullGain_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &MicrophoneApi_ServiceDesc.Streams[0], MicrophoneApi_PullAudioLevel_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[PullMicrophoneGainRequest, PullMicrophoneGainResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[PullAudioLevelRequest, PullAudioLevelResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c *microphoneApiClient) PullGain(ctx context.Context, in *PullMicrophoneGa
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type MicrophoneApi_PullGainClient = grpc.ServerStreamingClient[PullMicrophoneGainResponse]
+type MicrophoneApi_PullAudioLevelClient = grpc.ServerStreamingClient[PullAudioLevelResponse]
 
 // MicrophoneApiServer is the server API for MicrophoneApi service.
 // All implementations must embed UnimplementedMicrophoneApiServer
@@ -97,11 +97,11 @@ type MicrophoneApi_PullGainClient = grpc.ServerStreamingClient[PullMicrophoneGai
 //
 // For the sakes of this trait "gain" means the combination of a gain and a mute state.
 type MicrophoneApiServer interface {
-	// Get the current state of the gain for the device
-	GetGain(context.Context, *GetMicrophoneGainRequest) (*types.AudioLevel, error)
-	// update the gain state for the device
-	UpdateGain(context.Context, *UpdateMicrophoneGainRequest) (*types.AudioLevel, error)
-	PullGain(*PullMicrophoneGainRequest, grpc.ServerStreamingServer[PullMicrophoneGainResponse]) error
+	// Gets the audio information for the device
+	GetAudioLevel(context.Context, *GetAudioLevelRequest) (*types.AudioLevel, error)
+	// update the audio level state for the device
+	UpdateAudioLevel(context.Context, *UpdateAudioLevelRequest) (*types.AudioLevel, error)
+	PullAudioLevel(*PullAudioLevelRequest, grpc.ServerStreamingServer[PullAudioLevelResponse]) error
 	mustEmbedUnimplementedMicrophoneApiServer()
 }
 
@@ -112,14 +112,14 @@ type MicrophoneApiServer interface {
 // pointer dereference when methods are called.
 type UnimplementedMicrophoneApiServer struct{}
 
-func (UnimplementedMicrophoneApiServer) GetGain(context.Context, *GetMicrophoneGainRequest) (*types.AudioLevel, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGain not implemented")
+func (UnimplementedMicrophoneApiServer) GetAudioLevel(context.Context, *GetAudioLevelRequest) (*types.AudioLevel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAudioLevel not implemented")
 }
-func (UnimplementedMicrophoneApiServer) UpdateGain(context.Context, *UpdateMicrophoneGainRequest) (*types.AudioLevel, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateGain not implemented")
+func (UnimplementedMicrophoneApiServer) UpdateAudioLevel(context.Context, *UpdateAudioLevelRequest) (*types.AudioLevel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAudioLevel not implemented")
 }
-func (UnimplementedMicrophoneApiServer) PullGain(*PullMicrophoneGainRequest, grpc.ServerStreamingServer[PullMicrophoneGainResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method PullGain not implemented")
+func (UnimplementedMicrophoneApiServer) PullAudioLevel(*PullAudioLevelRequest, grpc.ServerStreamingServer[PullAudioLevelResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method PullAudioLevel not implemented")
 }
 func (UnimplementedMicrophoneApiServer) mustEmbedUnimplementedMicrophoneApiServer() {}
 func (UnimplementedMicrophoneApiServer) testEmbeddedByValue()                       {}
@@ -142,52 +142,52 @@ func RegisterMicrophoneApiServer(s grpc.ServiceRegistrar, srv MicrophoneApiServe
 	s.RegisterService(&MicrophoneApi_ServiceDesc, srv)
 }
 
-func _MicrophoneApi_GetGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMicrophoneGainRequest)
+func _MicrophoneApi_GetAudioLevel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAudioLevelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MicrophoneApiServer).GetGain(ctx, in)
+		return srv.(MicrophoneApiServer).GetAudioLevel(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MicrophoneApi_GetGain_FullMethodName,
+		FullMethod: MicrophoneApi_GetAudioLevel_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MicrophoneApiServer).GetGain(ctx, req.(*GetMicrophoneGainRequest))
+		return srv.(MicrophoneApiServer).GetAudioLevel(ctx, req.(*GetAudioLevelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MicrophoneApi_UpdateGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateMicrophoneGainRequest)
+func _MicrophoneApi_UpdateAudioLevel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAudioLevelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MicrophoneApiServer).UpdateGain(ctx, in)
+		return srv.(MicrophoneApiServer).UpdateAudioLevel(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MicrophoneApi_UpdateGain_FullMethodName,
+		FullMethod: MicrophoneApi_UpdateAudioLevel_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MicrophoneApiServer).UpdateGain(ctx, req.(*UpdateMicrophoneGainRequest))
+		return srv.(MicrophoneApiServer).UpdateAudioLevel(ctx, req.(*UpdateAudioLevelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MicrophoneApi_PullGain_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PullMicrophoneGainRequest)
+func _MicrophoneApi_PullAudioLevel_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(PullAudioLevelRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(MicrophoneApiServer).PullGain(m, &grpc.GenericServerStream[PullMicrophoneGainRequest, PullMicrophoneGainResponse]{ServerStream: stream})
+	return srv.(MicrophoneApiServer).PullAudioLevel(m, &grpc.GenericServerStream[PullAudioLevelRequest, PullAudioLevelResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type MicrophoneApi_PullGainServer = grpc.ServerStreamingServer[PullMicrophoneGainResponse]
+type MicrophoneApi_PullAudioLevelServer = grpc.ServerStreamingServer[PullAudioLevelResponse]
 
 // MicrophoneApi_ServiceDesc is the grpc.ServiceDesc for MicrophoneApi service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -197,18 +197,18 @@ var MicrophoneApi_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*MicrophoneApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetGain",
-			Handler:    _MicrophoneApi_GetGain_Handler,
+			MethodName: "GetAudioLevel",
+			Handler:    _MicrophoneApi_GetAudioLevel_Handler,
 		},
 		{
-			MethodName: "UpdateGain",
-			Handler:    _MicrophoneApi_UpdateGain_Handler,
+			MethodName: "UpdateAudioLevel",
+			Handler:    _MicrophoneApi_UpdateAudioLevel_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "PullGain",
-			Handler:       _MicrophoneApi_PullGain_Handler,
+			StreamName:    "PullAudioLevel",
+			Handler:       _MicrophoneApi_PullAudioLevel_Handler,
 			ServerStreams: true,
 		},
 	},
@@ -216,7 +216,7 @@ var MicrophoneApi_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	MicrophoneInfo_DescribeGain_FullMethodName = "/smartcore.traits.MicrophoneInfo/DescribeGain"
+	MicrophoneInfo_DescribeAudioLevel_FullMethodName = "/smartcore.traits.MicrophoneInfo/DescribeAudioLevel"
 )
 
 // MicrophoneInfoClient is the client API for MicrophoneInfo service.
@@ -226,7 +226,7 @@ const (
 // Describes the capabilities of a specific named device with respect to this trait.
 type MicrophoneInfoClient interface {
 	// Get information about how a named device implements Gain features
-	DescribeGain(ctx context.Context, in *DescribeGainRequest, opts ...grpc.CallOption) (*GainSupport, error)
+	DescribeAudioLevel(ctx context.Context, in *DescribeAudioLevelRequest, opts ...grpc.CallOption) (*AudioLevelSupport, error)
 }
 
 type microphoneInfoClient struct {
@@ -237,10 +237,10 @@ func NewMicrophoneInfoClient(cc grpc.ClientConnInterface) MicrophoneInfoClient {
 	return &microphoneInfoClient{cc}
 }
 
-func (c *microphoneInfoClient) DescribeGain(ctx context.Context, in *DescribeGainRequest, opts ...grpc.CallOption) (*GainSupport, error) {
+func (c *microphoneInfoClient) DescribeAudioLevel(ctx context.Context, in *DescribeAudioLevelRequest, opts ...grpc.CallOption) (*AudioLevelSupport, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GainSupport)
-	err := c.cc.Invoke(ctx, MicrophoneInfo_DescribeGain_FullMethodName, in, out, cOpts...)
+	out := new(AudioLevelSupport)
+	err := c.cc.Invoke(ctx, MicrophoneInfo_DescribeAudioLevel_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -254,7 +254,7 @@ func (c *microphoneInfoClient) DescribeGain(ctx context.Context, in *DescribeGai
 // Describes the capabilities of a specific named device with respect to this trait.
 type MicrophoneInfoServer interface {
 	// Get information about how a named device implements Gain features
-	DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error)
+	DescribeAudioLevel(context.Context, *DescribeAudioLevelRequest) (*AudioLevelSupport, error)
 	mustEmbedUnimplementedMicrophoneInfoServer()
 }
 
@@ -265,8 +265,8 @@ type MicrophoneInfoServer interface {
 // pointer dereference when methods are called.
 type UnimplementedMicrophoneInfoServer struct{}
 
-func (UnimplementedMicrophoneInfoServer) DescribeGain(context.Context, *DescribeGainRequest) (*GainSupport, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DescribeGain not implemented")
+func (UnimplementedMicrophoneInfoServer) DescribeAudioLevel(context.Context, *DescribeAudioLevelRequest) (*AudioLevelSupport, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAudioLevel not implemented")
 }
 func (UnimplementedMicrophoneInfoServer) mustEmbedUnimplementedMicrophoneInfoServer() {}
 func (UnimplementedMicrophoneInfoServer) testEmbeddedByValue()                        {}
@@ -289,20 +289,20 @@ func RegisterMicrophoneInfoServer(s grpc.ServiceRegistrar, srv MicrophoneInfoSer
 	s.RegisterService(&MicrophoneInfo_ServiceDesc, srv)
 }
 
-func _MicrophoneInfo_DescribeGain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DescribeGainRequest)
+func _MicrophoneInfo_DescribeAudioLevel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAudioLevelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MicrophoneInfoServer).DescribeGain(ctx, in)
+		return srv.(MicrophoneInfoServer).DescribeAudioLevel(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: MicrophoneInfo_DescribeGain_FullMethodName,
+		FullMethod: MicrophoneInfo_DescribeAudioLevel_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MicrophoneInfoServer).DescribeGain(ctx, req.(*DescribeGainRequest))
+		return srv.(MicrophoneInfoServer).DescribeAudioLevel(ctx, req.(*DescribeAudioLevelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -315,8 +315,8 @@ var MicrophoneInfo_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*MicrophoneInfoServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DescribeGain",
-			Handler:    _MicrophoneInfo_DescribeGain_Handler,
+			MethodName: "DescribeAudioLevel",
+			Handler:    _MicrophoneInfo_DescribeAudioLevel_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

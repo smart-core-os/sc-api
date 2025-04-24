@@ -37,6 +37,9 @@ export class AudioLevel extends jspb.Message {
   getMuted(): boolean;
   setMuted(value: boolean): AudioLevel;
 
+  getSoundLevel(): number;
+  setSoundLevel(value: number): AudioLevel;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AudioLevel.AsObject;
   static toObject(includeInstance: boolean, msg: AudioLevel): AudioLevel.AsObject;
@@ -51,6 +54,7 @@ export namespace AudioLevel {
     gainTween?: types_tween_pb.Tween.AsObject,
     targetGain: number,
     muted: boolean,
+    soundLevel: number,
   }
 }
 

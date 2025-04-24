@@ -9,24 +9,24 @@ export class MicrophoneApiClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getGain(
-    request: traits_microphone_pb.GetMicrophoneGainRequest,
+  getAudioLevel(
+    request: traits_microphone_pb.GetAudioLevelRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
-  updateGain(
-    request: traits_microphone_pb.UpdateMicrophoneGainRequest,
+  updateAudioLevel(
+    request: traits_microphone_pb.UpdateAudioLevelRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: types_unit_pb.AudioLevel) => void
   ): grpcWeb.ClientReadableStream<types_unit_pb.AudioLevel>;
 
-  pullGain(
-    request: traits_microphone_pb.PullMicrophoneGainRequest,
+  pullAudioLevel(
+    request: traits_microphone_pb.PullAudioLevelRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_microphone_pb.PullMicrophoneGainResponse>;
+  ): grpcWeb.ClientReadableStream<traits_microphone_pb.PullAudioLevelResponse>;
 
 }
 
@@ -35,12 +35,12 @@ export class MicrophoneInfoClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  describeGain(
-    request: traits_microphone_pb.DescribeGainRequest,
+  describeAudioLevel(
+    request: traits_microphone_pb.DescribeAudioLevelRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: traits_microphone_pb.GainSupport) => void
-  ): grpcWeb.ClientReadableStream<traits_microphone_pb.GainSupport>;
+               response: traits_microphone_pb.AudioLevelSupport) => void
+  ): grpcWeb.ClientReadableStream<traits_microphone_pb.AudioLevelSupport>;
 
 }
 
@@ -49,20 +49,20 @@ export class MicrophoneApiPromiseClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  getGain(
-    request: traits_microphone_pb.GetMicrophoneGainRequest,
+  getAudioLevel(
+    request: traits_microphone_pb.GetAudioLevelRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<types_unit_pb.AudioLevel>;
 
-  updateGain(
-    request: traits_microphone_pb.UpdateMicrophoneGainRequest,
+  updateAudioLevel(
+    request: traits_microphone_pb.UpdateAudioLevelRequest,
     metadata?: grpcWeb.Metadata
   ): Promise<types_unit_pb.AudioLevel>;
 
-  pullGain(
-    request: traits_microphone_pb.PullMicrophoneGainRequest,
+  pullAudioLevel(
+    request: traits_microphone_pb.PullAudioLevelRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<traits_microphone_pb.PullMicrophoneGainResponse>;
+  ): grpcWeb.ClientReadableStream<traits_microphone_pb.PullAudioLevelResponse>;
 
 }
 
@@ -71,10 +71,10 @@ export class MicrophoneInfoPromiseClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
-  describeGain(
-    request: traits_microphone_pb.DescribeGainRequest,
+  describeAudioLevel(
+    request: traits_microphone_pb.DescribeAudioLevelRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<traits_microphone_pb.GainSupport>;
+  ): Promise<traits_microphone_pb.AudioLevelSupport>;
 
 }
 

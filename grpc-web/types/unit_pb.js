@@ -258,7 +258,8 @@ proto.smartcore.types.AudioLevel.toObject = function(includeInstance, msg) {
 gain: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
 gainTween: (f = msg.getGainTween()) && types_tween_pb.Tween.toObject(includeInstance, f),
 targetGain: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-muted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+muted: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+soundLevel: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0)
   };
 
   if (includeInstance) {
@@ -311,6 +312,10 @@ proto.smartcore.types.AudioLevel.deserializeBinaryFromReader = function(msg, rea
     case 4:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setMuted(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setSoundLevel(value);
       break;
     default:
       reader.skipField();
@@ -367,6 +372,13 @@ proto.smartcore.types.AudioLevel.serializeBinaryToWriter = function(message, wri
   if (f) {
     writer.writeBool(
       4,
+      f
+    );
+  }
+  f = message.getSoundLevel();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      5,
       f
     );
   }
@@ -461,6 +473,24 @@ proto.smartcore.types.AudioLevel.prototype.getMuted = function() {
  */
 proto.smartcore.types.AudioLevel.prototype.setMuted = function(value) {
   return jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional float sound_level = 5;
+ * @return {number}
+ */
+proto.smartcore.types.AudioLevel.prototype.getSoundLevel = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.types.AudioLevel} returns this
+ */
+proto.smartcore.types.AudioLevel.prototype.setSoundLevel = function(value) {
+  return jspb.Message.setProto3FloatField(this, 5, value);
 };
 
 
