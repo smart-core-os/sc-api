@@ -135,6 +135,10 @@ message EnergyLevel {
 
     // A measure of how far the device can travel with its current energy level.
     float distance_km = 4;
+
+    // Battery voltage.
+    // The relationship between voltage and energy level / percentage charge is device-specific.
+    optional float voltage = 5;
   }
   // Quantity describes an absolute energy level using different units.
   Quantity quantity = 5;
