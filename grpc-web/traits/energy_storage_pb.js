@@ -1225,7 +1225,8 @@ proto.smartcore.traits.EnergyLevel.Quantity.toObject = function(includeInstance,
 percentage: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
 energyKwh: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
 descriptive: jspb.Message.getFieldWithDefault(msg, 3, 0),
-distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+distanceKm: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+voltage: (f = jspb.Message.getOptionalFloatingPointField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1277,6 +1278,10 @@ proto.smartcore.traits.EnergyLevel.Quantity.deserializeBinaryFromReader = functi
     case 4:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setDistanceKm(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setVoltage(value);
       break;
     default:
       reader.skipField();
@@ -1332,6 +1337,13 @@ proto.smartcore.traits.EnergyLevel.Quantity.serializeBinaryToWriter = function(m
   if (f !== 0.0) {
     writer.writeFloat(
       4,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeFloat(
+      5,
       f
     );
   }
@@ -1421,6 +1433,42 @@ proto.smartcore.traits.EnergyLevel.Quantity.prototype.getDistanceKm = function()
  */
 proto.smartcore.traits.EnergyLevel.Quantity.prototype.setDistanceKm = function(value) {
   return jspb.Message.setProto3FloatField(this, 4, value);
+};
+
+
+/**
+ * optional float voltage = 5;
+ * @return {number}
+ */
+proto.smartcore.traits.EnergyLevel.Quantity.prototype.getVoltage = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.smartcore.traits.EnergyLevel.Quantity} returns this
+ */
+proto.smartcore.traits.EnergyLevel.Quantity.prototype.setVoltage = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.smartcore.traits.EnergyLevel.Quantity} returns this
+ */
+proto.smartcore.traits.EnergyLevel.Quantity.prototype.clearVoltage = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.smartcore.traits.EnergyLevel.Quantity.prototype.hasVoltage = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

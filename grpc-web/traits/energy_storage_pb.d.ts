@@ -169,6 +169,11 @@ export namespace EnergyLevel {
     getDistanceKm(): number;
     setDistanceKm(value: number): Quantity;
 
+    getVoltage(): number;
+    setVoltage(value: number): Quantity;
+    hasVoltage(): boolean;
+    clearVoltage(): Quantity;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Quantity.AsObject;
     static toObject(includeInstance: boolean, msg: Quantity): Quantity.AsObject;
@@ -183,6 +188,7 @@ export namespace EnergyLevel {
       energyKwh: number,
       descriptive: EnergyLevel.Quantity.Threshold,
       distanceKm: number,
+      voltage?: number,
     }
 
     export enum Threshold { 
@@ -194,6 +200,11 @@ export namespace EnergyLevel {
       HIGH = 5,
       FULL = 7,
       CRITICALLY_HIGH = 8,
+    }
+
+    export enum VoltageCase { 
+      _VOLTAGE_NOT_SET = 0,
+      VOLTAGE = 5,
     }
   }
 
