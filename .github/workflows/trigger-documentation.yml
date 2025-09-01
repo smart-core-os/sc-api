@@ -19,7 +19,7 @@ jobs:
           github_token: ${{ secrets.TRIGGER_DOC_BUILD }}
           owner: 'smart-core-os'
           repo: 'smart-core-os.github.io'
-          workflow_file_name: 'publish.yml'
+          workflow_file_name: 'update-latest-version.yml'
           client_payload: >
             {
               "src": "${{ github.repository }}",
