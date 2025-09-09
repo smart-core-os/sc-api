@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "PressureProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+
+// Pressure trait is applicable to devices that measure or control pressure in a system.
+// This includes devices such as pressure sensors, pressure regulators, and other
+// similar control mechanisms used in various industrial and commercial applications.
+service PressureApi {
+  rpc GetPressure(GetPressureRequest) returns (Pressure) {}
+  rpc PullPressure(PullPressureRequest) returns (stream PullPressureResponse) {}
+  rpc UpdatePressure(UpdatePressureRequest) returns (Pressure) {}
+}
+
+message Pressure {
+  // pressure set point e.g. bar
+  float pressure_set_point = 1;
+  // measured pressure e.g. bar
+  // Output only, a zero value indicates that the device does not measure pressure.
+  float measured_pressure = 2;
+}
+
+message GetPressureRequest {
+  string name = 1;
+  google.protobuf.FieldMask read_mask = 2;
+}
+
+message PullPressureRequest {
+  string name = 1;
+  google.protobuf.FieldMask read_mask = 2;
+  bool updates_only = 3;
+}
+
+message PullPressureResponse {
+  repeated Change changes = 1;
+
+  message Change {
+    string name = 1;
+    google.protobuf.Timestamp change_time = 2;
+    Pressure pressure = 3;
+  }
+}
+
+message UpdatePressureRequest {
+  string name = 1;
+  Pressure pressure = 2;
+  google.protobuf.FieldMask update_mask = 3;
+  // When true, pressure is a change to the devices current value.
+  bool delta = 4;
+}

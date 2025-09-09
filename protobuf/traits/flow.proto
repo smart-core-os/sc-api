@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package smartcore.traits;
+
+option csharp_namespace = "Smartcore.Traits";
+option go_package = "github.com/smart-core-os/sc-api/go/traits";
+option java_multiple_files = true;
+option java_outer_classname = "FlowProto";
+option java_package = "dev.smartcore.traits";
+option php_namespace = "Smartcore\\Traits";
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// Flow trait is applicable to devices that control the flow of a fluid (liquid or gas)
+// by opening or closing a passageway. This includes devices such as water valves,
+// gas valves, and other similar control mechanisms used in various industrial and
+// commercial applications.
+service FlowApi {
+  rpc GetFlow(GetFlowRequest) returns (Flow) {}
+  rpc PullFlow(PullFlowRequest) returns (stream PullFlowResponse) {}
+  rpc UpdateFlow(UpdateFlowRequest) returns (Flow) {}
+}
+
+message Flow {
+  // flow rate set point e.g. L/s
+  float flow_rate_set_point = 1;
+  // If the flow is powered by a pump or similar device, these fields indicate
+  // the frequency at which the drive operates to achieve the desired flow rate.
+  // This is particularly relevant for variable frequency drives (VFDs) used in pumps to control the speed and flow rate.
+  // For devices that do not use a drive frequency to control flow, this field may be omitted or set to a default value of 0 Hz.
+  // drive frequency set point e.g. Hz
+  float drive_frequency_set_point = 2;
+  // measured flow rate e.g. L/s
+  // Output only, a zero value indicates that the device does not measure flow rate.
+  float measured_flow_rate = 3;
+  // measured drive frequency e.g. Hz
+  // Output only, a zero value indicates that the device does not measure drive frequency.
+  float measured_drive_frequency = 4;
+
+  // Flow Operation modes describes the control of fluid flow, is returning the fluid passed through or is blocking the flow.
+  enum FlowMode {
+    UNSPECIFIED = 0;
+    // The device is set to allow fluid to flow through it.
+    FLOW = 1;
+    // The device is set to return the fluid that is passing through it.
+    RETURN = 2;
+    // The device is set to block the flow of fluid.
+    BLOCKING = 3;
+  }
+
+  // the flow device operation mode
+  FlowMode mode = 11;
+}
+
+message GetFlowRequest {
+  string name = 1;
+  google.protobuf.FieldMask read_mask = 2;
+}
+
+message PullFlowRequest {
+  string name = 1;
+  google.protobuf.FieldMask read_mask = 2;
+  bool updates_only = 3;
+}
+
+message PullFlowResponse {
+  repeated Change changes = 1;
+
+  message Change {
+    string name = 1;
+    google.protobuf.Timestamp change_time = 2;
+    Flow flow = 3;
+  }
+}
+
+message UpdateFlowRequest {
+  string name = 1;
+  Flow flow = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateFlowResponse {
+  Flow flow = 1;
+}
