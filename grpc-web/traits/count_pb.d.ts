@@ -27,10 +27,10 @@ export class Count extends jspb.Message {
 
 export namespace Count {
   export type AsObject = {
-    added: number,
-    removed: number,
-    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    added: number;
+    removed: number;
+    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class CountSupport extends jspb.Message {
@@ -58,11 +58,11 @@ export class CountSupport extends jspb.Message {
 
 export namespace CountSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    twoWay: boolean,
-    supportsReset: boolean,
-    supportsDelta: boolean,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    twoWay: boolean;
+    supportsReset: boolean;
+    supportsDelta: boolean;
+  };
 }
 
 export class GetCountRequest extends jspb.Message {
@@ -84,9 +84,9 @@ export class GetCountRequest extends jspb.Message {
 
 export namespace GetCountRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ResetCountRequest extends jspb.Message {
@@ -108,9 +108,9 @@ export class ResetCountRequest extends jspb.Message {
 
 export namespace ResetCountRequest {
   export type AsObject = {
-    name: string,
-    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    name: string;
+    resetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class UpdateCountRequest extends jspb.Message {
@@ -140,11 +140,11 @@ export class UpdateCountRequest extends jspb.Message {
 
 export namespace UpdateCountRequest {
   export type AsObject = {
-    name: string,
-    count?: Count.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    delta: boolean,
-  }
+    name: string;
+    count?: Count.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    delta: boolean;
+  };
 }
 
 export class PullCountsRequest extends jspb.Message {
@@ -169,10 +169,10 @@ export class PullCountsRequest extends jspb.Message {
 
 export namespace PullCountsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullCountsResponse extends jspb.Message {
@@ -191,8 +191,8 @@ export class PullCountsResponse extends jspb.Message {
 
 export namespace PullCountsResponse {
   export type AsObject = {
-    changesList: Array<PullCountsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullCountsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -218,10 +218,10 @@ export namespace PullCountsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      count?: Count.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      count?: Count.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -240,7 +240,7 @@ export class DescribeCountRequest extends jspb.Message {
 
 export namespace DescribeCountRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

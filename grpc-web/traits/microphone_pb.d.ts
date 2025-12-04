@@ -30,10 +30,10 @@ export class GainSupport extends jspb.Message {
 
 export namespace GainSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    gainAttributes?: types_number_pb.FloatAttributes.AsObject,
-    muteSupport: types_unit_pb.MuteSupport,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    gainAttributes?: types_number_pb.FloatAttributes.AsObject;
+    muteSupport: types_unit_pb.MuteSupport;
+  };
 }
 
 export class GetMicrophoneGainRequest extends jspb.Message {
@@ -55,9 +55,9 @@ export class GetMicrophoneGainRequest extends jspb.Message {
 
 export namespace GetMicrophoneGainRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateMicrophoneGainRequest extends jspb.Message {
@@ -87,11 +87,11 @@ export class UpdateMicrophoneGainRequest extends jspb.Message {
 
 export namespace UpdateMicrophoneGainRequest {
   export type AsObject = {
-    name: string,
-    gain?: types_unit_pb.AudioLevel.AsObject,
-    delta: boolean,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    gain?: types_unit_pb.AudioLevel.AsObject;
+    delta: boolean;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullMicrophoneGainRequest extends jspb.Message {
@@ -116,10 +116,10 @@ export class PullMicrophoneGainRequest extends jspb.Message {
 
 export namespace PullMicrophoneGainRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullMicrophoneGainResponse extends jspb.Message {
@@ -138,8 +138,8 @@ export class PullMicrophoneGainResponse extends jspb.Message {
 
 export namespace PullMicrophoneGainResponse {
   export type AsObject = {
-    changesList: Array<types_unit_pb.AudioLevelChange.AsObject>,
-  }
+    changesList: Array<types_unit_pb.AudioLevelChange.AsObject>;
+  };
 }
 
 export class DescribeGainRequest extends jspb.Message {
@@ -156,7 +156,7 @@ export class DescribeGainRequest extends jspb.Message {
 
 export namespace DescribeGainRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

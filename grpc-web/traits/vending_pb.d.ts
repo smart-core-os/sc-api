@@ -51,16 +51,16 @@ export class Consumable extends jspb.Message {
 
 export namespace Consumable {
   export type AsObject = {
-    name: string,
-    availablePortionsList: Array<Consumable.Portion.AsObject>,
-    defaultPortion?: Consumable.Quantity.AsObject,
-    title: string,
-    displayName: string,
-    picture?: types_image_pb.Image.AsObject,
-    url: string,
-    idsMap: Array<[string, string]>,
-    moreMap: Array<[string, string]>,
-  }
+    name: string;
+    availablePortionsList: Array<Consumable.Portion.AsObject>;
+    defaultPortion?: Consumable.Quantity.AsObject;
+    title: string;
+    displayName: string;
+    picture?: types_image_pb.Image.AsObject;
+    url: string;
+    idsMap: Array<[string, string]>;
+    moreMap: Array<[string, string]>;
+  };
 
   export class Portion extends jspb.Message {
     getUnit(): Consumable.Unit;
@@ -84,10 +84,10 @@ export namespace Consumable {
 
   export namespace Portion {
     export type AsObject = {
-      unit: Consumable.Unit,
-      bounds?: types_number_pb.FloatBounds.AsObject,
-      step: number,
-    }
+      unit: Consumable.Unit;
+      bounds?: types_number_pb.FloatBounds.AsObject;
+      step: number;
+    };
   }
 
 
@@ -108,9 +108,9 @@ export namespace Consumable {
 
   export namespace Quantity {
     export type AsObject = {
-      amount: number,
-      unit: Consumable.Unit,
-    }
+      amount: number;
+      unit: Consumable.Unit;
+    };
   }
 
 
@@ -146,16 +146,16 @@ export namespace Consumable {
 
   export namespace Stock {
     export type AsObject = {
-      consumable: string,
-      remaining?: Consumable.Quantity.AsObject,
-      used?: Consumable.Quantity.AsObject,
-      lastDispensed?: Consumable.Quantity.AsObject,
-      dispensing: boolean,
-    }
+      consumable: string;
+      remaining?: Consumable.Quantity.AsObject;
+      used?: Consumable.Quantity.AsObject;
+      lastDispensed?: Consumable.Quantity.AsObject;
+      dispensing: boolean;
+    };
   }
 
 
-  export enum Unit { 
+  export enum Unit {
     UNIT_UNSPECIFIED = 0,
     NO_UNIT = 1,
     METER = 2,
@@ -191,11 +191,11 @@ export class ListConsumablesRequest extends jspb.Message {
 
 export namespace ListConsumablesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListConsumablesResponse extends jspb.Message {
@@ -220,10 +220,10 @@ export class ListConsumablesResponse extends jspb.Message {
 
 export namespace ListConsumablesResponse {
   export type AsObject = {
-    consumablesList: Array<Consumable.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    consumablesList: Array<Consumable.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullConsumablesRequest extends jspb.Message {
@@ -248,10 +248,10 @@ export class PullConsumablesRequest extends jspb.Message {
 
 export namespace PullConsumablesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullConsumablesResponse extends jspb.Message {
@@ -270,8 +270,8 @@ export class PullConsumablesResponse extends jspb.Message {
 
 export namespace PullConsumablesResponse {
   export type AsObject = {
-    changesList: Array<PullConsumablesResponse.Change.AsObject>,
-  }
+    changesList: Array<PullConsumablesResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -305,12 +305,12 @@ export namespace PullConsumablesResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Consumable.AsObject,
-      oldValue?: Consumable.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Consumable.AsObject;
+      oldValue?: Consumable.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -337,10 +337,10 @@ export class GetStockRequest extends jspb.Message {
 
 export namespace GetStockRequest {
   export type AsObject = {
-    name: string,
-    consumable: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    consumable: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateStockRequest extends jspb.Message {
@@ -370,11 +370,11 @@ export class UpdateStockRequest extends jspb.Message {
 
 export namespace UpdateStockRequest {
   export type AsObject = {
-    name: string,
-    stock?: Consumable.Stock.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    relative: boolean,
-  }
+    name: string;
+    stock?: Consumable.Stock.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    relative: boolean;
+  };
 }
 
 export class PullStockRequest extends jspb.Message {
@@ -402,11 +402,11 @@ export class PullStockRequest extends jspb.Message {
 
 export namespace PullStockRequest {
   export type AsObject = {
-    name: string,
-    consumable: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    consumable: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullStockResponse extends jspb.Message {
@@ -425,8 +425,8 @@ export class PullStockResponse extends jspb.Message {
 
 export namespace PullStockResponse {
   export type AsObject = {
-    changesList: Array<PullStockResponse.Change.AsObject>,
-  }
+    changesList: Array<PullStockResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -452,10 +452,10 @@ export namespace PullStockResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      stock?: Consumable.Stock.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      stock?: Consumable.Stock.AsObject;
+    };
   }
 
 }
@@ -485,11 +485,11 @@ export class ListInventoryRequest extends jspb.Message {
 
 export namespace ListInventoryRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListInventoryResponse extends jspb.Message {
@@ -514,10 +514,10 @@ export class ListInventoryResponse extends jspb.Message {
 
 export namespace ListInventoryResponse {
   export type AsObject = {
-    inventoryList: Array<Consumable.Stock.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    inventoryList: Array<Consumable.Stock.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullInventoryRequest extends jspb.Message {
@@ -542,10 +542,10 @@ export class PullInventoryRequest extends jspb.Message {
 
 export namespace PullInventoryRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullInventoryResponse extends jspb.Message {
@@ -564,8 +564,8 @@ export class PullInventoryResponse extends jspb.Message {
 
 export namespace PullInventoryResponse {
   export type AsObject = {
-    changesList: Array<PullInventoryResponse.Change.AsObject>,
-  }
+    changesList: Array<PullInventoryResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -599,12 +599,12 @@ export namespace PullInventoryResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Consumable.Stock.AsObject,
-      oldValue?: Consumable.Stock.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Consumable.Stock.AsObject;
+      oldValue?: Consumable.Stock.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -636,11 +636,11 @@ export class DispenseRequest extends jspb.Message {
 
 export namespace DispenseRequest {
   export type AsObject = {
-    name: string,
-    consumable: string,
-    quantity?: Consumable.Quantity.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    consumable: string;
+    quantity?: Consumable.Quantity.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopDispenseRequest extends jspb.Message {
@@ -660,8 +660,8 @@ export class StopDispenseRequest extends jspb.Message {
 
 export namespace StopDispenseRequest {
   export type AsObject = {
-    name: string,
-    consumable: string,
-  }
+    name: string;
+    consumable: string;
+  };
 }
 

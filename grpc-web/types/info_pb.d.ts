@@ -37,16 +37,16 @@ export class ResourceSupport extends jspb.Message {
 
 export namespace ResourceSupport {
   export type AsObject = {
-    readable: boolean,
-    writable: boolean,
-    observable: boolean,
-    writableFields?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pullSupport: PullSupport,
-    pullPoll?: google_protobuf_duration_pb.Duration.AsObject,
-  }
+    readable: boolean;
+    writable: boolean;
+    observable: boolean;
+    writableFields?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pullSupport: PullSupport;
+    pullPoll?: google_protobuf_duration_pb.Duration.AsObject;
+  };
 }
 
-export enum PullSupport { 
+export enum PullSupport {
   PULL_SUPPORT_UNSPECIFIED = 0,
   PULL_SUPPORT_NATIVE = 1,
   PULL_SUPPORT_EMULATED = 2,

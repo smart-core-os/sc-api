@@ -23,10 +23,10 @@ export class ListDevicesRequest extends jspb.Message {
 
 export namespace ListDevicesRequest {
   export type AsObject = {
-    depth: number,
-    pageSize: number,
-    pageToken: string,
-  }
+    depth: number;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListDevicesResponse extends jspb.Message {
@@ -51,10 +51,10 @@ export class ListDevicesResponse extends jspb.Message {
 
 export namespace ListDevicesResponse {
   export type AsObject = {
-    devicesList: Array<Device.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    devicesList: Array<Device.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullDevicesRequest extends jspb.Message {
@@ -74,9 +74,9 @@ export class PullDevicesRequest extends jspb.Message {
 
 export namespace PullDevicesRequest {
   export type AsObject = {
-    depth: number,
-    sync: boolean,
-  }
+    depth: number;
+    sync: boolean;
+  };
 }
 
 export class PullDevicesResponse extends jspb.Message {
@@ -95,8 +95,8 @@ export class PullDevicesResponse extends jspb.Message {
 
 export namespace PullDevicesResponse {
   export type AsObject = {
-    changesList: Array<PullDevicesResponse.Change.AsObject>,
-  }
+    changesList: Array<PullDevicesResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getType(): types_change_pb.ChangeType;
@@ -122,10 +122,10 @@ export namespace PullDevicesResponse {
 
   export namespace Change {
     export type AsObject = {
-      type: types_change_pb.ChangeType,
-      newValue?: Device.AsObject,
-      oldValue?: Device.AsObject,
-    }
+      type: types_change_pb.ChangeType;
+      newValue?: Device.AsObject;
+      oldValue?: Device.AsObject;
+    };
   }
 
 }
@@ -171,15 +171,15 @@ export class Device extends jspb.Message {
 
 export namespace Device {
   export type AsObject = {
-    name: string,
-    traitsList: Array<Trait.AsObject>,
-    owner?: Device.AsObject,
-    client?: GrpcClientOptions.AsObject,
-    title: string,
-    displayName: string,
-    description: string,
-    labelsMap: Array<[string, string]>,
-  }
+    name: string;
+    traitsList: Array<Trait.AsObject>;
+    owner?: Device.AsObject;
+    client?: GrpcClientOptions.AsObject;
+    title: string;
+    displayName: string;
+    description: string;
+    labelsMap: Array<[string, string]>;
+  };
 }
 
 export class Trait extends jspb.Message {
@@ -196,8 +196,8 @@ export class Trait extends jspb.Message {
 
 export namespace Trait {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class GrpcClientOptions extends jspb.Message {
@@ -229,10 +229,10 @@ export class GrpcClientOptions extends jspb.Message {
 
 export namespace GrpcClientOptions {
   export type AsObject = {
-    authority: string,
-    clientcert: Uint8Array | string,
-    clientkey: Uint8Array | string,
-    clientca: Uint8Array | string,
-  }
+    authority: string;
+    clientcert: Uint8Array | string;
+    clientkey: Uint8Array | string;
+    clientca: Uint8Array | string;
+  };
 }
 

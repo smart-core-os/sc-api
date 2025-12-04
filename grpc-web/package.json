@@ -4,8 +4,8 @@
   "description": "grpc-web client library",
   "license": "MIT",
   "dependencies": {
-    "google-protobuf": "^3.21.2",
-    "grpc-web": "^1.5.0"
+    "google-protobuf": "^4.0.1",
+    "grpc-web": "^2.0.2"
   },
   "repository": {
     "type": "git",

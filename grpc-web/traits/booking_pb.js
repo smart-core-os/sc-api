@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
@@ -415,7 +409,7 @@ checkInNotRequired: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.Booking}
  */
 proto.smartcore.traits.Booking.deserializeBinary = function(bytes) {
@@ -440,19 +434,19 @@ proto.smartcore.traits.Booking.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBookable(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTitle(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOwnerName(value);
       break;
     case 5:
@@ -764,7 +758,7 @@ timeResolution: jspb.Message.getFieldWithDefault(msg, 4, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.BookingSupport}
  */
 proto.smartcore.traits.BookingSupport.deserializeBinary = function(bytes) {
@@ -1015,7 +1009,7 @@ updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.ListBookingsRequest}
  */
 proto.smartcore.traits.ListBookingsRequest.deserializeBinary = function(bytes) {
@@ -1040,7 +1034,7 @@ proto.smartcore.traits.ListBookingsRequest.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -1282,7 +1276,7 @@ bookingsList: jspb.Message.toObjectList(msg.getBookingsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.ListBookingsResponse}
  */
 proto.smartcore.traits.ListBookingsResponse.deserializeBinary = function(bytes) {
@@ -1436,7 +1430,7 @@ time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(inc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CheckInBookingRequest}
  */
 proto.smartcore.traits.CheckInBookingRequest.deserializeBinary = function(bytes) {
@@ -1461,11 +1455,11 @@ proto.smartcore.traits.CheckInBookingRequest.deserializeBinaryFromReader = funct
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBookingId(value);
       break;
     case 3:
@@ -1645,7 +1639,7 @@ proto.smartcore.traits.CheckInBookingResponse.toObject = function(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CheckInBookingResponse}
  */
 proto.smartcore.traits.CheckInBookingResponse.deserializeBinary = function(bytes) {
@@ -1748,7 +1742,7 @@ time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(inc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CheckOutBookingRequest}
  */
 proto.smartcore.traits.CheckOutBookingRequest.deserializeBinary = function(bytes) {
@@ -1773,11 +1767,11 @@ proto.smartcore.traits.CheckOutBookingRequest.deserializeBinaryFromReader = func
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBookingId(value);
       break;
     case 3:
@@ -1957,7 +1951,7 @@ proto.smartcore.traits.CheckOutBookingResponse.toObject = function(includeInstan
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CheckOutBookingResponse}
  */
 proto.smartcore.traits.CheckOutBookingResponse.deserializeBinary = function(bytes) {
@@ -2059,7 +2053,7 @@ booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(inclu
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CreateBookingRequest}
  */
 proto.smartcore.traits.CreateBookingRequest.deserializeBinary = function(bytes) {
@@ -2084,7 +2078,7 @@ proto.smartcore.traits.CreateBookingRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -2239,7 +2233,7 @@ bookingId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.CreateBookingResponse}
  */
 proto.smartcore.traits.CreateBookingResponse.deserializeBinary = function(bytes) {
@@ -2264,7 +2258,7 @@ proto.smartcore.traits.CreateBookingResponse.deserializeBinaryFromReader = funct
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBookingId(value);
       break;
     default:
@@ -2371,7 +2365,7 @@ updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.UpdateBookingRequest}
  */
 proto.smartcore.traits.UpdateBookingRequest.deserializeBinary = function(bytes) {
@@ -2396,7 +2390,7 @@ proto.smartcore.traits.UpdateBookingRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -2601,7 +2595,7 @@ booking: (f = msg.getBooking()) && proto.smartcore.traits.Booking.toObject(inclu
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.UpdateBookingResponse}
  */
 proto.smartcore.traits.UpdateBookingResponse.deserializeBinary = function(bytes) {
@@ -2760,7 +2754,7 @@ changesList: jspb.Message.toObjectList(msg.getChangesList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullBookingsResponse}
  */
 proto.smartcore.traits.PullBookingsResponse.deserializeBinary = function(bytes) {
@@ -2878,7 +2872,7 @@ changeTime: (f = msg.getChangeTime()) && google_protobuf_timestamp_pb.Timestamp.
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullBookingsResponse.Change}
  */
 proto.smartcore.traits.PullBookingsResponse.Change.deserializeBinary = function(bytes) {
@@ -2903,7 +2897,7 @@ proto.smartcore.traits.PullBookingsResponse.Change.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -3225,7 +3219,7 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.DescribeBookingRequest}
  */
 proto.smartcore.traits.DescribeBookingRequest.deserializeBinary = function(bytes) {
@@ -3250,7 +3244,7 @@ proto.smartcore.traits.DescribeBookingRequest.deserializeBinaryFromReader = func
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:

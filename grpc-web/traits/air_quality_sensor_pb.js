@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
@@ -238,7 +232,7 @@ airChangePerHour: (f = jspb.Message.getOptionalFloatingPointField(msg, 10)) == n
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.AirQuality}
  */
 proto.smartcore.traits.AirQuality.deserializeBinary = function(bytes) {
@@ -817,7 +811,7 @@ airChangePerHour: (f = msg.getAirChangePerHour()) && types_number_pb.FloatBounds
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.AirQualitySupport}
  */
 proto.smartcore.traits.AirQualitySupport.deserializeBinary = function(bytes) {
@@ -862,10 +856,7 @@ proto.smartcore.traits.AirQualitySupport.deserializeBinaryFromReader = function(
       msg.setAirPressure(value);
       break;
     case 5:
-      var values = /** @type {!Array<!proto.smartcore.traits.AirQuality.Comfort>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addComfort(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getComfortList());
       break;
     case 6:
       var value = new types_number_pb.FloatBounds;
@@ -1469,7 +1460,7 @@ readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toO
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.GetAirQualityRequest}
  */
 proto.smartcore.traits.GetAirQualityRequest.deserializeBinary = function(bytes) {
@@ -1494,7 +1485,7 @@ proto.smartcore.traits.GetAirQualityRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -1651,7 +1642,7 @@ updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullAirQualityRequest}
  */
 proto.smartcore.traits.PullAirQualityRequest.deserializeBinary = function(bytes) {
@@ -1676,7 +1667,7 @@ proto.smartcore.traits.PullAirQualityRequest.deserializeBinaryFromReader = funct
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -1868,7 +1859,7 @@ changesList: jspb.Message.toObjectList(msg.getChangesList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullAirQualityResponse}
  */
 proto.smartcore.traits.PullAirQualityResponse.deserializeBinary = function(bytes) {
@@ -1985,7 +1976,7 @@ updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullAirQualityResponse.Change}
  */
 proto.smartcore.traits.PullAirQualityResponse.Change.deserializeBinary = function(bytes) {
@@ -2010,7 +2001,7 @@ proto.smartcore.traits.PullAirQualityResponse.Change.deserializeBinaryFromReader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -2303,7 +2294,7 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.DescribeAirQualityRequest}
  */
 proto.smartcore.traits.DescribeAirQualityRequest.deserializeBinary = function(bytes) {
@@ -2328,7 +2319,7 @@ proto.smartcore.traits.DescribeAirQualityRequest.deserializeBinaryFromReader = f
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:

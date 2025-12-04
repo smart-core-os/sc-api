@@ -21,11 +21,11 @@ export class LockUnlock extends jspb.Message {
 
 export namespace LockUnlock {
   export type AsObject = {
-    position: LockUnlock.Position,
-    jammed: boolean,
-  }
+    position: LockUnlock.Position;
+    jammed: boolean;
+  };
 
-  export enum Position { 
+  export enum Position {
     POSITION_UNSPECIFIED = 0,
     LOCKED = 1,
     UNLOCKED = 2,
@@ -53,9 +53,9 @@ export class GetLockUnlockRequest extends jspb.Message {
 
 export namespace GetLockUnlockRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateLockUnlockRequest extends jspb.Message {
@@ -82,10 +82,10 @@ export class UpdateLockUnlockRequest extends jspb.Message {
 
 export namespace UpdateLockUnlockRequest {
   export type AsObject = {
-    name: string,
-    lockUnlock?: LockUnlock.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    lockUnlock?: LockUnlock.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullLockUnlockRequest extends jspb.Message {
@@ -110,10 +110,10 @@ export class PullLockUnlockRequest extends jspb.Message {
 
 export namespace PullLockUnlockRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullLockUnlockResponse extends jspb.Message {
@@ -132,8 +132,8 @@ export class PullLockUnlockResponse extends jspb.Message {
 
 export namespace PullLockUnlockResponse {
   export type AsObject = {
-    changesList: Array<PullLockUnlockResponse.Change.AsObject>,
-  }
+    changesList: Array<PullLockUnlockResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -159,10 +159,10 @@ export namespace PullLockUnlockResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      lockUnlock?: LockUnlock.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      lockUnlock?: LockUnlock.AsObject;
+    };
   }
 
 }

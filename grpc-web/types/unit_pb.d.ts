@@ -18,8 +18,8 @@ export class Temperature extends jspb.Message {
 
 export namespace Temperature {
   export type AsObject = {
-    valueCelsius: number,
-  }
+    valueCelsius: number;
+  };
 }
 
 export class AudioLevel extends jspb.Message {
@@ -47,11 +47,11 @@ export class AudioLevel extends jspb.Message {
 
 export namespace AudioLevel {
   export type AsObject = {
-    gain: number,
-    gainTween?: types_tween_pb.Tween.AsObject,
-    targetGain: number,
-    muted: boolean,
-  }
+    gain: number;
+    gainTween?: types_tween_pb.Tween.AsObject;
+    targetGain: number;
+    muted: boolean;
+  };
 }
 
 export class AudioLevelChange extends jspb.Message {
@@ -78,19 +78,19 @@ export class AudioLevelChange extends jspb.Message {
 
 export namespace AudioLevelChange {
   export type AsObject = {
-    name: string,
-    changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    level?: AudioLevel.AsObject,
-  }
+    name: string;
+    changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    level?: AudioLevel.AsObject;
+  };
 }
 
-export enum TemperatureUnit { 
+export enum TemperatureUnit {
   TEMPERATURE_UNIT_UNSPECIFIED = 0,
   CELSIUS = 1,
   FAHRENHEIT = 2,
   KELVIN = 3,
 }
-export enum MuteSupport { 
+export enum MuteSupport {
   MUTE_SUPPORT_UNSPECIFIED = 0,
   MUTE_NATIVE = 1,
   MUTE_EMULATED = 2,

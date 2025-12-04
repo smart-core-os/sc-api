@@ -33,14 +33,14 @@ export class Emergency extends jspb.Message {
 
 export namespace Emergency {
   export type AsObject = {
-    level: Emergency.Level,
-    reason: string,
-    levelChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    silent: boolean,
-    drill: boolean,
-  }
+    level: Emergency.Level;
+    reason: string;
+    levelChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    silent: boolean;
+    drill: boolean;
+  };
 
-  export enum Level { 
+  export enum Level {
     LEVEL_UNSPECIFIED = 0,
     OK = 1,
     WARNING = 2,
@@ -64,8 +64,8 @@ export class EmergencySupport extends jspb.Message {
 
 export namespace EmergencySupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+  };
 }
 
 export class GetEmergencyRequest extends jspb.Message {
@@ -87,9 +87,9 @@ export class GetEmergencyRequest extends jspb.Message {
 
 export namespace GetEmergencyRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateEmergencyRequest extends jspb.Message {
@@ -116,10 +116,10 @@ export class UpdateEmergencyRequest extends jspb.Message {
 
 export namespace UpdateEmergencyRequest {
   export type AsObject = {
-    name: string,
-    emergency?: Emergency.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    emergency?: Emergency.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullEmergencyRequest extends jspb.Message {
@@ -144,10 +144,10 @@ export class PullEmergencyRequest extends jspb.Message {
 
 export namespace PullEmergencyRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullEmergencyResponse extends jspb.Message {
@@ -166,8 +166,8 @@ export class PullEmergencyResponse extends jspb.Message {
 
 export namespace PullEmergencyResponse {
   export type AsObject = {
-    changesList: Array<PullEmergencyResponse.Change.AsObject>,
-  }
+    changesList: Array<PullEmergencyResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -193,10 +193,10 @@ export namespace PullEmergencyResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      emergency?: Emergency.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      emergency?: Emergency.AsObject;
+    };
   }
 
 }
@@ -215,7 +215,7 @@ export class DescribeEmergencyRequest extends jspb.Message {
 
 export namespace DescribeEmergencyRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

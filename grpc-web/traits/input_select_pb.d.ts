@@ -28,11 +28,11 @@ export class Input extends jspb.Message {
 
 export namespace Input {
   export type AsObject = {
-    videoInput: string,
-    audioInput: string,
-    independentAv: boolean,
-    output: string,
-  }
+    videoInput: string;
+    audioInput: string;
+    independentAv: boolean;
+    output: string;
+  };
 }
 
 export class InputSupport extends jspb.Message {
@@ -64,13 +64,13 @@ export class InputSupport extends jspb.Message {
 
 export namespace InputSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    inputsList: Array<AvPort.AsObject>,
-    supportedFeature: InputSupport.Feature,
-    outputsList: Array<AvPort.AsObject>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    inputsList: Array<AvPort.AsObject>;
+    supportedFeature: InputSupport.Feature;
+    outputsList: Array<AvPort.AsObject>;
+  };
 
-  export enum Feature { 
+  export enum Feature {
     FEATURE_UNSPECIFIED = 0,
     AV = 1,
     AUDIO_ONLY = 2,
@@ -102,11 +102,11 @@ export class AvPort extends jspb.Message {
 
 export namespace AvPort {
   export type AsObject = {
-    name: string,
-    title: string,
-    description: string,
-    supportedFeature: InputSupport.Feature,
-  }
+    name: string;
+    title: string;
+    description: string;
+    supportedFeature: InputSupport.Feature;
+  };
 }
 
 export class UpdateInputRequest extends jspb.Message {
@@ -133,10 +133,10 @@ export class UpdateInputRequest extends jspb.Message {
 
 export namespace UpdateInputRequest {
   export type AsObject = {
-    name: string,
-    input?: Input.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    input?: Input.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class GetInputRequest extends jspb.Message {
@@ -161,10 +161,10 @@ export class GetInputRequest extends jspb.Message {
 
 export namespace GetInputRequest {
   export type AsObject = {
-    name: string,
-    output: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    output: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullInputRequest extends jspb.Message {
@@ -189,10 +189,10 @@ export class PullInputRequest extends jspb.Message {
 
 export namespace PullInputRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullInputResponse extends jspb.Message {
@@ -211,8 +211,8 @@ export class PullInputResponse extends jspb.Message {
 
 export namespace PullInputResponse {
   export type AsObject = {
-    changesList: Array<PullInputResponse.Change.AsObject>,
-  }
+    changesList: Array<PullInputResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -238,10 +238,10 @@ export namespace PullInputResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      input?: Input.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      input?: Input.AsObject;
+    };
   }
 
 }
@@ -260,7 +260,7 @@ export class DescribeInputRequest extends jspb.Message {
 
 export namespace DescribeInputRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

@@ -29,10 +29,10 @@ export class MeterReading extends jspb.Message {
 
 export namespace MeterReading {
   export type AsObject = {
-    usage: number,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    usage: number;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class MeterReadingSupport extends jspb.Message {
@@ -54,9 +54,9 @@ export class MeterReadingSupport extends jspb.Message {
 
 export namespace MeterReadingSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    unit: string,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    unit: string;
+  };
 }
 
 export class GetMeterReadingRequest extends jspb.Message {
@@ -78,9 +78,9 @@ export class GetMeterReadingRequest extends jspb.Message {
 
 export namespace GetMeterReadingRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullMeterReadingsRequest extends jspb.Message {
@@ -105,10 +105,10 @@ export class PullMeterReadingsRequest extends jspb.Message {
 
 export namespace PullMeterReadingsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullMeterReadingsResponse extends jspb.Message {
@@ -127,8 +127,8 @@ export class PullMeterReadingsResponse extends jspb.Message {
 
 export namespace PullMeterReadingsResponse {
   export type AsObject = {
-    changesList: Array<PullMeterReadingsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullMeterReadingsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -154,10 +154,10 @@ export namespace PullMeterReadingsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      meterReading?: MeterReading.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      meterReading?: MeterReading.AsObject;
+    };
   }
 
 }
@@ -176,7 +176,7 @@ export class DescribeMeterReadingRequest extends jspb.Message {
 
 export namespace DescribeMeterReadingRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

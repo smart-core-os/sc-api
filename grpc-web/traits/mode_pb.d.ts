@@ -19,8 +19,8 @@ export class ModeValues extends jspb.Message {
 
 export namespace ModeValues {
   export type AsObject = {
-    valuesMap: Array<[string, string]>,
-  }
+    valuesMap: Array<[string, string]>;
+  };
 }
 
 export class ModeValuesRelative extends jspb.Message {
@@ -37,8 +37,8 @@ export class ModeValuesRelative extends jspb.Message {
 
 export namespace ModeValuesRelative {
   export type AsObject = {
-    valuesMap: Array<[string, number]>,
-  }
+    valuesMap: Array<[string, number]>;
+  };
 }
 
 export class Modes extends jspb.Message {
@@ -57,8 +57,8 @@ export class Modes extends jspb.Message {
 
 export namespace Modes {
   export type AsObject = {
-    modesList: Array<Modes.Mode.AsObject>,
-  }
+    modesList: Array<Modes.Mode.AsObject>;
+  };
 
   export class Value extends jspb.Message {
     getName(): string;
@@ -74,8 +74,8 @@ export namespace Modes {
 
   export namespace Value {
     export type AsObject = {
-      name: string,
-    }
+      name: string;
+    };
   }
 
 
@@ -101,10 +101,10 @@ export namespace Modes {
 
   export namespace Mode {
     export type AsObject = {
-      name: string,
-      valuesList: Array<Modes.Value.AsObject>,
-      ordered: boolean,
-    }
+      name: string;
+      valuesList: Array<Modes.Value.AsObject>;
+      ordered: boolean;
+    };
   }
 
 }
@@ -130,9 +130,9 @@ export class ModesSupport extends jspb.Message {
 
 export namespace ModesSupport {
   export type AsObject = {
-    modeValuesSupport?: types_info_pb.ResourceSupport.AsObject,
-    availableModes?: Modes.AsObject,
-  }
+    modeValuesSupport?: types_info_pb.ResourceSupport.AsObject;
+    availableModes?: Modes.AsObject;
+  };
 }
 
 export class GetModeValuesRequest extends jspb.Message {
@@ -154,9 +154,9 @@ export class GetModeValuesRequest extends jspb.Message {
 
 export namespace GetModeValuesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateModeValuesRequest extends jspb.Message {
@@ -188,11 +188,11 @@ export class UpdateModeValuesRequest extends jspb.Message {
 
 export namespace UpdateModeValuesRequest {
   export type AsObject = {
-    name: string,
-    modeValues?: ModeValues.AsObject,
-    relative?: ModeValuesRelative.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    modeValues?: ModeValues.AsObject;
+    relative?: ModeValuesRelative.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullModeValuesRequest extends jspb.Message {
@@ -217,10 +217,10 @@ export class PullModeValuesRequest extends jspb.Message {
 
 export namespace PullModeValuesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullModeValuesResponse extends jspb.Message {
@@ -239,8 +239,8 @@ export class PullModeValuesResponse extends jspb.Message {
 
 export namespace PullModeValuesResponse {
   export type AsObject = {
-    changesList: Array<PullModeValuesResponse.Change.AsObject>,
-  }
+    changesList: Array<PullModeValuesResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -266,10 +266,10 @@ export namespace PullModeValuesResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      modeValues?: ModeValues.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      modeValues?: ModeValues.AsObject;
+    };
   }
 
 }
@@ -288,7 +288,7 @@ export class DescribeModesRequest extends jspb.Message {
 
 export namespace DescribeModesRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

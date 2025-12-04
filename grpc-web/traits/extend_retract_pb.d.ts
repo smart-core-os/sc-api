@@ -34,12 +34,12 @@ export class Extension extends jspb.Message {
 
 export namespace Extension {
   export type AsObject = {
-    extendPercent: number,
-    extendPreset: string,
-    extendTween?: types_tween_pb.Tween.AsObject,
-    targetExtendPercent: number,
-    targetExtendPreset: string,
-  }
+    extendPercent: number;
+    extendPreset: string;
+    extendTween?: types_tween_pb.Tween.AsObject;
+    targetExtendPercent: number;
+    targetExtendPreset: string;
+  };
 }
 
 export class ExtensionPreset extends jspb.Message {
@@ -64,12 +64,12 @@ export class ExtensionPreset extends jspb.Message {
 
 export namespace ExtensionPreset {
   export type AsObject = {
-    name: string,
-    extendPercent?: number,
-    writable: boolean,
-  }
+    name: string;
+    extendPercent?: number;
+    writable: boolean;
+  };
 
-  export enum ExtendPercentCase { 
+  export enum ExtendPercentCase {
     _EXTEND_PERCENT_NOT_SET = 0,
     EXTEND_PERCENT = 2,
   }
@@ -105,12 +105,12 @@ export class ExtensionSupport extends jspb.Message {
 
 export namespace ExtensionSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    presetsList: Array<ExtensionPreset.AsObject>,
-    step: number,
-    tweenSupport: types_tween_pb.TweenSupport,
-    supportsCustomPresets: boolean,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    presetsList: Array<ExtensionPreset.AsObject>;
+    step: number;
+    tweenSupport: types_tween_pb.TweenSupport;
+    supportsCustomPresets: boolean;
+  };
 }
 
 export class GetExtensionRequest extends jspb.Message {
@@ -132,9 +132,9 @@ export class GetExtensionRequest extends jspb.Message {
 
 export namespace GetExtensionRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateExtensionRequest extends jspb.Message {
@@ -161,10 +161,10 @@ export class UpdateExtensionRequest extends jspb.Message {
 
 export namespace UpdateExtensionRequest {
   export type AsObject = {
-    name: string,
-    extension?: Extension.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    extension?: Extension.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ExtendRetractStopRequest extends jspb.Message {
@@ -181,8 +181,8 @@ export class ExtendRetractStopRequest extends jspb.Message {
 
 export namespace ExtendRetractStopRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class CreateExtensionPresetRequest extends jspb.Message {
@@ -204,9 +204,9 @@ export class CreateExtensionPresetRequest extends jspb.Message {
 
 export namespace CreateExtensionPresetRequest {
   export type AsObject = {
-    name: string,
-    preset?: ExtensionPreset.AsObject,
-  }
+    name: string;
+    preset?: ExtensionPreset.AsObject;
+  };
 }
 
 export class PullExtensionsRequest extends jspb.Message {
@@ -231,10 +231,10 @@ export class PullExtensionsRequest extends jspb.Message {
 
 export namespace PullExtensionsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullExtensionsResponse extends jspb.Message {
@@ -253,8 +253,8 @@ export class PullExtensionsResponse extends jspb.Message {
 
 export namespace PullExtensionsResponse {
   export type AsObject = {
-    changesList: Array<PullExtensionsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullExtensionsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -280,10 +280,10 @@ export namespace PullExtensionsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      extension?: Extension.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      extension?: Extension.AsObject;
+    };
   }
 
 }
@@ -302,7 +302,7 @@ export class DescribeExtensionRequest extends jspb.Message {
 
 export namespace DescribeExtensionRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

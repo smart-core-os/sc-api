@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -323,7 +317,7 @@ permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.Account}
  */
 proto.smartcore.info.Account.deserializeBinary = function(bytes) {
@@ -348,11 +342,11 @@ proto.smartcore.info.Account.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTitle(value);
       break;
     case 3:
@@ -584,7 +578,7 @@ expiresAt: (f = msg.getExpiresAt()) && google_protobuf_timestamp_pb.Timestamp.to
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.Token}
  */
 proto.smartcore.info.Token.deserializeBinary = function(bytes) {
@@ -609,7 +603,7 @@ proto.smartcore.info.Token.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setId(value);
       break;
     case 2:
@@ -768,7 +762,7 @@ observe: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.Permission}
  */
 proto.smartcore.info.Permission.deserializeBinary = function(bytes) {
@@ -793,11 +787,11 @@ proto.smartcore.info.Permission.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDeviceName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTraitName(value);
       break;
     case 3:
@@ -1024,7 +1018,7 @@ permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.AddAccountRequest}
  */
 proto.smartcore.info.AddAccountRequest.deserializeBinary = function(bytes) {
@@ -1049,11 +1043,11 @@ proto.smartcore.info.AddAccountRequest.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTitle(value);
       break;
     case 3:
@@ -1234,7 +1228,7 @@ account: (f = msg.getAccount()) && proto.smartcore.info.Account.toObject(include
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.AddAccountResponse}
  */
 proto.smartcore.info.AddAccountResponse.deserializeBinary = function(bytes) {
@@ -1385,7 +1379,7 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.RemoveAccountRequest}
  */
 proto.smartcore.info.RemoveAccountRequest.deserializeBinary = function(bytes) {
@@ -1410,7 +1404,7 @@ proto.smartcore.info.RemoveAccountRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:
@@ -1515,7 +1509,7 @@ proto.smartcore.info.RemoveAccountResponse.toObject = function(includeInstance, 
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.RemoveAccountResponse}
  */
 proto.smartcore.info.RemoveAccountResponse.deserializeBinary = function(bytes) {
@@ -1625,7 +1619,7 @@ permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.UpdateAccountPermissionsRequest}
  */
 proto.smartcore.info.UpdateAccountPermissionsRequest.deserializeBinary = function(bytes) {
@@ -1806,7 +1800,7 @@ proto.smartcore.info.UpdateAccountPermissionsResponse.toObject = function(includ
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.UpdateAccountPermissionsResponse}
  */
 proto.smartcore.info.UpdateAccountPermissionsResponse.deserializeBinary = function(bytes) {
@@ -1907,7 +1901,7 @@ accountName: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.GenerateTokenRequest}
  */
 proto.smartcore.info.GenerateTokenRequest.deserializeBinary = function(bytes) {
@@ -1932,7 +1926,7 @@ proto.smartcore.info.GenerateTokenRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAccountName(value);
       break;
     default:
@@ -2037,7 +2031,7 @@ token: (f = msg.getToken()) && proto.smartcore.info.Token.toObject(includeInstan
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.info.GenerateTokenResponse}
  */
 proto.smartcore.info.GenerateTokenResponse.deserializeBinary = function(bytes) {

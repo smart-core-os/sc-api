@@ -21,9 +21,9 @@ export class Image extends jspb.Message {
 
 export namespace Image {
   export type AsObject = {
-    sourcesList: Array<Image.Source.AsObject>,
-    description: string,
-  }
+    sourcesList: Array<Image.Source.AsObject>;
+    description: string;
+  };
 
   export class Content extends jspb.Message {
     getType(): string;
@@ -33,15 +33,23 @@ export namespace Image {
     getBody_asU8(): Uint8Array;
     getBody_asB64(): string;
     setBody(value: Uint8Array | string): Content;
+    hasBody(): boolean;
+    clearBody(): Content;
 
     getUrl(): string;
     setUrl(value: string): Content;
+    hasUrl(): boolean;
+    clearUrl(): Content;
 
     getRef(): string;
     setRef(value: string): Content;
+    hasRef(): boolean;
+    clearRef(): Content;
 
     getPath(): string;
     setPath(value: string): Content;
+    hasPath(): boolean;
+    clearPath(): Content;
 
     getContentCase(): Content.ContentCase;
 
@@ -55,14 +63,14 @@ export namespace Image {
 
   export namespace Content {
     export type AsObject = {
-      type: string,
-      body: Uint8Array | string,
-      url: string,
-      ref: string,
-      path: string,
-    }
+      type: string;
+      body?: Uint8Array | string;
+      url?: string;
+      ref?: string;
+      path?: string;
+    };
 
-    export enum ContentCase { 
+    export enum ContentCase {
       CONTENT_NOT_SET = 0,
       BODY = 2,
       URL = 3,
@@ -97,13 +105,13 @@ export namespace Image {
 
   export namespace Source {
     export type AsObject = {
-      srcList: Array<Image.Content.AsObject>,
-      width: number,
-      height: number,
-      purpose: Image.Source.Purpose,
-    }
+      srcList: Array<Image.Content.AsObject>;
+      width: number;
+      height: number;
+      purpose: Image.Source.Purpose;
+    };
 
-    export enum Purpose { 
+    export enum Purpose {
       PURPOSE_UNSPECIFIED = 0,
       ANY = 1,
       MASKABLE = 2,

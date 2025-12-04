@@ -5,9 +5,13 @@ import * as jspb from 'google-protobuf'
 export class PageToken extends jspb.Message {
   getLastOffset(): number;
   setLastOffset(value: number): PageToken;
+  hasLastOffset(): boolean;
+  clearLastOffset(): PageToken;
 
   getLastResourceName(): string;
   setLastResourceName(value: string): PageToken;
+  hasLastResourceName(): boolean;
+  clearLastResourceName(): PageToken;
 
   getPageStartCase(): PageToken.PageStartCase;
 
@@ -21,11 +25,11 @@ export class PageToken extends jspb.Message {
 
 export namespace PageToken {
   export type AsObject = {
-    lastOffset: number,
-    lastResourceName: string,
-  }
+    lastOffset?: number;
+    lastResourceName?: string;
+  };
 
-  export enum PageStartCase { 
+  export enum PageStartCase {
     PAGE_START_NOT_SET = 0,
     LAST_OFFSET = 1,
     LAST_RESOURCE_NAME = 2,

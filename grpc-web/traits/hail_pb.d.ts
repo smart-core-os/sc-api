@@ -53,15 +53,15 @@ export class Hail extends jspb.Message {
 
 export namespace Hail {
   export type AsObject = {
-    id: string,
-    origin?: Hail.Location.AsObject,
-    destination?: Hail.Location.AsObject,
-    state: Hail.State,
-    callTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    boardTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    departTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    arriveTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    id: string;
+    origin?: Hail.Location.AsObject;
+    destination?: Hail.Location.AsObject;
+    state: Hail.State;
+    callTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    boardTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    departTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    arriveTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
   export class Location extends jspb.Message {
     getName(): string;
@@ -80,13 +80,13 @@ export namespace Hail {
 
   export namespace Location {
     export type AsObject = {
-      name: string,
-      displayName: string,
-    }
+      name: string;
+      displayName: string;
+    };
   }
 
 
-  export enum State { 
+  export enum State {
     STATE_UNSPECIFIED = 0,
     CALLED = 1,
     BOARDING = 2,
@@ -114,9 +114,9 @@ export class CreateHailRequest extends jspb.Message {
 
 export namespace CreateHailRequest {
   export type AsObject = {
-    name: string,
-    hail?: Hail.AsObject,
-  }
+    name: string;
+    hail?: Hail.AsObject;
+  };
 }
 
 export class GetHailRequest extends jspb.Message {
@@ -141,10 +141,10 @@ export class GetHailRequest extends jspb.Message {
 
 export namespace GetHailRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    id: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateHailRequest extends jspb.Message {
@@ -171,10 +171,10 @@ export class UpdateHailRequest extends jspb.Message {
 
 export namespace UpdateHailRequest {
   export type AsObject = {
-    name: string,
-    hail?: Hail.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    hail?: Hail.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class DeleteHailRequest extends jspb.Message {
@@ -197,10 +197,10 @@ export class DeleteHailRequest extends jspb.Message {
 
 export namespace DeleteHailRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    allowMissing: boolean,
-  }
+    name: string;
+    id: string;
+    allowMissing: boolean;
+  };
 }
 
 export class DeleteHailResponse extends jspb.Message {
@@ -214,7 +214,7 @@ export class DeleteHailResponse extends jspb.Message {
 
 export namespace DeleteHailResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class PullHailRequest extends jspb.Message {
@@ -242,11 +242,11 @@ export class PullHailRequest extends jspb.Message {
 
 export namespace PullHailRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    id: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullHailResponse extends jspb.Message {
@@ -265,8 +265,8 @@ export class PullHailResponse extends jspb.Message {
 
 export namespace PullHailResponse {
   export type AsObject = {
-    changesList: Array<PullHailResponse.Change.AsObject>,
-  }
+    changesList: Array<PullHailResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -292,10 +292,10 @@ export namespace PullHailResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      hail?: Hail.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      hail?: Hail.AsObject;
+    };
   }
 
 }
@@ -325,11 +325,11 @@ export class ListHailsRequest extends jspb.Message {
 
 export namespace ListHailsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListHailsResponse extends jspb.Message {
@@ -354,10 +354,10 @@ export class ListHailsResponse extends jspb.Message {
 
 export namespace ListHailsResponse {
   export type AsObject = {
-    hailsList: Array<Hail.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    hailsList: Array<Hail.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullHailsRequest extends jspb.Message {
@@ -382,10 +382,10 @@ export class PullHailsRequest extends jspb.Message {
 
 export namespace PullHailsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullHailsResponse extends jspb.Message {
@@ -404,8 +404,8 @@ export class PullHailsResponse extends jspb.Message {
 
 export namespace PullHailsResponse {
   export type AsObject = {
-    changesList: Array<PullHailsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullHailsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -439,12 +439,12 @@ export namespace PullHailsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Hail.AsObject,
-      oldValue?: Hail.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Hail.AsObject;
+      oldValue?: Hail.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -463,8 +463,8 @@ export class DescribeHailRequest extends jspb.Message {
 
 export namespace DescribeHailRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class HailSupport extends jspb.Message {
@@ -488,8 +488,8 @@ export class HailSupport extends jspb.Message {
 
 export namespace HailSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    supportedLocationsList: Array<Hail.Location.AsObject>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    supportedLocationsList: Array<Hail.Location.AsObject>;
+  };
 }
 

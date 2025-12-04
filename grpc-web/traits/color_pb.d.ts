@@ -43,12 +43,12 @@ export class Color extends jspb.Message {
 
 export namespace Color {
   export type AsObject = {
-    channels?: ColorChannels.AsObject,
-    preset?: ColorPreset.AsObject,
-    colorTween?: types_tween_pb.Tween.AsObject,
-    targetChannels?: ColorChannels.AsObject,
-    targetPreset?: ColorPreset.AsObject,
-  }
+    channels?: ColorChannels.AsObject;
+    preset?: ColorPreset.AsObject;
+    colorTween?: types_tween_pb.Tween.AsObject;
+    targetChannels?: ColorChannels.AsObject;
+    targetPreset?: ColorPreset.AsObject;
+  };
 }
 
 export class ColorChannels extends jspb.Message {
@@ -90,35 +90,35 @@ export class ColorChannels extends jspb.Message {
 
 export namespace ColorChannels {
   export type AsObject = {
-    red?: number,
-    green?: number,
-    blue?: number,
-    intensity?: number,
-    temperature?: number,
-    moreMap: Array<[string, number]>,
-  }
+    red?: number;
+    green?: number;
+    blue?: number;
+    intensity?: number;
+    temperature?: number;
+    moreMap: Array<[string, number]>;
+  };
 
-  export enum RedCase { 
+  export enum RedCase {
     _RED_NOT_SET = 0,
     RED = 1,
   }
 
-  export enum GreenCase { 
+  export enum GreenCase {
     _GREEN_NOT_SET = 0,
     GREEN = 2,
   }
 
-  export enum BlueCase { 
+  export enum BlueCase {
     _BLUE_NOT_SET = 0,
     BLUE = 3,
   }
 
-  export enum IntensityCase { 
+  export enum IntensityCase {
     _INTENSITY_NOT_SET = 0,
     INTENSITY = 4,
   }
 
-  export enum TemperatureCase { 
+  export enum TemperatureCase {
     _TEMPERATURE_NOT_SET = 0,
     TEMPERATURE = 5,
   }
@@ -141,9 +141,9 @@ export class ColorPreset extends jspb.Message {
 
 export namespace ColorPreset {
   export type AsObject = {
-    name: string,
-    title: string,
-  }
+    name: string;
+    title: string;
+  };
 }
 
 export class ColorSupport extends jspb.Message {
@@ -177,11 +177,11 @@ export class ColorSupport extends jspb.Message {
 
 export namespace ColorSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    colorAttributes?: types_number_pb.Int32Attributes.AsObject,
-    presetsList: Array<ColorPreset.AsObject>,
-    channelsList: Array<string>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    colorAttributes?: types_number_pb.Int32Attributes.AsObject;
+    presetsList: Array<ColorPreset.AsObject>;
+    channelsList: Array<string>;
+  };
 }
 
 export class UpdateColorRequest extends jspb.Message {
@@ -208,10 +208,10 @@ export class UpdateColorRequest extends jspb.Message {
 
 export namespace UpdateColorRequest {
   export type AsObject = {
-    name: string,
-    color?: Color.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    color?: Color.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class GetColorRequest extends jspb.Message {
@@ -233,9 +233,9 @@ export class GetColorRequest extends jspb.Message {
 
 export namespace GetColorRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullColorRequest extends jspb.Message {
@@ -263,11 +263,11 @@ export class PullColorRequest extends jspb.Message {
 
 export namespace PullColorRequest {
   export type AsObject = {
-    name: string,
-    excludeRamping: boolean,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    excludeRamping: boolean;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullColorResponse extends jspb.Message {
@@ -286,8 +286,8 @@ export class PullColorResponse extends jspb.Message {
 
 export namespace PullColorResponse {
   export type AsObject = {
-    changesList: Array<PullColorResponse.Change.AsObject>,
-  }
+    changesList: Array<PullColorResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -313,10 +313,10 @@ export namespace PullColorResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      color?: Color.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      color?: Color.AsObject;
+    };
   }
 
 }
@@ -335,7 +335,7 @@ export class DescribeColorRequest extends jspb.Message {
 
 export namespace DescribeColorRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

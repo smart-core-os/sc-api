@@ -31,11 +31,11 @@ export class Account extends jspb.Message {
 
 export namespace Account {
   export type AsObject = {
-    name: string,
-    title: string,
-    token?: Token.AsObject,
-    permissionsList: Array<Permission.AsObject>,
-  }
+    name: string;
+    title: string;
+    token?: Token.AsObject;
+    permissionsList: Array<Permission.AsObject>;
+  };
 }
 
 export class Token extends jspb.Message {
@@ -57,9 +57,9 @@ export class Token extends jspb.Message {
 
 export namespace Token {
   export type AsObject = {
-    id: string,
-    expiresAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    id: string;
+    expiresAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class Permission extends jspb.Message {
@@ -88,12 +88,12 @@ export class Permission extends jspb.Message {
 
 export namespace Permission {
   export type AsObject = {
-    deviceName: string,
-    traitName: string,
-    read: boolean,
-    write: boolean,
-    observe: boolean,
-  }
+    deviceName: string;
+    traitName: string;
+    read: boolean;
+    write: boolean;
+    observe: boolean;
+  };
 }
 
 export class AddAccountRequest extends jspb.Message {
@@ -118,10 +118,10 @@ export class AddAccountRequest extends jspb.Message {
 
 export namespace AddAccountRequest {
   export type AsObject = {
-    name: string,
-    title: string,
-    permissionsList: Array<Permission.AsObject>,
-  }
+    name: string;
+    title: string;
+    permissionsList: Array<Permission.AsObject>;
+  };
 }
 
 export class AddAccountResponse extends jspb.Message {
@@ -140,8 +140,8 @@ export class AddAccountResponse extends jspb.Message {
 
 export namespace AddAccountResponse {
   export type AsObject = {
-    account?: Account.AsObject,
-  }
+    account?: Account.AsObject;
+  };
 }
 
 export class RemoveAccountRequest extends jspb.Message {
@@ -158,8 +158,8 @@ export class RemoveAccountRequest extends jspb.Message {
 
 export namespace RemoveAccountRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class RemoveAccountResponse extends jspb.Message {
@@ -173,7 +173,7 @@ export class RemoveAccountResponse extends jspb.Message {
 
 export namespace RemoveAccountResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class UpdateAccountPermissionsRequest extends jspb.Message {
@@ -195,9 +195,9 @@ export class UpdateAccountPermissionsRequest extends jspb.Message {
 
 export namespace UpdateAccountPermissionsRequest {
   export type AsObject = {
-    changeType: types_change_pb.ChangeType,
-    permissionsList: Array<Permission.AsObject>,
-  }
+    changeType: types_change_pb.ChangeType;
+    permissionsList: Array<Permission.AsObject>;
+  };
 }
 
 export class UpdateAccountPermissionsResponse extends jspb.Message {
@@ -211,7 +211,7 @@ export class UpdateAccountPermissionsResponse extends jspb.Message {
 
 export namespace UpdateAccountPermissionsResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class GenerateTokenRequest extends jspb.Message {
@@ -228,8 +228,8 @@ export class GenerateTokenRequest extends jspb.Message {
 
 export namespace GenerateTokenRequest {
   export type AsObject = {
-    accountName: string,
-  }
+    accountName: string;
+  };
 }
 
 export class GenerateTokenResponse extends jspb.Message {
@@ -248,7 +248,7 @@ export class GenerateTokenResponse extends jspb.Message {
 
 export namespace GenerateTokenResponse {
   export type AsObject = {
-    token?: Token.AsObject,
-  }
+    token?: Token.AsObject;
+  };
 }
 

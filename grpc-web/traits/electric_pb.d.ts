@@ -48,36 +48,36 @@ export class ElectricDemand extends jspb.Message {
 
 export namespace ElectricDemand {
   export type AsObject = {
-    current: number,
-    voltage?: number,
-    rating: number,
-    powerFactor?: number,
-    realPower?: number,
-    apparentPower?: number,
-    reactivePower?: number,
-  }
+    current: number;
+    voltage?: number;
+    rating: number;
+    powerFactor?: number;
+    realPower?: number;
+    apparentPower?: number;
+    reactivePower?: number;
+  };
 
-  export enum VoltageCase { 
+  export enum VoltageCase {
     _VOLTAGE_NOT_SET = 0,
     VOLTAGE = 2,
   }
 
-  export enum PowerFactorCase { 
+  export enum PowerFactorCase {
     _POWER_FACTOR_NOT_SET = 0,
     POWER_FACTOR = 4,
   }
 
-  export enum RealPowerCase { 
+  export enum RealPowerCase {
     _REAL_POWER_NOT_SET = 0,
     REAL_POWER = 5,
   }
 
-  export enum ApparentPowerCase { 
+  export enum ApparentPowerCase {
     _APPARENT_POWER_NOT_SET = 0,
     APPARENT_POWER = 6,
   }
 
-  export enum ReactivePowerCase { 
+  export enum ReactivePowerCase {
     _REACTIVE_POWER_NOT_SET = 0,
     REACTIVE_POWER = 7,
   }
@@ -119,14 +119,14 @@ export class ElectricMode extends jspb.Message {
 
 export namespace ElectricMode {
   export type AsObject = {
-    id: string,
-    title: string,
-    description: string,
-    voltage: number,
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    segmentsList: Array<ElectricMode.Segment.AsObject>,
-    normal: boolean,
-  }
+    id: string;
+    title: string;
+    description: string;
+    voltage: number;
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    segmentsList: Array<ElectricMode.Segment.AsObject>;
+    normal: boolean;
+  };
 
   export class Segment extends jspb.Message {
     getLength(): google_protobuf_duration_pb.Duration | undefined;
@@ -139,6 +139,8 @@ export namespace ElectricMode {
 
     getFixed(): number;
     setFixed(value: number): Segment;
+    hasFixed(): boolean;
+    clearFixed(): Segment;
 
     getShapeCase(): Segment.ShapeCase;
 
@@ -152,12 +154,12 @@ export namespace ElectricMode {
 
   export namespace Segment {
     export type AsObject = {
-      length?: google_protobuf_duration_pb.Duration.AsObject,
-      magnitude: number,
-      fixed: number,
-    }
+      length?: google_protobuf_duration_pb.Duration.AsObject;
+      magnitude: number;
+      fixed?: number;
+    };
 
-    export enum ShapeCase { 
+    export enum ShapeCase {
       SHAPE_NOT_SET = 0,
       FIXED = 3,
     }
@@ -184,9 +186,9 @@ export class GetDemandRequest extends jspb.Message {
 
 export namespace GetDemandRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullDemandRequest extends jspb.Message {
@@ -211,10 +213,10 @@ export class PullDemandRequest extends jspb.Message {
 
 export namespace PullDemandRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullDemandResponse extends jspb.Message {
@@ -233,8 +235,8 @@ export class PullDemandResponse extends jspb.Message {
 
 export namespace PullDemandResponse {
   export type AsObject = {
-    changesList: Array<PullDemandResponse.Change.AsObject>,
-  }
+    changesList: Array<PullDemandResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -260,10 +262,10 @@ export namespace PullDemandResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      demand?: ElectricDemand.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      demand?: ElectricDemand.AsObject;
+    };
   }
 
 }
@@ -287,9 +289,9 @@ export class GetActiveModeRequest extends jspb.Message {
 
 export namespace GetActiveModeRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateActiveModeRequest extends jspb.Message {
@@ -316,10 +318,10 @@ export class UpdateActiveModeRequest extends jspb.Message {
 
 export namespace UpdateActiveModeRequest {
   export type AsObject = {
-    name: string,
-    activeMode?: ElectricMode.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    activeMode?: ElectricMode.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ClearActiveModeRequest extends jspb.Message {
@@ -336,8 +338,8 @@ export class ClearActiveModeRequest extends jspb.Message {
 
 export namespace ClearActiveModeRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullActiveModeRequest extends jspb.Message {
@@ -362,10 +364,10 @@ export class PullActiveModeRequest extends jspb.Message {
 
 export namespace PullActiveModeRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullActiveModeResponse extends jspb.Message {
@@ -384,8 +386,8 @@ export class PullActiveModeResponse extends jspb.Message {
 
 export namespace PullActiveModeResponse {
   export type AsObject = {
-    changesList: Array<PullActiveModeResponse.Change.AsObject>,
-  }
+    changesList: Array<PullActiveModeResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -411,10 +413,10 @@ export namespace PullActiveModeResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      activeMode?: ElectricMode.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      activeMode?: ElectricMode.AsObject;
+    };
   }
 
 }
@@ -444,11 +446,11 @@ export class ListModesRequest extends jspb.Message {
 
 export namespace ListModesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListModesResponse extends jspb.Message {
@@ -473,10 +475,10 @@ export class ListModesResponse extends jspb.Message {
 
 export namespace ListModesResponse {
   export type AsObject = {
-    modesList: Array<ElectricMode.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    modesList: Array<ElectricMode.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullModesRequest extends jspb.Message {
@@ -501,10 +503,10 @@ export class PullModesRequest extends jspb.Message {
 
 export namespace PullModesRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullModesResponse extends jspb.Message {
@@ -523,8 +525,8 @@ export class PullModesResponse extends jspb.Message {
 
 export namespace PullModesResponse {
   export type AsObject = {
-    changesList: Array<PullModesResponse.Change.AsObject>,
-  }
+    changesList: Array<PullModesResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -558,12 +560,12 @@ export namespace PullModesResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: ElectricMode.AsObject,
-      oldValue?: ElectricMode.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: ElectricMode.AsObject;
+      oldValue?: ElectricMode.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }

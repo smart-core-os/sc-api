@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
@@ -329,7 +323,7 @@ preset: (f = msg.getPreset()) && proto.smartcore.traits.OpenClosePositions.Prese
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.OpenClosePositions}
  */
 proto.smartcore.traits.OpenClosePositions.deserializeBinary = function(bytes) {
@@ -457,7 +451,7 @@ title: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.OpenClosePositions.Preset}
  */
 proto.smartcore.traits.OpenClosePositions.Preset.deserializeBinary = function(bytes) {
@@ -482,11 +476,11 @@ proto.smartcore.traits.OpenClosePositions.Preset.deserializeBinaryFromReader = f
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTitle(value);
       break;
     default:
@@ -695,7 +689,7 @@ resistance: jspb.Message.getFieldWithDefault(msg, 5, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.OpenClosePosition}
  */
 proto.smartcore.traits.OpenClosePosition.deserializeBinary = function(bytes) {
@@ -997,7 +991,7 @@ presetsList: jspb.Message.toObjectList(msg.getPresetsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PositionsSupport}
  */
 proto.smartcore.traits.PositionsSupport.deserializeBinary = function(bytes) {
@@ -1032,10 +1026,7 @@ proto.smartcore.traits.PositionsSupport.deserializeBinaryFromReader = function(m
       msg.setOpenPercentAttributes(value);
       break;
     case 3:
-      var values = /** @type {!Array<!proto.smartcore.traits.OpenClosePosition.Direction>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addDirections(values[i]);
-      }
+      reader.readPackableEnumInto(msg.getDirectionsList());
       break;
     case 4:
       var value = /** @type {boolean} */ (reader.readBool());
@@ -1329,7 +1320,7 @@ readMask: (f = msg.getReadMask()) && google_protobuf_field_mask_pb.FieldMask.toO
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.GetOpenClosePositionsRequest}
  */
 proto.smartcore.traits.GetOpenClosePositionsRequest.deserializeBinary = function(bytes) {
@@ -1354,7 +1345,7 @@ proto.smartcore.traits.GetOpenClosePositionsRequest.deserializeBinaryFromReader 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -1512,7 +1503,7 @@ updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.UpdateOpenClosePositionsRequest}
  */
 proto.smartcore.traits.UpdateOpenClosePositionsRequest.deserializeBinary = function(bytes) {
@@ -1537,7 +1528,7 @@ proto.smartcore.traits.UpdateOpenClosePositionsRequest.deserializeBinaryFromRead
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -1771,7 +1762,7 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.StopOpenCloseRequest}
  */
 proto.smartcore.traits.StopOpenCloseRequest.deserializeBinary = function(bytes) {
@@ -1796,7 +1787,7 @@ proto.smartcore.traits.StopOpenCloseRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:
@@ -1904,7 +1895,7 @@ updatesOnly: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullOpenClosePositionsRequest}
  */
 proto.smartcore.traits.PullOpenClosePositionsRequest.deserializeBinary = function(bytes) {
@@ -1929,7 +1920,7 @@ proto.smartcore.traits.PullOpenClosePositionsRequest.deserializeBinaryFromReader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -2150,7 +2141,7 @@ changesList: jspb.Message.toObjectList(msg.getChangesList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullOpenClosePositionsResponse}
  */
 proto.smartcore.traits.PullOpenClosePositionsResponse.deserializeBinary = function(bytes) {
@@ -2266,7 +2257,7 @@ openClosePosition: (f = msg.getOpenClosePosition()) && proto.smartcore.traits.Op
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.PullOpenClosePositionsResponse.Change}
  */
 proto.smartcore.traits.PullOpenClosePositionsResponse.Change.deserializeBinary = function(bytes) {
@@ -2291,7 +2282,7 @@ proto.smartcore.traits.PullOpenClosePositionsResponse.Change.deserializeBinaryFr
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 2:
@@ -2534,7 +2525,7 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.smartcore.traits.DescribePositionsRequest}
  */
 proto.smartcore.traits.DescribePositionsRequest.deserializeBinary = function(bytes) {
@@ -2559,7 +2550,7 @@ proto.smartcore.traits.DescribePositionsRequest.deserializeBinaryFromReader = fu
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     default:

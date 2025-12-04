@@ -44,14 +44,14 @@ export class Booking extends jspb.Message {
 
 export namespace Booking {
   export type AsObject = {
-    bookable: string,
-    id: string,
-    title: string,
-    ownerName: string,
-    booked?: types_time_period_pb.Period.AsObject,
-    checkIn?: types_time_period_pb.Period.AsObject,
-    checkInNotRequired: boolean,
-  }
+    bookable: string;
+    id: string;
+    title: string;
+    ownerName: string;
+    booked?: types_time_period_pb.Period.AsObject;
+    checkIn?: types_time_period_pb.Period.AsObject;
+    checkInNotRequired: boolean;
+  };
 }
 
 export class BookingSupport extends jspb.Message {
@@ -79,13 +79,13 @@ export class BookingSupport extends jspb.Message {
 
 export namespace BookingSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    checkInSupport: BookingSupport.CheckInSupport,
-    checkOutSupport: BookingSupport.CheckInSupport,
-    timeResolution: types_time_unit_pb.Unit,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    checkInSupport: BookingSupport.CheckInSupport;
+    checkOutSupport: BookingSupport.CheckInSupport;
+    timeResolution: types_time_unit_pb.Unit;
+  };
 
-  export enum CheckInSupport { 
+  export enum CheckInSupport {
     CHECK_IN_SUPPORT_UNSPECIFIED = 0,
     NO_SUPPORT = 1,
     STATE = 2,
@@ -120,11 +120,11 @@ export class ListBookingsRequest extends jspb.Message {
 
 export namespace ListBookingsRequest {
   export type AsObject = {
-    name: string,
-    bookingIntersects?: types_time_period_pb.Period.AsObject,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    bookingIntersects?: types_time_period_pb.Period.AsObject;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class ListBookingsResponse extends jspb.Message {
@@ -143,8 +143,8 @@ export class ListBookingsResponse extends jspb.Message {
 
 export namespace ListBookingsResponse {
   export type AsObject = {
-    bookingsList: Array<Booking.AsObject>,
-  }
+    bookingsList: Array<Booking.AsObject>;
+  };
 }
 
 export class CheckInBookingRequest extends jspb.Message {
@@ -169,10 +169,10 @@ export class CheckInBookingRequest extends jspb.Message {
 
 export namespace CheckInBookingRequest {
   export type AsObject = {
-    name: string,
-    bookingId: string,
-    time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    name: string;
+    bookingId: string;
+    time?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class CheckInBookingResponse extends jspb.Message {
@@ -186,7 +186,7 @@ export class CheckInBookingResponse extends jspb.Message {
 
 export namespace CheckInBookingResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class CheckOutBookingRequest extends jspb.Message {
@@ -211,10 +211,10 @@ export class CheckOutBookingRequest extends jspb.Message {
 
 export namespace CheckOutBookingRequest {
   export type AsObject = {
-    name: string,
-    bookingId: string,
-    time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    name: string;
+    bookingId: string;
+    time?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class CheckOutBookingResponse extends jspb.Message {
@@ -228,7 +228,7 @@ export class CheckOutBookingResponse extends jspb.Message {
 
 export namespace CheckOutBookingResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class CreateBookingRequest extends jspb.Message {
@@ -250,9 +250,9 @@ export class CreateBookingRequest extends jspb.Message {
 
 export namespace CreateBookingRequest {
   export type AsObject = {
-    name: string,
-    booking?: Booking.AsObject,
-  }
+    name: string;
+    booking?: Booking.AsObject;
+  };
 }
 
 export class CreateBookingResponse extends jspb.Message {
@@ -269,8 +269,8 @@ export class CreateBookingResponse extends jspb.Message {
 
 export namespace CreateBookingResponse {
   export type AsObject = {
-    bookingId: string,
-  }
+    bookingId: string;
+  };
 }
 
 export class UpdateBookingRequest extends jspb.Message {
@@ -297,10 +297,10 @@ export class UpdateBookingRequest extends jspb.Message {
 
 export namespace UpdateBookingRequest {
   export type AsObject = {
-    name: string,
-    booking?: Booking.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    booking?: Booking.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateBookingResponse extends jspb.Message {
@@ -319,8 +319,8 @@ export class UpdateBookingResponse extends jspb.Message {
 
 export namespace UpdateBookingResponse {
   export type AsObject = {
-    booking?: Booking.AsObject,
-  }
+    booking?: Booking.AsObject;
+  };
 }
 
 export class PullBookingsResponse extends jspb.Message {
@@ -339,8 +339,8 @@ export class PullBookingsResponse extends jspb.Message {
 
 export namespace PullBookingsResponse {
   export type AsObject = {
-    changesList: Array<PullBookingsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullBookingsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -374,12 +374,12 @@ export namespace PullBookingsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Booking.AsObject,
-      oldValue?: Booking.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Booking.AsObject;
+      oldValue?: Booking.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -398,7 +398,7 @@ export class DescribeBookingRequest extends jspb.Message {
 
 export namespace DescribeBookingRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

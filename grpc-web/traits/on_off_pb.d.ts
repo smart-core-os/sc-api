@@ -19,10 +19,10 @@ export class OnOff extends jspb.Message {
 
 export namespace OnOff {
   export type AsObject = {
-    state: OnOff.State,
-  }
+    state: OnOff.State;
+  };
 
-  export enum State { 
+  export enum State {
     STATE_UNSPECIFIED = 0,
     ON = 1,
     OFF = 2,
@@ -45,8 +45,8 @@ export class OnOffSupport extends jspb.Message {
 
 export namespace OnOffSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+  };
 }
 
 export class GetOnOffRequest extends jspb.Message {
@@ -68,9 +68,9 @@ export class GetOnOffRequest extends jspb.Message {
 
 export namespace GetOnOffRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateOnOffRequest extends jspb.Message {
@@ -97,10 +97,10 @@ export class UpdateOnOffRequest extends jspb.Message {
 
 export namespace UpdateOnOffRequest {
   export type AsObject = {
-    name: string,
-    onOff?: OnOff.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    onOff?: OnOff.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullOnOffRequest extends jspb.Message {
@@ -125,10 +125,10 @@ export class PullOnOffRequest extends jspb.Message {
 
 export namespace PullOnOffRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullOnOffResponse extends jspb.Message {
@@ -147,8 +147,8 @@ export class PullOnOffResponse extends jspb.Message {
 
 export namespace PullOnOffResponse {
   export type AsObject = {
-    changesList: Array<PullOnOffResponse.Change.AsObject>,
-  }
+    changesList: Array<PullOnOffResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -174,10 +174,10 @@ export namespace PullOnOffResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      onOff?: OnOff.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      onOff?: OnOff.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -196,7 +196,7 @@ export class DescribeOnOffRequest extends jspb.Message {
 
 export namespace DescribeOnOffRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

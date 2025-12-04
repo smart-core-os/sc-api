@@ -22,12 +22,12 @@ export class Tween extends jspb.Message {
 
 export namespace Tween {
   export type AsObject = {
-    progress: number,
-    totalDuration?: google_protobuf_duration_pb.Duration.AsObject,
-  }
+    progress: number;
+    totalDuration?: google_protobuf_duration_pb.Duration.AsObject;
+  };
 }
 
-export enum TweenSupport { 
+export enum TweenSupport {
   TWEEN_SUPPORT_UNSPECIFIED = 0,
   NO_SUPPORT = 1,
   NATIVE = 2,

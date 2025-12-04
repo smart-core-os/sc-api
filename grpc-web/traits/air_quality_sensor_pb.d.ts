@@ -65,65 +65,65 @@ export class AirQuality extends jspb.Message {
 
 export namespace AirQuality {
   export type AsObject = {
-    carbonDioxideLevel?: number,
-    volatileOrganicCompounds?: number,
-    airPressure?: number,
-    comfort: AirQuality.Comfort,
-    infectionRisk?: number,
-    score?: number,
-    particulateMatter1?: number,
-    particulateMatter25?: number,
-    particulateMatter10?: number,
-    airChangePerHour?: number,
-  }
+    carbonDioxideLevel?: number;
+    volatileOrganicCompounds?: number;
+    airPressure?: number;
+    comfort: AirQuality.Comfort;
+    infectionRisk?: number;
+    score?: number;
+    particulateMatter1?: number;
+    particulateMatter25?: number;
+    particulateMatter10?: number;
+    airChangePerHour?: number;
+  };
 
-  export enum Comfort { 
+  export enum Comfort {
     COMFORT_UNSPECIFIED = 0,
     COMFORTABLE = 1,
     UNCOMFORTABLE = 2,
   }
 
-  export enum CarbonDioxideLevelCase { 
+  export enum CarbonDioxideLevelCase {
     _CARBON_DIOXIDE_LEVEL_NOT_SET = 0,
     CARBON_DIOXIDE_LEVEL = 1,
   }
 
-  export enum VolatileOrganicCompoundsCase { 
+  export enum VolatileOrganicCompoundsCase {
     _VOLATILE_ORGANIC_COMPOUNDS_NOT_SET = 0,
     VOLATILE_ORGANIC_COMPOUNDS = 2,
   }
 
-  export enum AirPressureCase { 
+  export enum AirPressureCase {
     _AIR_PRESSURE_NOT_SET = 0,
     AIR_PRESSURE = 3,
   }
 
-  export enum InfectionRiskCase { 
+  export enum InfectionRiskCase {
     _INFECTION_RISK_NOT_SET = 0,
     INFECTION_RISK = 5,
   }
 
-  export enum ScoreCase { 
+  export enum ScoreCase {
     _SCORE_NOT_SET = 0,
     SCORE = 6,
   }
 
-  export enum ParticulateMatter1Case { 
+  export enum ParticulateMatter1Case {
     _PARTICULATE_MATTER_1_NOT_SET = 0,
     PARTICULATE_MATTER_1 = 7,
   }
 
-  export enum ParticulateMatter25Case { 
+  export enum ParticulateMatter25Case {
     _PARTICULATE_MATTER_25_NOT_SET = 0,
     PARTICULATE_MATTER_25 = 8,
   }
 
-  export enum ParticulateMatter10Case { 
+  export enum ParticulateMatter10Case {
     _PARTICULATE_MATTER_10_NOT_SET = 0,
     PARTICULATE_MATTER_10 = 9,
   }
 
-  export enum AirChangePerHourCase { 
+  export enum AirChangePerHourCase {
     _AIR_CHANGE_PER_HOUR_NOT_SET = 0,
     AIR_CHANGE_PER_HOUR = 10,
   }
@@ -195,18 +195,18 @@ export class AirQualitySupport extends jspb.Message {
 
 export namespace AirQualitySupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject,
-    volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject,
-    airPressure?: types_number_pb.FloatBounds.AsObject,
-    comfortList: Array<AirQuality.Comfort>,
-    infectionRisk?: types_number_pb.FloatBounds.AsObject,
-    score?: types_number_pb.FloatBounds.AsObject,
-    particulateMatter1?: types_number_pb.FloatBounds.AsObject,
-    particulateMatter25?: types_number_pb.FloatBounds.AsObject,
-    particulateMatter10?: types_number_pb.FloatBounds.AsObject,
-    airChangePerHour?: types_number_pb.FloatBounds.AsObject,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    carbonDioxideLevel?: types_number_pb.FloatBounds.AsObject;
+    volatileOrganicCompounds?: types_number_pb.FloatBounds.AsObject;
+    airPressure?: types_number_pb.FloatBounds.AsObject;
+    comfortList: Array<AirQuality.Comfort>;
+    infectionRisk?: types_number_pb.FloatBounds.AsObject;
+    score?: types_number_pb.FloatBounds.AsObject;
+    particulateMatter1?: types_number_pb.FloatBounds.AsObject;
+    particulateMatter25?: types_number_pb.FloatBounds.AsObject;
+    particulateMatter10?: types_number_pb.FloatBounds.AsObject;
+    airChangePerHour?: types_number_pb.FloatBounds.AsObject;
+  };
 }
 
 export class GetAirQualityRequest extends jspb.Message {
@@ -228,9 +228,9 @@ export class GetAirQualityRequest extends jspb.Message {
 
 export namespace GetAirQualityRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullAirQualityRequest extends jspb.Message {
@@ -255,10 +255,10 @@ export class PullAirQualityRequest extends jspb.Message {
 
 export namespace PullAirQualityRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullAirQualityResponse extends jspb.Message {
@@ -277,8 +277,8 @@ export class PullAirQualityResponse extends jspb.Message {
 
 export namespace PullAirQualityResponse {
   export type AsObject = {
-    changesList: Array<PullAirQualityResponse.Change.AsObject>,
-  }
+    changesList: Array<PullAirQualityResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -309,11 +309,11 @@ export namespace PullAirQualityResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      airQuality?: AirQuality.AsObject,
-      updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      airQuality?: AirQuality.AsObject;
+      updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    };
   }
 
 }
@@ -332,7 +332,7 @@ export class DescribeAirQualityRequest extends jspb.Message {
 
 export namespace DescribeAirQualityRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

@@ -28,9 +28,9 @@ export class OpenClosePositions extends jspb.Message {
 
 export namespace OpenClosePositions {
   export type AsObject = {
-    statesList: Array<OpenClosePosition.AsObject>,
-    preset?: OpenClosePositions.Preset.AsObject,
-  }
+    statesList: Array<OpenClosePosition.AsObject>;
+    preset?: OpenClosePositions.Preset.AsObject;
+  };
 
   export class Preset extends jspb.Message {
     getName(): string;
@@ -49,9 +49,9 @@ export namespace OpenClosePositions {
 
   export namespace Preset {
     export type AsObject = {
-      name: string,
-      title: string,
-    }
+      name: string;
+      title: string;
+    };
   }
 
 }
@@ -84,14 +84,14 @@ export class OpenClosePosition extends jspb.Message {
 
 export namespace OpenClosePosition {
   export type AsObject = {
-    openPercent: number,
-    openPercentTween?: types_tween_pb.Tween.AsObject,
-    targetOpenPercent: number,
-    direction: OpenClosePosition.Direction,
-    resistance: OpenClosePosition.Resistance,
-  }
+    openPercent: number;
+    openPercentTween?: types_tween_pb.Tween.AsObject;
+    targetOpenPercent: number;
+    direction: OpenClosePosition.Direction;
+    resistance: OpenClosePosition.Resistance;
+  };
 
-  export enum Direction { 
+  export enum Direction {
     DIRECTION_UNSPECIFIED = 0,
     UP = 1,
     DOWN = 2,
@@ -101,7 +101,7 @@ export namespace OpenClosePosition {
     OUT = 6,
   }
 
-  export enum Resistance { 
+  export enum Resistance {
     RESISTANCE_UNSPECIFIED = 0,
     HELD = 1,
     REDUCED_MOTION = 2,
@@ -143,12 +143,12 @@ export class PositionsSupport extends jspb.Message {
 
 export namespace PositionsSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    openPercentAttributes?: types_number_pb.FloatAttributes.AsObject,
-    directionsList: Array<OpenClosePosition.Direction>,
-    supportsStop: boolean,
-    presetsList: Array<OpenClosePositions.Preset.AsObject>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    openPercentAttributes?: types_number_pb.FloatAttributes.AsObject;
+    directionsList: Array<OpenClosePosition.Direction>;
+    supportsStop: boolean;
+    presetsList: Array<OpenClosePositions.Preset.AsObject>;
+  };
 }
 
 export class GetOpenClosePositionsRequest extends jspb.Message {
@@ -170,9 +170,9 @@ export class GetOpenClosePositionsRequest extends jspb.Message {
 
 export namespace GetOpenClosePositionsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateOpenClosePositionsRequest extends jspb.Message {
@@ -202,11 +202,11 @@ export class UpdateOpenClosePositionsRequest extends jspb.Message {
 
 export namespace UpdateOpenClosePositionsRequest {
   export type AsObject = {
-    name: string,
-    states?: OpenClosePositions.AsObject,
-    delta: boolean,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    states?: OpenClosePositions.AsObject;
+    delta: boolean;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopOpenCloseRequest extends jspb.Message {
@@ -223,8 +223,8 @@ export class StopOpenCloseRequest extends jspb.Message {
 
 export namespace StopOpenCloseRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullOpenClosePositionsRequest extends jspb.Message {
@@ -252,11 +252,11 @@ export class PullOpenClosePositionsRequest extends jspb.Message {
 
 export namespace PullOpenClosePositionsRequest {
   export type AsObject = {
-    name: string,
-    excludeTweening: boolean,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    excludeTweening: boolean;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullOpenClosePositionsResponse extends jspb.Message {
@@ -275,8 +275,8 @@ export class PullOpenClosePositionsResponse extends jspb.Message {
 
 export namespace PullOpenClosePositionsResponse {
   export type AsObject = {
-    changesList: Array<PullOpenClosePositionsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullOpenClosePositionsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -302,10 +302,10 @@ export namespace PullOpenClosePositionsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      openClosePosition?: OpenClosePositions.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      openClosePosition?: OpenClosePositions.AsObject;
+    };
   }
 
 }
@@ -324,7 +324,7 @@ export class DescribePositionsRequest extends jspb.Message {
 
 export namespace DescribePositionsRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

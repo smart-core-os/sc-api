@@ -30,10 +30,10 @@ export class VolumeSupport extends jspb.Message {
 
 export namespace VolumeSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    volumeAttributes?: types_number_pb.FloatAttributes.AsObject,
-    muteSupport: types_unit_pb.MuteSupport,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    volumeAttributes?: types_number_pb.FloatAttributes.AsObject;
+    muteSupport: types_unit_pb.MuteSupport;
+  };
 }
 
 export class GetSpeakerVolumeRequest extends jspb.Message {
@@ -55,9 +55,9 @@ export class GetSpeakerVolumeRequest extends jspb.Message {
 
 export namespace GetSpeakerVolumeRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateSpeakerVolumeRequest extends jspb.Message {
@@ -87,11 +87,11 @@ export class UpdateSpeakerVolumeRequest extends jspb.Message {
 
 export namespace UpdateSpeakerVolumeRequest {
   export type AsObject = {
-    name: string,
-    volume?: types_unit_pb.AudioLevel.AsObject,
-    delta: boolean,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    volume?: types_unit_pb.AudioLevel.AsObject;
+    delta: boolean;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullSpeakerVolumeRequest extends jspb.Message {
@@ -116,10 +116,10 @@ export class PullSpeakerVolumeRequest extends jspb.Message {
 
 export namespace PullSpeakerVolumeRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullSpeakerVolumeResponse extends jspb.Message {
@@ -138,8 +138,8 @@ export class PullSpeakerVolumeResponse extends jspb.Message {
 
 export namespace PullSpeakerVolumeResponse {
   export type AsObject = {
-    changesList: Array<types_unit_pb.AudioLevelChange.AsObject>,
-  }
+    changesList: Array<types_unit_pb.AudioLevelChange.AsObject>;
+  };
 }
 
 export class DescribeVolumeRequest extends jspb.Message {
@@ -156,7 +156,7 @@ export class DescribeVolumeRequest extends jspb.Message {
 
 export namespace DescribeVolumeRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

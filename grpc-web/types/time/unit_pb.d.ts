@@ -2,7 +2,7 @@ import * as jspb from 'google-protobuf'
 
 
 
-export enum Unit { 
+export enum Unit {
   UNIT_UNSPECIFIED = 0,
   UNIT_SECONDS = 1,
   UNIT_MICROSECONDS = 2,

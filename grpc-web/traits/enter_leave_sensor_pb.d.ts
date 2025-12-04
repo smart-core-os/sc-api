@@ -34,11 +34,11 @@ export class EnterLeaveEvent extends jspb.Message {
 
 export namespace EnterLeaveEvent {
   export type AsObject = {
-    direction: EnterLeaveEvent.Direction,
-    occupant?: EnterLeaveEvent.Occupant.AsObject,
-    enterTotal?: number,
-    leaveTotal?: number,
-  }
+    direction: EnterLeaveEvent.Direction;
+    occupant?: EnterLeaveEvent.Occupant.AsObject;
+    enterTotal?: number;
+    leaveTotal?: number;
+  };
 
   export class Occupant extends jspb.Message {
     getName(): string;
@@ -77,30 +77,30 @@ export namespace EnterLeaveEvent {
 
   export namespace Occupant {
     export type AsObject = {
-      name: string,
-      title: string,
-      displayName: string,
-      picture?: types_image_pb.Image.AsObject,
-      url: string,
-      email: string,
-      idsMap: Array<[string, string]>,
-      moreMap: Array<[string, string]>,
-    }
+      name: string;
+      title: string;
+      displayName: string;
+      picture?: types_image_pb.Image.AsObject;
+      url: string;
+      email: string;
+      idsMap: Array<[string, string]>;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
-  export enum Direction { 
+  export enum Direction {
     DIRECTION_UNSPECIFIED = 0,
     ENTER = 1,
     LEAVE = 2,
   }
 
-  export enum EnterTotalCase { 
+  export enum EnterTotalCase {
     _ENTER_TOTAL_NOT_SET = 0,
     ENTER_TOTAL = 3,
   }
 
-  export enum LeaveTotalCase { 
+  export enum LeaveTotalCase {
     _LEAVE_TOTAL_NOT_SET = 0,
     LEAVE_TOTAL = 4,
   }
@@ -128,10 +128,10 @@ export class PullEnterLeaveEventsRequest extends jspb.Message {
 
 export namespace PullEnterLeaveEventsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullEnterLeaveEventsResponse extends jspb.Message {
@@ -150,8 +150,8 @@ export class PullEnterLeaveEventsResponse extends jspb.Message {
 
 export namespace PullEnterLeaveEventsResponse {
   export type AsObject = {
-    changesList: Array<PullEnterLeaveEventsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullEnterLeaveEventsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -177,10 +177,10 @@ export namespace PullEnterLeaveEventsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      enterLeaveEvent?: EnterLeaveEvent.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      enterLeaveEvent?: EnterLeaveEvent.AsObject;
+    };
   }
 
 }
@@ -204,9 +204,9 @@ export class GetEnterLeaveEventRequest extends jspb.Message {
 
 export namespace GetEnterLeaveEventRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ResetEnterLeaveTotalsRequest extends jspb.Message {
@@ -223,8 +223,8 @@ export class ResetEnterLeaveTotalsRequest extends jspb.Message {
 
 export namespace ResetEnterLeaveTotalsRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class ResetEnterLeaveTotalsResponse extends jspb.Message {
@@ -238,6 +238,6 @@ export class ResetEnterLeaveTotalsResponse extends jspb.Message {
 
 export namespace ResetEnterLeaveTotalsResponse {
   export type AsObject = {
-  }
+  };
 }
 

@@ -32,11 +32,11 @@ export class AccessAttempt extends jspb.Message {
 
 export namespace AccessAttempt {
   export type AsObject = {
-    grant: AccessAttempt.Grant,
-    reason: string,
-    actor?: AccessAttempt.Actor.AsObject,
-    accessAttemptTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    grant: AccessAttempt.Grant;
+    reason: string;
+    actor?: AccessAttempt.Actor.AsObject;
+    accessAttemptTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
   export class Actor extends jspb.Message {
     getName(): string;
@@ -83,21 +83,21 @@ export namespace AccessAttempt {
 
   export namespace Actor {
     export type AsObject = {
-      name: string,
-      title: string,
-      displayName: string,
-      picture?: types_image_pb.Image.AsObject,
-      url: string,
-      email: string,
-      lastGrantTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      lastGrantZone: string,
-      idsMap: Array<[string, string]>,
-      moreMap: Array<[string, string]>,
-    }
+      name: string;
+      title: string;
+      displayName: string;
+      picture?: types_image_pb.Image.AsObject;
+      url: string;
+      email: string;
+      lastGrantTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      lastGrantZone: string;
+      idsMap: Array<[string, string]>;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
-  export enum Grant { 
+  export enum Grant {
     GRANT_UNKNOWN = 0,
     GRANTED = 1,
     DENIED = 2,
@@ -128,9 +128,9 @@ export class GetLastAccessAttemptRequest extends jspb.Message {
 
 export namespace GetLastAccessAttemptRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullAccessAttemptsRequest extends jspb.Message {
@@ -155,10 +155,10 @@ export class PullAccessAttemptsRequest extends jspb.Message {
 
 export namespace PullAccessAttemptsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullAccessAttemptsResponse extends jspb.Message {
@@ -177,8 +177,8 @@ export class PullAccessAttemptsResponse extends jspb.Message {
 
 export namespace PullAccessAttemptsResponse {
   export type AsObject = {
-    changesList: Array<PullAccessAttemptsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullAccessAttemptsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -204,10 +204,10 @@ export namespace PullAccessAttemptsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      accessAttempt?: AccessAttempt.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      accessAttempt?: AccessAttempt.AsObject;
+    };
   }
 
 }

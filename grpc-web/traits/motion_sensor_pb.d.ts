@@ -25,11 +25,11 @@ export class MotionDetection extends jspb.Message {
 
 export namespace MotionDetection {
   export type AsObject = {
-    state: MotionDetection.State,
-    stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    state: MotionDetection.State;
+    stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 
-  export enum State { 
+  export enum State {
     STATE_UNSPECIFIED = 0,
     NOT_DETECTED = 1,
     DETECTED = 2,
@@ -57,9 +57,9 @@ export class MotionDetectionSupport extends jspb.Message {
 
 export namespace MotionDetectionSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    notDetectedDelay?: google_protobuf_duration_pb.Duration.AsObject,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    notDetectedDelay?: google_protobuf_duration_pb.Duration.AsObject;
+  };
 }
 
 export class GetMotionDetectionRequest extends jspb.Message {
@@ -81,9 +81,9 @@ export class GetMotionDetectionRequest extends jspb.Message {
 
 export namespace GetMotionDetectionRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullMotionDetectionRequest extends jspb.Message {
@@ -108,10 +108,10 @@ export class PullMotionDetectionRequest extends jspb.Message {
 
 export namespace PullMotionDetectionRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullMotionDetectionResponse extends jspb.Message {
@@ -130,8 +130,8 @@ export class PullMotionDetectionResponse extends jspb.Message {
 
 export namespace PullMotionDetectionResponse {
   export type AsObject = {
-    changesList: Array<PullMotionDetectionResponse.Change.AsObject>,
-  }
+    changesList: Array<PullMotionDetectionResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -157,10 +157,10 @@ export namespace PullMotionDetectionResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      motionDetection?: MotionDetection.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      motionDetection?: MotionDetection.AsObject;
+    };
   }
 
 }
@@ -179,7 +179,7 @@ export class DescribeMotionDetectionRequest extends jspb.Message {
 
 export namespace DescribeMotionDetectionRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

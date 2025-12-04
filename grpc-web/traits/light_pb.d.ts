@@ -39,12 +39,12 @@ export class Brightness extends jspb.Message {
 
 export namespace Brightness {
   export type AsObject = {
-    levelPercent: number,
-    preset?: LightPreset.AsObject,
-    brightnessTween?: types_tween_pb.Tween.AsObject,
-    targetLevelPercent: number,
-    targetPreset?: LightPreset.AsObject,
-  }
+    levelPercent: number;
+    preset?: LightPreset.AsObject;
+    brightnessTween?: types_tween_pb.Tween.AsObject;
+    targetLevelPercent: number;
+    targetPreset?: LightPreset.AsObject;
+  };
 }
 
 export class LightPreset extends jspb.Message {
@@ -64,9 +64,9 @@ export class LightPreset extends jspb.Message {
 
 export namespace LightPreset {
   export type AsObject = {
-    name: string,
-    title: string,
-  }
+    name: string;
+    title: string;
+  };
 }
 
 export class BrightnessSupport extends jspb.Message {
@@ -95,10 +95,10 @@ export class BrightnessSupport extends jspb.Message {
 
 export namespace BrightnessSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    brightnessAttributes?: types_number_pb.Int32Attributes.AsObject,
-    presetsList: Array<LightPreset.AsObject>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    brightnessAttributes?: types_number_pb.Int32Attributes.AsObject;
+    presetsList: Array<LightPreset.AsObject>;
+  };
 }
 
 export class UpdateBrightnessRequest extends jspb.Message {
@@ -128,11 +128,11 @@ export class UpdateBrightnessRequest extends jspb.Message {
 
 export namespace UpdateBrightnessRequest {
   export type AsObject = {
-    name: string,
-    brightness?: Brightness.AsObject,
-    delta: boolean,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    brightness?: Brightness.AsObject;
+    delta: boolean;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class GetBrightnessRequest extends jspb.Message {
@@ -154,9 +154,9 @@ export class GetBrightnessRequest extends jspb.Message {
 
 export namespace GetBrightnessRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullBrightnessRequest extends jspb.Message {
@@ -184,11 +184,11 @@ export class PullBrightnessRequest extends jspb.Message {
 
 export namespace PullBrightnessRequest {
   export type AsObject = {
-    name: string,
-    excludeRamping: boolean,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    excludeRamping: boolean;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullBrightnessResponse extends jspb.Message {
@@ -207,8 +207,8 @@ export class PullBrightnessResponse extends jspb.Message {
 
 export namespace PullBrightnessResponse {
   export type AsObject = {
-    changesList: Array<PullBrightnessResponse.Change.AsObject>,
-  }
+    changesList: Array<PullBrightnessResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -234,10 +234,10 @@ export namespace PullBrightnessResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      brightness?: Brightness.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      brightness?: Brightness.AsObject;
+    };
   }
 
 }
@@ -256,7 +256,7 @@ export class DescribeBrightnessRequest extends jspb.Message {
 
 export namespace DescribeBrightnessRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

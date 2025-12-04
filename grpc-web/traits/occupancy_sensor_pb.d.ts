@@ -35,14 +35,14 @@ export class Occupancy extends jspb.Message {
 
 export namespace Occupancy {
   export type AsObject = {
-    state: Occupancy.State,
-    peopleCount: number,
-    stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    reasonsList: Array<string>,
-    confidence: number,
-  }
+    state: Occupancy.State;
+    peopleCount: number;
+    stateChangeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    reasonsList: Array<string>;
+    confidence: number;
+  };
 
-  export enum State { 
+  export enum State {
     STATE_UNSPECIFIED = 0,
     OCCUPIED = 1,
     UNOCCUPIED = 2,
@@ -69,9 +69,9 @@ export class OccupancySupport extends jspb.Message {
 
 export namespace OccupancySupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    maxPeople: number,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    maxPeople: number;
+  };
 }
 
 export class GetOccupancyRequest extends jspb.Message {
@@ -93,9 +93,9 @@ export class GetOccupancyRequest extends jspb.Message {
 
 export namespace GetOccupancyRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullOccupancyRequest extends jspb.Message {
@@ -120,10 +120,10 @@ export class PullOccupancyRequest extends jspb.Message {
 
 export namespace PullOccupancyRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullOccupancyResponse extends jspb.Message {
@@ -142,8 +142,8 @@ export class PullOccupancyResponse extends jspb.Message {
 
 export namespace PullOccupancyResponse {
   export type AsObject = {
-    changesList: Array<PullOccupancyResponse.Change.AsObject>,
-  }
+    changesList: Array<PullOccupancyResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -169,10 +169,10 @@ export namespace PullOccupancyResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      occupancy?: Occupancy.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      occupancy?: Occupancy.AsObject;
+    };
   }
 
 }
@@ -191,7 +191,7 @@ export class DescribeOccupancyRequest extends jspb.Message {
 
 export namespace DescribeOccupancyRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

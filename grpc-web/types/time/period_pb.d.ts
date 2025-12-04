@@ -24,8 +24,8 @@ export class Period extends jspb.Message {
 
 export namespace Period {
   export type AsObject = {
-    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 

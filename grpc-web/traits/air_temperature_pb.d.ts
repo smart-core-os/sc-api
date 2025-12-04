@@ -52,16 +52,16 @@ export class AirTemperature extends jspb.Message {
 
 export namespace AirTemperature {
   export type AsObject = {
-    mode: AirTemperature.Mode,
-    temperatureSetPoint?: types_unit_pb.Temperature.AsObject,
-    temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject,
-    temperatureRange?: TemperatureRange.AsObject,
-    ambientTemperature?: types_unit_pb.Temperature.AsObject,
-    ambientHumidity?: number,
-    dewPoint?: types_unit_pb.Temperature.AsObject,
-  }
+    mode: AirTemperature.Mode;
+    temperatureSetPoint?: types_unit_pb.Temperature.AsObject;
+    temperatureSetPointDelta?: types_unit_pb.Temperature.AsObject;
+    temperatureRange?: TemperatureRange.AsObject;
+    ambientTemperature?: types_unit_pb.Temperature.AsObject;
+    ambientHumidity?: number;
+    dewPoint?: types_unit_pb.Temperature.AsObject;
+  };
 
-  export enum Mode { 
+  export enum Mode {
     MODE_UNSPECIFIED = 0,
     ON = 1,
     OFF = 2,
@@ -76,14 +76,14 @@ export namespace AirTemperature {
     LOCKED = 11,
   }
 
-  export enum TemperatureGoalCase { 
+  export enum TemperatureGoalCase {
     TEMPERATURE_GOAL_NOT_SET = 0,
     TEMPERATURE_SET_POINT = 2,
     TEMPERATURE_SET_POINT_DELTA = 3,
     TEMPERATURE_RANGE = 4,
   }
 
-  export enum AmbientHumidityCase { 
+  export enum AmbientHumidityCase {
     _AMBIENT_HUMIDITY_NOT_SET = 0,
     AMBIENT_HUMIDITY = 6,
   }
@@ -115,10 +115,10 @@ export class TemperatureRange extends jspb.Message {
 
 export namespace TemperatureRange {
   export type AsObject = {
-    low?: types_unit_pb.Temperature.AsObject,
-    high?: types_unit_pb.Temperature.AsObject,
-    ideal?: types_unit_pb.Temperature.AsObject,
-  }
+    low?: types_unit_pb.Temperature.AsObject;
+    high?: types_unit_pb.Temperature.AsObject;
+    ideal?: types_unit_pb.Temperature.AsObject;
+  };
 }
 
 export class AirTemperatureSupport extends jspb.Message {
@@ -148,11 +148,11 @@ export class AirTemperatureSupport extends jspb.Message {
 
 export namespace AirTemperatureSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    nativeUnit: types_unit_pb.TemperatureUnit,
-    supportedModesList: Array<AirTemperature.Mode>,
-    minRangeCelsius: number,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    nativeUnit: types_unit_pb.TemperatureUnit;
+    supportedModesList: Array<AirTemperature.Mode>;
+    minRangeCelsius: number;
+  };
 }
 
 export class GetAirTemperatureRequest extends jspb.Message {
@@ -174,9 +174,9 @@ export class GetAirTemperatureRequest extends jspb.Message {
 
 export namespace GetAirTemperatureRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateAirTemperatureRequest extends jspb.Message {
@@ -203,10 +203,10 @@ export class UpdateAirTemperatureRequest extends jspb.Message {
 
 export namespace UpdateAirTemperatureRequest {
   export type AsObject = {
-    name: string,
-    state?: AirTemperature.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    state?: AirTemperature.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullAirTemperatureRequest extends jspb.Message {
@@ -231,10 +231,10 @@ export class PullAirTemperatureRequest extends jspb.Message {
 
 export namespace PullAirTemperatureRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullAirTemperatureResponse extends jspb.Message {
@@ -253,8 +253,8 @@ export class PullAirTemperatureResponse extends jspb.Message {
 
 export namespace PullAirTemperatureResponse {
   export type AsObject = {
-    changesList: Array<PullAirTemperatureResponse.Change.AsObject>,
-  }
+    changesList: Array<PullAirTemperatureResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -280,10 +280,10 @@ export namespace PullAirTemperatureResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      airTemperature?: AirTemperature.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      airTemperature?: AirTemperature.AsObject;
+    };
   }
 
 }
@@ -302,7 +302,7 @@ export class DescribeAirTemperatureRequest extends jspb.Message {
 
 export namespace DescribeAirTemperatureRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

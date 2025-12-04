@@ -28,13 +28,13 @@ export class FanSpeed extends jspb.Message {
 
 export namespace FanSpeed {
   export type AsObject = {
-    percentage: number,
-    preset: string,
-    presetIndex: number,
-    direction: FanSpeed.Direction,
-  }
+    percentage: number;
+    preset: string;
+    presetIndex: number;
+    direction: FanSpeed.Direction;
+  };
 
-  export enum Direction { 
+  export enum Direction {
     DIRECTION_UNSPECIFIED = 0,
     FORWARD = 1,
     BACKWARD = 2,
@@ -62,9 +62,9 @@ export class FanSpeedSupport extends jspb.Message {
 
 export namespace FanSpeedSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    presetsList: Array<string>,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    presetsList: Array<string>;
+  };
 }
 
 export class GetFanSpeedRequest extends jspb.Message {
@@ -86,9 +86,9 @@ export class GetFanSpeedRequest extends jspb.Message {
 
 export namespace GetFanSpeedRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdateFanSpeedRequest extends jspb.Message {
@@ -118,11 +118,11 @@ export class UpdateFanSpeedRequest extends jspb.Message {
 
 export namespace UpdateFanSpeedRequest {
   export type AsObject = {
-    name: string,
-    fanSpeed?: FanSpeed.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    relative: boolean,
-  }
+    name: string;
+    fanSpeed?: FanSpeed.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    relative: boolean;
+  };
 }
 
 export class ReverseFanSpeedDirectionRequest extends jspb.Message {
@@ -139,8 +139,8 @@ export class ReverseFanSpeedDirectionRequest extends jspb.Message {
 
 export namespace ReverseFanSpeedDirectionRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullFanSpeedRequest extends jspb.Message {
@@ -165,10 +165,10 @@ export class PullFanSpeedRequest extends jspb.Message {
 
 export namespace PullFanSpeedRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullFanSpeedResponse extends jspb.Message {
@@ -187,8 +187,8 @@ export class PullFanSpeedResponse extends jspb.Message {
 
 export namespace PullFanSpeedResponse {
   export type AsObject = {
-    changesList: Array<PullFanSpeedResponse.Change.AsObject>,
-  }
+    changesList: Array<PullFanSpeedResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -214,10 +214,10 @@ export namespace PullFanSpeedResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      fanSpeed?: FanSpeed.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      fanSpeed?: FanSpeed.AsObject;
+    };
   }
 
 }
@@ -236,7 +236,7 @@ export class DescribeFanSpeedRequest extends jspb.Message {
 
 export namespace DescribeFanSpeedRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

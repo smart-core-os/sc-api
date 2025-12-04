@@ -40,13 +40,13 @@ export class Publication extends jspb.Message {
 
 export namespace Publication {
   export type AsObject = {
-    id: string,
-    version: string,
-    body: Uint8Array | string,
-    audience?: Publication.Audience.AsObject,
-    publishTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    mediaType: string,
-  }
+    id: string;
+    version: string;
+    body: Uint8Array | string;
+    audience?: Publication.Audience.AsObject;
+    publishTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    mediaType: string;
+  };
 
   export class Audience extends jspb.Message {
     getName(): string;
@@ -73,13 +73,13 @@ export namespace Publication {
 
   export namespace Audience {
     export type AsObject = {
-      name: string,
-      receipt: Publication.Audience.Receipt,
-      receiptRejectedReason: string,
-      receiptTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      receipt: Publication.Audience.Receipt;
+      receiptRejectedReason: string;
+      receiptTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
 
-    export enum Receipt { 
+    export enum Receipt {
       RECEIPT_UNSPECIFIED = 0,
       NO_SIGNAL = 1,
       ACCEPTED = 2,
@@ -108,9 +108,9 @@ export class CreatePublicationRequest extends jspb.Message {
 
 export namespace CreatePublicationRequest {
   export type AsObject = {
-    name: string,
-    publication?: Publication.AsObject,
-  }
+    name: string;
+    publication?: Publication.AsObject;
+  };
 }
 
 export class GetPublicationRequest extends jspb.Message {
@@ -138,11 +138,11 @@ export class GetPublicationRequest extends jspb.Message {
 
 export namespace GetPublicationRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    version: string,
-  }
+    name: string;
+    id: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    version: string;
+  };
 }
 
 export class UpdatePublicationRequest extends jspb.Message {
@@ -172,11 +172,11 @@ export class UpdatePublicationRequest extends jspb.Message {
 
 export namespace UpdatePublicationRequest {
   export type AsObject = {
-    name: string,
-    publication?: Publication.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    version: string,
-  }
+    name: string;
+    publication?: Publication.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    version: string;
+  };
 }
 
 export class DeletePublicationRequest extends jspb.Message {
@@ -202,11 +202,11 @@ export class DeletePublicationRequest extends jspb.Message {
 
 export namespace DeletePublicationRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    version: string,
-    allowMissing: boolean,
-  }
+    name: string;
+    id: string;
+    version: string;
+    allowMissing: boolean;
+  };
 }
 
 export class PullPublicationRequest extends jspb.Message {
@@ -234,11 +234,11 @@ export class PullPublicationRequest extends jspb.Message {
 
 export namespace PullPublicationRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    id: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullPublicationResponse extends jspb.Message {
@@ -257,8 +257,8 @@ export class PullPublicationResponse extends jspb.Message {
 
 export namespace PullPublicationResponse {
   export type AsObject = {
-    changesList: Array<PullPublicationResponse.Change.AsObject>,
-  }
+    changesList: Array<PullPublicationResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -284,10 +284,10 @@ export namespace PullPublicationResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      publication?: Publication.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      publication?: Publication.AsObject;
+    };
   }
 
 }
@@ -317,11 +317,11 @@ export class ListPublicationsRequest extends jspb.Message {
 
 export namespace ListPublicationsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListPublicationsResponse extends jspb.Message {
@@ -346,10 +346,10 @@ export class ListPublicationsResponse extends jspb.Message {
 
 export namespace ListPublicationsResponse {
   export type AsObject = {
-    publicationsList: Array<Publication.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    publicationsList: Array<Publication.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullPublicationsRequest extends jspb.Message {
@@ -374,10 +374,10 @@ export class PullPublicationsRequest extends jspb.Message {
 
 export namespace PullPublicationsRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullPublicationsResponse extends jspb.Message {
@@ -396,8 +396,8 @@ export class PullPublicationsResponse extends jspb.Message {
 
 export namespace PullPublicationsResponse {
   export type AsObject = {
-    changesList: Array<PullPublicationsResponse.Change.AsObject>,
-  }
+    changesList: Array<PullPublicationsResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -431,12 +431,12 @@ export namespace PullPublicationsResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Publication.AsObject,
-      oldValue?: Publication.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Publication.AsObject;
+      oldValue?: Publication.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -470,12 +470,12 @@ export class AcknowledgePublicationRequest extends jspb.Message {
 
 export namespace AcknowledgePublicationRequest {
   export type AsObject = {
-    name: string,
-    id: string,
-    version: string,
-    receipt: Publication.Audience.Receipt,
-    receiptRejectedReason: string,
-    allowAcknowledged: boolean,
-  }
+    name: string;
+    id: string;
+    version: string;
+    receipt: Publication.Audience.Receipt;
+    receiptRejectedReason: string;
+    allowAcknowledged: boolean;
+  };
 }
 

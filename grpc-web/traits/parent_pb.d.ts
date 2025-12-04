@@ -27,10 +27,10 @@ export class Child extends jspb.Message {
 
 export namespace Child {
   export type AsObject = {
-    name: string,
-    traitsList: Array<Trait.AsObject>,
-    parent: string,
-  }
+    name: string;
+    traitsList: Array<Trait.AsObject>;
+    parent: string;
+  };
 }
 
 export class Trait extends jspb.Message {
@@ -47,8 +47,8 @@ export class Trait extends jspb.Message {
 
 export namespace Trait {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class ListChildrenRequest extends jspb.Message {
@@ -76,11 +76,11 @@ export class ListChildrenRequest extends jspb.Message {
 
 export namespace ListChildrenRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    pageSize: number,
-    pageToken: string,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    pageSize: number;
+    pageToken: string;
+  };
 }
 
 export class ListChildrenResponse extends jspb.Message {
@@ -105,10 +105,10 @@ export class ListChildrenResponse extends jspb.Message {
 
 export namespace ListChildrenResponse {
   export type AsObject = {
-    childrenList: Array<Child.AsObject>,
-    nextPageToken: string,
-    totalSize: number,
-  }
+    childrenList: Array<Child.AsObject>;
+    nextPageToken: string;
+    totalSize: number;
+  };
 }
 
 export class PullChildrenRequest extends jspb.Message {
@@ -133,10 +133,10 @@ export class PullChildrenRequest extends jspb.Message {
 
 export namespace PullChildrenRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullChildrenResponse extends jspb.Message {
@@ -155,8 +155,8 @@ export class PullChildrenResponse extends jspb.Message {
 
 export namespace PullChildrenResponse {
   export type AsObject = {
-    changesList: Array<PullChildrenResponse.Change.AsObject>,
-  }
+    changesList: Array<PullChildrenResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -190,12 +190,12 @@ export namespace PullChildrenResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      type: types_change_pb.ChangeType,
-      newValue?: Child.AsObject,
-      oldValue?: Child.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      type: types_change_pb.ChangeType;
+      newValue?: Child.AsObject;
+      oldValue?: Child.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }

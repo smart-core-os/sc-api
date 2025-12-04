@@ -20,8 +20,8 @@ export class AmbientBrightness extends jspb.Message {
 
 export namespace AmbientBrightness {
   export type AsObject = {
-    brightnessLux: number,
-  }
+    brightnessLux: number;
+  };
 }
 
 export class AmbientBrightnessSupport extends jspb.Message {
@@ -45,9 +45,9 @@ export class AmbientBrightnessSupport extends jspb.Message {
 
 export namespace AmbientBrightnessSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    brightnessLux?: types_number_pb.FloatBounds.AsObject,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    brightnessLux?: types_number_pb.FloatBounds.AsObject;
+  };
 }
 
 export class GetAmbientBrightnessRequest extends jspb.Message {
@@ -69,9 +69,9 @@ export class GetAmbientBrightnessRequest extends jspb.Message {
 
 export namespace GetAmbientBrightnessRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullAmbientBrightnessRequest extends jspb.Message {
@@ -96,10 +96,10 @@ export class PullAmbientBrightnessRequest extends jspb.Message {
 
 export namespace PullAmbientBrightnessRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullAmbientBrightnessResponse extends jspb.Message {
@@ -118,8 +118,8 @@ export class PullAmbientBrightnessResponse extends jspb.Message {
 
 export namespace PullAmbientBrightnessResponse {
   export type AsObject = {
-    changesList: Array<PullAmbientBrightnessResponse.Change.AsObject>,
-  }
+    changesList: Array<PullAmbientBrightnessResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -145,10 +145,10 @@ export namespace PullAmbientBrightnessResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      ambientBrightness?: AmbientBrightness.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      ambientBrightness?: AmbientBrightness.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
@@ -167,7 +167,7 @@ export class DescribeAmbientBrightnessRequest extends jspb.Message {
 
 export namespace DescribeAmbientBrightnessRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

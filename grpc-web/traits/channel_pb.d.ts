@@ -25,10 +25,10 @@ export class Channel extends jspb.Message {
 
 export namespace Channel {
   export type AsObject = {
-    id: string,
-    channelNumber: string,
-    title: string,
-  }
+    id: string;
+    channelNumber: string;
+    title: string;
+  };
 }
 
 export class ChosenChannelSupport extends jspb.Message {
@@ -50,9 +50,9 @@ export class ChosenChannelSupport extends jspb.Message {
 
 export namespace ChosenChannelSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    adjustMax: number,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    adjustMax: number;
+  };
 }
 
 export class GetChosenChannelRequest extends jspb.Message {
@@ -74,9 +74,9 @@ export class GetChosenChannelRequest extends jspb.Message {
 
 export namespace GetChosenChannelRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class ChooseChannelRequest extends jspb.Message {
@@ -98,9 +98,9 @@ export class ChooseChannelRequest extends jspb.Message {
 
 export namespace ChooseChannelRequest {
   export type AsObject = {
-    name: string,
-    channel?: Channel.AsObject,
-  }
+    name: string;
+    channel?: Channel.AsObject;
+  };
 }
 
 export class AdjustChannelRequest extends jspb.Message {
@@ -120,9 +120,9 @@ export class AdjustChannelRequest extends jspb.Message {
 
 export namespace AdjustChannelRequest {
   export type AsObject = {
-    name: string,
-    amount: number,
-  }
+    name: string;
+    amount: number;
+  };
 }
 
 export class ReturnChannelRequest extends jspb.Message {
@@ -139,8 +139,8 @@ export class ReturnChannelRequest extends jspb.Message {
 
 export namespace ReturnChannelRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullChosenChannelRequest extends jspb.Message {
@@ -165,10 +165,10 @@ export class PullChosenChannelRequest extends jspb.Message {
 
 export namespace PullChosenChannelRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullChosenChannelResponse extends jspb.Message {
@@ -187,8 +187,8 @@ export class PullChosenChannelResponse extends jspb.Message {
 
 export namespace PullChosenChannelResponse {
   export type AsObject = {
-    changesList: Array<PullChosenChannelResponse.Change.AsObject>,
-  }
+    changesList: Array<PullChosenChannelResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -214,10 +214,10 @@ export namespace PullChosenChannelResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      chosenChannel?: Channel.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      chosenChannel?: Channel.AsObject;
+    };
   }
 
 }
@@ -236,7 +236,7 @@ export class DescribeChosenChannelRequest extends jspb.Message {
 
 export namespace DescribeChosenChannelRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

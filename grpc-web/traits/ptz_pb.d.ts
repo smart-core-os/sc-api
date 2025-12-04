@@ -33,11 +33,11 @@ export class Ptz extends jspb.Message {
 
 export namespace Ptz {
   export type AsObject = {
-    position?: PtzPosition.AsObject,
-    movement?: PtzMovement.AsObject,
-    preset: string,
-    presetSpeed: number,
-  }
+    position?: PtzPosition.AsObject;
+    movement?: PtzMovement.AsObject;
+    preset: string;
+    presetSpeed: number;
+  };
 }
 
 export class PtzVector extends jspb.Message {
@@ -60,10 +60,10 @@ export class PtzVector extends jspb.Message {
 
 export namespace PtzVector {
   export type AsObject = {
-    pan: number,
-    tilt: number,
-    zoom: number,
-  }
+    pan: number;
+    tilt: number;
+    zoom: number;
+  };
 }
 
 export class PtzBounds extends jspb.Message {
@@ -87,9 +87,9 @@ export class PtzBounds extends jspb.Message {
 
 export namespace PtzBounds {
   export type AsObject = {
-    min?: PtzVector.AsObject,
-    max?: PtzVector.AsObject,
-  }
+    min?: PtzVector.AsObject;
+    max?: PtzVector.AsObject;
+  };
 }
 
 export class PtzMovement extends jspb.Message {
@@ -119,11 +119,11 @@ export class PtzMovement extends jspb.Message {
 
 export namespace PtzMovement {
   export type AsObject = {
-    direction?: PtzVector.AsObject,
-    speed: number,
-    speedTween?: types_tween_pb.Tween.AsObject,
-    targetSpeed: number,
-  }
+    direction?: PtzVector.AsObject;
+    speed: number;
+    speedTween?: types_tween_pb.Tween.AsObject;
+    targetSpeed: number;
+  };
 }
 
 export class PtzPosition extends jspb.Message {
@@ -152,10 +152,10 @@ export class PtzPosition extends jspb.Message {
 
 export namespace PtzPosition {
   export type AsObject = {
-    position?: PtzVector.AsObject,
-    tween?: types_tween_pb.Tween.AsObject,
-    targetPosition?: PtzVector.AsObject,
-  }
+    position?: PtzVector.AsObject;
+    tween?: types_tween_pb.Tween.AsObject;
+    targetPosition?: PtzVector.AsObject;
+  };
 }
 
 export class PtzPreset extends jspb.Message {
@@ -186,12 +186,12 @@ export class PtzPreset extends jspb.Message {
 
 export namespace PtzPreset {
   export type AsObject = {
-    name: string,
-    title: string,
-    description: string,
-    position?: PtzVector.AsObject,
-    writable: boolean,
-  }
+    name: string;
+    title: string;
+    description: string;
+    position?: PtzVector.AsObject;
+    writable: boolean;
+  };
 }
 
 export class PtzSupport extends jspb.Message {
@@ -224,12 +224,12 @@ export class PtzSupport extends jspb.Message {
 
 export namespace PtzSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    supportsPosition: boolean,
-    supportsMovement: boolean,
-    presetsList: Array<PtzPreset.AsObject>,
-    supportsCustomPresets: boolean,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    supportsPosition: boolean;
+    supportsMovement: boolean;
+    presetsList: Array<PtzPreset.AsObject>;
+    supportsCustomPresets: boolean;
+  };
 }
 
 export class GetPtzRequest extends jspb.Message {
@@ -251,9 +251,9 @@ export class GetPtzRequest extends jspb.Message {
 
 export namespace GetPtzRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class UpdatePtzRequest extends jspb.Message {
@@ -280,10 +280,10 @@ export class UpdatePtzRequest extends jspb.Message {
 
 export namespace UpdatePtzRequest {
   export type AsObject = {
-    name: string,
-    state?: Ptz.AsObject,
-    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    state?: Ptz.AsObject;
+    updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class StopPtzRequest extends jspb.Message {
@@ -300,8 +300,8 @@ export class StopPtzRequest extends jspb.Message {
 
 export namespace StopPtzRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class CreatePtzPresetRequest extends jspb.Message {
@@ -323,9 +323,9 @@ export class CreatePtzPresetRequest extends jspb.Message {
 
 export namespace CreatePtzPresetRequest {
   export type AsObject = {
-    name: string,
-    preset?: PtzPreset.AsObject,
-  }
+    name: string;
+    preset?: PtzPreset.AsObject;
+  };
 }
 
 export class PullPtzRequest extends jspb.Message {
@@ -350,10 +350,10 @@ export class PullPtzRequest extends jspb.Message {
 
 export namespace PullPtzRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullPtzResponse extends jspb.Message {
@@ -372,8 +372,8 @@ export class PullPtzResponse extends jspb.Message {
 
 export namespace PullPtzResponse {
   export type AsObject = {
-    changesList: Array<PullPtzResponse.Change.AsObject>,
-  }
+    changesList: Array<PullPtzResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -399,10 +399,10 @@ export namespace PullPtzResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      ptz?: Ptz.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      ptz?: Ptz.AsObject;
+    };
   }
 
 }
@@ -421,7 +421,7 @@ export class DescribePtzRequest extends jspb.Message {
 
 export namespace DescribePtzRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

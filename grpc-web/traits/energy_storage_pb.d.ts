@@ -28,12 +28,12 @@ export class EnergyLevelSupport extends jspb.Message {
 
 export namespace EnergyLevelSupport {
   export type AsObject = {
-    resourceSupport?: types_info_pb.ResourceSupport.AsObject,
-    rechargeable: boolean,
-    chargeControl: EnergyLevelSupport.ChargeControl,
-  }
+    resourceSupport?: types_info_pb.ResourceSupport.AsObject;
+    rechargeable: boolean;
+    chargeControl: EnergyLevelSupport.ChargeControl;
+  };
 
-  export enum ChargeControl { 
+  export enum ChargeControl {
     CHARGE_CONTROL_UNSPECIFIED = 0,
     NONE = 1,
     DEVICE = 2,
@@ -78,12 +78,12 @@ export class EnergyLevel extends jspb.Message {
 
 export namespace EnergyLevel {
   export type AsObject = {
-    discharge?: EnergyLevel.Transfer.AsObject,
-    charge?: EnergyLevel.Transfer.AsObject,
-    idle?: EnergyLevel.Steady.AsObject,
-    quantity?: EnergyLevel.Quantity.AsObject,
-    pluggedIn: boolean,
-  }
+    discharge?: EnergyLevel.Transfer.AsObject;
+    charge?: EnergyLevel.Transfer.AsObject;
+    idle?: EnergyLevel.Steady.AsObject;
+    quantity?: EnergyLevel.Quantity.AsObject;
+    pluggedIn: boolean;
+  };
 
   export class Transfer extends jspb.Message {
     getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
@@ -117,14 +117,14 @@ export namespace EnergyLevel {
 
   export namespace Transfer {
     export type AsObject = {
-      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      time?: google_protobuf_duration_pb.Duration.AsObject,
-      distanceKm: number,
-      speed: EnergyLevel.Transfer.Speed,
-      target?: EnergyLevel.Quantity.AsObject,
-    }
+      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      time?: google_protobuf_duration_pb.Duration.AsObject;
+      distanceKm: number;
+      speed: EnergyLevel.Transfer.Speed;
+      target?: EnergyLevel.Quantity.AsObject;
+    };
 
-    export enum Speed { 
+    export enum Speed {
       SPEED_UNSPECIFIED = 0,
       EXTRA_SLOW = 1,
       SLOW = 2,
@@ -151,8 +151,8 @@ export namespace EnergyLevel {
 
   export namespace Steady {
     export type AsObject = {
-      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 
@@ -184,14 +184,14 @@ export namespace EnergyLevel {
 
   export namespace Quantity {
     export type AsObject = {
-      percentage: number,
-      energyKwh: number,
-      descriptive: EnergyLevel.Quantity.Threshold,
-      distanceKm: number,
-      voltage?: number,
-    }
+      percentage: number;
+      energyKwh: number;
+      descriptive: EnergyLevel.Quantity.Threshold;
+      distanceKm: number;
+      voltage?: number;
+    };
 
-    export enum Threshold { 
+    export enum Threshold {
       THRESHOLD_UNSPECIFIED = 0,
       CRITICALLY_LOW = 1,
       EMPTY = 2,
@@ -202,14 +202,14 @@ export namespace EnergyLevel {
       CRITICALLY_HIGH = 8,
     }
 
-    export enum VoltageCase { 
+    export enum VoltageCase {
       _VOLTAGE_NOT_SET = 0,
       VOLTAGE = 5,
     }
   }
 
 
-  export enum FlowCase { 
+  export enum FlowCase {
     FLOW_NOT_SET = 0,
     DISCHARGE = 2,
     CHARGE = 3,
@@ -236,9 +236,9 @@ export class GetEnergyLevelRequest extends jspb.Message {
 
 export namespace GetEnergyLevelRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullEnergyLevelRequest extends jspb.Message {
@@ -263,10 +263,10 @@ export class PullEnergyLevelRequest extends jspb.Message {
 
 export namespace PullEnergyLevelRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullEnergyLevelResponse extends jspb.Message {
@@ -285,8 +285,8 @@ export class PullEnergyLevelResponse extends jspb.Message {
 
 export namespace PullEnergyLevelResponse {
   export type AsObject = {
-    changesList: Array<PullEnergyLevelResponse.Change.AsObject>,
-  }
+    changesList: Array<PullEnergyLevelResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -312,10 +312,10 @@ export namespace PullEnergyLevelResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      energyLevel?: EnergyLevel.AsObject,
-    }
+      name: string;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      energyLevel?: EnergyLevel.AsObject;
+    };
   }
 
 }
@@ -337,9 +337,9 @@ export class ChargeRequest extends jspb.Message {
 
 export namespace ChargeRequest {
   export type AsObject = {
-    name: string,
-    charge: boolean,
-  }
+    name: string;
+    charge: boolean;
+  };
 }
 
 export class ChargeResponse extends jspb.Message {
@@ -353,7 +353,7 @@ export class ChargeResponse extends jspb.Message {
 
 export namespace ChargeResponse {
   export type AsObject = {
-  }
+  };
 }
 
 export class DescribeEnergyLevelRequest extends jspb.Message {
@@ -370,7 +370,7 @@ export class DescribeEnergyLevelRequest extends jspb.Message {
 
 export namespace DescribeEnergyLevelRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 

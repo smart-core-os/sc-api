@@ -25,9 +25,9 @@ export class HealthState extends jspb.Message {
 
 export namespace HealthState {
   export type AsObject = {
-    connection?: ConnectionHealth.AsObject,
-    comm?: CommHealth.AsObject,
-  }
+    connection?: ConnectionHealth.AsObject;
+    comm?: CommHealth.AsObject;
+  };
 }
 
 export class ConnectionHealth extends jspb.Message {
@@ -54,10 +54,10 @@ export class ConnectionHealth extends jspb.Message {
 
 export namespace ConnectionHealth {
   export type AsObject = {
-    status: types_connection_pb.Connectivity,
-    connectTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    disconnectTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    status: types_connection_pb.Connectivity;
+    connectTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    disconnectTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class CommHealth extends jspb.Message {
@@ -84,10 +84,10 @@ export class CommHealth extends jspb.Message {
 
 export namespace CommHealth {
   export type AsObject = {
-    status: types_connection_pb.CommStatus,
-    failureTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    successTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-  }
+    status: types_connection_pb.CommStatus;
+    failureTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    successTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+  };
 }
 
 export class GetHealthStateRequest extends jspb.Message {
@@ -104,8 +104,8 @@ export class GetHealthStateRequest extends jspb.Message {
 
 export namespace GetHealthStateRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullHealthStatesRequest extends jspb.Message {
@@ -122,8 +122,8 @@ export class PullHealthStatesRequest extends jspb.Message {
 
 export namespace PullHealthStatesRequest {
   export type AsObject = {
-    name: string,
-  }
+    name: string;
+  };
 }
 
 export class PullHealthStatesResponse extends jspb.Message {
@@ -142,8 +142,8 @@ export class PullHealthStatesResponse extends jspb.Message {
 
 export namespace PullHealthStatesResponse {
   export type AsObject = {
-    changesList: Array<HealthStateChange.AsObject>,
-  }
+    changesList: Array<HealthStateChange.AsObject>;
+  };
 }
 
 export class HealthStateChange extends jspb.Message {
@@ -170,9 +170,9 @@ export class HealthStateChange extends jspb.Message {
 
 export namespace HealthStateChange {
   export type AsObject = {
-    name: string,
-    changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    health?: HealthState.AsObject,
-  }
+    name: string;
+    changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    health?: HealthState.AsObject;
+  };
 }
 

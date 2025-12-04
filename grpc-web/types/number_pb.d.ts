@@ -23,10 +23,10 @@ export class NumberCapping extends jspb.Message {
 
 export namespace NumberCapping {
   export type AsObject = {
-    min: InvalidNumberBehaviour,
-    step: InvalidNumberBehaviour,
-    max: InvalidNumberBehaviour,
-  }
+    min: InvalidNumberBehaviour;
+    step: InvalidNumberBehaviour;
+    max: InvalidNumberBehaviour;
+  };
 }
 
 export class Int32Bounds extends jspb.Message {
@@ -50,16 +50,16 @@ export class Int32Bounds extends jspb.Message {
 
 export namespace Int32Bounds {
   export type AsObject = {
-    min?: number,
-    max?: number,
-  }
+    min?: number;
+    max?: number;
+  };
 
-  export enum MinCase { 
+  export enum MinCase {
     _MIN_NOT_SET = 0,
     MIN = 1,
   }
 
-  export enum MaxCase { 
+  export enum MaxCase {
     _MAX_NOT_SET = 0,
     MAX = 2,
   }
@@ -95,12 +95,12 @@ export class Int32Attributes extends jspb.Message {
 
 export namespace Int32Attributes {
   export type AsObject = {
-    bounds?: Int32Bounds.AsObject,
-    step: number,
-    supportsDelta: boolean,
-    rampSupport: types_tween_pb.TweenSupport,
-    defaultCapping?: NumberCapping.AsObject,
-  }
+    bounds?: Int32Bounds.AsObject;
+    step: number;
+    supportsDelta: boolean;
+    rampSupport: types_tween_pb.TweenSupport;
+    defaultCapping?: NumberCapping.AsObject;
+  };
 }
 
 export class FloatBounds extends jspb.Message {
@@ -124,16 +124,16 @@ export class FloatBounds extends jspb.Message {
 
 export namespace FloatBounds {
   export type AsObject = {
-    min?: number,
-    max?: number,
-  }
+    min?: number;
+    max?: number;
+  };
 
-  export enum MinCase { 
+  export enum MinCase {
     _MIN_NOT_SET = 0,
     MIN = 1,
   }
 
-  export enum MaxCase { 
+  export enum MaxCase {
     _MAX_NOT_SET = 0,
     MAX = 2,
   }
@@ -169,15 +169,15 @@ export class FloatAttributes extends jspb.Message {
 
 export namespace FloatAttributes {
   export type AsObject = {
-    bounds?: FloatBounds.AsObject,
-    step: number,
-    supportsDelta: boolean,
-    rampSupport: types_tween_pb.TweenSupport,
-    defaultCapping?: NumberCapping.AsObject,
-  }
+    bounds?: FloatBounds.AsObject;
+    step: number;
+    supportsDelta: boolean;
+    rampSupport: types_tween_pb.TweenSupport;
+    defaultCapping?: NumberCapping.AsObject;
+  };
 }
 
-export enum InvalidNumberBehaviour { 
+export enum InvalidNumberBehaviour {
   INVALID_NUMBER_BEHAVIOUR_UNSPECIFIED = 0,
   RESTRICT = 1,
   ERROR = 2,

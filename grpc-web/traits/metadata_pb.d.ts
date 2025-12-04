@@ -66,18 +66,18 @@ export class Metadata extends jspb.Message {
 
 export namespace Metadata {
   export type AsObject = {
-    name: string,
-    traitsList: Array<TraitMetadata.AsObject>,
-    appearance?: Metadata.Appearance.AsObject,
-    location?: Metadata.Location.AsObject,
-    id?: Metadata.ID.AsObject,
-    product?: Metadata.Product.AsObject,
-    revision?: Metadata.Revision.AsObject,
-    installation?: Metadata.Installation.AsObject,
-    nicsList: Array<Metadata.NIC.AsObject>,
-    membership?: Metadata.Membership.AsObject,
-    moreMap: Array<[string, string]>,
-  }
+    name: string;
+    traitsList: Array<TraitMetadata.AsObject>;
+    appearance?: Metadata.Appearance.AsObject;
+    location?: Metadata.Location.AsObject;
+    id?: Metadata.ID.AsObject;
+    product?: Metadata.Product.AsObject;
+    revision?: Metadata.Revision.AsObject;
+    installation?: Metadata.Installation.AsObject;
+    nicsList: Array<Metadata.NIC.AsObject>;
+    membership?: Metadata.Membership.AsObject;
+    moreMap: Array<[string, string]>;
+  };
 
   export class Appearance extends jspb.Message {
     getTitle(): string;
@@ -99,10 +99,10 @@ export namespace Metadata {
 
   export namespace Appearance {
     export type AsObject = {
-      title: string,
-      description: string,
-      moreMap: Array<[string, string]>,
-    }
+      title: string;
+      description: string;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
@@ -135,13 +135,13 @@ export namespace Metadata {
 
   export namespace Location {
     export type AsObject = {
-      title: string,
-      description: string,
-      architectureReference: string,
-      floor: string,
-      zone: string,
-      moreMap: Array<[string, string]>,
-    }
+      title: string;
+      description: string;
+      architectureReference: string;
+      floor: string;
+      zone: string;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
@@ -168,11 +168,11 @@ export namespace Metadata {
 
   export namespace ID {
     export type AsObject = {
-      serialNumber: string,
-      bim: string,
-      bacnet: string,
-      moreMap: Array<[string, string]>,
-    }
+      serialNumber: string;
+      bim: string;
+      bacnet: string;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
@@ -213,15 +213,15 @@ export namespace Metadata {
 
   export namespace Product {
     export type AsObject = {
-      title: string,
-      manufacturer: string,
-      model: string,
-      hardwareVersion: string,
-      firmwareVersion: string,
-      softwareVersion: string,
-      kind?: Metadata.Product.Kind.AsObject,
-      moreMap: Array<[string, string]>,
-    }
+      title: string;
+      manufacturer: string;
+      model: string;
+      hardwareVersion: string;
+      firmwareVersion: string;
+      softwareVersion: string;
+      kind?: Metadata.Product.Kind.AsObject;
+      moreMap: Array<[string, string]>;
+    };
 
     export class Kind extends jspb.Message {
       getTitle(): string;
@@ -240,9 +240,9 @@ export namespace Metadata {
 
     export namespace Kind {
       export type AsObject = {
-        title: string,
-        code: string,
-      }
+        title: string;
+        code: string;
+      };
     }
 
   }
@@ -285,15 +285,15 @@ export namespace Metadata {
 
   export namespace Revision {
     export type AsObject = {
-      title: string,
-      manufactureDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      model: string,
-      hardwareVersion: string,
-      firmwareVersion: string,
-      softwareVersion: string,
-      batch: string,
-      moreMap: Array<[string, string]>,
-    }
+      title: string;
+      manufactureDate?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      model: string;
+      hardwareVersion: string;
+      firmwareVersion: string;
+      softwareVersion: string;
+      batch: string;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
@@ -332,13 +332,13 @@ export namespace Metadata {
 
   export namespace Installation {
     export type AsObject = {
-      installTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      replaceTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      installer: string,
-      labelled: boolean,
-      labelTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-      moreMap: Array<[string, string]>,
-    }
+      installTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      replaceTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      installer: string;
+      labelled: boolean;
+      labelTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 
@@ -379,17 +379,17 @@ export namespace Metadata {
 
   export namespace NIC {
     export type AsObject = {
-      displayName: string,
-      macAddress: string,
-      ip: string,
-      network: string,
-      gateway: string,
-      dnsList: Array<string>,
-      assignment: Metadata.NIC.Assignment,
-      moreMap: Array<[string, string]>,
-    }
+      displayName: string;
+      macAddress: string;
+      ip: string;
+      network: string;
+      gateway: string;
+      dnsList: Array<string>;
+      assignment: Metadata.NIC.Assignment;
+      moreMap: Array<[string, string]>;
+    };
 
-    export enum Assignment { 
+    export enum Assignment {
       ASSIGNMENT_UNSPECIFIED = 0,
       DHCP = 1,
       STATIC = 2,
@@ -417,10 +417,10 @@ export namespace Metadata {
 
   export namespace Membership {
     export type AsObject = {
-      group: string,
-      subsystem: string,
-      moreMap: Array<[string, string]>,
-    }
+      group: string;
+      subsystem: string;
+      moreMap: Array<[string, string]>;
+    };
   }
 
 }
@@ -442,9 +442,9 @@ export class TraitMetadata extends jspb.Message {
 
 export namespace TraitMetadata {
   export type AsObject = {
-    name: string,
-    moreMap: Array<[string, string]>,
-  }
+    name: string;
+    moreMap: Array<[string, string]>;
+  };
 }
 
 export class GetMetadataRequest extends jspb.Message {
@@ -466,9 +466,9 @@ export class GetMetadataRequest extends jspb.Message {
 
 export namespace GetMetadataRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+  };
 }
 
 export class PullMetadataRequest extends jspb.Message {
@@ -493,10 +493,10 @@ export class PullMetadataRequest extends jspb.Message {
 
 export namespace PullMetadataRequest {
   export type AsObject = {
-    name: string,
-    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    updatesOnly: boolean,
-  }
+    name: string;
+    readMask?: google_protobuf_field_mask_pb.FieldMask.AsObject;
+    updatesOnly: boolean;
+  };
 }
 
 export class PullMetadataResponse extends jspb.Message {
@@ -515,8 +515,8 @@ export class PullMetadataResponse extends jspb.Message {
 
 export namespace PullMetadataResponse {
   export type AsObject = {
-    changesList: Array<PullMetadataResponse.Change.AsObject>,
-  }
+    changesList: Array<PullMetadataResponse.Change.AsObject>;
+  };
 
   export class Change extends jspb.Message {
     getName(): string;
@@ -542,10 +542,10 @@ export namespace PullMetadataResponse {
 
   export namespace Change {
     export type AsObject = {
-      name: string,
-      metadata?: Metadata.AsObject,
-      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    }
+      name: string;
+      metadata?: Metadata.AsObject;
+      changeTime?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+    };
   }
 
 }
