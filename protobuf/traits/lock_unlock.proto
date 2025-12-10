@@ -11,6 +11,7 @@ option php_namespace = "Smartcore\\Traits";
 
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
+import "types/time/period.proto";
 
 // LockUnlockApi describes devices that can be locked and unlocked, and/or report a locked state.
 // The concept is encoded in the LockUnlock.position, a device may be locked, unlocked, or transitioning into one of
@@ -22,10 +23,18 @@ service LockUnlockApi {
   rpc UpdateLockUnlock(UpdateLockUnlockRequest) returns (LockUnlock);
   // Subscribe to changes in the lock position for the device.
   rpc PullLockUnlock(PullLockUnlockRequest) returns (stream PullLockUnlockResponse);
+  // Lists all lock/unlock banks and their lockable devices.
+  rpc ListLockUnlockBanks(ListLockUnlockBanksRequest) returns (ListLockUnlockBanksResponse);
 }
 
 service LockUnlockInfo {
   // todo: define LockUnlockInfo
+}
+
+// LockUnlockHistory provides access to usage history for lockable devices.
+service LockUnlockHistory {
+  // Lists the history of lock/unlock records for a given device.
+  rpc ListLockUnlockHistory(ListLockUnlockHistoryRequest) returns (ListLockUnlockHistoryResponse);
 }
 
 // LockUnlock models the possible states of a lockable device.
@@ -51,6 +60,51 @@ message LockUnlock {
   // Jammed reports whether the lock has jammed and is unable to reach it's position.
   // Output only.
   bool jammed = 2;
+  // Allocations indicates the number of active allocations against this lockable device.
+  // For example, the number of active reservations for a locker.
+  int32 allocations = 3;
+  // IsUsable reports whether the lockable device is currently usable.
+  // For example, a locker might be out of service for maintenance or is incommunicable.
+  // This is distinct from Jammed which indicates a mechanical failure to reach a position.
+  // IsUsable being false indicates the device can or should not be used even if it is not jammed.
+  optional bool is_usable = 4;
+  // LocationId is the unique identifier for the location of this lockable device native to the subsystem.
+  optional string location_id = 5;
+  // IsShared indicates whether this lockable device is shared with other users.
+  optional bool is_shared = 6;
+  // SharedToUsers lists the user identifiers of users this lockable device is shared with.
+  repeated string shared_to_users = 7;
+  // IsShareable indicates whether this lockable device can be shared with other users.
+  optional bool is_shareable = 8;
+  // SharedBy indicates the original sharer of this lockable device.
+  optional string shared_by = 9;
+  // Id is the unique identifier for this lockable device native to the subsystem.
+  string id = 10;
+  string title = 11;
+  // BankId is the lock/unlock bank identifier for this lockable device native to the subsystem.
+  string bank_id = 12;
+  // PhysicalPin is the physical pin code for this lockable device, if applicable.
+  optional string physical_pin = 13;
+  // LastUpdated is the last time this lockable device was updated.
+  google.protobuf.Timestamp last_updated = 14;
+  // ExpiresTime is the time at which this lockable device expires.
+  optional google.protobuf.Timestamp expires_time = 15;
+  // StartTime is the time at which this lockable device is made available.
+  optional google.protobuf.Timestamp start_time = 16;
+
+}
+
+// LockUnlockBank represents a collection of lockable devices.
+// For example, a locker bank with many lockers or a house with many lockable doors.
+message LockUnlockBank {
+  // The unique identifier for this lock/unlock bank native to the subsystem.
+  string id = 1;
+  // The human readable title for this lock/unlock bank.
+  string title = 2;
+  // The location identifier for this lock/unlock bank native to the subsystem.
+  string location_id = 3;
+  // The lockable devices that are part of this bank.
+  repeated LockUnlock lockables = 4;
 }
 
 message GetLockUnlockRequest {
@@ -58,6 +112,11 @@ message GetLockUnlockRequest {
   string name = 1;
   // Fields to fetch relative to the LockUnlock type
   google.protobuf.FieldMask read_mask = 2;
+  // Id is the unique identifier for the LockUnlock device native to the subsystem.
+  // The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+  // If so use this field to specify which LockUnlock device to fetch.
+  // Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be fetched.
+  optional string id = 3;
 }
 message UpdateLockUnlockRequest {
   // Name of the device to fetch the state for
@@ -66,6 +125,11 @@ message UpdateLockUnlockRequest {
   LockUnlock lock_unlock = 2;
   // Fields to fetch relative to the LockUnlock type
   google.protobuf.FieldMask update_mask = 3;
+  // Id is the unique identifier for the LockUnlock device native to the subsystem.
+  // The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+  // If so use this field to specify which LockUnlock device to update.
+  // Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be updated.
+  optional string id = 4;
 
 }
 message PullLockUnlockRequest {
@@ -76,6 +140,11 @@ message PullLockUnlockRequest {
   // When true the device will only send changes to the resource value.
   // The default behaviour is to send the current value immediately followed by any updates as they happen.
   bool updates_only = 3;
+  // Id is the unique identifier for the LockUnlock device native to the subsystem.
+  // The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+  // If so use this field to specify which LockUnlock device to subscribe to.
+  // Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be subscribed to.
+  optional string id = 4;
 }
 message PullLockUnlockResponse {
   // Changes since the last message.
@@ -89,4 +158,53 @@ message PullLockUnlockResponse {
     // The new value for the lock.
     LockUnlock lock_unlock = 3;
   }
+}
+
+message ListLockUnlockBanksRequest {
+  // Name of the device to fetch the state for
+  string name = 1;
+}
+message ListLockUnlockBanksResponse {
+  // The lock/unlock banks available.
+  repeated LockUnlockBank lock_unlock_banks = 1;
+}
+
+message ListLockUnlockHistoryRequest {
+  // Name of the device to fetch the state for.
+  // History records for every lockUnlock device under this name will potentially be returned
+  // depending on whether the name is a LockUnlock service hosting many LockUnlock banks and devices,
+  // or a direct communication to the only available LockUnlock device.
+  string name = 1;
+  smartcore.types.time.Period period = 2;
+  // Fields to fetch relative to the LockUnlockRecord type
+  google.protobuf.FieldMask read_mask = 3;
+  // The maximum number of records to return.
+  // The service may return fewer than this value.
+  // If unspecified, at most 50 items will be returned.
+  // The maximum value is 1000; values above 1000 will be coerced to 1000.
+  int32 page_size = 4;
+  // A page token, received from a previous `ListLockUnlockHistoryResponse` call.
+  // Provide this to retrieve the subsequent page.
+  string page_token = 5;
+  // Specify the order of the returned records.
+  // The default is `record_time asc` - aka oldest record first.
+  // The format is `field_name [asc|desc]`, with asc being the default.
+  // Only `record_time` is supported.
+  string order_by = 6;
+}
+
+message LockUnlockRecord {
+  LockUnlock lock_unlock = 1;
+  google.protobuf.Timestamp record_time = 2;
+}
+
+message ListLockUnlockHistoryResponse {
+  repeated LockUnlockRecord lock_unlock_records = 1;
+  // A token to retrieve the next page of results.
+  // Pass this value in the `page_token` field of a subsequent `ListLockUnlockHistoryRequest` to retrieve the next page.
+  // If this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
+  // If non-zero this is the total number of records matched by the query.
+  // This may be an estimate.
+  int32 total_size = 3;
 }

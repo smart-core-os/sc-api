@@ -23,6 +23,8 @@ grpc.web = require('grpc-web');
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js')
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
+var types_time_period_pb = require('../types/time/period_pb.js')
 const proto = {};
 proto.smartcore = {};
 proto.smartcore.traits = require('./lock_unlock_pb.js');
@@ -258,6 +260,67 @@ proto.smartcore.traits.LockUnlockApiPromiseClient.prototype.pullLockUnlock =
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.ListLockUnlockBanksRequest,
+ *   !proto.smartcore.traits.ListLockUnlockBanksResponse>}
+ */
+const methodDescriptor_LockUnlockApi_ListLockUnlockBanks = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LockUnlockApi/ListLockUnlockBanks',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.ListLockUnlockBanksRequest,
+  proto.smartcore.traits.ListLockUnlockBanksResponse,
+  /**
+   * @param {!proto.smartcore.traits.ListLockUnlockBanksRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ListLockUnlockBanksResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.ListLockUnlockBanksRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListLockUnlockBanksResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListLockUnlockBanksResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.LockUnlockApiClient.prototype.listLockUnlockBanks =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.LockUnlockApi/ListLockUnlockBanks',
+      request,
+      metadata || {},
+      methodDescriptor_LockUnlockApi_ListLockUnlockBanks,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.ListLockUnlockBanksRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ListLockUnlockBanksResponse>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.LockUnlockApiPromiseClient.prototype.listLockUnlockBanks =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.LockUnlockApi/ListLockUnlockBanks',
+      request,
+      metadata || {},
+      methodDescriptor_LockUnlockApi_ListLockUnlockBanks);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?grpc.web.ClientOptions} options
@@ -306,6 +369,119 @@ proto.smartcore.traits.LockUnlockInfoPromiseClient =
    */
   this.hostname_ = hostname.replace(/\/+$/, '');
 
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.LockUnlockHistoryClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?grpc.web.ClientOptions} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.smartcore.traits.LockUnlockHistoryPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options.format = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname.replace(/\/+$/, '');
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.smartcore.traits.ListLockUnlockHistoryRequest,
+ *   !proto.smartcore.traits.ListLockUnlockHistoryResponse>}
+ */
+const methodDescriptor_LockUnlockHistory_ListLockUnlockHistory = new grpc.web.MethodDescriptor(
+  '/smartcore.traits.LockUnlockHistory/ListLockUnlockHistory',
+  grpc.web.MethodType.UNARY,
+  proto.smartcore.traits.ListLockUnlockHistoryRequest,
+  proto.smartcore.traits.ListLockUnlockHistoryResponse,
+  /**
+   * @param {!proto.smartcore.traits.ListLockUnlockHistoryRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.smartcore.traits.ListLockUnlockHistoryResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.smartcore.traits.ListLockUnlockHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.smartcore.traits.ListLockUnlockHistoryResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.smartcore.traits.ListLockUnlockHistoryResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.smartcore.traits.LockUnlockHistoryClient.prototype.listLockUnlockHistory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/smartcore.traits.LockUnlockHistory/ListLockUnlockHistory',
+      request,
+      metadata || {},
+      methodDescriptor_LockUnlockHistory_ListLockUnlockHistory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.smartcore.traits.ListLockUnlockHistoryRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.smartcore.traits.ListLockUnlockHistoryResponse>}
+ *     Promise that resolves to the response
+ */
+proto.smartcore.traits.LockUnlockHistoryPromiseClient.prototype.listLockUnlockHistory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/smartcore.traits.LockUnlockHistory/ListLockUnlockHistory',
+      request,
+      metadata || {},
+      methodDescriptor_LockUnlockHistory_ListLockUnlockHistory);
 };
 
 

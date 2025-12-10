@@ -7,6 +7,7 @@
 package traits
 
 import (
+	time "github.com/smart-core-os/sc-api/go/types/time"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
@@ -94,7 +95,38 @@ type LockUnlock struct {
 	Position LockUnlock_Position `protobuf:"varint,1,opt,name=position,proto3,enum=smartcore.traits.LockUnlock_Position" json:"position,omitempty"`
 	// Jammed reports whether the lock has jammed and is unable to reach it's position.
 	// Output only.
-	Jammed        bool `protobuf:"varint,2,opt,name=jammed,proto3" json:"jammed,omitempty"`
+	Jammed bool `protobuf:"varint,2,opt,name=jammed,proto3" json:"jammed,omitempty"`
+	// Allocations indicates the number of active allocations against this lockable device.
+	// For example, the number of active reservations for a locker.
+	Allocations int32 `protobuf:"varint,3,opt,name=allocations,proto3" json:"allocations,omitempty"`
+	// IsUsable reports whether the lockable device is currently usable.
+	// For example, a locker might be out of service for maintenance or is incommunicable.
+	// This is distinct from Jammed which indicates a mechanical failure to reach a position.
+	// IsUsable being false indicates the device can or should not be used even if it is not jammed.
+	IsUsable *bool `protobuf:"varint,4,opt,name=is_usable,json=isUsable,proto3,oneof" json:"is_usable,omitempty"`
+	// LocationId is the unique identifier for the location of this lockable device native to the subsystem.
+	LocationId *string `protobuf:"bytes,5,opt,name=location_id,json=locationId,proto3,oneof" json:"location_id,omitempty"`
+	// IsShared indicates whether this lockable device is shared with other users.
+	IsShared *bool `protobuf:"varint,6,opt,name=is_shared,json=isShared,proto3,oneof" json:"is_shared,omitempty"`
+	// SharedToUsers lists the user identifiers of users this lockable device is shared with.
+	SharedToUsers []string `protobuf:"bytes,7,rep,name=shared_to_users,json=sharedToUsers,proto3" json:"shared_to_users,omitempty"`
+	// IsShareable indicates whether this lockable device can be shared with other users.
+	IsShareable *bool `protobuf:"varint,8,opt,name=is_shareable,json=isShareable,proto3,oneof" json:"is_shareable,omitempty"`
+	// SharedBy indicates the original sharer of this lockable device.
+	SharedBy *string `protobuf:"bytes,9,opt,name=shared_by,json=sharedBy,proto3,oneof" json:"shared_by,omitempty"`
+	// Id is the unique identifier for this lockable device native to the subsystem.
+	Id    string `protobuf:"bytes,10,opt,name=id,proto3" json:"id,omitempty"`
+	Title string `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
+	// BankId is the lock/unlock bank identifier for this lockable device native to the subsystem.
+	BankId string `protobuf:"bytes,12,opt,name=bank_id,json=bankId,proto3" json:"bank_id,omitempty"`
+	// PhysicalPin is the physical pin code for this lockable device, if applicable.
+	PhysicalPin *string `protobuf:"bytes,13,opt,name=physical_pin,json=physicalPin,proto3,oneof" json:"physical_pin,omitempty"`
+	// LastUpdated is the last time this lockable device was updated.
+	LastUpdated *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=last_updated,json=lastUpdated,proto3" json:"last_updated,omitempty"`
+	// ExpiresTime is the time at which this lockable device expires.
+	ExpiresTime *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=expires_time,json=expiresTime,proto3,oneof" json:"expires_time,omitempty"`
+	// StartTime is the time at which this lockable device is made available.
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=start_time,json=startTime,proto3,oneof" json:"start_time,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -143,19 +175,196 @@ func (x *LockUnlock) GetJammed() bool {
 	return false
 }
 
+func (x *LockUnlock) GetAllocations() int32 {
+	if x != nil {
+		return x.Allocations
+	}
+	return 0
+}
+
+func (x *LockUnlock) GetIsUsable() bool {
+	if x != nil && x.IsUsable != nil {
+		return *x.IsUsable
+	}
+	return false
+}
+
+func (x *LockUnlock) GetLocationId() string {
+	if x != nil && x.LocationId != nil {
+		return *x.LocationId
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetIsShared() bool {
+	if x != nil && x.IsShared != nil {
+		return *x.IsShared
+	}
+	return false
+}
+
+func (x *LockUnlock) GetSharedToUsers() []string {
+	if x != nil {
+		return x.SharedToUsers
+	}
+	return nil
+}
+
+func (x *LockUnlock) GetIsShareable() bool {
+	if x != nil && x.IsShareable != nil {
+		return *x.IsShareable
+	}
+	return false
+}
+
+func (x *LockUnlock) GetSharedBy() string {
+	if x != nil && x.SharedBy != nil {
+		return *x.SharedBy
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetBankId() string {
+	if x != nil {
+		return x.BankId
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetPhysicalPin() string {
+	if x != nil && x.PhysicalPin != nil {
+		return *x.PhysicalPin
+	}
+	return ""
+}
+
+func (x *LockUnlock) GetLastUpdated() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastUpdated
+	}
+	return nil
+}
+
+func (x *LockUnlock) GetExpiresTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresTime
+	}
+	return nil
+}
+
+func (x *LockUnlock) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
+	}
+	return nil
+}
+
+// LockUnlockBank represents a collection of lockable devices.
+// For example, a locker bank with many lockers or a house with many lockable doors.
+type LockUnlockBank struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The unique identifier for this lock/unlock bank native to the subsystem.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// The human readable title for this lock/unlock bank.
+	Title string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	// The location identifier for this lock/unlock bank native to the subsystem.
+	LocationId string `protobuf:"bytes,3,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
+	// The lockable devices that are part of this bank.
+	Lockables     []*LockUnlock `protobuf:"bytes,4,rep,name=lockables,proto3" json:"lockables,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LockUnlockBank) Reset() {
+	*x = LockUnlockBank{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LockUnlockBank) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LockUnlockBank) ProtoMessage() {}
+
+func (x *LockUnlockBank) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LockUnlockBank.ProtoReflect.Descriptor instead.
+func (*LockUnlockBank) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *LockUnlockBank) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *LockUnlockBank) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *LockUnlockBank) GetLocationId() string {
+	if x != nil {
+		return x.LocationId
+	}
+	return ""
+}
+
+func (x *LockUnlockBank) GetLockables() []*LockUnlock {
+	if x != nil {
+		return x.Lockables
+	}
+	return nil
+}
+
 type GetLockUnlockRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Name of the device to fetch the state for
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Fields to fetch relative to the LockUnlock type
-	ReadMask      *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	// Id is the unique identifier for the LockUnlock device native to the subsystem.
+	// The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+	// If so use this field to specify which LockUnlock device to fetch.
+	// Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be fetched.
+	Id            *string `protobuf:"bytes,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetLockUnlockRequest) Reset() {
 	*x = GetLockUnlockRequest{}
-	mi := &file_traits_lock_unlock_proto_msgTypes[1]
+	mi := &file_traits_lock_unlock_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -167,7 +376,7 @@ func (x *GetLockUnlockRequest) String() string {
 func (*GetLockUnlockRequest) ProtoMessage() {}
 
 func (x *GetLockUnlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_lock_unlock_proto_msgTypes[1]
+	mi := &file_traits_lock_unlock_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -180,7 +389,7 @@ func (x *GetLockUnlockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetLockUnlockRequest.ProtoReflect.Descriptor instead.
 func (*GetLockUnlockRequest) Descriptor() ([]byte, []int) {
-	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{1}
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetLockUnlockRequest) GetName() string {
@@ -197,6 +406,13 @@ func (x *GetLockUnlockRequest) GetReadMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
+func (x *GetLockUnlockRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
 type UpdateLockUnlockRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Name of the device to fetch the state for
@@ -204,14 +420,19 @@ type UpdateLockUnlockRequest struct {
 	// The new value
 	LockUnlock *LockUnlock `protobuf:"bytes,2,opt,name=lock_unlock,json=lockUnlock,proto3" json:"lock_unlock,omitempty"`
 	// Fields to fetch relative to the LockUnlock type
-	UpdateMask    *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// Id is the unique identifier for the LockUnlock device native to the subsystem.
+	// The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+	// If so use this field to specify which LockUnlock device to update.
+	// Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be updated.
+	Id            *string `protobuf:"bytes,4,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateLockUnlockRequest) Reset() {
 	*x = UpdateLockUnlockRequest{}
-	mi := &file_traits_lock_unlock_proto_msgTypes[2]
+	mi := &file_traits_lock_unlock_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -223,7 +444,7 @@ func (x *UpdateLockUnlockRequest) String() string {
 func (*UpdateLockUnlockRequest) ProtoMessage() {}
 
 func (x *UpdateLockUnlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_lock_unlock_proto_msgTypes[2]
+	mi := &file_traits_lock_unlock_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -236,7 +457,7 @@ func (x *UpdateLockUnlockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLockUnlockRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLockUnlockRequest) Descriptor() ([]byte, []int) {
-	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{2}
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UpdateLockUnlockRequest) GetName() string {
@@ -260,6 +481,13 @@ func (x *UpdateLockUnlockRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
+func (x *UpdateLockUnlockRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
 type PullLockUnlockRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Name of the device to fetch the state for
@@ -268,14 +496,19 @@ type PullLockUnlockRequest struct {
 	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
 	// When true the device will only send changes to the resource value.
 	// The default behaviour is to send the current value immediately followed by any updates as they happen.
-	UpdatesOnly   bool `protobuf:"varint,3,opt,name=updates_only,json=updatesOnly,proto3" json:"updates_only,omitempty"`
+	UpdatesOnly bool `protobuf:"varint,3,opt,name=updates_only,json=updatesOnly,proto3" json:"updates_only,omitempty"`
+	// Id is the unique identifier for the LockUnlock device native to the subsystem.
+	// The reason for this is the name field may be a LockUnlock service hosting many LockUnlock banks and devices.
+	// If so use this field to specify which LockUnlock device to subscribe to.
+	// Otherwise, it is assumed there is only one (direct) communication to the only available LockUnlock device and it will be subscribed to.
+	Id            *string `protobuf:"bytes,4,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PullLockUnlockRequest) Reset() {
 	*x = PullLockUnlockRequest{}
-	mi := &file_traits_lock_unlock_proto_msgTypes[3]
+	mi := &file_traits_lock_unlock_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -287,7 +520,7 @@ func (x *PullLockUnlockRequest) String() string {
 func (*PullLockUnlockRequest) ProtoMessage() {}
 
 func (x *PullLockUnlockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_lock_unlock_proto_msgTypes[3]
+	mi := &file_traits_lock_unlock_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -300,7 +533,7 @@ func (x *PullLockUnlockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullLockUnlockRequest.ProtoReflect.Descriptor instead.
 func (*PullLockUnlockRequest) Descriptor() ([]byte, []int) {
-	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{3}
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PullLockUnlockRequest) GetName() string {
@@ -324,6 +557,13 @@ func (x *PullLockUnlockRequest) GetUpdatesOnly() bool {
 	return false
 }
 
+func (x *PullLockUnlockRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
 type PullLockUnlockResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Changes since the last message.
@@ -334,7 +574,7 @@ type PullLockUnlockResponse struct {
 
 func (x *PullLockUnlockResponse) Reset() {
 	*x = PullLockUnlockResponse{}
-	mi := &file_traits_lock_unlock_proto_msgTypes[4]
+	mi := &file_traits_lock_unlock_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -346,7 +586,7 @@ func (x *PullLockUnlockResponse) String() string {
 func (*PullLockUnlockResponse) ProtoMessage() {}
 
 func (x *PullLockUnlockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_lock_unlock_proto_msgTypes[4]
+	mi := &file_traits_lock_unlock_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -359,7 +599,7 @@ func (x *PullLockUnlockResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullLockUnlockResponse.ProtoReflect.Descriptor instead.
 func (*PullLockUnlockResponse) Descriptor() ([]byte, []int) {
-	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{4}
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PullLockUnlockResponse) GetChanges() []*PullLockUnlockResponse_Change {
@@ -367,6 +607,312 @@ func (x *PullLockUnlockResponse) GetChanges() []*PullLockUnlockResponse_Change {
 		return x.Changes
 	}
 	return nil
+}
+
+type ListLockUnlockBanksRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the device to fetch the state for
+	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLockUnlockBanksRequest) Reset() {
+	*x = ListLockUnlockBanksRequest{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLockUnlockBanksRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLockUnlockBanksRequest) ProtoMessage() {}
+
+func (x *ListLockUnlockBanksRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLockUnlockBanksRequest.ProtoReflect.Descriptor instead.
+func (*ListLockUnlockBanksRequest) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListLockUnlockBanksRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type ListLockUnlockBanksResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The lock/unlock banks available.
+	LockUnlockBanks []*LockUnlockBank `protobuf:"bytes,1,rep,name=lock_unlock_banks,json=lockUnlockBanks,proto3" json:"lock_unlock_banks,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ListLockUnlockBanksResponse) Reset() {
+	*x = ListLockUnlockBanksResponse{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLockUnlockBanksResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLockUnlockBanksResponse) ProtoMessage() {}
+
+func (x *ListLockUnlockBanksResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLockUnlockBanksResponse.ProtoReflect.Descriptor instead.
+func (*ListLockUnlockBanksResponse) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListLockUnlockBanksResponse) GetLockUnlockBanks() []*LockUnlockBank {
+	if x != nil {
+		return x.LockUnlockBanks
+	}
+	return nil
+}
+
+type ListLockUnlockHistoryRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the device to fetch the state for.
+	// History records for every lockUnlock device under this name will potentially be returned
+	// depending on whether the name is a LockUnlock service hosting many LockUnlock banks and devices,
+	// or a direct communication to the only available LockUnlock device.
+	Name   string       `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Period *time.Period `protobuf:"bytes,2,opt,name=period,proto3" json:"period,omitempty"`
+	// Fields to fetch relative to the LockUnlockRecord type
+	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	// The maximum number of records to return.
+	// The service may return fewer than this value.
+	// If unspecified, at most 50 items will be returned.
+	// The maximum value is 1000; values above 1000 will be coerced to 1000.
+	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// A page token, received from a previous `ListLockUnlockHistoryResponse` call.
+	// Provide this to retrieve the subsequent page.
+	PageToken string `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	// Specify the order of the returned records.
+	// The default is `record_time asc` - aka oldest record first.
+	// The format is `field_name [asc|desc]`, with asc being the default.
+	// Only `record_time` is supported.
+	OrderBy       string `protobuf:"bytes,6,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLockUnlockHistoryRequest) Reset() {
+	*x = ListLockUnlockHistoryRequest{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLockUnlockHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLockUnlockHistoryRequest) ProtoMessage() {}
+
+func (x *ListLockUnlockHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLockUnlockHistoryRequest.ProtoReflect.Descriptor instead.
+func (*ListLockUnlockHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListLockUnlockHistoryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ListLockUnlockHistoryRequest) GetPeriod() *time.Period {
+	if x != nil {
+		return x.Period
+	}
+	return nil
+}
+
+func (x *ListLockUnlockHistoryRequest) GetReadMask() *fieldmaskpb.FieldMask {
+	if x != nil {
+		return x.ReadMask
+	}
+	return nil
+}
+
+func (x *ListLockUnlockHistoryRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLockUnlockHistoryRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+func (x *ListLockUnlockHistoryRequest) GetOrderBy() string {
+	if x != nil {
+		return x.OrderBy
+	}
+	return ""
+}
+
+type LockUnlockRecord struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	LockUnlock    *LockUnlock            `protobuf:"bytes,1,opt,name=lock_unlock,json=lockUnlock,proto3" json:"lock_unlock,omitempty"`
+	RecordTime    *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=record_time,json=recordTime,proto3" json:"record_time,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LockUnlockRecord) Reset() {
+	*x = LockUnlockRecord{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LockUnlockRecord) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LockUnlockRecord) ProtoMessage() {}
+
+func (x *LockUnlockRecord) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LockUnlockRecord.ProtoReflect.Descriptor instead.
+func (*LockUnlockRecord) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *LockUnlockRecord) GetLockUnlock() *LockUnlock {
+	if x != nil {
+		return x.LockUnlock
+	}
+	return nil
+}
+
+func (x *LockUnlockRecord) GetRecordTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.RecordTime
+	}
+	return nil
+}
+
+type ListLockUnlockHistoryResponse struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	LockUnlockRecords []*LockUnlockRecord    `protobuf:"bytes,1,rep,name=lock_unlock_records,json=lockUnlockRecords,proto3" json:"lock_unlock_records,omitempty"`
+	// A token to retrieve the next page of results.
+	// Pass this value in the `page_token` field of a subsequent `ListLockUnlockHistoryRequest` to retrieve the next page.
+	// If this field is omitted, there are no subsequent pages.
+	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	// If non-zero this is the total number of records matched by the query.
+	// This may be an estimate.
+	TotalSize     int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLockUnlockHistoryResponse) Reset() {
+	*x = ListLockUnlockHistoryResponse{}
+	mi := &file_traits_lock_unlock_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLockUnlockHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLockUnlockHistoryResponse) ProtoMessage() {}
+
+func (x *ListLockUnlockHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_traits_lock_unlock_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLockUnlockHistoryResponse.ProtoReflect.Descriptor instead.
+func (*ListLockUnlockHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListLockUnlockHistoryResponse) GetLockUnlockRecords() []*LockUnlockRecord {
+	if x != nil {
+		return x.LockUnlockRecords
+	}
+	return nil
+}
+
+func (x *ListLockUnlockHistoryResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+func (x *ListLockUnlockHistoryResponse) GetTotalSize() int32 {
+	if x != nil {
+		return x.TotalSize
+	}
+	return 0
 }
 
 type PullLockUnlockResponse_Change struct {
@@ -383,7 +929,7 @@ type PullLockUnlockResponse_Change struct {
 
 func (x *PullLockUnlockResponse_Change) Reset() {
 	*x = PullLockUnlockResponse_Change{}
-	mi := &file_traits_lock_unlock_proto_msgTypes[5]
+	mi := &file_traits_lock_unlock_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -395,7 +941,7 @@ func (x *PullLockUnlockResponse_Change) String() string {
 func (*PullLockUnlockResponse_Change) ProtoMessage() {}
 
 func (x *PullLockUnlockResponse_Change) ProtoReflect() protoreflect.Message {
-	mi := &file_traits_lock_unlock_proto_msgTypes[5]
+	mi := &file_traits_lock_unlock_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -408,7 +954,7 @@ func (x *PullLockUnlockResponse_Change) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PullLockUnlockResponse_Change.ProtoReflect.Descriptor instead.
 func (*PullLockUnlockResponse_Change) Descriptor() ([]byte, []int) {
-	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{4, 0}
+	return file_traits_lock_unlock_proto_rawDescGZIP(), []int{5, 0}
 }
 
 func (x *PullLockUnlockResponse_Change) GetName() string {
@@ -436,31 +982,71 @@ var File_traits_lock_unlock_proto protoreflect.FileDescriptor
 
 const file_traits_lock_unlock_proto_rawDesc = "" +
 	"\n" +
-	"\x18traits/lock_unlock.proto\x12\x10smartcore.traits\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x01\n" +
+	"\x18traits/lock_unlock.proto\x12\x10smartcore.traits\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17types/time/period.proto\"\xe7\x06\n" +
 	"\n" +
 	"LockUnlock\x12A\n" +
 	"\bposition\x18\x01 \x01(\x0e2%.smartcore.traits.LockUnlock.PositionR\bposition\x12\x16\n" +
-	"\x06jammed\x18\x02 \x01(\bR\x06jammed\"Z\n" +
+	"\x06jammed\x18\x02 \x01(\bR\x06jammed\x12 \n" +
+	"\vallocations\x18\x03 \x01(\x05R\vallocations\x12 \n" +
+	"\tis_usable\x18\x04 \x01(\bH\x00R\bisUsable\x88\x01\x01\x12$\n" +
+	"\vlocation_id\x18\x05 \x01(\tH\x01R\n" +
+	"locationId\x88\x01\x01\x12 \n" +
+	"\tis_shared\x18\x06 \x01(\bH\x02R\bisShared\x88\x01\x01\x12&\n" +
+	"\x0fshared_to_users\x18\a \x03(\tR\rsharedToUsers\x12&\n" +
+	"\fis_shareable\x18\b \x01(\bH\x03R\visShareable\x88\x01\x01\x12 \n" +
+	"\tshared_by\x18\t \x01(\tH\x04R\bsharedBy\x88\x01\x01\x12\x0e\n" +
+	"\x02id\x18\n" +
+	" \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\v \x01(\tR\x05title\x12\x17\n" +
+	"\abank_id\x18\f \x01(\tR\x06bankId\x12&\n" +
+	"\fphysical_pin\x18\r \x01(\tH\x05R\vphysicalPin\x88\x01\x01\x12=\n" +
+	"\flast_updated\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\vlastUpdated\x12B\n" +
+	"\fexpires_time\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampH\x06R\vexpiresTime\x88\x01\x01\x12>\n" +
+	"\n" +
+	"start_time\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampH\aR\tstartTime\x88\x01\x01\"Z\n" +
 	"\bPosition\x12\x18\n" +
 	"\x14POSITION_UNSPECIFIED\x10\x00\x12\n" +
 	"\n" +
 	"\x06LOCKED\x10\x01\x12\f\n" +
 	"\bUNLOCKED\x10\x02\x12\v\n" +
 	"\aLOCKING\x10\x03\x12\r\n" +
-	"\tUNLOCKING\x10\x04\"c\n" +
+	"\tUNLOCKING\x10\x04B\f\n" +
+	"\n" +
+	"_is_usableB\x0e\n" +
+	"\f_location_idB\f\n" +
+	"\n" +
+	"_is_sharedB\x0f\n" +
+	"\r_is_shareableB\f\n" +
+	"\n" +
+	"_shared_byB\x0f\n" +
+	"\r_physical_pinB\x0f\n" +
+	"\r_expires_timeB\r\n" +
+	"\v_start_time\"\x93\x01\n" +
+	"\x0eLockUnlockBank\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1f\n" +
+	"\vlocation_id\x18\x03 \x01(\tR\n" +
+	"locationId\x12:\n" +
+	"\tlockables\x18\x04 \x03(\v2\x1c.smartcore.traits.LockUnlockR\tlockables\"\x7f\n" +
 	"\x14GetLockUnlockRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
-	"\tread_mask\x18\x02 \x01(\v2\x1a.google.protobuf.FieldMaskR\breadMask\"\xa9\x01\n" +
+	"\tread_mask\x18\x02 \x01(\v2\x1a.google.protobuf.FieldMaskR\breadMask\x12\x13\n" +
+	"\x02id\x18\x03 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\xc5\x01\n" +
 	"\x17UpdateLockUnlockRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12=\n" +
 	"\vlock_unlock\x18\x02 \x01(\v2\x1c.smartcore.traits.LockUnlockR\n" +
 	"lockUnlock\x12;\n" +
 	"\vupdate_mask\x18\x03 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
-	"updateMask\"\x87\x01\n" +
+	"updateMask\x12\x13\n" +
+	"\x02id\x18\x04 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\xa3\x01\n" +
 	"\x15PullLockUnlockRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
 	"\tread_mask\x18\x02 \x01(\v2\x1a.google.protobuf.FieldMaskR\breadMask\x12!\n" +
-	"\fupdates_only\x18\x03 \x01(\bR\vupdatesOnly\"\xfe\x01\n" +
+	"\fupdates_only\x18\x03 \x01(\bR\vupdatesOnly\x12\x13\n" +
+	"\x02id\x18\x04 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\xfe\x01\n" +
 	"\x16PullLockUnlockResponse\x12I\n" +
 	"\achanges\x18\x01 \x03(\v2/.smartcore.traits.PullLockUnlockResponse.ChangeR\achanges\x1a\x98\x01\n" +
 	"\x06Change\x12\x12\n" +
@@ -468,12 +1054,37 @@ const file_traits_lock_unlock_proto_rawDesc = "" +
 	"\vchange_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"changeTime\x12=\n" +
 	"\vlock_unlock\x18\x03 \x01(\v2\x1c.smartcore.traits.LockUnlockR\n" +
-	"lockUnlock2\xaa\x02\n" +
+	"lockUnlock\"0\n" +
+	"\x1aListLockUnlockBanksRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"k\n" +
+	"\x1bListLockUnlockBanksResponse\x12L\n" +
+	"\x11lock_unlock_banks\x18\x01 \x03(\v2 .smartcore.traits.LockUnlockBankR\x0flockUnlockBanks\"\xf8\x01\n" +
+	"\x1cListLockUnlockHistoryRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x124\n" +
+	"\x06period\x18\x02 \x01(\v2\x1c.smartcore.types.time.PeriodR\x06period\x127\n" +
+	"\tread_mask\x18\x03 \x01(\v2\x1a.google.protobuf.FieldMaskR\breadMask\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x05 \x01(\tR\tpageToken\x12\x19\n" +
+	"\border_by\x18\x06 \x01(\tR\aorderBy\"\x8e\x01\n" +
+	"\x10LockUnlockRecord\x12=\n" +
+	"\vlock_unlock\x18\x01 \x01(\v2\x1c.smartcore.traits.LockUnlockR\n" +
+	"lockUnlock\x12;\n" +
+	"\vrecord_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"recordTime\"\xba\x01\n" +
+	"\x1dListLockUnlockHistoryResponse\x12R\n" +
+	"\x13lock_unlock_records\x18\x01 \x03(\v2\".smartcore.traits.LockUnlockRecordR\x11lockUnlockRecords\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\x12\x1d\n" +
+	"\n" +
+	"total_size\x18\x03 \x01(\x05R\ttotalSize2\x9e\x03\n" +
 	"\rLockUnlockApi\x12U\n" +
 	"\rGetLockUnlock\x12&.smartcore.traits.GetLockUnlockRequest\x1a\x1c.smartcore.traits.LockUnlock\x12[\n" +
 	"\x10UpdateLockUnlock\x12).smartcore.traits.UpdateLockUnlockRequest\x1a\x1c.smartcore.traits.LockUnlock\x12e\n" +
-	"\x0ePullLockUnlock\x12'.smartcore.traits.PullLockUnlockRequest\x1a(.smartcore.traits.PullLockUnlockResponse0\x012\x10\n" +
-	"\x0eLockUnlockInfoBz\n" +
+	"\x0ePullLockUnlock\x12'.smartcore.traits.PullLockUnlockRequest\x1a(.smartcore.traits.PullLockUnlockResponse0\x01\x12r\n" +
+	"\x13ListLockUnlockBanks\x12,.smartcore.traits.ListLockUnlockBanksRequest\x1a-.smartcore.traits.ListLockUnlockBanksResponse2\x10\n" +
+	"\x0eLockUnlockInfo2\x8d\x01\n" +
+	"\x11LockUnlockHistory\x12x\n" +
+	"\x15ListLockUnlockHistory\x12..smartcore.traits.ListLockUnlockHistoryRequest\x1a/.smartcore.traits.ListLockUnlockHistoryResponseBz\n" +
 	"\x14dev.smartcore.traitsB\x0fLockUnlockProtoP\x01Z)github.com/smart-core-os/sc-api/go/traits\xaa\x02\x10Smartcore.Traits\xca\x02\x10Smartcore\\Traitsb\x06proto3"
 
 var (
@@ -489,38 +1100,59 @@ func file_traits_lock_unlock_proto_rawDescGZIP() []byte {
 }
 
 var file_traits_lock_unlock_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_traits_lock_unlock_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_traits_lock_unlock_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_traits_lock_unlock_proto_goTypes = []any{
 	(LockUnlock_Position)(0),              // 0: smartcore.traits.LockUnlock.Position
 	(*LockUnlock)(nil),                    // 1: smartcore.traits.LockUnlock
-	(*GetLockUnlockRequest)(nil),          // 2: smartcore.traits.GetLockUnlockRequest
-	(*UpdateLockUnlockRequest)(nil),       // 3: smartcore.traits.UpdateLockUnlockRequest
-	(*PullLockUnlockRequest)(nil),         // 4: smartcore.traits.PullLockUnlockRequest
-	(*PullLockUnlockResponse)(nil),        // 5: smartcore.traits.PullLockUnlockResponse
-	(*PullLockUnlockResponse_Change)(nil), // 6: smartcore.traits.PullLockUnlockResponse.Change
-	(*fieldmaskpb.FieldMask)(nil),         // 7: google.protobuf.FieldMask
-	(*timestamppb.Timestamp)(nil),         // 8: google.protobuf.Timestamp
+	(*LockUnlockBank)(nil),                // 2: smartcore.traits.LockUnlockBank
+	(*GetLockUnlockRequest)(nil),          // 3: smartcore.traits.GetLockUnlockRequest
+	(*UpdateLockUnlockRequest)(nil),       // 4: smartcore.traits.UpdateLockUnlockRequest
+	(*PullLockUnlockRequest)(nil),         // 5: smartcore.traits.PullLockUnlockRequest
+	(*PullLockUnlockResponse)(nil),        // 6: smartcore.traits.PullLockUnlockResponse
+	(*ListLockUnlockBanksRequest)(nil),    // 7: smartcore.traits.ListLockUnlockBanksRequest
+	(*ListLockUnlockBanksResponse)(nil),   // 8: smartcore.traits.ListLockUnlockBanksResponse
+	(*ListLockUnlockHistoryRequest)(nil),  // 9: smartcore.traits.ListLockUnlockHistoryRequest
+	(*LockUnlockRecord)(nil),              // 10: smartcore.traits.LockUnlockRecord
+	(*ListLockUnlockHistoryResponse)(nil), // 11: smartcore.traits.ListLockUnlockHistoryResponse
+	(*PullLockUnlockResponse_Change)(nil), // 12: smartcore.traits.PullLockUnlockResponse.Change
+	(*timestamppb.Timestamp)(nil),         // 13: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),         // 14: google.protobuf.FieldMask
+	(*time.Period)(nil),                   // 15: smartcore.types.time.Period
 }
 var file_traits_lock_unlock_proto_depIdxs = []int32{
 	0,  // 0: smartcore.traits.LockUnlock.position:type_name -> smartcore.traits.LockUnlock.Position
-	7,  // 1: smartcore.traits.GetLockUnlockRequest.read_mask:type_name -> google.protobuf.FieldMask
-	1,  // 2: smartcore.traits.UpdateLockUnlockRequest.lock_unlock:type_name -> smartcore.traits.LockUnlock
-	7,  // 3: smartcore.traits.UpdateLockUnlockRequest.update_mask:type_name -> google.protobuf.FieldMask
-	7,  // 4: smartcore.traits.PullLockUnlockRequest.read_mask:type_name -> google.protobuf.FieldMask
-	6,  // 5: smartcore.traits.PullLockUnlockResponse.changes:type_name -> smartcore.traits.PullLockUnlockResponse.Change
-	8,  // 6: smartcore.traits.PullLockUnlockResponse.Change.change_time:type_name -> google.protobuf.Timestamp
-	1,  // 7: smartcore.traits.PullLockUnlockResponse.Change.lock_unlock:type_name -> smartcore.traits.LockUnlock
-	2,  // 8: smartcore.traits.LockUnlockApi.GetLockUnlock:input_type -> smartcore.traits.GetLockUnlockRequest
-	3,  // 9: smartcore.traits.LockUnlockApi.UpdateLockUnlock:input_type -> smartcore.traits.UpdateLockUnlockRequest
-	4,  // 10: smartcore.traits.LockUnlockApi.PullLockUnlock:input_type -> smartcore.traits.PullLockUnlockRequest
-	1,  // 11: smartcore.traits.LockUnlockApi.GetLockUnlock:output_type -> smartcore.traits.LockUnlock
-	1,  // 12: smartcore.traits.LockUnlockApi.UpdateLockUnlock:output_type -> smartcore.traits.LockUnlock
-	5,  // 13: smartcore.traits.LockUnlockApi.PullLockUnlock:output_type -> smartcore.traits.PullLockUnlockResponse
-	11, // [11:14] is the sub-list for method output_type
-	8,  // [8:11] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	13, // 1: smartcore.traits.LockUnlock.last_updated:type_name -> google.protobuf.Timestamp
+	13, // 2: smartcore.traits.LockUnlock.expires_time:type_name -> google.protobuf.Timestamp
+	13, // 3: smartcore.traits.LockUnlock.start_time:type_name -> google.protobuf.Timestamp
+	1,  // 4: smartcore.traits.LockUnlockBank.lockables:type_name -> smartcore.traits.LockUnlock
+	14, // 5: smartcore.traits.GetLockUnlockRequest.read_mask:type_name -> google.protobuf.FieldMask
+	1,  // 6: smartcore.traits.UpdateLockUnlockRequest.lock_unlock:type_name -> smartcore.traits.LockUnlock
+	14, // 7: smartcore.traits.UpdateLockUnlockRequest.update_mask:type_name -> google.protobuf.FieldMask
+	14, // 8: smartcore.traits.PullLockUnlockRequest.read_mask:type_name -> google.protobuf.FieldMask
+	12, // 9: smartcore.traits.PullLockUnlockResponse.changes:type_name -> smartcore.traits.PullLockUnlockResponse.Change
+	2,  // 10: smartcore.traits.ListLockUnlockBanksResponse.lock_unlock_banks:type_name -> smartcore.traits.LockUnlockBank
+	15, // 11: smartcore.traits.ListLockUnlockHistoryRequest.period:type_name -> smartcore.types.time.Period
+	14, // 12: smartcore.traits.ListLockUnlockHistoryRequest.read_mask:type_name -> google.protobuf.FieldMask
+	1,  // 13: smartcore.traits.LockUnlockRecord.lock_unlock:type_name -> smartcore.traits.LockUnlock
+	13, // 14: smartcore.traits.LockUnlockRecord.record_time:type_name -> google.protobuf.Timestamp
+	10, // 15: smartcore.traits.ListLockUnlockHistoryResponse.lock_unlock_records:type_name -> smartcore.traits.LockUnlockRecord
+	13, // 16: smartcore.traits.PullLockUnlockResponse.Change.change_time:type_name -> google.protobuf.Timestamp
+	1,  // 17: smartcore.traits.PullLockUnlockResponse.Change.lock_unlock:type_name -> smartcore.traits.LockUnlock
+	3,  // 18: smartcore.traits.LockUnlockApi.GetLockUnlock:input_type -> smartcore.traits.GetLockUnlockRequest
+	4,  // 19: smartcore.traits.LockUnlockApi.UpdateLockUnlock:input_type -> smartcore.traits.UpdateLockUnlockRequest
+	5,  // 20: smartcore.traits.LockUnlockApi.PullLockUnlock:input_type -> smartcore.traits.PullLockUnlockRequest
+	7,  // 21: smartcore.traits.LockUnlockApi.ListLockUnlockBanks:input_type -> smartcore.traits.ListLockUnlockBanksRequest
+	9,  // 22: smartcore.traits.LockUnlockHistory.ListLockUnlockHistory:input_type -> smartcore.traits.ListLockUnlockHistoryRequest
+	1,  // 23: smartcore.traits.LockUnlockApi.GetLockUnlock:output_type -> smartcore.traits.LockUnlock
+	1,  // 24: smartcore.traits.LockUnlockApi.UpdateLockUnlock:output_type -> smartcore.traits.LockUnlock
+	6,  // 25: smartcore.traits.LockUnlockApi.PullLockUnlock:output_type -> smartcore.traits.PullLockUnlockResponse
+	8,  // 26: smartcore.traits.LockUnlockApi.ListLockUnlockBanks:output_type -> smartcore.traits.ListLockUnlockBanksResponse
+	11, // 27: smartcore.traits.LockUnlockHistory.ListLockUnlockHistory:output_type -> smartcore.traits.ListLockUnlockHistoryResponse
+	23, // [23:28] is the sub-list for method output_type
+	18, // [18:23] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_traits_lock_unlock_proto_init() }
@@ -528,15 +1160,19 @@ func file_traits_lock_unlock_proto_init() {
 	if File_traits_lock_unlock_proto != nil {
 		return
 	}
+	file_traits_lock_unlock_proto_msgTypes[0].OneofWrappers = []any{}
+	file_traits_lock_unlock_proto_msgTypes[2].OneofWrappers = []any{}
+	file_traits_lock_unlock_proto_msgTypes[3].OneofWrappers = []any{}
+	file_traits_lock_unlock_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_traits_lock_unlock_proto_rawDesc), len(file_traits_lock_unlock_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   6,
+			NumMessages:   12,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   3,
 		},
 		GoTypes:           file_traits_lock_unlock_proto_goTypes,
 		DependencyIndexes: file_traits_lock_unlock_proto_depIdxs,

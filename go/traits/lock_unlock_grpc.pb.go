@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LockUnlockApi_GetLockUnlock_FullMethodName    = "/smartcore.traits.LockUnlockApi/GetLockUnlock"
-	LockUnlockApi_UpdateLockUnlock_FullMethodName = "/smartcore.traits.LockUnlockApi/UpdateLockUnlock"
-	LockUnlockApi_PullLockUnlock_FullMethodName   = "/smartcore.traits.LockUnlockApi/PullLockUnlock"
+	LockUnlockApi_GetLockUnlock_FullMethodName       = "/smartcore.traits.LockUnlockApi/GetLockUnlock"
+	LockUnlockApi_UpdateLockUnlock_FullMethodName    = "/smartcore.traits.LockUnlockApi/UpdateLockUnlock"
+	LockUnlockApi_PullLockUnlock_FullMethodName      = "/smartcore.traits.LockUnlockApi/PullLockUnlock"
+	LockUnlockApi_ListLockUnlockBanks_FullMethodName = "/smartcore.traits.LockUnlockApi/ListLockUnlockBanks"
 )
 
 // LockUnlockApiClient is the client API for LockUnlockApi service.
@@ -38,6 +39,8 @@ type LockUnlockApiClient interface {
 	UpdateLockUnlock(ctx context.Context, in *UpdateLockUnlockRequest, opts ...grpc.CallOption) (*LockUnlock, error)
 	// Subscribe to changes in the lock position for the device.
 	PullLockUnlock(ctx context.Context, in *PullLockUnlockRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[PullLockUnlockResponse], error)
+	// Lists all lock/unlock banks and their lockable devices.
+	ListLockUnlockBanks(ctx context.Context, in *ListLockUnlockBanksRequest, opts ...grpc.CallOption) (*ListLockUnlockBanksResponse, error)
 }
 
 type lockUnlockApiClient struct {
@@ -87,6 +90,16 @@ func (c *lockUnlockApiClient) PullLockUnlock(ctx context.Context, in *PullLockUn
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type LockUnlockApi_PullLockUnlockClient = grpc.ServerStreamingClient[PullLockUnlockResponse]
 
+func (c *lockUnlockApiClient) ListLockUnlockBanks(ctx context.Context, in *ListLockUnlockBanksRequest, opts ...grpc.CallOption) (*ListLockUnlockBanksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListLockUnlockBanksResponse)
+	err := c.cc.Invoke(ctx, LockUnlockApi_ListLockUnlockBanks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // LockUnlockApiServer is the server API for LockUnlockApi service.
 // All implementations must embed UnimplementedLockUnlockApiServer
 // for forward compatibility.
@@ -101,6 +114,8 @@ type LockUnlockApiServer interface {
 	UpdateLockUnlock(context.Context, *UpdateLockUnlockRequest) (*LockUnlock, error)
 	// Subscribe to changes in the lock position for the device.
 	PullLockUnlock(*PullLockUnlockRequest, grpc.ServerStreamingServer[PullLockUnlockResponse]) error
+	// Lists all lock/unlock banks and their lockable devices.
+	ListLockUnlockBanks(context.Context, *ListLockUnlockBanksRequest) (*ListLockUnlockBanksResponse, error)
 	mustEmbedUnimplementedLockUnlockApiServer()
 }
 
@@ -119,6 +134,9 @@ func (UnimplementedLockUnlockApiServer) UpdateLockUnlock(context.Context, *Updat
 }
 func (UnimplementedLockUnlockApiServer) PullLockUnlock(*PullLockUnlockRequest, grpc.ServerStreamingServer[PullLockUnlockResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method PullLockUnlock not implemented")
+}
+func (UnimplementedLockUnlockApiServer) ListLockUnlockBanks(context.Context, *ListLockUnlockBanksRequest) (*ListLockUnlockBanksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLockUnlockBanks not implemented")
 }
 func (UnimplementedLockUnlockApiServer) mustEmbedUnimplementedLockUnlockApiServer() {}
 func (UnimplementedLockUnlockApiServer) testEmbeddedByValue()                       {}
@@ -188,6 +206,24 @@ func _LockUnlockApi_PullLockUnlock_Handler(srv interface{}, stream grpc.ServerSt
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type LockUnlockApi_PullLockUnlockServer = grpc.ServerStreamingServer[PullLockUnlockResponse]
 
+func _LockUnlockApi_ListLockUnlockBanks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLockUnlockBanksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LockUnlockApiServer).ListLockUnlockBanks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LockUnlockApi_ListLockUnlockBanks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LockUnlockApiServer).ListLockUnlockBanks(ctx, req.(*ListLockUnlockBanksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // LockUnlockApi_ServiceDesc is the grpc.ServiceDesc for LockUnlockApi service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -202,6 +238,10 @@ var LockUnlockApi_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateLockUnlock",
 			Handler:    _LockUnlockApi_UpdateLockUnlock_Handler,
+		},
+		{
+			MethodName: "ListLockUnlockBanks",
+			Handler:    _LockUnlockApi_ListLockUnlockBanks_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
@@ -272,4 +312,112 @@ var LockUnlockInfo_ServiceDesc = grpc.ServiceDesc{
 	Methods:     []grpc.MethodDesc{},
 	Streams:     []grpc.StreamDesc{},
 	Metadata:    "traits/lock_unlock.proto",
+}
+
+const (
+	LockUnlockHistory_ListLockUnlockHistory_FullMethodName = "/smartcore.traits.LockUnlockHistory/ListLockUnlockHistory"
+)
+
+// LockUnlockHistoryClient is the client API for LockUnlockHistory service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// LockUnlockHistory provides access to usage history for lockable devices.
+type LockUnlockHistoryClient interface {
+	// Lists the history of lock/unlock records for a given device.
+	ListLockUnlockHistory(ctx context.Context, in *ListLockUnlockHistoryRequest, opts ...grpc.CallOption) (*ListLockUnlockHistoryResponse, error)
+}
+
+type lockUnlockHistoryClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewLockUnlockHistoryClient(cc grpc.ClientConnInterface) LockUnlockHistoryClient {
+	return &lockUnlockHistoryClient{cc}
+}
+
+func (c *lockUnlockHistoryClient) ListLockUnlockHistory(ctx context.Context, in *ListLockUnlockHistoryRequest, opts ...grpc.CallOption) (*ListLockUnlockHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListLockUnlockHistoryResponse)
+	err := c.cc.Invoke(ctx, LockUnlockHistory_ListLockUnlockHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// LockUnlockHistoryServer is the server API for LockUnlockHistory service.
+// All implementations must embed UnimplementedLockUnlockHistoryServer
+// for forward compatibility.
+//
+// LockUnlockHistory provides access to usage history for lockable devices.
+type LockUnlockHistoryServer interface {
+	// Lists the history of lock/unlock records for a given device.
+	ListLockUnlockHistory(context.Context, *ListLockUnlockHistoryRequest) (*ListLockUnlockHistoryResponse, error)
+	mustEmbedUnimplementedLockUnlockHistoryServer()
+}
+
+// UnimplementedLockUnlockHistoryServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedLockUnlockHistoryServer struct{}
+
+func (UnimplementedLockUnlockHistoryServer) ListLockUnlockHistory(context.Context, *ListLockUnlockHistoryRequest) (*ListLockUnlockHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLockUnlockHistory not implemented")
+}
+func (UnimplementedLockUnlockHistoryServer) mustEmbedUnimplementedLockUnlockHistoryServer() {}
+func (UnimplementedLockUnlockHistoryServer) testEmbeddedByValue()                           {}
+
+// UnsafeLockUnlockHistoryServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to LockUnlockHistoryServer will
+// result in compilation errors.
+type UnsafeLockUnlockHistoryServer interface {
+	mustEmbedUnimplementedLockUnlockHistoryServer()
+}
+
+func RegisterLockUnlockHistoryServer(s grpc.ServiceRegistrar, srv LockUnlockHistoryServer) {
+	// If the following call pancis, it indicates UnimplementedLockUnlockHistoryServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&LockUnlockHistory_ServiceDesc, srv)
+}
+
+func _LockUnlockHistory_ListLockUnlockHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLockUnlockHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LockUnlockHistoryServer).ListLockUnlockHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LockUnlockHistory_ListLockUnlockHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LockUnlockHistoryServer).ListLockUnlockHistory(ctx, req.(*ListLockUnlockHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// LockUnlockHistory_ServiceDesc is the grpc.ServiceDesc for LockUnlockHistory service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var LockUnlockHistory_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "smartcore.traits.LockUnlockHistory",
+	HandlerType: (*LockUnlockHistoryServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListLockUnlockHistory",
+			Handler:    _LockUnlockHistory_ListLockUnlockHistory_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "traits/lock_unlock.proto",
 }

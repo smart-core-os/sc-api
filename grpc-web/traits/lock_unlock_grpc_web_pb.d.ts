@@ -27,12 +27,33 @@ export class LockUnlockApiClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_lock_unlock_pb.PullLockUnlockResponse>;
 
+  listLockUnlockBanks(
+    request: traits_lock_unlock_pb.ListLockUnlockBanksRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: traits_lock_unlock_pb.ListLockUnlockBanksResponse) => void
+  ): grpcWeb.ClientReadableStream<traits_lock_unlock_pb.ListLockUnlockBanksResponse>;
+
 }
 
 export class LockUnlockInfoClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
+
+}
+
+export class LockUnlockHistoryClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  listLockUnlockHistory(
+    request: traits_lock_unlock_pb.ListLockUnlockHistoryRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.RpcError,
+               response: traits_lock_unlock_pb.ListLockUnlockHistoryResponse) => void
+  ): grpcWeb.ClientReadableStream<traits_lock_unlock_pb.ListLockUnlockHistoryResponse>;
 
 }
 
@@ -56,12 +77,29 @@ export class LockUnlockApiPromiseClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<traits_lock_unlock_pb.PullLockUnlockResponse>;
 
+  listLockUnlockBanks(
+    request: traits_lock_unlock_pb.ListLockUnlockBanksRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_lock_unlock_pb.ListLockUnlockBanksResponse>;
+
 }
 
 export class LockUnlockInfoPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
+
+}
+
+export class LockUnlockHistoryPromiseClient {
+  constructor (hostname: string,
+               credentials?: null | { [index: string]: string; },
+               options?: null | { [index: string]: any; });
+
+  listLockUnlockHistory(
+    request: traits_lock_unlock_pb.ListLockUnlockHistoryRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<traits_lock_unlock_pb.ListLockUnlockHistoryResponse>;
 
 }
 
