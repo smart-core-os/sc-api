@@ -1,3 +1,10 @@
+# DEPRECATED
+The protobuf definitions for the Smart Core trait APIs have been migrated to [sc-bos](https://github.com/smart-core-os/sc-bos). 
+Users of the go and gRPC-Web modules should migrate to using sc-bos. This can be performed mostly automatically using the sc-bos's scfix tool.
+
+Users of sc-api in other programming languages should obtain the protobuf definitions from sc-bos and generate their own client libraries,
+by following the [gRPC documentation](https://grpc.io/docs/languages/).
+
 # Smart Core API
 This repository contains the interface definitions for the base Smart Core functionality. Looking at the .proto files
 should give a better understanding of how to communicate between different services in a Smart core system.
